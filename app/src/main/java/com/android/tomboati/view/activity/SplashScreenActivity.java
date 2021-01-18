@@ -1,14 +1,15 @@
-package com.android.tomboati;
+package com.android.tomboati.view.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.Window;
 import android.view.WindowManager;
+
+import com.android.tomboati.R;
 
 public class SplashScreenActivity extends AppCompatActivity {
 

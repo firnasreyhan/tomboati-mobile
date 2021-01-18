@@ -1,22 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
+        android:id="@+id/menu_beranda"
         android:title="Beranda"
         android:icon="@drawable/ic_compass"/>
 
     <item
+        android:id="@+id/menu_simpan"
         android:title="Simpan"
         android:icon="@drawable/ic_direct_download"/>
 
     <item
+        android:id="@+id/menu_pesanan"
         android:title="Pesanan"
         android:icon="@drawable/ic_cart"/>
 
     <item
+        android:id="@+id/menu_inbox"
         android:title="Inbox"
         android:icon="@drawable/ic_private_message"/>
 
     <item
+        android:id="@+id/menu_akun"
         android:title="Akun"
         android:icon="@drawable/ic_user"/>
 </menu>

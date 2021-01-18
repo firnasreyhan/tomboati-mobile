@@ -9,8 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/ThemeTomboAti">
-        <activity android:name=".MainActivity"/>
-        <activity android:name=".SplashScreenActivity">
+        <activity android:name=".view.activity.WisataReligiActivity"></activity>
+        <activity android:name=".view.activity.DoaDzikirActivity" />
+        <activity android:name=".view.activity.SholatActivity" />
+        <activity android:name=".view.activity.UmrohHajiActivity" />
+        <activity android:name=".view.activity.MainActivity" />
+        <activity android:name=".view.activity.SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
