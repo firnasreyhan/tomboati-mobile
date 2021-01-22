@@ -219,32 +219,6 @@
                     android:layout_width="@dimen/_42sdp"
                     android:layout_height="@dimen/_46sdp"
                     android:adjustViewBounds="true"
-                    android:src="@drawable/ic_halal_food" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_4sdp"
-                    android:fontFamily="@font/cinzel_regular"
-                    android:gravity="center"
-                    android:text="HALAL FOOD"
-                    android:textAllCaps="true"
-                    android:textColor="@android:color/black"
-                    android:textSize="@dimen/_6sdp" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="@dimen/_42sdp"
-                    android:layout_height="@dimen/_46sdp"
-                    android:adjustViewBounds="true"
                     android:src="@drawable/ic_aqiqah" />
 
                 <TextView
@@ -259,16 +233,6 @@
                     android:textSize="@dimen/_6sdp" />
 
             </LinearLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_14sdp"
-            android:orientation="horizontal"
-            android:paddingLeft="@dimen/_8sdp"
-            android:paddingRight="@dimen/_8sdp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -296,8 +260,17 @@
 
             </LinearLayout>
 
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_14sdp"
+            android:orientation="horizontal"
+            android:paddingLeft="@dimen/_8sdp"
+            android:paddingRight="@dimen/_8sdp">
+
             <LinearLayout
-                android:id="@+id/linearLayoutTomboatiChannel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -324,7 +297,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/linearLayoutLiveMekkah"
+                android:id="@+id/linearLayoutTomboatiChannel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -351,144 +324,19 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/linearLayoutLiveMekkah"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="@dimen/_42sdp"
-                    android:layout_height="@dimen/_46sdp"
-                    android:adjustViewBounds="true"
-                    android:src="@drawable/ic_all" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_4sdp"
-                    android:fontFamily="@font/cinzel_regular"
-                    android:gravity="center"
-                    android:text="PRODUK LAINNYA"
-                    android:textAllCaps="true"
-                    android:textColor="@android:color/black"
-                    android:textSize="@dimen/_6sdp" />
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_14sdp"
-            android:orientation="horizontal"
-            android:paddingLeft="@dimen/_8sdp"
-            android:paddingRight="@dimen/_8sdp">
+                android:orientation="vertical"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:adjustViewBounds="true"
-                    android:src="@drawable/ic_tasbih" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_4sdp"
-                    android:fontFamily="@font/cinzel_regular"
-                    android:gravity="center"
-                    android:text="KOMUNITAS"
-                    android:textAllCaps="true"
-                    android:textColor="@android:color/black"
-                    android:textSize="@dimen/_6sdp" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="@dimen/_31sdp"
-                    android:layout_height="@dimen/_31sdp"
-                    android:adjustViewBounds="true"
-                    android:src="@drawable/ic_market" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_4sdp"
-                    android:fontFamily="@font/cinzel_regular"
-                    android:gravity="center"
-                    android:text="TOMBO ATI TOUR CHANNEL"
-                    android:textAllCaps="true"
-                    android:textColor="@android:color/black"
-                    android:textSize="@dimen/_6sdp" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="@dimen/_31sdp"
-                    android:layout_height="@dimen/_31sdp"
-                    android:adjustViewBounds="true"
-                    android:src="@drawable/ic_kata_mutiara" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_4sdp"
-                    android:fontFamily="@font/cinzel_regular"
-                    android:gravity="center"
-                    android:text="kata mutiara"
-                    android:textAllCaps="true"
-                    android:textColor="@android:color/black"
-                    android:textSize="@dimen/_6sdp" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="@dimen/_31sdp"
-                    android:layout_height="@dimen/_31sdp"
-                    android:adjustViewBounds="true"
-                    android:src="@drawable/ic_masjid_terdekat" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_4sdp"
-                    android:fontFamily="@font/cinzel_regular"
-                    android:gravity="center"
-                    android:text="PRODUK LAINNYA"
-                    android:textAllCaps="true"
-                    android:textColor="@android:color/black"
-                    android:textSize="@dimen/_6sdp" />
-
-            </LinearLayout>
+                android:orientation="vertical"/>
 
         </LinearLayout>
 
@@ -564,7 +412,7 @@
                     android:layout_height="@dimen/_77sdp"
                     android:adjustViewBounds="true"
                     android:scaleType="fitXY"
-                    android:src="@color/dark_green" />
+                    android:src="@drawable/ic_promo_tour_1" />
 
                 <ImageView
                     android:layout_width="@dimen/_77sdp"
@@ -575,14 +423,14 @@
                     android:layout_marginRight="@dimen/_10sdp"
                     android:adjustViewBounds="true"
                     android:scaleType="fitXY"
-                    android:src="@color/dark_green" />
+                    android:src="@drawable/ic_promo_tour_2" />
 
                 <ImageView
                     android:layout_width="@dimen/_77sdp"
                     android:layout_height="@dimen/_77sdp"
                     android:adjustViewBounds="true"
                     android:scaleType="fitXY"
-                    android:src="@color/dark_green" />
+                    android:src="@drawable/ic_promo_tour_3"/>
 
             </LinearLayout>
 
@@ -592,7 +440,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_10sdp"
-            android:layout_marginBottom="@dimen/_10sdp"
             android:background="@color/very_light_green"
             android:orientation="vertical"
             android:paddingLeft="@dimen/_17sdp"
@@ -621,7 +468,7 @@
                     android:layout_height="@dimen/_77sdp"
                     android:adjustViewBounds="true"
                     android:scaleType="fitXY"
-                    android:src="@color/dark_green" />
+                    android:src="@drawable/ic_promo_haji_1" />
 
                 <ImageView
                     android:layout_width="@dimen/_77sdp"
@@ -632,16 +479,48 @@
                     android:layout_marginRight="@dimen/_10sdp"
                     android:adjustViewBounds="true"
                     android:scaleType="fitXY"
-                    android:src="@color/dark_green" />
+                    android:src="@drawable/ic_promo_haji_2" />
 
                 <ImageView
                     android:layout_width="@dimen/_77sdp"
                     android:layout_height="@dimen/_77sdp"
                     android:adjustViewBounds="true"
                     android:scaleType="fitXY"
-                    android:src="@color/dark_green" />
+                    android:src="@drawable/ic_promo_haji_3" />
 
             </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:background="@color/very_light_green"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/_17sdp"
+            android:paddingTop="@dimen/_13sdp"
+            android:paddingRight="@dimen/_17sdp"
+            android:paddingBottom="@dimen/_13sdp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/cinzel_bold"
+                android:text="Kata mutiara"
+                android:textAllCaps="true"
+                android:textColor="@color/dark_green"
+                android:textSize="@dimen/_14sdp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_3sdp"
+                android:fontFamily="@font/catamaran_regular"
+                android:text="&quot;Aku percaya, takdir Allah pastilah yang terbaik untukku dan untukmu juga.&quot;"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/_10sdp" />
 
         </LinearLayout>
 

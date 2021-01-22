@@ -4,12 +4,15 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_new_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_new_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/ThemeTomboAti">
-        <activity android:name=".view.activity.WisataReligiActivity"></activity>
+        <activity android:name=".view.activity.SyaratActivity"></activity>
+        <activity android:name=".view.activity.SignUpActivity" />
+        <activity android:name=".view.activity.SignInActivity" />
+        <activity android:name=".view.activity.WisataReligiActivity" />
         <activity android:name=".view.activity.DoaDzikirActivity" />
         <activity android:name=".view.activity.SholatActivity" />
         <activity android:name=".view.activity.UmrohHajiActivity" />
