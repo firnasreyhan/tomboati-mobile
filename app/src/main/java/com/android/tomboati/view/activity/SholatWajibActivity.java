@@ -3,37 +3,36 @@ package com.android.tomboati.view.activity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.LinearLayout;
 
 import com.android.tomboati.R;
+import com.github.barteksc.pdfviewer.PDFView;
+import com.github.barteksc.pdfviewer.scroll.DefaultScrollHandle;
 
-public class DoaDzikirActivity extends AppCompatActivity {
+public class SholatWajibActivity extends AppCompatActivity {
     private Toolbar toolbar;
-    private LinearLayout linearLayoutAsmaulHusna;
+    private PDFView pdfView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setTheme(R.style.ThemeTomboAtiGreen);
-        setContentView(R.layout.activity_doa_dzikir);
+        setContentView(R.layout.activity_sholat_wajib);
 
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        setTitle("Do’a & Dzikir");
+        setTitle("Sholat Wajib");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        linearLayoutAsmaulHusna = findViewById(R.id.linearLayoutAsmaulHusna);
+        pdfView = findViewById(R.id.pdfView);
 
-        linearLayoutAsmaulHusna.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(v.getContext(), AsmaulHusnaActivity.class));
-            }
-        });
+        pdfView.fromAsset("Sholat.pdf")
+                .defaultPage(0)
+                .enableAnnotationRendering(true)
+                .scrollHandle(new DefaultScrollHandle(this))
+                .spacing(2) // in dp
+                .load();
     }
 
     @Override

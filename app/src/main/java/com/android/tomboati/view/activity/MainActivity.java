@@ -51,8 +51,6 @@ public class MainActivity extends AppCompatActivity {
         fragmentManager.beginTransaction().add(R.id.frameLayoutFragment, fragmentPesanan, "Pesanan").hide(fragmentPesanan).commit();
         fragmentManager.beginTransaction().add(R.id.frameLayoutFragment, fragmentSimpan, "Simpan").hide(fragmentSimpan).commit();
         fragmentManager.beginTransaction().add(R.id.frameLayoutFragment, fragmentBeranda, "Beranda").commit();
-
-        startActivity(new Intent(this, SignUpActivity.class));
     }
 
     private final BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
