@@ -53,8 +53,8 @@ public class BerandaFragment extends Fragment {
 
         ArrayList<SliderModel> list = new ArrayList<>();
         list.add(new SliderModel("", "", "", "", "", "", ""));
-        list.add(new SliderModel("", "", "", "", "", "", ""));
-        list.add(new SliderModel("", "", "", "", "", "", ""));
+        list.add(new SliderModel("", "", "Mekah", "", "", "", ""));
+        list.add(new SliderModel("", "", "Madinah", "", "", "", ""));
 
         sliderAdapter = new SliderAdapter(list);
 

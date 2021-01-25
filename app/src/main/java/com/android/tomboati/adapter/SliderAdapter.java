@@ -3,6 +3,7 @@ package com.android.tomboati.adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.android.tomboati.R;
 import com.android.tomboati.model.SliderModel;
@@ -26,7 +27,12 @@ public class SliderAdapter extends SliderViewAdapter<SliderAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int position) {
-
+        if (position == 1) {
+            viewHolder.imageViewSlider.setImageResource(R.drawable.ic_slider_mekah);
+        }
+        else if (position == 2) {
+            viewHolder.imageViewSlider.setImageResource(R.drawable.ic_slider_madinah);
+        }
     }
 
     @Override
@@ -35,8 +41,10 @@ public class SliderAdapter extends SliderViewAdapter<SliderAdapter.ViewHolder> {
     }
 
     public class ViewHolder extends SliderViewAdapter.ViewHolder {
+        private ImageView imageViewSlider;
         public ViewHolder(View itemView) {
             super(itemView);
+            imageViewSlider = itemView.findViewById(R.id.imageViewSlider);
         }
     }
 }

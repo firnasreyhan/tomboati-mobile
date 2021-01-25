@@ -12,7 +12,7 @@ import com.android.tomboati.R;
 
 public class SholatActivity extends AppCompatActivity {
     private Toolbar toolbar;
-    private LinearLayout linearLayoutSholatWajib, linearLayoutWudhu;
+    private LinearLayout linearLayoutSholatWajib, linearLayoutWudhu, linearLayoutArahKiblat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +28,7 @@ public class SholatActivity extends AppCompatActivity {
 
         linearLayoutSholatWajib = findViewById(R.id.linearLayoutSholatWajib);
         linearLayoutWudhu = findViewById(R.id.linearLayoutWudhu);
+        linearLayoutArahKiblat = findViewById(R.id.linearLayoutArahKiblat);
 
         linearLayoutSholatWajib.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,6 +41,13 @@ public class SholatActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(v.getContext(), WudhuActivity.class));
+            }
+        });
+
+        linearLayoutArahKiblat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(v.getContext(), ArahKiblatActivity.class));
             }
         });
     }
