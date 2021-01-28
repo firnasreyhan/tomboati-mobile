@@ -17,7 +17,8 @@
         android:roundIcon="@mipmap/ic_new_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/ThemeTomboAti">
-        <activity android:name=".view.activity.JadwalSholatActivity"></activity>
+        <activity android:name=".view.activity.MasjidTerdekatActivity" />
+        <activity android:name=".view.activity.JadwalSholatActivity" />
         <activity android:name=".view.activity.ListPaketActivity" />
         <activity android:name=".view.activity.ArahKiblatActivity" />
         <activity

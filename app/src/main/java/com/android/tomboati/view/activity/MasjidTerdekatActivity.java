@@ -5,8 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -15,16 +16,12 @@ import android.location.Location;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
-import android.view.View;
-import android.widget.DatePicker;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.tomboati.R;
-import com.android.tomboati.api.response.JadwalSholatResponse;
+import com.android.tomboati.adapter.MasjidAdapter;
+import com.android.tomboati.api.response.MasjidResponse;
 import com.android.tomboati.utils.Utility;
-import com.android.tomboati.viewmodel.JadwalSholatViewModel;
-import com.google.android.material.button.MaterialButton;
+import com.android.tomboati.viewmodel.MasjidTerdekatViewModel;
 import com.intentfilter.androidpermissions.PermissionManager;
 import com.intentfilter.androidpermissions.models.DeniedPermissions;
 
@@ -36,14 +33,15 @@ import io.nlopez.smartlocation.OnReverseGeocodingListener;
 import io.nlopez.smartlocation.SmartLocation;
 import io.nlopez.smartlocation.location.config.LocationParams;
 
-public class JadwalSholatActivity extends AppCompatActivity {
+public class MasjidTerdekatActivity extends AppCompatActivity {
     private Toolbar toolbar;
-
-    private JadwalSholatViewModel jadwalSholatViewModel;
-    private TextView hijriah, masehi, kota, imsak, subuh, terbit, dhuha, dzuhur, ashar, maghrib, isya;
-    private PermissionManager permissionManager;
+    private MasjidTerdekatViewModel masjidTerdekatViewModel;
+    private final int LIMIT = 10;
+    private final String QUERY = "Mosque";
+    private RecyclerView recyclerViewMasjidTerdekat;
     private ProgressDialog dialog;
     private AlertDialog.Builder alert;
+    private PermissionManager permissionManager;
 
     private boolean isLoaded = false;
 
@@ -56,52 +54,16 @@ public class JadwalSholatActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setTheme(R.style.ThemeTomboAtiGreen);
-        setContentView(R.layout.activity_jadwal_sholat);
+        setContentView(R.layout.activity_masjid_terdekat);
+        masjidTerdekatViewModel = ViewModelProviders.of(this).get(MasjidTerdekatViewModel.class);
 
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        setTitle("Jadwal Sholat");
+        setTitle("Masjid Terdekat");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        jadwalSholatViewModel = ViewModelProviders.of(this).get(JadwalSholatViewModel.class);
-        hijriah = findViewById(R.id.hijriah);
-        masehi = findViewById(R.id.masehi);
-        kota = findViewById(R.id.kota);
-        imsak = findViewById(R.id.imsak);
-        subuh = findViewById(R.id.subuh);
-        terbit = findViewById(R.id.terbit);
-        dhuha = findViewById(R.id.dhuha);
-        dzuhur = findViewById(R.id.dzuhur);
-        ashar = findViewById(R.id.ashar);
-        maghrib = findViewById(R.id.maghrib);
-        isya = findViewById(R.id.isya);
-
-        MaterialButton change_date = findViewById(R.id.ubah_tanggal);
-
-        // Where button change date is on clicking
-        change_date.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //Check if gps provider is enabled
-                if(isProviderEnable()) {
-                    // Where gps provider is enabled than show date picker dialog
-                    new DatePickerDialog(v.getContext(), new DatePickerDialog.OnDateSetListener() {
-                        @Override
-                        public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                            showProgressDialog();
-                            // Show jadwal sholat using date obtained from date picker
-                            // and using latitude, longitude from Utility temporary for to
-                            // avoid location repeatedly
-                            showJadwalSholat(year, month, dayOfMonth, Utility.getLatitude(), Utility.getLongitude(), Utility.getGMT());
-                        }
-                    }, Utility.getYear(), Utility.getMonth(), Utility.getDay()).show();
-                } else {
-                    // Where gps provider is not enabled, than show toast information
-                    Toast.makeText(getApplicationContext(), "Gps anda belum aktif", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
+        recyclerViewMasjidTerdekat = findViewById(R.id.recyclerViewMasjidTerdekat);
     }
 
     @Override
@@ -170,70 +132,7 @@ public class JadwalSholatActivity extends AppCompatActivity {
         SmartLocation.with(this).location().config(LocationParams.BEST_EFFORT).oneFix().start(new OnLocationUpdatedListener() {
             @Override
             public void onLocationUpdated(Location location) {
-
-                // Get location using reverse geocode
-                SmartLocation.with(JadwalSholatActivity.this).geocoding().reverse(location, new OnReverseGeocodingListener() {
-                    @Override
-                    public void onAddressResolved(Location location, List<Address> list) {
-                        String text_kota = null;
-                        if (list.size() > 0) {
-                            String kab = list.get(0).getSubAdminArea();
-                            String kecamatan = list.get(0).getLocality();
-                            String negara = list.get(0).getCountryName();
-
-                            // Setting text kota with kecamatan, kab - negara
-                            text_kota = kecamatan.concat(", ").concat(kab).concat(" - ").concat(negara);
-                        } else {
-                            text_kota = "Location Not Found!";
-                        }
-                        kota.setText(text_kota);
-
-                    }
-                });
-
-                // Save latitude and longitude into Utility as temporary
-                Utility.setLatitude(location.getLatitude());
-                Utility.setLongitude(location.getLongitude());
-
-                // Show jadwal sholat using response API
-                showJadwalSholat(
-                        Utility.getYear(), Utility.getMonth(), Utility.getDay(),
-                        location.getLatitude(),
-                        location.getLongitude(), Utility.getGMT()
-                );
-            }
-        });
-    }
-
-    private void showJadwalSholat(int year, int month, int day, double latitude, double longitude, int timezone) {
-        jadwalSholatViewModel.jadwalSholat(
-                year,
-                month,
-                day,
-                latitude,
-                longitude,
-                timezone
-        ).observe(this, new Observer<JadwalSholatResponse>() {
-            @Override
-            public void onChanged(JadwalSholatResponse jadwalSholatResponse) {
-                if (jadwalSholatResponse != null) {
-                    JadwalSholatResponse.Data.DetailData.DetailDetailData jadwal = jadwalSholatResponse.getData().getData().getData();
-                    imsak.setText(jadwal.getShortImsak());
-                    subuh.setText(jadwal.getShortShubuh());
-                    terbit.setText(jadwal.getShortSyuruq());
-                    dhuha.setText(jadwal.getShortDhuha());
-                    dzuhur.setText(jadwal.getShortDhuhur());
-                    ashar.setText(jadwal.getShortAshar());
-                    maghrib.setText(jadwal.getShortMaghrib());
-                    isya.setText(jadwal.getShortIsya());
-
-                    JadwalSholatResponse.Data.DetailData.DetailDate.DateText dates = jadwalSholatResponse.getData().getData().getDate().getText();
-                    hijriah.setText(dates.getH());
-                    masehi.setText(dates.getM());
-
-                    isLoaded = true;
-                }
-                dialog.dismiss();
+                showLokasiMasjid( location.getLatitude(),location.getLongitude());
             }
         });
     }
@@ -265,7 +164,7 @@ public class JadwalSholatActivity extends AppCompatActivity {
 
     private void showProgressDialog() {
         dialog = new ProgressDialog(this);
-        dialog.setMessage("MengamTunggu Sebentar...");
+        dialog.setMessage("Tunggu Sebentar...");
         dialog.setCancelable(true);
         dialog.show();
     }
@@ -276,5 +175,26 @@ public class JadwalSholatActivity extends AppCompatActivity {
         Uri uri = Uri.fromParts("package", getPackageName(), null);
         intent.setData(uri);
         startActivityForResult(intent, permissionManager.getResultCode());
+    }
+
+    private void showLokasiMasjid(double latitude, double longitude) {
+        final String proximity = "" + longitude + "," + latitude;
+        masjidTerdekatViewModel.masjid(
+                QUERY,
+                proximity,
+                LIMIT
+        ).observe(this, new Observer<List<MasjidResponse.Feature>>() {
+            @Override
+            public void onChanged(List<MasjidResponse.Feature> features) {
+                if (!features.isEmpty()) {
+                    MasjidAdapter masjidAdapter = new MasjidAdapter(features, latitude, longitude);
+                    recyclerViewMasjidTerdekat.setLayoutManager(new LinearLayoutManager(MasjidTerdekatActivity.this));
+                    recyclerViewMasjidTerdekat.setAdapter(masjidAdapter);
+                }
+                if (dialog.isShowing()) {
+                    dialog.dismiss();
+                }
+            }
+        });
     }
 }

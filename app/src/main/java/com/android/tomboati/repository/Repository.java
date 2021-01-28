@@ -7,10 +7,14 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.android.tomboati.api.ApiClient;
 import com.android.tomboati.api.ApiInterfaceJadwalSholat;
+import com.android.tomboati.api.ApiInterfaceMasjid;
 import com.android.tomboati.api.ApiInterfaceTomboAti;
 import com.android.tomboati.api.response.BaseResponse;
 import com.android.tomboati.api.response.JadwalSholatResponse;
+import com.android.tomboati.api.response.MasjidResponse;
 import com.android.tomboati.api.response.SignInResponse;
+
+import java.util.List;
 
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -21,10 +25,12 @@ import retrofit2.Response;
 public class Repository {
     private ApiInterfaceTomboAti apiInterfaceTomboAti;
     private ApiInterfaceJadwalSholat apiInterfaceTomboAtiJadwalSholat;
+    private ApiInterfaceMasjid apiInterfaceMasjid;
 
     public Repository() {
         this.apiInterfaceTomboAti = ApiClient.getClientTomboAti();
         this.apiInterfaceTomboAtiJadwalSholat = ApiClient.getClientJadwalSholat();
+        this.apiInterfaceMasjid = ApiClient.getClientMasjid();
     }
 
     public MutableLiveData<SignInResponse> signIn(String email, String password) {
@@ -99,6 +105,30 @@ public class Repository {
 
             @Override
             public void onFailure(Call<JadwalSholatResponse> call, Throwable t) {
+                data.setValue(null);
+                Log.e("signUp", t.getMessage());
+            }
+        });
+        return data;
+    }
+
+    public MutableLiveData<List<MasjidResponse.Feature>> masjid(String query, String proximity, int limit, String accessToken) {
+        MutableLiveData<List<MasjidResponse.Feature>> data = new MutableLiveData<>();
+        apiInterfaceMasjid.getMasjidTerdekat(
+                query,
+                proximity,
+                limit,
+                accessToken
+        ).enqueue(new Callback<MasjidResponse>() {
+            @Override
+            public void onResponse(Call<MasjidResponse> call, Response<MasjidResponse> response) {
+                if (response.code() == 200) {
+                    data.setValue(response.body().getFeatures());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<MasjidResponse> call, Throwable t) {
                 data.setValue(null);
                 Log.e("signUp", t.getMessage());
             }

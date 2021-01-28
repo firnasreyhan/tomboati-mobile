@@ -510,7 +510,7 @@ public class ArahKiblatActivity extends AppCompatActivity {
 
     private void showProgressDialog() {
         dialog = new ProgressDialog(this);
-        dialog.setMessage("Mengambil data!");
+        dialog.setMessage("Tunggu Sebentar...");
         dialog.setCancelable(true);
         dialog.show();
     }

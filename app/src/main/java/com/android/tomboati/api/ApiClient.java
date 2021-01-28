@@ -14,6 +14,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class ApiClient {
     private static ApiInterfaceTomboAti apiInterfaceTomboAti;
     private static ApiInterfaceJadwalSholat apiInterfaceJadwalSholat;
+    private static ApiInterfaceMasjid apiIinterfaceMasjid;
 
     public static ApiInterfaceTomboAti getClientTomboAti() {
         if (apiInterfaceTomboAti == null) {
@@ -65,5 +66,31 @@ public class ApiClient {
             apiInterfaceJadwalSholat = retrofit.create(ApiInterfaceJadwalSholat.class);
         }
         return apiInterfaceJadwalSholat;
+    }
+
+    public static ApiInterfaceMasjid getClientMasjid() {
+        if (apiIinterfaceMasjid == null) {
+            Retrofit retrofit;
+
+            HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
+            httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+
+            OkHttpClient okHttpClient = new OkHttpClient.Builder()
+                    .readTimeout(60, TimeUnit.SECONDS)
+                    .connectTimeout(60, TimeUnit.SECONDS)
+                    .addInterceptor(httpLoggingInterceptor)
+                    .build();
+
+            Gson builder = new GsonBuilder().setLenient().create();
+
+            retrofit = new Retrofit.Builder()
+                    .addConverterFactory(GsonConverterFactory.create(builder))
+                    .client(okHttpClient)
+                    .baseUrl(Constant.baseURLMasjid)
+                    .build();
+
+            apiIinterfaceMasjid = retrofit.create(ApiInterfaceMasjid.class);
+        }
+        return apiIinterfaceMasjid;
     }
 }
