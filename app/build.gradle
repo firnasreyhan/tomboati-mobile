@@ -7,6 +7,7 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
+        multiDexEnabled true
         applicationId "com.android.tomboati"
         minSdkVersion 16
         targetSdkVersion 29
@@ -70,4 +71,13 @@ dependencies {
     //glide
     implementation 'com.github.bumptech.glide:glide:4.11.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+
+    //smartlocation
+    implementation 'io.nlopez.smartlocation:library:3.3.3'
+
+    //android-permissions
+    implementation 'com.intentfilter:android-permissions:2.0.54'
+
+    //multidex
+    implementation 'androidx.multidex:multidex:2.0.1'
 }

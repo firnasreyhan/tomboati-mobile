@@ -1,5 +1,6 @@
 package com.android.tomboati.api;
 
+import com.android.tomboati.utils.Constant;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -11,10 +12,11 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiClient {
-    private static ApiInterface apiInterface;
+    private static ApiInterfaceTomboAti apiInterfaceTomboAti;
+    private static ApiInterfaceJadwalSholat apiInterfaceJadwalSholat;
 
-    public static ApiInterface getClient() {
-        if (apiInterface == null) {
+    public static ApiInterfaceTomboAti getClientTomboAti() {
+        if (apiInterfaceTomboAti == null) {
             Retrofit retrofit;
 
             HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
@@ -31,11 +33,37 @@ public class ApiClient {
             retrofit = new Retrofit.Builder()
                     .addConverterFactory(GsonConverterFactory.create(builder))
                     .client(okHttpClient)
-                    .baseUrl("https://tomboati.bgskr-project.my.id/api/")
+                    .baseUrl(Constant.baseURLTomboAti)
                     .build();
 
-            apiInterface = retrofit.create(ApiInterface.class);
+            apiInterfaceTomboAti = retrofit.create(ApiInterfaceTomboAti.class);
         }
-        return apiInterface;
+        return apiInterfaceTomboAti;
+    }
+
+    public static ApiInterfaceJadwalSholat getClientJadwalSholat() {
+        if (apiInterfaceJadwalSholat == null) {
+            Retrofit retrofit;
+
+            HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
+            httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+
+            OkHttpClient okHttpClient = new OkHttpClient.Builder()
+                    .readTimeout(60, TimeUnit.SECONDS)
+                    .connectTimeout(60, TimeUnit.SECONDS)
+                    .addInterceptor(httpLoggingInterceptor)
+                    .build();
+
+            Gson builder = new GsonBuilder().setLenient().create();
+
+            retrofit = new Retrofit.Builder()
+                    .addConverterFactory(GsonConverterFactory.create(builder))
+                    .client(okHttpClient)
+                    .baseUrl(Constant.baseURLJadwalSholat)
+                    .build();
+
+            apiInterfaceJadwalSholat = retrofit.create(ApiInterfaceJadwalSholat.class);
+        }
+        return apiInterfaceJadwalSholat;
     }
 }

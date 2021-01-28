@@ -15,6 +15,7 @@ import androidx.lifecycle.MutableLiveData;
 import com.android.tomboati.api.response.BaseResponse;
 import com.android.tomboati.preference.AppPreference;
 import com.android.tomboati.repository.Repository;
+import com.android.tomboati.utils.Constant;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -32,7 +33,7 @@ public class SignUpViewModel extends AndroidViewModel {
 
     public SignUpViewModel(@NonNull Application application) {
         super(application);
-        repository = new Repository();
+        this.repository = new Repository();
         context = application.getApplicationContext();
     }
 

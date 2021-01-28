@@ -1,6 +1,7 @@
 package com.android.tomboati.view.activity;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
@@ -9,16 +10,20 @@ import androidx.lifecycle.Observer;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
-import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Location;
 import android.location.LocationManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
@@ -32,9 +37,19 @@ import com.android.tomboati.R;
 import com.android.tomboati.api.response.BaseResponse;
 import com.android.tomboati.utils.Compass;
 import com.android.tomboati.utils.GPSTracker;
+import com.android.tomboati.utils.Utility;
 import com.google.android.material.button.MaterialButton;
+import com.intentfilter.androidpermissions.PermissionManager;
+import com.intentfilter.androidpermissions.models.DeniedPermissions;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Locale;
+
+import io.nlopez.smartlocation.OnLocationUpdatedListener;
+import io.nlopez.smartlocation.OnReverseGeocodingListener;
+import io.nlopez.smartlocation.SmartLocation;
+import io.nlopez.smartlocation.location.config.LocationParams;
 
 public class ArahKiblatActivity extends AppCompatActivity {
     private static final String TAG = ArahKiblatActivity.class.getSimpleName();
@@ -47,7 +62,16 @@ public class ArahKiblatActivity extends AppCompatActivity {
     SharedPreferences prefs;
     GPSTracker gps;
     private final int RC_Permission = 1221;
-    private boolean isSuccessGetLocation;
+    private PermissionManager permissionManager;
+    private ProgressDialog dialog;
+    private AlertDialog.Builder alert;
+
+    private boolean isLoaded = false;
+
+    // Check gps provider is enabled
+    private boolean isProviderEnable() {
+        return SmartLocation.with(this).location().state().isAnyProviderAvailable();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,21 +99,11 @@ public class ArahKiblatActivity extends AppCompatActivity {
         qiblatIndicator.setVisibility(View.VISIBLE);
         qiblatIndicator.setVisibility(View.GONE);
 
-        fetch_GPS();
+        showLocation();
         materialButtonDapatkanLokasi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                progressDialog.setMessage("Mohon tunggu sebentar...");
-                progressDialog.setCancelable(false);
-                progressDialog.show();
-
-                int loadingTime = 5000;
-                new Handler().postDelayed(() -> {
-                    if (progressDialog.isShowing()) {
-                        progressDialog.dismiss();
-                    }
-                    fetch_GPS();
-                }, loadingTime);
+                showLocation();
             }
         });
         setupCompass();
@@ -102,7 +116,33 @@ public class ArahKiblatActivity extends AppCompatActivity {
         if (compass != null) {
             compass.start(this);
         }
-
+        // Check if gps provider is not enabled
+        if(!isLoaded) {
+            if (!isProviderEnable()) {
+                // If is not enabled showing alert dialog
+                alert = new AlertDialog.Builder(this);
+                alert.setTitle("GPS settings");
+                alert.setMessage("GPS tidak diaktifkan. Apakah Anda ingin pergi ke menu pengaturan?");
+                alert.setCancelable(false);
+                alert.setPositiveButton("Ya", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Goto setting page for gps activated
+                        startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+                    }
+                });
+                alert.setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                        finish();
+                    }
+                });
+                alert.show();
+            } else {
+                cekPermission();
+            }
+        }
     }
 
     @Override
@@ -117,12 +157,12 @@ public class ArahKiblatActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
-        if (GPSTracker.isFromSetting == true){
-            fetch_GPS();
-            finish();
-            startActivity(getIntent());
-            GPSTracker.isFromSetting = false;
-        }
+//        if (GPSTracker.isFromSetting == true){
+//            fetch_GPS();
+//            finish();
+//            startActivity(getIntent());
+//            GPSTracker.isFromSetting = false;
+//        }
 
         if (compass != null) {
             compass.start(this);
@@ -239,25 +279,25 @@ public class ArahKiblatActivity extends AppCompatActivity {
     @SuppressLint("MissingPermission")
     public void getBearing() {
         // Get the location manager
-
-        float kaabaDegs = GetFloat("kiblat_derajat");
-        if (kaabaDegs > 0.0001) {
-            String strYourLocation;
-            if(gps.getLocation() != null)
-                strYourLocation = "Lokasi Anda:  " + gps.getLocation().getLatitude() + ", " + gps.getLocation().getLongitude();
-            else
-                strYourLocation = "Gagal mendapatkan lokasi anda";
-            String strKaabaDirection = String.format(Locale.ENGLISH, "%.0f", kaabaDegs)
-                    + " ° " + getDirectionString(kaabaDegs);
-            tvAngle.setText(strKaabaDirection);
-            // MenuItem item = menu.findItem(R.id.gps);
-            //if (item != null) {
-            //item.setIcon(ContextCompat.getDrawable(getApplicationContext(), R.drawable.gps_off));
-            //}
-            qiblatIndicator.setVisibility(View.VISIBLE);
-        } else {
-            //fetch_GPS();
-        }
+//
+//        float kaabaDegs = GetFloat("kiblat_derajat");
+//        if (kaabaDegs > 0.0001) {
+//            String strYourLocation;
+//            if(gps.getLocation() != null)
+//                strYourLocation = "Lokasi Anda:  " + gps.getLocation().getLatitude() + ", " + gps.getLocation().getLongitude();
+//            else
+//                strYourLocation = "Gagal mendapatkan lokasi anda";
+//            String strKaabaDirection = String.format(Locale.ENGLISH, "%.0f", kaabaDegs)
+//                    + " ° " + getDirectionString(kaabaDegs);
+//            tvAngle.setText(strKaabaDirection);
+//            // MenuItem item = menu.findItem(R.id.gps);
+//            //if (item != null) {
+//            //item.setIcon(ContextCompat.getDrawable(getApplicationContext(), R.drawable.gps_off));
+//            //}
+//            qiblatIndicator.setVisibility(View.VISIBLE);
+//        } else {
+//            //fetch_GPS();
+//        }
     }
 
     private String getDirectionString(float azimuthDegrees) {
@@ -303,32 +343,126 @@ public class ArahKiblatActivity extends AppCompatActivity {
         return prefs.getFloat(Judul, 0);
     }
 
-    public void fetch_GPS() {
-        double result;
-        gps = new GPSTracker(this);
-        if (gps.canGetLocation()) {
-            double myLat = gps.getLatitude();
-            double myLng = gps.getLongitude();
-            // \n is for new line
-            //Toast.makeText(getApplicationContext(), "Lokasi anda: - \nLat: " + latitude + "\nLong: " + longitude, Toast.LENGTH_LONG).show();
-            Log.e("TAG", "GPS is on");
-            if (myLat < 0.001 && myLng < 0.001) {
-                // qiblatIndicator.isShown(false);
-                qiblatIndicator.setVisibility(View.INVISIBLE);
-                qiblatIndicator.setVisibility(View.GONE);
-                tvAngle.setText("Lokasi belum siap.");
-                /*if (item != null) {
-                    item.setIcon(ContextCompat.getDrawable(getApplicationContext(), R.drawable.gps_off));
-                }*/
-                // Toast.makeText(getApplicationContext(), "Location not ready, Please Restart Application", Toast.LENGTH_LONG).show();
-            } else {
-                /*if (item != null) {
-                    item.setIcon(ContextCompat.getDrawable(getApplicationContext(), R.drawable.gps_on));
-                }*/
+//    public void fetch_GPS() {
+//        double result;
+//        gps = new GPSTracker(this);
+//        if (gps.canGetLocation()) {
+//            double myLat = gps.getLatitude();
+//            double myLng = gps.getLongitude();
+//            // \n is for new line
+//            //Toast.makeText(getApplicationContext(), "Lokasi anda: - \nLat: " + latitude + "\nLong: " + longitude, Toast.LENGTH_LONG).show();
+//            Log.e("TAG", "GPS is on");
+//            if (myLat < 0.001 && myLng < 0.001) {
+//                // qiblatIndicator.isShown(false);
+//                qiblatIndicator.setVisibility(View.INVISIBLE);
+//                qiblatIndicator.setVisibility(View.GONE);
+//                tvAngle.setText("Lokasi belum siap.");
+//                /*if (item != null) {
+//                    item.setIcon(ContextCompat.getDrawable(getApplicationContext(), R.drawable.gps_off));
+//                }*/
+//                // Toast.makeText(getApplicationContext(), "Location not ready, Please Restart Application", Toast.LENGTH_LONG).show();
+//            } else {
+//                /*if (item != null) {
+//                    item.setIcon(ContextCompat.getDrawable(getApplicationContext(), R.drawable.gps_on));
+//                }*/
+//                double kaabaLng = 39.826206; // ka'bah Position https://www.latlong.net/place/kaaba-mecca-saudi-arabia-12639.html
+//                double kaabaLat = Math.toRadians(21.422487); // ka'bah Position https://www.latlong.net/place/kaaba-mecca-saudi-arabia-12639.html
+//                double myLatRad = Math.toRadians(myLat);
+//                double longDiff = Math.toRadians(kaabaLng - myLng);
+//                double y = Math.sin(longDiff) * Math.cos(kaabaLat);
+//                double x = Math.cos(myLatRad) * Math.sin(kaabaLat) - Math.sin(myLatRad) * Math.cos(kaabaLat) * Math.cos(longDiff);
+//                result = (Math.toDegrees(Math.atan2(y, x)) + 360) % 360;
+//                SaveFloat("kiblat_derajat", (float) result);
+//                String strKaabaDirection = String.format(Locale.ENGLISH, "%.0f", (float) result)
+//                        + " ° " + getDirectionString((float) result);
+//                tvAngle.setText(strKaabaDirection);
+//                qiblatIndicator.setVisibility(View.VISIBLE);
+//
+//                /*Location kaaba = new Location("Kaaba");
+//                kaaba.setLatitude(39.826206);
+//                kaaba.setLongitude(21.422487);
+//                Location currentLocation = gps.getLocation();
+//                if(currentLocation != null) {
+//                    float bearTo = currentLocation.bearingTo(kaaba);
+//                    if(bearTo < 0)
+//                        bearTo = bearTo + 360;
+//                }*/
+//                setupCompass();
+//            }
+//            //  Toast.makeText(getApplicationContext(), "lat_saya: "+lat_saya + "\nlon_saya: "+lon_saya, Toast.LENGTH_LONG).show();
+//        } else {
+//            // can't get location
+//            // GPS or Network is not enabled
+//            // Ask user to enable GPS/network in settings
+//            gps.showSettingsAlert();
+//
+//            // qiblatIndicator.isShown(false);
+//            qiblatIndicator.setVisibility(View.INVISIBLE);
+//            qiblatIndicator.setVisibility(View.GONE);
+//            tvAngle.setText("Harap aktifkan Lokasi");
+//            /*if (item != null) {
+//                item.setIcon(ContextCompat.getDrawable(getApplicationContext(), R.drawable.gps_off));
+//            }*/
+//            // Toast.makeText(getApplicationContext(), "Please enable Location first and Restart Application", Toast.LENGTH_LONG).show();
+//        }
+//    }
+
+    // Request permission function
+    private void cekPermission() {
+        // Show permission dialog using library androidPermission
+        permissionManager = PermissionManager.getInstance(this);
+        permissionManager.checkPermissions(Arrays.asList(Utility.PERMISSION),
+                new PermissionManager.PermissionRequestListener() {
+                    @Override
+                    public void onPermissionGranted() {
+                        // Write command here where permission is granted
+                        showLocation();
+                    }
+
+                    @Override
+                    public void onPermissionDenied(DeniedPermissions deniedPermissions) {
+                        // Write command here where permission is denied
+                        showDialogSetting();
+                    }
+                });
+    }
+
+    private void showLocation() {
+        // Start ProgressDialog
+//        showProgressDialog();
+
+        // Get location using library SmartLocation
+        SmartLocation.with(this).location().config(LocationParams.BEST_EFFORT).oneFix().start(new OnLocationUpdatedListener() {
+            @Override
+            public void onLocationUpdated(Location location) {
+                // Get location using reverse geocode
+                SmartLocation.with(ArahKiblatActivity.this).geocoding().reverse(location, new OnReverseGeocodingListener() {
+                    @Override
+                    public void onAddressResolved(Location location, List<Address> list) {
+//                        String text_kota = null;
+//                        if (list.size() > 0) {
+//                            String kab = list.get(0).getSubAdminArea();
+//                            String kecamatan = list.get(0).getLocality();
+//                            String negara = list.get(0).getCountryName();
+//
+//                            // Setting text kota with kecamatan, kab - negara
+//                            text_kota = kecamatan.concat(", ").concat(kab).concat(" - ").concat(negara);
+//                        } else {
+//                            text_kota = "Location Not Found!";
+//                        }
+//                        kota.setText(text_kota);
+                    }
+                });
+
+                // Save latitude and longitude into Utility as temporary
+                Utility.setLatitude(location.getLatitude());
+                Utility.setLongitude(location.getLongitude());
+
+                double result;
                 double kaabaLng = 39.826206; // ka'bah Position https://www.latlong.net/place/kaaba-mecca-saudi-arabia-12639.html
                 double kaabaLat = Math.toRadians(21.422487); // ka'bah Position https://www.latlong.net/place/kaaba-mecca-saudi-arabia-12639.html
-                double myLatRad = Math.toRadians(myLat);
-                double longDiff = Math.toRadians(kaabaLng - myLng);
+                double myLatRad = Math.toRadians(location.getLatitude());
+                double longDiff = Math.toRadians(kaabaLng - location.getLongitude());
                 double y = Math.sin(longDiff) * Math.cos(kaabaLat);
                 double x = Math.cos(myLatRad) * Math.sin(kaabaLat) - Math.sin(myLatRad) * Math.cos(kaabaLat) * Math.cos(longDiff);
                 result = (Math.toDegrees(Math.atan2(y, x)) + 360) % 360;
@@ -338,32 +472,54 @@ public class ArahKiblatActivity extends AppCompatActivity {
                 tvAngle.setText(strKaabaDirection);
                 qiblatIndicator.setVisibility(View.VISIBLE);
 
-                /*Location kaaba = new Location("Kaaba");
-                kaaba.setLatitude(39.826206);
-                kaaba.setLongitude(21.422487);
-                Location currentLocation = gps.getLocation();
-                if(currentLocation != null) {
-                    float bearTo = currentLocation.bearingTo(kaaba);
-                    if(bearTo < 0)
-                        bearTo = bearTo + 360;
-                }*/
+                // Show jadwal sholat using response API
+//                showJadwalSholat(
+//                        Utility.getYear(), Utility.getMonth(), Utility.getDay(),
+//                        location.getLatitude(),
+//                        location.getLongitude(), Utility.getGMT()
+//                );
                 setupCompass();
             }
-            //  Toast.makeText(getApplicationContext(), "lat_saya: "+lat_saya + "\nlon_saya: "+lon_saya, Toast.LENGTH_LONG).show();
-        } else {
-            // can't get location
-            // GPS or Network is not enabled
-            // Ask user to enable GPS/network in settings
-            gps.showSettingsAlert();
+        });
+    }
 
-            // qiblatIndicator.isShown(false);
-            qiblatIndicator.setVisibility(View.INVISIBLE);
-            qiblatIndicator.setVisibility(View.GONE);
-            tvAngle.setText("Harap aktifkan Lokasi");
-            /*if (item != null) {
-                item.setIcon(ContextCompat.getDrawable(getApplicationContext(), R.drawable.gps_off));
-            }*/
-            // Toast.makeText(getApplicationContext(), "Please enable Location first and Restart Application", Toast.LENGTH_LONG).show();
-        }
+    private void showDialogSetting() {
+        // Showing alert dialog where permission is denied
+        alert = new AlertDialog.Builder(this);
+        alert.setTitle("Diperlukan akses lokasi!");
+        alert.setMessage("Aplikasi ini membutuhkan akses lokasi, Apakah anda setuju?");
+        alert.setCancelable(false);
+        alert.setPositiveButton("Pengaturan", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // Showing setting page where setting button is pressed
+                openSetting();
+                finish();
+            }
+        });
+        alert.setNegativeButton("Kembali", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // Closing activity where back button is pressed
+                dialog.dismiss();
+                finish();
+            }
+        });
+        alert.show();
+    }
+
+    private void showProgressDialog() {
+        dialog = new ProgressDialog(this);
+        dialog.setMessage("Mengambil data!");
+        dialog.setCancelable(true);
+        dialog.show();
+    }
+
+    private void openSetting() {
+        // Open setting application page detail for allow permission
+        Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+        Uri uri = Uri.fromParts("package", getPackageName(), null);
+        intent.setData(uri);
+        startActivityForResult(intent, permissionManager.getResultCode());
     }
 }
