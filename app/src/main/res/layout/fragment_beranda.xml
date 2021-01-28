@@ -142,6 +142,10 @@
                     android:id="@+id/linearLayoutHaji"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:layout_marginLeft="@dimen/_4sdp"
+                    android:layout_marginEnd="@dimen/_4sdp"
+                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -161,7 +165,7 @@
                         android:text="UMROH &amp; HAJI"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/_6sdp" />
+                        android:textSize="@dimen/_9sdp" />
 
                 </LinearLayout>
 
@@ -169,6 +173,10 @@
                     android:id="@+id/linearLayoutWisataReligi"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:layout_marginLeft="@dimen/_4sdp"
+                    android:layout_marginEnd="@dimen/_4sdp"
+                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -188,7 +196,7 @@
                         android:text="WISATA HALAL &amp; TOUR RELIGI"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/_6sdp" />
+                        android:textSize="@dimen/_9sdp" />
 
                 </LinearLayout>
 
@@ -196,6 +204,10 @@
                     android:id="@+id/linearLayoutDoaDzikir"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:layout_marginLeft="@dimen/_4sdp"
+                    android:layout_marginEnd="@dimen/_4sdp"
+                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -215,7 +227,7 @@
                         android:text="DO’A &amp; DZIKIR"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/_6sdp" />
+                        android:textSize="@dimen/_9sdp" />
 
                 </LinearLayout>
 
@@ -223,6 +235,10 @@
                     android:id="@+id/linearLayoutSholat"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:layout_marginLeft="@dimen/_4sdp"
+                    android:layout_marginEnd="@dimen/_4sdp"
+                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -242,7 +258,7 @@
                         android:text="SHOLAT"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/_6sdp" />
+                        android:textSize="@dimen/_9sdp" />
 
                 </LinearLayout>
 
@@ -257,8 +273,13 @@
                 android:paddingRight="@dimen/_8sdp">
 
                 <LinearLayout
+                    android:id="@+id/linearLayoutAlQuran"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:layout_marginLeft="@dimen/_4sdp"
+                    android:layout_marginEnd="@dimen/_4sdp"
+                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -278,13 +299,18 @@
                         android:text="AL QUR’AN"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/_6sdp" />
+                        android:textSize="@dimen/_9sdp" />
 
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/linearLayoutKalenderHijriah"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:layout_marginLeft="@dimen/_4sdp"
+                    android:layout_marginEnd="@dimen/_4sdp"
+                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -304,13 +330,18 @@
                         android:text="KALENDER HIJRIAH"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/_6sdp" />
+                        android:textSize="@dimen/_9sdp" />
 
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/linearLayoutQurbanAqiqah"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:layout_marginLeft="@dimen/_4sdp"
+                    android:layout_marginEnd="@dimen/_4sdp"
+                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -330,13 +361,18 @@
                         android:text="QURBAN &amp; AQIQAH"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/_6sdp" />
+                        android:textSize="@dimen/_9sdp" />
 
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/linearLayoutKomunitas"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:layout_marginLeft="@dimen/_4sdp"
+                    android:layout_marginEnd="@dimen/_4sdp"
+                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -356,7 +392,7 @@
                         android:text="KOMUNITAS"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/_6sdp" />
+                        android:textSize="@dimen/_9sdp" />
 
                 </LinearLayout>
 
@@ -371,8 +407,13 @@
                 android:paddingRight="@dimen/_8sdp">
 
                 <LinearLayout
+                    android:id="@+id/linearLayoutTomboatiChannel"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:layout_marginLeft="@dimen/_4sdp"
+                    android:layout_marginEnd="@dimen/_4sdp"
+                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -392,14 +433,18 @@
                         android:text="TOMBO ATI TOUR CHANNEL"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/_6sdp" />
+                        android:textSize="@dimen/_9sdp" />
 
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/linearLayoutTomboatiChannel"
+                    android:id="@+id/linearLayoutLiveMekkah"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:layout_marginLeft="@dimen/_4sdp"
+                    android:layout_marginEnd="@dimen/_4sdp"
+                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -419,12 +464,11 @@
                         android:text="LIVE MEKKAH"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/_6sdp" />
+                        android:textSize="@dimen/_9sdp" />
 
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/linearLayoutLiveMekkah"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -467,7 +511,7 @@
                     android:fontFamily="@font/catamaran_regular"
                     android:text="Arab Saudi Tutup Penerbangan, Garuda Indonesia Tawarkan Reschedule Gratis ke Penumpang."
                     android:textColor="@android:color/black"
-                    android:textSize="@dimen/_10sdp" />
+                    android:textSize="@dimen/_11sdp" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -476,7 +520,7 @@
                     android:fontFamily="@font/catamaran_regular"
                     android:text="Liputan6.com, Jakarta - Arab Saudi menangguhkan semua penerbangan internasional menuju negara tersebut selama sepekan. Penangguhan tersebut mulai berlaku Senin 21 Desember 2020. Sehubungan dengan hal ini, maskapai Garuda Indonesia terus melakukan komunikasi intensif dengan otoritas terkait guna memastikan hal yang perlu diantisipasi, menyusul pembatasan operasional layanan penerbangan tersebut. more"
                     android:textColor="@android:color/black"
-                    android:textSize="@dimen/_8sdp" />
+                    android:textSize="@dimen/_9sdp" />
 
             </LinearLayout>
 
@@ -618,9 +662,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_3sdp"
                     android:fontFamily="@font/catamaran_regular"
+                    android:gravity="center"
                     android:text="&quot;Aku percaya, takdir Allah pastilah yang terbaik untukku dan untukmu juga.&quot;"
                     android:textColor="@android:color/black"
-                    android:textSize="@dimen/_10sdp" />
+                    android:textSize="@dimen/_11sdp" />
 
             </LinearLayout>
 

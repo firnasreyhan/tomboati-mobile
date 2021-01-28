@@ -15,6 +15,7 @@ import android.provider.Settings;
 import android.util.Log;
 
 import com.android.tomboati.R;
+import com.android.tomboati.view.activity.ArahKiblatActivity;
 
 public class GPSTracker extends Service implements LocationListener {
     private final Context mContext;
@@ -30,9 +31,10 @@ public class GPSTracker extends Service implements LocationListener {
     // The minimum distance to change Updates in meters
     private static final long MIN_DISTANCE_CHANGE_FOR_UPDATES = 100; // 10 meters
     // The minimum time between updates in milliseconds
-    private static final long MIN_TIME_BW_UPDATES = 1000 * 60; // 1 minute
+    private static final long MIN_TIME_BW_UPDATES = 1000 * 60 * 0; // 1 minute
     // Declaring a Location Manager
     protected LocationManager locationManager;
+    public static boolean isFromSetting = false;
 
     public GPSTracker(Context context) {
         this.mContext = context;
@@ -70,22 +72,22 @@ public class GPSTracker extends Service implements LocationListener {
                     }
                 }
                 // if GPS Enabled get lat/long using GPS Services
-                if (isGPSEnabled) {
-                    if (location == null) {
-                        locationManager.requestLocationUpdates(
-                                LocationManager.GPS_PROVIDER,
-                                MIN_TIME_BW_UPDATES,
-                                MIN_DISTANCE_CHANGE_FOR_UPDATES, this);
-                        Log.d("GPS Enabled", "GPS Enabled");
-                        if (locationManager != null) {
-                            location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-                            if (location != null) {
-                                latitude = location.getLatitude();
-                                longitude = location.getLongitude();
-                            }
-                        }
-                    }
-                }
+//                if (isGPSEnabled) {
+//                    if (location == null) {
+//                        locationManager.requestLocationUpdates(
+//                                LocationManager.GPS_PROVIDER,
+//                                MIN_TIME_BW_UPDATES,
+//                                MIN_DISTANCE_CHANGE_FOR_UPDATES, this);
+//                        Log.d("GPS Enabled", "GPS Enabled");
+//                        if (locationManager != null) {
+//                            location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+//                            if (location != null) {
+//                                latitude = location.getLatitude();
+//                                longitude = location.getLongitude();
+//                            }
+//                        }
+//                    }
+//                }
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -149,12 +151,14 @@ public class GPSTracker extends Service implements LocationListener {
             public void onClick(DialogInterface dialog, int which) {
                 Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
                 mContext.startActivity(intent);
+                isFromSetting = true;
             }
         });
         // on pressing cancel button
         alertDialog.setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
                 dialog.cancel();
+                ((ArahKiblatActivity) mContext).finish();
             }
         });
         // Showing Alert Message

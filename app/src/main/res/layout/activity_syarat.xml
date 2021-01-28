@@ -53,7 +53,7 @@
                         android:text="syarat pendaftaran"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/_8sdp" />
+                        android:textSize="@dimen/_10sdp" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -68,7 +68,7 @@
                             android:fontFamily="@font/catamaran_regular"
                             android:text="1. "
                             android:textColor="@android:color/black"
-                            android:textSize="@dimen/_7sdp" />
+                            android:textSize="@dimen/_9sdp" />
 
                         <TextView
                             android:layout_width="match_parent"
@@ -77,7 +77,7 @@
                             android:fontFamily="@font/catamaran_regular"
                             android:text="Mengisi Form Pendaftaran."
                             android:textColor="@android:color/black"
-                            android:textSize="@dimen/_7sdp" />
+                            android:textSize="@dimen/_9sdp" />
 
                     </LinearLayout>
 
@@ -94,7 +94,7 @@
                             android:fontFamily="@font/catamaran_regular"
                             android:text="2. "
                             android:textColor="@android:color/black"
-                            android:textSize="@dimen/_7sdp" />
+                            android:textSize="@dimen/_9sdp" />
 
                         <TextView
                             android:layout_width="match_parent"
@@ -103,7 +103,7 @@
                             android:fontFamily="@font/catamaran_regular"
                             android:text="Upload foto/scan KTP dan Kartu Keluarga."
                             android:textColor="@android:color/black"
-                            android:textSize="@dimen/_7sdp" />
+                            android:textSize="@dimen/_9sdp" />
 
                     </LinearLayout>
 
@@ -120,7 +120,7 @@
                             android:fontFamily="@font/catamaran_regular"
                             android:text="3. "
                             android:textColor="@android:color/black"
-                            android:textSize="@dimen/_7sdp" />
+                            android:textSize="@dimen/_9sdp" />
 
                         <TextView
                             android:layout_width="match_parent"
@@ -129,7 +129,7 @@
                             android:fontFamily="@font/catamaran_regular"
                             android:text="Upload foto/scan Buku Nikah (suami + istri) &amp; Akte Lahir (tidak memiliki buku nikah)."
                             android:textColor="@android:color/black"
-                            android:textSize="@dimen/_7sdp" />
+                            android:textSize="@dimen/_9sdp" />
 
                     </LinearLayout>
 
@@ -146,7 +146,7 @@
                             android:fontFamily="@font/catamaran_regular"
                             android:text="4. "
                             android:textColor="@android:color/black"
-                            android:textSize="@dimen/_7sdp" />
+                            android:textSize="@dimen/_9sdp" />
 
                         <TextView
                             android:layout_width="match_parent"
@@ -155,7 +155,7 @@
                             android:fontFamily="@font/catamaran_regular"
                             android:text="Pendaftaran paling lambat 1 bulan sebelum keberangkatan yang telah ditentukan."
                             android:textColor="@android:color/black"
-                            android:textSize="@dimen/_7sdp" />
+                            android:textSize="@dimen/_9sdp" />
 
                     </LinearLayout>
 
@@ -167,7 +167,7 @@
                         android:text="syarat pembayaran"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/_8sdp" />
+                        android:textSize="@dimen/_10sdp" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -182,7 +182,7 @@
                             android:fontFamily="@font/catamaran_regular"
                             android:text="1. "
                             android:textColor="@android:color/black"
-                            android:textSize="@dimen/_7sdp" />
+                            android:textSize="@dimen/_9sdp" />
 
                         <TextView
                             android:layout_width="match_parent"
@@ -191,7 +191,7 @@
                             android:fontFamily="@font/catamaran_regular"
                             android:text="Biaya paket dalam mata uang U$ Dollar, bisa dibayar rupiah dengan kurs yang berlaku pada saat pembayaran dilakukan."
                             android:textColor="@android:color/black"
-                            android:textSize="@dimen/_7sdp" />
+                            android:textSize="@dimen/_9sdp" />
 
                     </LinearLayout>
 
@@ -208,7 +208,7 @@
                             android:fontFamily="@font/catamaran_regular"
                             android:text="2. "
                             android:textColor="@android:color/black"
-                            android:textSize="@dimen/_7sdp" />
+                            android:textSize="@dimen/_9sdp" />
 
                         <TextView
                             android:layout_width="match_parent"
@@ -217,7 +217,7 @@
                             android:fontFamily="@font/catamaran_regular"
                             android:text="Pembayaran dilakukan langsung ke Kantor Pusat TOMBOATI TOUR Di Ruko Wilis Center Jl. Simpang Wilis 1-E Malang."
                             android:textColor="@android:color/black"
-                            android:textSize="@dimen/_7sdp" />
+                            android:textSize="@dimen/_9sdp" />
 
                     </LinearLayout>
 
@@ -234,7 +234,7 @@
                             android:fontFamily="@font/catamaran_regular"
                             android:text="3. "
                             android:textColor="@android:color/black"
-                            android:textSize="@dimen/_7sdp" />
+                            android:textSize="@dimen/_9sdp" />
 
                         <TextView
                             android:layout_width="match_parent"
@@ -243,7 +243,7 @@
                             android:fontFamily="@font/catamaran_regular"
                             android:text="Pendaftaran melalui Kantor Cabang atau Agen mitra kami, pembayaran dapat dilakukan melalui bank (transfer) ke Rekening, dimohon jamaah menunjukkan bukti transfer asli dari bank yang bersangkutan untuk diberikan tanda bukti (kwitansi) pembayaran."
                             android:textColor="@android:color/black"
-                            android:textSize="@dimen/_7sdp" />
+                            android:textSize="@dimen/_9sdp" />
 
                     </LinearLayout>
 
@@ -273,7 +273,7 @@
                                 android:text="Pembayaran dianggap sah apabila transfer melalui rekening perusahaan a/n PT. TOMBO AYI MASYHUR"
                                 android:textAllCaps="false"
                                 android:textColor="@android:color/white"
-                                android:textSize="@dimen/_8sdp" />
+                                android:textSize="@dimen/_10sdp" />
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -282,7 +282,7 @@
                                 android:text="- MANDIRI : 144-00-159-77-298\n- BRI : 0429-01-000592-560\n- BCA : 440-031-5758"
                                 android:textAllCaps="true"
                                 android:textColor="@android:color/white"
-                                android:textSize="@dimen/_8sdp" />
+                                android:textSize="@dimen/_10sdp" />
 
                         </LinearLayout>
 
@@ -300,7 +300,7 @@
                             android:fontFamily="@font/catamaran_regular"
                             android:text="4. "
                             android:textColor="@android:color/black"
-                            android:textSize="@dimen/_7sdp" />
+                            android:textSize="@dimen/_9sdp" />
 
                         <TextView
                             android:layout_width="match_parent"
@@ -309,7 +309,7 @@
                             android:fontFamily="@font/catamaran_regular"
                             android:text="Pembayaran diluar ketentuan diatas, bukan tanggung jawab kami."
                             android:textColor="@android:color/black"
-                            android:textSize="@dimen/_7sdp" />
+                            android:textSize="@dimen/_9sdp" />
 
                     </LinearLayout>
 
@@ -326,7 +326,7 @@
                             android:fontFamily="@font/catamaran_regular"
                             android:text="5. "
                             android:textColor="@android:color/black"
-                            android:textSize="@dimen/_7sdp" />
+                            android:textSize="@dimen/_9sdp" />
 
                         <TextView
                             android:layout_width="match_parent"
@@ -335,7 +335,7 @@
                             android:fontFamily="@font/catamaran_regular"
                             android:text="Harga dan jadwal dapat berubah disebabkan oleh adanya perubahan tarif dan jadwal penerbangan, regulasi baru Negara tujuan."
                             android:textColor="@android:color/black"
-                            android:textSize="@dimen/_7sdp" />
+                            android:textSize="@dimen/_9sdp" />
 
                     </LinearLayout>
 
@@ -347,7 +347,7 @@
                         android:text="syarat pembatalan"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/_8sdp" />
+                        android:textSize="@dimen/_10sdp" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -362,7 +362,7 @@
                             android:fontFamily="@font/catamaran_regular"
                             android:text="1. "
                             android:textColor="@android:color/black"
-                            android:textSize="@dimen/_7sdp" />
+                            android:textSize="@dimen/_9sdp" />
 
                         <TextView
                             android:layout_width="match_parent"
@@ -371,7 +371,7 @@
                             android:fontFamily="@font/catamaran_regular"
                             android:text="Sejak pendaftaran sampai lima minggu sebelum keberangkatan dikenakan biaya sebesar 25% dari harga program."
                             android:textColor="@android:color/black"
-                            android:textSize="@dimen/_7sdp" />
+                            android:textSize="@dimen/_9sdp" />
 
                     </LinearLayout>
 
@@ -388,7 +388,7 @@
                             android:fontFamily="@font/catamaran_regular"
                             android:text="2. "
                             android:textColor="@android:color/black"
-                            android:textSize="@dimen/_7sdp" />
+                            android:textSize="@dimen/_9sdp" />
 
                         <TextView
                             android:layout_width="match_parent"
@@ -397,7 +397,7 @@
                             android:fontFamily="@font/catamaran_regular"
                             android:text="Tiga minggu sebelum keberangkatan, dikenakan biaya sebesar 75% dari harga program."
                             android:textColor="@android:color/black"
-                            android:textSize="@dimen/_7sdp" />
+                            android:textSize="@dimen/_9sdp" />
 
                     </LinearLayout>
 
@@ -414,7 +414,7 @@
                             android:fontFamily="@font/catamaran_regular"
                             android:text="3. "
                             android:textColor="@android:color/black"
-                            android:textSize="@dimen/_7sdp" />
+                            android:textSize="@dimen/_9sdp" />
 
                         <TextView
                             android:layout_width="match_parent"
@@ -423,7 +423,7 @@
                             android:fontFamily="@font/catamaran_regular"
                             android:text="Dua minggu sebelum keberangkatan, dikenakan biaya sebesar 100% dari harga program."
                             android:textColor="@android:color/black"
-                            android:textSize="@dimen/_7sdp" />
+                            android:textSize="@dimen/_9sdp" />
 
                     </LinearLayout>
 
@@ -440,7 +440,7 @@
                             android:fontFamily="@font/catamaran_regular"
                             android:text="4. "
                             android:textColor="@android:color/black"
-                            android:textSize="@dimen/_7sdp" />
+                            android:textSize="@dimen/_9sdp" />
 
                         <TextView
                             android:layout_width="match_parent"
@@ -449,7 +449,7 @@
                             android:fontFamily="@font/catamaran_regular"
                             android:text="Batal karena sakit / meninggal pengembalian sesuai jumlah biaya yang masih bisa diuangkan dikurangi biaya administrasi."
                             android:textColor="@android:color/black"
-                            android:textSize="@dimen/_7sdp" />
+                            android:textSize="@dimen/_9sdp" />
 
                     </LinearLayout>
 
@@ -461,7 +461,7 @@
                         android:text="ketentuan"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/_8sdp" />
+                        android:textSize="@dimen/_10sdp" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -476,7 +476,7 @@
                             android:fontFamily="@font/catamaran_regular"
                             android:text="1. "
                             android:textColor="@android:color/black"
-                            android:textSize="@dimen/_7sdp" />
+                            android:textSize="@dimen/_9sdp" />
 
                         <TextView
                             android:layout_width="match_parent"
@@ -485,7 +485,7 @@
                             android:fontFamily="@font/catamaran_regular"
                             android:text="Rooming list bersifat kondisional, apabila tidak mendapat kamar yang diinginkan maka bersedia upgrade dengan harga yang berlaku."
                             android:textColor="@android:color/black"
-                            android:textSize="@dimen/_7sdp" />
+                            android:textSize="@dimen/_9sdp" />
 
                     </LinearLayout>
 
@@ -502,7 +502,7 @@
                             android:fontFamily="@font/catamaran_regular"
                             android:text="2. "
                             android:textColor="@android:color/black"
-                            android:textSize="@dimen/_7sdp" />
+                            android:textSize="@dimen/_9sdp" />
 
                         <TextView
                             android:layout_width="match_parent"
@@ -511,7 +511,7 @@
                             android:fontFamily="@font/catamaran_regular"
                             android:text="Apabila terjadi delay dalam penerbangan maka sepenuhnya adalah tanggung jawab Airlines yang bersangkutan karena sudah diluar kendali travel."
                             android:textColor="@android:color/black"
-                            android:textSize="@dimen/_7sdp" />
+                            android:textSize="@dimen/_9sdp" />
 
                     </LinearLayout>
 
@@ -528,7 +528,7 @@
                             android:fontFamily="@font/catamaran_regular"
                             android:text="3. "
                             android:textColor="@android:color/black"
-                            android:textSize="@dimen/_7sdp" />
+                            android:textSize="@dimen/_9sdp" />
 
                         <TextView
                             android:layout_width="match_parent"
@@ -537,7 +537,7 @@
                             android:fontFamily="@font/catamaran_regular"
                             android:text="Apabila ada peserta tour yang sakit dan memerlukan perawatan medis , maka pihak travel akan membantu pelaksanaannya akan tetapi untuk biaya merupakan tanggung jawab peserta yang bersangkutan."
                             android:textColor="@android:color/black"
-                            android:textSize="@dimen/_7sdp" />
+                            android:textSize="@dimen/_9sdp" />
 
                     </LinearLayout>
 
@@ -554,7 +554,7 @@
                             android:fontFamily="@font/catamaran_regular"
                             android:text="4. "
                             android:textColor="@android:color/black"
-                            android:textSize="@dimen/_7sdp" />
+                            android:textSize="@dimen/_9sdp" />
 
                         <TextView
                             android:layout_width="match_parent"
@@ -563,7 +563,7 @@
                             android:fontFamily="@font/catamaran_regular"
                             android:text="Apabila ada peserta yang meninggal dunia dalam perjalanan maka jenazah akan dimakamkan ditempat yang ditunjuk oleh yang berwenang kecuali ada permintaan dari keluarga dan biaya ditanggung sendiri."
                             android:textColor="@android:color/black"
-                            android:textSize="@dimen/_7sdp" />
+                            android:textSize="@dimen/_9sdp" />
 
                     </LinearLayout>
 
@@ -580,7 +580,7 @@
                             android:fontFamily="@font/catamaran_regular"
                             android:text="5. "
                             android:textColor="@android:color/black"
-                            android:textSize="@dimen/_7sdp" />
+                            android:textSize="@dimen/_9sdp" />
 
                         <TextView
                             android:layout_width="match_parent"
@@ -589,7 +589,7 @@
                             android:fontFamily="@font/catamaran_regular"
                             android:text="Apabila ada peserta yang mengalami kehilangan barang bawaan atau bagasi bukan tanggung jawab travel."
                             android:textColor="@android:color/black"
-                            android:textSize="@dimen/_7sdp" />
+                            android:textSize="@dimen/_9sdp" />
 
                     </LinearLayout>
 
@@ -606,7 +606,7 @@
                             android:fontFamily="@font/catamaran_regular"
                             android:text="6. "
                             android:textColor="@android:color/black"
-                            android:textSize="@dimen/_7sdp" />
+                            android:textSize="@dimen/_9sdp" />
 
                         <TextView
                             android:layout_width="match_parent"
@@ -615,7 +615,7 @@
                             android:fontFamily="@font/catamaran_regular"
                             android:text="Apabila selama perjalanan Tour terjadi hal diluar dugaan maka pihak Travel berhak mengambil keputusan sebagai solusi terbaik yang harus dilakukan."
                             android:textColor="@android:color/black"
-                            android:textSize="@dimen/_7sdp" />
+                            android:textSize="@dimen/_9sdp" />
 
                     </LinearLayout>
 
@@ -632,7 +632,7 @@
                             android:fontFamily="@font/catamaran_regular"
                             android:text="7. "
                             android:textColor="@android:color/black"
-                            android:textSize="@dimen/_7sdp" />
+                            android:textSize="@dimen/_9sdp" />
 
                         <TextView
                             android:layout_width="match_parent"
@@ -641,7 +641,7 @@
                             android:fontFamily="@font/catamaran_regular"
                             android:text="Segala hal yang belum tertuang dalam persyaratan Umroah ini akan dibicarakan dan diselesaikan sebelum keberangkatan."
                             android:textColor="@android:color/black"
-                            android:textSize="@dimen/_7sdp" />
+                            android:textSize="@dimen/_9sdp" />
 
                     </LinearLayout>
 

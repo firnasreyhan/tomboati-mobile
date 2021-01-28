@@ -48,6 +48,10 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:layout_marginLeft="@dimen/_4sdp"
+                    android:layout_marginEnd="@dimen/_4sdp"
+                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -67,13 +71,17 @@
                         android:text="turki"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/_6sdp" />
+                        android:textSize="@dimen/_9sdp" />
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:layout_marginLeft="@dimen/_4sdp"
+                    android:layout_marginEnd="@dimen/_4sdp"
+                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -93,13 +101,17 @@
                         android:text="dubai"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/_6sdp" />
+                        android:textSize="@dimen/_9sdp" />
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:layout_marginLeft="@dimen/_4sdp"
+                    android:layout_marginEnd="@dimen/_4sdp"
+                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -119,13 +131,17 @@
                         android:text="mesir"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/_6sdp" />
+                        android:textSize="@dimen/_9sdp" />
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:layout_marginLeft="@dimen/_4sdp"
+                    android:layout_marginEnd="@dimen/_4sdp"
+                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -145,7 +161,7 @@
                         android:text="jerusalem"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/_6sdp" />
+                        android:textSize="@dimen/_9sdp" />
 
                 </LinearLayout>
 
@@ -162,6 +178,10 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:layout_marginLeft="@dimen/_4sdp"
+                    android:layout_marginEnd="@dimen/_4sdp"
+                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -181,13 +201,17 @@
                         android:text="jepang"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/_6sdp" />
+                        android:textSize="@dimen/_9sdp" />
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:layout_marginLeft="@dimen/_4sdp"
+                    android:layout_marginEnd="@dimen/_4sdp"
+                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -207,13 +231,17 @@
                         android:text="korea selatan"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/_6sdp" />
+                        android:textSize="@dimen/_9sdp" />
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:layout_marginLeft="@dimen/_4sdp"
+                    android:layout_marginEnd="@dimen/_4sdp"
+                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -233,13 +261,17 @@
                         android:text="china"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/_6sdp" />
+                        android:textSize="@dimen/_9sdp" />
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:layout_marginLeft="@dimen/_4sdp"
+                    android:layout_marginEnd="@dimen/_4sdp"
+                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -259,7 +291,7 @@
                         android:text="india"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/_6sdp" />
+                        android:textSize="@dimen/_9sdp" />
 
                 </LinearLayout>
 
@@ -276,6 +308,10 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:layout_marginLeft="@dimen/_4sdp"
+                    android:layout_marginEnd="@dimen/_4sdp"
+                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -295,13 +331,17 @@
                         android:text="singapura"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/_6sdp" />
+                        android:textSize="@dimen/_9sdp" />
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:layout_marginLeft="@dimen/_4sdp"
+                    android:layout_marginEnd="@dimen/_4sdp"
+                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -321,13 +361,17 @@
                         android:text="malaysia"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/_6sdp" />
+                        android:textSize="@dimen/_9sdp" />
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:layout_marginLeft="@dimen/_4sdp"
+                    android:layout_marginEnd="@dimen/_4sdp"
+                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -347,13 +391,17 @@
                         android:text="thailand"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/_6sdp" />
+                        android:textSize="@dimen/_9sdp" />
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:layout_marginLeft="@dimen/_4sdp"
+                    android:layout_marginEnd="@dimen/_4sdp"
+                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -373,7 +421,7 @@
                         android:text="vietnam"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/_6sdp" />
+                        android:textSize="@dimen/_9sdp" />
 
                 </LinearLayout>
 
@@ -402,6 +450,10 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:layout_marginLeft="@dimen/_4sdp"
+                    android:layout_marginEnd="@dimen/_4sdp"
+                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -421,13 +473,17 @@
                         android:text="bali"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/_6sdp" />
+                        android:textSize="@dimen/_9sdp" />
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:layout_marginLeft="@dimen/_4sdp"
+                    android:layout_marginEnd="@dimen/_4sdp"
+                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -447,13 +503,17 @@
                         android:text="jogjakarta"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/_6sdp" />
+                        android:textSize="@dimen/_9sdp" />
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:layout_marginLeft="@dimen/_4sdp"
+                    android:layout_marginEnd="@dimen/_4sdp"
+                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -473,13 +533,17 @@
                         android:text="lombok"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/_6sdp" />
+                        android:textSize="@dimen/_9sdp" />
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:layout_marginLeft="@dimen/_4sdp"
+                    android:layout_marginEnd="@dimen/_4sdp"
+                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -499,7 +563,7 @@
                         android:text="malang"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/_6sdp" />
+                        android:textSize="@dimen/_9sdp" />
 
                 </LinearLayout>
 
@@ -528,6 +592,10 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:layout_marginLeft="@dimen/_4sdp"
+                    android:layout_marginEnd="@dimen/_4sdp"
+                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -547,13 +615,17 @@
                         android:text="wali 3"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/_6sdp" />
+                        android:textSize="@dimen/_9sdp" />
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:layout_marginLeft="@dimen/_4sdp"
+                    android:layout_marginEnd="@dimen/_4sdp"
+                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -573,13 +645,17 @@
                         android:text="wali 5"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/_6sdp" />
+                        android:textSize="@dimen/_9sdp" />
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:layout_marginLeft="@dimen/_4sdp"
+                    android:layout_marginEnd="@dimen/_4sdp"
+                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -599,13 +675,17 @@
                         android:text="wali 8"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/_6sdp" />
+                        android:textSize="@dimen/_9sdp" />
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:layout_marginLeft="@dimen/_4sdp"
+                    android:layout_marginEnd="@dimen/_4sdp"
+                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -625,7 +705,7 @@
                         android:text="wali 9"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/_6sdp" />
+                        android:textSize="@dimen/_9sdp" />
 
                 </LinearLayout>
 

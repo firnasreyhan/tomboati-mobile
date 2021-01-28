@@ -46,8 +46,13 @@
                 android:paddingRight="@dimen/_8sdp">
 
                 <LinearLayout
+                    android:id="@+id/linearLayoutIstighosah"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:layout_marginLeft="@dimen/_4sdp"
+                    android:layout_marginEnd="@dimen/_4sdp"
+                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -67,13 +72,18 @@
                         android:text="istighosah"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/_6sdp" />
+                        android:textSize="@dimen/_9sdp" />
 
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/linearLayoutYasinTahlil"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:layout_marginLeft="@dimen/_4sdp"
+                    android:layout_marginEnd="@dimen/_4sdp"
+                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -93,7 +103,7 @@
                         android:text="yasin &amp; tahlil"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/_6sdp" />
+                        android:textSize="@dimen/_9sdp" />
 
                 </LinearLayout>
 
@@ -101,6 +111,10 @@
                     android:id="@+id/linearLayoutAsmaulHusna"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:layout_marginLeft="@dimen/_4sdp"
+                    android:layout_marginEnd="@dimen/_4sdp"
+                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -120,13 +134,18 @@
                         android:text="asmaul husna"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/_6sdp" />
+                        android:textSize="@dimen/_9sdp" />
 
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/linearLayoutUmroh"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:layout_marginLeft="@dimen/_4sdp"
+                    android:layout_marginEnd="@dimen/_4sdp"
+                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -146,7 +165,7 @@
                         android:text="umroh"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/_6sdp" />
+                        android:textSize="@dimen/_9sdp" />
 
                 </LinearLayout>
 
@@ -161,8 +180,13 @@
                 android:paddingRight="@dimen/_8sdp">
 
                 <LinearLayout
+                    android:id="@+id/linearLayoutHaji"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:layout_marginLeft="@dimen/_4sdp"
+                    android:layout_marginEnd="@dimen/_4sdp"
+                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -182,13 +206,18 @@
                         android:text="haji"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/_6sdp" />
+                        android:textSize="@dimen/_9sdp" />
 
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/linearLayoutZiarah"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:layout_marginLeft="@dimen/_4sdp"
+                    android:layout_marginEnd="@dimen/_4sdp"
+                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -208,13 +237,18 @@
                         android:text="ziarah"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/_6sdp" />
+                        android:textSize="@dimen/_9sdp" />
 
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/linearLayoutDoaSehariHari"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:layout_marginLeft="@dimen/_4sdp"
+                    android:layout_marginEnd="@dimen/_4sdp"
+                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -234,13 +268,18 @@
                         android:text="doa sehari - hari"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/_6sdp" />
+                        android:textSize="@dimen/_9sdp" />
 
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/linearLayoutAnekaSholawat"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:layout_marginLeft="@dimen/_4sdp"
+                    android:layout_marginEnd="@dimen/_4sdp"
+                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -260,7 +299,7 @@
                         android:text="aneka sholawat"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/_6sdp" />
+                        android:textSize="@dimen/_9sdp" />
 
                 </LinearLayout>
 
@@ -275,8 +314,13 @@
                 android:paddingRight="@dimen/_8sdp">
 
                 <LinearLayout
+                    android:id="@+id/linearLayoutRamadhan"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:layout_marginLeft="@dimen/_4sdp"
+                    android:layout_marginEnd="@dimen/_4sdp"
+                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -296,13 +340,18 @@
                         android:text="ramadhan"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/_6sdp" />
+                        android:textSize="@dimen/_9sdp" />
 
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/linearLayoutAdabBerdoa"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:layout_marginLeft="@dimen/_4sdp"
+                    android:layout_marginEnd="@dimen/_4sdp"
+                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -322,13 +371,18 @@
                         android:text="adab berdoa"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/_6sdp" />
+                        android:textSize="@dimen/_9sdp" />
 
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/linearLayoutTembangSholawat"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:layout_marginLeft="@dimen/_4sdp"
+                    android:layout_marginEnd="@dimen/_4sdp"
+                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -348,13 +402,18 @@
                         android:text="tembang sholawat"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/_6sdp" />
+                        android:textSize="@dimen/_9sdp" />
 
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/linearLayoutWaktuMustajab"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:layout_marginLeft="@dimen/_4sdp"
+                    android:layout_marginEnd="@dimen/_4sdp"
+                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -374,7 +433,7 @@
                         android:text="waktu mustajab"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/_6sdp" />
+                        android:textSize="@dimen/_9sdp" />
 
                 </LinearLayout>
 
@@ -389,8 +448,13 @@
                 android:paddingRight="@dimen/_8sdp">
 
                 <LinearLayout
+                    android:id="@+id/linearLayoutTempatMustajab"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:layout_marginLeft="@dimen/_4sdp"
+                    android:layout_marginEnd="@dimen/_4sdp"
+                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -410,13 +474,18 @@
                         android:text="tempat mustajab"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/_6sdp" />
+                        android:textSize="@dimen/_9sdp" />
 
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/linearLayoutTasbih"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:layout_marginLeft="@dimen/_4sdp"
+                    android:layout_marginEnd="@dimen/_4sdp"
+                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -436,7 +505,7 @@
                         android:text="tasbih"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/_6sdp" />
+                        android:textSize="@dimen/_9sdp" />
 
                 </LinearLayout>
 

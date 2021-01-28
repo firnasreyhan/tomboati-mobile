@@ -74,7 +74,7 @@
                         android:text="nomor ktp"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/_8sdp" />
+                        android:textSize="@dimen/_9sdp" />
 
                     <com.google.android.material.textfield.TextInputLayout
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -85,6 +85,7 @@
                         app:hintEnabled="false">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/textInputEditTextNomorKTP"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/catamaran_regular"
@@ -104,7 +105,7 @@
                         android:text="nama lengkap"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/_8sdp" />
+                        android:textSize="@dimen/_9sdp" />
 
                     <com.google.android.material.textfield.TextInputLayout
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -115,6 +116,7 @@
                         app:hintEnabled="false">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/textInputEditTextNamaLengkap"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/catamaran_regular"
@@ -134,7 +136,7 @@
                         android:text="No. Handphone"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/_8sdp" />
+                        android:textSize="@dimen/_9sdp" />
 
                     <com.google.android.material.textfield.TextInputLayout
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -145,6 +147,7 @@
                         app:hintEnabled="false">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/textInputEditTextNomorHP"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/catamaran_regular"
@@ -164,7 +167,7 @@
                         android:text="Email"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/_8sdp" />
+                        android:textSize="@dimen/_9sdp" />
 
                     <com.google.android.material.textfield.TextInputLayout
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -175,6 +178,7 @@
                         app:hintEnabled="false">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/textInputEditTextEmail"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/catamaran_regular"
@@ -194,7 +198,7 @@
                         android:text="Password"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/_8sdp" />
+                        android:textSize="@dimen/_9sdp" />
 
                     <com.google.android.material.textfield.TextInputLayout
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -206,11 +210,12 @@
                         app:endIconMode="password_toggle">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/textInputEditTextPassword"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/catamaran_regular"
                             android:gravity="center_vertical"
-                            android:hint="pelanggan@gmail.com"
+                            android:hint="Password"
                             android:inputType="textPassword"
                             android:maxLines="1"
                             android:textColor="@android:color/black" />
@@ -225,7 +230,7 @@
                         android:text="Konfirmasi Password"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/_8sdp" />
+                        android:textSize="@dimen/_9sdp" />
 
                     <com.google.android.material.textfield.TextInputLayout
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -237,11 +242,12 @@
                         app:endIconMode="password_toggle">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/textInputEditTextKonfirmasiPassword"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/catamaran_regular"
                             android:gravity="center_vertical"
-                            android:hint="pelanggan@gmail.com"
+                            android:hint="Konfirmasi Password"
                             android:inputType="textPassword"
                             android:maxLines="1"
                             android:textColor="@android:color/black" />
@@ -260,7 +266,7 @@
                 android:text="foto ktp"
                 android:textAllCaps="true"
                 android:textColor="@android:color/black"
-                android:textSize="@dimen/_8sdp" />
+                android:textSize="@dimen/_9sdp" />
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardViewKTP"
@@ -303,7 +309,7 @@
                             android:text="ambil gambar"
                             android:textAllCaps="true"
                             android:textColor="@android:color/black"
-                            android:textSize="@dimen/_8sdp" />
+                            android:textSize="@dimen/_9sdp" />
 
                     </LinearLayout>
 
@@ -312,7 +318,7 @@
             </androidx.cardview.widget.CardView>
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/materialButtonRegister"
+                android:id="@+id/materialButtonSignUp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_21sdp"
@@ -337,7 +343,7 @@
                     android:fontFamily="@font/catamaran_bold"
                     android:text="Sudah punya akun? "
                     android:textColor="#333333"
-                    android:textSize="10sp" />
+                    android:textSize="@dimen/_9sdp" />
 
                 <TextView
                     android:id="@+id/textViewSignIn"
@@ -347,7 +353,7 @@
                     android:fontFamily="@font/catamaran_bold"
                     android:text="Masuk"
                     android:textColor="@color/dark_green"
-                    android:textSize="10sp" />
+                    android:textSize="@dimen/_9sdp" />
 
             </LinearLayout>
 

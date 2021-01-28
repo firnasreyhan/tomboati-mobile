@@ -49,6 +49,10 @@
                     android:id="@+id/linearLayoutSholatWajib"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:layout_marginLeft="@dimen/_4sdp"
+                    android:layout_marginEnd="@dimen/_4sdp"
+                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -68,13 +72,18 @@
                         android:text="sholat wajib"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/_6sdp" />
+                        android:textSize="@dimen/_9sdp" />
 
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/linearLayoutSholatSunnah"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:layout_marginLeft="@dimen/_4sdp"
+                    android:layout_marginEnd="@dimen/_4sdp"
+                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -94,13 +103,18 @@
                         android:text="sholat sunnah"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/_6sdp" />
+                        android:textSize="@dimen/_9sdp" />
 
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/linearLayoutSyaratSholat"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:layout_marginLeft="@dimen/_4sdp"
+                    android:layout_marginEnd="@dimen/_4sdp"
+                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -120,13 +134,18 @@
                         android:text="syarat sholat"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/_6sdp" />
+                        android:textSize="@dimen/_9sdp" />
 
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/linearLayoutAdabSholat"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:layout_marginLeft="@dimen/_4sdp"
+                    android:layout_marginEnd="@dimen/_4sdp"
+                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -146,7 +165,7 @@
                         android:text="adab sholat"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/_6sdp" />
+                        android:textSize="@dimen/_9sdp" />
 
                 </LinearLayout>
 
@@ -161,8 +180,13 @@
                 android:paddingRight="@dimen/_8sdp">
 
                 <LinearLayout
+                    android:id="@+id/linearLayoutSholatDiperjalanan"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:layout_marginLeft="@dimen/_4sdp"
+                    android:layout_marginEnd="@dimen/_4sdp"
+                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -182,13 +206,18 @@
                         android:text="sholat diperjalanan"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/_6sdp" />
+                        android:textSize="@dimen/_9sdp" />
 
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/linearLayoutSholatJenasah"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:layout_marginLeft="@dimen/_4sdp"
+                    android:layout_marginEnd="@dimen/_4sdp"
+                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -208,13 +237,18 @@
                         android:text="sholat jenasah"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/_6sdp" />
+                        android:textSize="@dimen/_9sdp" />
 
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/linearLayoutJadwalSholat"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:layout_marginLeft="@dimen/_4sdp"
+                    android:layout_marginEnd="@dimen/_4sdp"
+                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -234,13 +268,18 @@
                         android:text="jadwal sholat"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/_6sdp" />
+                        android:textSize="@dimen/_9sdp" />
 
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/linearLayoutDoaSesudahSholat"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:layout_marginLeft="@dimen/_4sdp"
+                    android:layout_marginEnd="@dimen/_4sdp"
+                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -260,7 +299,7 @@
                         android:text="do'a sesudah sholat"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/_6sdp" />
+                        android:textSize="@dimen/_9sdp" />
 
                 </LinearLayout>
 
@@ -278,6 +317,10 @@
                     android:id="@+id/linearLayoutWudhu"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:layout_marginLeft="@dimen/_4sdp"
+                    android:layout_marginEnd="@dimen/_4sdp"
+                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -297,13 +340,18 @@
                         android:text="wudhu"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/_6sdp" />
+                        android:textSize="@dimen/_9sdp" />
 
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/linearLayoutTayamum"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:layout_marginLeft="@dimen/_4sdp"
+                    android:layout_marginEnd="@dimen/_4sdp"
+                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -323,7 +371,7 @@
                         android:text="tayamum"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/_6sdp" />
+                        android:textSize="@dimen/_9sdp" />
 
                 </LinearLayout>
 
@@ -331,6 +379,10 @@
                     android:id="@+id/linearLayoutArahKiblat"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:layout_marginLeft="@dimen/_4sdp"
+                    android:layout_marginEnd="@dimen/_4sdp"
+                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -350,13 +402,18 @@
                         android:text="arah kiblat"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/_6sdp" />
+                        android:textSize="@dimen/_9sdp" />
 
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/linearLayoutMasjidTerdekat"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:layout_marginLeft="@dimen/_4sdp"
+                    android:layout_marginEnd="@dimen/_4sdp"
+                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -376,7 +433,7 @@
                         android:text="masjid terdekat"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/_6sdp" />
+                        android:textSize="@dimen/_9sdp" />
 
                 </LinearLayout>
 

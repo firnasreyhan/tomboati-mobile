@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.android.tomboati.R;
 import com.android.tomboati.adapter.SliderAdapter;
@@ -28,7 +29,7 @@ import java.util.ArrayList;
 public class BerandaFragment extends Fragment {
     private SliderView sliderView;
     private SliderAdapter sliderAdapter;
-    private LinearLayout linearLayoutHaji, linearLayoutSholat, linearLayoutWisataReligi, linearLayoutDoaDzikir, linearLayoutTomboatiChannel, linearLayoutLiveMekkah;
+    private LinearLayout linearLayoutHaji, linearLayoutWisataReligi, linearLayoutDoaDzikir, linearLayoutSholat, linearLayoutAlQuran, linearLayoutKalenderHijriah, linearLayoutQurbanAqiqah, linearLayoutKomunitas, linearLayoutTomboatiChannel, linearLayoutLiveMekkah;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -42,6 +43,10 @@ public class BerandaFragment extends Fragment {
         linearLayoutDoaDzikir = view.findViewById(R.id.linearLayoutDoaDzikir);
         linearLayoutTomboatiChannel = view.findViewById(R.id.linearLayoutTomboatiChannel);
         linearLayoutLiveMekkah = view.findViewById(R.id.linearLayoutLiveMekkah);
+        linearLayoutAlQuran = view.findViewById(R.id.linearLayoutAlQuran);
+        linearLayoutKalenderHijriah = view.findViewById(R.id.linearLayoutKalenderHijriah);
+        linearLayoutQurbanAqiqah = view.findViewById(R.id.linearLayoutQurbanAqiqah);
+        linearLayoutKomunitas = view.findViewById(R.id.linearLayoutKomunitas);
 
         sliderView.setIndicatorAnimation(IndicatorAnimationType.WORM); //set indicator animation by using IndicatorAnimationType. :WORM or THIN_WORM or COLOR or DROP or FILL or NONE or SCALE or SCALE_DOWN or SLIDE and SWAP!!
         sliderView.setSliderTransformAnimation(SliderAnimations.SIMPLETRANSFORMATION);
@@ -99,6 +104,34 @@ public class BerandaFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/watch?v=k2gOsvK8XNM")));
+            }
+        });
+
+        linearLayoutAlQuran.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(v.getContext(), "Coming Soon...", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        linearLayoutKalenderHijriah.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(v.getContext(), "Coming Soon...", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        linearLayoutQurbanAqiqah.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(v.getContext(), "Coming Soon...", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        linearLayoutKomunitas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(v.getContext(), "Coming Soon...", Toast.LENGTH_SHORT).show();
             }
         });
 

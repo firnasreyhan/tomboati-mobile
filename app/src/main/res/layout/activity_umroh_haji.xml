@@ -48,6 +48,10 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:layout_marginLeft="@dimen/_4sdp"
+                    android:layout_marginEnd="@dimen/_4sdp"
+                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -67,13 +71,17 @@
                         android:text="unroh promo"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/_6sdp" />
+                        android:textSize="@dimen/_9sdp" />
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:layout_marginLeft="@dimen/_4sdp"
+                    android:layout_marginEnd="@dimen/_4sdp"
+                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -93,13 +101,17 @@
                         android:text="umroh hemat"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/_6sdp" />
+                        android:textSize="@dimen/_9sdp" />
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:layout_marginLeft="@dimen/_4sdp"
+                    android:layout_marginEnd="@dimen/_4sdp"
+                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -119,13 +131,17 @@
                         android:text="umroh bisnis"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/_6sdp" />
+                        android:textSize="@dimen/_9sdp" />
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:layout_marginLeft="@dimen/_4sdp"
+                    android:layout_marginEnd="@dimen/_4sdp"
+                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -145,7 +161,7 @@
                         android:text="umroh vip"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/_6sdp" />
+                        android:textSize="@dimen/_9sdp" />
 
                 </LinearLayout>
 
@@ -162,6 +178,10 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:layout_marginLeft="@dimen/_4sdp"
+                    android:layout_marginEnd="@dimen/_4sdp"
+                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -181,13 +201,17 @@
                         android:text="umroh plus"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/_6sdp" />
+                        android:textSize="@dimen/_9sdp" />
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:layout_marginLeft="@dimen/_4sdp"
+                    android:layout_marginEnd="@dimen/_4sdp"
+                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -207,13 +231,17 @@
                         android:text="tabungan umroh"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/_6sdp" />
+                        android:textSize="@dimen/_9sdp" />
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:layout_marginLeft="@dimen/_4sdp"
+                    android:layout_marginEnd="@dimen/_4sdp"
+                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -233,13 +261,17 @@
                         android:text="arisan umroh"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/_6sdp" />
+                        android:textSize="@dimen/_9sdp" />
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:layout_marginLeft="@dimen/_4sdp"
+                    android:layout_marginEnd="@dimen/_4sdp"
+                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -259,7 +291,7 @@
                         android:text="umroh dulu bayar nanti"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/_6sdp" />
+                        android:textSize="@dimen/_9sdp" />
 
                 </LinearLayout>
 
@@ -288,6 +320,10 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:layout_marginLeft="@dimen/_4sdp"
+                    android:layout_marginEnd="@dimen/_4sdp"
+                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -307,13 +343,17 @@
                         android:text="haji reguler"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/_6sdp" />
+                        android:textSize="@dimen/_9sdp" />
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:layout_marginLeft="@dimen/_4sdp"
+                    android:layout_marginEnd="@dimen/_4sdp"
+                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -333,13 +373,17 @@
                         android:text="haji plus"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/_6sdp" />
+                        android:textSize="@dimen/_9sdp" />
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:layout_marginLeft="@dimen/_4sdp"
+                    android:layout_marginEnd="@dimen/_4sdp"
+                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -359,13 +403,17 @@
                         android:text="haji tanpa antri"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/_6sdp" />
+                        android:textSize="@dimen/_9sdp" />
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:layout_marginLeft="@dimen/_4sdp"
+                    android:layout_marginEnd="@dimen/_4sdp"
+                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -385,7 +433,7 @@
                         android:text="talangan haji"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/_6sdp" />
+                        android:textSize="@dimen/_9sdp" />
 
                 </LinearLayout>
 
@@ -402,6 +450,10 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:layout_marginLeft="@dimen/_4sdp"
+                    android:layout_marginEnd="@dimen/_4sdp"
+                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -421,7 +473,7 @@
                         android:text="badal haji"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
-                        android:textSize="@dimen/_6sdp" />
+                        android:textSize="@dimen/_9sdp" />
 
                 </LinearLayout>
 

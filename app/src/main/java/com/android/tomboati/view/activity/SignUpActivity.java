@@ -4,21 +4,33 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.tomboati.R;
+import com.android.tomboati.api.response.BaseResponse;
+import com.android.tomboati.viewmodel.SignUpViewModel;
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.imageview.ShapeableImageView;
+import com.google.android.material.textfield.TextInputEditText;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
@@ -31,14 +43,22 @@ import id.zelory.compressor.Compressor;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class SignUpActivity extends AppCompatActivity {
+    private ProgressDialog progressDialog;
+    private SignUpViewModel signUpViewModel;
     private Toolbar toolbar;
     private ShapeableImageView shapeableImageViewFoto;
     private FloatingActionButton floatingActionButtonFoto;
     private CardView cardViewKTP;
     private ImageView imageViewKTP;
     private LinearLayout linearLayoutEmptyKTP;
+    private TextView textViewSignIn;
+    private TextInputEditText textInputEditTextNomorKTP, textInputEditTextNamaLengkap, textInputEditTextNomorHP, textInputEditTextEmail, textInputEditTextPassword, textInputEditTextKonfirmasiPassword;
+    private MaterialButton materialButtonSignUp;
 
     private Uri uriFoto, uriKTP;
     private int uriNumber;
@@ -47,6 +67,7 @@ public class SignUpActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
+        signUpViewModel = ViewModelProviders.of(this).get(SignUpViewModel.class);
 
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -54,11 +75,20 @@ public class SignUpActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
+        progressDialog = new ProgressDialog(this);
         shapeableImageViewFoto = findViewById(R.id.shapeableImageViewFoto);
         floatingActionButtonFoto = findViewById(R.id.floatingActionButtonFoto);
         cardViewKTP = findViewById(R.id.cardViewKTP);
         imageViewKTP = findViewById(R.id.imageViewKTP);
         linearLayoutEmptyKTP = findViewById(R.id.linearLayoutEmptyKTP);
+        textViewSignIn = findViewById(R.id.textViewSignIn);
+        textInputEditTextNomorKTP = findViewById(R.id.textInputEditTextNomorKTP);
+        textInputEditTextNamaLengkap = findViewById(R.id.textInputEditTextNamaLengkap);
+        textInputEditTextNomorHP = findViewById(R.id.textInputEditTextNomorHP);
+        textInputEditTextEmail = findViewById(R.id.textInputEditTextEmail);
+        textInputEditTextPassword = findViewById(R.id.textInputEditTextPassword);
+        textInputEditTextKonfirmasiPassword = findViewById(R.id.textInputEditTextKonfirmasiPassword);
+        materialButtonSignUp = findViewById(R.id.materialButtonSignUp);
 
         floatingActionButtonFoto.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,6 +107,111 @@ public class SignUpActivity extends AppCompatActivity {
                         .setGuidelines(CropImageView.Guidelines.OFF)
                         .start(SignUpActivity.this);
                 uriNumber = 2;
+            }
+        });
+
+        textViewSignIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+        materialButtonSignUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                boolean cek1 = true;
+                boolean cek2 = true;
+                boolean cek3 = true;
+                boolean cek4 = true;
+                boolean cek5 = true;
+                boolean cek6 = true;
+                boolean cek7 = true;
+                boolean cek8 = true;
+                boolean cek9 = true;
+                boolean cek10 = true;
+
+                if (textInputEditTextNomorKTP.getText().toString().isEmpty()){
+                    textInputEditTextNomorKTP.setError("Mohon isi data berikut!");
+                    cek1 = false;
+                }
+                if (textInputEditTextNamaLengkap.getText().toString().isEmpty()){
+                    textInputEditTextNamaLengkap.setError("Mohon isi data berikut!");
+                    cek2 = false;
+                }
+                if (textInputEditTextNomorHP.getText().toString().isEmpty()){
+                    textInputEditTextNomorHP.setError("Mohon isi data berikut!");
+                    cek3 = false;
+                }
+                if (textInputEditTextEmail.getText().toString().isEmpty()){
+                    textInputEditTextEmail.setError("Mohon isi data berikut!");
+                    cek4 = false;
+                }
+                if (textInputEditTextPassword.getText().toString().isEmpty()){
+                    textInputEditTextPassword.setError("Mohon isi data berikut!");
+                    cek5 = false;
+                }
+                if (textInputEditTextKonfirmasiPassword.getText().toString().isEmpty()){
+                    textInputEditTextKonfirmasiPassword.setError("Mohon isi data berikut!");
+                    cek6 = false;
+                }
+                if (cek5 && cek6) {
+                    if (!textInputEditTextPassword.getText().toString().equals(textInputEditTextKonfirmasiPassword.getText().toString())) {
+                        textInputEditTextKonfirmasiPassword.setError("Kombinasi password tidak cocok!");
+                        cek7 = false;
+                    }
+                }
+
+                if (uriFoto == null) {
+                    Toast.makeText(SignUpActivity.this, "Silahkan upload gambar profil anda.", Toast.LENGTH_SHORT).show();
+                    cek9 = false;
+                }
+
+                if (uriKTP == null) {
+                    Toast.makeText(SignUpActivity.this, "Silahkan upload gambar ktp anda.", Toast.LENGTH_SHORT).show();
+                    cek10 = false;
+                }
+
+                if (cek1 && cek2 && cek3 && cek4 && cek5 && cek6 && cek7 && cek8 && cek9 && cek10) {
+                    progressDialog.setMessage("Mohon tunggu sebentar...");
+                    progressDialog.setCancelable(false);
+                    progressDialog.show();
+
+                    int loadingTime = 3000;
+                    new Handler().postDelayed(() -> {
+                        signUpViewModel.signUp(
+                                textInputEditTextNomorKTP.getText().toString(),
+                                textInputEditTextEmail.getText().toString(),
+                                textInputEditTextPassword.getText().toString(),
+                                textInputEditTextNamaLengkap.getText().toString(),
+                                textInputEditTextNomorHP.getText().toString(),
+                                uriKTP,
+                                uriFoto
+                        ).observe(SignUpActivity.this, new Observer<BaseResponse>() {
+                            @Override
+                            public void onChanged(BaseResponse baseResponse) {
+                                if (progressDialog.isShowing()) {
+                                    progressDialog.dismiss();
+                                }
+                                new AlertDialog.Builder(v.getContext())
+                                        .setTitle("Pesan")
+                                        .setMessage(baseResponse.getMessage())
+                                        .setCancelable(false)
+                                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                if (!baseResponse.isError()) {
+                                                    finish();
+                                                } else {
+                                                    dialog.dismiss();
+                                                }
+                                            }
+                                        })
+                                        .show();
+                            }
+                        });
+                    }, loadingTime);
+                }
             }
         });
     }
@@ -109,44 +244,5 @@ public class SignUpActivity extends AppCompatActivity {
     public boolean onSupportNavigateUp() {
         onBackPressed();
         return true;
-    }
-
-    private MultipartBody.Part compressFile(Uri uri, String path) {
-        File file = new File(uri.getPath());
-        try {
-            File fileCompress = new Compressor(this)
-                    .setCompressFormat(Bitmap.CompressFormat.JPEG)
-                    .compressToFile(file);
-            File file1 = createTempFile(Uri.fromFile(fileCompress.getAbsoluteFile()));
-            Log.e("path", file1.getAbsolutePath());
-            return MultipartBody.Part.createFormData(path, file1.getName(), RequestBody.create(MediaType.parse("image/*"), file1));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-
-    private File createTempFile(Uri uri) {
-        Bitmap bitmap = null;
-        try {
-            bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), uri);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        File file = new File(getExternalFilesDir(Environment.DIRECTORY_PICTURES)
-                , System.currentTimeMillis() +".JPEG");
-        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG,100, byteArrayOutputStream);
-        byte[] byteArray = byteArrayOutputStream.toByteArray();
-        //write the bytes in file
-        try {
-            FileOutputStream fileOutputStream = new FileOutputStream(file);
-            fileOutputStream.write(byteArray);
-            fileOutputStream.flush();
-            fileOutputStream.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return file;
     }
 }

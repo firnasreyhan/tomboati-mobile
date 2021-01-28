@@ -5,13 +5,20 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.lifecycle.Observer;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
@@ -22,20 +29,25 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.tomboati.R;
+import com.android.tomboati.api.response.BaseResponse;
 import com.android.tomboati.utils.Compass;
 import com.android.tomboati.utils.GPSTracker;
+import com.google.android.material.button.MaterialButton;
 
 import java.util.Locale;
 
 public class ArahKiblatActivity extends AppCompatActivity {
     private static final String TAG = ArahKiblatActivity.class.getSimpleName();
     private Compass compass;
+    private ProgressDialog progressDialog;
+    private MaterialButton materialButtonDapatkanLokasi;
     private ImageView qiblatIndicator, imageDial;
-    private TextView tvAngle, tvYourLocation;
+    private TextView tvAngle;
     private float currentAzimuth;
     SharedPreferences prefs;
     GPSTracker gps;
     private final int RC_Permission = 1221;
+    private boolean isSuccessGetLocation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,15 +65,33 @@ public class ArahKiblatActivity extends AppCompatActivity {
         gps = new GPSTracker(this);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         //////////////////////////////////////////
+        progressDialog = new ProgressDialog(this);
         qiblatIndicator = findViewById(R.id.qibla_indicator);
         imageDial = findViewById(R.id.dial);
         tvAngle = findViewById(R.id.angle);
-        tvYourLocation = findViewById(R.id.your_location);
+        materialButtonDapatkanLokasi = findViewById(R.id.materialButtonDapatkanLokasi);
 
         //////////////////////////////////////////
         qiblatIndicator.setVisibility(View.VISIBLE);
         qiblatIndicator.setVisibility(View.GONE);
 
+        fetch_GPS();
+        materialButtonDapatkanLokasi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                progressDialog.setMessage("Mohon tunggu sebentar...");
+                progressDialog.setCancelable(false);
+                progressDialog.show();
+
+                int loadingTime = 5000;
+                new Handler().postDelayed(() -> {
+                    if (progressDialog.isShowing()) {
+                        progressDialog.dismiss();
+                    }
+                    fetch_GPS();
+                }, loadingTime);
+            }
+        });
         setupCompass();
     }
 
@@ -86,6 +116,13 @@ public class ArahKiblatActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+
+        if (GPSTracker.isFromSetting == true){
+            fetch_GPS();
+            finish();
+            startActivity(getIntent());
+            GPSTracker.isFromSetting = false;
+        }
 
         if (compass != null) {
             compass.start(this);
@@ -122,11 +159,10 @@ public class ArahKiblatActivity extends AppCompatActivity {
                 // permission was granted, yay! Do the
                 SaveBoolean("permission_granted", true);
                 tvAngle.setText("Akses Lokasi Diberikan");
-                tvYourLocation.setText("Akses Lokasi Diberikan");
                 qiblatIndicator.setVisibility(View.INVISIBLE);
                 qiblatIndicator.setVisibility(View.GONE);
 
-                fetch_GPS();
+//                fetch_GPS();
             } else {
                 Toast.makeText(getApplicationContext(), "Aplikasi ini membutuhkan Akses Lokasi", Toast.LENGTH_LONG).show();
                 finish();
@@ -140,14 +176,13 @@ public class ArahKiblatActivity extends AppCompatActivity {
             getBearing();
         } else {
             tvAngle.setText("Akses lokasi belum tersedia");
-            tvYourLocation.setText("Akses lokasi belum tersedia");
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 ActivityCompat.requestPermissions(this,
                         new String[]{Manifest.permission.ACCESS_FINE_LOCATION,
                                 Manifest.permission.ACCESS_COARSE_LOCATION},
                         RC_Permission);
             } else {
-                fetch_GPS();
+//                fetch_GPS();
             }
         }
 
@@ -212,7 +247,6 @@ public class ArahKiblatActivity extends AppCompatActivity {
                 strYourLocation = "Lokasi Anda:  " + gps.getLocation().getLatitude() + ", " + gps.getLocation().getLongitude();
             else
                 strYourLocation = "Gagal mendapatkan lokasi anda";
-            tvYourLocation.setText(strYourLocation);
             String strKaabaDirection = String.format(Locale.ENGLISH, "%.0f", kaabaDegs)
                     + " ° " + getDirectionString(kaabaDegs);
             tvAngle.setText(strKaabaDirection);
@@ -222,7 +256,7 @@ public class ArahKiblatActivity extends AppCompatActivity {
             //}
             qiblatIndicator.setVisibility(View.VISIBLE);
         } else {
-            fetch_GPS();
+            //fetch_GPS();
         }
     }
 
@@ -276,8 +310,6 @@ public class ArahKiblatActivity extends AppCompatActivity {
             double myLat = gps.getLatitude();
             double myLng = gps.getLongitude();
             // \n is for new line
-            String strYourLocation = "Lokasi Anda:  " + myLat + ", " + myLng;
-            tvYourLocation.setText(strYourLocation);
             //Toast.makeText(getApplicationContext(), "Lokasi anda: - \nLat: " + latitude + "\nLong: " + longitude, Toast.LENGTH_LONG).show();
             Log.e("TAG", "GPS is on");
             if (myLat < 0.001 && myLng < 0.001) {
@@ -285,7 +317,6 @@ public class ArahKiblatActivity extends AppCompatActivity {
                 qiblatIndicator.setVisibility(View.INVISIBLE);
                 qiblatIndicator.setVisibility(View.GONE);
                 tvAngle.setText("Lokasi belum siap.");
-                tvYourLocation.setText("Lokasi belum siap");
                 /*if (item != null) {
                     item.setIcon(ContextCompat.getDrawable(getApplicationContext(), R.drawable.gps_off));
                 }*/
@@ -316,6 +347,7 @@ public class ArahKiblatActivity extends AppCompatActivity {
                     if(bearTo < 0)
                         bearTo = bearTo + 360;
                 }*/
+                setupCompass();
             }
             //  Toast.makeText(getApplicationContext(), "lat_saya: "+lat_saya + "\nlon_saya: "+lon_saya, Toast.LENGTH_LONG).show();
         } else {
@@ -328,7 +360,6 @@ public class ArahKiblatActivity extends AppCompatActivity {
             qiblatIndicator.setVisibility(View.INVISIBLE);
             qiblatIndicator.setVisibility(View.GONE);
             tvAngle.setText("Harap aktifkan Lokasi");
-            tvYourLocation.setText("Harap aktifkan Lokasi");
             /*if (item != null) {
                 item.setIcon(ContextCompat.getDrawable(getApplicationContext(), R.drawable.gps_off));
             }*/
