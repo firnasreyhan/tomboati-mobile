@@ -435,24 +435,6 @@ public class ArahKiblatActivity extends AppCompatActivity {
         SmartLocation.with(this).location().config(LocationParams.BEST_EFFORT).oneFix().start(new OnLocationUpdatedListener() {
             @Override
             public void onLocationUpdated(Location location) {
-                // Get location using reverse geocode
-                SmartLocation.with(ArahKiblatActivity.this).geocoding().reverse(location, new OnReverseGeocodingListener() {
-                    @Override
-                    public void onAddressResolved(Location location, List<Address> list) {
-//                        String text_kota = null;
-//                        if (list.size() > 0) {
-//                            String kab = list.get(0).getSubAdminArea();
-//                            String kecamatan = list.get(0).getLocality();
-//                            String negara = list.get(0).getCountryName();
-//
-//                            // Setting text kota with kecamatan, kab - negara
-//                            text_kota = kecamatan.concat(", ").concat(kab).concat(" - ").concat(negara);
-//                        } else {
-//                            text_kota = "Location Not Found!";
-//                        }
-//                        kota.setText(text_kota);
-                    }
-                });
 
                 // Save latitude and longitude into Utility as temporary
                 Utility.setLatitude(location.getLatitude());
@@ -472,12 +454,6 @@ public class ArahKiblatActivity extends AppCompatActivity {
                 tvAngle.setText(strKaabaDirection);
                 qiblatIndicator.setVisibility(View.VISIBLE);
 
-                // Show jadwal sholat using response API
-//                showJadwalSholat(
-//                        Utility.getYear(), Utility.getMonth(), Utility.getDay(),
-//                        location.getLatitude(),
-//                        location.getLongitude(), Utility.getGMT()
-//                );
                 setupCompass();
             }
         });
