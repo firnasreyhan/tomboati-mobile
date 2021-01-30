@@ -1,0 +1,6 @@
+registrasi langsun login (done)
+flappy pdf tidak perlu tombol, diganti textview
+swipe to refresh
+logo riwayat. logo akun diganti (done)
+flappy bisa dizoom
+cek login gagal (done)

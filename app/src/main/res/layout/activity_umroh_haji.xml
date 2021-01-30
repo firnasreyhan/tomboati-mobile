@@ -68,7 +68,7 @@
                         android:layout_marginTop="@dimen/_4sdp"
                         android:fontFamily="@font/cinzel_regular"
                         android:gravity="center"
-                        android:text="unroh promo"
+                        android:text="umroh promo"
                         android:textAllCaps="true"
                         android:textColor="@android:color/black"
                         android:textSize="@dimen/_9sdp" />

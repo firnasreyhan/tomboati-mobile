@@ -30,7 +30,7 @@ public interface ApiInterfaceTomboAti {
             @Part("email") RequestBody email,
             @Part("password") RequestBody password,
             @Part("namaLengkap") RequestBody namaLengkap,
-            @Part("noHP") RequestBody noHP,
+            @Part("nomorHP") RequestBody noHP,
             @Part MultipartBody.Part fileKTP,
             @Part MultipartBody.Part foto
     );

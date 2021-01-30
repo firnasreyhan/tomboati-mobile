@@ -6,7 +6,6 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -20,14 +19,14 @@ import com.android.tomboati.view.fragment.AkunFragment;
 import com.android.tomboati.view.fragment.BerandaFragment;
 import com.android.tomboati.view.fragment.InboxFragment;
 import com.android.tomboati.view.fragment.PesananFragment;
-import com.android.tomboati.view.fragment.SimpanFragment;
+import com.android.tomboati.view.fragment.RiwayatFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private BottomNavigationView bottomNavigationView;
     private FragmentManager fragmentManager;
-    private Fragment fragmentActive, fragmentBeranda, fragmentSimpan, fragmentPesanan, fragmentInbox, fragmentAkun;
+    private Fragment fragmentActive, fragmentBeranda, fragmentRiwayat, fragmentPesanan, fragmentInbox, fragmentAkun;
     private boolean doubleBackToExit;
 
     @Override
@@ -43,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
 
         fragmentManager = getSupportFragmentManager();
         fragmentBeranda = new BerandaFragment();
-        fragmentSimpan = new SimpanFragment();
+        fragmentRiwayat = new RiwayatFragment();
         fragmentPesanan = new PesananFragment();
         fragmentInbox = new InboxFragment();
         fragmentAkun = new AkunFragment();
@@ -53,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         fragmentManager.beginTransaction().add(R.id.frameLayoutFragment, fragmentAkun, "Akun").hide(fragmentAkun).commit();
         fragmentManager.beginTransaction().add(R.id.frameLayoutFragment, fragmentInbox, "Inbox").hide(fragmentInbox).commit();
         fragmentManager.beginTransaction().add(R.id.frameLayoutFragment, fragmentPesanan, "Pesanan").hide(fragmentPesanan).commit();
-        fragmentManager.beginTransaction().add(R.id.frameLayoutFragment, fragmentSimpan, "Simpan").hide(fragmentSimpan).commit();
+        fragmentManager.beginTransaction().add(R.id.frameLayoutFragment, fragmentRiwayat, "Riwayat").hide(fragmentRiwayat).commit();
         fragmentManager.beginTransaction().add(R.id.frameLayoutFragment, fragmentBeranda, "Beranda").commit();
     }
 
@@ -69,8 +68,8 @@ public class MainActivity extends AppCompatActivity {
                     doubleBackToExit = true;
                     return true;
                 case R.id.menu_simpan:
-                    fragmentManager.beginTransaction().hide(fragmentActive).show(fragmentSimpan).commit();
-                    fragmentActive = fragmentSimpan;
+                    fragmentManager.beginTransaction().hide(fragmentActive).show(fragmentRiwayat).commit();
+                    fragmentActive = fragmentRiwayat;
                     doubleBackToExit = false;
                     return true;
                 case R.id.menu_pesanan:
@@ -88,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
                     fragmentManager.beginTransaction().hide(fragmentActive).show(fragmentAkun).commit();
                     fragmentActive = fragmentAkun;
                     doubleBackToExit = false;
-                    return true;
+                    break;
             }
             return false;
         }

@@ -7,8 +7,8 @@
 
     <item
         android:id="@+id/menu_simpan"
-        android:title="Simpan"
-        android:icon="@drawable/ic_direct_download"/>
+        android:title="Riwayat"
+        android:icon="@drawable/ic_history"/>
 
     <item
         android:id="@+id/menu_pesanan"

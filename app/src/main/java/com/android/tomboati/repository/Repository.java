@@ -42,11 +42,7 @@ public class Repository {
             @Override
             public void onResponse(Call<SignInResponse> call, Response<SignInResponse> response) {
                 if (response.code() == 200) {
-                    if (!response.body().isError()) {
-                        if (!response.body().getData().isEmpty()) {
-                            listMutableLiveData.setValue(response.body());
-                        }
-                    }
+                    listMutableLiveData.setValue(response.body());
                 }
             }
 

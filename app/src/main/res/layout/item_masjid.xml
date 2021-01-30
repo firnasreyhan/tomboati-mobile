@@ -28,7 +28,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/catamaran_bold"
-                android:text="Masjid Jami AR - Raudhlah"
+                android:text="-"
                 android:textColor="@android:color/black"
                 android:textSize="@dimen/_16sdp" />
 
@@ -38,7 +38,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_3sdp"
                 android:fontFamily="@font/catamaran_regular"
-                android:text="Sukabumi, Mayangan, Probolinggo"
+                android:text="-"
                 android:textColor="@android:color/black"
                 android:textSize="@dimen/_10sdp" />
 
@@ -55,7 +55,7 @@
                     android:layout_gravity="start"
                     android:layout_weight="1"
                     android:fontFamily="@font/catamaran_bold"
-                    android:text="25 KM"
+                    android:text="-"
                     android:textColor="@android:color/black"
                     android:textSize="@dimen/_13sdp" />
 

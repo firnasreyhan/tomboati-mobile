@@ -13,6 +13,7 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
 import com.android.tomboati.api.response.BaseResponse;
+import com.android.tomboati.api.response.SignInResponse;
 import com.android.tomboati.preference.AppPreference;
 import com.android.tomboati.repository.Repository;
 import com.android.tomboati.utils.Constant;
@@ -52,6 +53,10 @@ public class SignUpViewModel extends AndroidViewModel {
                 compressFile(fileKTP, "fileKTP"),
                 compressFile(foto, "foto")
         );
+    }
+
+    public MutableLiveData<SignInResponse> signIn(String email, String password) {
+        return repository.signIn(email, password);
     }
 
     private File createTempFile(Uri uri) {

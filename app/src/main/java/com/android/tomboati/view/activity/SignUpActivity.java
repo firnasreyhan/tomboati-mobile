@@ -26,6 +26,8 @@ import android.widget.Toast;
 
 import com.android.tomboati.R;
 import com.android.tomboati.api.response.BaseResponse;
+import com.android.tomboati.api.response.SignInResponse;
+import com.android.tomboati.preference.AppPreference;
 import com.android.tomboati.viewmodel.SignUpViewModel;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -201,7 +203,33 @@ public class SignUpActivity extends AppCompatActivity {
                                             @Override
                                             public void onClick(DialogInterface dialog, int which) {
                                                 if (!baseResponse.isError()) {
-                                                    finish();
+                                                    progressDialog.setMessage("Mohon tunggu sebentar...");
+                                                    progressDialog.setCancelable(false);
+                                                    progressDialog.show();
+
+                                                    int loadingTime = 3000;
+                                                    new Handler().postDelayed(() -> {
+                                                        signUpViewModel.signIn(
+                                                                textInputEditTextEmail.getText().toString(),
+                                                                textInputEditTextPassword.getText().toString()
+                                                        ).observe(SignUpActivity.this, new Observer<SignInResponse>() {
+                                                            @Override
+                                                            public void onChanged(SignInResponse signInResponse) {
+                                                                if (progressDialog.isShowing()) {
+                                                                    progressDialog.dismiss();
+                                                                }
+                                                                Toast.makeText(v.getContext(), signInResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                                                                if (!signInResponse.isError()) {
+                                                                    if (!signInResponse.getData().isEmpty()) {
+                                                                        AppPreference.saveUser(v.getContext(), signInResponse.getData().get(0));
+                                                                        Intent intent = new Intent(v.getContext(), MainActivity.class);
+                                                                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                                                        startActivity(intent);
+                                                                    }
+                                                                }
+                                                            }
+                                                        });
+                                                    }, loadingTime);
                                                 } else {
                                                     dialog.dismiss();
                                                 }
