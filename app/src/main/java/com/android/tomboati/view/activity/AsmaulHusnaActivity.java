@@ -23,6 +23,7 @@ import com.android.tomboati.R;
 import com.android.tomboati.utils.OnSwipeTouchListener;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.jsibbold.zoomage.ZoomageView;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -30,8 +31,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 public class AsmaulHusnaActivity extends AppCompatActivity {
-    private ImageView imageViewContent;
-    private MaterialButton materialButtonSebelumnya, materialButtonSelanjutnya;
+    private ZoomageView imageViewContent;
 
     private static final String FILENAME = "AsmaulHusna.pdf";
     private int pageIndex;
@@ -54,30 +54,8 @@ public class AsmaulHusnaActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         imageViewContent = findViewById(R.id.imageViewContent);
-        materialButtonSebelumnya = findViewById(R.id.materialButtonSebelumnya);
-        materialButtonSelanjutnya = findViewById(R.id.materialButtonSelanjutnya);
 
         pageIndex = 0;
-
-        materialButtonSebelumnya.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-            @Override
-            public void onClick(View v) {
-                if (page.getIndex() > 0) {
-                    showPage(page.getIndex() - 1);
-                }
-            }
-        });
-
-        materialButtonSelanjutnya.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-            @Override
-            public void onClick(View v) {
-                if (page.getIndex() < pdfRenderer.getPageCount()) {
-                    showPage(page.getIndex() + 1);
-                }
-            }
-        });
 
         imageViewContent.setOnTouchListener(new OnSwipeTouchListener(this) {
             @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -189,8 +167,8 @@ public class AsmaulHusnaActivity extends AppCompatActivity {
     private void updateUi() {
         int index = page.getIndex();
         int pageCount = pdfRenderer.getPageCount();
-        materialButtonSebelumnya.setEnabled(0 != index);
-        materialButtonSelanjutnya.setEnabled(index + 1 < pageCount);
+//        materialButtonSebelumnya.setEnabled(0 != index);
+//        materialButtonSelanjutnya.setEnabled(index + 1 < pageCount);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
