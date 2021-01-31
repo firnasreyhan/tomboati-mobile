@@ -1,8 +1,6 @@
 package com.android.tomboati.view.fragment;
 
-import android.app.AlertDialog;
 import android.app.ProgressDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -22,9 +20,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.tomboati.R;
-import com.android.tomboati.api.response.BaseResponse;
 import com.android.tomboati.api.response.SignInResponse;
 import com.android.tomboati.preference.AppPreference;
+import com.android.tomboati.utils.notif.Token;
 import com.android.tomboati.view.activity.MainActivity;
 import com.android.tomboati.view.activity.SignUpActivity;
 import com.android.tomboati.viewmodel.AkunViewModel;
@@ -35,8 +33,14 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.imageview.ShapeableImageView;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.iid.FirebaseInstanceId;
 
 public class AkunFragment extends Fragment {
+    private DatabaseReference databaseReference;
+    private FirebaseDatabase firebaseDatabase;
+
     private ProgressDialog progressDialog;
     private TextView textViewSignUp;
     private AkunViewModel akunViewModel;
@@ -53,6 +57,10 @@ public class AkunFragment extends Fragment {
         // Inflate the layout for this fragment
         akunViewModel = ViewModelProviders.of(getActivity()).get(AkunViewModel.class);
         View view = inflater.inflate(R.layout.fragment_akun, container, false);
+
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        databaseReference = firebaseDatabase.getReference("TomboAti");
+
         progressDialog = new ProgressDialog(getContext());
         textViewSignUp = view.findViewById(R.id.textViewSignUp);
         textInputEditTextEmail = view.findViewById(R.id.textInputEditTextEmail);
@@ -127,6 +135,8 @@ public class AkunFragment extends Fragment {
                                     if (!signInResponse.isError()) {
                                         if (!signInResponse.getData().isEmpty()) {
                                             AppPreference.saveUser(getContext(), signInResponse.getData().get(0));
+                                            String refreshToken = FirebaseInstanceId.getInstance().getToken();
+                                            updateToken(refreshToken);
                                             Intent intent = new Intent(getContext(), MainActivity.class);
                                             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                             startActivity(intent);
@@ -158,5 +168,12 @@ public class AkunFragment extends Fragment {
                 .format(DecodeFormat.DEFAULT)
                 .placeholder(R.drawable.ic_logo)
                 .into(shapeableImageViewFoto);
+    }
+
+    private void updateToken(String refreshToken) {
+        String userKey = AppPreference.getUser(getContext()).getEmail().replaceAll("[-+.^:,]","");
+        Log.e("userKey", userKey);
+        Token token = new Token(refreshToken);
+        FirebaseDatabase.getInstance().getReference("TomboAti").child("Token").child(userKey).setValue(token);
     }
 }

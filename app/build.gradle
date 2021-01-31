@@ -1,5 +1,6 @@
 plugins {
     id 'com.android.application'
+    id 'com.google.gms.google-services'
 }
 
 android {
@@ -80,4 +81,13 @@ dependencies {
 
     //multidex
     implementation 'androidx.multidex:multidex:2.0.1'
+
+    //firebase
+    implementation 'com.google.firebase:firebase-core:18.0.2'
+    implementation 'com.google.firebase:firebase-analytics:18.0.2'
+    implementation 'com.google.firebase:firebase-database:19.6.0'
+    implementation 'com.google.firebase:firebase-messaging:21.0.1'
+
+    //scale image
+    implementation 'com.davemorrissey.labs:subsampling-scale-image-view:3.10.0'
 }
