@@ -13,6 +13,7 @@
         android:id="@+id/cardViewIncoming"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="left|center"
         android:layout_marginRight="@dimen/_26sdp"
         app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="5dp">
@@ -60,6 +61,7 @@
         android:id="@+id/cardViewOutgoing"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="right|center"
         android:layout_marginLeft="@dimen/_26sdp"
         app:cardBackgroundColor="#E1E1E1"
         app:cardCornerRadius="5dp">

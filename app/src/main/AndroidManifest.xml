@@ -30,7 +30,7 @@
         <activity android:name=".view.activity.AsmaulHusnaActivity" />
         <activity android:name=".view.activity.SyaratActivity" />
         <activity android:name=".view.activity.SignUpActivity" />
-        <activity android:name=".view.activity.SignInActivity" />
+        <activity android:name=".view.activity.ImageChatActivity" />
         <activity android:name=".view.activity.WisataReligiActivity" />
         <activity android:name=".view.activity.DoaDzikirActivity" />
         <activity android:name=".view.activity.SholatActivity" />

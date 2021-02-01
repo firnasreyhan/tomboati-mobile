@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
                     fragmentManager.beginTransaction().hide(fragmentActive).show(fragmentAkun).commit();
                     fragmentActive = fragmentAkun;
                     doubleBackToExit = false;
-                    break;
+                    return true;
             }
             return false;
         }

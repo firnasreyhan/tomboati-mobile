@@ -34,9 +34,13 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
         if (list.get(position).isAdmin()) {
             holder.cardViewOutgoing.setVisibility(View.GONE);
             holder.cardViewIncoming.setVisibility(View.VISIBLE);
+
+            holder.textViewMessageIncoming.setText(list.get(position).getMessage());
         } else {
             holder.cardViewOutgoing.setVisibility(View.VISIBLE);
             holder.cardViewIncoming.setVisibility(View.GONE);
+
+            holder.textViewMessageOutgoing.setText(list.get(position).getMessage());
 
             if (list.get(position).isSeen()) {
                 holder.imageViewIsSeenOutgoing.setImageResource(R.drawable.ic_check_read);
@@ -49,6 +53,11 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
     @Override
     public int getItemCount() {
         return list.size();
+    }
+
+    public void addData(ChatModel model) {
+        list.add(model);
+        notifyDataSetChanged();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
