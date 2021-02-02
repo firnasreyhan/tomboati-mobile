@@ -1,6 +1,7 @@
 package com.android.tomboati.api;
 
 import com.android.tomboati.api.response.BaseResponse;
+import com.android.tomboati.api.response.ChatResponse;
 import com.android.tomboati.api.response.JadwalSholatResponse;
 import com.android.tomboati.api.response.SignInResponse;
 
@@ -20,7 +21,14 @@ public interface ApiInterfaceTomboAti {
     @FormUrlEncoded
     Call<SignInResponse> signIn(
             @Field("email") String email,
-            @Field("password") String password
+            @Field("password") String password,
+            @Field("usertoken") String userToken
+    );
+
+    @POST("user/logout_post")
+    @FormUrlEncoded
+    Call<BaseResponse> signOut(
+            @Field("email") String email
     );
 
     @Multipart
@@ -33,5 +41,19 @@ public interface ApiInterfaceTomboAti {
             @Part("nomorHP") RequestBody noHP,
             @Part MultipartBody.Part fileKTP,
             @Part MultipartBody.Part foto
+    );
+
+    @Multipart
+    @POST("chat/chat_post")
+    Call<BaseResponse> sendChat(
+            @Part("message") RequestBody message,
+            @Part("idChatRoom") RequestBody idChatRoom,
+            @Part MultipartBody.Part img
+    );
+
+    @POST("chat/chat_get")
+    @FormUrlEncoded
+    Call<ChatResponse> getChat(
+            @Field("idChatRoom") String idChatRoom
     );
 }

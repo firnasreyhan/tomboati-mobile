@@ -10,6 +10,7 @@ import com.android.tomboati.api.ApiInterfaceJadwalSholat;
 import com.android.tomboati.api.ApiInterfaceMasjid;
 import com.android.tomboati.api.ApiInterfaceTomboAti;
 import com.android.tomboati.api.response.BaseResponse;
+import com.android.tomboati.api.response.ChatResponse;
 import com.android.tomboati.api.response.JadwalSholatResponse;
 import com.android.tomboati.api.response.MasjidResponse;
 import com.android.tomboati.api.response.SignInResponse;
@@ -33,11 +34,33 @@ public class Repository {
         this.apiInterfaceMasjid = ApiClient.getClientMasjid();
     }
 
-    public MutableLiveData<SignInResponse> signIn(String email, String password) {
+    public MutableLiveData<BaseResponse> signOut(String email) {
+        MutableLiveData<BaseResponse> listMutableLiveData = new MutableLiveData<>();
+        apiInterfaceTomboAti.signOut(
+                email
+        ).enqueue(new Callback<BaseResponse>() {
+            @Override
+            public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
+                if (response.code() == 200) {
+                    listMutableLiveData.setValue(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<BaseResponse> call, Throwable t) {
+                listMutableLiveData.setValue(null);
+                Log.e("signOut", t.getMessage());
+            }
+        });
+        return listMutableLiveData;
+    }
+
+    public MutableLiveData<SignInResponse> signIn(String email, String password, String userToken) {
         MutableLiveData<SignInResponse> listMutableLiveData = new MutableLiveData<>();
         apiInterfaceTomboAti.signIn(
                 email,
-                password
+                password,
+                userToken
         ).enqueue(new Callback<SignInResponse>() {
             @Override
             public void onResponse(Call<SignInResponse> call, Response<SignInResponse> response) {
@@ -80,6 +103,53 @@ public class Repository {
             }
         });
         return baseResponseMutableLiveData;
+    }
+
+    public MutableLiveData<ChatResponse> getChat(String idChatRoom) {
+        MutableLiveData<ChatResponse> mutableLiveData = new MutableLiveData<>();
+
+        apiInterfaceTomboAti.getChat(
+                idChatRoom
+        ).enqueue(new Callback<ChatResponse>() {
+            @Override
+            public void onResponse(Call<ChatResponse> call, Response<ChatResponse> response) {
+                if (response.code() == 200) {
+                    mutableLiveData.setValue(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ChatResponse> call, Throwable t) {
+                mutableLiveData.setValue(null);
+                Log.e("signUp", t.getMessage());
+            }
+        });
+        return mutableLiveData;
+    }
+
+    public MutableLiveData<BaseResponse> sendChat(RequestBody message, RequestBody idChatRoom, MultipartBody.Part img) {
+        MutableLiveData<BaseResponse> mutableLiveData = new MutableLiveData<>();
+
+        apiInterfaceTomboAti.sendChat(
+                message,
+                idChatRoom,
+                img
+        ).enqueue(new Callback<BaseResponse>() {
+            @Override
+            public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
+                if (response.code() == 200) {
+                    mutableLiveData.setValue(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<BaseResponse> call, Throwable t) {
+                mutableLiveData.setValue(null);
+                Log.e("sendChat", t.getMessage());
+            }
+        });
+
+        return mutableLiveData;
     }
 
     public MutableLiveData<JadwalSholatResponse> jadwalSholat(int year, int month, int day, double latitude, double longitude, int timezone) {

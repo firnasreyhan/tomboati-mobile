@@ -13,13 +13,8 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
 import com.android.tomboati.api.response.BaseResponse;
-import com.android.tomboati.api.response.SignInResponse;
 import com.android.tomboati.preference.AppPreference;
 import com.android.tomboati.repository.Repository;
-import com.android.tomboati.utils.Constant;
-import com.android.tomboati.utils.notif.Token;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.iid.FirebaseInstanceId;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -31,37 +26,20 @@ import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 
-public class SignUpViewModel extends AndroidViewModel {
+public class ImageChatViewModel extends AndroidViewModel {
     private Repository repository;
     private Context context;
-    private String email;
 
-    public SignUpViewModel(@NonNull Application application) {
+    public ImageChatViewModel(@NonNull Application application) {
         super(application);
-        this.repository = new Repository();
+        repository = new Repository();
         context = application.getApplicationContext();
     }
 
-    public MutableLiveData<BaseResponse> signUp(String noKTP_, String email_, String password_, String namaLengkap_, String noHP_, Uri fileKTP, Uri foto) {
-        RequestBody noKTP = RequestBody.create(MediaType.parse("text/plain"), noKTP_);
-        RequestBody email = RequestBody.create(MediaType.parse("text/plain"), email_);
-        RequestBody password = RequestBody.create(MediaType.parse("text/plain"), password_);
-        RequestBody namaLengkap = RequestBody.create(MediaType.parse("text/plain"), namaLengkap_);
-        RequestBody noHP = RequestBody.create(MediaType.parse("text/plain"), "62"+ noHP_.substring(1));
-        return repository.signUp(
-                noKTP,
-                email,
-                password,
-                namaLengkap,
-                noHP,
-                compressFile(fileKTP, "fileKTP"),
-                compressFile(foto, "foto")
-        );
-    }
-
-    public MutableLiveData<SignInResponse> signIn(String email, String password) {
-        this.email = email;
-        return repository.signIn(email, password, updateToken());
+    public MutableLiveData<BaseResponse> sendChat(String message_, Uri img_) {
+        RequestBody message = RequestBody.create(MediaType.parse("text/plain"), message_);
+        RequestBody idChatRoom = RequestBody.create(MediaType.parse("text/plain"), AppPreference.getUser(context).getIdChatRoom());
+        return repository.sendChat(message, idChatRoom, compressFile(img_, "img"));
     }
 
     private File createTempFile(Uri uri) {
@@ -101,14 +79,5 @@ public class SignUpViewModel extends AndroidViewModel {
             e.printStackTrace();
         }
         return null;
-    }
-
-    private String updateToken() {
-        String refreshToken = FirebaseInstanceId.getInstance().getToken();
-        String userKey = this.email.replaceAll("[-+.^:,]","");
-        Log.e("userKey", userKey);
-        Token token = new Token(refreshToken);
-        FirebaseDatabase.getInstance().getReference("TomboAti").child("Token").child(userKey).setValue(token);
-        return refreshToken;
     }
 }

@@ -20,6 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.tomboati.R;
+import com.android.tomboati.api.response.BaseResponse;
 import com.android.tomboati.api.response.SignInResponse;
 import com.android.tomboati.preference.AppPreference;
 import com.android.tomboati.utils.notif.Token;
@@ -38,8 +39,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.iid.FirebaseInstanceId;
 
 public class AkunFragment extends Fragment {
-    private DatabaseReference databaseReference;
-    private FirebaseDatabase firebaseDatabase;
 
     private ProgressDialog progressDialog;
     private TextView textViewSignUp;
@@ -57,9 +56,6 @@ public class AkunFragment extends Fragment {
         // Inflate the layout for this fragment
         akunViewModel = ViewModelProviders.of(getActivity()).get(AkunViewModel.class);
         View view = inflater.inflate(R.layout.fragment_akun, container, false);
-
-        firebaseDatabase = FirebaseDatabase.getInstance();
-        databaseReference = firebaseDatabase.getReference("TomboAti");
 
         progressDialog = new ProgressDialog(getContext());
         textViewSignUp = view.findViewById(R.id.textViewSignUp);
@@ -83,10 +79,28 @@ public class AkunFragment extends Fragment {
             materialButtonSignOut.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    AppPreference.removeUser(getContext());
-                    Intent intent = new Intent(getContext(), MainActivity.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    startActivity(intent);
+                    progressDialog.setMessage("Mohon tunggu sebentar...");
+                    progressDialog.setCancelable(false);
+                    progressDialog.show();
+
+                    int loadingTime = 3000;
+                    new Handler().postDelayed(() -> {
+                        akunViewModel.signOut().observe(getActivity(), new Observer<BaseResponse>() {
+                            @Override
+                            public void onChanged(BaseResponse baseResponse) {
+                                if (progressDialog.isShowing()) {
+                                    progressDialog.dismiss();
+                                }
+                                Toast.makeText(getContext(), baseResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                                if (!baseResponse.isError()) {
+                                    AppPreference.removeUser(getContext());
+                                    Intent intent = new Intent(getContext(), MainActivity.class);
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                    startActivity(intent);
+                                }
+                            }
+                        });
+                    }, loadingTime);
                 }
             });
         } else {
@@ -134,9 +148,7 @@ public class AkunFragment extends Fragment {
                                     Toast.makeText(getContext(), signInResponse.getMessage(), Toast.LENGTH_SHORT).show();
                                     if (!signInResponse.isError()) {
                                         if (!signInResponse.getData().isEmpty()) {
-                                            AppPreference.saveUser(getContext(), signInResponse.getData().get(0));
-                                            String refreshToken = FirebaseInstanceId.getInstance().getToken();
-                                            updateToken(refreshToken);
+                                            AppPreference.saveUser(v.getContext(), signInResponse.getData().get(0));
                                             Intent intent = new Intent(getContext(), MainActivity.class);
                                             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                             startActivity(intent);
@@ -168,12 +180,5 @@ public class AkunFragment extends Fragment {
                 .format(DecodeFormat.DEFAULT)
                 .placeholder(R.drawable.ic_logo)
                 .into(shapeableImageViewFoto);
-    }
-
-    private void updateToken(String refreshToken) {
-        String userKey = AppPreference.getUser(getContext()).getEmail().replaceAll("[-+.^:,]","");
-        Log.e("userKey", userKey);
-        Token token = new Token(refreshToken);
-        FirebaseDatabase.getInstance().getReference("TomboAti").child("Token").child(userKey).setValue(token);
     }
 }

@@ -3,12 +3,13 @@ package com.android.tomboati.api.response;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class SignInResponse extends BaseResponse{
     @SerializedName("data" )
-    private ArrayList<SignInModel> data;
+    private List<SignInModel> data;
 
-    public ArrayList<SignInModel> getData() {
+    public List<SignInModel> getData() {
         return data;
     }
 
@@ -18,6 +19,9 @@ public class SignInResponse extends BaseResponse{
 
         @SerializedName("EMAIL")
         private String email;
+
+        @SerializedName("PASSWORD")
+        private String password;
 
         @SerializedName("NAMALENGKAP")
         private String namaLengkap;
@@ -46,51 +50,66 @@ public class SignInResponse extends BaseResponse{
         @SerializedName("POIN")
         private int String;
 
-        @SerializedName("JAMAAHBERANGKAT")
-        private String jamaahBerangkat;
+        @SerializedName("USERTOKEN")
+        private String userToken;
 
-        public String getNomorKTP() {
+        @SerializedName("ID_CHAT_ROOM")
+        private String idChatRoom;
+
+        public java.lang.String getNomorKTP() {
             return nomorKTP;
         }
 
-        public String getEmail() {
+        public java.lang.String getEmail() {
             return email;
         }
 
-        public String getNamaLengkap() {
+        public java.lang.String getPassword() {
+            return password;
+        }
+
+        public java.lang.String getNamaLengkap() {
             return namaLengkap;
         }
 
-        public String getKategori() {
+        public java.lang.String getKategori() {
             return kategori;
         }
 
-        public String getStatus() {
+        public java.lang.String getStatus() {
             return status;
         }
 
-        public String getKodeReferralFrom() {
+        public java.lang.String getKodeReferralFrom() {
             return kodeReferralFrom;
         }
 
-        public String getKodeReferral() {
+        public java.lang.String getKodeReferral() {
             return kodeReferral;
         }
 
-        public String getNomorHP() {
+        public java.lang.String getNomorHP() {
             return nomorHP;
         }
 
-        public String getFileKTP() {
+        public java.lang.String getFileKTP() {
             return fileKTP;
         }
 
-        public String getFoto() {
+        public java.lang.String getFoto() {
             return foto;
         }
 
-        public String getJamaahBerangkat() {
-            return jamaahBerangkat;
+        public int getString() {
+            return String;
+        }
+
+        public java.lang.String getUserToken() {
+            return userToken;
+        }
+
+        public java.lang.String getIdChatRoom() {
+            return idChatRoom;
         }
     }
 }
