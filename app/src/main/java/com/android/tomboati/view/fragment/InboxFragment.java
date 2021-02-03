@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import com.android.tomboati.R;
 import com.android.tomboati.adapter.ChatAdapter;
@@ -36,6 +37,7 @@ public class InboxFragment extends Fragment {
     private TextInputEditText textInputEditTextChat;
     private TextInputLayout textInputLayoutChat;
     private FloatingActionButton floatingActionButtonSend;
+    private LinearLayout linearLayoutNoSignIn, linearLayoutYesSignIn;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -47,8 +49,12 @@ public class InboxFragment extends Fragment {
         textInputEditTextChat = view.findViewById(R.id.textInputEditTextChat);
         textInputLayoutChat = view.findViewById(R.id.textInputLayoutChat);
         floatingActionButtonSend = view.findViewById(R.id.floatingActionButtonSend);
+        linearLayoutNoSignIn = view.findViewById(R.id.linearLayoutNoSignIn);
+        linearLayoutYesSignIn = view.findViewById(R.id.linearLayoutYesSignIn);
 
         if (AppPreference.getUser(getContext()) != null) {
+            linearLayoutYesSignIn.setVisibility(View.VISIBLE);
+            linearLayoutNoSignIn.setVisibility(View.GONE);
             chatViewModel.getChat().observe(getActivity(), new Observer<ChatResponse>() {
                 @Override
                 public void onChanged(ChatResponse chatResponse) {
@@ -98,6 +104,9 @@ public class InboxFragment extends Fragment {
                     startActivity(intent);
                 }
             });
+        } else {
+            linearLayoutYesSignIn.setVisibility(View.GONE);
+            linearLayoutNoSignIn.setVisibility(View.VISIBLE);
         }
         return view;
     }

@@ -8,6 +8,34 @@
     tools:context=".view.fragment.InboxFragment">
 
     <LinearLayout
+        android:id="@+id/linearLayoutNoSignIn"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/_13sdp"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_150sdp"
+            android:adjustViewBounds="true"
+            android:src="@drawable/ic_empty_chat" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_13sdp"
+            android:fontFamily="@font/catamaran_bold"
+            android:text="Silahkan Masuk Ke Dalam Aplikasi Untuk Menghubungi Admin"
+            android:gravity="center"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/_14sdp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:visibility="gone"
+        android:id="@+id/linearLayoutYesSignIn"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
