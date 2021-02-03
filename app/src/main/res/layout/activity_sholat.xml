@@ -45,129 +45,170 @@
                 android:paddingLeft="@dimen/_8sdp"
                 android:paddingRight="@dimen/_8sdp">
 
-                <LinearLayout
-                    android:id="@+id/linearLayoutSholatWajib"
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardViewSholatWajib"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_4sdp"
-                    android:layout_marginLeft="@dimen/_4sdp"
-                    android:layout_marginEnd="@dimen/_4sdp"
-                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
+                    android:clickable="true"
+                    android:foreground="?selectableItemBackground"
+                    app:cardElevation="0dp"
+                    app:cardBackgroundColor="@android:color/transparent">
 
-                    <ImageView
-                        android:layout_width="@dimen/_42sdp"
-                        android:layout_height="@dimen/_46sdp"
-                        android:adjustViewBounds="true"
-                        android:src="@drawable/ic_sholat_wajib" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_4sdp"
-                        android:fontFamily="@font/cinzel_regular"
+                        android:layout_marginStart="@dimen/_4sdp"
+                        android:layout_marginLeft="@dimen/_4sdp"
+                        android:layout_marginEnd="@dimen/_4sdp"
+                        android:layout_marginRight="@dimen/_4sdp"
+                        android:layout_weight="1"
                         android:gravity="center"
-                        android:text="sholat wajib"
-                        android:textAllCaps="true"
-                        android:textColor="@android:color/black"
-                        android:textSize="@dimen/_9sdp" />
+                        android:orientation="vertical">
 
-                </LinearLayout>
+                        <ImageView
+                            android:layout_width="@dimen/_42sdp"
+                            android:layout_height="@dimen/_46sdp"
+                            android:adjustViewBounds="true"
+                            android:src="@drawable/ic_sholat_wajib" />
 
-                <LinearLayout
-                    android:id="@+id/linearLayoutSholatSunnah"
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_4sdp"
+                            android:fontFamily="@font/cinzel_regular"
+                            android:gravity="center"
+                            android:text="sholat wajib"
+                            android:textAllCaps="true"
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_9sdp" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_4sdp"
-                    android:layout_marginLeft="@dimen/_4sdp"
-                    android:layout_marginEnd="@dimen/_4sdp"
-                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
+                    android:clickable="true"
+                    android:foreground="?selectableItemBackground"
+                    app:cardElevation="0dp"
+                    app:cardBackgroundColor="@android:color/transparent">
 
-                    <ImageView
-                        android:layout_width="@dimen/_42sdp"
-                        android:layout_height="@dimen/_46sdp"
-                        android:adjustViewBounds="true"
-                        android:src="@drawable/ic_sholat_sunnah" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_4sdp"
-                        android:fontFamily="@font/cinzel_regular"
+                        android:layout_marginStart="@dimen/_4sdp"
+                        android:layout_marginLeft="@dimen/_4sdp"
+                        android:layout_marginEnd="@dimen/_4sdp"
+                        android:layout_marginRight="@dimen/_4sdp"
+                        android:layout_weight="1"
                         android:gravity="center"
-                        android:text="sholat sunnah"
-                        android:textAllCaps="true"
-                        android:textColor="@android:color/black"
-                        android:textSize="@dimen/_9sdp" />
+                        android:orientation="vertical">
 
-                </LinearLayout>
+                        <ImageView
+                            android:layout_width="@dimen/_42sdp"
+                            android:layout_height="@dimen/_46sdp"
+                            android:adjustViewBounds="true"
+                            android:src="@drawable/ic_sholat_sunnah" />
 
-                <LinearLayout
-                    android:id="@+id/linearLayoutSyaratSholat"
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_4sdp"
+                            android:fontFamily="@font/cinzel_regular"
+                            android:gravity="center"
+                            android:text="sholat sunnah"
+                            android:textAllCaps="true"
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_9sdp" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_4sdp"
-                    android:layout_marginLeft="@dimen/_4sdp"
-                    android:layout_marginEnd="@dimen/_4sdp"
-                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
+                    android:clickable="true"
+                    android:foreground="?selectableItemBackground"
+                    app:cardElevation="0dp"
+                    app:cardBackgroundColor="@android:color/transparent">
 
-                    <ImageView
-                        android:layout_width="@dimen/_42sdp"
-                        android:layout_height="@dimen/_46sdp"
-                        android:adjustViewBounds="true"
-                        android:src="@drawable/ic_syarat_sholat" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_4sdp"
-                        android:fontFamily="@font/cinzel_regular"
+                        android:layout_marginStart="@dimen/_4sdp"
+                        android:layout_marginLeft="@dimen/_4sdp"
+                        android:layout_marginEnd="@dimen/_4sdp"
+                        android:layout_marginRight="@dimen/_4sdp"
+                        android:layout_weight="1"
                         android:gravity="center"
-                        android:text="syarat sholat"
-                        android:textAllCaps="true"
-                        android:textColor="@android:color/black"
-                        android:textSize="@dimen/_9sdp" />
+                        android:orientation="vertical">
 
-                </LinearLayout>
+                        <ImageView
+                            android:layout_width="@dimen/_42sdp"
+                            android:layout_height="@dimen/_46sdp"
+                            android:adjustViewBounds="true"
+                            android:src="@drawable/ic_syarat_sholat" />
 
-                <LinearLayout
-                    android:id="@+id/linearLayoutAdabSholat"
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_4sdp"
+                            android:fontFamily="@font/cinzel_regular"
+                            android:gravity="center"
+                            android:text="syarat sholat"
+                            android:textAllCaps="true"
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_9sdp" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_4sdp"
-                    android:layout_marginLeft="@dimen/_4sdp"
-                    android:layout_marginEnd="@dimen/_4sdp"
-                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
+                    android:clickable="true"
+                    android:foreground="?selectableItemBackground"
+                    app:cardElevation="0dp"
+                    app:cardBackgroundColor="@android:color/transparent">
 
-                    <ImageView
-                        android:layout_width="@dimen/_42sdp"
-                        android:layout_height="@dimen/_46sdp"
-                        android:adjustViewBounds="true"
-                        android:src="@drawable/ic_adab_sholat" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_4sdp"
-                        android:fontFamily="@font/cinzel_regular"
+                        android:layout_marginStart="@dimen/_4sdp"
+                        android:layout_marginLeft="@dimen/_4sdp"
+                        android:layout_marginEnd="@dimen/_4sdp"
+                        android:layout_marginRight="@dimen/_4sdp"
+                        android:layout_weight="1"
                         android:gravity="center"
-                        android:text="adab sholat"
-                        android:textAllCaps="true"
-                        android:textColor="@android:color/black"
-                        android:textSize="@dimen/_9sdp" />
+                        android:orientation="vertical">
 
-                </LinearLayout>
+                        <ImageView
+                            android:layout_width="@dimen/_42sdp"
+                            android:layout_height="@dimen/_46sdp"
+                            android:adjustViewBounds="true"
+                            android:src="@drawable/ic_adab_sholat" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_4sdp"
+                            android:fontFamily="@font/cinzel_regular"
+                            android:gravity="center"
+                            android:text="adab sholat"
+                            android:textAllCaps="true"
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_9sdp" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
 
             </LinearLayout>
 
@@ -179,129 +220,170 @@
                 android:paddingLeft="@dimen/_8sdp"
                 android:paddingRight="@dimen/_8sdp">
 
-                <LinearLayout
-                    android:id="@+id/linearLayoutSholatDiperjalanan"
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_4sdp"
-                    android:layout_marginLeft="@dimen/_4sdp"
-                    android:layout_marginEnd="@dimen/_4sdp"
-                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
+                    android:clickable="true"
+                    android:foreground="?selectableItemBackground"
+                    app:cardElevation="0dp"
+                    app:cardBackgroundColor="@android:color/transparent">
 
-                    <ImageView
-                        android:layout_width="@dimen/_42sdp"
-                        android:layout_height="@dimen/_46sdp"
-                        android:adjustViewBounds="true"
-                        android:src="@drawable/ic_sholat_diperjalanan" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_4sdp"
-                        android:fontFamily="@font/cinzel_regular"
+                        android:layout_marginStart="@dimen/_4sdp"
+                        android:layout_marginLeft="@dimen/_4sdp"
+                        android:layout_marginEnd="@dimen/_4sdp"
+                        android:layout_marginRight="@dimen/_4sdp"
+                        android:layout_weight="1"
                         android:gravity="center"
-                        android:text="sholat diperjalanan"
-                        android:textAllCaps="true"
-                        android:textColor="@android:color/black"
-                        android:textSize="@dimen/_9sdp" />
+                        android:orientation="vertical">
 
-                </LinearLayout>
+                        <ImageView
+                            android:layout_width="@dimen/_42sdp"
+                            android:layout_height="@dimen/_46sdp"
+                            android:adjustViewBounds="true"
+                            android:src="@drawable/ic_sholat_diperjalanan" />
 
-                <LinearLayout
-                    android:id="@+id/linearLayoutSholatJenasah"
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_4sdp"
+                            android:fontFamily="@font/cinzel_regular"
+                            android:gravity="center"
+                            android:text="sholat diperjalanan"
+                            android:textAllCaps="true"
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_9sdp" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_4sdp"
-                    android:layout_marginLeft="@dimen/_4sdp"
-                    android:layout_marginEnd="@dimen/_4sdp"
-                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
+                    android:clickable="true"
+                    android:foreground="?selectableItemBackground"
+                    app:cardElevation="0dp"
+                    app:cardBackgroundColor="@android:color/transparent">
 
-                    <ImageView
-                        android:layout_width="@dimen/_42sdp"
-                        android:layout_height="@dimen/_46sdp"
-                        android:adjustViewBounds="true"
-                        android:src="@drawable/ic_sholat_jenasah" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_4sdp"
-                        android:fontFamily="@font/cinzel_regular"
+                        android:layout_marginStart="@dimen/_4sdp"
+                        android:layout_marginLeft="@dimen/_4sdp"
+                        android:layout_marginEnd="@dimen/_4sdp"
+                        android:layout_marginRight="@dimen/_4sdp"
+                        android:layout_weight="1"
                         android:gravity="center"
-                        android:text="sholat jenasah"
-                        android:textAllCaps="true"
-                        android:textColor="@android:color/black"
-                        android:textSize="@dimen/_9sdp" />
+                        android:orientation="vertical">
 
-                </LinearLayout>
+                        <ImageView
+                            android:layout_width="@dimen/_42sdp"
+                            android:layout_height="@dimen/_46sdp"
+                            android:adjustViewBounds="true"
+                            android:src="@drawable/ic_sholat_jenasah" />
 
-                <LinearLayout
-                    android:id="@+id/linearLayoutJadwalSholat"
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_4sdp"
+                            android:fontFamily="@font/cinzel_regular"
+                            android:gravity="center"
+                            android:text="sholat jenasah"
+                            android:textAllCaps="true"
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_9sdp" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardViewJadwalSholat"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_4sdp"
-                    android:layout_marginLeft="@dimen/_4sdp"
-                    android:layout_marginEnd="@dimen/_4sdp"
-                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
+                    android:clickable="true"
+                    android:foreground="?selectableItemBackground"
+                    app:cardElevation="0dp"
+                    app:cardBackgroundColor="@android:color/transparent">
 
-                    <ImageView
-                        android:layout_width="@dimen/_42sdp"
-                        android:layout_height="@dimen/_46sdp"
-                        android:adjustViewBounds="true"
-                        android:src="@drawable/ic_jadwal_sholat" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_4sdp"
-                        android:fontFamily="@font/cinzel_regular"
+                        android:layout_marginStart="@dimen/_4sdp"
+                        android:layout_marginLeft="@dimen/_4sdp"
+                        android:layout_marginEnd="@dimen/_4sdp"
+                        android:layout_marginRight="@dimen/_4sdp"
+                        android:layout_weight="1"
                         android:gravity="center"
-                        android:text="jadwal sholat"
-                        android:textAllCaps="true"
-                        android:textColor="@android:color/black"
-                        android:textSize="@dimen/_9sdp" />
+                        android:orientation="vertical">
 
-                </LinearLayout>
+                        <ImageView
+                            android:layout_width="@dimen/_42sdp"
+                            android:layout_height="@dimen/_46sdp"
+                            android:adjustViewBounds="true"
+                            android:src="@drawable/ic_jadwal_sholat" />
 
-                <LinearLayout
-                    android:id="@+id/linearLayoutDoaSesudahSholat"
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_4sdp"
+                            android:fontFamily="@font/cinzel_regular"
+                            android:gravity="center"
+                            android:text="jadwal sholat"
+                            android:textAllCaps="true"
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_9sdp" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_4sdp"
-                    android:layout_marginLeft="@dimen/_4sdp"
-                    android:layout_marginEnd="@dimen/_4sdp"
-                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
+                    android:clickable="true"
+                    android:foreground="?selectableItemBackground"
+                    app:cardElevation="0dp"
+                    app:cardBackgroundColor="@android:color/transparent">
 
-                    <ImageView
-                        android:layout_width="@dimen/_42sdp"
-                        android:layout_height="@dimen/_46sdp"
-                        android:adjustViewBounds="true"
-                        android:src="@drawable/ic_doa_sesudah_sholat" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_4sdp"
-                        android:fontFamily="@font/cinzel_regular"
+                        android:layout_marginStart="@dimen/_4sdp"
+                        android:layout_marginLeft="@dimen/_4sdp"
+                        android:layout_marginEnd="@dimen/_4sdp"
+                        android:layout_marginRight="@dimen/_4sdp"
+                        android:layout_weight="1"
                         android:gravity="center"
-                        android:text="do'a sesudah sholat"
-                        android:textAllCaps="true"
-                        android:textColor="@android:color/black"
-                        android:textSize="@dimen/_9sdp" />
+                        android:orientation="vertical">
 
-                </LinearLayout>
+                        <ImageView
+                            android:layout_width="@dimen/_42sdp"
+                            android:layout_height="@dimen/_46sdp"
+                            android:adjustViewBounds="true"
+                            android:src="@drawable/ic_doa_sesudah_sholat" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_4sdp"
+                            android:fontFamily="@font/cinzel_regular"
+                            android:gravity="center"
+                            android:text="do'a sesudah sholat"
+                            android:textAllCaps="true"
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_9sdp" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
 
             </LinearLayout>
 
@@ -313,129 +395,172 @@
                 android:paddingLeft="@dimen/_8sdp"
                 android:paddingRight="@dimen/_8sdp">
 
-                <LinearLayout
-                    android:id="@+id/linearLayoutWudhu"
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardViewWudhu"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_4sdp"
-                    android:layout_marginLeft="@dimen/_4sdp"
-                    android:layout_marginEnd="@dimen/_4sdp"
-                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
+                    android:clickable="true"
+                    android:foreground="?selectableItemBackground"
+                    app:cardElevation="0dp"
+                    app:cardBackgroundColor="@android:color/transparent">
 
-                    <ImageView
-                        android:layout_width="@dimen/_42sdp"
-                        android:layout_height="@dimen/_46sdp"
-                        android:adjustViewBounds="true"
-                        android:src="@drawable/ic_wudhu" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_4sdp"
-                        android:fontFamily="@font/cinzel_regular"
+                        android:layout_marginStart="@dimen/_4sdp"
+                        android:layout_marginLeft="@dimen/_4sdp"
+                        android:layout_marginEnd="@dimen/_4sdp"
+                        android:layout_marginRight="@dimen/_4sdp"
+                        android:layout_weight="1"
                         android:gravity="center"
-                        android:text="wudhu"
-                        android:textAllCaps="true"
-                        android:textColor="@android:color/black"
-                        android:textSize="@dimen/_9sdp" />
+                        android:orientation="vertical">
 
-                </LinearLayout>
+                        <ImageView
+                            android:layout_width="@dimen/_42sdp"
+                            android:layout_height="@dimen/_46sdp"
+                            android:adjustViewBounds="true"
+                            android:src="@drawable/ic_wudhu" />
 
-                <LinearLayout
-                    android:id="@+id/linearLayoutTayamum"
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_4sdp"
+                            android:fontFamily="@font/cinzel_regular"
+                            android:gravity="center"
+                            android:text="wudhu"
+                            android:textAllCaps="true"
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_9sdp" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_4sdp"
-                    android:layout_marginLeft="@dimen/_4sdp"
-                    android:layout_marginEnd="@dimen/_4sdp"
-                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
+                    android:clickable="true"
+                    android:foreground="?selectableItemBackground"
+                    app:cardElevation="0dp"
+                    app:cardBackgroundColor="@android:color/transparent">
 
-                    <ImageView
-                        android:layout_width="@dimen/_42sdp"
-                        android:layout_height="@dimen/_46sdp"
-                        android:adjustViewBounds="true"
-                        android:src="@drawable/ic_tayamum" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_4sdp"
-                        android:fontFamily="@font/cinzel_regular"
+                        android:layout_marginStart="@dimen/_4sdp"
+                        android:layout_marginLeft="@dimen/_4sdp"
+                        android:layout_marginEnd="@dimen/_4sdp"
+                        android:layout_marginRight="@dimen/_4sdp"
+                        android:layout_weight="1"
                         android:gravity="center"
-                        android:text="tayamum"
-                        android:textAllCaps="true"
-                        android:textColor="@android:color/black"
-                        android:textSize="@dimen/_9sdp" />
+                        android:orientation="vertical">
 
-                </LinearLayout>
+                        <ImageView
+                            android:layout_width="@dimen/_42sdp"
+                            android:layout_height="@dimen/_46sdp"
+                            android:adjustViewBounds="true"
+                            android:src="@drawable/ic_tayamum" />
 
-                <LinearLayout
-                    android:id="@+id/linearLayoutArahKiblat"
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_4sdp"
+                            android:fontFamily="@font/cinzel_regular"
+                            android:gravity="center"
+                            android:text="tayamum"
+                            android:textAllCaps="true"
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_9sdp" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardViewArahKiblat"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_4sdp"
-                    android:layout_marginLeft="@dimen/_4sdp"
-                    android:layout_marginEnd="@dimen/_4sdp"
-                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
+                    android:clickable="true"
+                    android:foreground="?selectableItemBackground"
+                    app:cardElevation="0dp"
+                    app:cardBackgroundColor="@android:color/transparent">
 
-                    <ImageView
-                        android:layout_width="@dimen/_42sdp"
-                        android:layout_height="@dimen/_46sdp"
-                        android:adjustViewBounds="true"
-                        android:src="@drawable/ic_arah_kiblat" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_4sdp"
-                        android:fontFamily="@font/cinzel_regular"
+                        android:layout_marginStart="@dimen/_4sdp"
+                        android:layout_marginLeft="@dimen/_4sdp"
+                        android:layout_marginEnd="@dimen/_4sdp"
+                        android:layout_marginRight="@dimen/_4sdp"
+                        android:layout_weight="1"
                         android:gravity="center"
-                        android:text="arah kiblat"
-                        android:textAllCaps="true"
-                        android:textColor="@android:color/black"
-                        android:textSize="@dimen/_9sdp" />
+                        android:orientation="vertical">
 
-                </LinearLayout>
+                        <ImageView
+                            android:layout_width="@dimen/_42sdp"
+                            android:layout_height="@dimen/_46sdp"
+                            android:adjustViewBounds="true"
+                            android:src="@drawable/ic_arah_kiblat" />
 
-                <LinearLayout
-                    android:id="@+id/linearLayoutMasjidTerdekat"
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_4sdp"
+                            android:fontFamily="@font/cinzel_regular"
+                            android:gravity="center"
+                            android:text="arah kiblat"
+                            android:textAllCaps="true"
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_9sdp" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardViewMasjidTerdekat"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_4sdp"
-                    android:layout_marginLeft="@dimen/_4sdp"
-                    android:layout_marginEnd="@dimen/_4sdp"
-                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
+                    android:clickable="true"
+                    android:foreground="?selectableItemBackground"
+                    app:cardElevation="0dp"
+                    app:cardBackgroundColor="@android:color/transparent">
 
-                    <ImageView
-                        android:layout_width="@dimen/_42sdp"
-                        android:layout_height="@dimen/_46sdp"
-                        android:adjustViewBounds="true"
-                        android:src="@drawable/ic_masjid_terdekat" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_4sdp"
-                        android:fontFamily="@font/cinzel_regular"
+                        android:layout_marginStart="@dimen/_4sdp"
+                        android:layout_marginLeft="@dimen/_4sdp"
+                        android:layout_marginEnd="@dimen/_4sdp"
+                        android:layout_marginRight="@dimen/_4sdp"
+                        android:layout_weight="1"
                         android:gravity="center"
-                        android:text="masjid terdekat"
-                        android:textAllCaps="true"
-                        android:textColor="@android:color/black"
-                        android:textSize="@dimen/_9sdp" />
+                        android:orientation="vertical">
 
-                </LinearLayout>
+                        <ImageView
+                            android:layout_width="@dimen/_42sdp"
+                            android:layout_height="@dimen/_46sdp"
+                            android:adjustViewBounds="true"
+                            android:src="@drawable/ic_masjid_terdekat" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_4sdp"
+                            android:fontFamily="@font/cinzel_regular"
+                            android:gravity="center"
+                            android:text="masjid terdekat"
+                            android:textAllCaps="true"
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_9sdp" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
 
             </LinearLayout>
 

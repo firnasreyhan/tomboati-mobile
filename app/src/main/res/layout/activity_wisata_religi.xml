@@ -45,125 +45,169 @@
                 android:paddingLeft="@dimen/_8sdp"
                 android:paddingRight="@dimen/_8sdp">
 
-                <LinearLayout
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_4sdp"
-                    android:layout_marginLeft="@dimen/_4sdp"
-                    android:layout_marginEnd="@dimen/_4sdp"
-                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
+                    android:clickable="true"
+                    android:foreground="?selectableItemBackground"
+                    app:cardElevation="0dp"
+                    app:cardBackgroundColor="@android:color/transparent">
 
-                    <ImageView
-                        android:layout_width="@dimen/_42sdp"
-                        android:layout_height="@dimen/_46sdp"
-                        android:adjustViewBounds="true"
-                        android:src="@drawable/ic_turki" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_4sdp"
-                        android:fontFamily="@font/cinzel_regular"
+                        android:layout_marginStart="@dimen/_4sdp"
+                        android:layout_marginLeft="@dimen/_4sdp"
+                        android:layout_marginEnd="@dimen/_4sdp"
+                        android:layout_marginRight="@dimen/_4sdp"
+                        android:layout_weight="1"
                         android:gravity="center"
-                        android:text="turki"
-                        android:textAllCaps="true"
-                        android:textColor="@android:color/black"
-                        android:textSize="@dimen/_9sdp" />
+                        android:orientation="vertical">
 
-                </LinearLayout>
+                        <ImageView
+                            android:layout_width="@dimen/_42sdp"
+                            android:layout_height="@dimen/_46sdp"
+                            android:adjustViewBounds="true"
+                            android:src="@drawable/ic_turki" />
 
-                <LinearLayout
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_4sdp"
+                            android:fontFamily="@font/cinzel_regular"
+                            android:gravity="center"
+                            android:text="turki"
+                            android:textAllCaps="true"
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_9sdp" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_4sdp"
-                    android:layout_marginLeft="@dimen/_4sdp"
-                    android:layout_marginEnd="@dimen/_4sdp"
-                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
+                    android:clickable="true"
+                    android:foreground="?selectableItemBackground"
+                    app:cardElevation="0dp"
+                    app:cardBackgroundColor="@android:color/transparent">
 
-                    <ImageView
-                        android:layout_width="@dimen/_42sdp"
-                        android:layout_height="@dimen/_46sdp"
-                        android:adjustViewBounds="true"
-                        android:src="@drawable/ic_dubai" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_4sdp"
-                        android:fontFamily="@font/cinzel_regular"
+                        android:layout_marginStart="@dimen/_4sdp"
+                        android:layout_marginLeft="@dimen/_4sdp"
+                        android:layout_marginEnd="@dimen/_4sdp"
+                        android:layout_marginRight="@dimen/_4sdp"
+                        android:layout_weight="1"
                         android:gravity="center"
-                        android:text="dubai"
-                        android:textAllCaps="true"
-                        android:textColor="@android:color/black"
-                        android:textSize="@dimen/_9sdp" />
+                        android:orientation="vertical">
 
-                </LinearLayout>
+                        <ImageView
+                            android:layout_width="@dimen/_42sdp"
+                            android:layout_height="@dimen/_46sdp"
+                            android:adjustViewBounds="true"
+                            android:src="@drawable/ic_dubai" />
 
-                <LinearLayout
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_4sdp"
+                            android:fontFamily="@font/cinzel_regular"
+                            android:gravity="center"
+                            android:text="dubai"
+                            android:textAllCaps="true"
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_9sdp" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_4sdp"
-                    android:layout_marginLeft="@dimen/_4sdp"
-                    android:layout_marginEnd="@dimen/_4sdp"
-                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
+                    android:clickable="true"
+                    android:foreground="?selectableItemBackground"
+                    app:cardElevation="0dp"
+                    app:cardBackgroundColor="@android:color/transparent">
 
-                    <ImageView
-                        android:layout_width="@dimen/_42sdp"
-                        android:layout_height="@dimen/_46sdp"
-                        android:adjustViewBounds="true"
-                        android:src="@drawable/ic_mesir" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_4sdp"
-                        android:fontFamily="@font/cinzel_regular"
+                        android:layout_marginStart="@dimen/_4sdp"
+                        android:layout_marginLeft="@dimen/_4sdp"
+                        android:layout_marginEnd="@dimen/_4sdp"
+                        android:layout_marginRight="@dimen/_4sdp"
+                        android:layout_weight="1"
                         android:gravity="center"
-                        android:text="mesir"
-                        android:textAllCaps="true"
-                        android:textColor="@android:color/black"
-                        android:textSize="@dimen/_9sdp" />
+                        android:orientation="vertical">
 
-                </LinearLayout>
+                        <ImageView
+                            android:layout_width="@dimen/_42sdp"
+                            android:layout_height="@dimen/_46sdp"
+                            android:adjustViewBounds="true"
+                            android:src="@drawable/ic_mesir" />
 
-                <LinearLayout
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_4sdp"
+                            android:fontFamily="@font/cinzel_regular"
+                            android:gravity="center"
+                            android:text="mesir"
+                            android:textAllCaps="true"
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_9sdp" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_4sdp"
-                    android:layout_marginLeft="@dimen/_4sdp"
-                    android:layout_marginEnd="@dimen/_4sdp"
-                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
+                    android:clickable="true"
+                    android:foreground="?selectableItemBackground"
+                    app:cardElevation="0dp"
+                    app:cardBackgroundColor="@android:color/transparent">
 
-                    <ImageView
-                        android:layout_width="@dimen/_42sdp"
-                        android:layout_height="@dimen/_46sdp"
-                        android:adjustViewBounds="true"
-                        android:src="@drawable/ic_jerusalem" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_4sdp"
-                        android:fontFamily="@font/cinzel_regular"
+                        android:layout_marginStart="@dimen/_4sdp"
+                        android:layout_marginLeft="@dimen/_4sdp"
+                        android:layout_marginEnd="@dimen/_4sdp"
+                        android:layout_marginRight="@dimen/_4sdp"
+                        android:layout_weight="1"
                         android:gravity="center"
-                        android:text="jerusalem"
-                        android:textAllCaps="true"
-                        android:textColor="@android:color/black"
-                        android:textSize="@dimen/_9sdp" />
+                        android:orientation="vertical">
 
-                </LinearLayout>
+                        <ImageView
+                            android:layout_width="@dimen/_42sdp"
+                            android:layout_height="@dimen/_46sdp"
+                            android:adjustViewBounds="true"
+                            android:src="@drawable/ic_jerusalem" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_4sdp"
+                            android:fontFamily="@font/cinzel_regular"
+                            android:gravity="center"
+                            android:text="jerusalem"
+                            android:textAllCaps="true"
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_9sdp" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
 
             </LinearLayout>
 
@@ -175,125 +219,169 @@
                 android:paddingLeft="@dimen/_8sdp"
                 android:paddingRight="@dimen/_8sdp">
 
-                <LinearLayout
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_4sdp"
-                    android:layout_marginLeft="@dimen/_4sdp"
-                    android:layout_marginEnd="@dimen/_4sdp"
-                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
+                    android:clickable="true"
+                    android:foreground="?selectableItemBackground"
+                    app:cardElevation="0dp"
+                    app:cardBackgroundColor="@android:color/transparent">
 
-                    <ImageView
-                        android:layout_width="@dimen/_42sdp"
-                        android:layout_height="@dimen/_46sdp"
-                        android:adjustViewBounds="true"
-                        android:src="@drawable/ic_jepang" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_4sdp"
-                        android:fontFamily="@font/cinzel_regular"
+                        android:layout_marginStart="@dimen/_4sdp"
+                        android:layout_marginLeft="@dimen/_4sdp"
+                        android:layout_marginEnd="@dimen/_4sdp"
+                        android:layout_marginRight="@dimen/_4sdp"
+                        android:layout_weight="1"
                         android:gravity="center"
-                        android:text="jepang"
-                        android:textAllCaps="true"
-                        android:textColor="@android:color/black"
-                        android:textSize="@dimen/_9sdp" />
+                        android:orientation="vertical">
 
-                </LinearLayout>
+                        <ImageView
+                            android:layout_width="@dimen/_42sdp"
+                            android:layout_height="@dimen/_46sdp"
+                            android:adjustViewBounds="true"
+                            android:src="@drawable/ic_jepang" />
 
-                <LinearLayout
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_4sdp"
+                            android:fontFamily="@font/cinzel_regular"
+                            android:gravity="center"
+                            android:text="jepang"
+                            android:textAllCaps="true"
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_9sdp" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_4sdp"
-                    android:layout_marginLeft="@dimen/_4sdp"
-                    android:layout_marginEnd="@dimen/_4sdp"
-                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
+                    android:clickable="true"
+                    android:foreground="?selectableItemBackground"
+                    app:cardElevation="0dp"
+                    app:cardBackgroundColor="@android:color/transparent">
 
-                    <ImageView
-                        android:layout_width="@dimen/_42sdp"
-                        android:layout_height="@dimen/_46sdp"
-                        android:adjustViewBounds="true"
-                        android:src="@drawable/ic_korea_selatan" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_4sdp"
-                        android:fontFamily="@font/cinzel_regular"
+                        android:layout_marginStart="@dimen/_4sdp"
+                        android:layout_marginLeft="@dimen/_4sdp"
+                        android:layout_marginEnd="@dimen/_4sdp"
+                        android:layout_marginRight="@dimen/_4sdp"
+                        android:layout_weight="1"
                         android:gravity="center"
-                        android:text="korea selatan"
-                        android:textAllCaps="true"
-                        android:textColor="@android:color/black"
-                        android:textSize="@dimen/_9sdp" />
+                        android:orientation="vertical">
 
-                </LinearLayout>
+                        <ImageView
+                            android:layout_width="@dimen/_42sdp"
+                            android:layout_height="@dimen/_46sdp"
+                            android:adjustViewBounds="true"
+                            android:src="@drawable/ic_korea_selatan" />
 
-                <LinearLayout
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_4sdp"
+                            android:fontFamily="@font/cinzel_regular"
+                            android:gravity="center"
+                            android:text="korea selatan"
+                            android:textAllCaps="true"
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_9sdp" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_4sdp"
-                    android:layout_marginLeft="@dimen/_4sdp"
-                    android:layout_marginEnd="@dimen/_4sdp"
-                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
+                    android:clickable="true"
+                    android:foreground="?selectableItemBackground"
+                    app:cardElevation="0dp"
+                    app:cardBackgroundColor="@android:color/transparent">
 
-                    <ImageView
-                        android:layout_width="@dimen/_42sdp"
-                        android:layout_height="@dimen/_46sdp"
-                        android:adjustViewBounds="true"
-                        android:src="@drawable/ic_china" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_4sdp"
-                        android:fontFamily="@font/cinzel_regular"
+                        android:layout_marginStart="@dimen/_4sdp"
+                        android:layout_marginLeft="@dimen/_4sdp"
+                        android:layout_marginEnd="@dimen/_4sdp"
+                        android:layout_marginRight="@dimen/_4sdp"
+                        android:layout_weight="1"
                         android:gravity="center"
-                        android:text="china"
-                        android:textAllCaps="true"
-                        android:textColor="@android:color/black"
-                        android:textSize="@dimen/_9sdp" />
+                        android:orientation="vertical">
 
-                </LinearLayout>
+                        <ImageView
+                            android:layout_width="@dimen/_42sdp"
+                            android:layout_height="@dimen/_46sdp"
+                            android:adjustViewBounds="true"
+                            android:src="@drawable/ic_china" />
 
-                <LinearLayout
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_4sdp"
+                            android:fontFamily="@font/cinzel_regular"
+                            android:gravity="center"
+                            android:text="china"
+                            android:textAllCaps="true"
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_9sdp" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_4sdp"
-                    android:layout_marginLeft="@dimen/_4sdp"
-                    android:layout_marginEnd="@dimen/_4sdp"
-                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
+                    android:clickable="true"
+                    android:foreground="?selectableItemBackground"
+                    app:cardElevation="0dp"
+                    app:cardBackgroundColor="@android:color/transparent">
 
-                    <ImageView
-                        android:layout_width="@dimen/_42sdp"
-                        android:layout_height="@dimen/_46sdp"
-                        android:adjustViewBounds="true"
-                        android:src="@drawable/ic_india" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_4sdp"
-                        android:fontFamily="@font/cinzel_regular"
+                        android:layout_marginStart="@dimen/_4sdp"
+                        android:layout_marginLeft="@dimen/_4sdp"
+                        android:layout_marginEnd="@dimen/_4sdp"
+                        android:layout_marginRight="@dimen/_4sdp"
+                        android:layout_weight="1"
                         android:gravity="center"
-                        android:text="india"
-                        android:textAllCaps="true"
-                        android:textColor="@android:color/black"
-                        android:textSize="@dimen/_9sdp" />
+                        android:orientation="vertical">
 
-                </LinearLayout>
+                        <ImageView
+                            android:layout_width="@dimen/_42sdp"
+                            android:layout_height="@dimen/_46sdp"
+                            android:adjustViewBounds="true"
+                            android:src="@drawable/ic_india" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_4sdp"
+                            android:fontFamily="@font/cinzel_regular"
+                            android:gravity="center"
+                            android:text="india"
+                            android:textAllCaps="true"
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_9sdp" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
 
             </LinearLayout>
 
@@ -305,125 +393,169 @@
                 android:paddingLeft="@dimen/_8sdp"
                 android:paddingRight="@dimen/_8sdp">
 
-                <LinearLayout
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_4sdp"
-                    android:layout_marginLeft="@dimen/_4sdp"
-                    android:layout_marginEnd="@dimen/_4sdp"
-                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
+                    android:clickable="true"
+                    android:foreground="?selectableItemBackground"
+                    app:cardElevation="0dp"
+                    app:cardBackgroundColor="@android:color/transparent">
 
-                    <ImageView
-                        android:layout_width="@dimen/_42sdp"
-                        android:layout_height="@dimen/_46sdp"
-                        android:adjustViewBounds="true"
-                        android:src="@drawable/ic_singapura" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_4sdp"
-                        android:fontFamily="@font/cinzel_regular"
+                        android:layout_marginStart="@dimen/_4sdp"
+                        android:layout_marginLeft="@dimen/_4sdp"
+                        android:layout_marginEnd="@dimen/_4sdp"
+                        android:layout_marginRight="@dimen/_4sdp"
+                        android:layout_weight="1"
                         android:gravity="center"
-                        android:text="singapura"
-                        android:textAllCaps="true"
-                        android:textColor="@android:color/black"
-                        android:textSize="@dimen/_9sdp" />
+                        android:orientation="vertical">
 
-                </LinearLayout>
+                        <ImageView
+                            android:layout_width="@dimen/_42sdp"
+                            android:layout_height="@dimen/_46sdp"
+                            android:adjustViewBounds="true"
+                            android:src="@drawable/ic_singapura" />
 
-                <LinearLayout
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_4sdp"
+                            android:fontFamily="@font/cinzel_regular"
+                            android:gravity="center"
+                            android:text="singapura"
+                            android:textAllCaps="true"
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_9sdp" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_4sdp"
-                    android:layout_marginLeft="@dimen/_4sdp"
-                    android:layout_marginEnd="@dimen/_4sdp"
-                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
+                    android:clickable="true"
+                    android:foreground="?selectableItemBackground"
+                    app:cardElevation="0dp"
+                    app:cardBackgroundColor="@android:color/transparent">
 
-                    <ImageView
-                        android:layout_width="@dimen/_42sdp"
-                        android:layout_height="@dimen/_46sdp"
-                        android:adjustViewBounds="true"
-                        android:src="@drawable/ic_malaysia" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_4sdp"
-                        android:fontFamily="@font/cinzel_regular"
+                        android:layout_marginStart="@dimen/_4sdp"
+                        android:layout_marginLeft="@dimen/_4sdp"
+                        android:layout_marginEnd="@dimen/_4sdp"
+                        android:layout_marginRight="@dimen/_4sdp"
+                        android:layout_weight="1"
                         android:gravity="center"
-                        android:text="malaysia"
-                        android:textAllCaps="true"
-                        android:textColor="@android:color/black"
-                        android:textSize="@dimen/_9sdp" />
+                        android:orientation="vertical">
 
-                </LinearLayout>
+                        <ImageView
+                            android:layout_width="@dimen/_42sdp"
+                            android:layout_height="@dimen/_46sdp"
+                            android:adjustViewBounds="true"
+                            android:src="@drawable/ic_malaysia" />
 
-                <LinearLayout
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_4sdp"
+                            android:fontFamily="@font/cinzel_regular"
+                            android:gravity="center"
+                            android:text="malaysia"
+                            android:textAllCaps="true"
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_9sdp" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_4sdp"
-                    android:layout_marginLeft="@dimen/_4sdp"
-                    android:layout_marginEnd="@dimen/_4sdp"
-                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
+                    android:clickable="true"
+                    android:foreground="?selectableItemBackground"
+                    app:cardElevation="0dp"
+                    app:cardBackgroundColor="@android:color/transparent">
 
-                    <ImageView
-                        android:layout_width="@dimen/_42sdp"
-                        android:layout_height="@dimen/_46sdp"
-                        android:adjustViewBounds="true"
-                        android:src="@drawable/ic_thailand" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_4sdp"
-                        android:fontFamily="@font/cinzel_regular"
+                        android:layout_marginStart="@dimen/_4sdp"
+                        android:layout_marginLeft="@dimen/_4sdp"
+                        android:layout_marginEnd="@dimen/_4sdp"
+                        android:layout_marginRight="@dimen/_4sdp"
+                        android:layout_weight="1"
                         android:gravity="center"
-                        android:text="thailand"
-                        android:textAllCaps="true"
-                        android:textColor="@android:color/black"
-                        android:textSize="@dimen/_9sdp" />
+                        android:orientation="vertical">
 
-                </LinearLayout>
+                        <ImageView
+                            android:layout_width="@dimen/_42sdp"
+                            android:layout_height="@dimen/_46sdp"
+                            android:adjustViewBounds="true"
+                            android:src="@drawable/ic_thailand" />
 
-                <LinearLayout
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_4sdp"
+                            android:fontFamily="@font/cinzel_regular"
+                            android:gravity="center"
+                            android:text="thailand"
+                            android:textAllCaps="true"
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_9sdp" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_4sdp"
-                    android:layout_marginLeft="@dimen/_4sdp"
-                    android:layout_marginEnd="@dimen/_4sdp"
-                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
+                    android:clickable="true"
+                    android:foreground="?selectableItemBackground"
+                    app:cardElevation="0dp"
+                    app:cardBackgroundColor="@android:color/transparent">
 
-                    <ImageView
-                        android:layout_width="@dimen/_42sdp"
-                        android:layout_height="@dimen/_46sdp"
-                        android:adjustViewBounds="true"
-                        android:src="@drawable/ic_vietnam" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_4sdp"
-                        android:fontFamily="@font/cinzel_regular"
+                        android:layout_marginStart="@dimen/_4sdp"
+                        android:layout_marginLeft="@dimen/_4sdp"
+                        android:layout_marginEnd="@dimen/_4sdp"
+                        android:layout_marginRight="@dimen/_4sdp"
+                        android:layout_weight="1"
                         android:gravity="center"
-                        android:text="vietnam"
-                        android:textAllCaps="true"
-                        android:textColor="@android:color/black"
-                        android:textSize="@dimen/_9sdp" />
+                        android:orientation="vertical">
 
-                </LinearLayout>
+                        <ImageView
+                            android:layout_width="@dimen/_42sdp"
+                            android:layout_height="@dimen/_46sdp"
+                            android:adjustViewBounds="true"
+                            android:src="@drawable/ic_vietnam" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_4sdp"
+                            android:fontFamily="@font/cinzel_regular"
+                            android:gravity="center"
+                            android:text="vietnam"
+                            android:textAllCaps="true"
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_9sdp" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
 
             </LinearLayout>
 
@@ -447,125 +579,169 @@
                 android:paddingLeft="@dimen/_8sdp"
                 android:paddingRight="@dimen/_8sdp">
 
-                <LinearLayout
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_4sdp"
-                    android:layout_marginLeft="@dimen/_4sdp"
-                    android:layout_marginEnd="@dimen/_4sdp"
-                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
+                    android:clickable="true"
+                    android:foreground="?selectableItemBackground"
+                    app:cardElevation="0dp"
+                    app:cardBackgroundColor="@android:color/transparent">
 
-                    <ImageView
-                        android:layout_width="@dimen/_42sdp"
-                        android:layout_height="@dimen/_46sdp"
-                        android:adjustViewBounds="true"
-                        android:src="@drawable/ic_bali" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_4sdp"
-                        android:fontFamily="@font/cinzel_regular"
+                        android:layout_marginStart="@dimen/_4sdp"
+                        android:layout_marginLeft="@dimen/_4sdp"
+                        android:layout_marginEnd="@dimen/_4sdp"
+                        android:layout_marginRight="@dimen/_4sdp"
+                        android:layout_weight="1"
                         android:gravity="center"
-                        android:text="bali"
-                        android:textAllCaps="true"
-                        android:textColor="@android:color/black"
-                        android:textSize="@dimen/_9sdp" />
+                        android:orientation="vertical">
 
-                </LinearLayout>
+                        <ImageView
+                            android:layout_width="@dimen/_42sdp"
+                            android:layout_height="@dimen/_46sdp"
+                            android:adjustViewBounds="true"
+                            android:src="@drawable/ic_bali" />
 
-                <LinearLayout
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_4sdp"
+                            android:fontFamily="@font/cinzel_regular"
+                            android:gravity="center"
+                            android:text="bali"
+                            android:textAllCaps="true"
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_9sdp" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_4sdp"
-                    android:layout_marginLeft="@dimen/_4sdp"
-                    android:layout_marginEnd="@dimen/_4sdp"
-                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
+                    android:clickable="true"
+                    android:foreground="?selectableItemBackground"
+                    app:cardElevation="0dp"
+                    app:cardBackgroundColor="@android:color/transparent">
 
-                    <ImageView
-                        android:layout_width="@dimen/_42sdp"
-                        android:layout_height="@dimen/_46sdp"
-                        android:adjustViewBounds="true"
-                        android:src="@drawable/ic_jogja" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_4sdp"
-                        android:fontFamily="@font/cinzel_regular"
+                        android:layout_marginStart="@dimen/_4sdp"
+                        android:layout_marginLeft="@dimen/_4sdp"
+                        android:layout_marginEnd="@dimen/_4sdp"
+                        android:layout_marginRight="@dimen/_4sdp"
+                        android:layout_weight="1"
                         android:gravity="center"
-                        android:text="jogjakarta"
-                        android:textAllCaps="true"
-                        android:textColor="@android:color/black"
-                        android:textSize="@dimen/_9sdp" />
+                        android:orientation="vertical">
 
-                </LinearLayout>
+                        <ImageView
+                            android:layout_width="@dimen/_42sdp"
+                            android:layout_height="@dimen/_46sdp"
+                            android:adjustViewBounds="true"
+                            android:src="@drawable/ic_jogja" />
 
-                <LinearLayout
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_4sdp"
+                            android:fontFamily="@font/cinzel_regular"
+                            android:gravity="center"
+                            android:text="jogjakarta"
+                            android:textAllCaps="true"
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_9sdp" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_4sdp"
-                    android:layout_marginLeft="@dimen/_4sdp"
-                    android:layout_marginEnd="@dimen/_4sdp"
-                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
+                    android:clickable="true"
+                    android:foreground="?selectableItemBackground"
+                    app:cardElevation="0dp"
+                    app:cardBackgroundColor="@android:color/transparent">
 
-                    <ImageView
-                        android:layout_width="@dimen/_42sdp"
-                        android:layout_height="@dimen/_46sdp"
-                        android:adjustViewBounds="true"
-                        android:src="@drawable/ic_lombok" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_4sdp"
-                        android:fontFamily="@font/cinzel_regular"
+                        android:layout_marginStart="@dimen/_4sdp"
+                        android:layout_marginLeft="@dimen/_4sdp"
+                        android:layout_marginEnd="@dimen/_4sdp"
+                        android:layout_marginRight="@dimen/_4sdp"
+                        android:layout_weight="1"
                         android:gravity="center"
-                        android:text="lombok"
-                        android:textAllCaps="true"
-                        android:textColor="@android:color/black"
-                        android:textSize="@dimen/_9sdp" />
+                        android:orientation="vertical">
 
-                </LinearLayout>
+                        <ImageView
+                            android:layout_width="@dimen/_42sdp"
+                            android:layout_height="@dimen/_46sdp"
+                            android:adjustViewBounds="true"
+                            android:src="@drawable/ic_lombok" />
 
-                <LinearLayout
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_4sdp"
+                            android:fontFamily="@font/cinzel_regular"
+                            android:gravity="center"
+                            android:text="lombok"
+                            android:textAllCaps="true"
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_9sdp" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_4sdp"
-                    android:layout_marginLeft="@dimen/_4sdp"
-                    android:layout_marginEnd="@dimen/_4sdp"
-                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
+                    android:clickable="true"
+                    android:foreground="?selectableItemBackground"
+                    app:cardElevation="0dp"
+                    app:cardBackgroundColor="@android:color/transparent">
 
-                    <ImageView
-                        android:layout_width="@dimen/_42sdp"
-                        android:layout_height="@dimen/_46sdp"
-                        android:adjustViewBounds="true"
-                        android:src="@drawable/ic_malang" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_4sdp"
-                        android:fontFamily="@font/cinzel_regular"
+                        android:layout_marginStart="@dimen/_4sdp"
+                        android:layout_marginLeft="@dimen/_4sdp"
+                        android:layout_marginEnd="@dimen/_4sdp"
+                        android:layout_marginRight="@dimen/_4sdp"
+                        android:layout_weight="1"
                         android:gravity="center"
-                        android:text="malang"
-                        android:textAllCaps="true"
-                        android:textColor="@android:color/black"
-                        android:textSize="@dimen/_9sdp" />
+                        android:orientation="vertical">
 
-                </LinearLayout>
+                        <ImageView
+                            android:layout_width="@dimen/_42sdp"
+                            android:layout_height="@dimen/_46sdp"
+                            android:adjustViewBounds="true"
+                            android:src="@drawable/ic_malang" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_4sdp"
+                            android:fontFamily="@font/cinzel_regular"
+                            android:gravity="center"
+                            android:text="malang"
+                            android:textAllCaps="true"
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_9sdp" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
 
             </LinearLayout>
 
@@ -589,125 +765,169 @@
                 android:paddingLeft="@dimen/_8sdp"
                 android:paddingRight="@dimen/_8sdp">
 
-                <LinearLayout
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_4sdp"
-                    android:layout_marginLeft="@dimen/_4sdp"
-                    android:layout_marginEnd="@dimen/_4sdp"
-                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
+                    android:clickable="true"
+                    android:foreground="?selectableItemBackground"
+                    app:cardElevation="0dp"
+                    app:cardBackgroundColor="@android:color/transparent">
 
-                    <ImageView
-                        android:layout_width="@dimen/_42sdp"
-                        android:layout_height="@dimen/_46sdp"
-                        android:adjustViewBounds="true"
-                        android:src="@drawable/ic_wali_3" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_4sdp"
-                        android:fontFamily="@font/cinzel_regular"
+                        android:layout_marginStart="@dimen/_4sdp"
+                        android:layout_marginLeft="@dimen/_4sdp"
+                        android:layout_marginEnd="@dimen/_4sdp"
+                        android:layout_marginRight="@dimen/_4sdp"
+                        android:layout_weight="1"
                         android:gravity="center"
-                        android:text="wali 3"
-                        android:textAllCaps="true"
-                        android:textColor="@android:color/black"
-                        android:textSize="@dimen/_9sdp" />
+                        android:orientation="vertical">
 
-                </LinearLayout>
+                        <ImageView
+                            android:layout_width="@dimen/_42sdp"
+                            android:layout_height="@dimen/_46sdp"
+                            android:adjustViewBounds="true"
+                            android:src="@drawable/ic_wali_3" />
 
-                <LinearLayout
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_4sdp"
+                            android:fontFamily="@font/cinzel_regular"
+                            android:gravity="center"
+                            android:text="wali 3"
+                            android:textAllCaps="true"
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_9sdp" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_4sdp"
-                    android:layout_marginLeft="@dimen/_4sdp"
-                    android:layout_marginEnd="@dimen/_4sdp"
-                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
+                    android:clickable="true"
+                    android:foreground="?selectableItemBackground"
+                    app:cardElevation="0dp"
+                    app:cardBackgroundColor="@android:color/transparent">
 
-                    <ImageView
-                        android:layout_width="@dimen/_42sdp"
-                        android:layout_height="@dimen/_46sdp"
-                        android:adjustViewBounds="true"
-                        android:src="@drawable/ic_wali_5" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_4sdp"
-                        android:fontFamily="@font/cinzel_regular"
+                        android:layout_marginStart="@dimen/_4sdp"
+                        android:layout_marginLeft="@dimen/_4sdp"
+                        android:layout_marginEnd="@dimen/_4sdp"
+                        android:layout_marginRight="@dimen/_4sdp"
+                        android:layout_weight="1"
                         android:gravity="center"
-                        android:text="wali 5"
-                        android:textAllCaps="true"
-                        android:textColor="@android:color/black"
-                        android:textSize="@dimen/_9sdp" />
+                        android:orientation="vertical">
 
-                </LinearLayout>
+                        <ImageView
+                            android:layout_width="@dimen/_42sdp"
+                            android:layout_height="@dimen/_46sdp"
+                            android:adjustViewBounds="true"
+                            android:src="@drawable/ic_wali_5" />
 
-                <LinearLayout
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_4sdp"
+                            android:fontFamily="@font/cinzel_regular"
+                            android:gravity="center"
+                            android:text="wali 5"
+                            android:textAllCaps="true"
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_9sdp" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_4sdp"
-                    android:layout_marginLeft="@dimen/_4sdp"
-                    android:layout_marginEnd="@dimen/_4sdp"
-                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
+                    android:clickable="true"
+                    android:foreground="?selectableItemBackground"
+                    app:cardElevation="0dp"
+                    app:cardBackgroundColor="@android:color/transparent">
 
-                    <ImageView
-                        android:layout_width="@dimen/_42sdp"
-                        android:layout_height="@dimen/_46sdp"
-                        android:adjustViewBounds="true"
-                        android:src="@drawable/ic_wali_8" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_4sdp"
-                        android:fontFamily="@font/cinzel_regular"
+                        android:layout_marginStart="@dimen/_4sdp"
+                        android:layout_marginLeft="@dimen/_4sdp"
+                        android:layout_marginEnd="@dimen/_4sdp"
+                        android:layout_marginRight="@dimen/_4sdp"
+                        android:layout_weight="1"
                         android:gravity="center"
-                        android:text="wali 8"
-                        android:textAllCaps="true"
-                        android:textColor="@android:color/black"
-                        android:textSize="@dimen/_9sdp" />
+                        android:orientation="vertical">
 
-                </LinearLayout>
+                        <ImageView
+                            android:layout_width="@dimen/_42sdp"
+                            android:layout_height="@dimen/_46sdp"
+                            android:adjustViewBounds="true"
+                            android:src="@drawable/ic_wali_8" />
 
-                <LinearLayout
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_4sdp"
+                            android:fontFamily="@font/cinzel_regular"
+                            android:gravity="center"
+                            android:text="wali 8"
+                            android:textAllCaps="true"
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_9sdp" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_4sdp"
-                    android:layout_marginLeft="@dimen/_4sdp"
-                    android:layout_marginEnd="@dimen/_4sdp"
-                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
+                    android:clickable="true"
+                    android:foreground="?selectableItemBackground"
+                    app:cardElevation="0dp"
+                    app:cardBackgroundColor="@android:color/transparent">
 
-                    <ImageView
-                        android:layout_width="@dimen/_42sdp"
-                        android:layout_height="@dimen/_46sdp"
-                        android:adjustViewBounds="true"
-                        android:src="@drawable/ic_wali_9" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_4sdp"
-                        android:fontFamily="@font/cinzel_regular"
+                        android:layout_marginStart="@dimen/_4sdp"
+                        android:layout_marginLeft="@dimen/_4sdp"
+                        android:layout_marginEnd="@dimen/_4sdp"
+                        android:layout_marginRight="@dimen/_4sdp"
+                        android:layout_weight="1"
                         android:gravity="center"
-                        android:text="wali 9"
-                        android:textAllCaps="true"
-                        android:textColor="@android:color/black"
-                        android:textSize="@dimen/_9sdp" />
+                        android:orientation="vertical">
 
-                </LinearLayout>
+                        <ImageView
+                            android:layout_width="@dimen/_42sdp"
+                            android:layout_height="@dimen/_46sdp"
+                            android:adjustViewBounds="true"
+                            android:src="@drawable/ic_wali_9" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_4sdp"
+                            android:fontFamily="@font/cinzel_regular"
+                            android:gravity="center"
+                            android:text="wali 9"
+                            android:textAllCaps="true"
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_9sdp" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
 
             </LinearLayout>
 

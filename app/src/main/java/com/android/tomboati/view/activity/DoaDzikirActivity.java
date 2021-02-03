@@ -2,17 +2,17 @@ package com.android.tomboati.view.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.LinearLayout;
 
 import com.android.tomboati.R;
 
 public class DoaDzikirActivity extends AppCompatActivity {
     private Toolbar toolbar;
-    private LinearLayout linearLayoutAsmaulHusna;
+    private CardView cardViewAsmaulHusna;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,9 +26,9 @@ public class DoaDzikirActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        linearLayoutAsmaulHusna = findViewById(R.id.linearLayoutAsmaulHusna);
+        cardViewAsmaulHusna = findViewById(R.id.cardViewAsmaulHusna);
 
-        linearLayoutAsmaulHusna.setOnClickListener(new View.OnClickListener() {
+        cardViewAsmaulHusna.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(v.getContext(), AsmaulHusnaActivity.class));

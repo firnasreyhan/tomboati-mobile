@@ -265,7 +265,7 @@ public class JadwalSholatActivity extends AppCompatActivity {
 
     private void showProgressDialog() {
         dialog = new ProgressDialog(this);
-        dialog.setMessage("MengamTunggu Sebentar...");
+        dialog.setMessage("Tunggu Sebentar...");
         dialog.setCancelable(true);
         dialog.show();
     }

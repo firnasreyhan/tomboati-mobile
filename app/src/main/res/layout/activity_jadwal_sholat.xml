@@ -31,7 +31,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="left|center"
                 android:fontFamily="@font/catamaran_medium"
-                android:text="12/Rabiul Awal/1441H"
+                android:text="-"
                 android:textColor="@android:color/black"
                 android:textSize="@dimen/_13sdp" />
 
@@ -41,7 +41,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="right|center"
                 android:fontFamily="@font/catamaran_medium"
-                android:text="Selasa, 24/01/2021"
+                android:text="-"
                 android:textColor="@android:color/black"
                 android:textSize="@dimen/_13sdp" />
 
@@ -54,7 +54,7 @@
             android:layout_marginTop="@dimen/_13sdp"
             android:fontFamily="@font/catamaran_medium"
             android:gravity="center"
-            android:text="Pajarakan/Probolinggo-Indonesia"
+            android:text="-"
             android:textColor="@android:color/black"
             android:textSize="@dimen/_14sdp" />
 

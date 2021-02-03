@@ -2,17 +2,17 @@ package com.android.tomboati.view.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.LinearLayout;
 
 import com.android.tomboati.R;
 
 public class SholatActivity extends AppCompatActivity {
     private Toolbar toolbar;
-    private LinearLayout linearLayoutSholatWajib, linearLayoutWudhu, linearLayoutArahKiblat, linearLayoutJadwalSholat, linearLayoutMasjidTerdekat;
+    private CardView cardViewSholatWajib, cardViewWudhu, cardViewArahKiblat, cardViewJadwalSholat, cardViewMasjidTerdekat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,41 +26,41 @@ public class SholatActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        linearLayoutSholatWajib = findViewById(R.id.linearLayoutSholatWajib);
-        linearLayoutWudhu = findViewById(R.id.linearLayoutWudhu);
-        linearLayoutArahKiblat = findViewById(R.id.linearLayoutArahKiblat);
-        linearLayoutJadwalSholat = findViewById(R.id.linearLayoutJadwalSholat);
-        linearLayoutMasjidTerdekat = findViewById(R.id.linearLayoutMasjidTerdekat);
+        cardViewSholatWajib = findViewById(R.id.cardViewSholatWajib);
+        cardViewWudhu = findViewById(R.id.cardViewWudhu);
+        cardViewArahKiblat = findViewById(R.id.cardViewArahKiblat);
+        cardViewJadwalSholat = findViewById(R.id.cardViewJadwalSholat);
+        cardViewMasjidTerdekat = findViewById(R.id.cardViewMasjidTerdekat);
 
-        linearLayoutSholatWajib.setOnClickListener(new View.OnClickListener() {
+        cardViewSholatWajib.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(v.getContext(), SholatWajibActivity.class));
             }
         });
 
-        linearLayoutWudhu.setOnClickListener(new View.OnClickListener() {
+        cardViewWudhu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(v.getContext(), WudhuActivity.class));
             }
         });
 
-        linearLayoutArahKiblat.setOnClickListener(new View.OnClickListener() {
+        cardViewArahKiblat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(v.getContext(), ArahKiblatActivity.class));
             }
         });
 
-        linearLayoutJadwalSholat.setOnClickListener(new View.OnClickListener() {
+        cardViewJadwalSholat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(v.getContext(), JadwalSholatActivity.class));
             }
         });
 
-        linearLayoutMasjidTerdekat.setOnClickListener(new View.OnClickListener() {
+        cardViewMasjidTerdekat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(v.getContext(), MasjidTerdekatActivity.class));

@@ -32,24 +32,25 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@color/dark_green"
             android:orientation="vertical"
             android:padding="@dimen/_6sdp">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="*Geser kiri dan kanan dengan satu jari untuk berpindah halaman."
                 android:fontFamily="@font/catamaran_regular"
-                android:textColor="@android:color/black"
-                android:textStyle="italic"/>
+                android:text="*Geser kiri dan kanan dengan satu jari untuk berpindah halaman."
+                android:textColor="@android:color/white"
+                android:textStyle="italic" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="*Gunakan dua jari untuk memperbesar halaman."
                 android:fontFamily="@font/catamaran_regular"
-                android:textColor="@android:color/black"
-                android:textStyle="italic"/>
+                android:text="*Gunakan dua jari untuk memperbesar halaman."
+                android:textColor="@android:color/white"
+                android:textStyle="italic" />
 
         </LinearLayout>
 
