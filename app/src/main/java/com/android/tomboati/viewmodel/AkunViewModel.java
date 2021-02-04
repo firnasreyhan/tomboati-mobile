@@ -20,7 +20,6 @@ import com.google.firebase.iid.FirebaseInstanceId;
 public class AkunViewModel extends AndroidViewModel {
     private Repository repository;
     private Context context;
-    private String email;
 
     public AkunViewModel(@NonNull Application application) {
         super(application);
@@ -29,8 +28,8 @@ public class AkunViewModel extends AndroidViewModel {
     }
 
     public MutableLiveData<SignInResponse> signIn(String email, String password) {
-        this.email = email;
-        return repository.signIn(email, password, updateToken());
+        Log.e("usertoken", updateToken(email));
+        return repository.signIn(email, password, updateToken(email));
     }
 
     public MutableLiveData<BaseResponse> signOut() {
@@ -39,9 +38,9 @@ public class AkunViewModel extends AndroidViewModel {
         return repository.signOut(AppPreference.getUser(context).getEmail());
     }
 
-    private String updateToken() {
+    private String updateToken(String email) {
         String refreshToken = FirebaseInstanceId.getInstance().getToken();
-        String userKey = this.email.replaceAll("[-+.^:,]","");
+        String userKey = email.replaceAll("[-+.^:,]","");
         Log.e("userKey", userKey);
         Token token = new Token(refreshToken);
         FirebaseDatabase.getInstance().getReference("TomboAti").child("Token").child(userKey).setValue(token);

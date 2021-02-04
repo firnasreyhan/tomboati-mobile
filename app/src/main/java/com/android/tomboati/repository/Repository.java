@@ -55,12 +55,12 @@ public class Repository {
         return listMutableLiveData;
     }
 
-    public MutableLiveData<SignInResponse> signIn(String email, String password, String userToken) {
+    public MutableLiveData<SignInResponse> signIn(String email, String password, String token) {
         MutableLiveData<SignInResponse> listMutableLiveData = new MutableLiveData<>();
         apiInterfaceTomboAti.signIn(
                 email,
                 password,
-                userToken
+                token
         ).enqueue(new Callback<SignInResponse>() {
             @Override
             public void onResponse(Call<SignInResponse> call, Response<SignInResponse> response) {

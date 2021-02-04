@@ -23,20 +23,22 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/textViewDateHijriah"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/catamaran_bold"
+            android:text="12 Rabiul Awal 1442"
             android:textColor="@android:color/white"
-            android:textSize="@dimen/_8sdp"
-            android:text="12 Rabiul Awal 1442"/>
+            android:textSize="@dimen/_8sdp" />
 
         <TextView
+            android:id="@+id/textViewDateMasehi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/catamaran_bold"
+            android:text="8 November 2020"
             android:textColor="@android:color/white"
-            android:textSize="@dimen/_8sdp"
-            android:text="8 November 2020"/>
+            android:textSize="@dimen/_8sdp" />
 
     </LinearLayout>
 
@@ -49,6 +51,7 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/textViewWaktuSholat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/cinzel_bold"
@@ -57,6 +60,7 @@
             android:textSize="@dimen/_13sdp" />
 
         <TextView
+            android:id="@+id/textViewJamSholat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/cinzel_bold"
@@ -93,6 +97,7 @@
             android:src="@drawable/ic_location" />
 
         <TextView
+            android:id="@+id/textViewKota"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/cinzel_bold"

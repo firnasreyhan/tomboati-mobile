@@ -11,6 +11,8 @@ import java.util.TimeZone;
 public class Utility {
     private static double latitude, longitude;
     private static final Calendar c = Calendar.getInstance();
+    private static String kota;
+    private static int hour, minute;
 
     public static final String[] PERMISSION = {
             Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION,
@@ -34,6 +36,14 @@ public class Utility {
         return timeZone.getOffset(new Date().getTime()) / 3600000;
     }
 
+    public static int getHour() {
+        return c.get(Calendar.HOUR_OF_DAY);
+    }
+
+    public static int getMinute() {
+        return c.get(Calendar.MINUTE);
+    }
+
     public static double getLatitude() {
         return latitude;
     }
@@ -48,5 +58,13 @@ public class Utility {
 
     public static void setLongitude(double longitude) {
         Utility.longitude = longitude;
+    }
+
+    public static String getKota() {
+        return kota;
+    }
+
+    public static void setKota(String kota) {
+        Utility.kota = kota;
     }
 }

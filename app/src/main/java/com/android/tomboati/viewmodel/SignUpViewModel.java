@@ -34,7 +34,6 @@ import okhttp3.RequestBody;
 public class SignUpViewModel extends AndroidViewModel {
     private Repository repository;
     private Context context;
-    private String email;
 
     public SignUpViewModel(@NonNull Application application) {
         super(application);
@@ -60,8 +59,7 @@ public class SignUpViewModel extends AndroidViewModel {
     }
 
     public MutableLiveData<SignInResponse> signIn(String email, String password) {
-        this.email = email;
-        return repository.signIn(email, password, updateToken());
+        return repository.signIn(email, password, updateToken(email));
     }
 
     private File createTempFile(Uri uri) {
@@ -103,9 +101,9 @@ public class SignUpViewModel extends AndroidViewModel {
         return null;
     }
 
-    private String updateToken() {
+    private String updateToken(String email) {
         String refreshToken = FirebaseInstanceId.getInstance().getToken();
-        String userKey = this.email.replaceAll("[-+.^:,]","");
+        String userKey = email.replaceAll("[-+.^:,]","");
         Log.e("userKey", userKey);
         Token token = new Token(refreshToken);
         FirebaseDatabase.getInstance().getReference("TomboAti").child("Token").child(userKey).setValue(token);

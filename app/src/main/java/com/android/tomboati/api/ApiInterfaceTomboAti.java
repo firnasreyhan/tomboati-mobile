@@ -22,7 +22,7 @@ public interface ApiInterfaceTomboAti {
     Call<SignInResponse> signIn(
             @Field("email") String email,
             @Field("password") String password,
-            @Field("usertoken") String userToken
+            @Field("token") String token
     );
 
     @POST("user/logout_post")
