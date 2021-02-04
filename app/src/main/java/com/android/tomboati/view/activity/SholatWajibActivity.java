@@ -15,8 +15,6 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.android.tomboati.R;
 import com.android.tomboati.utils.OnSwipeTouchListener;
-import com.bumptech.glide.Glide;
-import com.google.android.material.button.MaterialButton;
 import com.jsibbold.zoomage.ZoomageView;
 
 import java.io.File;

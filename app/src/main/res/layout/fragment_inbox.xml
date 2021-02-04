@@ -87,10 +87,9 @@
             android:id="@+id/recyclerViewChat"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_weight="1"
             android:overScrollMode="never"
-            android:scrollbars="vertical"
-            android:padding="@dimen/_7sdp"
-            android:layout_weight="1"/>
+            android:padding="@dimen/_7sdp"/>
 
         <LinearLayout
             android:layout_width="match_parent"

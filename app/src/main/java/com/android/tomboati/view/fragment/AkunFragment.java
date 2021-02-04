@@ -4,14 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
-
 import android.os.Handler;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,11 +12,15 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
+
 import com.android.tomboati.R;
 import com.android.tomboati.api.response.BaseResponse;
 import com.android.tomboati.api.response.SignInResponse;
 import com.android.tomboati.preference.AppPreference;
-import com.android.tomboati.utils.notif.Token;
 import com.android.tomboati.view.activity.MainActivity;
 import com.android.tomboati.view.activity.SignUpActivity;
 import com.android.tomboati.viewmodel.AkunViewModel;
@@ -34,9 +31,6 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.imageview.ShapeableImageView;
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.iid.FirebaseInstanceId;
 
 public class AkunFragment extends Fragment {
 
@@ -169,9 +163,14 @@ public class AkunFragment extends Fragment {
         textViewNamaLengkap.setText(AppPreference.getUser(getContext()).getNamaLengkap());
         textViewNomorHP.setText(AppPreference.getUser(getContext()).getNomorHP());
 
+//        Picasso.get()
+//                .load(AppPreference.getUser(getContext()).getFoto())
+//                .placeholder(R.drawable.ic_logo)
+//                .into(shapeableImageViewFoto);
+
         Glide.with(getContext())
                 .load(AppPreference.getUser(getContext()).getFoto())
-                .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .skipMemoryCache(true)
                 .dontAnimate()
                 .dontTransform()

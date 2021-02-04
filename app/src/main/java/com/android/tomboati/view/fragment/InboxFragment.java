@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.widget.LinearLayout;
 
 import com.android.tomboati.R;
@@ -52,6 +53,12 @@ public class InboxFragment extends Fragment {
         linearLayoutNoSignIn = view.findViewById(R.id.linearLayoutNoSignIn);
         linearLayoutYesSignIn = view.findViewById(R.id.linearLayoutYesSignIn);
 
+        final LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+        linearLayoutManager.setStackFromEnd(true);
+        recyclerViewChat.setLayoutManager(linearLayoutManager);
+        recyclerViewChat.setNestedScrollingEnabled(false);
+        recyclerViewChat.setHasFixedSize(true);
+
         if (AppPreference.getUser(getContext()) != null) {
             linearLayoutYesSignIn.setVisibility(View.VISIBLE);
             linearLayoutNoSignIn.setVisibility(View.GONE);
@@ -60,16 +67,14 @@ public class InboxFragment extends Fragment {
                 public void onChanged(ChatResponse chatResponse) {
                     if (!chatResponse.isError()) {
                         if (!chatResponse.getData().isEmpty()) {
-                            final LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
-                            linearLayoutManager.setStackFromEnd(true);
                             chatAdapter = new ChatAdapter(chatResponse.getData());
-                            recyclerViewChat.setLayoutManager(linearLayoutManager);
                             recyclerViewChat.setAdapter(chatAdapter);
                             recyclerViewChat.smoothScrollToPosition(chatAdapter.getItemCount() -1);
                         }
                     }
                 }
             });
+
 
             floatingActionButtonSend.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -108,6 +113,7 @@ public class InboxFragment extends Fragment {
             linearLayoutYesSignIn.setVisibility(View.GONE);
             linearLayoutNoSignIn.setVisibility(View.VISIBLE);
         }
+
         return view;
     }
 
@@ -120,10 +126,7 @@ public class InboxFragment extends Fragment {
                 public void onChanged(ChatResponse chatResponse) {
                     if (!chatResponse.isError()) {
                         if (!chatResponse.getData().isEmpty()) {
-                            final LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
-                            linearLayoutManager.setStackFromEnd(true);
                             chatAdapter = new ChatAdapter(chatResponse.getData());
-                            recyclerViewChat.setLayoutManager(linearLayoutManager);
                             recyclerViewChat.setAdapter(chatAdapter);
                             recyclerViewChat.smoothScrollToPosition(chatAdapter.getItemCount() -1);
                         }

@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.tomboati.R;
 import com.android.tomboati.api.response.ChatResponse;
-import com.android.tomboati.preference.AppPreference;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.Priority;
 import com.bumptech.glide.load.DecodeFormat;
@@ -35,6 +34,11 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
     }
 
     @Override
+    public int getItemViewType(int position) {
+        return position;
+    }
+
+    @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         if (list.get(position).getIsAdmin() == 1) {
             holder.cardViewOutgoing.setVisibility(View.GONE);
@@ -44,9 +48,14 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
 
             if (list.get(position).getImg() != null) {
                 holder.imageViewIncoming.setVisibility(View.VISIBLE);
+//                Picasso.get()
+//                        .load(list.get(position).getImg())
+//                        .placeholder(R.drawable.ic_logo)
+//                        .fit()
+//                        .into(holder.imageViewIncoming);
                 Glide.with(holder.itemView.getContext())
                         .load(list.get(position).getImg())
-                        .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
+                        .diskCacheStrategy(DiskCacheStrategy.ALL)
                         .skipMemoryCache(true)
                         .dontAnimate()
                         .dontTransform()
@@ -64,9 +73,13 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
 
             if (list.get(position).getImg() != null) {
                 holder.imageViewOutgoing.setVisibility(View.VISIBLE);
+//                Picasso.get()
+//                        .load(list.get(position).getImg())
+//                        .placeholder(R.drawable.ic_logo)
+//                        .into(holder.imageViewOutgoing);
                 Glide.with(holder.itemView.getContext())
                         .load(list.get(position).getImg())
-                        .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
+                        .diskCacheStrategy(DiskCacheStrategy.ALL)
                         .skipMemoryCache(true)
                         .dontAnimate()
                         .dontTransform()
