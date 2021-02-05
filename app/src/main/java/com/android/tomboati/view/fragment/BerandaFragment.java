@@ -32,6 +32,7 @@ import com.android.tomboati.api.response.JadwalSholatResponse;
 import com.android.tomboati.model.SliderModel;
 import com.android.tomboati.preference.AppPreference;
 import com.android.tomboati.utils.Utility;
+import com.android.tomboati.view.activity.AlQuranActivity;
 import com.android.tomboati.view.activity.DoaDzikirActivity;
 import com.android.tomboati.view.activity.JadwalSholatActivity;
 import com.android.tomboati.view.activity.SholatActivity;
@@ -164,7 +165,7 @@ public class BerandaFragment extends Fragment {
         cardViewAlQuran.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(v.getContext(), "Coming Soon...", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getContext(), AlQuranActivity.class));
             }
         });
 

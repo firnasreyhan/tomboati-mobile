@@ -11,8 +11,8 @@
         android:id="@+id/linearLayoutAkun"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:visibility="gone">
+        android:background="@color/background"
+        android:orientation="vertical">
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
@@ -52,6 +52,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="22dp"
+                        android:layout_weight="1"
                         android:orientation="vertical">
 
                         <TextView
@@ -72,6 +73,29 @@
                             android:text="No. Handphone"
                             android:textColor="@android:color/white"
                             android:textSize="14sp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="@dimen/_20sdp"
+                            android:layout_height="@dimen/_20sdp"
+                            android:layout_marginRight="@dimen/_4sdp"
+                            android:adjustViewBounds="true"
+                            android:src="@drawable/ic_coin" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/catamaran_bold"
+                            android:text="0"
+                            android:textColor="@android:color/white"
+                            android:textSize="@dimen/_13sdp" />
 
                     </LinearLayout>
 
@@ -124,6 +148,29 @@
             app:backgroundTint="@color/background"
             app:elevation="0dp"
             app:icon="@drawable/ic_password"
+            app:iconGravity="start"
+            app:iconPadding="17dp"
+            app:iconTint="@color/dark_green"
+            app:strokeColor="@color/background"
+            app:strokeWidth="0dp" />
+
+        <com.google.android.material.button.MaterialButton
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/catamaran_bold"
+            android:gravity="left|center"
+            android:paddingLeft="38dp"
+            android:paddingTop="20dp"
+            android:paddingRight="38dp"
+            android:paddingBottom="20dp"
+            android:text="Kode Referal"
+            android:textAllCaps="false"
+            android:textColor="#333333"
+            android:textSize="12sp"
+            app:backgroundTint="@color/background"
+            app:elevation="0dp"
+            app:icon="@drawable/ic_voucher"
             app:iconGravity="start"
             app:iconPadding="17dp"
             app:iconTint="@color/dark_green"
@@ -185,7 +232,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
-        android:background="@drawable/ic_background_beranda">
+        android:background="@drawable/ic_background_beranda"
+        android:visibility="gone">
 
         <LinearLayout
             android:layout_width="match_parent"

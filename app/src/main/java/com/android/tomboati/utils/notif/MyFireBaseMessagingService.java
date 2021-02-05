@@ -40,13 +40,13 @@ public class MyFireBaseMessagingService extends FirebaseMessagingService {
         PendingIntent pendingIntent = PendingIntent.getActivity(this , 303, intent,
                 PendingIntent.FLAG_ONE_SHOT);
         Bitmap largeIcon = BitmapFactory.decodeResource(getResources(),
-                R.mipmap.ic_new_launcher);
+                R.drawable.ic_stat_icon);
 
         Uri notificationSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             setupChannels(notificationManager);
             NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this, ADMIN_CHANNEL_ID)
-                    .setSmallIcon(R.mipmap.ic_new_launcher)
+                    .setSmallIcon(R.drawable.ic_stat_icon)
                     .setLargeIcon(largeIcon)
                     .setContentTitle(title)
                     .setContentText(message)
@@ -56,13 +56,13 @@ public class MyFireBaseMessagingService extends FirebaseMessagingService {
                     .setContentIntent(pendingIntent);
 
             //Set notification color to match your app color template
-            notificationBuilder.setColor(getResources().getColor(R.color.dark_green));
+//            notificationBuilder.setColor(getResources().getColor(R.color.dark_green));
             notificationManager.notify(notificationID, notificationBuilder.build());
         } else {
             NotificationCompat.Builder builder =
                     new NotificationCompat.Builder(getApplicationContext())
                             .setLargeIcon(largeIcon)
-                            .setSmallIcon(R.mipmap.ic_new_launcher)
+                            .setSmallIcon(R.drawable.ic_stat_icon)
                             .setContentTitle(title)
                             .setContentText(message)
                             .setAutoCancel(true)

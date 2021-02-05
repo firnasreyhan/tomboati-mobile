@@ -19,7 +19,12 @@ import com.bumptech.glide.Priority;
 import com.bumptech.glide.load.DecodeFormat;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
     private List<ChatResponse.ChatModel> list;
@@ -50,11 +55,6 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
 
             if (list.get(position).getImg() != null) {
                 holder.imageViewIncoming.setVisibility(View.VISIBLE);
-//                Picasso.get()
-//                        .load(list.get(position).getImg())
-//                        .placeholder(R.drawable.ic_logo)
-//                        .fit()
-//                        .into(holder.imageViewIncoming);
                 Glide.with(holder.itemView.getContext())
                         .load(list.get(position).getImg())
                         .diskCacheStrategy(DiskCacheStrategy.ALL)
@@ -66,6 +66,15 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
                         .format(DecodeFormat.DEFAULT)
                         .placeholder(R.drawable.ic_logo)
                         .into(holder.imageViewIncoming);
+                String nmyFormat = "dd/MM/yyyy - hh:mm"; //In which you need put here
+                SimpleDateFormat nsdf = new SimpleDateFormat(nmyFormat, new Locale("id", "ID"));
+                DateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss", Locale.ENGLISH);
+                try {
+                    Date date = format.parse(list.get(position).getCreatedAt());
+                    holder.textViewDateIncoming.setText(nsdf.format(date));
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
             }
         } else {
             holder.cardViewOutgoing.setVisibility(View.VISIBLE);
@@ -75,10 +84,6 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
 
             if (list.get(position).getImg() != null) {
                 holder.imageViewOutgoing.setVisibility(View.VISIBLE);
-//                Picasso.get()
-//                        .load(list.get(position).getImg())
-//                        .placeholder(R.drawable.ic_logo)
-//                        .into(holder.imageViewOutgoing);
                 Glide.with(holder.itemView.getContext())
                         .load(list.get(position).getImg())
                         .diskCacheStrategy(DiskCacheStrategy.ALL)
@@ -90,6 +95,16 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
                         .format(DecodeFormat.DEFAULT)
                         .placeholder(R.drawable.ic_logo)
                         .into(holder.imageViewOutgoing);
+            }
+
+            String nmyFormat = "dd/MM/yyyy - hh:mm"; //In which you need put here
+            SimpleDateFormat nsdf = new SimpleDateFormat(nmyFormat, new Locale("id", "ID"));
+            DateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss", Locale.ENGLISH);
+            try {
+                Date date = format.parse(list.get(position).getCreatedAt());
+                holder.textViewDateOutgoing.setText(nsdf.format(date));
+            } catch (ParseException e) {
+                e.printStackTrace();
             }
 
             if (list.get(position).getIsSeen() == 1) {

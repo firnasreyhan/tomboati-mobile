@@ -6,14 +6,17 @@ import android.util.Log;
 import androidx.lifecycle.MutableLiveData;
 
 import com.android.tomboati.api.ApiClient;
+import com.android.tomboati.api.ApiInterfaceAlQuran;
 import com.android.tomboati.api.ApiInterfaceJadwalSholat;
 import com.android.tomboati.api.ApiInterfaceMasjid;
 import com.android.tomboati.api.ApiInterfaceTomboAti;
+import com.android.tomboati.api.response.AyatResponse;
 import com.android.tomboati.api.response.BaseResponse;
 import com.android.tomboati.api.response.ChatResponse;
 import com.android.tomboati.api.response.JadwalSholatResponse;
 import com.android.tomboati.api.response.MasjidResponse;
 import com.android.tomboati.api.response.SignInResponse;
+import com.android.tomboati.api.response.SurahResponse;
 
 import java.util.List;
 
@@ -27,11 +30,13 @@ public class Repository {
     private ApiInterfaceTomboAti apiInterfaceTomboAti;
     private ApiInterfaceJadwalSholat apiInterfaceTomboAtiJadwalSholat;
     private ApiInterfaceMasjid apiInterfaceMasjid;
+    private ApiInterfaceAlQuran apiInterfaceAlQuran;
 
     public Repository() {
         this.apiInterfaceTomboAti = ApiClient.getClientTomboAti();
         this.apiInterfaceTomboAtiJadwalSholat = ApiClient.getClientJadwalSholat();
         this.apiInterfaceMasjid = ApiClient.getClientMasjid();
+        this.apiInterfaceAlQuran = ApiClient.getClientAlQuran();
     }
 
     public MutableLiveData<BaseResponse> signOut(String email) {
@@ -197,6 +202,46 @@ public class Repository {
             public void onFailure(Call<MasjidResponse> call, Throwable t) {
                 data.setValue(null);
                 Log.e("signUp", t.getMessage());
+            }
+        });
+        return data;
+    }
+
+    public MutableLiveData<List<SurahResponse>> getSurah() {
+        MutableLiveData<List<SurahResponse>> data = new MutableLiveData<>();
+        apiInterfaceAlQuran.getSurah().enqueue(new Callback<List<SurahResponse>>() {
+            @Override
+            public void onResponse(Call<List<SurahResponse>> call, Response<List<SurahResponse>> response) {
+                if (response.code() == 200) {
+                    data.setValue(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<SurahResponse>> call, Throwable t) {
+                data.setValue(null);
+                Log.e("getSurah", t.getMessage());
+            }
+        });
+        return data;
+    }
+
+    public MutableLiveData<List<AyatResponse>> getAyat(String idSurah) {
+        MutableLiveData<List<AyatResponse>> data = new MutableLiveData<>();
+        apiInterfaceAlQuran.getAyat(
+                idSurah
+        ).enqueue(new Callback<List<AyatResponse>>() {
+            @Override
+            public void onResponse(Call<List<AyatResponse>> call, Response<List<AyatResponse>> response) {
+                if (response.code() == 200) {
+                    data.setValue(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<AyatResponse>> call, Throwable t) {
+                data.setValue(null);
+                Log.e("getAyat", t.getMessage());
             }
         });
         return data;

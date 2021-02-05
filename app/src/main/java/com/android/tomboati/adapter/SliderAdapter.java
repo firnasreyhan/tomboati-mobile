@@ -44,26 +44,32 @@ public class SliderAdapter extends SliderViewAdapter<SliderAdapter.ViewHolder> {
         viewHolder.textViewDateMasehi.setText(list.get(position).getData().getDetailData().getDate().getText().getM());
         viewHolder.textViewDateHijriah.setText(list.get(position).getData().getDetailData().getDate().getText().getH());
 
-        if (getTimeInMillis(Utility.getHour(), Utility.getMinute()) <= getTimeInMillis(Integer.parseInt(list.get(position).getData().getData().getData().getShortShubuh().substring(0,2)), Integer.parseInt(list.get(position).getData().getData().getData().getShortShubuh().substring(3,5)))) {
-            viewHolder.textViewWaktuSholat.setText("Shubuh");
+        if (getTimeInMillis(Utility.getHour(), Utility.getMinute()) > getTimeInMillis(Integer.parseInt(list.get(position).getData().getData().getData().getShortIsya().substring(0,2)), Integer.parseInt(list.get(position).getData().getData().getData().getShortIsya().substring(3,5)))) {
+            viewHolder.textViewWaktuSholat.setText("Subuh");
             viewHolder.textViewJamSholat.setText(list.get(position).getData().getData().getData().getShortShubuh());
             viewHolder.textViewWaktuSholatNext.setText("Dhuhur : " + list.get(position).getData().getData().getData().getShortDhuhur());
-        } else if (getTimeInMillis(Utility.getHour(), Utility.getMinute()) <= getTimeInMillis(Integer.parseInt(list.get(position).getData().getData().getData().getShortDhuhur().substring(0,2)), Integer.parseInt(list.get(position).getData().getData().getData().getShortDhuhur().substring(3,5)))) {
-            viewHolder.textViewWaktuSholat.setText("Dhuhur");
-            viewHolder.textViewJamSholat.setText(list.get(position).getData().getData().getData().getShortDhuhur());
-            viewHolder.textViewWaktuSholatNext.setText("Ashar : " + list.get(position).getData().getData().getData().getShortAshar());
-        } else if (getTimeInMillis(Utility.getHour(), Utility.getMinute()) <= getTimeInMillis(Integer.parseInt(list.get(position).getData().getData().getData().getShortAshar().substring(0,2)), Integer.parseInt(list.get(position).getData().getData().getData().getShortAshar().substring(3,5)))) {
-            viewHolder.textViewWaktuSholat.setText("Ashar");
-            viewHolder.textViewJamSholat.setText(list.get(position).getData().getData().getData().getShortAshar());
-            viewHolder.textViewWaktuSholatNext.setText("Maghrib : " + list.get(position).getData().getData().getData().getShortMaghrib());
-        } else if (getTimeInMillis(Utility.getHour(), Utility.getMinute()) <= getTimeInMillis(Integer.parseInt(list.get(position).getData().getData().getData().getShortMaghrib().substring(0,2)), Integer.parseInt(list.get(position).getData().getData().getData().getShortMaghrib().substring(3,5)))) {
-            viewHolder.textViewWaktuSholat.setText("Maghrib");
-            viewHolder.textViewJamSholat.setText(list.get(position).getData().getData().getData().getShortMaghrib());
-            viewHolder.textViewWaktuSholatNext.setText("Isya : " + list.get(position).getData().getData().getData().getShortIsya());
-        } else if (getTimeInMillis(Utility.getHour(), Utility.getMinute()) <= getTimeInMillis(Integer.parseInt(list.get(position).getData().getData().getData().getShortIsya().substring(0,2)), Integer.parseInt(list.get(position).getData().getData().getData().getShortIsya().substring(3,5)))) {
-            viewHolder.textViewWaktuSholat.setText("Isya");
-            viewHolder.textViewJamSholat.setText(list.get(position).getData().getData().getData().getShortIsya());
-            viewHolder.textViewWaktuSholatNext.setText("Shubuh : " + list.get(position).getData().getData().getData().getShortShubuh());
+        } else {
+            if (getTimeInMillis(Utility.getHour(), Utility.getMinute()) <= getTimeInMillis(Integer.parseInt(list.get(position).getData().getData().getData().getShortShubuh().substring(0,2)), Integer.parseInt(list.get(position).getData().getData().getData().getShortShubuh().substring(3,5)))) {
+                viewHolder.textViewWaktuSholat.setText("Subuh");
+                viewHolder.textViewJamSholat.setText(list.get(position).getData().getData().getData().getShortShubuh());
+                viewHolder.textViewWaktuSholatNext.setText("Dhuhur : " + list.get(position).getData().getData().getData().getShortDhuhur());
+            } else if (getTimeInMillis(Utility.getHour(), Utility.getMinute()) <= getTimeInMillis(Integer.parseInt(list.get(position).getData().getData().getData().getShortDhuhur().substring(0,2)), Integer.parseInt(list.get(position).getData().getData().getData().getShortDhuhur().substring(3,5)))) {
+                viewHolder.textViewWaktuSholat.setText("Dhuhur");
+                viewHolder.textViewJamSholat.setText(list.get(position).getData().getData().getData().getShortDhuhur());
+                viewHolder.textViewWaktuSholatNext.setText("Ashar : " + list.get(position).getData().getData().getData().getShortAshar());
+            } else if (getTimeInMillis(Utility.getHour(), Utility.getMinute()) <= getTimeInMillis(Integer.parseInt(list.get(position).getData().getData().getData().getShortAshar().substring(0,2)), Integer.parseInt(list.get(position).getData().getData().getData().getShortAshar().substring(3,5)))) {
+                viewHolder.textViewWaktuSholat.setText("Ashar");
+                viewHolder.textViewJamSholat.setText(list.get(position).getData().getData().getData().getShortAshar());
+                viewHolder.textViewWaktuSholatNext.setText("Maghrib : " + list.get(position).getData().getData().getData().getShortMaghrib());
+            } else if (getTimeInMillis(Utility.getHour(), Utility.getMinute()) <= getTimeInMillis(Integer.parseInt(list.get(position).getData().getData().getData().getShortMaghrib().substring(0,2)), Integer.parseInt(list.get(position).getData().getData().getData().getShortMaghrib().substring(3,5)))) {
+                viewHolder.textViewWaktuSholat.setText("Maghrib");
+                viewHolder.textViewJamSholat.setText(list.get(position).getData().getData().getData().getShortMaghrib());
+                viewHolder.textViewWaktuSholatNext.setText("Isya : " + list.get(position).getData().getData().getData().getShortIsya());
+            } else if (getTimeInMillis(Utility.getHour(), Utility.getMinute()) <= getTimeInMillis(Integer.parseInt(list.get(position).getData().getData().getData().getShortIsya().substring(0,2)), Integer.parseInt(list.get(position).getData().getData().getData().getShortIsya().substring(3,5)))) {
+                viewHolder.textViewWaktuSholat.setText("Isya");
+                viewHolder.textViewJamSholat.setText(list.get(position).getData().getData().getData().getShortIsya());
+                viewHolder.textViewWaktuSholatNext.setText("Subuh : " + list.get(position).getData().getData().getData().getShortShubuh());
+            }
         }
     }
 

@@ -20,7 +20,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/_13sdp"
+            android:padding="@dimen/_7sdp"
             android:orientation="vertical">
 
             <ImageView
@@ -36,7 +36,7 @@
                 android:id="@+id/textViewMessageIncoming"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+                android:text="-"
                 android:fontFamily="@font/catamaran_regular"
                 android:textColor="@android:color/black"
                 android:textSize="@dimen/_10sdp"/>
@@ -68,7 +68,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/_13sdp"
+            android:padding="@dimen/_7sdp"
             android:orientation="vertical">
 
             <ImageView
@@ -84,7 +84,7 @@
                 android:id="@+id/textViewMessageOutgoing"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+                android:text="-"
                 android:fontFamily="@font/catamaran_regular"
                 android:textColor="@android:color/black"/>
 
@@ -110,7 +110,7 @@
                 <ImageView
                     android:id="@+id/imageViewIsSeenOutgoing"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:src="@drawable/ic_check_sent"/>
 
             </LinearLayout>
