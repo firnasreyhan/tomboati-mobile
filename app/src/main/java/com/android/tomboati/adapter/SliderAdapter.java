@@ -47,18 +47,23 @@ public class SliderAdapter extends SliderViewAdapter<SliderAdapter.ViewHolder> {
         if (getTimeInMillis(Utility.getHour(), Utility.getMinute()) <= getTimeInMillis(Integer.parseInt(list.get(position).getData().getData().getData().getShortShubuh().substring(0,2)), Integer.parseInt(list.get(position).getData().getData().getData().getShortShubuh().substring(3,5)))) {
             viewHolder.textViewWaktuSholat.setText("Shubuh");
             viewHolder.textViewJamSholat.setText(list.get(position).getData().getData().getData().getShortShubuh());
+            viewHolder.textViewWaktuSholatNext.setText("Dhuhur : " + list.get(position).getData().getData().getData().getShortDhuhur());
         } else if (getTimeInMillis(Utility.getHour(), Utility.getMinute()) <= getTimeInMillis(Integer.parseInt(list.get(position).getData().getData().getData().getShortDhuhur().substring(0,2)), Integer.parseInt(list.get(position).getData().getData().getData().getShortDhuhur().substring(3,5)))) {
             viewHolder.textViewWaktuSholat.setText("Dhuhur");
             viewHolder.textViewJamSholat.setText(list.get(position).getData().getData().getData().getShortDhuhur());
+            viewHolder.textViewWaktuSholatNext.setText("Ashar : " + list.get(position).getData().getData().getData().getShortAshar());
         } else if (getTimeInMillis(Utility.getHour(), Utility.getMinute()) <= getTimeInMillis(Integer.parseInt(list.get(position).getData().getData().getData().getShortAshar().substring(0,2)), Integer.parseInt(list.get(position).getData().getData().getData().getShortAshar().substring(3,5)))) {
             viewHolder.textViewWaktuSholat.setText("Ashar");
             viewHolder.textViewJamSholat.setText(list.get(position).getData().getData().getData().getShortAshar());
+            viewHolder.textViewWaktuSholatNext.setText("Maghrib : " + list.get(position).getData().getData().getData().getShortMaghrib());
         } else if (getTimeInMillis(Utility.getHour(), Utility.getMinute()) <= getTimeInMillis(Integer.parseInt(list.get(position).getData().getData().getData().getShortMaghrib().substring(0,2)), Integer.parseInt(list.get(position).getData().getData().getData().getShortMaghrib().substring(3,5)))) {
             viewHolder.textViewWaktuSholat.setText("Maghrib");
             viewHolder.textViewJamSholat.setText(list.get(position).getData().getData().getData().getShortMaghrib());
+            viewHolder.textViewWaktuSholatNext.setText("Isya : " + list.get(position).getData().getData().getData().getShortIsya());
         } else if (getTimeInMillis(Utility.getHour(), Utility.getMinute()) <= getTimeInMillis(Integer.parseInt(list.get(position).getData().getData().getData().getShortIsya().substring(0,2)), Integer.parseInt(list.get(position).getData().getData().getData().getShortIsya().substring(3,5)))) {
             viewHolder.textViewWaktuSholat.setText("Isya");
             viewHolder.textViewJamSholat.setText(list.get(position).getData().getData().getData().getShortIsya());
+            viewHolder.textViewWaktuSholatNext.setText("Shubuh : " + list.get(position).getData().getData().getData().getShortShubuh());
         }
     }
 
@@ -78,7 +83,7 @@ public class SliderAdapter extends SliderViewAdapter<SliderAdapter.ViewHolder> {
 
     public class ViewHolder extends SliderViewAdapter.ViewHolder {
         private ImageView imageViewSlider;
-        private TextView textViewKota, textViewDateMasehi, textViewDateHijriah, textViewWaktuSholat, textViewJamSholat;
+        private TextView textViewKota, textViewDateMasehi, textViewDateHijriah, textViewWaktuSholat, textViewJamSholat, textViewWaktuSholatNext;
         public ViewHolder(View itemView) {
             super(itemView);
             imageViewSlider = itemView.findViewById(R.id.imageViewSlider);
@@ -87,6 +92,7 @@ public class SliderAdapter extends SliderViewAdapter<SliderAdapter.ViewHolder> {
             textViewDateHijriah = itemView.findViewById(R.id.textViewDateHijriah);
             textViewWaktuSholat = itemView.findViewById(R.id.textViewWaktuSholat);
             textViewJamSholat = itemView.findViewById(R.id.textViewJamSholat);
+            textViewWaktuSholatNext = itemView.findViewById(R.id.textViewWaktuSholatNext);
         }
     }
 }

@@ -14,7 +14,9 @@ import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.os.Handler;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -33,6 +35,7 @@ import com.android.tomboati.view.activity.SholatActivity;
 import com.android.tomboati.view.activity.UmrohHajiActivity;
 import com.android.tomboati.view.activity.WisataReligiActivity;
 import com.android.tomboati.viewmodel.BerandaViewModel;
+import com.facebook.shimmer.ShimmerFrameLayout;
 import com.intentfilter.androidpermissions.PermissionManager;
 import com.intentfilter.androidpermissions.models.DeniedPermissions;
 import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType;
@@ -52,13 +55,13 @@ public class BerandaFragment extends Fragment {
     private BerandaViewModel berandaViewModel;
     private SliderView sliderView;
     private SliderAdapter sliderAdapter;
+    private SwipeRefreshLayout swipeRefreshLayout;
+    private ShimmerFrameLayout shimmerFrameLayoutSlider;
     private CardView cardViewUmrohHaji, cardViewWisataReligi, cardViewDoaDzikir, cardViewSholat, cardViewAlQuran, cardViewKalenderHijriah, cardViewQurbanAqiqah, cardViewKomunitas, cardViewTomboatiChannel, cardViewLiveMekkah;
 
     private PermissionManager permissionManager;
     private ProgressDialog dialog;
     private AlertDialog.Builder alert;
-
-    private boolean isLoaded = false;
 
     private ArrayList<JadwalSholatResponse> list = new ArrayList<>();
 
@@ -84,6 +87,8 @@ public class BerandaFragment extends Fragment {
         cardViewKalenderHijriah = view.findViewById(R.id.cardViewKalenderHijriah);
         cardViewQurbanAqiqah = view.findViewById(R.id.cardViewQurbanAqiqah);
         cardViewKomunitas = view.findViewById(R.id.cardViewKomunitas);
+        swipeRefreshLayout = view.findViewById(R.id.swipeRefreshLayout);
+        shimmerFrameLayoutSlider = view.findViewById(R.id.shimmerFrameLayoutSlider);
 
         sliderView.setIndicatorAnimation(IndicatorAnimationType.WORM); //set indicator animation by using IndicatorAnimationType. :WORM or THIN_WORM or COLOR or DROP or FILL or NONE or SCALE or SCALE_DOWN or SLIDE and SWAP!!
         sliderView.setSliderTransformAnimation(SliderAnimations.SIMPLETRANSFORMATION);
@@ -167,6 +172,21 @@ public class BerandaFragment extends Fragment {
             }
         });
 
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                shimmerFrameLayoutSlider.startShimmer();
+                shimmerFrameLayoutSlider.setVisibility(View.VISIBLE);
+                sliderView.setVisibility(View.GONE);
+                onStart();
+                new Handler().postDelayed(new Runnable() {
+                    @Override public void run() {
+                        swipeRefreshLayout.setRefreshing(false);
+                    }
+                }, 3000);
+            }
+        });
+
         return view;
     }
 
@@ -174,31 +194,41 @@ public class BerandaFragment extends Fragment {
     public void onStart() {
         super.onStart();
         // Check if gps provider is not enabled
-        if(!isLoaded) {
-            if (!isProviderEnable()) {
-                // If is not enabled showing alert dialog
-                alert = new AlertDialog.Builder(getContext());
-                alert.setTitle("GPS settings");
-                alert.setMessage("GPS tidak diaktifkan. Apakah Anda ingin pergi ke menu pengaturan?");
-                alert.setCancelable(false);
-                alert.setPositiveButton("Ya", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        // Goto setting page for gps activated
-                        startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
-                    }
-                });
-                alert.setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                });
-                alert.show();
-            } else {
-                cekPermission();
-            }
+        if (!isProviderEnable()) {
+            // If is not enabled showing alert dialog
+            alert = new AlertDialog.Builder(getContext());
+            alert.setTitle("GPS settings");
+            alert.setMessage("GPS tidak diaktifkan. Apakah Anda ingin pergi ke menu pengaturan?");
+            alert.setCancelable(false);
+            alert.setPositiveButton("Ya", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    // Goto setting page for gps activated
+                    startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+                }
+            });
+            alert.setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            });
+            alert.show();
+        } else {
+            cekPermission();
         }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        shimmerFrameLayoutSlider.startShimmer();
+    }
+
+    @Override
+    public void onPause() {
+        shimmerFrameLayoutSlider.stopShimmer();
+        super.onPause();
     }
 
     // Request permission function
@@ -266,21 +296,6 @@ public class BerandaFragment extends Fragment {
     }
 
     private void showJadwalSholat(int year, int month, int day, double latitude, double longitude, int timezone) {
-
-//        for (int i = 0; i < 3; i++) {
-//            double lat_ = 0, long_ = 0;
-//            if (i == 0) {
-//                lat_ = latitude;
-//                long_ = longitude;
-//            } else if (i == 1) {
-//                lat_ = 21.422487;
-//                long_ = 39.826206;
-//            } else {
-//                lat_ = 24.470901;
-//                long_ = 39.612236;
-//            }
-//        }
-
         berandaViewModel.jadwalSholat(
                 year,
                 month,
@@ -303,54 +318,6 @@ public class BerandaFragment extends Fragment {
                 }
             }
         });
-
-//        sliderAdapter = new SliderAdapter(list);
-//        sliderView.setSliderAdapter(sliderAdapter);
-
-//        isLoaded = true;
-//        dialog.dismiss();
-//        berandaViewModel.jadwalSholat(
-//                year,
-//                month,
-//                day,
-//                latitude,
-//                longitude,
-//                timezone
-//        ).observe(getActivity(), new Observer<JadwalSholatResponse>() {
-//            @Override
-//            public void onChanged(JadwalSholatResponse jadwalSholatResponse) {
-//                if (jadwalSholatResponse != null) {
-////                    JadwalSholatResponse.Data.DetailData.DetailDetailData jadwal = jadwalSholatResponse.getData().getData().getData();
-////                    imsak.setText(jadwal.getShortImsak());
-////                    subuh.setText(jadwal.getShortShubuh());
-////                    terbit.setText(jadwal.getShortSyuruq());
-////                    dhuha.setText(jadwal.getShortDhuha());
-////                    dzuhur.setText(jadwal.getShortDhuhur());
-////                    ashar.setText(jadwal.getShortAshar());
-////                    maghrib.setText(jadwal.getShortMaghrib());
-////                    isya.setText(jadwal.getShortIsya());
-////
-////                    JadwalSholatResponse.Data.DetailData.DetailDate.DateText dates = jadwalSholatResponse.getData().getData().getDate().getText();
-////                    hijriah.setText(dates.getH());
-////                    masehi.setText(dates.getM());
-//
-//                    list.add(jadwalSholatResponse);
-//
-//                    isLoaded = true;
-//                }
-//                dialog.dismiss();
-//
-//                showJadwalSholat(
-//                        Utility.getYear(), Utility.getMonth(), Utility.getDay(),
-//                        21.422487,
-//                        39.826206, Utility.getGMT());
-//
-//                showJadwalSholat(
-//                        Utility.getYear(), Utility.getMonth(), Utility.getDay(),
-//                        24.470901,
-//                        39.612236, Utility.getGMT());
-//            }
-//        });
     }
 
     public void showJadwalSholatMecca(int year, int month, int day, double latitude, double longitude, int timezone) {
@@ -399,7 +366,10 @@ public class BerandaFragment extends Fragment {
                     sliderAdapter = new SliderAdapter(list);
                     sliderView.setSliderAdapter(sliderAdapter);
 
-                    isLoaded = true;
+                    shimmerFrameLayoutSlider.stopShimmer();
+                    shimmerFrameLayoutSlider.setVisibility(View.GONE);
+                    sliderView.setVisibility(View.VISIBLE);
+
                     dialog.dismiss();
                 }
             }

@@ -95,4 +95,7 @@ dependencies {
     //location
     implementation 'com.google.android.gms:play-services-gcm:17.0.0'
     implementation 'com.google.android.gms:play-services-location:17.1.0'
+
+    //shimmer
+    implementation 'com.facebook.shimmer:shimmer:0.5.0@aar'
 }
