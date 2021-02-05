@@ -199,7 +199,7 @@ public class BerandaFragment extends Fragment {
                     list.clear();
                     sliderAdapter.notifyDataSetChanged();
                 }
-                onStart();
+                checkLolation();
                 new Handler().postDelayed(new Runnable() {
                     @Override public void run() {
                         swipeRefreshLayout.setRefreshing(false);
@@ -211,10 +211,7 @@ public class BerandaFragment extends Fragment {
         return view;
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
-        // Check if gps provider is not enabled
+    public void checkLolation() {
         if (!isProviderEnable()) {
             // If is not enabled showing alert dialog
             alert = new AlertDialog.Builder(getContext());
@@ -237,6 +234,14 @@ public class BerandaFragment extends Fragment {
             alert.show();
         } else {
             cekPermission();
+        }
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        if (list.isEmpty()) {
+            checkLolation();
         }
     }
 
