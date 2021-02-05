@@ -82,13 +82,14 @@
             app:shapeAppearance="@style/ShapeAppearance.App.CircleImageView" />
 
         <TextView
+            android:id="@+id/textViewNamaLengkap"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_9sdp"
             android:layout_marginLeft="@dimen/_9sdp"
             android:layout_weight="1"
             android:fontFamily="@font/catamaran_regular"
-            android:text="Mr. Fakhri Fahreza"
+            android:text="Pengguna"
             android:textColor="@android:color/black"
             android:textSize="@dimen/_12sdp" />
 

@@ -9,7 +9,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.cardview.widget.CardView
-        android:visibility="gone"
         android:id="@+id/cardViewIncoming"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

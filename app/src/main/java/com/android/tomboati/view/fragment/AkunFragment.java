@@ -161,7 +161,7 @@ public class AkunFragment extends Fragment {
 
     private void setAkun() {
         textViewNamaLengkap.setText(AppPreference.getUser(getContext()).getNamaLengkap());
-        textViewNomorHP.setText(AppPreference.getUser(getContext()).getNomorHP());
+        textViewNomorHP.setText("+" + AppPreference.getUser(getContext()).getNomorHP());
 
 //        Picasso.get()
 //                .load(AppPreference.getUser(getContext()).getFoto())

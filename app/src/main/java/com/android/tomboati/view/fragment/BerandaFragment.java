@@ -3,6 +3,7 @@ package com.android.tomboati.view.fragment;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.location.Address;
 import android.location.Location;
@@ -22,12 +23,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.tomboati.R;
 import com.android.tomboati.adapter.SliderAdapter;
 import com.android.tomboati.api.response.JadwalSholatResponse;
 import com.android.tomboati.model.SliderModel;
+import com.android.tomboati.preference.AppPreference;
 import com.android.tomboati.utils.Utility;
 import com.android.tomboati.view.activity.DoaDzikirActivity;
 import com.android.tomboati.view.activity.JadwalSholatActivity;
@@ -35,7 +38,12 @@ import com.android.tomboati.view.activity.SholatActivity;
 import com.android.tomboati.view.activity.UmrohHajiActivity;
 import com.android.tomboati.view.activity.WisataReligiActivity;
 import com.android.tomboati.viewmodel.BerandaViewModel;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.Priority;
+import com.bumptech.glide.load.DecodeFormat;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.facebook.shimmer.ShimmerFrameLayout;
+import com.google.android.material.imageview.ShapeableImageView;
 import com.intentfilter.androidpermissions.PermissionManager;
 import com.intentfilter.androidpermissions.models.DeniedPermissions;
 import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType;
@@ -59,6 +67,9 @@ public class BerandaFragment extends Fragment {
     private ShimmerFrameLayout shimmerFrameLayoutSlider;
     private CardView cardViewUmrohHaji, cardViewWisataReligi, cardViewDoaDzikir, cardViewSholat, cardViewAlQuran, cardViewKalenderHijriah, cardViewQurbanAqiqah, cardViewKomunitas, cardViewTomboatiChannel, cardViewLiveMekkah;
 
+    private ShapeableImageView shapeableImageViewFoto;
+    private TextView textViewNamaLengkap;
+
     private PermissionManager permissionManager;
     private ProgressDialog dialog;
     private AlertDialog.Builder alert;
@@ -77,6 +88,7 @@ public class BerandaFragment extends Fragment {
         berandaViewModel = ViewModelProviders.of(getActivity()).get(BerandaViewModel.class);
         View view = inflater.inflate(R.layout.fragment_beranda, container, false);
         sliderView = view.findViewById(R.id.sliderView);
+        dialog = new ProgressDialog(getContext());
         cardViewUmrohHaji = view.findViewById(R.id.cardViewUmrohHaji);
         cardViewSholat = view.findViewById(R.id.cardViewSholat);
         cardViewWisataReligi = view.findViewById(R.id.cardViewWisataReligi);
@@ -89,6 +101,8 @@ public class BerandaFragment extends Fragment {
         cardViewKomunitas = view.findViewById(R.id.cardViewKomunitas);
         swipeRefreshLayout = view.findViewById(R.id.swipeRefreshLayout);
         shimmerFrameLayoutSlider = view.findViewById(R.id.shimmerFrameLayoutSlider);
+        shapeableImageViewFoto = view.findViewById(R.id.shapeableImageViewFoto);
+        textViewNamaLengkap = view.findViewById(R.id.textViewNamaLengkap);
 
         sliderView.setIndicatorAnimation(IndicatorAnimationType.WORM); //set indicator animation by using IndicatorAnimationType. :WORM or THIN_WORM or COLOR or DROP or FILL or NONE or SCALE or SCALE_DOWN or SLIDE and SWAP!!
         sliderView.setSliderTransformAnimation(SliderAnimations.SIMPLETRANSFORMATION);
@@ -98,6 +112,9 @@ public class BerandaFragment extends Fragment {
         sliderView.setAutoCycle(true);
         sliderView.startAutoCycle();
 
+        if (AppPreference.getUser(getContext()) != null) {
+            setAkun();
+        }
 
 //        sliderAdapter = new SliderAdapter(list);
 //        sliderView.setSliderAdapter(sliderAdapter);
@@ -178,6 +195,10 @@ public class BerandaFragment extends Fragment {
                 shimmerFrameLayoutSlider.startShimmer();
                 shimmerFrameLayoutSlider.setVisibility(View.VISIBLE);
                 sliderView.setVisibility(View.GONE);
+                if (!list.isEmpty()) {
+                    list.clear();
+                    sliderAdapter.notifyDataSetChanged();
+                }
                 onStart();
                 new Handler().postDelayed(new Runnable() {
                     @Override public void run() {
@@ -240,7 +261,15 @@ public class BerandaFragment extends Fragment {
                     @Override
                     public void onPermissionGranted() {
                         // Write command here where permission is granted
-                        showLocation();
+                        if (Utility.getLatitude() == 0.0 && Utility.getLongitude() == 0.0) {
+                            showLocation();
+                        } else {
+                            showJadwalSholat(
+                                    Utility.getYear(), Utility.getMonth(), Utility.getDay(),
+                                    Utility.getLatitude(),
+                                    Utility.getLongitude(), Utility.getGMT()
+                            );
+                        }
                     }
 
                     @Override
@@ -296,6 +325,10 @@ public class BerandaFragment extends Fragment {
     }
 
     private void showJadwalSholat(int year, int month, int day, double latitude, double longitude, int timezone) {
+        if (!list.isEmpty()) {
+            list.clear();
+            sliderAdapter.notifyDataSetChanged();
+        }
         berandaViewModel.jadwalSholat(
                 year,
                 month,
@@ -370,7 +403,9 @@ public class BerandaFragment extends Fragment {
                     shimmerFrameLayoutSlider.setVisibility(View.GONE);
                     sliderView.setVisibility(View.VISIBLE);
 
-                    dialog.dismiss();
+                    if (dialog.isShowing()) {
+                        dialog.dismiss();
+                    }
                 }
             }
         });
@@ -401,8 +436,7 @@ public class BerandaFragment extends Fragment {
     }
 
     private void showProgressDialog() {
-        dialog = new ProgressDialog(getContext());
-        dialog.setMessage("Tunggu Sebentar...");
+        dialog.setMessage("Mohon Tunggu Sebentar...");
         dialog.setCancelable(true);
         dialog.show();
     }
@@ -413,5 +447,21 @@ public class BerandaFragment extends Fragment {
         Uri uri = Uri.fromParts("package", getContext().getPackageName(), null);
         intent.setData(uri);
         startActivityForResult(intent, permissionManager.getResultCode());
+    }
+
+    private void setAkun() {
+        textViewNamaLengkap.setText(AppPreference.getUser(getContext()).getNamaLengkap());
+
+        Glide.with(getContext())
+                .load(AppPreference.getUser(getContext()).getFoto())
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .skipMemoryCache(true)
+                .dontAnimate()
+                .dontTransform()
+                .priority(Priority.IMMEDIATE)
+                .encodeFormat(Bitmap.CompressFormat.PNG)
+                .format(DecodeFormat.DEFAULT)
+                .placeholder(R.drawable.ic_logo)
+                .into(shapeableImageViewFoto);
     }
 }

@@ -34,7 +34,7 @@ public class ChatResponse extends BaseResponse {
         @SerializedName("SEENAT")
         private String senAt;
 
-        @SerializedName("isAdmin")
+        @SerializedName("ISADMIN")
         private int isAdmin;
 
         public String getIdChat() {

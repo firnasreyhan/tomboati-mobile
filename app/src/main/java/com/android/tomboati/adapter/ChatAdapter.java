@@ -1,6 +1,7 @@
 package com.android.tomboati.adapter;
 
 import android.graphics.Bitmap;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,6 +42,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         if (list.get(position).getIsAdmin() == 1) {
+            Log.e("isAdmin", "true");
             holder.cardViewOutgoing.setVisibility(View.GONE);
             holder.cardViewIncoming.setVisibility(View.VISIBLE);
 
