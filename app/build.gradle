@@ -98,4 +98,7 @@ dependencies {
 
     //shimmer
     implementation 'com.facebook.shimmer:shimmer:0.5.0@aar'
+
+    //justifiedtextview
+    implementation 'com.codesgood:justifiedtextview:1.0.2'
 }
