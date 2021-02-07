@@ -32,7 +32,7 @@
 
             <TextView
                 android:id="@+id/textViewNamaSurah"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Nama Surah"
                 android:fontFamily="@font/cinzel_bold"
@@ -41,7 +41,7 @@
 
             <TextView
                 android:id="@+id/textViewArtiSurahJumlahAyat"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_6sdp"
                 android:text="Arti Surah (Jumlah Ayat)"

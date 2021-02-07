@@ -16,6 +16,7 @@
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
 
     <com.facebook.shimmer.ShimmerFrameLayout
+        android:visibility="gone"
         android:id="@+id/shimmerFrameLayoutAyat"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -52,11 +53,67 @@
 
     </com.facebook.shimmer.ShimmerFrameLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewAyat"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:overScrollMode="never"
-        android:visibility="gone"/>
+        android:orientation="vertical">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewAyat"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="never"
+            android:layout_weight="1"/>
+
+        <LinearLayout
+            android:id="@+id/linearLayoutContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_6sdp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:background="@color/dark_green">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center_vertical"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/textViewNamaSurah"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_6sdp"
+                    android:text="Nama Surah"
+                    android:fontFamily="@font/cinzel_bold"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/_9sdp" />
+
+                <SeekBar
+                    android:id="@+id/seekBarAudio"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/materialButtonPlayPause"
+                android:layout_width="@dimen/_52sdp"
+                android:layout_height="wrap_content"
+                android:insetLeft="0dp"
+                android:insetTop="0dp"
+                android:insetRight="0dp"
+                android:insetBottom="0dp"
+                app:icon="@drawable/ic_play"
+                app:iconGravity="textStart"
+                app:iconPadding="0dp"
+                app:elevation="0dp"
+                app:backgroundTint="@color/dark_green"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
 
 </LinearLayout>
