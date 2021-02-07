@@ -31,7 +31,7 @@ public class DoaDzikirActivity extends AppCompatActivity {
         cardViewAsmaulHusna.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(v.getContext(), AsmaulHusnaActivity.class));
+                startActivity(new Intent(v.getContext(), NewAsmaulHusnaActivity.class));
             }
         });
     }
