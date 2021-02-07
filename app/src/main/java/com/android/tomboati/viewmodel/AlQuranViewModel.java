@@ -25,8 +25,4 @@ public class AlQuranViewModel extends AndroidViewModel {
     public MutableLiveData<List<SurahResponse>> getSurah() {
         return repository.getSurah();
     }
-
-    public MutableLiveData<List<AyatResponse>> getAyat(String idSurah) {
-        return repository.getAyat(idSurah);
-    }
 }

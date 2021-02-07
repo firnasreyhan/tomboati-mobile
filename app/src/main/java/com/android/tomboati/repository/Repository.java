@@ -83,7 +83,7 @@ public class Repository {
         return listMutableLiveData;
     }
 
-    public MutableLiveData<BaseResponse> signUp(RequestBody noKTP, RequestBody email, RequestBody password, RequestBody namaLengkap, RequestBody noHP, MultipartBody.Part fileKTP, MultipartBody.Part foto) {
+    public MutableLiveData<BaseResponse> signUp(RequestBody noKTP, RequestBody email, RequestBody password, RequestBody namaLengkap, RequestBody noHP, RequestBody token, MultipartBody.Part fileKTP, MultipartBody.Part foto) {
         MutableLiveData<BaseResponse> baseResponseMutableLiveData = new MutableLiveData<>();
         apiInterfaceTomboAti.signUp(
                 noKTP,
@@ -91,6 +91,7 @@ public class Repository {
                 password,
                 namaLengkap,
                 noHP,
+                token,
                 fileKTP,
                 foto
         ).enqueue(new Callback<BaseResponse>() {
@@ -226,20 +227,20 @@ public class Repository {
         return data;
     }
 
-    public MutableLiveData<List<AyatResponse>> getAyat(String idSurah) {
-        MutableLiveData<List<AyatResponse>> data = new MutableLiveData<>();
+    public MutableLiveData<AyatResponse> getAyat(String idSurah) {
+        MutableLiveData<AyatResponse> data = new MutableLiveData<>();
         apiInterfaceAlQuran.getAyat(
                 idSurah
-        ).enqueue(new Callback<List<AyatResponse>>() {
+        ).enqueue(new Callback<AyatResponse>() {
             @Override
-            public void onResponse(Call<List<AyatResponse>> call, Response<List<AyatResponse>> response) {
+            public void onResponse(Call<AyatResponse> call, Response<AyatResponse> response) {
                 if (response.code() == 200) {
                     data.setValue(response.body());
                 }
             }
 
             @Override
-            public void onFailure(Call<List<AyatResponse>> call, Throwable t) {
+            public void onFailure(Call<AyatResponse> call, Throwable t) {
                 data.setValue(null);
                 Log.e("getAyat", t.getMessage());
             }

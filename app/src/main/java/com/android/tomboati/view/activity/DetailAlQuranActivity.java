@@ -48,11 +48,11 @@ public class DetailAlQuranActivity extends AppCompatActivity {
 
         detailAlQuranViewModel.getAyat(
                 idSurah
-        ).observe(this, new Observer<List<AyatResponse>>() {
+        ).observe(this, new Observer<AyatResponse>() {
             @Override
-            public void onChanged(List<AyatResponse> ayatResponses) {
-                if (!ayatResponses.isEmpty()) {
-                    ayatAdapter = new AyatAdapter(ayatResponses);
+            public void onChanged(AyatResponse ayatResponses) {
+                if (ayatResponses.isStatus()) {
+                    ayatAdapter = new AyatAdapter(ayatResponses.getAyat());
                     recyclerViewAyat.setAdapter(ayatAdapter);
 
                     recyclerViewAyat.setVisibility(View.VISIBLE);

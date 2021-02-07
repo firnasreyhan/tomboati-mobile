@@ -15,9 +15,9 @@ import com.android.tomboati.api.response.AyatResponse;
 import java.util.List;
 
 public class AyatAdapter extends RecyclerView.Adapter<AyatAdapter.ViewHolder> {
-    private List<AyatResponse> list;
+    private List<AyatResponse.AyatModel> list;
 
-    public AyatAdapter(List<AyatResponse> list) {
+    public AyatAdapter(List<AyatResponse.AyatModel> list) {
         this.list = list;
     }
 
@@ -30,8 +30,8 @@ public class AyatAdapter extends RecyclerView.Adapter<AyatAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.textViewAr.setText(list.get(position).getAr());
-        holder.textViewId.setText(list.get(position).getNomor() + ". " + list.get(position).getId());
         holder.textViewTr.setText(list.get(position).getNomor() + ". " + Html.fromHtml(list.get(position).getTr()).toString());
+        holder.textViewId.setText(list.get(position).getNomor() + ". " + list.get(position).getIdn());
     }
 
     @Override

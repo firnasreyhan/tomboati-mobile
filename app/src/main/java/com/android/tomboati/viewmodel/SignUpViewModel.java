@@ -47,12 +47,14 @@ public class SignUpViewModel extends AndroidViewModel {
         RequestBody password = RequestBody.create(MediaType.parse("text/plain"), password_);
         RequestBody namaLengkap = RequestBody.create(MediaType.parse("text/plain"), namaLengkap_);
         RequestBody noHP = RequestBody.create(MediaType.parse("text/plain"), "62"+ noHP_.substring(1));
+        RequestBody token = RequestBody.create(MediaType.parse("text/plain"), updateToken(email_));
         return repository.signUp(
                 noKTP,
                 email,
                 password,
                 namaLengkap,
                 noHP,
+                token,
                 compressFile(fileKTP, "fileKTP"),
                 compressFile(foto, "foto")
         );

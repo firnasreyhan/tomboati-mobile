@@ -31,16 +31,16 @@ public class SurahAdapter extends RecyclerView.Adapter<SurahAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.textViewNomor.setText(list.get(position).getNomor() + ".");
-        holder.textViewNamaSurah.setText(list.get(position).getNama());
-        holder.textViewArtiSurahJumlahAyat.setText(list.get(position).getArti() + " (" + list.get(position).getAyat() + ")");
-        holder.textViewAsma.setText(list.get(position).getAsma());
+        holder.textViewNamaSurah.setText(list.get(position).getNamaLatin());
+        holder.textViewArtiSurahJumlahAyat.setText(list.get(position).getArti() + " (" + list.get(position).getJumlahAyat() + ")");
+        holder.textViewAsma.setText(list.get(position).getNama());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), DetailAlQuranActivity.class);
                 intent.putExtra("ID_SURAH", list.get(position).getNomor());
-                intent.putExtra("NAMA_SURAH", list.get(position).getNama());
+                intent.putExtra("NAMA_SURAH", list.get(position).getNamaLatin());
                 v.getContext().startActivity(intent);
             }
         });

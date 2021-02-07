@@ -3,73 +3,59 @@ package com.android.tomboati.api.response;
 import com.google.gson.annotations.SerializedName;
 
 public class SurahResponse {
-    @SerializedName("arti")
-    private String arti;
-
-    @SerializedName("asma")
-    private String asma;
-
-    @SerializedName("audio")
-    private String audio;
-
-    @SerializedName("ayat")
-    private String ayat;
-
-    @SerializedName("keterangan")
-    private String keterangan;
+    @SerializedName("nomor")
+    private String nomor;
 
     @SerializedName("nama")
     private String nama;
 
-    @SerializedName("nomor")
-    private String nomor;
+    @SerializedName("nama_latin")
+    private String namaLatin;
 
-    @SerializedName("rukuk")
-    private String rukuk;
+    @SerializedName("jumlah_ayat")
+    private String jumlahAyat;
 
-    @SerializedName("type")
-    private String type;
+    @SerializedName("tempat_turun")
+    private String tempatTurun;
 
-    @SerializedName("urut")
-    private String urut;
+    @SerializedName("arti")
+    private String arti;
 
-    public String getArti() {
-        return arti;
-    }
+    @SerializedName("deskripsi")
+    private String deskripsi;
 
-    public String getAsma() {
-        return asma;
-    }
+    @SerializedName("audio")
+    private String audio;
 
-    public String getAudio() {
-        return audio;
-    }
-
-    public String getAyat() {
-        return ayat;
-    }
-
-    public String getKeterangan() {
-        return keterangan;
+    public String getNomor() {
+        return nomor;
     }
 
     public String getNama() {
         return nama;
     }
 
-    public String getNomor() {
-        return nomor;
+    public String getNamaLatin() {
+        return namaLatin;
     }
 
-    public String getRukuk() {
-        return rukuk;
+    public String getJumlahAyat() {
+        return jumlahAyat;
     }
 
-    public String getType() {
-        return type;
+    public String getTempatTurun() {
+        return tempatTurun;
     }
 
-    public String getUrut() {
-        return urut;
+    public String getArti() {
+        return arti;
+    }
+
+    public String getDeskripsi() {
+        return deskripsi;
+    }
+
+    public String getAudio() {
+        return audio;
     }
 }

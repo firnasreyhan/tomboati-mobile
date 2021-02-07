@@ -39,6 +39,7 @@ public interface ApiInterfaceTomboAti {
             @Part("password") RequestBody password,
             @Part("namaLengkap") RequestBody namaLengkap,
             @Part("nomorHP") RequestBody noHP,
+            @Part("token") RequestBody token,
             @Part MultipartBody.Part fileKTP,
             @Part MultipartBody.Part foto
     );

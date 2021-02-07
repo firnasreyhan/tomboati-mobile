@@ -2,32 +2,64 @@ package com.android.tomboati.api.response;
 
 import com.google.gson.annotations.SerializedName;
 
-public class AyatResponse {
-    @SerializedName("ar")
-    private String ar;
+import java.util.List;
 
-    @SerializedName("id")
-    private String id;
+public class AyatResponse extends SurahResponse{
+    @SerializedName("status")
+    private boolean status;
 
-    @SerializedName("nomor")
-    private String nomor;
+    @SerializedName("ayat")
+    private List<AyatModel> ayat;
 
-    @SerializedName("tr")
-    private String tr;
-
-    public String getAr() {
-        return ar;
+    public boolean isStatus() {
+        return status;
     }
 
-    public String getId() {
-        return id;
+    public List<AyatModel> getAyat() {
+        return ayat;
     }
 
-    public String getNomor() {
-        return nomor;
-    }
+    public static class AyatModel {
+        @SerializedName("id")
+        private String id;
 
-    public String getTr() {
-        return tr;
+        @SerializedName("surah")
+        private String surah;
+
+        @SerializedName("nomor")
+        private String nomor;
+
+        @SerializedName("ar")
+        private String ar;
+
+        @SerializedName("tr")
+        private String tr;
+
+        @SerializedName("idn")
+        private String idn;
+
+        public String getId() {
+            return id;
+        }
+
+        public String getSurah() {
+            return surah;
+        }
+
+        public String getNomor() {
+            return nomor;
+        }
+
+        public String getAr() {
+            return ar;
+        }
+
+        public String getTr() {
+            return tr;
+        }
+
+        public String getIdn() {
+            return idn;
+        }
     }
 }

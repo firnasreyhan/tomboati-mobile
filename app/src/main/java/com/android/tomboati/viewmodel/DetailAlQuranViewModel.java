@@ -20,7 +20,7 @@ public class DetailAlQuranViewModel extends AndroidViewModel {
         repository = new Repository();
     }
 
-    public MutableLiveData<List<AyatResponse>> getAyat(String idSurah) {
+    public MutableLiveData<AyatResponse> getAyat(String idSurah) {
         return repository.getAyat(idSurah);
     }
 }

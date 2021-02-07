@@ -22,11 +22,11 @@ import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface ApiInterfaceAlQuran {
-    @GET("data")
+    @GET("surat")
     Call<List<SurahResponse>> getSurah();
 
     @GET("surat/{idSurah}")
-    Call<List<AyatResponse>> getAyat(
+    Call<AyatResponse> getAyat(
             @Path("idSurah") String idSurah
     );
 }
