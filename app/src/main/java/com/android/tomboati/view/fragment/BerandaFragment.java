@@ -33,6 +33,7 @@ import com.android.tomboati.model.SliderModel;
 import com.android.tomboati.preference.AppPreference;
 import com.android.tomboati.utils.Utility;
 import com.android.tomboati.view.activity.AlQuranActivity;
+import com.android.tomboati.view.activity.DetailNewsActivity;
 import com.android.tomboati.view.activity.DoaDzikirActivity;
 import com.android.tomboati.view.activity.JadwalSholatActivity;
 import com.android.tomboati.view.activity.SholatActivity;
@@ -44,6 +45,7 @@ import com.bumptech.glide.Priority;
 import com.bumptech.glide.load.DecodeFormat;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.facebook.shimmer.ShimmerFrameLayout;
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.imageview.ShapeableImageView;
 import com.intentfilter.androidpermissions.PermissionManager;
 import com.intentfilter.androidpermissions.models.DeniedPermissions;
@@ -69,7 +71,8 @@ public class BerandaFragment extends Fragment {
     private CardView cardViewUmrohHaji, cardViewWisataReligi, cardViewDoaDzikir, cardViewSholat, cardViewAlQuran, cardViewKalenderHijriah, cardViewQurbanAqiqah, cardViewKomunitas, cardViewTomboatiChannel, cardViewLiveMekkah;
 
     private ShapeableImageView shapeableImageViewFoto;
-    private TextView textViewNamaLengkap;
+    private TextView textViewNamaLengkap, textViewSortNews;
+    private MaterialButton materialButtonDetailNews;
 
     private PermissionManager permissionManager;
     private ProgressDialog dialog;
@@ -104,6 +107,8 @@ public class BerandaFragment extends Fragment {
         shimmerFrameLayoutSlider = view.findViewById(R.id.shimmerFrameLayoutSlider);
         shapeableImageViewFoto = view.findViewById(R.id.shapeableImageViewFoto);
         textViewNamaLengkap = view.findViewById(R.id.textViewNamaLengkap);
+        textViewSortNews = view.findViewById(R.id.textViewSortNews);
+        materialButtonDetailNews = view.findViewById(R.id.materialButtonDetailNews);
 
         sliderView.setIndicatorAnimation(IndicatorAnimationType.WORM); //set indicator animation by using IndicatorAnimationType. :WORM or THIN_WORM or COLOR or DROP or FILL or NONE or SCALE or SCALE_DOWN or SLIDE and SWAP!!
         sliderView.setSliderTransformAnimation(SliderAnimations.SIMPLETRANSFORMATION);
@@ -116,6 +121,15 @@ public class BerandaFragment extends Fragment {
         if (AppPreference.getUser(getContext()) != null) {
             setAkun();
         }
+
+        String news = "Liputan6.com, Jakarta - Arab Saudi menangguhkan semua penerbangan internasional menuju negara tersebut selama sepekan. Penangguhan tersebut mulai berlaku Senin 21 Desember 2020. Sehubungan dengan hal ini, maskapai Garuda Indonesia terus melakukan komunikasi intensif dengan otoritas terkait guna memastikan hal yang perlu diantisipasi, menyusul pembatasan operasional layanan penerbangan tersebut.";
+        String[] senteces = news.split("\\. ");
+        Log.e("size", String.valueOf(senteces.length));
+        String shortNews = "";
+        for (int i = 0; i < 3; i++) {
+            shortNews = shortNews + senteces[i] + ". ";
+        }
+        textViewSortNews.setText(shortNews);
 
 //        sliderAdapter = new SliderAdapter(list);
 //        sliderView.setSliderAdapter(sliderAdapter);
@@ -206,6 +220,13 @@ public class BerandaFragment extends Fragment {
                         swipeRefreshLayout.setRefreshing(false);
                     }
                 }, 3000);
+            }
+        });
+
+        materialButtonDetailNews.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(v.getContext(), DetailNewsActivity.class));
             }
         });
 

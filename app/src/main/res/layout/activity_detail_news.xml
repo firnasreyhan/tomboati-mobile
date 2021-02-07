@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".view.activity.DetailNewsActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:background="@color/dark_green"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_13sdp"
+                android:layout_marginLeft="@dimen/_13sdp"
+                android:layout_marginRight="@dimen/_13sdp"
+                android:fontFamily="@font/catamaran_bold"
+                android:text="Arab Saudi Tutup Penerbangan, Garuda Indonesia Tawarkan Reschedule Gratis ke Penumpang."
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/_11sdp" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_150sdp"
+                android:layout_marginTop="@dimen/_9sdp"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_langit"/>
+
+            <TextView
+                android:id="@+id/textViewSortNews"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_9sdp"
+                android:layout_marginLeft="@dimen/_13sdp"
+                android:layout_marginRight="@dimen/_13sdp"
+                android:fontFamily="@font/catamaran_regular"
+                android:text="Liputan6.com, Jakarta - Arab Saudi menangguhkan semua penerbangan internasional menuju negara tersebut selama sepekan. Penangguhan tersebut mulai berlaku Senin 21 Desember 2020. Sehubungan dengan hal ini, maskapai Garuda Indonesia terus melakukan komunikasi intensif dengan otoritas terkait guna memastikan hal yang perlu diantisipasi, menyusul pembatasan operasional layanan penerbangan tersebut."
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/_9sdp" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>
