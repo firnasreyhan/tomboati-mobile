@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/_1sdp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_13sdp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textViewTanggalNotifikasi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/catamaran_regular"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="@dimen/_7sdp"
+            android:text="1 Januari 2020"/>
+
+        <TextView
+            android:id="@+id/textViewJudulNotifikasi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_3sdp"
+            android:fontFamily="@font/catamaran_bold"
+            android:text="Judul Notifikasi"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/_11sdp" />
+
+        <TextView
+            android:id="@+id/textViewIsiNotifikasi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_3sdp"
+            android:fontFamily="@font/catamaran_medium"
+            android:text="Isi Notifikasi"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="@dimen/_9sdp" />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
