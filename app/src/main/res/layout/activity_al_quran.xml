@@ -16,48 +16,22 @@
         android:background="@color/dark_green"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
 
-    <com.facebook.shimmer.ShimmerFrameLayout
-        android:id="@+id/shimmerFrameLayoutSurah"
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:orientation="vertical"
-        app:duration="800">
+        android:layout_height="?actionBarSize"
+        android:minHeight="?actionBarSize"
+        app:tabGravity="fill"
+        app:tabIndicatorColor="@color/light_yellow"
+        app:tabIndicatorHeight="4dp"
+        android:background="@color/dark_green"
+        app:tabMode="fixed"/>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <include layout="@layout/item_shimmer_surah" />
-
-            <include layout="@layout/item_shimmer_surah" />
-
-            <include layout="@layout/item_shimmer_surah" />
-
-            <include layout="@layout/item_shimmer_surah" />
-
-            <include layout="@layout/item_shimmer_surah" />
-
-            <include layout="@layout/item_shimmer_surah" />
-
-            <include layout="@layout/item_shimmer_surah" />
-
-            <include layout="@layout/item_shimmer_surah" />
-
-            <include layout="@layout/item_shimmer_surah" />
-
-            <include layout="@layout/item_shimmer_surah" />
-
-        </LinearLayout>
-
-    </com.facebook.shimmer.ShimmerFrameLayout>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewSurah"
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:overScrollMode="never"
-        android:visibility="gone"/>
+        android:layout_height="wrap_content"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:background="@android:color/white"/>
 
 </LinearLayout>
