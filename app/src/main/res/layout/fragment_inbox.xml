@@ -7,135 +7,26 @@
     android:orientation="vertical"
     tools:context=".view.fragment.InboxFragment">
 
-    <LinearLayout
-        android:id="@+id/linearLayoutNoSignIn"
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="@dimen/_13sdp"
-        android:orientation="vertical"
-        android:gravity="center">
+        android:layout_height="?actionBarSize"
+        android:minHeight="?actionBarSize"
+        app:tabGravity="fill"
+        app:tabIndicatorColor="@color/light_yellow"
+        app:tabIndicatorHeight="4dp"
+        android:background="@color/dark_green"
+        app:tabMode="fixed"/>
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/_150sdp"
-            android:adjustViewBounds="true"
-            android:src="@drawable/ic_empty_chat" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_13sdp"
-            android:fontFamily="@font/catamaran_bold"
-            android:text="Silahkan Masuk Ke Dalam Aplikasi Untuk Menghubungi Admin"
-            android:gravity="center"
-            android:textColor="@android:color/black"
-            android:textSize="@dimen/_14sdp" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:visibility="gone"
-        android:id="@+id/linearLayoutYesSignIn"
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:background="@android:color/white"/>
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?actionBarSize"
-            android:background="@color/dark_green"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
-
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="left|center"
-                    android:layout_marginLeft="@dimen/_13sdp"
-                    android:gravity="center"
-                    android:orientation="horizontal"
-                    android:padding="@dimen/_3sdp">
-
-                    <com.google.android.material.imageview.ShapeableImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:adjustViewBounds="true"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/ic_no_profile"
-                        app:shapeAppearance="@style/ShapeAppearance.App.CircleImageView" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/_7sdp"
-                        android:fontFamily="@font/catamaran_bold"
-                        android:text="Admin"
-                        android:textColor="@android:color/white"
-                        android:textSize="@dimen/_13sdp" />
-
-                </LinearLayout>
-
-            </FrameLayout>
-
-        </androidx.appcompat.widget.Toolbar>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerViewChat"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:overScrollMode="never"
-            android:padding="@dimen/_7sdp"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="@dimen/_7sdp"
-            android:gravity="center">
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textInputLayoutChat"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="@dimen/_7sdp"
-                android:layout_weight="1"
-                app:boxBackgroundColor="@android:color/white"
-                app:hintEnabled="false"
-                app:boxCornerRadiusBottomEnd="@dimen/_30sdp"
-                app:boxCornerRadiusBottomStart="@dimen/_30sdp"
-                app:boxCornerRadiusTopEnd="@dimen/_30sdp"
-                app:boxCornerRadiusTopStart="@dimen/_30sdp"
-                app:endIconDrawable="@drawable/ic_camera"
-                app:endIconMode="custom">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/textInputEditTextChat"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Ketik pesan..."
-                    android:inputType="textMultiLine"
-                    android:scrollbars="vertical"
-                    android:fontFamily="@font/catamaran_regular"
-                    android:textColor="#333333"/>
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/floatingActionButtonSend"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:backgroundTint="@color/dark_green"
-                android:src="@drawable/ic_send"
-                app:tint="@color/white"/>
-
-        </LinearLayout>
-
-    </LinearLayout>
+    <androidx.viewpager.widget.ViewPager
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
 </LinearLayout>

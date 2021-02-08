@@ -10,6 +10,8 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,12 +21,14 @@ import android.widget.LinearLayout;
 
 import com.android.tomboati.R;
 import com.android.tomboati.adapter.ChatAdapter;
+import com.android.tomboati.adapter.TabAdapter;
 import com.android.tomboati.api.response.BaseResponse;
 import com.android.tomboati.api.response.ChatResponse;
 import com.android.tomboati.preference.AppPreference;
 import com.android.tomboati.view.activity.ImageChatActivity;
 import com.android.tomboati.viewmodel.ChatViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -32,107 +36,62 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class InboxFragment extends Fragment {
-    private ChatViewModel chatViewModel;
-    private ChatAdapter chatAdapter;
-    private RecyclerView recyclerViewChat;
-    private TextInputEditText textInputEditTextChat;
-    private TextInputLayout textInputLayoutChat;
-    private FloatingActionButton floatingActionButtonSend;
-    private LinearLayout linearLayoutNoSignIn, linearLayoutYesSignIn;
+
+    private TabAdapter tabAdapter;
+    private TabLayout tabLayout;
+    private ViewPager viewPager;
+    private int[] tabIcons = {
+            R.drawable.ic_chat,
+            R.drawable.ic_notification
+    };
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        chatViewModel = ViewModelProviders.of(getActivity()).get(ChatViewModel.class);
         View view = inflater.inflate(R.layout.fragment_inbox, container, false);
-        recyclerViewChat = view.findViewById(R.id.recyclerViewChat);
-        textInputEditTextChat = view.findViewById(R.id.textInputEditTextChat);
-        textInputLayoutChat = view.findViewById(R.id.textInputLayoutChat);
-        floatingActionButtonSend = view.findViewById(R.id.floatingActionButtonSend);
-        linearLayoutNoSignIn = view.findViewById(R.id.linearLayoutNoSignIn);
-        linearLayoutYesSignIn = view.findViewById(R.id.linearLayoutYesSignIn);
 
-        final LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
-        linearLayoutManager.setStackFromEnd(true);
-        recyclerViewChat.setLayoutManager(linearLayoutManager);
-        recyclerViewChat.setNestedScrollingEnabled(false);
-        recyclerViewChat.setHasFixedSize(true);
+        viewPager = view.findViewById(R.id.viewPager);
+        tabLayout = view.findViewById(R.id.tabLayout);
 
-        if (AppPreference.getUser(getContext()) != null) {
-            linearLayoutYesSignIn.setVisibility(View.VISIBLE);
-            linearLayoutNoSignIn.setVisibility(View.GONE);
-            chatViewModel.getChat().observe(getActivity(), new Observer<ChatResponse>() {
-                @Override
-                public void onChanged(ChatResponse chatResponse) {
-                    if (!chatResponse.isError()) {
-                        if (!chatResponse.getData().isEmpty()) {
-                            chatAdapter = new ChatAdapter(chatResponse.getData());
-                            recyclerViewChat.setAdapter(chatAdapter);
-                            recyclerViewChat.smoothScrollToPosition(chatAdapter.getItemCount() -1);
-                        }
-                    }
-                }
-            });
+        tabAdapter = new TabAdapter(getActivity().getSupportFragmentManager(), getContext());
+        tabAdapter.addFragment(new ChatFragment(), "Chat", tabIcons[0]);
+        tabAdapter.addFragment(new NotificationFragment(), "Notification", tabIcons[1]);
 
+        viewPager.setAdapter(tabAdapter);
+        tabLayout.setupWithViewPager(viewPager);
 
-            floatingActionButtonSend.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (!textInputEditTextChat.getText().toString().isEmpty()) {
-                        chatViewModel.sendChat(
-                                textInputEditTextChat.getText().toString()
-                        ).observe(getActivity(), new Observer<BaseResponse>() {
-                            @Override
-                            public void onChanged(BaseResponse baseResponse) {
-                                if (!baseResponse.isError()) {
-//                                    ChatResponse.ChatModel model = new ChatResponse.ChatModel();
-//                                    model.setMessage(textInputEditTextChat.getText().toString());
-//                                    model.setIsAdmin(0);
-//                                    model.setIsSeen(0);
-//                                    chatAdapter.addData(model);
-//                                    recyclerViewChat.scrollToPosition(chatAdapter.getItemCount() - 1);
-                                    textInputEditTextChat.getText().clear();
-                                    onResume();
-                                }
-                            }
-                        });
-                    }
-                }
-            });
+        highLightCurrentTab(0);
 
-            textInputLayoutChat.setEndIconOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(v.getContext(), ImageChatActivity.class);
-                    intent.putExtra("CHAT", textInputEditTextChat.getText().toString());
-                    startActivity(intent);
-                }
-            });
-        } else {
-            linearLayoutYesSignIn.setVisibility(View.GONE);
-            linearLayoutNoSignIn.setVisibility(View.VISIBLE);
-        }
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                highLightCurrentTab(position);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
 
         return view;
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        if (AppPreference.getUser(getContext()) != null) {
-            chatViewModel.getChat().observe(getActivity(), new Observer<ChatResponse>() {
-                @Override
-                public void onChanged(ChatResponse chatResponse) {
-                    if (!chatResponse.isError()) {
-                        if (!chatResponse.getData().isEmpty()) {
-                            chatAdapter = new ChatAdapter(chatResponse.getData());
-                            recyclerViewChat.setAdapter(chatAdapter);
-                            recyclerViewChat.smoothScrollToPosition(chatAdapter.getItemCount() -1);
-                        }
-                    }
-                }
-            });
-        }
+    private void highLightCurrentTab(int position) {
+        for (int i = 0; i < tabLayout.getTabCount(); i++) {
+            TabLayout.Tab tab = tabLayout.getTabAt(i);
+            assert tab != null;
+            tab.setCustomView(null);
+            tab.setCustomView(tabAdapter.getTabView(i));
+        }TabLayout.Tab tab = tabLayout.getTabAt(position);
+        assert tab != null;
+        tab.setCustomView(null);
+        tab.setCustomView(tabAdapter.getSelectedTabView(position));
     }
 }
