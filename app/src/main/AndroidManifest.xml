@@ -17,7 +17,8 @@
         android:roundIcon="@mipmap/ic_new_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/ThemeTomboAti">
-        <activity android:name=".view.activity.DetailNewsActivity"></activity>
+        <activity android:name=".view.activity.KalenderHijriahActivity"></activity>
+        <activity android:name=".view.activity.DetailNewsActivity" />
         <activity android:name=".view.activity.DetailAsmaulHusnaActivity" />
         <activity android:name=".view.activity.NewAsmaulHusnaActivity" />
         <activity android:name=".view.activity.DetailAlQuranActivity" />

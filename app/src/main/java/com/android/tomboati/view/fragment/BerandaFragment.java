@@ -36,6 +36,7 @@ import com.android.tomboati.view.activity.AlQuranActivity;
 import com.android.tomboati.view.activity.DetailNewsActivity;
 import com.android.tomboati.view.activity.DoaDzikirActivity;
 import com.android.tomboati.view.activity.JadwalSholatActivity;
+import com.android.tomboati.view.activity.KalenderHijriahActivity;
 import com.android.tomboati.view.activity.SholatActivity;
 import com.android.tomboati.view.activity.UmrohHajiActivity;
 import com.android.tomboati.view.activity.WisataReligiActivity;
@@ -186,7 +187,8 @@ public class BerandaFragment extends Fragment {
         cardViewKalenderHijriah.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(v.getContext(), "Coming Soon...", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(v.getContext(), "Coming Soon...", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getContext(), KalenderHijriahActivity.class));
             }
         });
 

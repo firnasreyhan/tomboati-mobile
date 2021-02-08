@@ -101,4 +101,8 @@ dependencies {
 
     //justifiedtextview
     implementation 'com.codesgood:justifiedtextview:1.0.2'
+
+    //material-hijri-calendarview
+    implementation 'com.github.eltohamy:material-hijri-calendarview:1.1.2'
+    implementation group: 'com.github.msarhan', name: 'ummalqura-calendar', version:'1.1.9'
 }
