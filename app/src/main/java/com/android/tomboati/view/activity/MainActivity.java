@@ -9,6 +9,7 @@ import androidx.fragment.app.FragmentManager;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.Window;
 import android.view.WindowManager;
@@ -28,6 +29,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 //    private FragmentManager fragmentManager;
 //    private Fragment fragmentActive, fragmentBeranda, fragmentRiwayat, fragmentPesanan, fragmentInbox, fragmentAkun;
     private boolean doubleBackToExit;
+    private Fragment fragmentActive, fragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +58,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 //        fragmentManager.beginTransaction().add(R.id.frameLayoutFragment, fragmentRiwayat, "Riwayat").hide(fragmentRiwayat).commit();
 //        fragmentManager.beginTransaction().add(R.id.frameLayoutFragment, fragmentBeranda, "Beranda").commit();
         loadFragment(new BerandaFragment());
+        fragmentActive = new BerandaFragment();
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
     }
 
@@ -108,7 +111,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        Fragment fragment = null;
+        fragment = null;
         switch (item.getItemId()){
             case R.id.menu_beranda:
                 fragment = new BerandaFragment();
@@ -126,7 +129,12 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 fragment = new AkunFragment();
                 break;
         }
-        return loadFragment(fragment);
+
+        if (!fragment.getClass().getName().equalsIgnoreCase(fragmentActive.getClass().getName())) {
+            return loadFragment(fragment);
+        } else {
+            return false;
+        }
     }
 
     public void updateStatusBarColor(String color){// Color must be in hexadecimal fromat
@@ -140,6 +148,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     // method untuk load fragment yang sesuai
     private boolean loadFragment(Fragment fragment) {
         if (fragment != null) {
+            fragmentActive = fragment;
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.frameLayoutFragment, fragment)
                     .commit();

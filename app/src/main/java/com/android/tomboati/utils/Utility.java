@@ -3,7 +3,10 @@ package com.android.tomboati.utils;
 import android.Manifest;
 import android.annotation.SuppressLint;
 
+import com.android.tomboati.api.response.JadwalSholatResponse;
+
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.TimeZone;
@@ -13,6 +16,7 @@ public class Utility {
     private static final Calendar c = Calendar.getInstance();
     private static String kota;
     private static int hour, minute;
+    private static ArrayList<JadwalSholatResponse> list = new ArrayList<>();
 
     public static final String[] PERMISSION = {
             Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION,
@@ -34,14 +38,6 @@ public class Utility {
     public static int getGMT() {
         TimeZone timeZone = TimeZone.getDefault();
         return timeZone.getOffset(new Date().getTime()) / 3600000;
-    }
-
-    public static int getHour() {
-        return c.get(Calendar.HOUR_OF_DAY);
-    }
-
-    public static int getMinute() {
-        return c.get(Calendar.MINUTE);
     }
 
     public static double getLatitude() {
@@ -66,5 +62,29 @@ public class Utility {
 
     public static void setKota(String kota) {
         Utility.kota = kota;
+    }
+
+    public static ArrayList<JadwalSholatResponse> getList() {
+        return list;
+    }
+
+    public static void setList(ArrayList<JadwalSholatResponse> list) {
+        Utility.list = list;
+    }
+
+    public static int getHour() {
+        return hour;
+    }
+
+    public static void setHour(int hour) {
+        Utility.hour = hour;
+    }
+
+    public static int getMinute() {
+        return minute;
+    }
+
+    public static void setMinute(int minute) {
+        Utility.minute = minute;
     }
 }

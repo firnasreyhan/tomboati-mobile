@@ -171,7 +171,7 @@ public class Repository {
             @Override
             public void onResponse(Call<JadwalSholatResponse> call, Response<JadwalSholatResponse> response) {
                 if (response.code() == 200) {
-                    data.setValue(response.body());
+                    data.postValue(response.body());
                 }
             }
 

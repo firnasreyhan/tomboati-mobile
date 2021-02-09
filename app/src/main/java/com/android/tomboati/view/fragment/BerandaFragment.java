@@ -10,6 +10,7 @@ import android.location.Location;
 import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
@@ -78,8 +79,6 @@ public class BerandaFragment extends Fragment {
     private PermissionManager permissionManager;
     private ProgressDialog dialog;
     private AlertDialog.Builder alert;
-
-    private ArrayList<JadwalSholatResponse> list = new ArrayList<>();
 
     // Check gps provider is enabled
     private boolean isProviderEnable() {
@@ -212,8 +211,8 @@ public class BerandaFragment extends Fragment {
                 shimmerFrameLayoutSlider.startShimmer();
                 shimmerFrameLayoutSlider.setVisibility(View.VISIBLE);
                 sliderView.setVisibility(View.GONE);
-                if (!list.isEmpty()) {
-                    list.clear();
+                if (!Utility.getList().isEmpty()) {
+                    Utility.getList().clear();
                     sliderAdapter.notifyDataSetChanged();
                 }
                 checkLolation();
@@ -264,8 +263,19 @@ public class BerandaFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        if (list.isEmpty()) {
+        if (Utility.getList().isEmpty()) {
             checkLolation();
+        } else {
+            sliderAdapter = new SliderAdapter(Utility.getList());
+            sliderView.setSliderAdapter(sliderAdapter);
+
+            shimmerFrameLayoutSlider.stopShimmer();
+            shimmerFrameLayoutSlider.setVisibility(View.GONE);
+            sliderView.setVisibility(View.VISIBLE);
+
+            if (dialog.isShowing()) {
+                dialog.dismiss();
+            }
         }
     }
 
@@ -354,8 +364,8 @@ public class BerandaFragment extends Fragment {
     }
 
     private void showJadwalSholat(int year, int month, int day, double latitude, double longitude, int timezone) {
-        if (!list.isEmpty()) {
-            list.clear();
+        if (!Utility.getList().isEmpty()) {
+            Utility.getList().clear();
             sliderAdapter.notifyDataSetChanged();
         }
         berandaViewModel.jadwalSholat(
@@ -367,9 +377,9 @@ public class BerandaFragment extends Fragment {
                 timezone
         ).observe(getActivity(), new Observer<JadwalSholatResponse>() {
             @Override
-            public void onChanged(JadwalSholatResponse jadwalSholatResponse) {
+            public void onChanged(@Nullable JadwalSholatResponse jadwalSholatResponse) {
                 if (jadwalSholatResponse != null) {
-                    list.add(jadwalSholatResponse);
+                    Utility.getList().add(jadwalSholatResponse);
                     Log.e("showJadwalSholat", jadwalSholatResponse.getData().getName());
                     showJadwalSholatMecca(year,
                             month,
@@ -392,11 +402,11 @@ public class BerandaFragment extends Fragment {
                 timezone
         ).observe(getActivity(), new Observer<JadwalSholatResponse>() {
             @Override
-            public void onChanged(JadwalSholatResponse jadwalSholatResponse) {
+            public void onChanged(@Nullable JadwalSholatResponse jadwalSholatResponse) {
                 if (jadwalSholatResponse != null) {
-                    list.add(jadwalSholatResponse);
+                    Utility.getList().add(jadwalSholatResponse);
                     Log.e("showJadwalSholatMecca", jadwalSholatResponse.getData().getName());
-                    Log.e("size", String.valueOf(list.size()));
+                    Log.e("size", String.valueOf(Utility.getList().size()));
                     showJadwalSholatMedina(year,
                             month,
                             day,
@@ -418,14 +428,14 @@ public class BerandaFragment extends Fragment {
                 timezone
         ).observe(getActivity(), new Observer<JadwalSholatResponse>() {
             @Override
-            public void onChanged(JadwalSholatResponse jadwalSholatResponse) {
+            public void onChanged(@Nullable JadwalSholatResponse jadwalSholatResponse) {
                 if (jadwalSholatResponse != null) {
-                    list.add(jadwalSholatResponse);
+                    Utility.getList().add(jadwalSholatResponse);
 
                     Log.e("showJadwalSholatMedina", jadwalSholatResponse.getData().getName());
-                    Log.e("size", String.valueOf(list.size()));
+                    Log.e("size", String.valueOf(Utility.getList().size()));
 
-                    sliderAdapter = new SliderAdapter(list);
+                    sliderAdapter = new SliderAdapter(Utility.getList());
                     sliderView.setSliderAdapter(sliderAdapter);
 
                     shimmerFrameLayoutSlider.stopShimmer();
