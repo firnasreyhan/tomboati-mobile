@@ -3,16 +3,23 @@ package com.android.tomboati.view.activity;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
 
 import com.android.tomboati.R;
+import com.android.tomboati.adapter.TabAdapter;
+import com.android.tomboati.view.fragment.JuzFragment;
+import com.android.tomboati.view.fragment.KalenderHijriahFragment;
+import com.android.tomboati.view.fragment.KalenderMasehiFragment;
+import com.android.tomboati.view.fragment.SurahFragment;
 import com.github.eltohamy.materialhijricalendarview.CalendarDay;
 import com.github.eltohamy.materialhijricalendarview.MaterialHijriCalendarView;
 import com.github.eltohamy.materialhijricalendarview.OnDateSelectedListener;
 import com.github.eltohamy.materialhijricalendarview.OnMonthChangedListener;
+import com.google.android.material.tabs.TabLayout;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -21,11 +28,10 @@ import java.util.Date;
 import java.util.Locale;
 
 public class KalenderHijriahActivity extends AppCompatActivity {
-    private static DateFormat FORMATTER = new SimpleDateFormat("MMM d, y");
-
     private Toolbar toolbar;
-    private MaterialHijriCalendarView materialHijriCalendarView;
-    private TextView textViewTanggalHijriah;
+    private TabAdapter tabAdapter;
+    private TabLayout tabLayout;
+    private ViewPager viewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,28 +45,34 @@ public class KalenderHijriahActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        materialHijriCalendarView = findViewById(R.id.materialHijriCalendarView);
-        textViewTanggalHijriah = findViewById(R.id.textViewTanggalHijriah);
+        viewPager = findViewById(R.id.viewPager);
+        tabLayout = findViewById(R.id.tabLayout);
 
-        materialHijriCalendarView.setSelectedDate(Calendar.getInstance().getTime());
-        materialHijriCalendarView.setOnDateChangedListener(new OnDateSelectedListener() {
+        tabAdapter = new TabAdapter(getSupportFragmentManager(), this);
+        tabAdapter.addFragment(new KalenderHijriahFragment(), "Hijriah", R.drawable.ic_calendar_white);
+        tabAdapter.addFragment(new KalenderMasehiFragment(), "Masehi", R.drawable.ic_calendar_white);
+
+        viewPager.setAdapter(tabAdapter);
+        tabLayout.setupWithViewPager(viewPager);
+
+        highLightCurrentTab(0);
+
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
-            public void onDateSelected(@NonNull MaterialHijriCalendarView widget, @NonNull CalendarDay date, boolean selected) {
-                Log.e("date", getSelectedDatesString());
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                highLightCurrentTab(position);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
             }
         });
-
-        materialHijriCalendarView.setOnMonthChangedListener(new OnMonthChangedListener() {
-            @Override
-            public void onMonthChanged(MaterialHijriCalendarView widget, CalendarDay date) {
-                //noinspection Constant Conditions
-                FORMATTER.setCalendar(date.getCalendar());
-//        getSupportActionBar().setTitle(FORMATTER.format(date.getCalendar().getTime()));
-//                getSupportActionBar().setTitle(date.getCalendar().getDisplayName(Calendar.MONTH, Calendar.SHORT, Locale.getDefault()) + " " + date.getCalendar().get(Calendar.DAY_OF_MONTH) + ", " + String.valueOf(date.getYear()));
-            }
-        });
-
-        textViewTanggalHijriah.setText(getSelectedDatesString());
     }
 
     @Override
@@ -69,14 +81,15 @@ public class KalenderHijriahActivity extends AppCompatActivity {
         return true;
     }
 
-    private String getSelectedDatesString() {
-        CalendarDay date = materialHijriCalendarView.getSelectedDate();
-        if (date == null) {
-            return "No Selection";
-        }
-        FORMATTER.setCalendar(date.getCalendar());
-//        return FORMATTER.format(date.getCalendar().getTime());
-//        return date.getCalendar().getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.getDefault()) + " " + date.getCalendar().get(Calendar.DAY_OF_MONTH) + ", " + String.valueOf(date.getYear());
-        return date.getCalendar().get(Calendar.DAY_OF_MONTH) + " " + date.getCalendar().getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.getDefault()) + " " + String.valueOf(date.getYear()) + " H";
+    private void highLightCurrentTab(int position) {
+        for (int i = 0; i < tabLayout.getTabCount(); i++) {
+            TabLayout.Tab tab = tabLayout.getTabAt(i);
+            assert tab != null;
+            tab.setCustomView(null);
+            tab.setCustomView(tabAdapter.getTabView(i));
+        }TabLayout.Tab tab = tabLayout.getTabAt(position);
+        assert tab != null;
+        tab.setCustomView(null);
+        tab.setCustomView(tabAdapter.getSelectedTabView(position));
     }
 }

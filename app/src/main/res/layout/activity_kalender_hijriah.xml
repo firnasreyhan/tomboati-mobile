@@ -16,46 +16,22 @@
         android:background="@color/dark_green"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
 
-    <LinearLayout
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="@dimen/_13sdp"
-        android:orientation="vertical">
+        android:layout_height="?actionBarSize"
+        android:minHeight="?actionBarSize"
+        app:tabGravity="fill"
+        app:tabIndicatorColor="@color/light_yellow"
+        app:tabIndicatorHeight="4dp"
+        android:background="@color/dark_green"
+        app:tabMode="fixed"/>
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:cardCornerRadius="@dimen/_7sdp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="@dimen/_7sdp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/textViewTanggalHijriah"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Tanggal hijriah"
-                    android:fontFamily="@font/cinzel_bold"
-                    android:textColor="@color/dark_green"
-                    android:textSize="@dimen/_13sdp"
-                    android:gravity="center"/>
-
-                <com.github.eltohamy.materialhijricalendarview.MaterialHijriCalendarView
-                    android:id="@+id/materialHijriCalendarView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_7sdp"
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
-                    app:mcv_showOtherDates="all"
-                    app:mcv_selectionColor="@color/dark_green" />
-
-            </LinearLayout>
-
-        </androidx.cardview.widget.CardView>
-
-    </LinearLayout>
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:background="@android:color/white"/>
 
 </LinearLayout>

@@ -60,6 +60,12 @@ public class AlQuranActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
+
     private void highLightCurrentTab(int position) {
         for (int i = 0; i < tabLayout.getTabCount(); i++) {
             TabLayout.Tab tab = tabLayout.getTabAt(i);
@@ -70,11 +76,5 @@ public class AlQuranActivity extends AppCompatActivity {
         assert tab != null;
         tab.setCustomView(null);
         tab.setCustomView(tabAdapter.getSelectedTabView(position));
-    }
-
-    @Override
-    public boolean onSupportNavigateUp() {
-        onBackPressed();
-        return true;
     }
 }

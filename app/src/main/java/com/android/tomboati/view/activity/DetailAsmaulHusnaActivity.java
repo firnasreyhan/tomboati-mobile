@@ -23,16 +23,10 @@ public class DetailAsmaulHusnaActivity extends AppCompatActivity {
         setTheme(R.style.ThemeTomboAtiGreen);
         setContentView(R.layout.activity_detail_asmaul_husna);
 
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
-
         final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        assert getSupportActionBar() != null;
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-
-        CollapsingToolbarLayout collapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.collab);
-        collapsingToolbar.setExpandedTitleGravity(Gravity.BOTTOM);
 
         ayat = (TextView) findViewById(R.id.tv_ayat);
         arti = (TextView) findViewById(R.id.tv_arti);
@@ -45,7 +39,7 @@ public class DetailAsmaulHusnaActivity extends AppCompatActivity {
         String bacaan = mIntent.getStringExtra("bacaan");
         String arti1 = mIntent.getStringExtra("arti");
 
-        collapsingToolbar.setTitle(bacaan);
+        setTitle(bacaan);
 
         ayat.setText(ayat1);
         arti.setText(arti1);
