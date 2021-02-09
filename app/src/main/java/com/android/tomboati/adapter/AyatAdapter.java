@@ -30,7 +30,7 @@ public class AyatAdapter extends RecyclerView.Adapter<AyatAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.textViewAr.setText(list.get(position).getAr());
-        holder.textViewTr.setText(list.get(position).getNomor() + ". " + Html.fromHtml(list.get(position).getTr()).toString());
+        holder.textViewTr.setText(list.get(position).getNomor() + ". " + Html.fromHtml(list.get(position).getTr()).toString().substring(0, 1).toUpperCase() + Html.fromHtml(list.get(position).getTr()).toString().substring(1));
         holder.textViewId.setText(list.get(position).getNomor() + ". " + list.get(position).getIdn());
     }
 

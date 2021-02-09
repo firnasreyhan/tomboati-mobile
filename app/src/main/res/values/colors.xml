@@ -13,6 +13,7 @@
     <color name="very_light_green">#E6EDDF</color>
     <color name="dark_red">#4D0408</color>
     <color name="dark_grey">#9E9A9A</color>
+    <color name="darker_grey">#646464</color>
     <color name="light_yellow">#fbf288</color>
     <color name="placeholder">#dddddd</color>
 </resources>

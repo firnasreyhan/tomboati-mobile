@@ -14,10 +14,10 @@
             android:id="@+id/textViewAr"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/cinzel_bold"
+            android:fontFamily="@font/amiri_bold"
             android:text="بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ"
             android:textColor="@android:color/black"
-            android:textSize="@dimen/_20sdp" />
+            android:textSize="@dimen/_24sdp" />
 
         <TextView
             android:id="@+id/textViewTr"
@@ -37,7 +37,7 @@
             android:layout_marginTop="@dimen/_6sdp"
             android:text="1. Dengan menyebut nama Allah Yang Maha Pemurah lagi Maha Penyayang."
             android:fontFamily="@font/catamaran_regular"
-            android:textColor="@android:color/darker_gray"
+            android:textColor="@color/darker_grey"
             android:textSize="@dimen/_13sdp"/>
 
     </LinearLayout>

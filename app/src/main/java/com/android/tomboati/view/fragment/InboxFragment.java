@@ -55,8 +55,8 @@ public class InboxFragment extends Fragment {
         tabLayout = view.findViewById(R.id.tabLayout);
 
         tabAdapter = new TabAdapter(getActivity().getSupportFragmentManager(), getContext());
-        tabAdapter.addFragment(new ChatFragment(), "Chat", tabIcons[0]);
         tabAdapter.addFragment(new NotificationFragment(), "Notification", tabIcons[1]);
+        tabAdapter.addFragment(new ChatFragment(), "Chat", tabIcons[0]);
 
         viewPager.setAdapter(tabAdapter);
         tabLayout.setupWithViewPager(viewPager);
