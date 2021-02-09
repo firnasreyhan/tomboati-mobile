@@ -5,7 +5,8 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    tools:context=".view.fragment.AlQuranPenuhFragment">
+    android:background="@color/background"
+    tools:context=".view.fragment.JuzFragment">
 
     <com.facebook.shimmer.ShimmerFrameLayout
         android:id="@+id/shimmerFrameLayoutAyatPenuh"

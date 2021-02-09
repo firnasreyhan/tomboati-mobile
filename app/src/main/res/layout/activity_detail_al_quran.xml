@@ -16,7 +16,6 @@
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
 
     <com.facebook.shimmer.ShimmerFrameLayout
-        android:visibility="gone"
         android:id="@+id/shimmerFrameLayoutAyat"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -54,6 +53,8 @@
     </com.facebook.shimmer.ShimmerFrameLayout>
 
     <LinearLayout
+        android:id="@+id/linearLayoutContent"
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -66,7 +67,6 @@
             android:layout_weight="1"/>
 
         <LinearLayout
-            android:id="@+id/linearLayoutContent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="@dimen/_6sdp"

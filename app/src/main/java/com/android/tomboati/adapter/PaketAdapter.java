@@ -19,6 +19,11 @@ public class PaketAdapter extends RecyclerView.Adapter<PaketAdapter.ViewHolder> 
         this.list = list;
     }
 
+    @Override
+    public int getItemViewType(int position) {
+        return position;
+    }
+
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

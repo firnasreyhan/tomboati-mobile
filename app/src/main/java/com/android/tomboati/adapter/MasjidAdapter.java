@@ -27,6 +27,11 @@ public class MasjidAdapter extends RecyclerView.Adapter<MasjidAdapter.ViewHolder
         this.longitude = longitude;
     }
 
+    @Override
+    public int getItemViewType(int position) {
+        return position;
+    }
+
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

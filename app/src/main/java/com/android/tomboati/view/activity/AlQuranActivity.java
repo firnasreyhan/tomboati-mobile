@@ -2,28 +2,15 @@ package com.android.tomboati.view.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
-import android.view.View;
 
 import com.android.tomboati.R;
-import com.android.tomboati.adapter.SurahAdapter;
 import com.android.tomboati.adapter.TabAdapter;
-import com.android.tomboati.api.response.SurahResponse;
-import com.android.tomboati.view.fragment.AlQuranPenuhFragment;
-import com.android.tomboati.view.fragment.ChatFragment;
-import com.android.tomboati.view.fragment.NotificationFragment;
+import com.android.tomboati.view.fragment.JuzFragment;
 import com.android.tomboati.view.fragment.SurahFragment;
-import com.android.tomboati.viewmodel.AlQuranViewModel;
-import com.facebook.shimmer.ShimmerFrameLayout;
 import com.google.android.material.tabs.TabLayout;
-
-import java.util.List;
 
 public class AlQuranActivity extends AppCompatActivity {
     private Toolbar toolbar;
@@ -48,7 +35,7 @@ public class AlQuranActivity extends AppCompatActivity {
 
         tabAdapter = new TabAdapter(getSupportFragmentManager(), this);
         tabAdapter.addFragment(new SurahFragment(), "Surat", R.drawable.ic_star);
-        tabAdapter.addFragment(new AlQuranPenuhFragment(), "Al Qur’an Penuh", R.drawable.ic_star);
+        tabAdapter.addFragment(new JuzFragment(), "Juz", R.drawable.ic_star);
 
         viewPager.setAdapter(tabAdapter);
         tabLayout.setupWithViewPager(viewPager);

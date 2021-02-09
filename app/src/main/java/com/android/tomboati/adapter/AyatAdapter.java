@@ -21,6 +21,11 @@ public class AyatAdapter extends RecyclerView.Adapter<AyatAdapter.ViewHolder> {
         this.list = list;
     }
 
+    @Override
+    public int getItemViewType(int position) {
+        return position;
+    }
+
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
