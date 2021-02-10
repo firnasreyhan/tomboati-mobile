@@ -20,6 +20,8 @@ import android.widget.TextView;
 
 import com.android.tomboati.R;
 import com.android.tomboati.adapter.AyatAdapter;
+import com.android.tomboati.api.ApiClient;
+import com.android.tomboati.api.ApiInterfaceAlQuran;
 import com.android.tomboati.api.response.AyatResponse;
 import com.android.tomboati.model.JuzModel;
 import com.android.tomboati.utils.JuzUtility;
@@ -29,7 +31,12 @@ import com.google.android.material.button.MaterialButton;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class DetailJuzActivity extends AppCompatActivity {
     private DetailAlQuranViewModel detailAlQuranViewModel;
@@ -38,7 +45,7 @@ public class DetailJuzActivity extends AppCompatActivity {
     private AyatAdapter ayatAdapter;
     private ShimmerFrameLayout shimmerFrameLayoutAyat;
 
-    private int position;
+    private int position, x;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +53,7 @@ public class DetailJuzActivity extends AppCompatActivity {
         setTheme(R.style.ThemeTomboAtiGreen);
         setContentView(R.layout.activity_detail_juz);
 
+        x = 0;
         position = getIntent().getIntExtra("POSITION",0);
 
         toolbar = findViewById(R.id.toolbar);
@@ -64,19 +72,45 @@ public class DetailJuzActivity extends AppCompatActivity {
         JuzModel juzModel = new JuzUtility().getList().get(position);
         List<AyatResponse.AyatModel> list = new ArrayList<>();
 
-        for (int i = 0; i < juzModel.getList().size(); i++) {
-            int x = i;
+//        for (JuzModel.JuzDetailModel juzDetailModel : juzModel.getList()) {
+//            apiInterfaceAlQuran.getAyat(
+//                    juzDetailModel.getNomorSurah()
+//            ).enqueue(new Callback<AyatResponse>() {
+//                @Override
+//                public void onResponse(Call<AyatResponse> call, Response<AyatResponse> response) {
+//                    if (response.body().isStatus()) {
+//                        list1.add(response.body());
+//                        Log.e("surah", response.body().getNamaLatin());
+//                    }
+//                }
+//
+//                @Override
+//                public void onFailure(Call<AyatResponse> call, Throwable t) {
+//
+//                }
+//            });
+//        }
+
+        for (JuzModel.JuzDetailModel juzDetailModel : juzModel.getList()) {
+//            Log.e("surah", juzDetailModel.getNomorSurah());
+//            Log.e("awal", String.valueOf(juzDetailModel.getAwalAyat()));
+//            Log.e("akhir", String.valueOf(juzDetailModel.getAkhirAyat()));
             detailAlQuranViewModel.getAyat(
-                    juzModel.getList().get(i).getNomorSurah()
+                    juzDetailModel.getNomorSurah()
             ).observe(this, new Observer<AyatResponse>() {
                 @Override
                 public void onChanged(AyatResponse ayatResponse) {
                     if (ayatResponse.isStatus()) {
-                        for (int j = (juzModel.getList().get(x).getAwalAyat() - 1); j < juzModel.getList().get(x).getAkhirAyat(); j++) {
-                            list.add(ayatResponse.getAyat().get(j));
+                        x++;
+
+                        for (AyatResponse.AyatModel ayatModel : ayatResponse.getAyat()) {
+                            if (Integer.parseInt(ayatModel.getNomor()) >= juzDetailModel.getAwalAyat() && Integer.parseInt(ayatModel.getNomor()) <= juzDetailModel.getAkhirAyat()) {
+                                list.add(ayatModel);
+                            }
                         }
 
-                        if (x == (juzModel.getList().size() - 1)) {
+                        if (x == juzModel.getList().size()) {
+                            Collections.sort(list, AyatResponse.AyatModel.sortAyat);
                             ayatAdapter = new AyatAdapter(list);
                             recyclerViewAyat.setAdapter(ayatAdapter);
 

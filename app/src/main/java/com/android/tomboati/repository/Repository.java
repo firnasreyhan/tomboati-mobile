@@ -47,13 +47,13 @@ public class Repository {
             @Override
             public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
                 if (response.code() == 200) {
-                    listMutableLiveData.setValue(response.body());
+                    listMutableLiveData.postValue(response.body());
                 }
             }
 
             @Override
             public void onFailure(Call<BaseResponse> call, Throwable t) {
-                listMutableLiveData.setValue(null);
+                listMutableLiveData.postValue(null);
                 Log.e("signOut", t.getMessage());
             }
         });
@@ -70,13 +70,13 @@ public class Repository {
             @Override
             public void onResponse(Call<SignInResponse> call, Response<SignInResponse> response) {
                 if (response.code() == 200) {
-                    listMutableLiveData.setValue(response.body());
+                    listMutableLiveData.postValue(response.body());
                 }
             }
 
             @Override
             public void onFailure(Call<SignInResponse> call, Throwable t) {
-                listMutableLiveData.setValue(null);
+                listMutableLiveData.postValue(null);
                 Log.e("signIn", t.getMessage());
             }
         });
@@ -98,13 +98,13 @@ public class Repository {
             @Override
             public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
                 if (response.code() == 200) {
-                    baseResponseMutableLiveData.setValue(response.body());
+                    baseResponseMutableLiveData.postValue(response.body());
                 }
             }
 
             @Override
             public void onFailure(Call<BaseResponse> call, Throwable t) {
-                baseResponseMutableLiveData.setValue(null);
+                baseResponseMutableLiveData.postValue(null);
                 Log.e("signUp", t.getMessage());
             }
         });
@@ -120,13 +120,13 @@ public class Repository {
             @Override
             public void onResponse(Call<ChatResponse> call, Response<ChatResponse> response) {
                 if (response.code() == 200) {
-                    mutableLiveData.setValue(response.body());
+                    mutableLiveData.postValue(response.body());
                 }
             }
 
             @Override
             public void onFailure(Call<ChatResponse> call, Throwable t) {
-                mutableLiveData.setValue(null);
+                mutableLiveData.postValue(null);
                 Log.e("signUp", t.getMessage());
             }
         });
@@ -144,13 +144,13 @@ public class Repository {
             @Override
             public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
                 if (response.code() == 200) {
-                    mutableLiveData.setValue(response.body());
+                    mutableLiveData.postValue(response.body());
                 }
             }
 
             @Override
             public void onFailure(Call<BaseResponse> call, Throwable t) {
-                mutableLiveData.setValue(null);
+                mutableLiveData.postValue(null);
                 Log.e("sendChat", t.getMessage());
             }
         });
@@ -177,7 +177,7 @@ public class Repository {
 
             @Override
             public void onFailure(Call<JadwalSholatResponse> call, Throwable t) {
-                data.setValue(null);
+                data.postValue(null);
                 Log.e("signUp", t.getMessage());
             }
         });
@@ -195,13 +195,13 @@ public class Repository {
             @Override
             public void onResponse(Call<MasjidResponse> call, Response<MasjidResponse> response) {
                 if (response.code() == 200) {
-                    data.setValue(response.body().getFeatures());
+                    data.postValue(response.body().getFeatures());
                 }
             }
 
             @Override
             public void onFailure(Call<MasjidResponse> call, Throwable t) {
-                data.setValue(null);
+                data.postValue(null);
                 Log.e("signUp", t.getMessage());
             }
         });
@@ -214,13 +214,13 @@ public class Repository {
             @Override
             public void onResponse(Call<List<SurahResponse>> call, Response<List<SurahResponse>> response) {
                 if (response.code() == 200) {
-                    data.setValue(response.body());
+                    data.postValue(response.body());
                 }
             }
 
             @Override
             public void onFailure(Call<List<SurahResponse>> call, Throwable t) {
-                data.setValue(null);
+                data.postValue(null);
                 Log.e("getSurah", t.getMessage());
             }
         });
@@ -235,13 +235,13 @@ public class Repository {
             @Override
             public void onResponse(Call<AyatResponse> call, Response<AyatResponse> response) {
                 if (response.code() == 200) {
-                    data.setValue(response.body());
+                    data.postValue(response.body());
                 }
             }
 
             @Override
             public void onFailure(Call<AyatResponse> call, Throwable t) {
-                data.setValue(null);
+                data.postValue(null);
                 Log.e("getAyat", t.getMessage());
             }
         });

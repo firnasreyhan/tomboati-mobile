@@ -2,6 +2,7 @@ package com.android.tomboati.api.response;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.Comparator;
 import java.util.List;
 
 public class AyatResponse extends SurahResponse{
@@ -21,7 +22,7 @@ public class AyatResponse extends SurahResponse{
 
     public static class AyatModel {
         @SerializedName("id")
-        private String id;
+        private int id;
 
         @SerializedName("surah")
         private String surah;
@@ -38,7 +39,7 @@ public class AyatResponse extends SurahResponse{
         @SerializedName("idn")
         private String idn;
 
-        public String getId() {
+        public int getId() {
             return id;
         }
 
@@ -61,5 +62,16 @@ public class AyatResponse extends SurahResponse{
         public String getIdn() {
             return idn;
         }
+
+        public static Comparator<AyatModel> sortAyat = new Comparator<AyatModel>() {
+            @Override
+            public int compare(AyatModel o1, AyatModel o2) {
+                int idNo1 = o1.getId();
+                int idNo2 = o2.getId();
+
+                /*For ascending order*/
+                return idNo1-idNo2;
+            }
+        };
     }
 }
