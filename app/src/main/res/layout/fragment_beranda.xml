@@ -192,7 +192,7 @@
                             android:orientation="vertical">
 
                             <ImageView
-                                android:layout_width="@dimen/_42sdp"
+                                android:layout_width="wrap_content"
                                 android:layout_height="@dimen/_46sdp"
                                 android:adjustViewBounds="true"
                                 android:src="@drawable/ic_umroh_haji" />
@@ -234,7 +234,7 @@
                             android:orientation="vertical">
 
                             <ImageView
-                                android:layout_width="@dimen/_42sdp"
+                                android:layout_width="wrap_content"
                                 android:layout_height="@dimen/_46sdp"
                                 android:adjustViewBounds="true"
                                 android:src="@drawable/ic_wisata_halal_tour_religi" />
@@ -276,7 +276,7 @@
                             android:orientation="vertical">
 
                             <ImageView
-                                android:layout_width="@dimen/_42sdp"
+                                android:layout_width="wrap_content"
                                 android:layout_height="@dimen/_46sdp"
                                 android:adjustViewBounds="true"
                                 android:src="@drawable/ic_doa_dzikir" />
@@ -318,7 +318,7 @@
                             android:orientation="vertical">
 
                             <ImageView
-                                android:layout_width="@dimen/_42sdp"
+                                android:layout_width="wrap_content"
                                 android:layout_height="@dimen/_46sdp"
                                 android:adjustViewBounds="true"
                                 android:src="@drawable/ic_sholat" />
@@ -370,7 +370,7 @@
                             android:orientation="vertical">
 
                             <ImageView
-                                android:layout_width="@dimen/_42sdp"
+                                android:layout_width="wrap_content"
                                 android:layout_height="@dimen/_46sdp"
                                 android:adjustViewBounds="true"
                                 android:src="@drawable/ic_alquran" />
@@ -412,7 +412,7 @@
                             android:orientation="vertical">
 
                             <ImageView
-                                android:layout_width="@dimen/_42sdp"
+                                android:layout_width="wrap_content"
                                 android:layout_height="@dimen/_46sdp"
                                 android:adjustViewBounds="true"
                                 android:src="@drawable/ic_kalender" />
@@ -454,7 +454,7 @@
                             android:orientation="vertical">
 
                             <ImageView
-                                android:layout_width="@dimen/_42sdp"
+                                android:layout_width="wrap_content"
                                 android:layout_height="@dimen/_46sdp"
                                 android:adjustViewBounds="true"
                                 android:src="@drawable/ic_aqiqah" />
@@ -496,7 +496,7 @@
                             android:orientation="vertical">
 
                             <ImageView
-                                android:layout_width="@dimen/_42sdp"
+                                android:layout_width="wrap_content"
                                 android:layout_height="@dimen/_46sdp"
                                 android:adjustViewBounds="true"
                                 android:src="@drawable/ic_komunitas" />
@@ -548,7 +548,7 @@
                             android:orientation="vertical">
 
                             <ImageView
-                                android:layout_width="@dimen/_42sdp"
+                                android:layout_width="wrap_content"
                                 android:layout_height="@dimen/_46sdp"
                                 android:adjustViewBounds="true"
                                 android:src="@drawable/ic_tomboati_channel" />
@@ -590,7 +590,7 @@
                             android:orientation="vertical">
 
                             <ImageView
-                                android:layout_width="@dimen/_42sdp"
+                                android:layout_width="wrap_content"
                                 android:layout_height="@dimen/_46sdp"
                                 android:adjustViewBounds="true"
                                 android:src="@drawable/ic_live_mekkah" />

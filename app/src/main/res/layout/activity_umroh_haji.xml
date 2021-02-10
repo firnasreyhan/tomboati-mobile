@@ -66,7 +66,7 @@
                         android:orientation="vertical">
 
                         <ImageView
-                            android:layout_width="@dimen/_42sdp"
+                            android:layout_width="wrap_content"
                             android:layout_height="@dimen/_46sdp"
                             android:adjustViewBounds="true"
                             android:src="@drawable/ic_umroh_promo" />
@@ -107,7 +107,7 @@
                         android:orientation="vertical">
 
                         <ImageView
-                            android:layout_width="@dimen/_42sdp"
+                            android:layout_width="wrap_content"
                             android:layout_height="@dimen/_46sdp"
                             android:adjustViewBounds="true"
                             android:src="@drawable/ic_umroh_hemat" />
@@ -148,7 +148,7 @@
                         android:orientation="vertical">
 
                         <ImageView
-                            android:layout_width="@dimen/_42sdp"
+                            android:layout_width="wrap_content"
                             android:layout_height="@dimen/_46sdp"
                             android:adjustViewBounds="true"
                             android:src="@drawable/ic_umroh_bisnis" />
@@ -189,7 +189,7 @@
                         android:orientation="vertical">
 
                         <ImageView
-                            android:layout_width="@dimen/_42sdp"
+                            android:layout_width="wrap_content"
                             android:layout_height="@dimen/_46sdp"
                             android:adjustViewBounds="true"
                             android:src="@drawable/ic_umroh_vip" />
@@ -240,7 +240,7 @@
                         android:orientation="vertical">
 
                         <ImageView
-                            android:layout_width="@dimen/_42sdp"
+                            android:layout_width="wrap_content"
                             android:layout_height="@dimen/_46sdp"
                             android:adjustViewBounds="true"
                             android:src="@drawable/ic_umroh_plus" />
@@ -281,7 +281,7 @@
                         android:orientation="vertical">
 
                         <ImageView
-                            android:layout_width="@dimen/_42sdp"
+                            android:layout_width="wrap_content"
                             android:layout_height="@dimen/_46sdp"
                             android:adjustViewBounds="true"
                             android:src="@drawable/ic_tabungan_umroh" />
@@ -322,7 +322,7 @@
                         android:orientation="vertical">
 
                         <ImageView
-                            android:layout_width="@dimen/_42sdp"
+                            android:layout_width="wrap_content"
                             android:layout_height="@dimen/_46sdp"
                             android:adjustViewBounds="true"
                             android:src="@drawable/ic_arisan_umroh" />
@@ -363,7 +363,7 @@
                         android:orientation="vertical">
 
                         <ImageView
-                            android:layout_width="@dimen/_42sdp"
+                            android:layout_width="wrap_content"
                             android:layout_height="@dimen/_46sdp"
                             android:adjustViewBounds="true"
                             android:src="@drawable/ic_umroh_dulu_bayar_nanti" />
@@ -426,7 +426,7 @@
                         android:orientation="vertical">
 
                         <ImageView
-                            android:layout_width="@dimen/_42sdp"
+                            android:layout_width="wrap_content"
                             android:layout_height="@dimen/_46sdp"
                             android:adjustViewBounds="true"
                             android:src="@drawable/ic_haji_reguler" />
@@ -467,7 +467,7 @@
                         android:orientation="vertical">
 
                         <ImageView
-                            android:layout_width="@dimen/_42sdp"
+                            android:layout_width="wrap_content"
                             android:layout_height="@dimen/_46sdp"
                             android:adjustViewBounds="true"
                             android:src="@drawable/ic_haji_plus" />
@@ -508,7 +508,7 @@
                         android:orientation="vertical">
 
                         <ImageView
-                            android:layout_width="@dimen/_42sdp"
+                            android:layout_width="wrap_content"
                             android:layout_height="@dimen/_46sdp"
                             android:adjustViewBounds="true"
                             android:src="@drawable/ic_haji_tanpa_antri" />
@@ -549,7 +549,7 @@
                         android:orientation="vertical">
 
                         <ImageView
-                            android:layout_width="@dimen/_42sdp"
+                            android:layout_width="wrap_content"
                             android:layout_height="@dimen/_46sdp"
                             android:adjustViewBounds="true"
                             android:src="@drawable/ic_talangan_haji" />
@@ -600,7 +600,7 @@
                         android:orientation="vertical">
 
                         <ImageView
-                            android:layout_width="@dimen/_42sdp"
+                            android:layout_width="wrap_content"
                             android:layout_height="@dimen/_46sdp"
                             android:adjustViewBounds="true"
                             android:src="@drawable/ic_badal_haji" />

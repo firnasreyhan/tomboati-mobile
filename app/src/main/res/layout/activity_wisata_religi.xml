@@ -66,7 +66,7 @@
                         android:orientation="vertical">
 
                         <ImageView
-                            android:layout_width="@dimen/_42sdp"
+                            android:layout_width="wrap_content"
                             android:layout_height="@dimen/_46sdp"
                             android:adjustViewBounds="true"
                             android:src="@drawable/ic_turki" />
@@ -107,7 +107,7 @@
                         android:orientation="vertical">
 
                         <ImageView
-                            android:layout_width="@dimen/_42sdp"
+                            android:layout_width="wrap_content"
                             android:layout_height="@dimen/_46sdp"
                             android:adjustViewBounds="true"
                             android:src="@drawable/ic_dubai" />
@@ -148,7 +148,7 @@
                         android:orientation="vertical">
 
                         <ImageView
-                            android:layout_width="@dimen/_42sdp"
+                            android:layout_width="wrap_content"
                             android:layout_height="@dimen/_46sdp"
                             android:adjustViewBounds="true"
                             android:src="@drawable/ic_mesir" />
@@ -189,7 +189,7 @@
                         android:orientation="vertical">
 
                         <ImageView
-                            android:layout_width="@dimen/_42sdp"
+                            android:layout_width="wrap_content"
                             android:layout_height="@dimen/_46sdp"
                             android:adjustViewBounds="true"
                             android:src="@drawable/ic_jerusalem" />
@@ -240,7 +240,7 @@
                         android:orientation="vertical">
 
                         <ImageView
-                            android:layout_width="@dimen/_42sdp"
+                            android:layout_width="wrap_content"
                             android:layout_height="@dimen/_46sdp"
                             android:adjustViewBounds="true"
                             android:src="@drawable/ic_jepang" />
@@ -281,7 +281,7 @@
                         android:orientation="vertical">
 
                         <ImageView
-                            android:layout_width="@dimen/_42sdp"
+                            android:layout_width="wrap_content"
                             android:layout_height="@dimen/_46sdp"
                             android:adjustViewBounds="true"
                             android:src="@drawable/ic_korea_selatan" />
@@ -322,7 +322,7 @@
                         android:orientation="vertical">
 
                         <ImageView
-                            android:layout_width="@dimen/_42sdp"
+                            android:layout_width="wrap_content"
                             android:layout_height="@dimen/_46sdp"
                             android:adjustViewBounds="true"
                             android:src="@drawable/ic_china" />
@@ -363,7 +363,7 @@
                         android:orientation="vertical">
 
                         <ImageView
-                            android:layout_width="@dimen/_42sdp"
+                            android:layout_width="wrap_content"
                             android:layout_height="@dimen/_46sdp"
                             android:adjustViewBounds="true"
                             android:src="@drawable/ic_india" />
@@ -414,7 +414,7 @@
                         android:orientation="vertical">
 
                         <ImageView
-                            android:layout_width="@dimen/_42sdp"
+                            android:layout_width="wrap_content"
                             android:layout_height="@dimen/_46sdp"
                             android:adjustViewBounds="true"
                             android:src="@drawable/ic_singapura" />
@@ -455,7 +455,7 @@
                         android:orientation="vertical">
 
                         <ImageView
-                            android:layout_width="@dimen/_42sdp"
+                            android:layout_width="wrap_content"
                             android:layout_height="@dimen/_46sdp"
                             android:adjustViewBounds="true"
                             android:src="@drawable/ic_malaysia" />
@@ -496,7 +496,7 @@
                         android:orientation="vertical">
 
                         <ImageView
-                            android:layout_width="@dimen/_42sdp"
+                            android:layout_width="wrap_content"
                             android:layout_height="@dimen/_46sdp"
                             android:adjustViewBounds="true"
                             android:src="@drawable/ic_thailand" />
@@ -537,7 +537,7 @@
                         android:orientation="vertical">
 
                         <ImageView
-                            android:layout_width="@dimen/_42sdp"
+                            android:layout_width="wrap_content"
                             android:layout_height="@dimen/_46sdp"
                             android:adjustViewBounds="true"
                             android:src="@drawable/ic_vietnam" />
@@ -600,7 +600,7 @@
                         android:orientation="vertical">
 
                         <ImageView
-                            android:layout_width="@dimen/_42sdp"
+                            android:layout_width="wrap_content"
                             android:layout_height="@dimen/_46sdp"
                             android:adjustViewBounds="true"
                             android:src="@drawable/ic_bali" />
@@ -641,7 +641,7 @@
                         android:orientation="vertical">
 
                         <ImageView
-                            android:layout_width="@dimen/_42sdp"
+                            android:layout_width="wrap_content"
                             android:layout_height="@dimen/_46sdp"
                             android:adjustViewBounds="true"
                             android:src="@drawable/ic_jogja" />
@@ -682,7 +682,7 @@
                         android:orientation="vertical">
 
                         <ImageView
-                            android:layout_width="@dimen/_42sdp"
+                            android:layout_width="wrap_content"
                             android:layout_height="@dimen/_46sdp"
                             android:adjustViewBounds="true"
                             android:src="@drawable/ic_lombok" />
@@ -723,7 +723,7 @@
                         android:orientation="vertical">
 
                         <ImageView
-                            android:layout_width="@dimen/_42sdp"
+                            android:layout_width="wrap_content"
                             android:layout_height="@dimen/_46sdp"
                             android:adjustViewBounds="true"
                             android:src="@drawable/ic_malang" />
@@ -786,7 +786,7 @@
                         android:orientation="vertical">
 
                         <ImageView
-                            android:layout_width="@dimen/_42sdp"
+                            android:layout_width="wrap_content"
                             android:layout_height="@dimen/_46sdp"
                             android:adjustViewBounds="true"
                             android:src="@drawable/ic_wali_3" />
@@ -827,7 +827,7 @@
                         android:orientation="vertical">
 
                         <ImageView
-                            android:layout_width="@dimen/_42sdp"
+                            android:layout_width="wrap_content"
                             android:layout_height="@dimen/_46sdp"
                             android:adjustViewBounds="true"
                             android:src="@drawable/ic_wali_5" />
@@ -868,7 +868,7 @@
                         android:orientation="vertical">
 
                         <ImageView
-                            android:layout_width="@dimen/_42sdp"
+                            android:layout_width="wrap_content"
                             android:layout_height="@dimen/_46sdp"
                             android:adjustViewBounds="true"
                             android:src="@drawable/ic_wali_8" />
@@ -909,7 +909,7 @@
                         android:orientation="vertical">
 
                         <ImageView
-                            android:layout_width="@dimen/_42sdp"
+                            android:layout_width="wrap_content"
                             android:layout_height="@dimen/_46sdp"
                             android:adjustViewBounds="true"
                             android:src="@drawable/ic_wali_9" />
