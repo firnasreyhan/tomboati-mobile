@@ -32,7 +32,6 @@ public class IstighosahAdapter extends RecyclerView.Adapter<IstighosahAdapter.Vi
         holder.textArab.setText(models.get(position).getTextArab());
         holder.textTranslate.setText(models.get(position).getTextTranslate());
         holder.textBaca.setText("Dibaca sebanyak " + models.get(position).getCountBacaan() + " " +"kali");
-        holder.count.setText(String.valueOf(position + 1));
 
         if(position == 17) {
 //            holder.btn_yasin.setVisibility(View.VISIBLE);
@@ -46,7 +45,6 @@ public class IstighosahAdapter extends RecyclerView.Adapter<IstighosahAdapter.Vi
 
     public class ViewHolder extends RecyclerView.ViewHolder{
 
-        private final TextView count;
         private final TextView textArab;
         private final TextView textTranslate;
         private final TextView textBaca;
@@ -54,7 +52,6 @@ public class IstighosahAdapter extends RecyclerView.Adapter<IstighosahAdapter.Vi
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            count = itemView.findViewById(R.id.textCount);
             textArab = itemView.findViewById(R.id.textArab);
             textTranslate = itemView.findViewById(R.id.textTranslate);
             textBaca = itemView.findViewById(R.id.textBaca);

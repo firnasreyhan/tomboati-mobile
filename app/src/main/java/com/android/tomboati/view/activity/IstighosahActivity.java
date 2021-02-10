@@ -22,7 +22,7 @@ public class IstighosahActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setTheme(R.style.ThemeTomboAti);
+        setTheme(R.style.ThemeTomboAtiGreen);
         setContentView(R.layout.activity_istighosah);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
