@@ -40,6 +40,7 @@ public class IstighosahActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
+        listModel.clear();
         addModel("بِسْمِ اللهِ الرَّحْمَنِ الرَّحِيم", "Bismillahirrahmanirrahim", 1);
         addModel("بِسْمِ اللهِ الرَّ حْمَنِ الرَّ حِيْمِ . اَلْحَمْدُ لِلهِ رَبِّ الْعَا " + "لَمِيْنَ . اَلرَّحْمَنِ الرَّحِيْمِ . مَلِكِ يَوْمِ الدِّيْنِ . اِيَّا " +
                 "كَنَعْبُدُ وَاِيَّا كَنَسْتَعِيْنُ . اِهْدِنَا الصِّرَاطَ الَّمُسْتَقِيْمَ . " + "صِرَاطَ الَّذِ يْنَ اَنْعَمْتَ عَلَيْهِمْ غَيْرِالْمَغْضُوْبِ عَلَيْهِمْ وَلَا " +
@@ -88,7 +89,7 @@ public class IstighosahActivity extends AppCompatActivity {
                 "Abadan Wa Dafa’Tu ‘Ankumus Suu-A Bi-Alfi Alfi Alfi Laa Haula Wa Laa Quwwta Illaa " +
                 "Billahil ‘Aliyyil ‘Azhiim",33);
         addModel("الْحَمْدُ للهِ الَّذِيْ أنْعَمَ عَلَيْنَا وَهَدَانَا عَلَى دَيْنِ الإسْلَامِ",
-                "ALHAMDULILLALLADZII ‘AN’AMA ‘ALAINAA WA HADAANAA ‘ALAA DAINIL ISLAAM", 33);
+                "Alhamdulillalladzii ‘An’Ama ‘Alainaa Wa Hadaanaa ‘Alaa Dainil Islaam", 33);
         addModel("بِسْمِ اللهِ مَاشَاءَ اللهُ لَا يَسُوْقُ الْخَيْرَ إلَّا اللهِ بِسْمِ اللهِ مَاشَاءَ اللهُ لَا يَصْرِفُ السُّوْءَ إلَّا اللهُ بِسْمِ اللهِ مَاشَاءَ اللهُ مَا كَانَ مِنْ نِعْمَةٍ فَمِنَ اللهِ بِسْمِ" +
                 " اللهِ مَاشَاءَ اللهُ لَا حَوْلَ وَلَا قُوَّةَ إلَّا بِا للهِ الْعَلِيِّ " +
                 "الْعَظِيْمِ", "Bismillahi Maasyaa-Allahu Laa Yasuuqul Khaira Illallahi " +

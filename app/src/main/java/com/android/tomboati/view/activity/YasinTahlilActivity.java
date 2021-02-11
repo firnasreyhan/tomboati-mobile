@@ -8,12 +8,12 @@ import android.os.Bundle;
 
 import com.android.tomboati.R;
 import com.android.tomboati.adapter.TabAdapter;
-import com.android.tomboati.view.fragment.JuzFragment;
-import com.android.tomboati.view.fragment.SurahFragment;
+import com.android.tomboati.view.fragment.TahlilFragment;
+import com.android.tomboati.view.fragment.YasinFragment;
 import com.google.android.material.tabs.TabLayout;
 
-public class AlQuranActivity extends AppCompatActivity {
-    private Toolbar toolbar;
+public class YasinTahlilActivity extends AppCompatActivity {
+
     private TabAdapter tabAdapter;
     private TabLayout tabLayout;
     private ViewPager viewPager;
@@ -22,20 +22,21 @@ public class AlQuranActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setTheme(R.style.ThemeTomboAtiGreen);
-        setContentView(R.layout.activity_al_quran);
+        setContentView(R.layout.activity_yasin_tahlil);
 
-        toolbar = findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        setTitle("Al Qur’an");
+        setTitle("Yasin & Tahlil");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+
 
         viewPager = findViewById(R.id.viewPager);
         tabLayout = findViewById(R.id.tabLayout);
 
         tabAdapter = new TabAdapter(getSupportFragmentManager(), this);
-        tabAdapter.addFragment(new SurahFragment(), "Surat", R.drawable.ic_star);
-        tabAdapter.addFragment(new JuzFragment(), "Juz", R.drawable.ic_star);
+        tabAdapter.addFragment(new YasinFragment(), "Surah Yasin", R.drawable.ic_quran);
+        tabAdapter.addFragment(new TahlilFragment(), "Doa Tahlil", R.drawable.ic_quran);
 
         viewPager.setAdapter(tabAdapter);
         tabLayout.setupWithViewPager(viewPager);

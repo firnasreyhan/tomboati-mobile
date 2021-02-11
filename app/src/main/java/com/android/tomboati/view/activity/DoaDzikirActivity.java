@@ -12,7 +12,7 @@ import com.android.tomboati.R;
 
 public class DoaDzikirActivity extends AppCompatActivity {
     private Toolbar toolbar;
-    private CardView cardViewAsmaulHusna, cardViewIstighosah;
+    private CardView cardViewAsmaulHusna, cardViewIstighosah, cardViewYasinTahlil;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +28,7 @@ public class DoaDzikirActivity extends AppCompatActivity {
 
         cardViewAsmaulHusna = findViewById(R.id.cardViewAsmaulHusna);
         cardViewIstighosah = findViewById(R.id.cardViewIstighosah);
+        cardViewYasinTahlil = findViewById(R.id.cardViewYasinTahlil);
 
         cardViewAsmaulHusna.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -40,6 +41,13 @@ public class DoaDzikirActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(v.getContext(), IstighosahActivity.class));
+            }
+        });
+
+        cardViewYasinTahlil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(v.getContext(), YasinTahlilActivity.class));
             }
         });
     }
