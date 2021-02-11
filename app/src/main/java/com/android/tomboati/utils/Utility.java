@@ -73,18 +73,10 @@ public class Utility {
     }
 
     public static int getHour() {
-        return hour;
-    }
-
-    public static void setHour(int hour) {
-        Utility.hour = hour;
+        return c.get(Calendar.HOUR_OF_DAY);
     }
 
     public static int getMinute() {
-        return minute;
-    }
-
-    public static void setMinute(int minute) {
-        Utility.minute = minute;
+        return c.get(Calendar.MINUTE);
     }
 }
