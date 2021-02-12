@@ -14,6 +14,7 @@ import com.android.tomboati.api.ApiInterfaceTomboAti;
 import com.android.tomboati.api.response.AyatResponse;
 import com.android.tomboati.api.response.BaseResponse;
 import com.android.tomboati.api.response.ChatResponse;
+import com.android.tomboati.api.response.DoaHarianResponse;
 import com.android.tomboati.api.response.JadwalSholatResponse;
 import com.android.tomboati.api.response.MasjidResponse;
 import com.android.tomboati.api.response.SignInResponse;
@@ -266,6 +267,25 @@ public class Repository {
             public void onFailure(Call<TahlilResponse> call, Throwable t) {
                 data.postValue(null);
                 Log.e("getDoaTahlil", t.getMessage());
+            }
+        });
+        return data;
+    }
+
+    public MutableLiveData<DoaHarianResponse> getDoaHarian() {
+        MutableLiveData<DoaHarianResponse> data = new MutableLiveData<>();
+        apiInterfaceTahlil.getDoaHarian().enqueue(new Callback<DoaHarianResponse>() {
+            @Override
+            public void onResponse(Call<DoaHarianResponse> call, Response<DoaHarianResponse> response) {
+                if (response.code() == 200) {
+                    data.postValue(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<DoaHarianResponse> call, Throwable t) {
+                data.postValue(null);
+                Log.e("getDoaHarian", t.getMessage());
             }
         });
         return data;
