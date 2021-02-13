@@ -3,6 +3,7 @@ package com.android.tomboati.api;
 import com.android.tomboati.api.response.BaseResponse;
 import com.android.tomboati.api.response.ChatResponse;
 import com.android.tomboati.api.response.JadwalSholatResponse;
+import com.android.tomboati.api.response.PaketResponse;
 import com.android.tomboati.api.response.SignInResponse;
 
 import okhttp3.MultipartBody;
@@ -15,6 +16,7 @@ import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface ApiInterfaceTomboAti {
     @POST("user/login_post")
@@ -56,5 +58,10 @@ public interface ApiInterfaceTomboAti {
     @FormUrlEncoded
     Call<ChatResponse> getChat(
             @Field("idChatRoom") String idChatRoom
+    );
+
+    @GET("Paket/paket_get")
+    Call<PaketResponse> getPaket(
+            @Query("tipe") String tipe
     );
 }

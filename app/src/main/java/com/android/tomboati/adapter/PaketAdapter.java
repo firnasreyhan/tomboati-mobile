@@ -1,21 +1,33 @@
 package com.android.tomboati.adapter;
 
+import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.tomboati.R;
+import com.android.tomboati.api.response.PaketResponse;
 import com.android.tomboati.model.PaketModel;
+import com.android.tomboati.preference.AppPreference;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.Priority;
+import com.bumptech.glide.load.DecodeFormat;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
+import java.util.List;
 
 public class PaketAdapter extends RecyclerView.Adapter<PaketAdapter.ViewHolder> {
-    private ArrayList<PaketModel> list;
+    private List<PaketResponse.PaketModel> list;
 
-    public PaketAdapter(ArrayList<PaketModel> list) {
+    public PaketAdapter(List<PaketResponse.PaketModel> list) {
         this.list = list;
     }
 
@@ -32,7 +44,65 @@ public class PaketAdapter extends RecyclerView.Adapter<PaketAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        if (list.get(position).getImagePaket() != null) {
+            Glide.with(holder.itemView.getContext())
+                    .load(list.get(position).getImagePaket())
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                    .skipMemoryCache(true)
+                    .dontAnimate()
+                    .dontTransform()
+                    .priority(Priority.IMMEDIATE)
+                    .encodeFormat(Bitmap.CompressFormat.PNG)
+                    .format(DecodeFormat.DEFAULT)
+                    .placeholder(R.drawable.ic_logo)
+                    .into(holder.imageViewPaket);
+        }
 
+        if (list.get(position).getImageMaskapai() != null) {
+            Glide.with(holder.itemView.getContext())
+                    .load(list.get(position).getImageMaskapai())
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                    .skipMemoryCache(true)
+                    .dontAnimate()
+                    .dontTransform()
+                    .priority(Priority.IMMEDIATE)
+                    .encodeFormat(Bitmap.CompressFormat.PNG)
+                    .format(DecodeFormat.DEFAULT)
+                    .placeholder(R.drawable.ic_logo)
+                    .into(holder.imageViewMaskapai);
+        }
+
+        if (list.get(position).getNamaPaket() != null) {
+            holder.textViewNamaPaket.setText(list.get(position).getNamaPaket());
+        }
+
+        if (list.get(position).getQuadSheet() != 0 && list.get(position).getDurasiPaket() != null) {
+            DecimalFormatSymbols decimalFormatSymbols = new DecimalFormatSymbols();
+            decimalFormatSymbols.setDecimalSeparator(',');
+            DecimalFormat decimalFormat = new DecimalFormat("###,###,###,###", decimalFormatSymbols);
+
+            holder.textViewHargaPaketDurasi.setText("Rp. " + decimalFormat.format(list.get(position).getQuadSheet()) + " (" + list.get(position).getDurasiPaket() + " Hari)");
+        }
+
+        if (list.get(position).getPenerbangan() != null) {
+            holder.textViewPenerbangan.setText(list.get(position).getPenerbangan());
+        }
+
+        if (list.get(position).getTempatHotelA() != null) {
+            holder.textViewTempatHotelA.setText(list.get(position).getTempatHotelA());
+        }
+
+        if (list.get(position).getNamaHotelA() != null) {
+            holder.textViewNamaHotelA.setText(list.get(position).getNamaHotelA());
+        }
+
+        if (list.get(position).getTempatHotelB() != null) {
+            holder.textViewTempatHotelB.setText(list.get(position).getTempatHotelB());
+        }
+
+        if (list.get(position).getNamaHotelB() != null) {
+            holder.textViewNamaHotelB.setText(list.get(position).getNamaHotelB());
+        }
     }
 
     @Override
@@ -41,8 +111,19 @@ public class PaketAdapter extends RecyclerView.Adapter<PaketAdapter.ViewHolder> 
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
+        private ImageView imageViewPaket, imageViewMaskapai;
+        private TextView textViewNamaPaket, textViewHargaPaketDurasi, textViewPenerbangan, textViewTempatHotelA, textViewNamaHotelA, textViewTempatHotelB, textViewNamaHotelB;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+            imageViewPaket = itemView.findViewById(R.id.imageViewPaket);
+            imageViewMaskapai = itemView.findViewById(R.id.imageViewMaskapai);
+            textViewNamaPaket = itemView.findViewById(R.id.textViewNamaPaket);
+            textViewHargaPaketDurasi = itemView.findViewById(R.id.textViewHargaPaketDurasi);
+            textViewPenerbangan = itemView.findViewById(R.id.textViewPenerbangan);
+            textViewTempatHotelA = itemView.findViewById(R.id.textViewTempatHotelA);
+            textViewNamaHotelA = itemView.findViewById(R.id.textViewNamaHotelA);
+            textViewTempatHotelB = itemView.findViewById(R.id.textViewTempatHotelB);
+            textViewNamaHotelB = itemView.findViewById(R.id.textViewNamaHotelB);
         }
     }
 }

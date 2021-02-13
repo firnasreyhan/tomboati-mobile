@@ -73,7 +73,7 @@ public class Utility {
     }
 
     public static int getHour() {
-        return hour;
+        return c.get(Calendar.HOUR_OF_DAY);
     }
 
     public static void setHour(int hour) {
@@ -81,7 +81,7 @@ public class Utility {
     }
 
     public static int getMinute() {
-        return minute;
+        return c.get(Calendar.MINUTE);
     }
 
     public static void setMinute(int minute) {

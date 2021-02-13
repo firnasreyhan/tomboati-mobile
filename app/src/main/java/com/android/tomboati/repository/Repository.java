@@ -17,6 +17,7 @@ import com.android.tomboati.api.response.ChatResponse;
 import com.android.tomboati.api.response.DoaHarianResponse;
 import com.android.tomboati.api.response.JadwalSholatResponse;
 import com.android.tomboati.api.response.MasjidResponse;
+import com.android.tomboati.api.response.PaketResponse;
 import com.android.tomboati.api.response.SignInResponse;
 import com.android.tomboati.api.response.SurahResponse;
 import com.android.tomboati.api.response.TahlilResponse;
@@ -286,6 +287,27 @@ public class Repository {
             public void onFailure(Call<DoaHarianResponse> call, Throwable t) {
                 data.postValue(null);
                 Log.e("getDoaHarian", t.getMessage());
+            }
+        });
+        return data;
+    }
+
+    public MutableLiveData<PaketResponse> getPaket(String paket) {
+        MutableLiveData<PaketResponse> data = new MutableLiveData<>();
+        apiInterfaceTomboAti.getPaket(
+                paket
+        ).enqueue(new Callback<PaketResponse>() {
+            @Override
+            public void onResponse(Call<PaketResponse> call, Response<PaketResponse> response) {
+                if (response.code() == 200) {
+                    data.postValue(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<PaketResponse> call, Throwable t) {
+                data.postValue(null);
+                Log.e("getPaket", t.getMessage());
             }
         });
         return data;

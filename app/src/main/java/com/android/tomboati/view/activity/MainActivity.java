@@ -22,8 +22,11 @@ import com.android.tomboati.view.fragment.InboxFragment;
 import com.android.tomboati.view.fragment.PesananFragment;
 import com.android.tomboati.view.fragment.RiwayatFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.zach.znavigator.ZNavigation.NavigationActivity;
 
-public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener{
+import java.util.LinkedHashMap;
+
+public class MainActivity extends NavigationActivity {
     private Toolbar toolbar;
     private BottomNavigationView bottomNavigationView;
 //    private FragmentManager fragmentManager;
@@ -57,9 +60,19 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 //        fragmentManager.beginTransaction().add(R.id.frameLayoutFragment, fragmentPesanan, "Pesanan").hide(fragmentPesanan).commit();
 //        fragmentManager.beginTransaction().add(R.id.frameLayoutFragment, fragmentRiwayat, "Riwayat").hide(fragmentRiwayat).commit();
 //        fragmentManager.beginTransaction().add(R.id.frameLayoutFragment, fragmentBeranda, "Beranda").commit();
-        loadFragment(new BerandaFragment());
-        fragmentActive = new BerandaFragment();
+//        loadFragment(new BerandaFragment());
+//        fragmentActive = new BerandaFragment();
+
+        LinkedHashMap<Integer, Fragment> rootFragments = new LinkedHashMap<>();
+        rootFragments.put(R.id.menu_beranda, new BerandaFragment());
+        rootFragments.put(R.id.menu_riwayat,new RiwayatFragment());
+        rootFragments.put(R.id.menu_pesanan, new PesananFragment());
+        rootFragments.put(R.id.menu_inbox, new InboxFragment());
+        rootFragments.put(R.id.menu_akun, new AkunFragment());
+        init(rootFragments, R.id.frameLayoutFragment);
+
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
+        bottomNavigationView.setOnNavigationItemReselectedListener(this);
     }
 
 //    private final BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -110,50 +123,55 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     }
 
     @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        fragment = null;
-        switch (item.getItemId()){
-            case R.id.menu_beranda:
-                fragment = new BerandaFragment();
-                break;
-            case R.id.menu_riwayat:
-                fragment = new RiwayatFragment();
-                break;
-            case R.id.menu_pesanan:
-                fragment = new PesananFragment();
-                break;
-            case R.id.menu_inbox:
-                fragment = new InboxFragment();
-                break;
-            case R.id.menu_akun:
-                fragment = new AkunFragment();
-                break;
-        }
-
-        if (!fragment.getClass().getName().equalsIgnoreCase(fragmentActive.getClass().getName())) {
-            return loadFragment(fragment);
-        } else {
-            return false;
-        }
+    public void tabChanged(int id) {
+        bottomNavigationView.getMenu().findItem(id).setChecked(true);
     }
 
-    public void updateStatusBarColor(String color){// Color must be in hexadecimal fromat
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            Window window = getWindow();
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            window.setStatusBarColor(Color.parseColor(color));
-        }
-    }
-
-    // method untuk load fragment yang sesuai
-    private boolean loadFragment(Fragment fragment) {
-        if (fragment != null) {
-            fragmentActive = fragment;
-            getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.frameLayoutFragment, fragment)
-                    .commit();
-            return true;
-        }
-        return false;
-    }
+//    @Override
+//    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+//        fragment = null;
+//        switch (item.getItemId()){
+//            case R.id.menu_beranda:
+//                fragment = new BerandaFragment();
+//                break;
+//            case R.id.menu_riwayat:
+//                fragment = new RiwayatFragment();
+//                break;
+//            case R.id.menu_pesanan:
+//                fragment = new PesananFragment();
+//                break;
+//            case R.id.menu_inbox:
+//                fragment = new InboxFragment();
+//                break;
+//            case R.id.menu_akun:
+//                fragment = new AkunFragment();
+//                break;
+//        }
+//
+//        if (!fragment.getClass().getName().equalsIgnoreCase(fragmentActive.getClass().getName())) {
+//            return loadFragment(fragment);
+//        } else {
+//            return false;
+//        }
+//    }
+//
+//    public void updateStatusBarColor(String color){// Color must be in hexadecimal fromat
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+//            Window window = getWindow();
+//            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+//            window.setStatusBarColor(Color.parseColor(color));
+//        }
+//    }
+//
+//    // method untuk load fragment yang sesuai
+//    private boolean loadFragment(Fragment fragment) {
+//        if (fragment != null) {
+//            fragmentActive = fragment;
+//            getSupportFragmentManager().beginTransaction()
+//                    .replace(R.id.frameLayoutFragment, fragment)
+//                    .commit();
+//            return true;
+//        }
+//        return false;
+//    }
 }

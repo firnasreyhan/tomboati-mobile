@@ -211,10 +211,10 @@ public class BerandaFragment extends Fragment {
                 shimmerFrameLayoutSlider.startShimmer();
                 shimmerFrameLayoutSlider.setVisibility(View.VISIBLE);
                 sliderView.setVisibility(View.GONE);
-                if (!Utility.getList().isEmpty()) {
-                    Utility.getList().clear();
-                    sliderAdapter.notifyDataSetChanged();
-                }
+//                if (!Utility.getList().isEmpty()) {
+//                    Utility.getList().clear();
+//                    sliderAdapter.notifyDataSetChanged();
+//                }
                 checkLolation();
                 new Handler().postDelayed(new Runnable() {
                     @Override public void run() {
