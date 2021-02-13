@@ -13,7 +13,7 @@ import com.android.tomboati.R;
 public class DoaDzikirActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private CardView cardViewAsmaulHusna, cardViewIstighosah, cardViewYasinTahlil,
-            cardViewDoaHarian;
+            cardViewDoaHarian, cardViewDoaUmrah, cardViewDoaHaji;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +31,8 @@ public class DoaDzikirActivity extends AppCompatActivity {
         cardViewIstighosah = findViewById(R.id.cardViewIstighosah);
         cardViewYasinTahlil = findViewById(R.id.cardViewYasinTahlil);
         cardViewDoaHarian = findViewById(R.id.cardViewDoaHarian);
+        cardViewDoaUmrah = findViewById(R.id.cardViewDoaUmrah);
+        cardViewDoaHaji = findViewById(R.id.cardViewDoaHaji);
 
         cardViewAsmaulHusna.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,6 +59,20 @@ public class DoaDzikirActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(v.getContext(), DoaSehariHariActivity.class));
+            }
+        });
+
+        cardViewDoaUmrah.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(v.getContext(), DoaUmrahActivity.class));
+            }
+        });
+
+        cardViewDoaHaji.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(v.getContext(), DoaHajiActivity.class));
             }
         });
     }

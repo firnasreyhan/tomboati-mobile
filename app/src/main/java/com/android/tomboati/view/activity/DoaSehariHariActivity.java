@@ -24,7 +24,6 @@ public class DoaSehariHariActivity extends AppCompatActivity {
 
     private DoaHarianViewModel doaHarianViewModel;
     private RecyclerView recyclerViewDoaSehari;
-//    private LinearLayout linearLayoutContent;
     private ShimmerFrameLayout shimmerFrameLayoutDoa;
     private DoaHarianAdapter doaHarianAdapter;
 
@@ -44,7 +43,6 @@ public class DoaSehariHariActivity extends AppCompatActivity {
         doaHarianViewModel = ViewModelProviders.of(this).get(DoaHarianViewModel.class);
         recyclerViewDoaSehari = findViewById(R.id.recyclerViewDoaSehari);
         shimmerFrameLayoutDoa = findViewById(R.id.shimmerFrameLayoutDoa);
-//        linearLayoutContent = findViewById(R.id.linearLayoutContent);
 
 
         recyclerViewDoaSehari.setHasFixedSize(true);

@@ -17,7 +17,10 @@
         android:roundIcon="@mipmap/ic_new_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/ThemeTomboAti">
-        <activity android:name=".view.activity.DetailDoaSehariHariActivity"></activity>
+        <activity android:name=".view.activity.DoaHajiActivity"></activity>
+        <activity android:name=".view.activity.DoaUmrahActivity" />
+        <activity android:name=".view.activity.DetailHajiUmrahActivity" />
+        <activity android:name=".view.activity.DetailDoaSehariHariActivity" />
         <activity android:name=".view.activity.DoaSehariHariActivity" />
         <activity android:name=".view.activity.YasinTahlilActivity" />
         <activity android:name=".view.activity.IstighosahActivity" />
