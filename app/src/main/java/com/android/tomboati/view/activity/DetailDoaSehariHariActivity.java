@@ -15,8 +15,8 @@ import com.codesgood.views.JustifiedTextView;
 public class DetailDoaSehariHariActivity extends AppCompatActivity {
 
     private View garis2;
-    private TextView judul, header_keterangan;
-    private JustifiedTextView translate, arti, keterangan, ayat;
+    private TextView judul, header_keterangan, ayat;
+    private JustifiedTextView translate, arti, keterangan;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
