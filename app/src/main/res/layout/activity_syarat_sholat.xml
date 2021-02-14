@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background"
+    tools:context=".view.activity.SyaratSholatActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:background="@color/dark_green"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="@dimen/_13sdp">
+
+            <com.codesgood.views.JustifiedTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/catamaran_medium"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/_13sdp"
+                android:text="Salat merupakan ibadah kewajiban yang harus dilakukan seorang Muslim 5 kali dalam sehari. Salat menjadi rukun Islam yang ke 2 setelah seseorang bersyahadat sebagai syarat menjadi orang Islam.\n\nSupaya salat kita sah, ada beberapa syarat yang harus dipenuhi sebelum melakukan salat. Syarat-syarat tersebut menjadi sah tidaknya salat. Jika dilakukan maka salat menjadi sah. Dan jika tidak maka salat tidak dinilai sah.\n\nBerikut 5 syarat sah salat dan dalil-dalilnya:"/>
+
+            <com.codesgood.views.JustifiedTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_13sdp"
+                android:fontFamily="@font/catamaran_bold"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/_13sdp"
+                android:text="1. Masuk Waktu Shalat"/>
+
+            <com.codesgood.views.JustifiedTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_7sdp"
+                android:fontFamily="@font/catamaran_medium"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/_13sdp"
+                android:text="Dalilnya sebagaimana ditegaskan dalam QS. An- Nisa ayat 103:"/>
+
+            <com.codesgood.views.JustifiedTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_7sdp"
+                android:fontFamily="@font/amiri_bold"
+                android:text="فَإِذَا قَضَيْتُمُ الصَّلَاةَ فَاذْكُرُوا اللَّهَ قِيَامًا وَقُعُودًا وَعَلَىٰ جُنُوبِكُمْ ۚ فَإِذَا اطْمَأْنَنْتُمْ فَأَقِيمُوا الصَّلَاةَ ۚ إِنَّ الصَّلَاةَ كَانَتْ عَلَى الْمُؤْمِنِينَ كِتَابًا مَوْقُوتًا"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/_24sdp" />
+
+            <com.codesgood.views.JustifiedTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_6sdp"
+                android:text="Maka apabila kamu telah menyelesaikan sholat, ingatlah Allah di waktu berdiri, di waktu duduk dan di waktu berbaring. Kemudian apabila kamu telah merasa aman, maka dirikanlah sholat itu. Sesungguhnya sholat itu adalah fardhu yang ditentukan waktunya atas orang-orang yang beriman."
+                android:fontFamily="@font/catamaran_regular"
+                android:textColor="@color/darker_grey"
+                android:textSize="@dimen/_13sdp"/>
+
+            <com.codesgood.views.JustifiedTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_13sdp"
+                android:fontFamily="@font/catamaran_bold"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/_13sdp"
+                android:text="2. Suci Dari Hadas Kecil Dan Besar"/>
+
+            <com.codesgood.views.JustifiedTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_7sdp"
+                android:fontFamily="@font/catamaran_medium"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/_13sdp"
+                android:text="Dalilnya sebagaimana Rassulullah SAW dalam sebuah hadisnya:"/>
+
+            <com.codesgood.views.JustifiedTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_7sdp"
+                android:fontFamily="@font/amiri_bold"
+                android:text="لا يَقْبَلُ اللَّهُ صَلاةَ أَحَدِكُمْ إذَا أَحْدَثَ حَتَّى يَتَوَضَّأَ"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/_24sdp" />
+
+            <com.codesgood.views.JustifiedTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_6sdp"
+                android:text="Allah tidak akan menerima shalat salah seorang diantara kalian jika dia berhadats sampai dia wudhu."
+                android:fontFamily="@font/catamaran_regular"
+                android:textColor="@color/darker_grey"
+                android:textSize="@dimen/_13sdp"/>
+
+            <com.codesgood.views.JustifiedTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_13sdp"
+                android:fontFamily="@font/catamaran_bold"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/_13sdp"
+                android:text="3. Suci Badan, Tempat Dan Pakaian"/>
+
+            <com.codesgood.views.JustifiedTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_7sdp"
+                android:fontFamily="@font/catamaran_medium"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/_13sdp"
+                android:text="Dalilnya dalam QS. Al-Muddatsir ayat 4:"/>
+
+            <com.codesgood.views.JustifiedTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_7sdp"
+                android:fontFamily="@font/amiri_bold"
+                android:text="وَثِيَابَكَ فَطَهِّرْ"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/_24sdp" />
+
+            <com.codesgood.views.JustifiedTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_6sdp"
+                android:text="Dan pakaianmu maka bersihkanlah."
+                android:fontFamily="@font/catamaran_regular"
+                android:textColor="@color/darker_grey"
+                android:textSize="@dimen/_13sdp"/>
+
+            <com.codesgood.views.JustifiedTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_13sdp"
+                android:fontFamily="@font/catamaran_bold"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/_13sdp"
+                android:text="4. Menutup Aurat"/>
+
+            <com.codesgood.views.JustifiedTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_7sdp"
+                android:fontFamily="@font/catamaran_medium"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/_13sdp"
+                android:text="Dalilnya disebut dalam Al-A'raf ayat 31, Allah SWT berfirman:"/>
+
+            <com.codesgood.views.JustifiedTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_7sdp"
+                android:fontFamily="@font/amiri_bold"
+                android:text="يَا بَنِي آدَمَ خُذُوا زِينَتَكُمْ عِنْدَ كُلِّ مَسْجِدٍ"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/_24sdp" />
+
+            <com.codesgood.views.JustifiedTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_6sdp"
+                android:text="Wahai anak cucu Adam, pakailah pakaianmu yang indah di setiap (memasuki) masjid."
+                android:fontFamily="@font/catamaran_regular"
+                android:textColor="@color/darker_grey"
+                android:textSize="@dimen/_13sdp"/>
+
+            <com.codesgood.views.JustifiedTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_13sdp"
+                android:fontFamily="@font/catamaran_bold"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/_13sdp"
+                android:text="5. Menghadap Kiblat"/>
+
+            <com.codesgood.views.JustifiedTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_7sdp"
+                android:fontFamily="@font/catamaran_medium"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/_13sdp"
+                android:text="Dalil syarat ini disebut dalam QS. Al-Baqarah ayat 150:"/>
+
+            <com.codesgood.views.JustifiedTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_7sdp"
+                android:fontFamily="@font/amiri_bold"
+                android:text="وَمِنْ حَيْثُ خَرَجْتَ فَوَلِّ وَجْهَكَ شَطْرَ الْمَسْجِدِ الْحَرَامِ ٍۚ"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/_24sdp" />
+
+            <com.codesgood.views.JustifiedTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_6sdp"
+                android:text="Dan dari mana saja kamu (keluar), maka palingkanlah wajahmu ke arah Masjidil Haram."
+                android:fontFamily="@font/catamaran_regular"
+                android:textColor="@color/darker_grey"
+                android:textSize="@dimen/_13sdp"/>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>

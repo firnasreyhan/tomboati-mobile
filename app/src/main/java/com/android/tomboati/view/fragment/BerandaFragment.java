@@ -126,7 +126,7 @@ public class BerandaFragment extends Fragment {
         String[] senteces = news.split("\\. ");
         Log.e("size", String.valueOf(senteces.length));
         String shortNews = "";
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 2; i++) {
             shortNews = shortNews + senteces[i] + ". ";
         }
         textViewSortNews.setText(shortNews);

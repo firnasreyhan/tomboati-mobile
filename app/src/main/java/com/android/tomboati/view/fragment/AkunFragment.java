@@ -21,6 +21,7 @@ import com.android.tomboati.R;
 import com.android.tomboati.api.response.BaseResponse;
 import com.android.tomboati.api.response.SignInResponse;
 import com.android.tomboati.preference.AppPreference;
+import com.android.tomboati.view.activity.KodeReferralActivity;
 import com.android.tomboati.view.activity.MainActivity;
 import com.android.tomboati.view.activity.SignUpActivity;
 import com.android.tomboati.viewmodel.AkunViewModel;
@@ -38,7 +39,7 @@ public class AkunFragment extends Fragment {
     private TextView textViewSignUp;
     private AkunViewModel akunViewModel;
     private TextInputEditText textInputEditTextEmail, textInputEditTextPassword;
-    private MaterialButton materialButtonSignIn, materialButtonSignOut;
+    private MaterialButton materialButtonSignIn, materialButtonSignOut, materialButtonKodeReferral;
     private ConstraintLayout constraintLayoutSignIn;
     private LinearLayout linearLayoutAkun;
     private ShapeableImageView shapeableImageViewFoto;
@@ -62,6 +63,7 @@ public class AkunFragment extends Fragment {
         textViewNamaLengkap = view.findViewById(R.id.textViewNamaLengkap);
         textViewNomorHP = view.findViewById(R.id.textViewNomorHP);
         materialButtonSignOut = view.findViewById(R.id.materialButtonSignOut);
+        materialButtonKodeReferral = view.findViewById(R.id.materialButtonKodeReferral);
 
         if (AppPreference.getUser(getContext()) != null) {
 //            ((MainActivity)getActivity()).updateStatusBarColor("#00441F");
@@ -95,6 +97,13 @@ public class AkunFragment extends Fragment {
                             }
                         });
                     }, loadingTime);
+                }
+            });
+
+            materialButtonKodeReferral.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(v.getContext(), KodeReferralActivity.class));
                 }
             });
         } else {
