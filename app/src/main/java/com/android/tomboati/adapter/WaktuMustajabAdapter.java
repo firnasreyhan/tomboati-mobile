@@ -23,9 +23,11 @@ import java.util.List;
 public class WaktuMustajabAdapter extends RecyclerView.Adapter<WaktuMustajabAdapter.ViewHolder>{
 
     private final List<TempatMustajabModel> data;
+    private final String prefix;
 
-    public WaktuMustajabAdapter(List<TempatMustajabModel> data) {
+    public WaktuMustajabAdapter(List<TempatMustajabModel> data, String prefix) {
         this.data = data;
+        this.prefix = prefix;
     }
 
     @NonNull
@@ -37,7 +39,7 @@ public class WaktuMustajabAdapter extends RecyclerView.Adapter<WaktuMustajabAdap
     @Override
     public void onBindViewHolder(@NonNull WaktuMustajabAdapter.ViewHolder holder, int position) {
         holder.textJudul.setText(data.get(position).getJudul());
-        holder.textCount.setText("Waktu Mustajab Ke - " + (position + 1));
+        holder.textCount.setText(prefix + " Ke - " + (position + 1));
         holder.textKeterangan.setText(data.get(position).getKeterangan());
         holder.imgArrow.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,7 +51,6 @@ public class WaktuMustajabAdapter extends RecyclerView.Adapter<WaktuMustajabAdap
                     holder.textKeterangan.setVisibility(View.VISIBLE);
                     holder.imgArrow.setImageResource(R.drawable.ic_less);
                 }
-//                TransitionManager.beginDelayedTransition(holder.cardViewItemWaktuMustajab, new AutoTransition());
             }
         });
     }
