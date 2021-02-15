@@ -3,6 +3,8 @@ package com.android.tomboati.view.activity;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -14,6 +16,8 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.android.tomboati.R;
+import com.android.tomboati.adapter.WudhuAdapter;
+import com.android.tomboati.model.WudhuModel;
 import com.android.tomboati.utils.OnSwipeTouchListener;
 import com.google.android.material.button.MaterialButton;
 import com.jsibbold.zoomage.ZoomageView;
@@ -22,6 +26,8 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 public class WudhuActivity extends AppCompatActivity {
 //    private ZoomageView imageViewContent;
@@ -31,6 +37,8 @@ public class WudhuActivity extends AppCompatActivity {
 //    private PdfRenderer pdfRenderer;
 //    private PdfRenderer.Page page;
 //    private ParcelFileDescriptor parcelFileDescriptor;
+
+    private RecyclerView recyclerViewWudhu;
 
     private Toolbar toolbar;
 
@@ -45,6 +53,120 @@ public class WudhuActivity extends AppCompatActivity {
         setTitle("Wudhu");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        recyclerViewWudhu = findViewById(R.id.recyclerViewWudhu);
+        recyclerViewWudhu.setHasFixedSize(true);
+        recyclerViewWudhu.setLayoutManager(new LinearLayoutManager(this));
+
+        List<WudhuModel> list = new ArrayList<>();
+        list.add(new WudhuModel(
+                "",
+                "Rukun wudhu merupakan hal yang harus dilakukan saat wudhu, jika tidak dilakukan maka menyebabkan hukum wudhu tersebut tidak sah. Berikut beberapa cara berwudhu dengan benar yang harus diterapkan tanpa ada kesalahan atau kekeliruan.",
+                "",
+                "",
+                ""
+        ));
+        list.add(new WudhuModel(
+                "Niat berwudhu adalah:",
+                "",
+                "نَوَيْتُ الْوُضُوْءَلِرَفْعِ الْحَدَثِ الْاَصْغَرِفَرْضًالِلّٰهِ تَعَالٰى",
+                "Nawaitul wudhuu-a liraf’ll hadatsil ashghari fardhal lilaahi ta’aalaa",
+                "Saya niat berwudhu untuk menghilangkan hadats kecil fardu karena Allah."
+        ));
+        list.add(new WudhuModel(
+                "Mencuci kedua telapak tangan sebanyak tiga kali",
+                "Dengan gerakan menyeka pada sela-sela jari telapak tangan yang dimulai dari tangan kanan kemudian tangan kiri kemudian diriringi dengan membaca doa:",
+                "اَلْحَمْدُ ِللهِ الَّذِي جَعَلَ اْلمَاءَ طَهُوْرًا",
+                "Allhamdulillahilaziy ja’alal ma’a tohuro.",
+                "Dengan nama Allah yang Maha Pemurah Lagi Maha Penyayang. Segala Puji bagi Allah yang menjadikan air itu suci."
+        ));
+        list.add(new WudhuModel(
+                "Berkumur",
+                "Berkumur sebanyak 3 kali, dengan gerakan utuh membersihkan mulut (bahkan dari sisa-sisa makanan yang masih ada pada mulut).",
+                "اللَّهُمَّ اَعِنِّي عَلَى ذِكْرِكَ وَشُكْرِكَ وَحُسْنِ عِبَادَتِكَ",
+                "Allahumma aini alay dzikrika wasukrika wahusni ibadatika.",
+                "Ya Allah, bantulah aku supaya aku dapat berzikir kepadaMu, dan bersyukur kepadaMu, dan perelok ibadah kepadaMu."
+        ));
+        list.add(new WudhuModel(
+                "Membasuh hidung",
+                "Membasuh lubang hidung secara menyeluruh, sebanyak 3 kali gerakan.",
+                "اَللَّهُمَّ أَرِحْنِي رَائِحَة الجَـنَّةْ",
+                "Allahuma arihniy roihata janat.",
+                "Ya Allah, berilah aku ciuman daripada haruman bau Syurga."
+        ));
+        list.add(new WudhuModel(
+                "Membasuh Muka",
+                "Membasuh seluruh permukaan wajah dengan rata, sebanyak 3 kali gerakan memutar sekeliling wajah.",
+                "اَللَّهُمَّ بَيِّضْ وَجْهِى يَوْمَ تَبْيَضُّ وُجُوْهٌ وَتَسْوَدُّ وُجُوْهٌْ",
+                "Allahuma bayadh wajhi yawmatabyaht wujudhu wataswadu wujdhu.",
+                "Ya Allah, putihkanlah wajahku pada hari putihnya wajah-wajah dan hitamnya wajah-wajah."
+        ));
+        list.add(new WudhuModel(
+                "Membasuh kedua tangan",
+                "Membasuh kedua tangan hingga mencapai siku, sebanyak 3 kali gerakan memutar dan menyeluruh ke permukaan tangan.",
+                "",
+                "",
+                ""
+        ));
+        list.add(new WudhuModel(
+                "",
+                "Tangan kanan",
+                "اَللَّهُمَّ اَعْطِنِى كِتاَبِى بِيَمِيْنِى وَحَاسِبْنِى حِسَاباً يَسِيْرًا",
+                "Allahumma a’tini kitabiy biyamiyni wahasibni hisaban yasiyron.",
+                "Ya Allah! berikanlah kepadaku kitabku dari sebelah kanan dan hitunglah amalanku dengan perhitungan yang mudah."
+        ));
+        list.add(new WudhuModel(
+                "",
+                "Tangan kiri",
+                "اَللَّهُمَّ لاَ تُعْطِنِى كِتاَبِى مِنْ يَساَرِىْ وَ لاَ مِنْ وَرَاءِ ظَهْرِىْ",
+                "Allahumma latu’tini kitabi minyasariy wala minwaro’i tohriy.",
+                "Ya Allah! aku berlindung denganMu dari menerima kitab amalanku dari sebelah kiri atau dari sebelah belakang."
+        ));
+        list.add(new WudhuModel(
+                "Membasuh kepala mulai dari ubun-ubun",
+                "Membasuh kening hingga ujung kening (ubun-ubun) sampai sebagian kepala, sebanyak 3 kali gerakan menyeluruh.",
+                "اَللَّهُمَّ حَرِّمْ شَعْرِيْ وَبَشَرِيْ عَلَى النَّارِْ",
+                "Allahumma harom sa’riy wabasariy a’la nnari.",
+                "Ya Allah, haramkan rambutku dan kulit kepalaku dari pada neraka."
+        ));
+        list.add(new WudhuModel(
+                "Membasuh keduan telinga",
+                "Membasuh kedua tengila baik itu bagian dalam maupun luar telinga (daun telinga) hingga menyeluruh ke bagian telinga, sebanyak 3 kali gerakan.",
+                "اَللَّهُمَّ اجْعَلْنِي مِنَ الَّذِيْنَ يَسْتَمِعُوْنَ اْلقَوْلَ فَيَتَّبِعُوْنَ أَحْسَنَهُ",
+                "Allahummajalni minaladziyna yastami’uwnal qowla fayatabi’uwna ahnashu.",
+                "Ya Allah, jadikanlah aku termasuk orang-orang yang mendengarkan kata dan mengikuti sesuatu yang terbaik."
+        ));
+        list.add(new WudhuModel(
+                "Mencuci kedua kaki",
+                "Membasuh kedua kaki dan diusahakan menyeluruh tidak pada bagian depan saja, basuh hingga ke seluruh kaki hingga ke mata kaki.",
+                "",
+                "",
+                ""
+        ));
+        list.add(new WudhuModel(
+                "",
+                "Kaki kanan",
+                "اَللَّهُمَّ ثَبِّتْ قدَمِي عَلَى الصِّرَاطِ يَوْمَ تَزِلُّ فِيْهِاْ لاَقْدَامِ",
+                "Allahumma tabbatqodamiy a’lasoroti yawmatazilu fiyhil laqdami.",
+                "Yaa Allah, yaa Tuhanku,tetapkanlah tumuitku diatas titian yang lurus bersama tumit hamba-hamba-Mu yang shaleh."
+        ));
+        list.add(new WudhuModel(
+                "",
+                "Kaki kiri",
+                "اَللّهمَّ اِنِّى اَنْتُجِلَ قَدَمِ عَلَى صِرَاطِ فِى النَّارْ يَوْمَ تِجِلُ اَقْدَمِ المُنَافِقِيْنْ وَ المُشْرِكِينِْ",
+                "Allahuma iniyantujila qodamia’la sirotifinari yawmatijilu akdami munafikiyn wamusyrikiyni.",
+                "Ya Allah yaa Tuhanku,sesungguhnya aku-berlindung kepada-Mu dari keterpelesetan tumuitku dari atas jalan neraka,pada hari dikala terpeleset tumit orang-orang kafir."
+        ));
+        list.add(new WudhuModel(
+                "Dan setelah berwudhu selesai membaca do’a:",
+                "",
+                "اَشْهَدُ اَنْ لاَّ اِلَهَ اِلاَّالله وَ اَشْهَدُ اَنَّ مُحَمَّدَ الرَّسُولُ الله اَللهُمَّ جْعَلْنِى مِنَ التَّوَّبِيْنَ وَجْعَلْنِى مِنَ الْمُتَطَهِرِ يْنْ وَجْعَلْنِى مِنْ عِبَادِكَ الصَّلِحِيْنْ",
+                "Asyhadu allaa ilaaha illallaah, wahdahu laa syariika lahu, wa asyhadu anna mUhammadan ‘abduhu wa Rasuuluhu. Allahumma j’alnii minat tawwabiina, waj’alnii minal mutathahiriina waj’alnii min ‘ibaadikash shalihiina.",
+                "Aku bersaksi bahwa tiada Tuhan melainkan Allah, tiada sekutu baginya, dan aku bersaksi bahwa Nabi Muhammad itu hamba dan utusanNya. Ya Allah! Jadikanlah aku dari golongan orang-orang yang bertaubat dan jadikanlah aku dari golongan orang-orang yang bersuci dan jadikanlah aku bagian dari hamba-hamba-Mu yang sholeh."
+        ));
+
+        WudhuAdapter adapter = new WudhuAdapter(list);
+        recyclerViewWudhu.setAdapter(adapter);
 
 //        imageViewContent = findViewById(R.id.imageViewContent);
 //

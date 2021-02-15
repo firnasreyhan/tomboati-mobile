@@ -26,7 +26,7 @@ public class DoaSesudahSholatActivity extends AppCompatActivity {
 
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        setTitle("Paket");
+        setTitle("Doa Sesudah Sholat");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
@@ -77,15 +77,7 @@ public class DoaSesudahSholatActivity extends AppCompatActivity {
                 ""));
         list.add(new DoaSesudahSholatModel(
                 "Membaca tasbih, hamdala, dan takbir masing-masing sebanyak 33 kali:",
-                "سُبْحَانَ اللهِ ×٣٣",
-                ""));
-        list.add(new DoaSesudahSholatModel(
-                "",
-                "اَلْحَمْدُلِلهِ ×٣٣",
-                ""));
-        list.add(new DoaSesudahSholatModel(
-                "",
-                "اَللهُ اَكْبَرْ ×٣٣",
+                "سُبْحَانَ اللهِ ×٣٣" + "\n" + "اَلْحَمْدُلِلهِ ×٣٣" + "\n" + "اَللهُ اَكْبَرْ ×٣٣",
                 ""));
         list.add(new DoaSesudahSholatModel(
                 "Kemudian dilanjutkan dengan:",

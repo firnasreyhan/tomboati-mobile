@@ -16,7 +16,13 @@
         android:background="@color/dark_green"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewWudhu"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
     <androidx.core.widget.NestedScrollView
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
