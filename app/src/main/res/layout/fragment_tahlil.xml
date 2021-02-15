@@ -47,18 +47,19 @@
 
     <LinearLayout
         android:id="@+id/linearLayoutContent"
-        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:background="@color/background"
+        android:orientation="vertical"
+        android:visibility="gone">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewTahlil"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_weight="1"
             android:overScrollMode="never"
-            android:padding="10dp"
-            android:layout_weight="1"/>
+            android:padding="10dp" />
 
     </LinearLayout>
 

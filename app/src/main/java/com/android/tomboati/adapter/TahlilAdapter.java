@@ -25,7 +25,7 @@ public class TahlilAdapter extends RecyclerView.Adapter<TahlilAdapter.ViewHolder
     @NonNull
     @Override
     public TahlilAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new TahlilAdapter.ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_istighosah, parent, false));
+        return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_istighosah, parent, false));
     }
 
     @Override
@@ -40,7 +40,7 @@ public class TahlilAdapter extends RecyclerView.Adapter<TahlilAdapter.ViewHolder
         return data.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public static class ViewHolder extends RecyclerView.ViewHolder{
 
         private final TextView textArab;
         private final TextView textTranslate;

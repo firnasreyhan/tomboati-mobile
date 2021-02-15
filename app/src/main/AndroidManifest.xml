@@ -23,6 +23,14 @@
         <activity android:name=".view.activity.SyaratSholatActivity" />
         <activity android:name=".view.activity.KodeReferralActivity" />
         <activity android:name=".view.activity.DetailPaketActivity" />
+        <activity android:name=".view.activity.DoaRamadhanActivity"></activity>
+        <activity android:name=".view.activity.AdabBerdoaActivity" />
+        <activity android:name=".view.activity.WaktuMustajabActivity" />
+        <activity android:name=".view.activity.TampatMustajabActivity" />
+        <activity android:name=".view.activity.DoaZiarahActivity" />
+        <activity android:name=".view.activity.DoaHajiActivity" />
+        <activity android:name=".view.activity.DoaUmrahActivity" />
+        <activity android:name=".view.activity.DetailHajiUmrahActivity" />
         <activity android:name=".view.activity.DetailDoaSehariHariActivity" />
         <activity android:name=".view.activity.DoaSehariHariActivity" />
         <activity android:name=".view.activity.YasinTahlilActivity" />
