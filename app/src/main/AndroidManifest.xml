@@ -17,7 +17,8 @@
         android:roundIcon="@mipmap/ic_new_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/ThemeTomboAti">
-        <activity android:name=".view.activity.AdabBerdoaActivity"></activity>
+        <activity android:name=".view.activity.DoaRamadhanActivity"></activity>
+        <activity android:name=".view.activity.AdabBerdoaActivity" />
         <activity android:name=".view.activity.WaktuMustajabActivity" />
         <activity android:name=".view.activity.TampatMustajabActivity" />
         <activity android:name=".view.activity.DoaZiarahActivity" />
