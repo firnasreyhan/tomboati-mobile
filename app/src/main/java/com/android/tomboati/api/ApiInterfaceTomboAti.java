@@ -3,6 +3,7 @@ package com.android.tomboati.api;
 import com.android.tomboati.api.response.BaseResponse;
 import com.android.tomboati.api.response.ChatResponse;
 import com.android.tomboati.api.response.JadwalSholatResponse;
+import com.android.tomboati.api.response.PaketMonthResponse;
 import com.android.tomboati.api.response.PaketResponse;
 import com.android.tomboati.api.response.SignInResponse;
 
@@ -62,6 +63,24 @@ public interface ApiInterfaceTomboAti {
 
     @GET("Paket/paket_get")
     Call<PaketResponse> getPaket(
+            @Query("tipe") String tipe
+    );
+
+    @Multipart
+    @POST("user/updateProfil")
+    Call<SignInResponse> updateProfile(
+            @Query("idUser") String idUser,
+            @Part("noKTP") RequestBody noKTP,
+            @Part("email") RequestBody email,
+            @Part("password") RequestBody password,
+            @Part("namaLengkap") RequestBody namaLengkap,
+            @Part("nomorHP") RequestBody noHP,
+            @Part MultipartBody.Part fileKTP,
+            @Part MultipartBody.Part foto
+    );
+
+    @GET("Paket/getPaketMonth")
+    Call<PaketMonthResponse> getPaketMonth(
             @Query("tipe") String tipe
     );
 }

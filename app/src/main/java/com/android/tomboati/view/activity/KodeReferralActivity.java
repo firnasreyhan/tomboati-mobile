@@ -13,6 +13,7 @@ public class KodeReferralActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTheme(R.style.ThemeTomboAtiGreen);
         setContentView(R.layout.activity_kode_referral);
 
         toolbar = findViewById(R.id.toolbar);

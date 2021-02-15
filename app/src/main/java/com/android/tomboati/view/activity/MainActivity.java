@@ -26,7 +26,7 @@ import com.zach.znavigator.ZNavigation.NavigationActivity;
 
 import java.util.LinkedHashMap;
 
-public class MainActivity extends NavigationActivity {
+public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
     private Toolbar toolbar;
     private BottomNavigationView bottomNavigationView;
 //    private FragmentManager fragmentManager;
@@ -63,16 +63,18 @@ public class MainActivity extends NavigationActivity {
 //        loadFragment(new BerandaFragment());
 //        fragmentActive = new BerandaFragment();
 
-        LinkedHashMap<Integer, Fragment> rootFragments = new LinkedHashMap<>();
-        rootFragments.put(R.id.menu_beranda, new BerandaFragment());
-        rootFragments.put(R.id.menu_riwayat,new RiwayatFragment());
-        rootFragments.put(R.id.menu_pesanan, new PesananFragment());
-        rootFragments.put(R.id.menu_inbox, new InboxFragment());
-        rootFragments.put(R.id.menu_akun, new AkunFragment());
-        init(rootFragments, R.id.frameLayoutFragment);
+//        LinkedHashMap<Integer, Fragment> rootFragments = new LinkedHashMap<>();
+//        rootFragments.put(R.id.menu_beranda, new BerandaFragment());
+//        rootFragments.put(R.id.menu_riwayat,new RiwayatFragment());
+//        rootFragments.put(R.id.menu_pesanan, new PesananFragment());
+//        rootFragments.put(R.id.menu_inbox, new InboxFragment());
+//        rootFragments.put(R.id.menu_akun, new AkunFragment());
+//        init(rootFragments, R.id.frameLayoutFragment);
 
+        loadFragment(new BerandaFragment());
+        fragmentActive = new BerandaFragment();
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
-        bottomNavigationView.setOnNavigationItemReselectedListener(this);
+//        bottomNavigationView.setOnNavigationItemReselectedListener(this);
     }
 
 //    private final BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -122,38 +124,38 @@ public class MainActivity extends NavigationActivity {
         Toast.makeText(this, "Tekan sekali lagi untuk keluar.", Toast.LENGTH_SHORT).show();
     }
 
-    @Override
-    public void tabChanged(int id) {
-        bottomNavigationView.getMenu().findItem(id).setChecked(true);
-    }
-
 //    @Override
-//    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-//        fragment = null;
-//        switch (item.getItemId()){
-//            case R.id.menu_beranda:
-//                fragment = new BerandaFragment();
-//                break;
-//            case R.id.menu_riwayat:
-//                fragment = new RiwayatFragment();
-//                break;
-//            case R.id.menu_pesanan:
-//                fragment = new PesananFragment();
-//                break;
-//            case R.id.menu_inbox:
-//                fragment = new InboxFragment();
-//                break;
-//            case R.id.menu_akun:
-//                fragment = new AkunFragment();
-//                break;
-//        }
-//
-//        if (!fragment.getClass().getName().equalsIgnoreCase(fragmentActive.getClass().getName())) {
-//            return loadFragment(fragment);
-//        } else {
-//            return false;
-//        }
+//    public void tabChanged(int id) {
+//        bottomNavigationView.getMenu().findItem(id).setChecked(true);
 //    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        fragment = null;
+        switch (item.getItemId()){
+            case R.id.menu_beranda:
+                fragment = new BerandaFragment();
+                break;
+            case R.id.menu_riwayat:
+                fragment = new RiwayatFragment();
+                break;
+            case R.id.menu_pesanan:
+                fragment = new PesananFragment();
+                break;
+            case R.id.menu_inbox:
+                fragment = new InboxFragment();
+                break;
+            case R.id.menu_akun:
+                fragment = new AkunFragment();
+                break;
+        }
+
+        if (!fragment.getClass().getName().equalsIgnoreCase(fragmentActive.getClass().getName())) {
+            return loadFragment(fragment);
+        } else {
+            return false;
+        }
+    }
 //
 //    public void updateStatusBarColor(String color){// Color must be in hexadecimal fromat
 //        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -163,15 +165,15 @@ public class MainActivity extends NavigationActivity {
 //        }
 //    }
 //
-//    // method untuk load fragment yang sesuai
-//    private boolean loadFragment(Fragment fragment) {
-//        if (fragment != null) {
-//            fragmentActive = fragment;
-//            getSupportFragmentManager().beginTransaction()
-//                    .replace(R.id.frameLayoutFragment, fragment)
-//                    .commit();
-//            return true;
-//        }
-//        return false;
-//    }
+    // method untuk load fragment yang sesuai
+    private boolean loadFragment(Fragment fragment) {
+        if (fragment != null) {
+            fragmentActive = fragment;
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.frameLayoutFragment, fragment)
+                    .commit();
+            return true;
+        }
+        return false;
+    }
 }

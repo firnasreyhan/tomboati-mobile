@@ -9,11 +9,17 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.android.tomboati.R;
 import com.android.tomboati.adapter.PaketAdapter;
+import com.android.tomboati.api.response.PaketMonthResponse;
 import com.android.tomboati.api.response.PaketResponse;
+import com.android.tomboati.model.BulanModel;
 import com.android.tomboati.model.PaketModel;
 import com.android.tomboati.viewmodel.ListPaketViewModel;
 import com.facebook.shimmer.ShimmerFrameLayout;
@@ -27,6 +33,9 @@ public class ListPaketActivity extends AppCompatActivity {
     private ListPaketViewModel listPaketViewModel;
     private ShimmerFrameLayout shimmerFrameLayoutPaket;
     private LinearLayout linearLayoutPaket, linearLayoutNoPaket;
+    private Spinner spinnerBulan;
+
+    private ArrayList<BulanModel> list = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,8 +56,56 @@ public class ListPaketActivity extends AppCompatActivity {
         shimmerFrameLayoutPaket = findViewById(R.id.shimmerFrameLayoutPaket);
         linearLayoutPaket = findViewById(R.id.linearLayoutPaket);
         linearLayoutNoPaket = findViewById(R.id.linearLayoutNoPaket);
+        spinnerBulan = findViewById(R.id.spinnerBulan);
         recyclerViewPaket.setLayoutManager(new LinearLayoutManager(this));
         recyclerViewPaket.setHasFixedSize(true);
+
+        listPaketViewModel.getPaketMonth(
+                paket
+        ).observe(this, new Observer<PaketMonthResponse>() {
+            @Override
+            public void onChanged(PaketMonthResponse paketMonthResponse) {
+                if (!paketMonthResponse.isError()) {
+                    if (!paketMonthResponse.getData().getBulan().isEmpty()) {
+                        list.add(new BulanModel("99","Semaunya"));
+                        for (String nomor: paketMonthResponse.getData().getBulan()) {
+                            String bulan = "";
+                            if (nomor.equalsIgnoreCase("01")) {
+                                bulan = "Januari";
+                            } else if (nomor.equalsIgnoreCase("02")) {
+                                bulan = "Februari";
+                            } else if (nomor.equalsIgnoreCase("03")) {
+                                bulan = "Maret";
+                            } else if (nomor.equalsIgnoreCase("04")) {
+                                bulan = "April";
+                            } else if (nomor.equalsIgnoreCase("05")) {
+                                bulan = "Mei";
+                            } else if (nomor.equalsIgnoreCase("06")) {
+                                bulan = "Juni";
+                            } else if (nomor.equalsIgnoreCase("07")) {
+                                bulan = "Juli";
+                            } else if (nomor.equalsIgnoreCase("08")) {
+                                bulan = "Agustus";
+                            } else if (nomor.equalsIgnoreCase("09")) {
+                                bulan = "September";
+                            } else if (nomor.equalsIgnoreCase("10")) {
+                                bulan = "Oktober";
+                            } else if (nomor.equalsIgnoreCase("11")) {
+                                bulan = "November";
+                            } else if (nomor.equalsIgnoreCase("12")) {
+                                bulan = "Desember";
+                            }
+                            list.add(new BulanModel(nomor, bulan));
+                        }
+
+                        ArrayAdapter<BulanModel> adapter = new ArrayAdapter<BulanModel>(getApplicationContext(),  android.R.layout.simple_spinner_dropdown_item, list);
+                        adapter.setDropDownViewResource( android.R.layout.simple_spinner_dropdown_item);
+
+                        spinnerBulan.setAdapter(adapter);
+                    }
+                }
+            }
+        });
 
         listPaketViewModel.getPaket(
                 paket
@@ -72,6 +129,18 @@ public class ListPaketActivity extends AppCompatActivity {
                 }
                 shimmerFrameLayoutPaket.setVisibility(View.GONE);
                 shimmerFrameLayoutPaket.stopShimmer();
+            }
+        });
+
+        spinnerBulan.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
             }
         });
     }
