@@ -17,7 +17,8 @@
         android:roundIcon="@mipmap/ic_new_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/ThemeTomboAti">
-        <activity android:name=".view.activity.UpdateProfileActivity"></activity>
+        <activity android:name=".view.activity.TayamumActivity"></activity>
+        <activity android:name=".view.activity.UpdateProfileActivity" />
         <activity android:name=".view.activity.DoaSesudahSholatActivity" />
         <activity android:name=".view.activity.SyaratSholatActivity" />
         <activity android:name=".view.activity.KodeReferralActivity" />
