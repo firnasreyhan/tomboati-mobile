@@ -1,5 +1,7 @@
 package com.android.tomboati.adapter;
 
+import android.content.Intent;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,12 +12,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.tomboati.R;
 import com.android.tomboati.model.IstighosahModel;
+import com.android.tomboati.view.activity.DetailAlQuranActivity;
 
 import java.util.List;
 
 public class IstighosahAdapter extends RecyclerView.Adapter<IstighosahAdapter.ViewHolder>{
 
     private final List<IstighosahModel> models;
+    private ViewGroup view;
 
     public IstighosahAdapter(List<IstighosahModel> models) {
         this.models = models;
@@ -24,18 +28,33 @@ public class IstighosahAdapter extends RecyclerView.Adapter<IstighosahAdapter.Vi
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        this.view = parent;
         return new IstighosahAdapter.ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_istighosah, parent, false));
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            holder.textTranslate.setTextColor(view.getContext().getColor(R.color.black));
+        }
         holder.textArab.setText(models.get(position).getTextArab());
-        holder.textTranslate.setText(models.get(position).getTextTranslate());
+        holder.textTranslate.setText((position + 1) + ". " + models.get(position).getTextTranslate());
         holder.textBaca.setText("Dibaca sebanyak " + models.get(position).getCountBacaan() + " " +"kali");
-        holder.count.setText(String.valueOf(position + 1));
 
-        if(position == 17) {
-//            holder.btn_yasin.setVisibility(View.VISIBLE);
+        if(models.get(position).getTextTranslate().equals("Yasin")) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                holder.textTranslate.setTextColor(view.getContext().getColor(R.color.light_green));
+            }
+            holder.textTranslate.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(v.getContext(), DetailAlQuranActivity.class);
+                    intent.putExtra("ID_SURAH", "36");
+                    intent.putExtra("NAMA_SURAH", "Surah Yasin");
+                    v.getContext().startActivity(intent);
+                }
+            });
+            holder.textTranslate.setText((position + 1) + ". " + "Baca surah yasin disini!");
         }
     }
 
@@ -46,19 +65,15 @@ public class IstighosahAdapter extends RecyclerView.Adapter<IstighosahAdapter.Vi
 
     public class ViewHolder extends RecyclerView.ViewHolder{
 
-        private final TextView count;
         private final TextView textArab;
         private final TextView textTranslate;
         private final TextView textBaca;
-//        private final Button btn_yasin;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            count = itemView.findViewById(R.id.textCount);
             textArab = itemView.findViewById(R.id.textArab);
             textTranslate = itemView.findViewById(R.id.textTranslate);
             textBaca = itemView.findViewById(R.id.textBaca);
-//            btn_yasin = itemView.findViewById(R.id.btn_yasin);
         }
     }
 }

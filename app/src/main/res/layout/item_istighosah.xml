@@ -5,73 +5,56 @@
     android:id="@+id/card_view"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginLeft="5dp"
+    android:layout_marginStart="5dp"
     android:layout_marginTop="5dp"
-    android:layout_marginRight="5dp"
-    android:layout_marginBottom="2sp"
-    android:foreground="?attr/selectableItemBackground"
+    android:layout_marginEnd="5dp"
+    android:layout_marginBottom="2dp"
+    android:background="@color/white"
     app:cardCornerRadius="10dp"
-    app:cardElevation="2dp">
+    app:cardElevation="3dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
 
-        <LinearLayout
-            android:id="@+id/linearLayout"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="8dp"
-            android:background="@drawable/ic_item_asmaul_husna"
-            android:gravity="center"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <TextView
-                android:id="@+id/textCount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/cinzel_bold"
-                android:text="1"
-                android:textColor="#00441F"
-                android:textSize="18sp" />
-        </LinearLayout>
-
         <TextView
             android:id="@+id/textArab"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:fontFamily="@font/cinzel_bold"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:fontFamily="@font/amiri_bold"
             android:text=" بِسْمِ اللهِ مَاشَاءَ اللهُ لَا يَسُوْقُ الْخَيْرَ إلَّا اللهِ بِسْمِ اللهِ مَاشَاءَ اللهُ لَا يَصْرِفُ السُّوْءَ إلَّا اللهُ بِسْمِ اللهِ مَاشَاءَ اللهُ مَا كَانَ مِنْ نِعْمَةٍ فَمِنَ اللهِ بِسْمِ اللهِ مَاشَاءَ اللهُ لَا حَوْلَ وَلَا قُوَّةَ إلَّا بِا للهِ الْعَلِيِّ الْعَظِيْمِ"
             android:textColor="@color/black"
-            android:textSize="20sp"
+            android:textSize="@dimen/_24sdp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/linearLayout"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textBaca" />
 
         <TextView
             android:id="@+id/textTranslate"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="16dp"
             android:fontFamily="@font/catamaran_regular"
             android:gravity="start"
             android:text="Bismillahi Maasyaa-Allahu Laa Yasuuqul Khaira Illallahi Bismillahi Maasyaa-Allahu Laa Yashrifus Suu-A Illallahu Bismillahi Maasyaa-Allahu Maa Kaana Min Ni’Matin Faminallhi Bismillahi Maasyaa-Allahu Laa Haula Wa Laa Quwwata Illaa Billahil’Aliyyil ‘Azhimm"
             android:textAlignment="textStart"
             android:textColor="@color/black"
-            android:textSize="14sp"
+            android:textSize="@dimen/_13sdp"
+            android:textStyle="italic"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/linearLayout"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textArab" />
 
         <TextView
@@ -79,10 +62,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:fontFamily="@font/alfa_slab_one"
+            android:fontFamily="@font/catamaran_bold"
             android:text="Dibaca sebanyak 33 kali"
             android:textColor="#00441F"
-            android:textSize="14sp"
+            android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
