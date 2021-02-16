@@ -37,8 +37,9 @@ public class IstighosahAdapter extends RecyclerView.Adapter<IstighosahAdapter.Vi
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             holder.textTranslate.setTextColor(view.getContext().getColor(R.color.black));
         }
+        holder.tvNo.setText("" + (position + 1));
         holder.textArab.setText(models.get(position).getTextArab());
-        holder.textTranslate.setText((position + 1) + ". " + models.get(position).getTextTranslate());
+        holder.textTranslate.setText(models.get(position).getTextTranslate());
         holder.textBaca.setText("Dibaca sebanyak " + models.get(position).getCountBacaan() + " " +"kali");
 
         if(models.get(position).getTextTranslate().equals("Yasin")) {
@@ -54,7 +55,7 @@ public class IstighosahAdapter extends RecyclerView.Adapter<IstighosahAdapter.Vi
                     v.getContext().startActivity(intent);
                 }
             });
-            holder.textTranslate.setText((position + 1) + ". " + "Baca surah yasin disini!");
+            holder.textTranslate.setText("Baca surah yasin disini!");
         }
     }
 
@@ -68,12 +69,14 @@ public class IstighosahAdapter extends RecyclerView.Adapter<IstighosahAdapter.Vi
         private final TextView textArab;
         private final TextView textTranslate;
         private final TextView textBaca;
+        private final TextView tvNo;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             textArab = itemView.findViewById(R.id.textArab);
             textTranslate = itemView.findViewById(R.id.textTranslate);
             textBaca = itemView.findViewById(R.id.textBaca);
+            tvNo = itemView.findViewById(R.id.tv_no);
         }
     }
 }
