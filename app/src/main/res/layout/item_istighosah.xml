@@ -19,30 +19,30 @@
 
 
 
-<!--        <LinearLayout-->
-<!--            android:id="@+id/tes"-->
-<!--            android:layout_width="50dp"-->
-<!--            android:layout_height="50dp"-->
-<!--            android:layout_gravity="center"-->
-<!--            android:layout_marginStart="8dp"-->
-<!--            android:layout_marginLeft="8dp"-->
-<!--            android:background="@drawable/ic_item_asmaul_husna"-->
-<!--            android:gravity="center"-->
-<!--            android:orientation="vertical"-->
-<!--            app:layout_constraintBottom_toBottomOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toTopOf="parent">-->
+        <LinearLayout
+            android:id="@+id/tes"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:background="@drawable/ic_item_asmaul_husna"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-<!--            <TextView-->
-<!--                android:id="@+id/tv_no"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:fontFamily="@font/cinzel_bold"-->
-<!--                android:text="99"-->
-<!--                android:textColor="@color/dark_green"-->
-<!--                android:textSize="@dimen/_11sdp" />-->
+            <TextView
+                android:id="@+id/tv_no"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/cinzel_bold"
+                android:text="99"
+                android:textColor="@color/dark_green"
+                android:textSize="@dimen/_11sdp" />
 
-<!--        </LinearLayout>-->
+        </LinearLayout>
 
         <TextView
             android:id="@+id/textArab"

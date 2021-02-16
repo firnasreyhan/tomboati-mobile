@@ -30,7 +30,7 @@ public class TahlilAdapter extends RecyclerView.Adapter<TahlilAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull TahlilAdapter.ViewHolder holder, int position) {
-//        holder.tvNo.setText("" + (position + 1));
+        holder.tvNo.setText("" + (position + 1));
         holder.textArab.setText(data.get(position).getArabic());
         holder.textTranslate.setText(data.get(position).getTranslation());
         holder.textBaca.setText(data.get(position).getTitle());
@@ -46,14 +46,14 @@ public class TahlilAdapter extends RecyclerView.Adapter<TahlilAdapter.ViewHolder
         private final TextView textArab;
         private final TextView textTranslate;
         private final TextView textBaca;
-//        private final TextView tvNo;
+        private final TextView tvNo;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             textArab = itemView.findViewById(R.id.textArab);
             textTranslate = itemView.findViewById(R.id.textTranslate);
             textBaca = itemView.findViewById(R.id.textBaca);
-//            tvNo = itemView.findViewById(R.id.tv_no);
+            tvNo = itemView.findViewById(R.id.tv_no);
         }
     }
 }
