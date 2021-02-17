@@ -4,11 +4,13 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 
 import com.android.tomboati.api.response.JadwalSholatResponse;
+import com.android.tomboati.model.TasbihModel;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.TimeZone;
 
 public class Utility {
@@ -17,6 +19,19 @@ public class Utility {
     private static String kota;
     private static int hour, minute;
     private static ArrayList<JadwalSholatResponse> list = new ArrayList<>();
+    private static List<TasbihModel> models;
+
+    public static void addValue() {
+        models = new ArrayList<>();
+        models.add(new TasbihModel("Tasbih 33x", "ﺳُﺒْﺤَﺎﻥَ ﺍﻟﻠﻪْ", 33));
+        models.add(new TasbihModel("Tahmid 33x", "ﻭَﺍﻟْﺤَﻤْﺪُ ﻟِﻠﻪْْ", 33));
+        models.add(new TasbihModel("Takbir 33x", "ﺍﻟﻠﻪُ ﺍَﻛْﺒَﺮْْ", 33));
+        models.add(new TasbihModel("Istighfar 33x", "اَسْتَغْفِرُاللهَ الْعَظِيْمَ", 33));
+    }
+
+    public static List<TasbihModel> getTasbihModel() {
+        return models;
+    }
 
     public static final String[] PERMISSION = {
             Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION,

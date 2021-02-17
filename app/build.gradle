@@ -110,4 +110,7 @@ dependencies {
 
     //Material Calendar View
     implementation 'com.applandeo:material-calendar-view:1.7.0'
+
+    //Percentage Progress View
+    implementation 'com.ramijemli.percentagechartview:percentagechartview:0.3.1'
 }

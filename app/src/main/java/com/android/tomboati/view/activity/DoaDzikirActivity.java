@@ -9,12 +9,14 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.android.tomboati.R;
+import com.android.tomboati.utils.Utility;
 
 public class DoaDzikirActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private CardView cardViewAsmaulHusna, cardViewIstighosah, cardViewYasinTahlil,
             cardViewDoaHarian, cardViewDoaUmrah, cardViewDoaHaji, cardViewDoaZiarah,
-            cardViewTempatMustajab, cardViewWaktuMustajab, cardViewAdabBerdoa, cardViewDoaRamadhan;
+            cardViewTempatMustajab, cardViewWaktuMustajab, cardViewAdabBerdoa,
+            cardViewDoaRamadhan, cardViewTasbih;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +30,8 @@ public class DoaDzikirActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
+        Utility.addValue();
+
         cardViewAsmaulHusna = findViewById(R.id.cardViewAsmaulHusna);
         cardViewIstighosah = findViewById(R.id.cardViewIstighosah);
         cardViewYasinTahlil = findViewById(R.id.cardViewYasinTahlil);
@@ -39,6 +43,7 @@ public class DoaDzikirActivity extends AppCompatActivity {
         cardViewWaktuMustajab = findViewById(R.id.cardViewWaktuMustajab);
         cardViewAdabBerdoa = findViewById(R.id.cardViewAdabBerdoa);
         cardViewDoaRamadhan = findViewById(R.id.cardViewDoaRamadhan);
+        cardViewTasbih = findViewById(R.id.cardViewTasbih);
 
         cardViewAsmaulHusna.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -114,6 +119,13 @@ public class DoaDzikirActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(v.getContext(), DoaRamadhanActivity.class));
+            }
+        });
+
+        cardViewTasbih.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(v.getContext(), TasbihActivity.class));
             }
         });
     }
