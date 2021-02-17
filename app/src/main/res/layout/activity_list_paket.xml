@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/background"
     tools:context=".view.activity.ListPaketActivity">
 
     <androidx.appcompat.widget.Toolbar
@@ -18,7 +19,6 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/ic_background_beranda"
         android:orientation="vertical">
 
         <androidx.cardview.widget.CardView
@@ -54,6 +54,7 @@
             android:id="@+id/linearLayoutPaket"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/ic_background_beranda"
             android:paddingTop="@dimen/_13sdp"
             android:paddingLeft="@dimen/_13sdp"
             android:paddingRight="@dimen/_13sdp"

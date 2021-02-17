@@ -18,8 +18,8 @@ public class ListPaketViewModel extends AndroidViewModel {
         repository = new Repository();
     }
 
-    public MutableLiveData<PaketResponse> getPaket(String paket) {
-        return repository.getPaket(paket);
+    public MutableLiveData<PaketResponse> getPaket(String paket, String bulan) {
+        return repository.getPaket(paket, bulan);
     }
 
     public MutableLiveData<PaketMonthResponse> getPaketMonth(String paket) {

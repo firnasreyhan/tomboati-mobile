@@ -139,34 +139,66 @@ public class UpdateProfileActivity extends AppCompatActivity {
                                 textInputEditTextEmail.getText().toString(),
                                 AppPreference.getUser(UpdateProfileActivity.this).getPassword(),
                                 textInputEditTextNamaLengkap.getText().toString(),
-                                textInputEditTextNomorHP.getText().toString(),
-                                uriKTP,
-                                uriFoto
-                        ).observe(UpdateProfileActivity.this, new Observer<SignInResponse>() {
+                                textInputEditTextNomorHP.getText().toString()
+                        ).observe(UpdateProfileActivity.this, new Observer<BaseResponse>() {
                             @Override
-                            public void onChanged(SignInResponse signInResponse) {
+                            public void onChanged(BaseResponse baseResponse) {
                                 if (progressDialog.isShowing()) {
                                     progressDialog.dismiss();
                                 }
-                                if (!signInResponse.isError()) {
-                                    new AlertDialog.Builder(v.getContext())
-                                            .setTitle("Pesan")
-                                            .setMessage(signInResponse.getMessage())
-                                            .setCancelable(false)
-                                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                                                @Override
-                                                public void onClick(DialogInterface dialog, int which) {
-                                                    AppPreference.removeUser(UpdateProfileActivity.this);
-                                                    AppPreference.saveUser(UpdateProfileActivity.this, signInResponse.getData().get(0));
-                                                    dialog.dismiss();
-                                                    finish();
-                                                }
-                                            })
-                                            .show();
+
+                                if (uriKTP != null) {
+                                    updateProfileViewModel.updateFileKTP(
+                                            AppPreference.getUser(UpdateProfileActivity.this).getIdUserRegister(),
+                                            uriKTP
+                                    ).observe(UpdateProfileActivity.this, new Observer<BaseResponse>() {
+                                        @Override
+                                        public void onChanged(BaseResponse baseResponse) {
+                                            Log.e("updateFileKTP", baseResponse.getMessage());
+                                        }
+                                    });
+                                }
+
+                                if (uriFoto != null) {
+                                    updateProfileViewModel.updateFoto(
+                                            AppPreference.getUser(UpdateProfileActivity.this).getIdUserRegister(),
+                                            uriFoto
+                                    ).observe(UpdateProfileActivity.this, new Observer<BaseResponse>() {
+                                        @Override
+                                        public void onChanged(BaseResponse baseResponse) {
+                                            Log.e("updateFoto", baseResponse.getMessage());
+                                        }
+                                    });
+                                }
+
+                                if (!baseResponse.isError()) {
+                                    updateProfileViewModel.signIn(
+                                            AppPreference.getUser(UpdateProfileActivity.this).getEmail(),
+                                            AppPreference.getUser(UpdateProfileActivity.this).getPassword()
+                                    ).observe(UpdateProfileActivity.this, new Observer<SignInResponse>() {
+                                        @Override
+                                        public void onChanged(SignInResponse signInResponse) {
+                                            AppPreference.removeUser(UpdateProfileActivity.this);
+                                            AppPreference.saveUser(UpdateProfileActivity.this, signInResponse.getData().get(0));
+
+                                            new AlertDialog.Builder(v.getContext())
+                                                    .setTitle("Pesan")
+                                                    .setMessage(baseResponse.getMessage())
+                                                    .setCancelable(false)
+                                                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                                        @Override
+                                                        public void onClick(DialogInterface dialog, int which) {
+                                                            dialog.dismiss();
+                                                            finish();
+                                                        }
+                                                    })
+                                                    .show();
+                                        }
+                                    });
                                 } else {
                                     new AlertDialog.Builder(v.getContext())
                                             .setTitle("Pesan")
-                                            .setMessage(signInResponse.getMessage())
+                                            .setMessage(baseResponse.getMessage())
                                             .setCancelable(false)
                                             .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                                 @Override
@@ -178,6 +210,52 @@ public class UpdateProfileActivity extends AppCompatActivity {
                                 }
                             }
                         });
+
+//                        updateProfileViewModel.updateProfile(
+//                                AppPreference.getUser(UpdateProfileActivity.this).getIdUserRegister(),
+//                                textInputEditTextNomorKTP.getText().toString(),
+//                                textInputEditTextEmail.getText().toString(),
+//                                AppPreference.getUser(UpdateProfileActivity.this).getPassword(),
+//                                textInputEditTextNamaLengkap.getText().toString(),
+//                                textInputEditTextNomorHP.getText().toString(),
+//                                uriKTP,
+//                                uriFoto
+//                        ).observe(UpdateProfileActivity.this, new Observer<SignInResponse>() {
+//                            @Override
+//                            public void onChanged(SignInResponse signInResponse) {
+//                                if (progressDialog.isShowing()) {
+//                                    progressDialog.dismiss();
+//                                }
+//                                if (!signInResponse.isError()) {
+//                                    new AlertDialog.Builder(v.getContext())
+//                                            .setTitle("Pesan")
+//                                            .setMessage(signInResponse.getMessage())
+//                                            .setCancelable(false)
+//                                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+//                                                @Override
+//                                                public void onClick(DialogInterface dialog, int which) {
+//                                                    AppPreference.removeUser(UpdateProfileActivity.this);
+//                                                    AppPreference.saveUser(UpdateProfileActivity.this, signInResponse.getData().get(0));
+//                                                    dialog.dismiss();
+//                                                    finish();
+//                                                }
+//                                            })
+//                                            .show();
+//                                } else {
+//                                    new AlertDialog.Builder(v.getContext())
+//                                            .setTitle("Pesan")
+//                                            .setMessage(signInResponse.getMessage())
+//                                            .setCancelable(false)
+//                                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+//                                                @Override
+//                                                public void onClick(DialogInterface dialog, int which) {
+//                                                    dialog.dismiss();
+//                                                }
+//                                            })
+//                                            .show();
+//                                }
+//                            }
+//                        });
                     }, loadingTime);
                 }
             }

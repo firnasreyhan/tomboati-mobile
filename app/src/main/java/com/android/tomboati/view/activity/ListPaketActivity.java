@@ -67,7 +67,7 @@ public class ListPaketActivity extends AppCompatActivity {
             public void onChanged(PaketMonthResponse paketMonthResponse) {
                 if (!paketMonthResponse.isError()) {
                     if (!paketMonthResponse.getData().getBulan().isEmpty()) {
-                        list.add(new BulanModel("99","Semaunya"));
+                        list.add(new BulanModel("99","Semuanya"));
                         for (String nomor: paketMonthResponse.getData().getBulan()) {
                             String bulan = "";
                             if (nomor.equalsIgnoreCase("01")) {
@@ -107,35 +107,14 @@ public class ListPaketActivity extends AppCompatActivity {
             }
         });
 
-        listPaketViewModel.getPaket(
-                paket
-        ).observe(this, new Observer<PaketResponse>() {
-            @Override
-            public void onChanged(PaketResponse paketResponse) {
-                if (!paketResponse.isError()) {
-                    if (!paketResponse.getData().isEmpty()) {
-                        paketAdapter = new PaketAdapter(paketResponse.getData());
-                        recyclerViewPaket.setAdapter(paketAdapter);
-
-                        linearLayoutPaket.setVisibility(View.VISIBLE);
-                        linearLayoutNoPaket.setVisibility(View.GONE);
-                    } else {
-                        linearLayoutPaket.setVisibility(View.GONE);
-                        linearLayoutNoPaket.setVisibility(View.VISIBLE);
-                    }
-                } else {
-                    linearLayoutPaket.setVisibility(View.GONE);
-                    linearLayoutNoPaket.setVisibility(View.VISIBLE);
-                }
-                shimmerFrameLayoutPaket.setVisibility(View.GONE);
-                shimmerFrameLayoutPaket.stopShimmer();
-            }
-        });
-
         spinnerBulan.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                shimmerFrameLayoutPaket.startShimmer();
+                shimmerFrameLayoutPaket.setVisibility(View.VISIBLE);
+                linearLayoutNoPaket.setVisibility(View.GONE);
 
+                getPaket(paket, list.get(position).getUrutan());
             }
 
             @Override
@@ -161,5 +140,33 @@ public class ListPaketActivity extends AppCompatActivity {
     public void onPause() {
         shimmerFrameLayoutPaket.stopShimmer();
         super.onPause();
+    }
+
+    public void getPaket(String paket, String urutan) {
+        listPaketViewModel.getPaket(
+                paket,
+                urutan
+        ).observe(this, new Observer<PaketResponse>() {
+            @Override
+            public void onChanged(PaketResponse paketResponse) {
+                if (!paketResponse.isError()) {
+                    if (!paketResponse.getData().isEmpty()) {
+                        paketAdapter = new PaketAdapter(paketResponse.getData());
+                        recyclerViewPaket.setAdapter(paketAdapter);
+
+                        linearLayoutPaket.setVisibility(View.VISIBLE);
+                        linearLayoutNoPaket.setVisibility(View.GONE);
+                    } else {
+                        linearLayoutPaket.setVisibility(View.GONE);
+                        linearLayoutNoPaket.setVisibility(View.VISIBLE);
+                    }
+                } else {
+                    linearLayoutPaket.setVisibility(View.GONE);
+                    linearLayoutNoPaket.setVisibility(View.VISIBLE);
+                }
+                shimmerFrameLayoutPaket.setVisibility(View.GONE);
+                shimmerFrameLayoutPaket.stopShimmer();
+            }
+        });
     }
 }

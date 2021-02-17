@@ -63,19 +63,32 @@ public interface ApiInterfaceTomboAti {
 
     @GET("Paket/paket_get")
     Call<PaketResponse> getPaket(
-            @Query("tipe") String tipe
+            @Query("tipe") String tipe,
+            @Query("bulan") String bulan
     );
 
     @Multipart
     @POST("user/updateProfil")
-    Call<SignInResponse> updateProfile(
+    Call<BaseResponse> updateProfile(
             @Query("idUser") String idUser,
             @Part("noKTP") RequestBody noKTP,
             @Part("email") RequestBody email,
             @Part("password") RequestBody password,
             @Part("namaLengkap") RequestBody namaLengkap,
-            @Part("nomorHP") RequestBody noHP,
-            @Part MultipartBody.Part fileKTP,
+            @Part("nomorHP") RequestBody noHP
+    );
+
+    @Multipart
+    @POST("user/updateFileKTP")
+    Call<BaseResponse> updateFileKTP(
+            @Query("idUser") String idUser,
+            @Part MultipartBody.Part fileKTP
+    );
+
+    @Multipart
+    @POST("user/updateFoto")
+    Call<BaseResponse> updateFoto(
+            @Query("idUser") String idUser,
             @Part MultipartBody.Part foto
     );
 

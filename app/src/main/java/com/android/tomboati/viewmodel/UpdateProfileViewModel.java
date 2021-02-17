@@ -14,7 +14,11 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.android.tomboati.api.response.BaseResponse;
 import com.android.tomboati.api.response.SignInResponse;
+import com.android.tomboati.preference.AppPreference;
 import com.android.tomboati.repository.Repository;
+import com.android.tomboati.utils.notif.Token;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.iid.FirebaseInstanceId;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -36,58 +40,39 @@ public class UpdateProfileViewModel extends AndroidViewModel {
         context = application.getApplicationContext();
     }
 
-    public MutableLiveData<SignInResponse> updateProfile(String idUser, String noKTP_, String email_, String password_, String namaLengkap_, String noHP_, Uri fileKTP, Uri foto) {
+    public MutableLiveData<BaseResponse> updateProfile(String idUser, String noKTP_, String email_, String password_, String namaLengkap_, String noHP_) {
         RequestBody noKTP = RequestBody.create(MediaType.parse("text/plain"), noKTP_);
         RequestBody email = RequestBody.create(MediaType.parse("text/plain"), email_);
         RequestBody password = RequestBody.create(MediaType.parse("text/plain"), password_);
         RequestBody namaLengkap = RequestBody.create(MediaType.parse("text/plain"), namaLengkap_);
         RequestBody noHP = RequestBody.create(MediaType.parse("text/plain"), "62"+ noHP_.substring(1));
 
-        if (fileKTP != null && foto != null) {
-            return repository.updateProfile(
-                    idUser,
-                    noKTP,
-                    email,
-                    password,
-                    namaLengkap,
-                    noHP,
-                    compressFile(fileKTP, "fileKTP"),
-                    compressFile(foto, "foto")
-            );
-        } else if (fileKTP != null && foto == null) {
-            return repository.updateProfile(
-                    idUser,
-                    noKTP,
-                    email,
-                    password,
-                    namaLengkap,
-                    noHP,
-                    compressFile(fileKTP, "fileKTP"),
-                    null
-            );
-        } else if (fileKTP == null && foto != null) {
-            return repository.updateProfile(
-                    idUser,
-                    noKTP,
-                    email,
-                    password,
-                    namaLengkap,
-                    noHP,
-                    null,
-                    compressFile(foto, "foto")
-            );
-        } else {
-            return repository.updateProfile(
-                    idUser,
-                    noKTP,
-                    email,
-                    password,
-                    namaLengkap,
-                    noHP,
-                    null,
-                    null
-            );
-        }
+        return repository.updateProfile(
+                idUser,
+                noKTP,
+                email,
+                password,
+                namaLengkap,
+                noHP);
+    }
+
+    public MutableLiveData<BaseResponse> updateFileKTP(String idUser, Uri fileKTP) {
+        return repository.updateFileKTP(
+                idUser,
+                compressFile(fileKTP, "fileKTP")
+        );
+    }
+
+    public MutableLiveData<BaseResponse> updateFoto(String idUser, Uri foto) {
+        return repository.updateFoto(
+                idUser,
+                compressFile(foto, "foto")
+        );
+    }
+
+    public MutableLiveData<SignInResponse> signIn(String email, String password) {
+        Log.e("usertoken", updateToken(email));
+        return repository.signIn(email, password, updateToken(email));
     }
 
     private File createTempFile(Uri uri) {
@@ -127,5 +112,15 @@ public class UpdateProfileViewModel extends AndroidViewModel {
             e.printStackTrace();
         }
         return null;
+    }
+
+
+    private String updateToken(String email) {
+        String refreshToken = FirebaseInstanceId.getInstance().getToken();
+        String userKey = email.replaceAll("[-+.^:,]","");
+        Log.e("userKey", userKey);
+        Token token = new Token(refreshToken);
+        FirebaseDatabase.getInstance().getReference("TomboAti").child("Token").child(userKey).setValue(token);
+        return refreshToken;
     }
 }

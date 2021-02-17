@@ -293,10 +293,11 @@ public class Repository {
         return data;
     }
 
-    public MutableLiveData<PaketResponse> getPaket(String paket) {
+    public MutableLiveData<PaketResponse> getPaket(String paket, String bulan) {
         MutableLiveData<PaketResponse> data = new MutableLiveData<>();
         apiInterfaceTomboAti.getPaket(
-                paket
+                paket,
+                bulan
         ).enqueue(new Callback<PaketResponse>() {
             @Override
             public void onResponse(Call<PaketResponse> call, Response<PaketResponse> response) {
@@ -314,27 +315,69 @@ public class Repository {
         return data;
     }
 
-    public MutableLiveData<SignInResponse> updateProfile(String idUser, RequestBody noKTP, RequestBody email, RequestBody password, RequestBody namaLengkap, RequestBody noHP, MultipartBody.Part fileKTP, MultipartBody.Part foto) {
-        MutableLiveData<SignInResponse> baseResponseMutableLiveData = new MutableLiveData<>();
+    public MutableLiveData<BaseResponse> updateProfile(String idUser, RequestBody noKTP, RequestBody email, RequestBody password, RequestBody namaLengkap, RequestBody noHP) {
+        MutableLiveData<BaseResponse> baseResponseMutableLiveData = new MutableLiveData<>();
         apiInterfaceTomboAti.updateProfile(
                 idUser,
                 noKTP,
                 email,
                 password,
                 namaLengkap,
-                noHP,
-                fileKTP,
-                foto
-        ).enqueue(new Callback<SignInResponse>() {
+                noHP
+        ).enqueue(new Callback<BaseResponse>() {
             @Override
-            public void onResponse(Call<SignInResponse> call, Response<SignInResponse> response) {
+            public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
                 if (response.code() == 200) {
                     baseResponseMutableLiveData.postValue(response.body());
                 }
             }
 
             @Override
-            public void onFailure(Call<SignInResponse> call, Throwable t) {
+            public void onFailure(Call<BaseResponse> call, Throwable t) {
+                baseResponseMutableLiveData.postValue(null);
+                Log.e("updateProfile", t.getMessage());
+            }
+        });
+        return baseResponseMutableLiveData;
+    }
+
+    public MutableLiveData<BaseResponse> updateFileKTP(String idUser, MultipartBody.Part fileKTP) {
+        MutableLiveData<BaseResponse> baseResponseMutableLiveData = new MutableLiveData<>();
+        apiInterfaceTomboAti.updateFileKTP(
+                idUser,
+                fileKTP
+        ).enqueue(new Callback<BaseResponse>() {
+            @Override
+            public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
+                if (response.code() == 200) {
+                    baseResponseMutableLiveData.postValue(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<BaseResponse> call, Throwable t) {
+                baseResponseMutableLiveData.postValue(null);
+                Log.e("updateProfile", t.getMessage());
+            }
+        });
+        return baseResponseMutableLiveData;
+    }
+
+    public MutableLiveData<BaseResponse> updateFoto(String idUser, MultipartBody.Part foto) {
+        MutableLiveData<BaseResponse> baseResponseMutableLiveData = new MutableLiveData<>();
+        apiInterfaceTomboAti.updateFoto(
+                idUser,
+                foto
+        ).enqueue(new Callback<BaseResponse>() {
+            @Override
+            public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
+                if (response.code() == 200) {
+                    baseResponseMutableLiveData.postValue(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<BaseResponse> call, Throwable t) {
                 baseResponseMutableLiveData.postValue(null);
                 Log.e("updateProfile", t.getMessage());
             }
