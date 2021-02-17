@@ -60,6 +60,13 @@ public class ListPaketActivity extends AppCompatActivity {
         recyclerViewPaket.setLayoutManager(new LinearLayoutManager(this));
         recyclerViewPaket.setHasFixedSize(true);
 
+        list.add(new BulanModel("99","Semuanya"));
+
+        ArrayAdapter<BulanModel> adapter = new ArrayAdapter<BulanModel>(getApplicationContext(),  android.R.layout.simple_spinner_dropdown_item, list);
+        adapter.setDropDownViewResource( android.R.layout.simple_spinner_dropdown_item);
+
+        spinnerBulan.setAdapter(adapter);
+
         listPaketViewModel.getPaketMonth(
                 paket
         ).observe(this, new Observer<PaketMonthResponse>() {
@@ -67,7 +74,6 @@ public class ListPaketActivity extends AppCompatActivity {
             public void onChanged(PaketMonthResponse paketMonthResponse) {
                 if (!paketMonthResponse.isError()) {
                     if (!paketMonthResponse.getData().getBulan().isEmpty()) {
-                        list.add(new BulanModel("99","Semuanya"));
                         for (String nomor: paketMonthResponse.getData().getBulan()) {
                             String bulan = "";
                             if (nomor.equalsIgnoreCase("01")) {
