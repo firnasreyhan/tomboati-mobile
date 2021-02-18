@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:orientation="vertical"
+    tools:context=".view.activity.AdabSholatActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:background="@color/dark_green"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/_13sdp">
+
+
+            <com.codesgood.views.JustifiedTextView
+                android:id="@+id/justifiedTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/catamaran_regular"
+                android:text="Shalat merupakan ibadah yang sangat mulia. Saat itu seorang muslim menghadap kepada Allah Subhanahu wa Ta’ala dengan tubuh dan hatinya. Maka sepatutnya seorang muslim mempersiapkan fisik dan ruhnya dengan baik agar dapat berkonsentrasi dan mendirikan shalat dengan sempurna. Untuk mewujudkan hal tersebut maka perlu memperhatikan beberapa hal berikut ini:"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_13sdp" />
+
+            <com.codesgood.views.JustifiedTextView
+                android:id="@+id/justifiedTextView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/catamaran_bold"
+                android:text="1- Hati yang ikhlas"
+                android:textColor="@color/dark_green"
+                android:textSize="@dimen/_14sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.codesgood.views.JustifiedTextView
+                android:id="@+id/justifiedTextView3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_7sdp"
+                android:fontFamily="@font/catamaran_regular"
+                android:text="Firman Allah Subhanahu wa Ta’ala, “Padahal mereka tidak disuruh kecuali supaya menyembah Allah dengan memurnikan ketaatan kepadanya dalam menjalankan agama yang lurus dan supaya mereka mendirikan shalat dan menunaikan zakat dan yang demikian itulah agama yang lurus.” (Al-Bayyinah: 5). Dan Allah Subhanahu wa Ta’ala tidak akan menerima kecuali amal yang dikerjakan dengan penuh keikhlasan. Riya’ dan sum’ah termasuk penghalang diterimanya amal seorang hamba."
+                android:textColor="@color/black"
+                android:textSize="@dimen/_13sdp" />
+
+            <com.codesgood.views.JustifiedTextView
+                android:id="@+id/justifiedTextView4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/catamaran_bold"
+                android:text="2- Menyempurnakan wudhu"
+                android:textColor="@color/dark_green"
+                android:textSize="@dimen/_14sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.codesgood.views.JustifiedTextView
+                android:id="@+id/justifiedTextView5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_7sdp"
+                android:fontFamily="@font/catamaran_regular"
+                android:text="Dari Abu Hurairah Radhiyallahu Anhu, Rasulullah Shallallahu ‘Alaihi wasallam bersabda, “Maukah kalian aku tunjukan sesuatu yang dengannya Allah menghapus kesalahan dan meninggikan derajat?” Mereka menjawab, “Mau ya Rasulullah.” Beliau bersabda, “Menyempurnakan wudhu walaupun di waktu yang sulit [Al-Makarih artinya kondisi sulit karena cuaca dingin atau semisalnya], memperbanyak langkah ke masjid, dan menunggu shalat dalam masjid. Itulah ribath [Ar-ribath artinya mengerjakan ketaatan] ( ketaatan sempurna ) bagi kalian.” [HR. Muslim]"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_13sdp" />
+
+            <com.codesgood.views.JustifiedTextView
+                android:id="@+id/justifiedTextView6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/catamaran_bold"
+                android:text="3- Bersegera melaksanakan shalat"
+                android:textColor="@color/dark_green"
+                android:textSize="@dimen/_14sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.codesgood.views.JustifiedTextView
+                android:id="@+id/justifiedTextView7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_7sdp"
+                android:fontFamily="@font/catamaran_regular"
+                android:text="Maksudnya adalah bersegera keluar rumah menuju ke masjid agar dapat digolongkan sebagai orang yang menunggu shalat. Dari Abu Hurairah Radhiyallahu Anhu ia berkata, “Sesungguhnya Rasulullah Shallallahu ‘Alaihi wasallam bersabda, “Seseorang akan dianggap sedang shalat selama ia menunggu waktu shalat.” [HR. Al-Bukhari]"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_13sdp" />
+
+            <com.codesgood.views.JustifiedTextView
+                android:id="@+id/justifiedTextView8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/catamaran_bold"
+                android:text="4- Berdzikir kepada Allah"
+                android:textColor="@color/dark_green"
+                android:textSize="@dimen/_14sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.codesgood.views.JustifiedTextView
+                android:id="@+id/justifiedTextView9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_7sdp"
+                android:fontFamily="@font/catamaran_regular"
+                android:text="- Berdoa ketika keluar rumah sambil mengucapkan, “Dengan nama Allah, aku bertawakkal kepada-Nya karena tidak ada daya dan kekuatan kecuali dengan-Nya [HR. Abu Dawud] . Ya Allah hindarkan aku dari kesesatan dan disesatkan, menyalahkan dan disalahkan, menzhalimi dan dizhalimi, membodohi dan dibodohi .” [HR. Abu Dawud]  \n- Berdoa ketika sedang berjalan menuju masjid dengan mengucapkan, “Ya Allah berikanlah cahaya di hatiku, dan cahaya di lisanku, cahaya di pendengaranku, cahaya di penglihatanku, berikanlah cahaya di belakangku dan di depanku, di atasku serta di bawahku, ya Allah limpahkanlah cahaya kepadaku.” [HR. Muslim]"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_13sdp" />
+
+            <com.codesgood.views.JustifiedTextView
+                android:id="@+id/justifiedTextView10"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/catamaran_bold"
+                android:text="5- Berjalan menuju masjid dengan tenang"
+                android:textColor="@color/dark_green"
+                android:textSize="@dimen/_14sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.codesgood.views.JustifiedTextView
+                android:id="@+id/justifiedTextView11"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_7sdp"
+                android:fontFamily="@font/catamaran_regular"
+                android:text="Sabda Rasulullah Shallallahu ‘Alaihi wasallam, “Jika kalian mendengarkan iqamah maka berjalanlah kalian dengan tenang [Assakinah artinya Berjalan dengan tenang] dan penuh wibawa [Al-waqaar artinya Menatap ke bawah dan tidak menoleh ke kanan dan ke kiri], dan janganlah kalian tergesa-gesa. Dan apa yang kalian dapatkan dari gerakan shalat maka ikutilah dan apa yang terlewatkan maka sempurnakanlah.” [HR. Muttafaqun Alaihi]"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_13sdp" />
+
+            <com.codesgood.views.JustifiedTextView
+                android:id="@+id/justifiedTextView13"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/catamaran_bold"
+                android:text="6- Berdoa saat masuk dan keluar masjid"
+                android:textColor="@color/dark_green"
+                android:textSize="@dimen/_14sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.codesgood.views.JustifiedTextView
+                android:id="@+id/justifiedTextView12"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_7sdp"
+                android:fontFamily="@font/catamaran_regular"
+                android:text="- Saat masuk membaca, “Aku berlindung kepada Allah Yang Mahaagung, dengan Wajah-Nya yang Mulia, dan kekuasaannya yang luas, dari gangguan setan yang terkutuk.” [HR. Abu Dawud] “Dengan nama Allah, salam dan shalawat atas Rasulullah” [HR. Muslim] “Ya Allah bukakanlah pintu rahmat-Mu untukku.” [HR. Muslim]  \n- Ketika keluar membaca, “Dengan nama Allah, shalawat dan salam kepada Rasulullah, ya Allah aku memohon karunia-Mu, ya Allah jagalah aku dari setan yang terkutuk .” [HR. Ibnu Majah]"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_13sdp" />
+
+            <com.codesgood.views.JustifiedTextView
+                android:id="@+id/justifiedTextView14"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/catamaran_bold"
+                android:text="7- Mengerjakan shalat tahiyyatul masjid sebelum duduk"
+                android:textColor="@color/dark_green"
+                android:textSize="@dimen/_14sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.codesgood.views.JustifiedTextView
+                android:id="@+id/justifiedTextView15"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_7sdp"
+                android:fontFamily="@font/catamaran_regular"
+                android:text="Sabda Rasulullah Shallallahu ‘Alaihi wasallam, “Jika seseorang dari kalian masuk masjid hendaklah ia shalat dua rakaat sebelum ia duduk.” [HR. Muttafaqun Alaihi]"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_13sdp" />
+
+            <com.codesgood.views.JustifiedTextView
+                android:id="@+id/justifiedTextView17"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/catamaran_bold"
+                android:text="8- Tidak menyilangkan jari jemari"
+                android:textColor="@color/dark_green"
+                android:textSize="@dimen/_14sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.codesgood.views.JustifiedTextView
+                android:id="@+id/justifiedTextView16"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_7sdp"
+                android:fontFamily="@font/catamaran_regular"
+                android:text="Sabda Rasulullah Shallallahu ‘Alaihi wasallam, “Jika seseorang diantara kamu berwudhu lalu menyempurnakan wudhunya, kemudian ia keluar menuju masjid maka janganlah ia menyilangkan jemarinya karena ia seakan-akan sedang shalat .” [HR. Abu Dawud]"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_13sdp" />
+
+            <com.codesgood.views.JustifiedTextView
+                android:id="@+id/justifiedTextView19"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/catamaran_bold"
+                android:text="9- Senantiasa berdzikir"
+                android:textColor="@color/dark_green"
+                android:textSize="@dimen/_14sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.codesgood.views.JustifiedTextView
+                android:id="@+id/justifiedTextView18"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_7sdp"
+                android:fontFamily="@font/catamaran_regular"
+                android:text="Dianjurkan untuk senantiasa berdzikir, berdoa atau membaca Al-Qur’an saat sedang menunggu waktu shalat dengan tetap menjaga ketenangan dan tidak mengganggu orang lain yang sedang shalat."
+                android:textColor="@color/black"
+                android:textSize="@dimen/_13sdp" />
+
+            <com.codesgood.views.JustifiedTextView
+                android:id="@+id/justifiedTextView20"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/catamaran_bold"
+                android:text="10- Shalat dengan khusyu’"
+                android:textColor="@color/dark_green"
+                android:textSize="@dimen/_14sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.codesgood.views.JustifiedTextView
+                android:id="@+id/justifiedTextView21"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_7sdp"
+                android:fontFamily="@font/catamaran_regular"
+                android:text="Khusyu’ merupakan inti dan ruh shalat. Shalat yang tidak disertai dengan kekhusyu’an ibarat badan tanpa ruh. Ibnu Rajab Rahimahullah mengatakan, “Makna dasar khusyu’ adalah kelembutan hati, kerendahan, ketenangan dan ketundukannya. Jika hati telah merasakan kekhusyuan maka anggota tubuh yang lain akan khusyu’ pula karena ia seperti prajurit yang tunduk pada komandannya .” [Al-Khusyu’, karya Ibnu Rajab]  Khusyu’ tempatnya di hati yang tergambar dari aktivitas anggota tubuh."
+                android:textColor="@color/black"
+                android:textSize="@dimen/_13sdp" />
+
+            <com.codesgood.views.JustifiedTextView
+                android:id="@+id/justifiedTextView22"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/catamaran_bold"
+                android:text="11- Mengamalkan sunnah-sunnah Rasulullah Shallallahu ‘Alaihi wasallam"
+                android:textColor="@color/dark_green"
+                android:textSize="@dimen/_14sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.codesgood.views.JustifiedTextView
+                android:id="@+id/justifiedTextView23"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_7sdp"
+                android:fontFamily="@font/catamaran_regular"
+                android:text="Shalat adalah ibadah yang berdasar pada dalil dan contoh dari Rasulullah. Dalam shalat, Seseorang tidak memiliki kewenangan untuk melakukan atau mengatakan sesuai dengan keinginannya. Sabda Rasulullah Shallallahu ‘Alaihi wasallam, “Shalatlah kalian sebagaimana kalian melihatku shalat.” [HR. Al-Bukhari]"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_13sdp" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>

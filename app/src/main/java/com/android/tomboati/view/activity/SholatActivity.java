@@ -14,7 +14,7 @@ public class SholatActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private CardView cardViewSholatWajib, cardViewWudhu, cardViewArahKiblat, cardViewJadwalSholat
     , cardViewMasjidTerdekat, cardViewSyaratSholat, cardViewDoaSesudahSholat, cardViewTayamum,
-    cardViewSholatSunnah;
+    cardViewSholatSunnah, cardViewAdabSholat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +37,7 @@ public class SholatActivity extends AppCompatActivity {
         cardViewDoaSesudahSholat = findViewById(R.id.cardViewDoaSesudahSholat);
         cardViewTayamum = findViewById(R.id.cardViewTayamum);
         cardViewSholatSunnah = findViewById(R.id.cardViewSholatSunnah);
+        cardViewAdabSholat = findViewById(R.id.cardViewAdabSholat);
 
         cardViewSholatWajib.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,6 +99,13 @@ public class SholatActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(v.getContext(), SholatSunnahActivity.class));
+            }
+        });
+
+        cardViewAdabSholat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(v.getContext(), AdabSholatActivity.class));
             }
         });
     }
