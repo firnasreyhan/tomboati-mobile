@@ -77,10 +77,11 @@ public class HitungTasbihActivity extends AppCompatActivity {
                 count = Utility.getTasbihModel().get(index).getCount();
                 count_tasbeeh = Utility.getTasbihModel().get(index).getCount_tasbeeh();
 
+                time_vibrate = 10;
                 text_count.setText("" + count);
                 text_judul.setText(Utility.getTasbihModel().get(index).getJudul());
                 text_arabic.setText(Utility.getTasbihModel().get(index).getArabic());
-                chartView.setProgress(count, true);
+                chartView.setProgress((count_tasbeeh / (float) max) * 100, true);
 
                 if(index == 0) {
                     img_prev.setVisibility(View.GONE);
@@ -101,10 +102,11 @@ public class HitungTasbihActivity extends AppCompatActivity {
                 count = Utility.getTasbihModel().get(index).getCount();
                 count_tasbeeh = Utility.getTasbihModel().get(index).getCount_tasbeeh();
 
+                time_vibrate = 10;
                 text_count.setText("" + count);
                 text_judul.setText(Utility.getTasbihModel().get(index).getJudul());
                 text_arabic.setText(Utility.getTasbihModel().get(index).getArabic());
-                chartView.setProgress(count, true);
+                chartView.setProgress((count_tasbeeh / (float) max) * 100, true);
 
                 if(index == Utility.getTasbihModel().size() - 1) {
                     img_next.setVisibility(View.GONE);
