@@ -16,44 +16,23 @@
         android:background="@color/dark_green"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
 
-    <LinearLayout
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="?actionBarSize"
+        android:minHeight="?actionBarSize"
+        app:tabGravity="fill"
+        app:tabIndicatorColor="@color/light_yellow"
+        app:tabIndicatorHeight="4dp"
+        android:background="@color/dark_green"
+        app:tabMode="fixed"/>
 
-        <com.jsibbold.zoomage.ZoomageView
-            android:id="@+id/imageViewContent"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@android:color/white"
-            android:scaleType="fitCenter"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/dark_green"
-            android:orientation="vertical"
-            android:padding="@dimen/_6sdp">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/catamaran_regular"
-                android:text="*Geser kiri dan kanan dengan satu jari untuk berpindah halaman."
-                android:textColor="@android:color/white"
-                android:textStyle="italic" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/catamaran_regular"
-                android:text="*Gunakan dua jari untuk memperbesar halaman."
-                android:textColor="@android:color/white"
-                android:textStyle="italic" />
-
-        </LinearLayout>
-
-    </LinearLayout>
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:background="@android:color/white"/>
 
 </LinearLayout>

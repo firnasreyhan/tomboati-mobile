@@ -12,6 +12,7 @@ import com.android.tomboati.api.ApiInterfaceMasjid;
 import com.android.tomboati.api.ApiInterfaceTahlil;
 import com.android.tomboati.api.ApiInterfaceTomboAti;
 import com.android.tomboati.api.response.AyatResponse;
+import com.android.tomboati.api.response.BacaanSholatResponse;
 import com.android.tomboati.api.response.BaseResponse;
 import com.android.tomboati.api.response.ChatResponse;
 import com.android.tomboati.api.response.DoaHarianResponse;
@@ -401,6 +402,44 @@ public class Repository {
             public void onFailure(Call<PaketMonthResponse> call, Throwable t) {
                 data.postValue(null);
                 Log.e("getPaketMonth", t.getMessage());
+            }
+        });
+        return data;
+    }
+
+    public MutableLiveData<List<BacaanSholatResponse>> getBacaanSholat() {
+        MutableLiveData<List<BacaanSholatResponse>> data = new MutableLiveData<>();
+        apiInterfaceTahlil.getBacaanSholat().enqueue(new Callback<List<BacaanSholatResponse>>() {
+            @Override
+            public void onResponse(Call<List<BacaanSholatResponse>> call, Response<List<BacaanSholatResponse>> response) {
+                if (response.code() == 200) {
+                    data.postValue(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<BacaanSholatResponse>> call, Throwable t) {
+                data.postValue(null);
+                Log.e("getDoaHarian", t.getMessage());
+            }
+        });
+        return data;
+    }
+
+    public MutableLiveData<List<BacaanSholatResponse>> getNiatSholat() {
+        MutableLiveData<List<BacaanSholatResponse>> data = new MutableLiveData<>();
+        apiInterfaceTahlil.getNiatSholat().enqueue(new Callback<List<BacaanSholatResponse>>() {
+            @Override
+            public void onResponse(Call<List<BacaanSholatResponse>> call, Response<List<BacaanSholatResponse>> response) {
+                if (response.code() == 200) {
+                    data.postValue(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<BacaanSholatResponse>> call, Throwable t) {
+                data.postValue(null);
+                Log.e("getDoaHarian", t.getMessage());
             }
         });
         return data;
