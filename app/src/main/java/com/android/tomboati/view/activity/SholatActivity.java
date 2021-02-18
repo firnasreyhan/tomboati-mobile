@@ -12,7 +12,9 @@ import com.android.tomboati.R;
 
 public class SholatActivity extends AppCompatActivity {
     private Toolbar toolbar;
-    private CardView cardViewSholatWajib, cardViewWudhu, cardViewArahKiblat, cardViewJadwalSholat, cardViewMasjidTerdekat, cardViewSyaratSholat, cardViewDoaSesudahSholat, cardViewTayamum;
+    private CardView cardViewSholatWajib, cardViewWudhu, cardViewArahKiblat, cardViewJadwalSholat
+    , cardViewMasjidTerdekat, cardViewSyaratSholat, cardViewDoaSesudahSholat, cardViewTayamum,
+    cardViewSholatSunnah;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +36,7 @@ public class SholatActivity extends AppCompatActivity {
         cardViewSyaratSholat = findViewById(R.id.cardViewSyaratSholat);
         cardViewDoaSesudahSholat = findViewById(R.id.cardViewDoaSesudahSholat);
         cardViewTayamum = findViewById(R.id.cardViewTayamum);
+        cardViewSholatSunnah = findViewById(R.id.cardViewSholatSunnah);
 
         cardViewSholatWajib.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,6 +91,13 @@ public class SholatActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(v.getContext(), TayamumActivity.class));
+            }
+        });
+
+        cardViewSholatSunnah.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(v.getContext(), SholatSunnahActivity.class));
             }
         });
     }
