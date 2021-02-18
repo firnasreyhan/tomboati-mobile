@@ -91,7 +91,15 @@ public class Utility {
         return c.get(Calendar.HOUR_OF_DAY);
     }
 
+    public static void setHour(int hour) {
+        Utility.hour = hour;
+    }
+
     public static int getMinute() {
         return c.get(Calendar.MINUTE);
+    }
+
+    public static void setMinute(int minute) {
+        Utility.minute = minute;
     }
 }

@@ -3,6 +3,8 @@ package com.android.tomboati.api;
 import com.android.tomboati.api.response.BaseResponse;
 import com.android.tomboati.api.response.ChatResponse;
 import com.android.tomboati.api.response.JadwalSholatResponse;
+import com.android.tomboati.api.response.PaketMonthResponse;
+import com.android.tomboati.api.response.PaketResponse;
 import com.android.tomboati.api.response.SignInResponse;
 
 import okhttp3.MultipartBody;
@@ -15,6 +17,7 @@ import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface ApiInterfaceTomboAti {
     @POST("user/login_post")
@@ -56,5 +59,41 @@ public interface ApiInterfaceTomboAti {
     @FormUrlEncoded
     Call<ChatResponse> getChat(
             @Field("idChatRoom") String idChatRoom
+    );
+
+    @GET("Paket/paket_get")
+    Call<PaketResponse> getPaket(
+            @Query("tipe") String tipe,
+            @Query("bulan") String bulan
+    );
+
+    @Multipart
+    @POST("user/updateProfil")
+    Call<BaseResponse> updateProfile(
+            @Query("idUser") String idUser,
+            @Part("noKTP") RequestBody noKTP,
+            @Part("email") RequestBody email,
+            @Part("password") RequestBody password,
+            @Part("namaLengkap") RequestBody namaLengkap,
+            @Part("nomorHP") RequestBody noHP
+    );
+
+    @Multipart
+    @POST("user/updateFileKTP")
+    Call<BaseResponse> updateFileKTP(
+            @Query("idUser") String idUser,
+            @Part MultipartBody.Part fileKTP
+    );
+
+    @Multipart
+    @POST("user/updateFoto")
+    Call<BaseResponse> updateFoto(
+            @Query("idUser") String idUser,
+            @Part MultipartBody.Part foto
+    );
+
+    @GET("Paket/getPaketMonth")
+    Call<PaketMonthResponse> getPaketMonth(
+            @Query("tipe") String tipe
     );
 }

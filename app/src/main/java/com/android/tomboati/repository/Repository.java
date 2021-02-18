@@ -17,6 +17,8 @@ import com.android.tomboati.api.response.ChatResponse;
 import com.android.tomboati.api.response.DoaHarianResponse;
 import com.android.tomboati.api.response.JadwalSholatResponse;
 import com.android.tomboati.api.response.MasjidResponse;
+import com.android.tomboati.api.response.PaketMonthResponse;
+import com.android.tomboati.api.response.PaketResponse;
 import com.android.tomboati.api.response.SignInResponse;
 import com.android.tomboati.api.response.SurahResponse;
 import com.android.tomboati.api.response.TahlilResponse;
@@ -286,6 +288,119 @@ public class Repository {
             public void onFailure(Call<DoaHarianResponse> call, Throwable t) {
                 data.postValue(null);
                 Log.e("getDoaHarian", t.getMessage());
+            }
+        });
+        return data;
+    }
+
+    public MutableLiveData<PaketResponse> getPaket(String paket, String bulan) {
+        MutableLiveData<PaketResponse> data = new MutableLiveData<>();
+        apiInterfaceTomboAti.getPaket(
+                paket,
+                bulan
+        ).enqueue(new Callback<PaketResponse>() {
+            @Override
+            public void onResponse(Call<PaketResponse> call, Response<PaketResponse> response) {
+                if (response.code() == 200) {
+                    data.postValue(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<PaketResponse> call, Throwable t) {
+                data.postValue(null);
+                Log.e("getPaket", t.getMessage());
+            }
+        });
+        return data;
+    }
+
+    public MutableLiveData<BaseResponse> updateProfile(String idUser, RequestBody noKTP, RequestBody email, RequestBody password, RequestBody namaLengkap, RequestBody noHP) {
+        MutableLiveData<BaseResponse> baseResponseMutableLiveData = new MutableLiveData<>();
+        apiInterfaceTomboAti.updateProfile(
+                idUser,
+                noKTP,
+                email,
+                password,
+                namaLengkap,
+                noHP
+        ).enqueue(new Callback<BaseResponse>() {
+            @Override
+            public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
+                if (response.code() == 200) {
+                    baseResponseMutableLiveData.postValue(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<BaseResponse> call, Throwable t) {
+                baseResponseMutableLiveData.postValue(null);
+                Log.e("updateProfile", t.getMessage());
+            }
+        });
+        return baseResponseMutableLiveData;
+    }
+
+    public MutableLiveData<BaseResponse> updateFileKTP(String idUser, MultipartBody.Part fileKTP) {
+        MutableLiveData<BaseResponse> baseResponseMutableLiveData = new MutableLiveData<>();
+        apiInterfaceTomboAti.updateFileKTP(
+                idUser,
+                fileKTP
+        ).enqueue(new Callback<BaseResponse>() {
+            @Override
+            public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
+                if (response.code() == 200) {
+                    baseResponseMutableLiveData.postValue(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<BaseResponse> call, Throwable t) {
+                baseResponseMutableLiveData.postValue(null);
+                Log.e("updateProfile", t.getMessage());
+            }
+        });
+        return baseResponseMutableLiveData;
+    }
+
+    public MutableLiveData<BaseResponse> updateFoto(String idUser, MultipartBody.Part foto) {
+        MutableLiveData<BaseResponse> baseResponseMutableLiveData = new MutableLiveData<>();
+        apiInterfaceTomboAti.updateFoto(
+                idUser,
+                foto
+        ).enqueue(new Callback<BaseResponse>() {
+            @Override
+            public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
+                if (response.code() == 200) {
+                    baseResponseMutableLiveData.postValue(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<BaseResponse> call, Throwable t) {
+                baseResponseMutableLiveData.postValue(null);
+                Log.e("updateProfile", t.getMessage());
+            }
+        });
+        return baseResponseMutableLiveData;
+    }
+
+    public MutableLiveData<PaketMonthResponse> getPaketMonth(String paket) {
+        MutableLiveData<PaketMonthResponse> data = new MutableLiveData<>();
+        apiInterfaceTomboAti.getPaketMonth(
+                paket
+        ).enqueue(new Callback<PaketMonthResponse>() {
+            @Override
+            public void onResponse(Call<PaketMonthResponse> call, Response<PaketMonthResponse> response) {
+                if (response.code() == 200) {
+                    data.postValue(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<PaketMonthResponse> call, Throwable t) {
+                data.postValue(null);
+                Log.e("getPaketMonth", t.getMessage());
             }
         });
         return data;

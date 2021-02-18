@@ -17,6 +17,9 @@ public class SignInResponse extends BaseResponse{
         @SerializedName("NOMORKTP")
         private String nomorKTP;
 
+        @SerializedName("IDUSERREGISTER")
+        private String idUserRegister;
+
         @SerializedName("EMAIL")
         private String email;
 
@@ -55,6 +58,10 @@ public class SignInResponse extends BaseResponse{
 
         @SerializedName("ID_CHAT_ROOM")
         private String idChatRoom;
+
+        public java.lang.String getIdUserRegister() {
+            return idUserRegister;
+        }
 
         public java.lang.String getNomorKTP() {
             return nomorKTP;

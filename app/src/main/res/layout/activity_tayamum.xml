@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".view.activity.TayamumActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:background="@color/dark_green"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_13sdp"
+            android:orientation="vertical">
+
+            <com.codesgood.views.JustifiedTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/catamaran_bold"
+                android:text="Syarat Tayamum"
+                android:textColor="@color/dark_green"
+                android:textSize="@dimen/_14sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.codesgood.views.JustifiedTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_7sdp"
+                android:fontFamily="@font/catamaran_regular"
+                android:text="Dalam \'Sebab dan Tata Cara Bertayamum' yang ditulis oleh M. Tatam Wijaya (2018), terdapat empat syarat diperbolehkannya tayamum. Hal ini didasarkan pada pendapat Syekh Mushthafa al-Khin dalam kitab al-Fiqh al-Manhaji ‘ala Madzahib al-Imam al-Syafi‘i."
+                android:textColor="@color/black"
+                android:textSize="@dimen/_13sdp" />
+
+            <com.codesgood.views.JustifiedTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_7sdp"
+                android:fontFamily="@font/catamaran_regular"
+                android:text="Yang pertama, adalah ketiadaan air secara kasat mata dan syara'. Secara kasat mata misalnya seperti dalam keadaan bepergian dan benar-benar tidak ada air. Sedangkan secara syara' adalah air yang ada hanya mencukupi untuk kebutuhan minum saja, sehinggga tidak mungkin dipakai untuk wudu."
+                android:textColor="@color/black"
+                android:textSize="@dimen/_13sdp" />
+
+            <com.codesgood.views.JustifiedTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_7sdp"
+                android:fontFamily="@font/catamaran_regular"
+                android:text="Yang kedua adalah jauhnya tempat untuk memperoleh air yang diperkirakan sekitar 2,5 kilometer untuk bisa mendapatkannya."
+                android:textColor="@color/black"
+                android:textSize="@dimen/_13sdp" />
+
+            <com.codesgood.views.JustifiedTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_7sdp"
+                android:fontFamily="@font/catamaran_regular"
+                android:text="Yang ketiga adalah sulitnya menggunakan air. Secara kasat mata, air memang dekat, namun tidak bisa dijangkau karena beberapa hal. Misalnya, adanya musuh, binatang buas, dipenjara, dan lainnya. Secara syara', contohnya karena khawatir akan datang penyakit, takut penyakitnya semakin kambuh, ataupun karena takut lama sembuhnya."
+                android:textColor="@color/black"
+                android:textSize="@dimen/_13sdp" />
+
+            <com.codesgood.views.JustifiedTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_7sdp"
+                android:fontFamily="@font/catamaran_regular"
+                android:text="Yang keempat adalah kondisi sangat dingin jika menggunakan air karena tidak ada sesuatu yang dapat mengembalikan kehangatan tubuh."
+                android:textColor="@color/black"
+                android:textSize="@dimen/_13sdp" />
+
+            <com.codesgood.views.JustifiedTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:fontFamily="@font/catamaran_bold"
+                android:text="Tata Cara Tayamum"
+                android:textColor="@color/dark_green"
+                android:textSize="@dimen/_14sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.codesgood.views.JustifiedTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_7sdp"
+                android:fontFamily="@font/catamaran_regular"
+                android:text="Tata cara mengerjakan tayamum adalah sebagai berikut."
+                android:textColor="@color/black"
+                android:textSize="@dimen/_13sdp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_3sdp"
+                android:gravity="top|left"
+                android:orientation="horizontal">
+
+                <com.codesgood.views.JustifiedTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/catamaran_regular"
+                    android:text="1. "
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_13sdp" />
+
+                <com.codesgood.views.JustifiedTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/catamaran_regular"
+                    android:text="Siapkan tanah berdebu atau debu yang bersih."
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_13sdp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_3sdp"
+                android:gravity="top|left"
+                android:orientation="horizontal">
+
+                <com.codesgood.views.JustifiedTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/catamaran_regular"
+                    android:text="2. "
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_13sdp" />
+
+                <com.codesgood.views.JustifiedTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/catamaran_regular"
+                    android:text="Dalam keadaan menghadap kiblat, ucapkan basmalah lalu letakkan kedua telapak tangan pada debu dengan posisi jari-jari tangan dirapatkan."
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_13sdp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_3sdp"
+                android:gravity="top|left"
+                android:orientation="horizontal">
+
+                <com.codesgood.views.JustifiedTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/catamaran_regular"
+                    android:text="3. "
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_13sdp" />
+
+                <com.codesgood.views.JustifiedTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/catamaran_regular"
+                    android:text="Usapkan kedua telapak tangan pada seluruh wajah disertai dengan niat dalam hati, salah satunya dengan redaksi niat berikut."
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_13sdp" />
+
+            </LinearLayout>
+
+            <com.codesgood.views.JustifiedTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_7sdp"
+                android:fontFamily="@font/amiri_bold"
+                android:text="نَوَيْتُ التَّيَمُّمَ لِاسْتِبَاحَةِ الصَّلَاةِ للهِ تَعَالَى"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_24sdp" />
+
+            <com.codesgood.views.JustifiedTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_7sdp"
+                android:fontFamily="@font/catamaran_regular"
+                android:text="Aku berniat tayamum agar diperbolehkan salat karena Allah."
+                android:textColor="@color/black"
+                android:textSize="@dimen/_13sdp"
+                android:textStyle="italic"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_3sdp"
+                android:gravity="top|left"
+                android:orientation="horizontal">
+
+                <com.codesgood.views.JustifiedTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/catamaran_regular"
+                    android:text="4. "
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_13sdp" />
+
+                <com.codesgood.views.JustifiedTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/catamaran_regular"
+                    android:text="Letakkan kembali telapak tangan pada debu. Kali ini jari-jari direnggangkan. Jika ada cincin pada jari, dapat dilepaskan sementara."
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_13sdp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_3sdp"
+                android:gravity="top|left"
+                android:orientation="horizontal">
+
+                <com.codesgood.views.JustifiedTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/catamaran_regular"
+                    android:text="5. "
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_13sdp" />
+
+                <com.codesgood.views.JustifiedTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/catamaran_regular"
+                    android:text="Tempelkan telapak tangan kiri pada punggung tangan kanan, hingga ujung-ujung jari salah satu tangan tidak melebihi ujung jari telunjuk dari tangan yang lain."
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_13sdp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_3sdp"
+                android:gravity="top|left"
+                android:orientation="horizontal">
+
+                <com.codesgood.views.JustifiedTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/catamaran_regular"
+                    android:text="6. "
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_13sdp" />
+
+                <com.codesgood.views.JustifiedTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/catamaran_regular"
+                    android:text="Usapkan telapak tangan kiri ke punggung lengan kanan sampai ke bagian siku. Lalu, balikkan telapak tangan kiri tersebut ke bagian dalam lengan kanan, kemudan usapkan hingga ke bagian pergelangan."
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_13sdp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_3sdp"
+                android:gravity="top|left"
+                android:orientation="horizontal">
+
+                <com.codesgood.views.JustifiedTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/catamaran_regular"
+                    android:text="7. "
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_13sdp" />
+
+                <com.codesgood.views.JustifiedTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/catamaran_regular"
+                    android:text="Usapkan bagian dalam jempol kiri ke bagian punggung jempol kanan. Selanjutnya, lakukan hal yang sama pada tangan kiri."
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_13sdp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_3sdp"
+                android:gravity="top|left"
+                android:orientation="horizontal">
+
+                <com.codesgood.views.JustifiedTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/catamaran_regular"
+                    android:text="8. "
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_13sdp" />
+
+                <com.codesgood.views.JustifiedTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/catamaran_regular"
+                    android:text="Pertemukan kedua telapak tangan dan usap-usapkan di antara jari-jari."
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_13sdp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_3sdp"
+                android:gravity="top|left"
+                android:orientation="horizontal">
+
+                <com.codesgood.views.JustifiedTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/catamaran_regular"
+                    android:text="9. "
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_13sdp" />
+
+                <com.codesgood.views.JustifiedTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/catamaran_regular"
+                    android:text="Setelah tayamum, dianjurkan juga oleh sebagian ulama untuk membaca doa bersuci, seperti halnya doa berikut ini."
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_13sdp" />
+
+            </LinearLayout>
+
+            <com.codesgood.views.JustifiedTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_7sdp"
+                android:fontFamily="@font/amiri_bold"
+                android:text="أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللهُ، وَحْدَهُ لَا شَرِيْكَ لَهُ، وَ أَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُوْلُهُ، اَللَّهُمَّ اجْعَلْنِي مِنَ التَّوَّابِيْنَ، وَاجْعَلْنِي مِنَ الْمُتَطَهِّرِيْنَ وَاجْعَلْنِي مِنْ عِبَادِكَ الصَّالِحِيْنَ سُبْحَانَكَ اَللَّهُمَّ وَبِحَمْدِكَ، أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا أَنْتَ، أَسْتَغْفِرُكَ وَأَتُوْبُ إِلَيْكَ"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_24sdp" />
+
+            <com.codesgood.views.JustifiedTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_7sdp"
+                android:fontFamily="@font/catamaran_regular"
+                android:text="Aku bersaksi tiada tuhan selain Allah semata yang tiada sekutu bagi-Nya. Aku bersaksi bahwa Muhammad adalah hamba dan utusan-Nya. Ya Allah, jadikanlah aku sebagai orang-orang yang bertaubat, jadikanlah aku sebagai orang-orang yang bersuci, dan jadikanlah aku sebagai hamba-hamba-Mu yang saleh. Mahasuci Engkau, ya Allah. Dengan kebaikan-Mu, aku bersaksi bahwa tiada tuhan selain Engkau. Dan dengan kebaikan-Mu, aku memohon ampunan dan bertaubat pada-Mu."
+                android:textColor="@color/black"
+                android:textSize="@dimen/_13sdp"
+                android:textStyle="italic"/>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>

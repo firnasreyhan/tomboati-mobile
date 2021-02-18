@@ -12,7 +12,7 @@ import com.android.tomboati.R;
 
 public class SholatActivity extends AppCompatActivity {
     private Toolbar toolbar;
-    private CardView cardViewSholatWajib, cardViewWudhu, cardViewArahKiblat, cardViewJadwalSholat, cardViewMasjidTerdekat;
+    private CardView cardViewSholatWajib, cardViewWudhu, cardViewArahKiblat, cardViewJadwalSholat, cardViewMasjidTerdekat, cardViewSyaratSholat, cardViewDoaSesudahSholat, cardViewTayamum;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +31,9 @@ public class SholatActivity extends AppCompatActivity {
         cardViewArahKiblat = findViewById(R.id.cardViewArahKiblat);
         cardViewJadwalSholat = findViewById(R.id.cardViewJadwalSholat);
         cardViewMasjidTerdekat = findViewById(R.id.cardViewMasjidTerdekat);
+        cardViewSyaratSholat = findViewById(R.id.cardViewSyaratSholat);
+        cardViewDoaSesudahSholat = findViewById(R.id.cardViewDoaSesudahSholat);
+        cardViewTayamum = findViewById(R.id.cardViewTayamum);
 
         cardViewSholatWajib.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,6 +67,27 @@ public class SholatActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(v.getContext(), MasjidTerdekatActivity.class));
+            }
+        });
+
+        cardViewSyaratSholat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(v.getContext(), SyaratSholatActivity.class));
+            }
+        });
+
+        cardViewDoaSesudahSholat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(v.getContext(), DoaSesudahSholatActivity.class));
+            }
+        });
+
+        cardViewTayamum.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(v.getContext(), TayamumActivity.class));
             }
         });
     }

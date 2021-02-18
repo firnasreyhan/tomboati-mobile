@@ -1,6 +1,8 @@
 package com.android.tomboati.view.fragment;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -21,8 +23,10 @@ import com.android.tomboati.R;
 import com.android.tomboati.api.response.BaseResponse;
 import com.android.tomboati.api.response.SignInResponse;
 import com.android.tomboati.preference.AppPreference;
+import com.android.tomboati.view.activity.KodeReferralActivity;
 import com.android.tomboati.view.activity.MainActivity;
 import com.android.tomboati.view.activity.SignUpActivity;
+import com.android.tomboati.view.activity.UpdateProfileActivity;
 import com.android.tomboati.viewmodel.AkunViewModel;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.Priority;
@@ -38,7 +42,7 @@ public class AkunFragment extends Fragment {
     private TextView textViewSignUp;
     private AkunViewModel akunViewModel;
     private TextInputEditText textInputEditTextEmail, textInputEditTextPassword;
-    private MaterialButton materialButtonSignIn, materialButtonSignOut;
+    private MaterialButton materialButtonSignIn, materialButtonSignOut, materialButtonKodeReferral, materialButtonProfileEdit;
     private ConstraintLayout constraintLayoutSignIn;
     private LinearLayout linearLayoutAkun;
     private ShapeableImageView shapeableImageViewFoto;
@@ -62,6 +66,8 @@ public class AkunFragment extends Fragment {
         textViewNamaLengkap = view.findViewById(R.id.textViewNamaLengkap);
         textViewNomorHP = view.findViewById(R.id.textViewNomorHP);
         materialButtonSignOut = view.findViewById(R.id.materialButtonSignOut);
+        materialButtonKodeReferral = view.findViewById(R.id.materialButtonKodeReferral);
+        materialButtonProfileEdit = view.findViewById(R.id.materialButtonProfileEdit);
 
         if (AppPreference.getUser(getContext()) != null) {
 //            ((MainActivity)getActivity()).updateStatusBarColor("#00441F");
@@ -73,28 +79,59 @@ public class AkunFragment extends Fragment {
             materialButtonSignOut.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    progressDialog.setMessage("Mohon tunggu sebentar...");
-                    progressDialog.setCancelable(false);
-                    progressDialog.show();
+                    new AlertDialog.Builder(getContext())
+                            .setTitle("Pesan")
+                            .setMessage("Yakin ingin keluar dari aplikasi?")
+                            .setPositiveButton("Iya", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+                                    progressDialog.setMessage("Mohon tunggu sebentar...");
+                                    progressDialog.setCancelable(false);
+                                    progressDialog.show();
 
-                    int loadingTime = 3000;
-                    new Handler().postDelayed(() -> {
-                        akunViewModel.signOut().observe(getActivity(), new Observer<BaseResponse>() {
-                            @Override
-                            public void onChanged(BaseResponse baseResponse) {
-                                if (progressDialog.isShowing()) {
-                                    progressDialog.dismiss();
+                                    int loadingTime = 3000;
+                                    new Handler().postDelayed(() -> {
+                                        akunViewModel.signOut().observe(getActivity(), new Observer<BaseResponse>() {
+                                            @Override
+                                            public void onChanged(BaseResponse baseResponse) {
+                                                if (progressDialog.isShowing()) {
+                                                    progressDialog.dismiss();
+                                                }
+                                                Toast.makeText(getContext(), baseResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                                                if (!baseResponse.isError()) {
+                                                    AppPreference.removeUser(getContext());
+                                                    Intent intent = new Intent(getContext(), MainActivity.class);
+                                                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                                    startActivity(intent);
+                                                }
+                                            }
+                                        });
+                                    }, loadingTime);
                                 }
-                                Toast.makeText(getContext(), baseResponse.getMessage(), Toast.LENGTH_SHORT).show();
-                                if (!baseResponse.isError()) {
-                                    AppPreference.removeUser(getContext());
-                                    Intent intent = new Intent(getContext(), MainActivity.class);
-                                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                    startActivity(intent);
+                            })
+                            .setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
                                 }
-                            }
-                        });
-                    }, loadingTime);
+                            })
+                            .create()
+                            .show();
+                }
+            });
+
+            materialButtonKodeReferral.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(v.getContext(), KodeReferralActivity.class));
+                }
+            });
+
+            materialButtonProfileEdit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(v.getContext(), UpdateProfileActivity.class));
                 }
             });
         } else {
@@ -139,13 +176,32 @@ public class AkunFragment extends Fragment {
                                     if (progressDialog.isShowing()) {
                                         progressDialog.dismiss();
                                     }
-                                    Toast.makeText(getContext(), signInResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                                    new AlertDialog.Builder(getContext())
+                                            .setTitle("Pesan")
+                                            .setMessage(signInResponse.getMessage())
+                                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                                @Override
+                                                public void onClick(DialogInterface dialog, int which) {
+                                                    dialog.dismiss();
+                                                }
+                                            })
+                                            .show();
                                     if (!signInResponse.isError()) {
                                         if (!signInResponse.getData().isEmpty()) {
-                                            AppPreference.saveUser(v.getContext(), signInResponse.getData().get(0));
-                                            Intent intent = new Intent(getContext(), MainActivity.class);
-                                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                            startActivity(intent);
+                                            new AlertDialog.Builder(getContext())
+                                                    .setTitle("Pesan")
+                                                    .setMessage(signInResponse.getMessage())
+                                                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                                        @Override
+                                                        public void onClick(DialogInterface dialog, int which) {
+                                                            dialog.dismiss();
+                                                            AppPreference.saveUser(v.getContext(), signInResponse.getData().get(0));
+                                                            Intent intent = new Intent(getContext(), MainActivity.class);
+                                                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                                            startActivity(intent);
+                                                        }
+                                                    })
+                                                    .show();
                                         }
                                     }
                                 }
@@ -179,5 +235,13 @@ public class AkunFragment extends Fragment {
                 .format(DecodeFormat.DEFAULT)
                 .placeholder(R.drawable.ic_logo)
                 .into(shapeableImageViewFoto);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (AppPreference.getUser(getContext()) != null) {
+            setAkun();
+        }
     }
 }

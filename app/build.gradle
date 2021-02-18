@@ -113,4 +113,7 @@ dependencies {
 
     //Percentage Progress View
     implementation 'com.ramijemli.percentagechartview:percentagechartview:0.3.1'
+    
+    //znavigator
+    implementation 'com.zach.znavigator:znavigator:1.0.0'
 }

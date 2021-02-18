@@ -155,6 +155,7 @@
             app:strokeWidth="0dp" />
 
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/materialButtonKodeReferral"
             style="@style/Widget.MaterialComponents.Button.TextButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -164,7 +165,7 @@
             android:paddingTop="20dp"
             android:paddingRight="38dp"
             android:paddingBottom="20dp"
-            android:text="Kode Referal"
+            android:text="Kode Referral"
             android:textAllCaps="false"
             android:textColor="#333333"
             android:textSize="12sp"
@@ -251,7 +252,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
-                android:layout_width="wrap_content"
+                android:layout_width="@dimen/_129sdp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:src="@drawable/ic_logo" />
