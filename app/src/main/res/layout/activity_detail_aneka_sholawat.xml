@@ -151,7 +151,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="10dp"
-                    app:srcCompat="@drawable/ic_muhammad"
+                    app:srcCompat="@drawable/ic_quran_warna"
                     tools:ignore="VectorDrawableCompat" />
 
                 <TextView
