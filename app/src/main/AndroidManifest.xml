@@ -18,7 +18,7 @@
         android:roundIcon="@mipmap/ic_new_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/ThemeTomboAti">
-        <activity android:name=".view.activity.AnekaSholawatActivity"></activity>
+        <activity android:name=".view.activity.AnekaSholawatActivity"/>
         <activity android:name=".view.activity.AdabSholatActivity" />
         <activity android:name=".view.activity.SholatSunnahActivity" />
         <activity android:name=".view.activity.HitungTasbihActivity" />
@@ -30,7 +30,6 @@
         <activity android:name=".view.activity.SyaratSholatActivity" />
         <activity android:name=".view.activity.KodeReferralActivity" />
         <activity android:name=".view.activity.DetailPaketActivity" />
-        <activity android:name=".view.activity.DoaRamadhanActivity" />
         <activity android:name=".view.activity.AdabBerdoaActivity" />
         <activity android:name=".view.activity.WaktuMustajabActivity" />
         <activity android:name=".view.activity.TampatMustajabActivity" />

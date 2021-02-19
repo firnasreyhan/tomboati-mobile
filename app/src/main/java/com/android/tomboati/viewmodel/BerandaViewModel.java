@@ -7,6 +7,9 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
 import com.android.tomboati.api.response.JadwalSholatResponse;
+import com.android.tomboati.api.response.KataMutiaraResponse;
+import com.android.tomboati.api.response.NewsResponse;
+import com.android.tomboati.api.response.PaketResponse;
 import com.android.tomboati.repository.Repository;
 
 public class BerandaViewModel extends AndroidViewModel {
@@ -25,5 +28,21 @@ public class BerandaViewModel extends AndroidViewModel {
                 latitude,
                 longitude,
                 timezone);
+    }
+
+    public MutableLiveData<PaketResponse> getPaket() {
+        return repository.getPaketLimit();
+    }
+
+    public MutableLiveData<PaketResponse> getWisataHalal() {
+        return repository.getWisataHalalLimit();
+    }
+
+    public MutableLiveData<NewsResponse> getNews() {
+        return repository.getNews();
+    }
+
+    public MutableLiveData<KataMutiaraResponse> getKataMutiara() {
+        return repository.getKataMutiara();
     }
 }

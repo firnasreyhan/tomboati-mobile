@@ -3,6 +3,8 @@ package com.android.tomboati.api;
 import com.android.tomboati.api.response.BaseResponse;
 import com.android.tomboati.api.response.ChatResponse;
 import com.android.tomboati.api.response.JadwalSholatResponse;
+import com.android.tomboati.api.response.KataMutiaraResponse;
+import com.android.tomboati.api.response.NewsResponse;
 import com.android.tomboati.api.response.PaketMonthResponse;
 import com.android.tomboati.api.response.PaketResponse;
 import com.android.tomboati.api.response.SignInResponse;
@@ -61,11 +63,22 @@ public interface ApiInterfaceTomboAti {
             @Field("idChatRoom") String idChatRoom
     );
 
-    @GET("Paket/paket_get")
+    @GET("paket/paket_get")
     Call<PaketResponse> getPaket(
             @Query("tipe") String tipe,
             @Query("bulan") String bulan
     );
+
+    @GET("Paket/detailPaket")
+    Call<PaketResponse> getDetailPaket(
+            @Query("idPaket") String idPaket
+    );
+
+    @GET("paket/getpaketlimit")
+    Call<PaketResponse> getPaketLimit();
+
+    @GET("WisataHalal/getwisatahalallimit")
+    Call<PaketResponse> getWisataHalalLimit();
 
     @Multipart
     @POST("user/updateProfil")
@@ -92,8 +105,14 @@ public interface ApiInterfaceTomboAti {
             @Part MultipartBody.Part foto
     );
 
-    @GET("Paket/getPaketMonth")
+    @GET("paket/getPaketMonth")
     Call<PaketMonthResponse> getPaketMonth(
             @Query("tipe") String tipe
     );
+
+    @GET("News/getNewsLimit")
+    Call<NewsResponse> getNews();
+
+    @GET("KataMutiara/getKataMutiaraLimit")
+    Call<KataMutiaraResponse> getKataMutiara();
 }

@@ -17,7 +17,9 @@ import com.android.tomboati.api.response.BaseResponse;
 import com.android.tomboati.api.response.ChatResponse;
 import com.android.tomboati.api.response.DoaHarianResponse;
 import com.android.tomboati.api.response.JadwalSholatResponse;
+import com.android.tomboati.api.response.KataMutiaraResponse;
 import com.android.tomboati.api.response.MasjidResponse;
+import com.android.tomboati.api.response.NewsResponse;
 import com.android.tomboati.api.response.PaketMonthResponse;
 import com.android.tomboati.api.response.PaketResponse;
 import com.android.tomboati.api.response.SignInResponse;
@@ -316,6 +318,65 @@ public class Repository {
         return data;
     }
 
+    public MutableLiveData<PaketResponse> getDetailPaket(String idPaket) {
+        MutableLiveData<PaketResponse> data = new MutableLiveData<>();
+        apiInterfaceTomboAti.getDetailPaket(
+                idPaket
+        ).enqueue(new Callback<PaketResponse>() {
+            @Override
+            public void onResponse(Call<PaketResponse> call, Response<PaketResponse> response) {
+                if (response.code() == 200) {
+                    data.postValue(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<PaketResponse> call, Throwable t) {
+                data.postValue(null);
+                Log.e("getPaket", t.getMessage());
+            }
+        });
+        return data;
+    }
+
+    public MutableLiveData<PaketResponse> getPaketLimit() {
+        MutableLiveData<PaketResponse> data = new MutableLiveData<>();
+        apiInterfaceTomboAti.getPaketLimit().enqueue(new Callback<PaketResponse>() {
+            @Override
+            public void onResponse(Call<PaketResponse> call, Response<PaketResponse> response) {
+                if (response.code() == 200) {
+                    data.postValue(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<PaketResponse> call, Throwable t) {
+                data.postValue(null);
+                Log.e("getPaket", t.getMessage());
+            }
+        });
+        return data;
+    }
+
+    public MutableLiveData<PaketResponse> getWisataHalalLimit() {
+        MutableLiveData<PaketResponse> data = new MutableLiveData<>();
+        apiInterfaceTomboAti.getWisataHalalLimit().enqueue(new Callback<PaketResponse>() {
+            @Override
+            public void onResponse(Call<PaketResponse> call, Response<PaketResponse> response) {
+                if (response.code() == 200) {
+                    data.postValue(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<PaketResponse> call, Throwable t) {
+                data.postValue(null);
+                Log.e("getPaket", t.getMessage());
+            }
+        });
+        return data;
+    }
+
     public MutableLiveData<BaseResponse> updateProfile(String idUser, RequestBody noKTP, RequestBody email, RequestBody password, RequestBody namaLengkap, RequestBody noHP) {
         MutableLiveData<BaseResponse> baseResponseMutableLiveData = new MutableLiveData<>();
         apiInterfaceTomboAti.updateProfile(
@@ -440,6 +501,44 @@ public class Repository {
             public void onFailure(Call<List<BacaanSholatResponse>> call, Throwable t) {
                 data.postValue(null);
                 Log.e("getDoaHarian", t.getMessage());
+            }
+        });
+        return data;
+    }
+
+    public MutableLiveData<NewsResponse> getNews() {
+        MutableLiveData<NewsResponse> data = new MutableLiveData<>();
+        apiInterfaceTomboAti.getNews().enqueue(new Callback<NewsResponse>() {
+            @Override
+            public void onResponse(Call<NewsResponse> call, Response<NewsResponse> response) {
+                if (response.code() == 200) {
+                    data.postValue(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<NewsResponse> call, Throwable t) {
+                data.postValue(null);
+                Log.e("getNews", t.getMessage());
+            }
+        });
+        return data;
+    }
+
+    public MutableLiveData<KataMutiaraResponse> getKataMutiara() {
+        MutableLiveData<KataMutiaraResponse> data = new MutableLiveData<>();
+        apiInterfaceTomboAti.getKataMutiara().enqueue(new Callback<KataMutiaraResponse>() {
+            @Override
+            public void onResponse(Call<KataMutiaraResponse> call, Response<KataMutiaraResponse> response) {
+                if (response.code() == 200) {
+                    data.postValue(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<KataMutiaraResponse> call, Throwable t) {
+                data.postValue(null);
+                Log.e("getKataMutiara", t.getMessage());
             }
         });
         return data;

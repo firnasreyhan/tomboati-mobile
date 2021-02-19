@@ -20,16 +20,21 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.os.Handler;
 import android.provider.Settings;
+import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.tomboati.R;
 import com.android.tomboati.adapter.SliderAdapter;
 import com.android.tomboati.api.response.JadwalSholatResponse;
+import com.android.tomboati.api.response.KataMutiaraResponse;
+import com.android.tomboati.api.response.NewsResponse;
+import com.android.tomboati.api.response.PaketResponse;
 import com.android.tomboati.model.SliderModel;
 import com.android.tomboati.preference.AppPreference;
 import com.android.tomboati.utils.Utility;
@@ -73,8 +78,10 @@ public class BerandaFragment extends Fragment {
     private CardView cardViewUmrohHaji, cardViewWisataReligi, cardViewDoaDzikir, cardViewSholat, cardViewAlQuran, cardViewKalenderHijriah, cardViewQurbanAqiqah, cardViewKomunitas, cardViewTomboatiChannel, cardViewLiveMekkah;
 
     private ShapeableImageView shapeableImageViewFoto;
-    private TextView textViewNamaLengkap, textViewSortNews;
+    private TextView textViewNamaLengkap, textViewSortNews, textViewKataMutiara, textViewJudulNews;
     private MaterialButton materialButtonDetailNews;
+
+    private ImageView imageViewPromoHaji1, imageViewPromoHaji2, imageViewPromoHaji3, imageViewPromoTour1, imageViewPromoTour2, imageViewPromoTour3, imageViewNews;
 
     private PermissionManager permissionManager;
     private ProgressDialog dialog;
@@ -109,6 +116,15 @@ public class BerandaFragment extends Fragment {
         textViewNamaLengkap = view.findViewById(R.id.textViewNamaLengkap);
         textViewSortNews = view.findViewById(R.id.textViewSortNews);
         materialButtonDetailNews = view.findViewById(R.id.materialButtonDetailNews);
+        imageViewPromoHaji1 = view.findViewById(R.id.imageViewPromoHaji1);
+        imageViewPromoHaji2 = view.findViewById(R.id.imageViewPromoHaji2);
+        imageViewPromoHaji3 = view.findViewById(R.id.imageViewPromoHaji3);
+        imageViewPromoTour1 = view.findViewById(R.id.imageViewPromoTour1);
+        imageViewPromoTour2 = view.findViewById(R.id.imageViewPromoTour2);
+        imageViewPromoTour3 = view.findViewById(R.id.imageViewPromoTour3);
+        textViewKataMutiara = view.findViewById(R.id.textViewKataMutiara);
+        textViewJudulNews = view.findViewById(R.id.textViewJudulNews);
+        imageViewNews = view.findViewById(R.id.imageViewNews);
 
         sliderView.setIndicatorAnimation(IndicatorAnimationType.WORM); //set indicator animation by using IndicatorAnimationType. :WORM or THIN_WORM or COLOR or DROP or FILL or NONE or SCALE or SCALE_DOWN or SLIDE and SWAP!!
         sliderView.setSliderTransformAnimation(SliderAnimations.SIMPLETRANSFORMATION);
@@ -121,15 +137,6 @@ public class BerandaFragment extends Fragment {
         if (AppPreference.getUser(getContext()) != null) {
             setAkun();
         }
-
-        String news = "Liputan6.com, Jakarta - Arab Saudi menangguhkan semua penerbangan internasional menuju negara tersebut selama sepekan. Penangguhan tersebut mulai berlaku Senin 21 Desember 2020. Sehubungan dengan hal ini, maskapai Garuda Indonesia terus melakukan komunikasi intensif dengan otoritas terkait guna memastikan hal yang perlu diantisipasi, menyusul pembatasan operasional layanan penerbangan tersebut.";
-        String[] senteces = news.split("\\. ");
-        Log.e("size", String.valueOf(senteces.length));
-        String shortNews = "";
-        for (int i = 0; i < 2; i++) {
-            shortNews = shortNews + senteces[i] + ". ";
-        }
-        textViewSortNews.setText(shortNews);
 
 //        sliderAdapter = new SliderAdapter(list);
 //        sliderView.setSliderAdapter(sliderAdapter);
@@ -228,6 +235,152 @@ public class BerandaFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(v.getContext(), DetailNewsActivity.class));
+            }
+        });
+
+        berandaViewModel.getPaket().observe(getActivity(), new Observer<PaketResponse>() {
+            @Override
+            public void onChanged(PaketResponse paketResponse) {
+                if (!paketResponse.isError()) {
+                    if (!paketResponse.getData().isEmpty()) {
+                        if (paketResponse.getData().get(0) != null) {
+                            Glide.with(getContext())
+                                    .load(paketResponse.getData().get(0).getImagePaket())
+                                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                                    .skipMemoryCache(true)
+                                    .dontAnimate()
+                                    .dontTransform()
+                                    .priority(Priority.IMMEDIATE)
+                                    .encodeFormat(Bitmap.CompressFormat.PNG)
+                                    .format(DecodeFormat.DEFAULT)
+                                    .placeholder(R.drawable.ic_logo)
+                                    .into(imageViewPromoHaji1);
+                        }
+
+                        if (paketResponse.getData().get(1) != null) {
+                            Glide.with(getContext())
+                                    .load(paketResponse.getData().get(1).getImagePaket())
+                                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                                    .skipMemoryCache(true)
+                                    .dontAnimate()
+                                    .dontTransform()
+                                    .priority(Priority.IMMEDIATE)
+                                    .encodeFormat(Bitmap.CompressFormat.PNG)
+                                    .format(DecodeFormat.DEFAULT)
+                                    .placeholder(R.drawable.ic_logo)
+                                    .into(imageViewPromoHaji2);
+                        }
+
+                        if (paketResponse.getData().get(2) != null) {
+                            Glide.with(getContext())
+                                    .load(paketResponse.getData().get(2).getImagePaket())
+                                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                                    .skipMemoryCache(true)
+                                    .dontAnimate()
+                                    .dontTransform()
+                                    .priority(Priority.IMMEDIATE)
+                                    .encodeFormat(Bitmap.CompressFormat.PNG)
+                                    .format(DecodeFormat.DEFAULT)
+                                    .placeholder(R.drawable.ic_logo)
+                                    .into(imageViewPromoHaji3);
+                        }
+                    }
+                }
+            }
+        });
+
+        berandaViewModel.getWisataHalal().observe(getActivity(), new Observer<PaketResponse>() {
+            @Override
+            public void onChanged(PaketResponse paketResponse) {
+                if (!paketResponse.isError()) {
+                    if (!paketResponse.getData().isEmpty()) {
+                        if (paketResponse.getData().get(0) != null) {
+                            Glide.with(getContext())
+                                    .load(paketResponse.getData().get(0).getImagePaket())
+                                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                                    .skipMemoryCache(true)
+                                    .dontAnimate()
+                                    .dontTransform()
+                                    .priority(Priority.IMMEDIATE)
+                                    .encodeFormat(Bitmap.CompressFormat.PNG)
+                                    .format(DecodeFormat.DEFAULT)
+                                    .placeholder(R.drawable.ic_logo)
+                                    .into(imageViewPromoTour1);
+                        }
+
+                        if (paketResponse.getData().get(1) != null) {
+                            Glide.with(getContext())
+                                    .load(paketResponse.getData().get(1).getImagePaket())
+                                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                                    .skipMemoryCache(true)
+                                    .dontAnimate()
+                                    .dontTransform()
+                                    .priority(Priority.IMMEDIATE)
+                                    .encodeFormat(Bitmap.CompressFormat.PNG)
+                                    .format(DecodeFormat.DEFAULT)
+                                    .placeholder(R.drawable.ic_logo)
+                                    .into(imageViewPromoTour2);
+                        }
+
+                        if (paketResponse.getData().get(2) != null) {
+                            Glide.with(getContext())
+                                    .load(paketResponse.getData().get(2).getImagePaket())
+                                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                                    .skipMemoryCache(true)
+                                    .dontAnimate()
+                                    .dontTransform()
+                                    .priority(Priority.IMMEDIATE)
+                                    .encodeFormat(Bitmap.CompressFormat.PNG)
+                                    .format(DecodeFormat.DEFAULT)
+                                    .placeholder(R.drawable.ic_logo)
+                                    .into(imageViewPromoTour3);
+                        }
+                    }
+                }
+            }
+        });
+
+        berandaViewModel.getNews().observe(getActivity(), new Observer<NewsResponse>() {
+            @Override
+            public void onChanged(NewsResponse newsResponse) {
+                if (!newsResponse.isError()) {
+                    if (!newsResponse.getData().isEmpty()) {
+                        Glide.with(getContext())
+                                .load(newsResponse.getData().get(0).getFoto())
+                                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                                .skipMemoryCache(true)
+                                .dontAnimate()
+                                .dontTransform()
+                                .priority(Priority.IMMEDIATE)
+                                .encodeFormat(Bitmap.CompressFormat.PNG)
+                                .format(DecodeFormat.DEFAULT)
+                                .placeholder(R.drawable.ic_logo)
+                                .into(imageViewNews);
+
+                        textViewJudulNews.setText(newsResponse.getData().get(0).getJudulNews());
+
+                        String s = newsResponse.getData().get(0).getContentNews().replaceAll("\\<.*?\\>", "");
+                        String[] senteces = s.split("\\. ");
+                        Log.e("size", String.valueOf(senteces.length));
+                        String shortNews = "";
+                        for (int i = 0; i < 5; i++) {
+                            shortNews = shortNews + senteces[i] + ". ";
+                        }
+                        textViewSortNews.setText(shortNews);
+                    }
+                }
+            }
+        });
+
+        berandaViewModel.getKataMutiara().observe(getActivity(), new Observer<KataMutiaraResponse>() {
+            @Override
+            public void onChanged(KataMutiaraResponse kataMutiaraResponse) {
+                if (!kataMutiaraResponse.isError()) {
+                    if (!kataMutiaraResponse.getData().isEmpty()) {
+                        String s = kataMutiaraResponse.getData().get(0).getTeksKataMutiara().replaceAll("\\<.*?\\>", "");
+                        textViewKataMutiara.setText(s);
+                    }
+                }
             }
         });
 
