@@ -18,7 +18,8 @@
         android:roundIcon="@mipmap/ic_new_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/ThemeTomboAti">
-        <activity android:name=".view.activity.AdabSholatActivity"></activity>
+        <activity android:name=".view.activity.AnekaSholawatActivity"></activity>
+        <activity android:name=".view.activity.AdabSholatActivity" />
         <activity android:name=".view.activity.SholatSunnahActivity" />
         <activity android:name=".view.activity.HitungTasbihActivity" />
         <activity android:name=".view.activity.TasbihActivity" />
@@ -47,6 +48,7 @@
         <activity android:name=".view.activity.NewAsmaulHusnaActivity" />
         <activity android:name=".view.activity.DetailAlQuranActivity" />
         <activity android:name=".view.activity.AlQuranActivity" />
+        <activity android:name=".view.activity.DetailAnekaSholawatActivity" />
 
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"

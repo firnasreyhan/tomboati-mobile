@@ -16,7 +16,7 @@ public class DoaDzikirActivity extends AppCompatActivity {
     private CardView cardViewAsmaulHusna, cardViewIstighosah, cardViewYasinTahlil,
             cardViewDoaHarian, cardViewDoaUmrah, cardViewDoaHaji, cardViewDoaZiarah,
             cardViewTempatMustajab, cardViewWaktuMustajab, cardViewAdabBerdoa,
-            cardViewDoaRamadhan, cardViewTasbih;
+            cardViewDoaRamadhan, cardViewTasbih, cardViewAnekaSholawat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +44,7 @@ public class DoaDzikirActivity extends AppCompatActivity {
         cardViewAdabBerdoa = findViewById(R.id.cardViewAdabBerdoa);
         cardViewDoaRamadhan = findViewById(R.id.cardViewDoaRamadhan);
         cardViewTasbih = findViewById(R.id.cardViewTasbih);
+        cardViewAnekaSholawat = findViewById(R.id.cardViewAnekaSholawat);
 
         cardViewAsmaulHusna.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -126,6 +127,13 @@ public class DoaDzikirActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(v.getContext(), TasbihActivity.class));
+            }
+        });
+
+        cardViewAnekaSholawat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(v.getContext(), AnekaSholawatActivity.class));
             }
         });
     }

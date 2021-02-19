@@ -84,6 +84,10 @@ public class SholatSunnahActivity extends AppCompatActivity {
 
         addItem("Niat Sholat Tarawih Sebagai Imam", "اُصَلِّى سُنَّةَ التَّرَاوِيْحِ رَكْعَتَيْنِ مُسْتَقْبِلَ الْقِبْلَةِ إِمَامًا ِللهِ تَعَالَى", "Ushollii sunnatat-taraawiihi rok’ataini mustaqbilal qiblati imaaman lillaahi ta’alaa.", "Aku niat sholat sunnah tarawih dua raka’at menghadap kiblat sebagai imam karena Allah Ta’ala.", "");
 
+        addItem("Niat Sholat Jenazah Laki Laki", "اُصَلِّى عَلَى هَذَاالْمَيِّتِ اَرْبَعَ تَكْبِرَاتٍ فَرْضَ كِفَايَةِ اِمَامًا| مَأْمُوْمًا ِللهِ تَعَالَى", "Usholli ‘ala hadzal mayyiti arba’a takbirotin fardho kifayatin imaman/ma’muman lillahi ta’ala.", "Saya niat salat atas jenazah ini empat kali takbir fardu kifayah, sebagai imam/makmum karena Allah Ta’ala.", "");
+
+        addItem("Niat Sholat Jenazah Perempuan", "اُصَلِّى عَلَى هَذِهِ الْمَيِّتَةِ اَرْبَعَ تَكْبِرَاتٍ فَرْضَ كِفَايَةِ اِمَامًا| مَأْمُوْمًا ِللهِ تَعَالَى", "Usholli ‘ala hadzahihil mayyitati arba’a takbirotin fardho kifayatin imaman/ma’muman lillahi ta’ala.", "Saya niat salat atas jenazah ini empat kali takbir fardu kifayah, sebagai imam/makmum karena Allah Ta’ala.", "");
+
         doaHajiUmrahAdapter = new DoaHajiUmrahAdapter(models);
         recyclerViewDoaUmrah.setAdapter(doaHajiUmrahAdapter);
     }
