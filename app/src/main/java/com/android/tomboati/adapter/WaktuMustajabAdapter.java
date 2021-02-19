@@ -41,7 +41,7 @@ public class WaktuMustajabAdapter extends RecyclerView.Adapter<WaktuMustajabAdap
         holder.textJudul.setText(data.get(position).getJudul());
         holder.textCount.setText(prefix + " Ke - " + (position + 1));
         holder.textKeterangan.setText(data.get(position).getKeterangan());
-        holder.imgArrow.setOnClickListener(new View.OnClickListener() {
+        holder.cardViewItemWaktuMustajab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(holder.textKeterangan.getVisibility() == View.VISIBLE) {

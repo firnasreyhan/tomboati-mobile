@@ -28,7 +28,7 @@ public class TasbihAdapter extends RecyclerView.Adapter<TasbihAdapter.ViewHolder
         Utility.addValue();
         this.models = new ArrayList<>();
         this.models.addAll(Utility.getTasbihModel());
-        this.models.add(new TasbihModel("Hitung Tasbih Lainnya", "", 0));
+        this.models.add(new TasbihModel("Hitung Lainnya"));
     }
 
     @NonNull

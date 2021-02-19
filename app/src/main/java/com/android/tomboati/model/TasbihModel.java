@@ -2,16 +2,26 @@ package com.android.tomboati.model;
 
 public class TasbihModel {
 
-    private String arabic, judul;
-    private int count = 0, count_tasbeeh = 0, max  = 0;
+    private String arabic, judul, translate;
+    private int count_tasbeeh = 0, max  = 0;
 
-    public TasbihModel() {
+    public TasbihModel(String judul) {
+        this.judul = judul;
     }
 
-    public TasbihModel(String judul, String arabic, int max) {
+    public TasbihModel(String judul, String arabic, String translate, int max) {
         this.arabic = arabic;
         this.judul = judul;
+        this.translate = translate;
         this.max = max;
+    }
+
+    public String getTranslate() {
+        return translate;
+    }
+
+    public void setTranslate(String translate) {
+        this.translate = translate;
     }
 
     public String getArabic() {
@@ -28,14 +38,6 @@ public class TasbihModel {
 
     public void setJudul(String judul) {
         this.judul = judul;
-    }
-
-    public int getCount() {
-        return count;
-    }
-
-    public void setCount(int count) {
-        this.count = count;
     }
 
     public int getCount_tasbeeh() {

@@ -84,26 +84,44 @@
 
     </FrameLayout>
 
-
-    <TextView
-        android:id="@+id/text_arabic"
+    <LinearLayout
+        android:id="@+id/layout_arabic"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="24dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/top_bar"
         android:background="@drawable/border"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp">
+
+    <TextView
+        android:id="@+id/text_arabic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:fontFamily="@font/cinzel_bold"
         android:gravity="center_horizontal"
-        android:paddingTop="15dp"
-        android:paddingBottom="15dp"
         android:text="ﺳُﺒْﺤَﺎﻥَ ﺍﻟﻠﻪْ"
         android:textColor="@color/dark_green"
         android:textSize="45sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/top_bar" />
+        android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/text_translate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/catamaran_regular"
+            android:gravity="center_horizontal"
+            android:text="&quot;Subhanallah&quot;"
+            android:textColor="@color/dark_green"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
 
     <ImageView
         android:id="@+id/img_reload"
@@ -114,7 +132,7 @@
         android:background="@drawable/round_bg"
         android:padding="15dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_arabic"
+        app:layout_constraintTop_toBottomOf="@+id/layout_arabic"
         app:srcCompat="@drawable/ic_refresh"
         android:layout_marginLeft="32dp"
         tools:ignore="VectorDrawableCompat" />
@@ -128,7 +146,7 @@
         android:background="@drawable/round_bg"
         android:padding="15dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_arabic"
+        app:layout_constraintTop_toBottomOf="@+id/layout_arabic"
         app:srcCompat="@drawable/ic_minus"
         android:layout_marginRight="32dp"
         tools:ignore="VectorDrawableCompat" />
@@ -151,7 +169,7 @@
         app:layout_constraintEnd_toStartOf="@+id/img_minus"
         app:layout_constraintHorizontal_bias="0.47"
         app:layout_constraintStart_toEndOf="@+id/img_reload"
-        app:layout_constraintTop_toBottomOf="@+id/text_arabic" />
+        app:layout_constraintTop_toBottomOf="@+id/layout_arabic" />
 
     <ImageView
         android:id="@+id/img_next"
