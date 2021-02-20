@@ -629,7 +629,7 @@ public class BerandaFragment extends Fragment {
 
     private void showProgressDialog() {
         dialog.setMessage("Mohon Tunggu Sebentar...");
-        dialog.setCancelable(false);
+        dialog.setCancelable(true);
         dialog.show();
     }
 
