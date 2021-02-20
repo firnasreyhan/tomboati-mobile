@@ -28,6 +28,7 @@ public class Utility {
         models.add(new TasbihModel("Takbir 33x", "ﺍﻟﻠﻪُ ﺍَﻛْﺒَﺮْْ","\"Allahu Akbar\"", 33));
         models.add(new TasbihModel("Istighfar 33x", "اَسْتَغْفِرُاللهَ الْعَظِيْمَ", "\"Astaghfirullahaladzim\"",33));
         models.add(new TasbihModel("Tahlil 33x", "لا إلهَ إِلاَّ اللهُ", "\"Lailaha Ilallah\"", 33));
+        models.add(new TasbihModel("Sholawat 33x", "صَلَّى اللهُ عَلَى مُحَمَّدُ", "\"Shalallahuala Muhammad\"",33));
     }
 
     public static List<TasbihModel> getTasbihModel() {
