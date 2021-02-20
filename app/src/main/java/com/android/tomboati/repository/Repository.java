@@ -16,6 +16,7 @@ import com.android.tomboati.api.response.BacaanSholatResponse;
 import com.android.tomboati.api.response.BaseResponse;
 import com.android.tomboati.api.response.ChatResponse;
 import com.android.tomboati.api.response.DoaHarianResponse;
+import com.android.tomboati.api.response.ItteneraryResponse;
 import com.android.tomboati.api.response.JadwalSholatResponse;
 import com.android.tomboati.api.response.KataMutiaraResponse;
 import com.android.tomboati.api.response.MasjidResponse;
@@ -539,6 +540,27 @@ public class Repository {
             public void onFailure(Call<KataMutiaraResponse> call, Throwable t) {
                 data.postValue(null);
                 Log.e("getKataMutiara", t.getMessage());
+            }
+        });
+        return data;
+    }
+
+    public MutableLiveData<ItteneraryResponse> getIttenerary(String idPaket) {
+        MutableLiveData<ItteneraryResponse> data = new MutableLiveData<>();
+        apiInterfaceTomboAti.getIttenerary(
+                idPaket
+        ).enqueue(new Callback<ItteneraryResponse>() {
+            @Override
+            public void onResponse(Call<ItteneraryResponse> call, Response<ItteneraryResponse> response) {
+                if (response.code() == 200) {
+                    data.postValue(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ItteneraryResponse> call, Throwable t) {
+                data.postValue(null);
+                Log.e("getIttenerary", t.getMessage());
             }
         });
         return data;

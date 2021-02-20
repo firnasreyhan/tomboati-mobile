@@ -41,7 +41,7 @@ public class PaketAdapter extends RecyclerView.Adapter<PaketAdapter.ViewHolder> 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return  new PaketAdapter.ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_paket, parent, false));
+        return new PaketAdapter.ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_paket, parent, false));
     }
 
     @Override

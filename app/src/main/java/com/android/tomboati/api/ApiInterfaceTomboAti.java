@@ -2,6 +2,7 @@ package com.android.tomboati.api;
 
 import com.android.tomboati.api.response.BaseResponse;
 import com.android.tomboati.api.response.ChatResponse;
+import com.android.tomboati.api.response.ItteneraryResponse;
 import com.android.tomboati.api.response.JadwalSholatResponse;
 import com.android.tomboati.api.response.KataMutiaraResponse;
 import com.android.tomboati.api.response.NewsResponse;
@@ -115,4 +116,9 @@ public interface ApiInterfaceTomboAti {
 
     @GET("KataMutiara/getKataMutiaraLimit")
     Call<KataMutiaraResponse> getKataMutiara();
+
+    @GET("paket/detailItinerary")
+    Call<ItteneraryResponse> getIttenerary(
+            @Query("idPaket") String idPaket
+    );
 }
