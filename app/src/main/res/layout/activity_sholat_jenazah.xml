@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:orientation="vertical"
+    tools:context=".view.activity.SholatJenazahActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:background="@color/dark_green"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/_13sdp">
+
+            <com.codesgood.views.JustifiedTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/catamaran_regular"
+                android:text="Sholat jenazah adalah ibadah yang masyru' dan dilakukan oleh Rasulullah SAW dan juga para sahabat. Rasulullah SAW mensholati jenazah An Najasyi, raja Habasyah, ketika wafat jarak jauh. Jumhur ulama berpendapat bahwa hukum sholat jenazah adalah fardhu kifayah. Di mana bila sudah ada satu orang yang mengerjakannya, gugurlah kewajiban orang lain. Namun Al-Ashbagh berkata bahwa hukumnya sunnah kifayah, sehingga bila tak seorang pun yang melakukannya, tidak ada yang berdosa kecuali hanya kehilangan kesunnahan."
+                android:textColor="@color/black"
+                android:textSize="@dimen/_13sdp" />
+
+            <com.codesgood.views.JustifiedTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/catamaran_bold"
+                android:text="Syarat dan Rukun Sholat Jenazah"
+                android:textColor="@color/dark_green"
+                android:textSize="@dimen/_14sdp" />
+
+            <com.codesgood.views.JustifiedTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/catamaran_regular"
+                android:text="- Adapun syarat-syarat sholat jenazah adalah sebagai berikut:"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="@dimen/_13sdp" />
+
+            <com.codesgood.views.JustifiedTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/catamaran_regular"
+                android:text="1. Sholat jenazah sama halnya dengan sholat yang lain, yaitu harus menutup aurat, suci dari hadats besar dan kecil, suci badan, pakaian dan tempatnya serta menghadap kiblat."
+                android:textColor="@color/black"
+                android:textSize="@dimen/_13sdp" />
+
+            <com.codesgood.views.JustifiedTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/catamaran_regular"
+                android:text="2. Sholat jenazah baru dilaksanakan apabila jenazah sudah selesai dimandikan dan dikafani."
+                android:textColor="@color/black"
+                android:textSize="@dimen/_13sdp" />
+
+            <com.codesgood.views.JustifiedTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/catamaran_regular"
+                android:text="3. Letak mayit sebelah kiblat orang yang menyalatinya, kecuali kalau sholat dilakukan di atas kubur atau sholat ghaib."
+                android:textColor="@color/black"
+                android:textSize="@dimen/_13sdp" />
+
+            <com.codesgood.views.JustifiedTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/catamaran_regular"
+                android:text="- Sementara Rukun-rukun sholat jenazah sebagai berikut : "
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="@dimen/_13sdp" />
+
+
+            <com.codesgood.views.JustifiedTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/catamaran_regular"
+                android:text="1. Niat, menyengaja melakukan shalat atas mayit dengan empat takbir, menghadap kiblat karena Allah."
+                android:textColor="@color/black"
+                android:textSize="@dimen/_13sdp" />
+
+            <com.codesgood.views.JustifiedTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/catamaran_regular"
+                android:text="2. Berdiri bagi yang mampu."
+                android:textColor="@color/black"
+                android:textSize="@dimen/_13sdp" />
+
+            <com.codesgood.views.JustifiedTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/catamaran_regular"
+                android:text="3. Empat kali takbir yang diselingi oleh beberapa bacaan."
+                android:textColor="@color/black"
+                android:textSize="@dimen/_13sdp" />
+
+            <com.codesgood.views.JustifiedTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/catamaran_regular"
+                android:text="4. Membaca Al-Fatihah secara sir sesudah takbir pertama."
+                android:textColor="@color/black"
+                android:textSize="@dimen/_13sdp" />
+
+            <com.codesgood.views.JustifiedTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/catamaran_regular"
+                android:text="5. Membaca shalawat kepada Nabi saw. sesudah takbir kedua."
+                android:textColor="@color/black"
+                android:textSize="@dimen/_13sdp" />
+
+            <com.codesgood.views.JustifiedTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/catamaran_regular"
+                android:text="6. Berdoa sesudah takbir ketiga."
+                android:textColor="@color/black"
+                android:textSize="@dimen/_13sdp" />
+
+            <com.codesgood.views.JustifiedTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/catamaran_regular"
+                android:text="7. Berdoa sesudah takbir keempat."
+                android:textColor="@color/black"
+                android:textSize="@dimen/_13sdp" />
+
+            <com.codesgood.views.JustifiedTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/catamaran_regular"
+                android:text="8. Salam."
+                android:textColor="@color/black"
+                android:textSize="@dimen/_13sdp" />
+
+            <com.codesgood.views.JustifiedTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/catamaran_bold"
+                android:text="Niat Sholat Jenazah"
+                android:textColor="@color/dark_green"
+                android:textSize="@dimen/_14sdp"
+                
+                
+                 />
+
+            <com.codesgood.views.JustifiedTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/catamaran_regular"
+                android:text="- Niat sholat jenazah laki laki : "
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="@dimen/_13sdp" />
+
+            <com.codesgood.views.JustifiedTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/catamaran_regular"
+                android:textStyle="italic"
+                android:text="&quot;Usholli 'alaa haadzal mayyiti arba'a takbirootin fardhol kifaayati makmuuman lillahi ta'aalaa.&quot;"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_13sdp" />
+
+            <com.codesgood.views.JustifiedTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/catamaran_regular"
+                android:text="Artinya: Saya niat sholat atas mayat ini empat kali takbir fardhu kifayah, sebagai makmum karena Allah Taala."
+                android:textColor="@color/black"
+                android:textSize="@dimen/_13sdp" />
+
+
+            <com.codesgood.views.JustifiedTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/catamaran_regular"
+                android:text="- Niat sholat jenazah perempuan : "
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="@dimen/_13sdp" />
+
+            <com.codesgood.views.JustifiedTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/catamaran_regular"
+                android:textStyle="italic"
+                android:text="&quot;Usholli 'alaa haadzihil mayyitati arba'a takbiratatin fardhol kifayaatai ma'muuman lillahi ta'aala.&quot;"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_13sdp" />
+
+            <com.codesgood.views.JustifiedTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/catamaran_regular"
+                android:text="Artinya: Saya niat sholat atas mayat ini empat kali takbir fardhu kifayah, sebagai makmum karena Allah Taala."
+                android:textColor="@color/black"
+                android:textSize="@dimen/_13sdp" />
+
+            <com.codesgood.views.JustifiedTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/catamaran_bold"
+                android:text="Tata Cara Sholat Jenazah"
+                android:textColor="@color/dark_green"
+                android:textSize="@dimen/_14sdp"
+                
+                
+                 />
+
+            <com.codesgood.views.JustifiedTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/catamaran_regular"
+                android:text="- Sholat jenazah tidak disertai dengan rukuk dan sujud, tidak juga dengan adzan dan iqmat. Setelah berdiri sebagaimana mestinya, maka yang harus dilakukan adalah : "
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="@dimen/_13sdp" />
+
+            <com.codesgood.views.JustifiedTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/catamaran_regular"
+                android:text="1. Berdiri menghadap kiblat. Jika jumlah yang melakukan shalat itu banyak, jadikan 3 saf dan dapat lebih."
+                android:textColor="@color/black"
+                android:textSize="@dimen/_13sdp" />
+
+            <com.codesgood.views.JustifiedTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/catamaran_regular"
+                android:text="2. Berniat Lafal niatnya: Untuk jenazah laki-laki : Ushalli 'alaa haadzal mayyiti arba 'a takbiiraatin fardhu kifaayati ma'muuman/imaaman lillahi ta'aalaa, Allahu akbar, Untuk jenazah perempuan: Ushalli 'alaa haadzihil mayyitati arba'a takbiiraatiin fardhu kifaayati ma'muuman/imaaman lillahi ta 'aalaa, Allaahu akbar."
+                android:textColor="@color/black"
+                android:textSize="@dimen/_13sdp" />
+
+            <com.codesgood.views.JustifiedTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/catamaran_regular"
+                android:text="3. Takbiratul Ihram (takbir yang pertama) kemudian membaca surat Al Fatihah."
+                android:textColor="@color/black"
+                android:textSize="@dimen/_13sdp" />
+
+            <com.codesgood.views.JustifiedTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/catamaran_regular"
+                android:text="4. Takbir kedua kemudian membaca shalawat atas Rasulullah SAW minimal : Allahumma Shalli 'alaa Muhammadin, artinya : Yaa Allah berilah salawat atas nabi Muhammad."
+                android:textColor="@color/black"
+                android:textSize="@dimen/_13sdp" />
+
+            <com.codesgood.views.JustifiedTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/catamaran_regular"
+                android:text="5. Takbir ketiga kemudian membaca do'a untuk jenazah minimal: Allahhummaghfir lahu warhamhu wa'aafihi wa'fu anhu, yang artinya : Yaa Allah ampunilah dia, berilah rahmat, kesejahteraan dan ma'afkanlah dia. Apabila jenazah yang disalati itu perempuan, maka bacaan Lahuu diganti dengan Lahaa. Jadi untuk jenazah wanita bacaannya menjadi: Allahhummaghfir laha warhamha wa'aafiha wa'fu anha. Jika mayatnya banyak maka bacaan Lahuu diganti dengan Lahum. Jadi untuk jenazah banyak bacaannya, menjadi: Allahhummaghfir lahum warhamhum wa'aafihim wa'fu anhum."
+                android:textColor="@color/black"
+                android:textSize="@dimen/_13sdp" />
+
+            <com.codesgood.views.JustifiedTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/catamaran_regular"
+                android:text="6. Takbir keempat kemudian membaca do'a minimal: Allahumma laa tahrimnaa ajrahu walaa taftinna ba'dahu waghfirlanaa walahu. yang artinya : Yaa Allah, janganlah kiranya pahalanya tidak sampai kepadanya atau janganlah Engkau meluputkan kami akan pahalanya, dan janganlah Engkau memberi kami fitnah sepeninggalnya, serta ampunilah kami dan dia. Jika jenazahnya adalah wanita, bacaannya menjadi: Allahumma laa tahrimnaa ajraha walaa taftinna ba'daha waghfirlanaa walaha."
+                android:textColor="@color/black"
+                android:textSize="@dimen/_13sdp" />
+
+            <com.codesgood.views.JustifiedTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/catamaran_regular"
+                android:text="7. Mengucapkan salam."
+                android:textColor="@color/black"
+                android:textSize="@dimen/_13sdp" />
+
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>

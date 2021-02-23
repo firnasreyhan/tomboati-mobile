@@ -23,10 +23,12 @@ public class Utility {
 
     public static void addValue() {
         models = new ArrayList<>();
-        models.add(new TasbihModel("Tasbih 33x", "ﺳُﺒْﺤَﺎﻥَ ﺍﻟﻠﻪْ", 33));
-        models.add(new TasbihModel("Tahmid 33x", "ﻭَﺍﻟْﺤَﻤْﺪُ ﻟِﻠﻪْْ", 33));
-        models.add(new TasbihModel("Takbir 33x", "ﺍﻟﻠﻪُ ﺍَﻛْﺒَﺮْْ", 33));
-        models.add(new TasbihModel("Istighfar 33x", "اَسْتَغْفِرُاللهَ الْعَظِيْمَ", 33));
+        models.add(new TasbihModel("Tasbih 33x", "ﺳُﺒْﺤَﺎﻥَ ﺍﻟﻠﻪْ","\"Subhanallah\"", 33));
+        models.add(new TasbihModel("Tahmid 33x", "ﻭَﺍﻟْﺤَﻤْﺪُ ﻟِﻠﻪْْ","\"Walhamdulillah\"", 33));
+        models.add(new TasbihModel("Takbir 33x", "ﺍﻟﻠﻪُ ﺍَﻛْﺒَﺮْْ","\"Allahu Akbar\"", 33));
+        models.add(new TasbihModel("Istighfar 33x", "اَسْتَغْفِرُاللهَ الْعَظِيْمَ", "\"Astaghfirullahaladzim\"",33));
+        models.add(new TasbihModel("Tahlil 33x", "لا إلهَ إِلاَّ اللهُ", "\"Lailaha Ilallah\"", 33));
+        models.add(new TasbihModel("Sholawat 33x", "صَلَّى اللهُ عَلَى مُحَمَّدُ", "\"Shalallahuala Muhammad\"",33));
     }
 
     public static List<TasbihModel> getTasbihModel() {

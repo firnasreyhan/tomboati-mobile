@@ -224,13 +224,14 @@
                 android:paddingRight="@dimen/_8sdp">
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/cardViewSholatDiperjalanan"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:clickable="true"
                     android:foreground="?selectableItemBackground"
-                    app:cardElevation="0dp"
-                    app:cardBackgroundColor="@android:color/transparent">
+                    app:cardBackgroundColor="@android:color/transparent"
+                    app:cardElevation="0dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -265,13 +266,14 @@
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/cardViewSholatJenazah"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:clickable="true"
                     android:foreground="?selectableItemBackground"
-                    app:cardElevation="0dp"
-                    app:cardBackgroundColor="@android:color/transparent">
+                    app:cardBackgroundColor="@android:color/transparent"
+                    app:cardElevation="0dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
