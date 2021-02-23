@@ -37,6 +37,7 @@ public class UmrohHajiActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), ListPaketActivity.class);
                 intent.putExtra("PAKET", "Promo");
+                intent.putExtra("TITLE", "Umroh Promo");
                 startActivity(intent);
             }
         });
@@ -46,6 +47,7 @@ public class UmrohHajiActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), ListPaketActivity.class);
                 intent.putExtra("PAKET", "Hemat");
+                intent.putExtra("TITLE", "Umroh Hemat");
                 startActivity(intent);
             }
         });
@@ -55,6 +57,7 @@ public class UmrohHajiActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), ListPaketActivity.class);
                 intent.putExtra("PAKET", "Bisnis");
+                intent.putExtra("TITLE", "Umroh Bisnis");
                 startActivity(intent);
             }
         });
@@ -64,6 +67,7 @@ public class UmrohHajiActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), ListPaketActivity.class);
                 intent.putExtra("PAKET", "VIP");
+                intent.putExtra("TITLE", "Umroh VIP");
                 startActivity(intent);
             }
         });
@@ -73,6 +77,7 @@ public class UmrohHajiActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), ListPaketActivity.class);
                 intent.putExtra("PAKET", "Plus");
+                intent.putExtra("TITLE", "Umroh Plus");
                 startActivity(intent);
             }
         });

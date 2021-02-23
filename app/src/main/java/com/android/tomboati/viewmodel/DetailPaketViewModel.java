@@ -8,6 +8,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.android.tomboati.api.response.ItteneraryResponse;
 import com.android.tomboati.api.response.PaketResponse;
+import com.android.tomboati.api.response.PaketWisataResponse;
 import com.android.tomboati.repository.Repository;
 
 public class DetailPaketViewModel extends AndroidViewModel {
@@ -24,5 +25,13 @@ public class DetailPaketViewModel extends AndroidViewModel {
 
     public MutableLiveData<ItteneraryResponse> getIttenerary(String idPaket) {
         return repository.getIttenerary(idPaket);
+    }
+
+    public MutableLiveData<PaketWisataResponse> getPaketWisata(String idPaketWisata) {
+        return repository.getDetailPaketWisata(idPaketWisata);
+    }
+
+    public MutableLiveData<ItteneraryResponse> getItteneraryWisata(String idPaketWisata) {
+        return repository.getItteneraryWisata(idPaketWisata);
     }
 }

@@ -8,6 +8,7 @@ import com.android.tomboati.api.response.KataMutiaraResponse;
 import com.android.tomboati.api.response.NewsResponse;
 import com.android.tomboati.api.response.PaketMonthResponse;
 import com.android.tomboati.api.response.PaketResponse;
+import com.android.tomboati.api.response.PaketWisataResponse;
 import com.android.tomboati.api.response.SignInResponse;
 
 import okhttp3.MultipartBody;
@@ -70,16 +71,27 @@ public interface ApiInterfaceTomboAti {
             @Query("bulan") String bulan
     );
 
+    @GET("WisataHalal/wisatahalal_get")
+    Call<PaketWisataResponse> getPaketWisata(
+            @Query("tipe") String tipe,
+            @Query("bulan") String bulan
+    );
+
     @GET("Paket/detailPaket")
     Call<PaketResponse> getDetailPaket(
             @Query("idPaket") String idPaket
+    );
+
+    @GET("WisataHalal/detailWisataHalal")
+    Call<PaketWisataResponse> getDetailPaketWisata(
+            @Query("idWisataHalal") String idWisataHalal
     );
 
     @GET("paket/getpaketlimit")
     Call<PaketResponse> getPaketLimit();
 
     @GET("WisataHalal/getwisatahalallimit")
-    Call<PaketResponse> getWisataHalalLimit();
+    Call<PaketWisataResponse> getWisataHalalLimit();
 
     @Multipart
     @POST("user/updateProfil")
@@ -87,7 +99,6 @@ public interface ApiInterfaceTomboAti {
             @Query("idUser") String idUser,
             @Part("noKTP") RequestBody noKTP,
             @Part("email") RequestBody email,
-            @Part("password") RequestBody password,
             @Part("namaLengkap") RequestBody namaLengkap,
             @Part("nomorHP") RequestBody noHP
     );
@@ -111,6 +122,11 @@ public interface ApiInterfaceTomboAti {
             @Query("tipe") String tipe
     );
 
+    @GET("WisataHalal/getWisataHalalMonth")
+    Call<PaketMonthResponse> getPaketWisataMonth(
+            @Query("tipe") String tipe
+    );
+
     @GET("News/getNewsLimit")
     Call<NewsResponse> getNews();
 
@@ -120,5 +136,15 @@ public interface ApiInterfaceTomboAti {
     @GET("paket/detailItinerary")
     Call<ItteneraryResponse> getIttenerary(
             @Query("idPaket") String idPaket
+    );
+
+    @GET("WisataHalal/detailItinerary")
+    Call<ItteneraryResponse> getItteneraryWisata(
+            @Query("idWisataHalal") String idWisataHalal
+    );
+
+    @POST("user/gantiPassword")
+    Call<BaseResponse> resetPassword(
+            @Query("idUserRegister") String idUserRegister
     );
 }

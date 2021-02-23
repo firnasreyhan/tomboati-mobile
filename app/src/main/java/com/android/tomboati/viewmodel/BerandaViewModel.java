@@ -10,6 +10,7 @@ import com.android.tomboati.api.response.JadwalSholatResponse;
 import com.android.tomboati.api.response.KataMutiaraResponse;
 import com.android.tomboati.api.response.NewsResponse;
 import com.android.tomboati.api.response.PaketResponse;
+import com.android.tomboati.api.response.PaketWisataResponse;
 import com.android.tomboati.repository.Repository;
 
 public class BerandaViewModel extends AndroidViewModel {
@@ -34,7 +35,7 @@ public class BerandaViewModel extends AndroidViewModel {
         return repository.getPaketLimit();
     }
 
-    public MutableLiveData<PaketResponse> getWisataHalal() {
+    public MutableLiveData<PaketWisataResponse> getWisataHalal() {
         return repository.getWisataHalalLimit();
     }
 

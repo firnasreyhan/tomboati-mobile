@@ -16,9 +16,31 @@
         android:background="@color/dark_green"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_7sdp"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="@color/dark_green">
+
+        <TextView
+            android:id="@+id/textViewNamaPaket"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/catamaran_bold"
+            android:textSize="@dimen/_13sdp"
+            android:gravity="center"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:text="Nama Paket"/>
+
+    </LinearLayout>
+
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_weight="1">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -28,6 +50,7 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_13sdp"
                 app:cardCornerRadius="@dimen/_9sdp"
                 app:cardBackgroundColor="#F0F0F0">
 
@@ -51,7 +74,6 @@
                         android:orientation="vertical">
 
                         <TextView
-                            android:id="@+id/textViewNamaPaket"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/catamaran_bold"
@@ -384,5 +406,44 @@
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@android:color/white">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_7sdp"
+            android:orientation="horizontal">
+
+            <com.google.android.material.button.MaterialButton
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/_3sdp"
+                android:layout_weight="1"
+                android:fontFamily="@font/catamaran_bold"
+                android:text="Simpan"
+                android:textAllCaps="false"
+                app:strokeColor="@color/dark_green"
+                android:textColor="@color/dark_green"/>
+
+            <com.google.android.material.button.MaterialButton
+                style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_3sdp"
+                android:layout_weight="1"
+                android:fontFamily="@font/catamaran_bold"
+                android:text="Pesan"
+                android:textAllCaps="false"
+                app:backgroundTint="@color/dark_green"
+                android:textColor="@color/white"/>
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
 
 </LinearLayout>

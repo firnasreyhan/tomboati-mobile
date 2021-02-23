@@ -42,7 +42,7 @@ public class AkunFragment extends Fragment {
     private TextView textViewSignUp;
     private AkunViewModel akunViewModel;
     private TextInputEditText textInputEditTextEmail, textInputEditTextPassword;
-    private MaterialButton materialButtonSignIn, materialButtonSignOut, materialButtonKodeReferral, materialButtonProfileEdit;
+    private MaterialButton materialButtonSignIn, materialButtonSignOut, materialButtonKodeReferral, materialButtonProfileEdit, materialButtonPasswordEdit;
     private ConstraintLayout constraintLayoutSignIn;
     private LinearLayout linearLayoutAkun;
     private ShapeableImageView shapeableImageViewFoto;
@@ -68,9 +68,9 @@ public class AkunFragment extends Fragment {
         materialButtonSignOut = view.findViewById(R.id.materialButtonSignOut);
         materialButtonKodeReferral = view.findViewById(R.id.materialButtonKodeReferral);
         materialButtonProfileEdit = view.findViewById(R.id.materialButtonProfileEdit);
+        materialButtonPasswordEdit = view.findViewById(R.id.materialButtonPasswordEdit);
 
         if (AppPreference.getUser(getContext()) != null) {
-//            ((MainActivity)getActivity()).updateStatusBarColor("#00441F");
             constraintLayoutSignIn.setVisibility(View.GONE);
             linearLayoutAkun.setVisibility(View.VISIBLE);
 
@@ -132,6 +132,39 @@ public class AkunFragment extends Fragment {
                 @Override
                 public void onClick(View v) {
                     startActivity(new Intent(v.getContext(), UpdateProfileActivity.class));
+                }
+            });
+
+            materialButtonPasswordEdit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    progressDialog.setMessage("Mohon tunggu sebentar...");
+                    progressDialog.setCancelable(false);
+                    progressDialog.show();
+
+                    akunViewModel.resetPassword(
+                            AppPreference.getUser(v.getContext()).getIdUserRegister()
+                    ).observe(getActivity(), new Observer<BaseResponse>() {
+                        @Override
+                        public void onChanged(BaseResponse baseResponse) {
+                            int loadingTime = 3000;
+                            new Handler().postDelayed(() -> {
+                                if (progressDialog.isShowing()) {
+                                    progressDialog.dismiss();
+                                }
+                                new AlertDialog.Builder(getContext())
+                                        .setTitle("Pesan")
+                                        .setMessage(baseResponse.getMessage())
+                                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                dialog.dismiss();
+                                            }
+                                        })
+                                        .show();
+                            }, loadingTime);
+                        }
+                    });
                 }
             });
         } else {

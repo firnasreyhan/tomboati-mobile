@@ -35,6 +35,7 @@ import com.android.tomboati.api.response.JadwalSholatResponse;
 import com.android.tomboati.api.response.KataMutiaraResponse;
 import com.android.tomboati.api.response.NewsResponse;
 import com.android.tomboati.api.response.PaketResponse;
+import com.android.tomboati.api.response.PaketWisataResponse;
 import com.android.tomboati.model.SliderModel;
 import com.android.tomboati.preference.AppPreference;
 import com.android.tomboati.utils.Utility;
@@ -89,7 +90,7 @@ public class BerandaFragment extends Fragment {
 
     // Check gps provider is enabled
     private boolean isProviderEnable() {
-        return SmartLocation.with(getContext()).location().state().isAnyProviderAvailable();
+        return SmartLocation.with(getActivity()).location().state().isAnyProviderAvailable();
     }
 
     @Override
@@ -99,7 +100,7 @@ public class BerandaFragment extends Fragment {
         berandaViewModel = ViewModelProviders.of(getActivity()).get(BerandaViewModel.class);
         View view = inflater.inflate(R.layout.fragment_beranda, container, false);
         sliderView = view.findViewById(R.id.sliderView);
-        dialog = new ProgressDialog(getContext());
+        dialog = new ProgressDialog(getActivity());
         cardViewUmrohHaji = view.findViewById(R.id.cardViewUmrohHaji);
         cardViewSholat = view.findViewById(R.id.cardViewSholat);
         cardViewWisataReligi = view.findViewById(R.id.cardViewWisataReligi);
@@ -134,7 +135,7 @@ public class BerandaFragment extends Fragment {
         sliderView.setAutoCycle(true);
         sliderView.startAutoCycle();
 
-        if (AppPreference.getUser(getContext()) != null) {
+        if (AppPreference.getUser(getActivity()) != null) {
             setAkun();
         }
 
@@ -186,7 +187,7 @@ public class BerandaFragment extends Fragment {
         cardViewAlQuran.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getContext(), AlQuranActivity.class));
+                startActivity(new Intent(v.getContext(), AlQuranActivity.class));
             }
         });
 
@@ -194,7 +195,7 @@ public class BerandaFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 //Toast.makeText(v.getContext(), "Coming Soon...", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(getContext(), KalenderHijriahActivity.class));
+                startActivity(new Intent(v.getContext(), KalenderHijriahActivity.class));
             }
         });
 
@@ -244,7 +245,7 @@ public class BerandaFragment extends Fragment {
                 if (!paketResponse.isError()) {
                     if (!paketResponse.getData().isEmpty()) {
                         if (paketResponse.getData().get(0) != null) {
-                            Glide.with(getContext())
+                            Glide.with(getActivity())
                                     .load(paketResponse.getData().get(0).getImagePaket())
                                     .diskCacheStrategy(DiskCacheStrategy.ALL)
                                     .skipMemoryCache(true)
@@ -258,7 +259,7 @@ public class BerandaFragment extends Fragment {
                         }
 
                         if (paketResponse.getData().get(1) != null) {
-                            Glide.with(getContext())
+                            Glide.with(getActivity())
                                     .load(paketResponse.getData().get(1).getImagePaket())
                                     .diskCacheStrategy(DiskCacheStrategy.ALL)
                                     .skipMemoryCache(true)
@@ -272,7 +273,7 @@ public class BerandaFragment extends Fragment {
                         }
 
                         if (paketResponse.getData().get(2) != null) {
-                            Glide.with(getContext())
+                            Glide.with(getActivity())
                                     .load(paketResponse.getData().get(2).getImagePaket())
                                     .diskCacheStrategy(DiskCacheStrategy.ALL)
                                     .skipMemoryCache(true)
@@ -289,14 +290,14 @@ public class BerandaFragment extends Fragment {
             }
         });
 
-        berandaViewModel.getWisataHalal().observe(getActivity(), new Observer<PaketResponse>() {
+        berandaViewModel.getWisataHalal().observe(getActivity(), new Observer<PaketWisataResponse>() {
             @Override
-            public void onChanged(PaketResponse paketResponse) {
-                if (!paketResponse.isError()) {
-                    if (!paketResponse.getData().isEmpty()) {
-                        if (paketResponse.getData().get(0) != null) {
-                            Glide.with(getContext())
-                                    .load(paketResponse.getData().get(0).getImagePaket())
+            public void onChanged(PaketWisataResponse paketWisataResponse) {
+                if (!paketWisataResponse.isError()) {
+                    if (!paketWisataResponse.getData().isEmpty()) {
+                        if (paketWisataResponse.getData().get(0) != null) {
+                            Glide.with(getActivity())
+                                    .load(paketWisataResponse.getData().get(0).getImageWisata())
                                     .diskCacheStrategy(DiskCacheStrategy.ALL)
                                     .skipMemoryCache(true)
                                     .dontAnimate()
@@ -308,9 +309,9 @@ public class BerandaFragment extends Fragment {
                                     .into(imageViewPromoTour1);
                         }
 
-                        if (paketResponse.getData().get(1) != null) {
-                            Glide.with(getContext())
-                                    .load(paketResponse.getData().get(1).getImagePaket())
+                        if (paketWisataResponse.getData().get(1) != null) {
+                            Glide.with(getActivity())
+                                    .load(paketWisataResponse.getData().get(1).getImageWisata())
                                     .diskCacheStrategy(DiskCacheStrategy.ALL)
                                     .skipMemoryCache(true)
                                     .dontAnimate()
@@ -322,9 +323,9 @@ public class BerandaFragment extends Fragment {
                                     .into(imageViewPromoTour2);
                         }
 
-                        if (paketResponse.getData().get(2) != null) {
-                            Glide.with(getContext())
-                                    .load(paketResponse.getData().get(2).getImagePaket())
+                        if (paketWisataResponse.getData().get(2) != null) {
+                            Glide.with(getActivity())
+                                    .load(paketWisataResponse.getData().get(2).getImageWisata())
                                     .diskCacheStrategy(DiskCacheStrategy.ALL)
                                     .skipMemoryCache(true)
                                     .dontAnimate()
@@ -345,7 +346,7 @@ public class BerandaFragment extends Fragment {
             public void onChanged(NewsResponse newsResponse) {
                 if (!newsResponse.isError()) {
                     if (!newsResponse.getData().isEmpty()) {
-                        Glide.with(getContext())
+                        Glide.with(getActivity())
                                 .load(newsResponse.getData().get(0).getFoto())
                                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                                 .skipMemoryCache(true)
@@ -644,8 +645,8 @@ public class BerandaFragment extends Fragment {
     private void setAkun() {
         textViewNamaLengkap.setText(AppPreference.getUser(getContext()).getNamaLengkap());
 
-        Glide.with(getContext())
-                .load(AppPreference.getUser(getContext()).getFoto())
+        Glide.with(getActivity())
+                .load(AppPreference.getUser(getActivity()).getFoto())
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .skipMemoryCache(true)
                 .dontAnimate()

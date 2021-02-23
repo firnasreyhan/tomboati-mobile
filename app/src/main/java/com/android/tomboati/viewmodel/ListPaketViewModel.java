@@ -8,6 +8,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.android.tomboati.api.response.PaketMonthResponse;
 import com.android.tomboati.api.response.PaketResponse;
+import com.android.tomboati.api.response.PaketWisataResponse;
 import com.android.tomboati.repository.Repository;
 
 public class ListPaketViewModel extends AndroidViewModel {
@@ -22,7 +23,15 @@ public class ListPaketViewModel extends AndroidViewModel {
         return repository.getPaket(paket, bulan);
     }
 
+    public MutableLiveData<PaketWisataResponse> getPaketWisata(String paket, String bulan) {
+        return repository.getPaketWisata(paket, bulan);
+    }
+
     public MutableLiveData<PaketMonthResponse> getPaketMonth(String paket) {
         return repository.getPaketMonth(paket);
+    }
+
+    public MutableLiveData<PaketMonthResponse> getPaketWisataMonth(String paket) {
+        return repository.getPaketWisataMonth(paket);
     }
 }

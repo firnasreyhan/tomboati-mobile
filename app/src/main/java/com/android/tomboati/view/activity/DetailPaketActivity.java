@@ -18,6 +18,7 @@ import com.android.tomboati.adapter.BiayaAdapter;
 import com.android.tomboati.adapter.ItteneraryAdapter;
 import com.android.tomboati.api.response.ItteneraryResponse;
 import com.android.tomboati.api.response.PaketResponse;
+import com.android.tomboati.api.response.PaketWisataResponse;
 import com.android.tomboati.viewmodel.DetailPaketViewModel;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.Priority;
@@ -35,7 +36,7 @@ public class DetailPaketActivity extends AppCompatActivity {
     private ImageView imageViewPaket, imageViewMaskapai;
     private TextView textViewNamaPaket, textViewQuad, textViewTriple, textViewDouble, textViewPenerbangan, textViewTempatHotelA, textViewNamaHotelA, textViewTempatHotelB, textViewNamaHotelB;
     private RecyclerView recyclerViewIttenerary, recyclerViewBiayaBelumTermasuk, recyclerViewBiayaSudahTermasuk;
-    private String idPaket;
+    private String idPaket, idPaketWisata;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,10 +46,12 @@ public class DetailPaketActivity extends AppCompatActivity {
 
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        setTitle("Detail Paket");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         idPaket = getIntent().getStringExtra("ID_PAKET");
+        idPaketWisata = getIntent().getStringExtra("ID_PAKET_WISATA");
         detailPaketViewModel = ViewModelProviders.of(this).get(DetailPaketViewModel.class);
 
         imageViewPaket = findViewById(R.id.imageViewPaket);
@@ -72,17 +75,119 @@ public class DetailPaketActivity extends AppCompatActivity {
         recyclerViewBiayaSudahTermasuk.setHasFixedSize(true);
         recyclerViewBiayaSudahTermasuk.setLayoutManager(new LinearLayoutManager(this));
 
-        detailPaketViewModel.getPaket(
-                idPaket
-        ).observe(this, new Observer<PaketResponse>() {
-            @Override
-            public void onChanged(PaketResponse paketResponse) {
-                if (!paketResponse.isError()) {
-                    if (!paketResponse.getData().isEmpty()) {
-                        setTitle(paketResponse.getData().get(0).getNamaPaket());
+        if (idPaket != null) {
+            detailPaketViewModel.getPaket(
+                    idPaket
+            ).observe(this, new Observer<PaketResponse>() {
+                @Override
+                public void onChanged(PaketResponse paketResponse) {
+                    if (!paketResponse.isError()) {
+                        if (!paketResponse.getData().isEmpty()) {
+                            textViewNamaPaket.setText(paketResponse.getData().get(0).getNamaPaket());
+
+                            Glide.with(DetailPaketActivity.this)
+                                    .load(paketResponse.getData().get(0).getImagePaket())
+                                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                                    .skipMemoryCache(true)
+                                    .dontAnimate()
+                                    .dontTransform()
+                                    .priority(Priority.IMMEDIATE)
+                                    .encodeFormat(Bitmap.CompressFormat.PNG)
+                                    .format(DecodeFormat.DEFAULT)
+                                    .placeholder(R.drawable.ic_logo)
+                                    .into(imageViewPaket);
+
+                            DecimalFormatSymbols decimalFormatSymbols = new DecimalFormatSymbols();
+                            decimalFormatSymbols.setDecimalSeparator(',');
+                            DecimalFormat decimalFormat = new DecimalFormat("###,###,###,###", decimalFormatSymbols);
+
+                            if (paketResponse.getData().get(0).getQuadSheet() != 0) {
+                                textViewQuad.setText("Rp. " + decimalFormat.format(paketResponse.getData().get(0).getQuadSheet()));
+                            }
+                            if (paketResponse.getData().get(0).getTripleSheet() != 0) {
+                                textViewTriple.setText("Rp. " + decimalFormat.format(paketResponse.getData().get(0).getTripleSheet()));
+                            }
+                            if (paketResponse.getData().get(0).getDoubleSheet() != 0) {
+                                textViewDouble.setText("Rp. " + decimalFormat.format(paketResponse.getData().get(0).getDoubleSheet()));
+                            }
+
+                            Glide.with(DetailPaketActivity.this)
+                                    .load(paketResponse.getData().get(0).getImageMaskapai())
+                                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                                    .skipMemoryCache(true)
+                                    .dontAnimate()
+                                    .dontTransform()
+                                    .priority(Priority.IMMEDIATE)
+                                    .encodeFormat(Bitmap.CompressFormat.PNG)
+                                    .format(DecodeFormat.DEFAULT)
+                                    .placeholder(R.drawable.ic_logo)
+                                    .into(imageViewMaskapai);
+
+                            textViewPenerbangan.setText(paketResponse.getData().get(0).getPenerbangan());
+                            textViewTempatHotelA.setText(paketResponse.getData().get(0).getTempatHotelA());
+                            textViewNamaHotelA.setText(paketResponse.getData().get(0).getNamaHotelA());
+                            textViewTempatHotelB.setText(paketResponse.getData().get(0).getTempatHotelB());
+                            textViewNamaHotelB.setText(paketResponse.getData().get(0).getNamaHotelB());
+
+                            List<String> listBST = new ArrayList<>();
+                            String biayaSudahTermasuk = paketResponse.getData().get(0).getBiayaSudahTermasuk();
+                            String[] sentecesBiayaSudahTermasuk = biayaSudahTermasuk.split(">");
+                            for (int i = 0; i < sentecesBiayaSudahTermasuk.length; i++) {
+                                String sz = sentecesBiayaSudahTermasuk[i] + ">";
+                                sz = sz.replaceAll("\\<.*?\\>", "");
+                                if (!sz.isEmpty()) {
+                                    listBST.add(sz);
+                                }
+                            }
+                            recyclerViewBiayaSudahTermasuk.setAdapter(new BiayaAdapter(listBST));
+
+                            List<String> listBBT = new ArrayList<>();
+                            String biayaBelumTermasuk = paketResponse.getData().get(0).getBiayaBelumTermasuk();
+                            String[] sentecesBiayaBelumTermasuk = biayaBelumTermasuk.split(">");
+                            for (int i = 0; i < sentecesBiayaBelumTermasuk.length; i++) {
+                                String sz = sentecesBiayaBelumTermasuk[i] + ">";
+                                sz = sz.replaceAll("\\<.*?\\>", "");
+                                if (!sz.isEmpty()) {
+                                    listBBT.add(sz);
+                                }
+                            }
+                            recyclerViewBiayaBelumTermasuk.setAdapter(new BiayaAdapter(listBBT));
+                        }
+                    }
+                }
+            });
+
+            detailPaketViewModel.getIttenerary(
+                    idPaket
+            ).observe(this, new Observer<ItteneraryResponse>() {
+                @Override
+                public void onChanged(ItteneraryResponse itteneraryResponse) {
+                    if (!itteneraryResponse.isError()) {
+                        if (!itteneraryResponse.getData().isEmpty()) {
+                            recyclerViewIttenerary.setAdapter(new ItteneraryAdapter(itteneraryResponse.getData()));
+                        }
+                    }
+                }
+            });
+
+//            String s = "<ol><li><strong>testing</strong></li><li><i>testing</i></li></ol>";
+//            String[] senteces = s.split(">");
+//            Log.e("sizeSenteces", String.valueOf(senteces.length));
+//            for (int i = 0; i < senteces.length; i++) {
+//                String sz = senteces[i] + ">";
+//                Log.e("sz" + String.valueOf(i), sz.replaceAll("\\<.*?\\>", ""));
+//            }
+        } else {
+            detailPaketViewModel.getPaketWisata(
+                    idPaketWisata
+            ).observe(this, new Observer<PaketWisataResponse>() {
+                @Override
+                public void onChanged(PaketWisataResponse paketWisataResponse) {
+                    if (!paketWisataResponse.isError()) {
+                        textViewNamaPaket.setText(paketWisataResponse.getData().get(0).getNamaWisata());
 
                         Glide.with(DetailPaketActivity.this)
-                                .load(paketResponse.getData().get(0).getImagePaket())
+                                .load(paketWisataResponse.getData().get(0).getImageWisata())
                                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                                 .skipMemoryCache(true)
                                 .dontAnimate()
@@ -97,18 +202,18 @@ public class DetailPaketActivity extends AppCompatActivity {
                         decimalFormatSymbols.setDecimalSeparator(',');
                         DecimalFormat decimalFormat = new DecimalFormat("###,###,###,###", decimalFormatSymbols);
 
-                        if (paketResponse.getData().get(0).getQuadSheet() != 0) {
-                            textViewQuad.setText("Rp. " + decimalFormat.format(paketResponse.getData().get(0).getQuadSheet()));
+                        if (paketWisataResponse.getData().get(0).getQuadSheet() != 0) {
+                            textViewQuad.setText("Rp. " + decimalFormat.format(paketWisataResponse.getData().get(0).getQuadSheet()));
                         }
-                        if (paketResponse.getData().get(0).getTripleSheet() != 0) {
-                            textViewTriple.setText("Rp. " + decimalFormat.format(paketResponse.getData().get(0).getTripleSheet()));
+                        if (paketWisataResponse.getData().get(0).getTripleSheet() != 0) {
+                            textViewTriple.setText("Rp. " + decimalFormat.format(paketWisataResponse.getData().get(0).getTripleSheet()));
                         }
-                        if (paketResponse.getData().get(0).getDoubleSheet() != 0) {
-                            textViewDouble.setText("Rp. " + decimalFormat.format(paketResponse.getData().get(0).getDoubleSheet()));
+                        if (paketWisataResponse.getData().get(0).getDoubleSheet() != 0) {
+                            textViewDouble.setText("Rp. " + decimalFormat.format(paketWisataResponse.getData().get(0).getDoubleSheet()));
                         }
 
                         Glide.with(DetailPaketActivity.this)
-                                .load(paketResponse.getData().get(0).getImageMaskapai())
+                                .load(paketWisataResponse.getData().get(0).getImageMaskapai())
                                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                                 .skipMemoryCache(true)
                                 .dontAnimate()
@@ -119,14 +224,14 @@ public class DetailPaketActivity extends AppCompatActivity {
                                 .placeholder(R.drawable.ic_logo)
                                 .into(imageViewMaskapai);
 
-                        textViewPenerbangan.setText(paketResponse.getData().get(0).getPenerbangan());
-                        textViewTempatHotelA.setText(paketResponse.getData().get(0).getTempatHotelA());
-                        textViewNamaHotelA.setText(paketResponse.getData().get(0).getNamaHotelA());
-                        textViewTempatHotelB.setText(paketResponse.getData().get(0).getTempatHotelB());
-                        textViewNamaHotelB.setText(paketResponse.getData().get(0).getNamaHotelB());
+                        textViewPenerbangan.setText(paketWisataResponse.getData().get(0).getPenerbangan());
+                        textViewTempatHotelA.setText(paketWisataResponse.getData().get(0).getTempatHotelA());
+                        textViewNamaHotelA.setText(paketWisataResponse.getData().get(0).getNamaHotelA());
+                        textViewTempatHotelB.setText(paketWisataResponse.getData().get(0).getTempatHotelB());
+                        textViewNamaHotelB.setText(paketWisataResponse.getData().get(0).getNamaHotelB());
 
                         List<String> listBST = new ArrayList<>();
-                        String biayaSudahTermasuk = paketResponse.getData().get(0).getBiayaSudahTermasuk();
+                        String biayaSudahTermasuk = paketWisataResponse.getData().get(0).getBiayaSudahTermasuk();
                         String[] sentecesBiayaSudahTermasuk = biayaSudahTermasuk.split(">");
                         for (int i = 0; i < sentecesBiayaSudahTermasuk.length; i++) {
                             String sz = sentecesBiayaSudahTermasuk[i] + ">";
@@ -138,7 +243,7 @@ public class DetailPaketActivity extends AppCompatActivity {
                         recyclerViewBiayaSudahTermasuk.setAdapter(new BiayaAdapter(listBST));
 
                         List<String> listBBT = new ArrayList<>();
-                        String biayaBelumTermasuk = paketResponse.getData().get(0).getBiayaBelumTermasuk();
+                        String biayaBelumTermasuk = paketWisataResponse.getData().get(0).getBiayaBelumTermasuk();
                         String[] sentecesBiayaBelumTermasuk = biayaBelumTermasuk.split(">");
                         for (int i = 0; i < sentecesBiayaBelumTermasuk.length; i++) {
                             String sz = sentecesBiayaBelumTermasuk[i] + ">";
@@ -150,28 +255,28 @@ public class DetailPaketActivity extends AppCompatActivity {
                         recyclerViewBiayaBelumTermasuk.setAdapter(new BiayaAdapter(listBBT));
                     }
                 }
-            }
-        });
+            });
 
-        detailPaketViewModel.getIttenerary(
-                idPaket
-        ).observe(this, new Observer<ItteneraryResponse>() {
-            @Override
-            public void onChanged(ItteneraryResponse itteneraryResponse) {
-                if (!itteneraryResponse.isError()) {
-                    if (!itteneraryResponse.getData().isEmpty()) {
-                        recyclerViewIttenerary.setAdapter(new ItteneraryAdapter(itteneraryResponse.getData()));
+            detailPaketViewModel.getItteneraryWisata(
+                    idPaketWisata
+            ).observe(this, new Observer<ItteneraryResponse>() {
+                @Override
+                public void onChanged(ItteneraryResponse itteneraryResponse) {
+                    if (!itteneraryResponse.isError()) {
+                        if (!itteneraryResponse.getData().isEmpty()) {
+                            recyclerViewIttenerary.setAdapter(new ItteneraryAdapter(itteneraryResponse.getData()));
+                        }
                     }
                 }
-            }
-        });
+            });
 
-        String s = "<ol><li><strong>testing</strong></li><li><i>testing</i></li></ol>";
-        String[] senteces = s.split(">");
-        Log.e("sizeSenteces", String.valueOf(senteces.length));
-        for (int i = 0; i < senteces.length; i++) {
-            String sz = senteces[i] + ">";
-            Log.e("sz" + String.valueOf(i), sz.replaceAll("\\<.*?\\>", ""));
+//            String s = "<ol><li><strong>testing</strong></li><li><i>testing</i></li></ol>";
+//            String[] senteces = s.split(">");
+//            Log.e("sizeSenteces", String.valueOf(senteces.length));
+//            for (int i = 0; i < senteces.length; i++) {
+//                String sz = senteces[i] + ">";
+//                Log.e("sz" + String.valueOf(i), sz.replaceAll("\\<.*?\\>", ""));
+//            }
         }
     }
 

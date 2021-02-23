@@ -23,6 +23,7 @@ import com.android.tomboati.api.response.MasjidResponse;
 import com.android.tomboati.api.response.NewsResponse;
 import com.android.tomboati.api.response.PaketMonthResponse;
 import com.android.tomboati.api.response.PaketResponse;
+import com.android.tomboati.api.response.PaketWisataResponse;
 import com.android.tomboati.api.response.SignInResponse;
 import com.android.tomboati.api.response.SurahResponse;
 import com.android.tomboati.api.response.TahlilResponse;
@@ -319,6 +320,28 @@ public class Repository {
         return data;
     }
 
+    public MutableLiveData<PaketWisataResponse> getPaketWisata(String paket, String bulan) {
+        MutableLiveData<PaketWisataResponse> data = new MutableLiveData<>();
+        apiInterfaceTomboAti.getPaketWisata(
+                paket,
+                bulan
+        ).enqueue(new Callback<PaketWisataResponse>() {
+            @Override
+            public void onResponse(Call<PaketWisataResponse> call, Response<PaketWisataResponse> response) {
+                if (response.code() == 200) {
+                    data.postValue(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<PaketWisataResponse> call, Throwable t) {
+                data.postValue(null);
+                Log.e("getPaket", t.getMessage());
+            }
+        });
+        return data;
+    }
+
     public MutableLiveData<PaketResponse> getDetailPaket(String idPaket) {
         MutableLiveData<PaketResponse> data = new MutableLiveData<>();
         apiInterfaceTomboAti.getDetailPaket(
@@ -335,6 +358,27 @@ public class Repository {
             public void onFailure(Call<PaketResponse> call, Throwable t) {
                 data.postValue(null);
                 Log.e("getPaket", t.getMessage());
+            }
+        });
+        return data;
+    }
+
+    public MutableLiveData<PaketWisataResponse> getDetailPaketWisata(String idPaketWisata) {
+        MutableLiveData<PaketWisataResponse> data = new MutableLiveData<>();
+        apiInterfaceTomboAti.getDetailPaketWisata(
+                idPaketWisata
+        ).enqueue(new Callback<PaketWisataResponse>() {
+            @Override
+            public void onResponse(Call<PaketWisataResponse> call, Response<PaketWisataResponse> response) {
+                if (response.code() == 200) {
+                    data.postValue(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<PaketWisataResponse> call, Throwable t) {
+                data.postValue(null);
+                Log.e("getDetailPaketWisata", t.getMessage());
             }
         });
         return data;
@@ -359,18 +403,18 @@ public class Repository {
         return data;
     }
 
-    public MutableLiveData<PaketResponse> getWisataHalalLimit() {
-        MutableLiveData<PaketResponse> data = new MutableLiveData<>();
-        apiInterfaceTomboAti.getWisataHalalLimit().enqueue(new Callback<PaketResponse>() {
+    public MutableLiveData<PaketWisataResponse> getWisataHalalLimit() {
+        MutableLiveData<PaketWisataResponse> data = new MutableLiveData<>();
+        apiInterfaceTomboAti.getWisataHalalLimit().enqueue(new Callback<PaketWisataResponse>() {
             @Override
-            public void onResponse(Call<PaketResponse> call, Response<PaketResponse> response) {
+            public void onResponse(Call<PaketWisataResponse> call, Response<PaketWisataResponse> response) {
                 if (response.code() == 200) {
                     data.postValue(response.body());
                 }
             }
 
             @Override
-            public void onFailure(Call<PaketResponse> call, Throwable t) {
+            public void onFailure(Call<PaketWisataResponse> call, Throwable t) {
                 data.postValue(null);
                 Log.e("getPaket", t.getMessage());
             }
@@ -378,13 +422,12 @@ public class Repository {
         return data;
     }
 
-    public MutableLiveData<BaseResponse> updateProfile(String idUser, RequestBody noKTP, RequestBody email, RequestBody password, RequestBody namaLengkap, RequestBody noHP) {
+    public MutableLiveData<BaseResponse> updateProfile(String idUser, RequestBody noKTP, RequestBody email, RequestBody namaLengkap, RequestBody noHP) {
         MutableLiveData<BaseResponse> baseResponseMutableLiveData = new MutableLiveData<>();
         apiInterfaceTomboAti.updateProfile(
                 idUser,
                 noKTP,
                 email,
-                password,
                 namaLengkap,
                 noHP
         ).enqueue(new Callback<BaseResponse>() {
@@ -464,6 +507,27 @@ public class Repository {
             public void onFailure(Call<PaketMonthResponse> call, Throwable t) {
                 data.postValue(null);
                 Log.e("getPaketMonth", t.getMessage());
+            }
+        });
+        return data;
+    }
+
+    public MutableLiveData<PaketMonthResponse> getPaketWisataMonth(String paket) {
+        MutableLiveData<PaketMonthResponse> data = new MutableLiveData<>();
+        apiInterfaceTomboAti.getPaketWisataMonth(
+                paket
+        ).enqueue(new Callback<PaketMonthResponse>() {
+            @Override
+            public void onResponse(Call<PaketMonthResponse> call, Response<PaketMonthResponse> response) {
+                if (response.code() == 200) {
+                    data.postValue(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<PaketMonthResponse> call, Throwable t) {
+                data.postValue(null);
+                Log.e("getPaketWisataMonth", t.getMessage());
             }
         });
         return data;
@@ -561,6 +625,48 @@ public class Repository {
             public void onFailure(Call<ItteneraryResponse> call, Throwable t) {
                 data.postValue(null);
                 Log.e("getIttenerary", t.getMessage());
+            }
+        });
+        return data;
+    }
+
+    public MutableLiveData<ItteneraryResponse> getItteneraryWisata(String idWisataHalal) {
+        MutableLiveData<ItteneraryResponse> data = new MutableLiveData<>();
+        apiInterfaceTomboAti.getItteneraryWisata(
+                idWisataHalal
+        ).enqueue(new Callback<ItteneraryResponse>() {
+            @Override
+            public void onResponse(Call<ItteneraryResponse> call, Response<ItteneraryResponse> response) {
+                if (response.code() == 200) {
+                    data.postValue(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ItteneraryResponse> call, Throwable t) {
+                data.postValue(null);
+                Log.e("getIttenerary", t.getMessage());
+            }
+        });
+        return data;
+    }
+
+    public MutableLiveData<BaseResponse> resetPassword(String idUserRegister) {
+        MutableLiveData<BaseResponse> data = new MutableLiveData<>();
+        apiInterfaceTomboAti.resetPassword(
+                idUserRegister
+        ).enqueue(new Callback<BaseResponse>() {
+            @Override
+            public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
+                if (response.code() == 200) {
+                    data.postValue(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<BaseResponse> call, Throwable t) {
+                data.postValue(null);
+                Log.e("resetPassword", t.getMessage());
             }
         });
         return data;
