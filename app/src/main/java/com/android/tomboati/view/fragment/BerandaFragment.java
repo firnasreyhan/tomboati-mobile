@@ -135,169 +135,220 @@ public class BerandaFragment extends Fragment {
         sliderView.setAutoCycle(true);
         sliderView.startAutoCycle();
 
-        if (AppPreference.getUser(getActivity()) != null) {
-            setAkun();
-        }
+        if (!getActivity().isFinishing()) {
+            if (AppPreference.getUser(getActivity()) != null) {
+                setAkun();
+            }
 
 //        sliderAdapter = new SliderAdapter(list);
 //        sliderView.setSliderAdapter(sliderAdapter);
 
-        cardViewUmrohHaji.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(v.getContext(), UmrohHajiActivity.class));
-            }
-        });
+            cardViewUmrohHaji.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(v.getContext(), UmrohHajiActivity.class));
+                }
+            });
 
-        cardViewSholat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(v.getContext(), SholatActivity.class));
-            }
-        });
+            cardViewSholat.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(v.getContext(), SholatActivity.class));
+                }
+            });
 
-        cardViewDoaDzikir.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(v.getContext(), DoaDzikirActivity.class));
-            }
-        });
+            cardViewDoaDzikir.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(v.getContext(), DoaDzikirActivity.class));
+                }
+            });
 
-        cardViewWisataReligi.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(v.getContext(), WisataReligiActivity.class));
-            }
-        });
+            cardViewWisataReligi.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(v.getContext(), WisataReligiActivity.class));
+                }
+            });
 
-        cardViewTomboatiChannel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/channel/UCwDEM2yv71YDtaoxAjrswLA")));
-            }
-        });
+            cardViewTomboatiChannel.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/channel/UCwDEM2yv71YDtaoxAjrswLA")));
+                }
+            });
 
-        cardViewLiveMekkah.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/watch?v=k2gOsvK8XNM")));
-            }
-        });
+            cardViewLiveMekkah.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/watch?v=k2gOsvK8XNM")));
+                }
+            });
 
-        cardViewAlQuran.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(v.getContext(), AlQuranActivity.class));
-            }
-        });
+            cardViewAlQuran.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(v.getContext(), AlQuranActivity.class));
+                }
+            });
 
-        cardViewKalenderHijriah.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //Toast.makeText(v.getContext(), "Coming Soon...", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(v.getContext(), KalenderHijriahActivity.class));
-            }
-        });
+            cardViewKalenderHijriah.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //Toast.makeText(v.getContext(), "Coming Soon...", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(v.getContext(), KalenderHijriahActivity.class));
+                }
+            });
 
-        cardViewQurbanAqiqah.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(v.getContext(), "Coming Soon...", Toast.LENGTH_SHORT).show();
-            }
-        });
+            cardViewQurbanAqiqah.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(v.getContext(), "Coming Soon...", Toast.LENGTH_SHORT).show();
+                }
+            });
 
-        cardViewKomunitas.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(v.getContext(), "Coming Soon...", Toast.LENGTH_SHORT).show();
-            }
-        });
+            cardViewKomunitas.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(v.getContext(), "Coming Soon...", Toast.LENGTH_SHORT).show();
+                }
+            });
 
-        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                shimmerFrameLayoutSlider.startShimmer();
-                shimmerFrameLayoutSlider.setVisibility(View.VISIBLE);
-                sliderView.setVisibility(View.GONE);
+            swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+                @Override
+                public void onRefresh() {
+                    shimmerFrameLayoutSlider.startShimmer();
+                    shimmerFrameLayoutSlider.setVisibility(View.VISIBLE);
+                    sliderView.setVisibility(View.GONE);
 //                if (!Utility.getList().isEmpty()) {
 //                    Utility.getList().clear();
 //                    sliderAdapter.notifyDataSetChanged();
 //                }
-                checkLolation();
-                new Handler().postDelayed(new Runnable() {
-                    @Override public void run() {
-                        swipeRefreshLayout.setRefreshing(false);
-                    }
-                }, 3000);
-            }
-        });
-
-        materialButtonDetailNews.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(v.getContext(), DetailNewsActivity.class));
-            }
-        });
-
-        berandaViewModel.getPaket().observe(getActivity(), new Observer<PaketResponse>() {
-            @Override
-            public void onChanged(PaketResponse paketResponse) {
-                if (!paketResponse.isError()) {
-                    if (!paketResponse.getData().isEmpty()) {
-                        if (paketResponse.getData().get(0) != null) {
-                            Glide.with(getActivity())
-                                    .load(paketResponse.getData().get(0).getImagePaket())
-                                    .diskCacheStrategy(DiskCacheStrategy.ALL)
-                                    .skipMemoryCache(true)
-                                    .dontAnimate()
-                                    .dontTransform()
-                                    .priority(Priority.IMMEDIATE)
-                                    .encodeFormat(Bitmap.CompressFormat.PNG)
-                                    .format(DecodeFormat.DEFAULT)
-                                    .placeholder(R.drawable.ic_logo)
-                                    .into(imageViewPromoHaji1);
+                    checkLolation();
+                    new Handler().postDelayed(new Runnable() {
+                        @Override public void run() {
+                            swipeRefreshLayout.setRefreshing(false);
                         }
+                    }, 3000);
+                }
+            });
 
-                        if (paketResponse.getData().get(1) != null) {
-                            Glide.with(getActivity())
-                                    .load(paketResponse.getData().get(1).getImagePaket())
-                                    .diskCacheStrategy(DiskCacheStrategy.ALL)
-                                    .skipMemoryCache(true)
-                                    .dontAnimate()
-                                    .dontTransform()
-                                    .priority(Priority.IMMEDIATE)
-                                    .encodeFormat(Bitmap.CompressFormat.PNG)
-                                    .format(DecodeFormat.DEFAULT)
-                                    .placeholder(R.drawable.ic_logo)
-                                    .into(imageViewPromoHaji2);
-                        }
+            materialButtonDetailNews.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(v.getContext(), DetailNewsActivity.class));
+                }
+            });
 
-                        if (paketResponse.getData().get(2) != null) {
-                            Glide.with(getActivity())
-                                    .load(paketResponse.getData().get(2).getImagePaket())
-                                    .diskCacheStrategy(DiskCacheStrategy.ALL)
-                                    .skipMemoryCache(true)
-                                    .dontAnimate()
-                                    .dontTransform()
-                                    .priority(Priority.IMMEDIATE)
-                                    .encodeFormat(Bitmap.CompressFormat.PNG)
-                                    .format(DecodeFormat.DEFAULT)
-                                    .placeholder(R.drawable.ic_logo)
-                                    .into(imageViewPromoHaji3);
+            berandaViewModel.getPaket().observe(getActivity(), new Observer<PaketResponse>() {
+                @Override
+                public void onChanged(PaketResponse paketResponse) {
+                    if (!paketResponse.isError()) {
+                        if (!paketResponse.getData().isEmpty()) {
+                            if (paketResponse.getData().get(0) != null) {
+                                Glide.with(getActivity().getApplicationContext())
+                                        .load(paketResponse.getData().get(0).getImagePaket())
+                                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+                                        .skipMemoryCache(true)
+                                        .dontAnimate()
+                                        .dontTransform()
+                                        .priority(Priority.IMMEDIATE)
+                                        .encodeFormat(Bitmap.CompressFormat.PNG)
+                                        .format(DecodeFormat.DEFAULT)
+                                        .placeholder(R.drawable.ic_logo)
+                                        .into(imageViewPromoHaji1);
+                            }
+
+                            if (paketResponse.getData().get(1) != null) {
+                                Glide.with(getActivity().getApplicationContext())
+                                        .load(paketResponse.getData().get(1).getImagePaket())
+                                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+                                        .skipMemoryCache(true)
+                                        .dontAnimate()
+                                        .dontTransform()
+                                        .priority(Priority.IMMEDIATE)
+                                        .encodeFormat(Bitmap.CompressFormat.PNG)
+                                        .format(DecodeFormat.DEFAULT)
+                                        .placeholder(R.drawable.ic_logo)
+                                        .into(imageViewPromoHaji2);
+                            }
+
+                            if (paketResponse.getData().get(2) != null) {
+                                Glide.with(getActivity().getApplicationContext())
+                                        .load(paketResponse.getData().get(2).getImagePaket())
+                                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+                                        .skipMemoryCache(true)
+                                        .dontAnimate()
+                                        .dontTransform()
+                                        .priority(Priority.IMMEDIATE)
+                                        .encodeFormat(Bitmap.CompressFormat.PNG)
+                                        .format(DecodeFormat.DEFAULT)
+                                        .placeholder(R.drawable.ic_logo)
+                                        .into(imageViewPromoHaji3);
+                            }
                         }
                     }
                 }
-            }
-        });
+            });
 
-        berandaViewModel.getWisataHalal().observe(getActivity(), new Observer<PaketWisataResponse>() {
-            @Override
-            public void onChanged(PaketWisataResponse paketWisataResponse) {
-                if (!paketWisataResponse.isError()) {
-                    if (!paketWisataResponse.getData().isEmpty()) {
-                        if (paketWisataResponse.getData().get(0) != null) {
-                            Glide.with(getActivity())
-                                    .load(paketWisataResponse.getData().get(0).getImageWisata())
+            berandaViewModel.getWisataHalal().observe(getActivity(), new Observer<PaketWisataResponse>() {
+                @Override
+                public void onChanged(PaketWisataResponse paketWisataResponse) {
+                    if (!paketWisataResponse.isError()) {
+                        if (!paketWisataResponse.getData().isEmpty()) {
+                            if (paketWisataResponse.getData().get(0) != null) {
+                                Glide.with(getActivity().getApplicationContext())
+                                        .load(paketWisataResponse.getData().get(0).getImageWisata())
+                                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+                                        .skipMemoryCache(true)
+                                        .dontAnimate()
+                                        .dontTransform()
+                                        .priority(Priority.IMMEDIATE)
+                                        .encodeFormat(Bitmap.CompressFormat.PNG)
+                                        .format(DecodeFormat.DEFAULT)
+                                        .placeholder(R.drawable.ic_logo)
+                                        .into(imageViewPromoTour1);
+                            }
+
+                            if (paketWisataResponse.getData().get(1) != null) {
+                                Glide.with(getActivity().getApplicationContext())
+                                        .load(paketWisataResponse.getData().get(1).getImageWisata())
+                                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+                                        .skipMemoryCache(true)
+                                        .dontAnimate()
+                                        .dontTransform()
+                                        .priority(Priority.IMMEDIATE)
+                                        .encodeFormat(Bitmap.CompressFormat.PNG)
+                                        .format(DecodeFormat.DEFAULT)
+                                        .placeholder(R.drawable.ic_logo)
+                                        .into(imageViewPromoTour2);
+                            }
+
+                            if (paketWisataResponse.getData().get(2) != null) {
+                                Glide.with(getActivity().getApplicationContext())
+                                        .load(paketWisataResponse.getData().get(2).getImageWisata())
+                                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+                                        .skipMemoryCache(true)
+                                        .dontAnimate()
+                                        .dontTransform()
+                                        .priority(Priority.IMMEDIATE)
+                                        .encodeFormat(Bitmap.CompressFormat.PNG)
+                                        .format(DecodeFormat.DEFAULT)
+                                        .placeholder(R.drawable.ic_logo)
+                                        .into(imageViewPromoTour3);
+                            }
+                        }
+                    }
+                }
+            });
+
+            berandaViewModel.getNews().observe(getActivity(), new Observer<NewsResponse>() {
+                @Override
+                public void onChanged(NewsResponse newsResponse) {
+                    if (!newsResponse.isError()) {
+                        if (!newsResponse.getData().isEmpty()) {
+                            Glide.with(getActivity().getApplicationContext())
+                                    .load(newsResponse.getData().get(0).getFoto())
                                     .diskCacheStrategy(DiskCacheStrategy.ALL)
                                     .skipMemoryCache(true)
                                     .dontAnimate()
@@ -306,84 +357,35 @@ public class BerandaFragment extends Fragment {
                                     .encodeFormat(Bitmap.CompressFormat.PNG)
                                     .format(DecodeFormat.DEFAULT)
                                     .placeholder(R.drawable.ic_logo)
-                                    .into(imageViewPromoTour1);
-                        }
+                                    .into(imageViewNews);
 
-                        if (paketWisataResponse.getData().get(1) != null) {
-                            Glide.with(getActivity())
-                                    .load(paketWisataResponse.getData().get(1).getImageWisata())
-                                    .diskCacheStrategy(DiskCacheStrategy.ALL)
-                                    .skipMemoryCache(true)
-                                    .dontAnimate()
-                                    .dontTransform()
-                                    .priority(Priority.IMMEDIATE)
-                                    .encodeFormat(Bitmap.CompressFormat.PNG)
-                                    .format(DecodeFormat.DEFAULT)
-                                    .placeholder(R.drawable.ic_logo)
-                                    .into(imageViewPromoTour2);
-                        }
+                            textViewJudulNews.setText(newsResponse.getData().get(0).getJudulNews());
 
-                        if (paketWisataResponse.getData().get(2) != null) {
-                            Glide.with(getActivity())
-                                    .load(paketWisataResponse.getData().get(2).getImageWisata())
-                                    .diskCacheStrategy(DiskCacheStrategy.ALL)
-                                    .skipMemoryCache(true)
-                                    .dontAnimate()
-                                    .dontTransform()
-                                    .priority(Priority.IMMEDIATE)
-                                    .encodeFormat(Bitmap.CompressFormat.PNG)
-                                    .format(DecodeFormat.DEFAULT)
-                                    .placeholder(R.drawable.ic_logo)
-                                    .into(imageViewPromoTour3);
+                            String s = newsResponse.getData().get(0).getContentNews().replaceAll("\\<.*?\\>", "");
+                            String[] senteces = s.split("\\. ");
+                            Log.e("size", String.valueOf(senteces.length));
+                            String shortNews = "";
+                            for (int i = 0; i < 5; i++) {
+                                shortNews = shortNews + senteces[i] + ". ";
+                            }
+                            textViewSortNews.setText(shortNews);
                         }
                     }
                 }
-            }
-        });
+            });
 
-        berandaViewModel.getNews().observe(getActivity(), new Observer<NewsResponse>() {
-            @Override
-            public void onChanged(NewsResponse newsResponse) {
-                if (!newsResponse.isError()) {
-                    if (!newsResponse.getData().isEmpty()) {
-                        Glide.with(getActivity())
-                                .load(newsResponse.getData().get(0).getFoto())
-                                .diskCacheStrategy(DiskCacheStrategy.ALL)
-                                .skipMemoryCache(true)
-                                .dontAnimate()
-                                .dontTransform()
-                                .priority(Priority.IMMEDIATE)
-                                .encodeFormat(Bitmap.CompressFormat.PNG)
-                                .format(DecodeFormat.DEFAULT)
-                                .placeholder(R.drawable.ic_logo)
-                                .into(imageViewNews);
-
-                        textViewJudulNews.setText(newsResponse.getData().get(0).getJudulNews());
-
-                        String s = newsResponse.getData().get(0).getContentNews().replaceAll("\\<.*?\\>", "");
-                        String[] senteces = s.split("\\. ");
-                        Log.e("size", String.valueOf(senteces.length));
-                        String shortNews = "";
-                        for (int i = 0; i < 5; i++) {
-                            shortNews = shortNews + senteces[i] + ". ";
+            berandaViewModel.getKataMutiara().observe(getActivity(), new Observer<KataMutiaraResponse>() {
+                @Override
+                public void onChanged(KataMutiaraResponse kataMutiaraResponse) {
+                    if (!kataMutiaraResponse.isError()) {
+                        if (!kataMutiaraResponse.getData().isEmpty()) {
+                            String s = kataMutiaraResponse.getData().get(0).getTeksKataMutiara().replaceAll("\\<.*?\\>", "");
+                            textViewKataMutiara.setText(s);
                         }
-                        textViewSortNews.setText(shortNews);
                     }
                 }
-            }
-        });
-
-        berandaViewModel.getKataMutiara().observe(getActivity(), new Observer<KataMutiaraResponse>() {
-            @Override
-            public void onChanged(KataMutiaraResponse kataMutiaraResponse) {
-                if (!kataMutiaraResponse.isError()) {
-                    if (!kataMutiaraResponse.getData().isEmpty()) {
-                        String s = kataMutiaraResponse.getData().get(0).getTeksKataMutiara().replaceAll("\\<.*?\\>", "");
-                        textViewKataMutiara.setText(s);
-                    }
-                }
-            }
-        });
+            });
+        }
 
         return view;
     }
@@ -645,7 +647,7 @@ public class BerandaFragment extends Fragment {
     private void setAkun() {
         textViewNamaLengkap.setText(AppPreference.getUser(getContext()).getNamaLengkap());
 
-        Glide.with(getActivity())
+        Glide.with(getActivity().getApplicationContext())
                 .load(AppPreference.getUser(getActivity()).getFoto())
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .skipMemoryCache(true)

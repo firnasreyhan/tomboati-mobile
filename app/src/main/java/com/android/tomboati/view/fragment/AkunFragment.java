@@ -74,144 +74,88 @@ public class AkunFragment extends Fragment {
             constraintLayoutSignIn.setVisibility(View.GONE);
             linearLayoutAkun.setVisibility(View.VISIBLE);
 
-            setAkun();
+            if (!getActivity().isFinishing()) {
+                setAkun();
 
-            materialButtonSignOut.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    new AlertDialog.Builder(getContext())
-                            .setTitle("Pesan")
-                            .setMessage("Yakin ingin keluar dari aplikasi?")
-                            .setPositiveButton("Iya", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    dialog.dismiss();
-                                    progressDialog.setMessage("Mohon tunggu sebentar...");
-                                    progressDialog.setCancelable(false);
-                                    progressDialog.show();
+                materialButtonSignOut.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        new AlertDialog.Builder(getContext())
+                                .setTitle("Pesan")
+                                .setMessage("Yakin ingin keluar dari aplikasi?")
+                                .setPositiveButton("Iya", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        dialog.dismiss();
+                                        progressDialog.setMessage("Mohon tunggu sebentar...");
+                                        progressDialog.setCancelable(false);
+                                        progressDialog.show();
 
-                                    int loadingTime = 3000;
-                                    new Handler().postDelayed(() -> {
-                                        akunViewModel.signOut().observe(getActivity(), new Observer<BaseResponse>() {
-                                            @Override
-                                            public void onChanged(BaseResponse baseResponse) {
-                                                if (progressDialog.isShowing()) {
-                                                    progressDialog.dismiss();
+                                        int loadingTime = 3000;
+                                        new Handler().postDelayed(() -> {
+                                            akunViewModel.signOut().observe(getActivity(), new Observer<BaseResponse>() {
+                                                @Override
+                                                public void onChanged(BaseResponse baseResponse) {
+                                                    if (progressDialog.isShowing()) {
+                                                        progressDialog.dismiss();
+                                                    }
+                                                    Toast.makeText(getContext(), baseResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                                                    if (!baseResponse.isError()) {
+                                                        AppPreference.removeUser(getContext());
+                                                        Intent intent = new Intent(getContext(), MainActivity.class);
+                                                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                                        startActivity(intent);
+                                                    }
                                                 }
-                                                Toast.makeText(getContext(), baseResponse.getMessage(), Toast.LENGTH_SHORT).show();
-                                                if (!baseResponse.isError()) {
-                                                    AppPreference.removeUser(getContext());
-                                                    Intent intent = new Intent(getContext(), MainActivity.class);
-                                                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                                    startActivity(intent);
-                                                }
-                                            }
-                                        });
-                                    }, loadingTime);
-                                }
-                            })
-                            .setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    dialog.dismiss();
-                                }
-                            })
-                            .create()
-                            .show();
-                }
-            });
-
-            materialButtonKodeReferral.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    startActivity(new Intent(v.getContext(), KodeReferralActivity.class));
-                }
-            });
-
-            materialButtonProfileEdit.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    startActivity(new Intent(v.getContext(), UpdateProfileActivity.class));
-                }
-            });
-
-            materialButtonPasswordEdit.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    progressDialog.setMessage("Mohon tunggu sebentar...");
-                    progressDialog.setCancelable(false);
-                    progressDialog.show();
-
-                    akunViewModel.resetPassword(
-                            AppPreference.getUser(v.getContext()).getIdUserRegister()
-                    ).observe(getActivity(), new Observer<BaseResponse>() {
-                        @Override
-                        public void onChanged(BaseResponse baseResponse) {
-                            int loadingTime = 3000;
-                            new Handler().postDelayed(() -> {
-                                if (progressDialog.isShowing()) {
-                                    progressDialog.dismiss();
-                                }
-                                new AlertDialog.Builder(getContext())
-                                        .setTitle("Pesan")
-                                        .setMessage(baseResponse.getMessage())
-                                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                                            @Override
-                                            public void onClick(DialogInterface dialog, int which) {
-                                                dialog.dismiss();
-                                            }
-                                        })
-                                        .show();
-                            }, loadingTime);
-                        }
-                    });
-                }
-            });
-        } else {
-            constraintLayoutSignIn.setVisibility(View.VISIBLE);
-            linearLayoutAkun.setVisibility(View.GONE);
-            textViewSignUp.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    startActivity(new Intent(v.getContext(), SignUpActivity.class));
-                }
-            });
-
-            materialButtonSignIn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    boolean cek1 = true;
-                    boolean cek2 = true;
-
-                    if (textInputEditTextEmail.getText().toString().isEmpty()){
-                        textInputEditTextEmail.setError("Mohon isi data berikut!");
-                        cek1 = false;
+                                            });
+                                        }, loadingTime);
+                                    }
+                                })
+                                .setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        dialog.dismiss();
+                                    }
+                                })
+                                .create()
+                                .show();
                     }
+                });
 
-                    if (textInputEditTextPassword.getText().toString().isEmpty()){
-                        textInputEditTextPassword.setError("Mohon isi data berikut!");
-                        cek2 = false;
+                materialButtonKodeReferral.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        startActivity(new Intent(v.getContext(), KodeReferralActivity.class));
                     }
+                });
 
-                    if (cek1 && cek2) {
+                materialButtonProfileEdit.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        startActivity(new Intent(v.getContext(), UpdateProfileActivity.class));
+                    }
+                });
+
+                materialButtonPasswordEdit.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
                         progressDialog.setMessage("Mohon tunggu sebentar...");
                         progressDialog.setCancelable(false);
                         progressDialog.show();
 
-                        int loadingTime = 3000;
-                        new Handler().postDelayed(() -> {
-                            akunViewModel.signIn(
-                                    textInputEditTextEmail.getText().toString(),
-                                    textInputEditTextPassword.getText().toString()
-                            ).observe(getActivity(), new Observer<SignInResponse>() {
-                                @Override
-                                public void onChanged(SignInResponse signInResponse) {
+                        akunViewModel.resetPassword(
+                                AppPreference.getUser(v.getContext()).getIdUserRegister()
+                        ).observe(getActivity(), new Observer<BaseResponse>() {
+                            @Override
+                            public void onChanged(BaseResponse baseResponse) {
+                                int loadingTime = 3000;
+                                new Handler().postDelayed(() -> {
                                     if (progressDialog.isShowing()) {
                                         progressDialog.dismiss();
                                     }
                                     new AlertDialog.Builder(getContext())
                                             .setTitle("Pesan")
-                                            .setMessage(signInResponse.getMessage())
+                                            .setMessage(baseResponse.getMessage())
                                             .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                                 @Override
                                                 public void onClick(DialogInterface dialog, int which) {
@@ -219,30 +163,88 @@ public class AkunFragment extends Fragment {
                                                 }
                                             })
                                             .show();
-                                    if (!signInResponse.isError()) {
-                                        if (!signInResponse.getData().isEmpty()) {
-                                            new AlertDialog.Builder(getContext())
-                                                    .setTitle("Pesan")
-                                                    .setMessage(signInResponse.getMessage())
-                                                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                                                        @Override
-                                                        public void onClick(DialogInterface dialog, int which) {
-                                                            dialog.dismiss();
-                                                            AppPreference.saveUser(v.getContext(), signInResponse.getData().get(0));
-                                                            Intent intent = new Intent(getContext(), MainActivity.class);
-                                                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                                            startActivity(intent);
-                                                        }
-                                                    })
-                                                    .show();
+                                }, loadingTime);
+                            }
+                        });
+                    }
+                });
+            } else {
+                constraintLayoutSignIn.setVisibility(View.VISIBLE);
+                linearLayoutAkun.setVisibility(View.GONE);
+                textViewSignUp.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        startActivity(new Intent(v.getContext(), SignUpActivity.class));
+                    }
+                });
+
+                materialButtonSignIn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        boolean cek1 = true;
+                        boolean cek2 = true;
+
+                        if (textInputEditTextEmail.getText().toString().isEmpty()){
+                            textInputEditTextEmail.setError("Mohon isi data berikut!");
+                            cek1 = false;
+                        }
+
+                        if (textInputEditTextPassword.getText().toString().isEmpty()){
+                            textInputEditTextPassword.setError("Mohon isi data berikut!");
+                            cek2 = false;
+                        }
+
+                        if (cek1 && cek2) {
+                            progressDialog.setMessage("Mohon tunggu sebentar...");
+                            progressDialog.setCancelable(false);
+                            progressDialog.show();
+
+                            int loadingTime = 3000;
+                            new Handler().postDelayed(() -> {
+                                akunViewModel.signIn(
+                                        textInputEditTextEmail.getText().toString(),
+                                        textInputEditTextPassword.getText().toString()
+                                ).observe(getActivity(), new Observer<SignInResponse>() {
+                                    @Override
+                                    public void onChanged(SignInResponse signInResponse) {
+                                        if (progressDialog.isShowing()) {
+                                            progressDialog.dismiss();
+                                        }
+                                        new AlertDialog.Builder(getContext())
+                                                .setTitle("Pesan")
+                                                .setMessage(signInResponse.getMessage())
+                                                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                                    @Override
+                                                    public void onClick(DialogInterface dialog, int which) {
+                                                        dialog.dismiss();
+                                                    }
+                                                })
+                                                .show();
+                                        if (!signInResponse.isError()) {
+                                            if (!signInResponse.getData().isEmpty()) {
+                                                new AlertDialog.Builder(getContext())
+                                                        .setTitle("Pesan")
+                                                        .setMessage(signInResponse.getMessage())
+                                                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                                            @Override
+                                                            public void onClick(DialogInterface dialog, int which) {
+                                                                dialog.dismiss();
+                                                                AppPreference.saveUser(v.getContext(), signInResponse.getData().get(0));
+                                                                Intent intent = new Intent(getContext(), MainActivity.class);
+                                                                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                                                startActivity(intent);
+                                                            }
+                                                        })
+                                                        .show();
+                                            }
                                         }
                                     }
-                                }
-                            });
-                        }, loadingTime);
+                                });
+                            }, loadingTime);
+                        }
                     }
-                }
-            });
+                });
+            }
         }
 
         return view;
