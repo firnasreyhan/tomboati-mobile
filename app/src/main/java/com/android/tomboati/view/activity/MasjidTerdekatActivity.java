@@ -55,7 +55,6 @@ public class MasjidTerdekatActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setTheme(R.style.ThemeTomboAtiGreen);
         setContentView(R.layout.activity_masjid_terdekat);
-        masjidTerdekatViewModel = ViewModelProviders.of(this).get(MasjidTerdekatViewModel.class);
 
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -63,7 +62,8 @@ public class MasjidTerdekatActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        recyclerViewMasjidTerdekat = findViewById(R.id.recyclerViewMasjidTerdekat);
+            recyclerViewMasjidTerdekat = findViewById(R.id.recyclerViewMasjidTerdekat);
+
     }
 
     @Override
@@ -75,31 +75,35 @@ public class MasjidTerdekatActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        // Check if gps provider is not enabled
-        if(!isLoaded) {
-            if (!isProviderEnable()) {
-                // If is not enabled showing alert dialog
-                alert = new AlertDialog.Builder(this);
-                alert.setTitle("GPS settings");
-                alert.setMessage("GPS tidak diaktifkan. Apakah Anda ingin pergi ke menu pengaturan?");
-                alert.setCancelable(false);
-                alert.setPositiveButton("Ya", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        // Goto setting page for gps activated
-                        startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
-                    }
-                });
-                alert.setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                        finish();
-                    }
-                });
-                alert.show();
-            } else {
-                cekPermission();
+        // Check if network provider is not enabled
+        if(Utility.isConnecting(this)) {
+            masjidTerdekatViewModel = ViewModelProviders.of(this).get(MasjidTerdekatViewModel.class);
+            // Check if gps provider is not enabled
+            if (!isLoaded) {
+                if (!isProviderEnable()) {
+                    // If is not enabled showing alert dialog
+                    alert = new AlertDialog.Builder(this);
+                    alert.setTitle("GPS settings");
+                    alert.setMessage("GPS tidak diaktifkan. Apakah Anda ingin pergi ke menu pengaturan?");
+                    alert.setCancelable(false);
+                    alert.setPositiveButton("Ya", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            // Goto setting page for gps activated
+                            startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+                        }
+                    });
+                    alert.setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                            finish();
+                        }
+                    });
+                    alert.show();
+                } else {
+                    cekPermission();
+                }
             }
         }
     }

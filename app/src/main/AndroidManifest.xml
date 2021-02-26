@@ -18,7 +18,8 @@
         android:roundIcon="@mipmap/ic_new_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/ThemeTomboAti">
-        <activity android:name=".view.activity.HitungTasbihLainnyaActivity"></activity>
+        <activity android:name=".view.activity.TembangSholawatActivity"></activity>
+        <activity android:name=".view.activity.HitungTasbihLainnyaActivity" />
         <activity android:name=".view.activity.SholatDiperjalananActivity" />
         <activity android:name=".view.activity.SholatJenazahActivity" />
         <activity android:name=".view.activity.AnekaSholawatActivity" />

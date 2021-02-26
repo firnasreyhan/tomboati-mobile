@@ -2,6 +2,13 @@ package com.android.tomboati.utils;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+
+import androidx.appcompat.app.AlertDialog;
 
 import com.android.tomboati.api.response.JadwalSholatResponse;
 import com.android.tomboati.model.TasbihModel;
@@ -104,4 +111,27 @@ public class Utility {
     public static void setMinute(int minute) {
         Utility.minute = minute;
     }
+
+    public static boolean isConnecting(Activity activity) {
+        ConnectivityManager connectivityManager = (ConnectivityManager) activity.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+        if (networkInfo != null && networkInfo.isConnected()) {
+            return true;
+        } else {
+            AlertDialog.Builder alert = new AlertDialog.Builder(activity);
+            alert.setCancelable(false);
+            alert.setMessage("Perangkat anda tidak terhubung dengan internet!!");
+            alert.setTitle("Peringatan!!!");
+            alert.setPositiveButton("Kembali", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    activity.onBackPressed();
+                }
+            });
+            alert.create();
+            alert.show();
+            return false;
+        }
+    }
+
 }
