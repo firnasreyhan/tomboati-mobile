@@ -7,9 +7,11 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -24,6 +26,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.Priority;
 import com.bumptech.glide.load.DecodeFormat;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.google.android.material.button.MaterialButton;
 
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
@@ -37,6 +40,7 @@ public class DetailPaketActivity extends AppCompatActivity {
     private TextView textViewNamaPaket, textViewQuad, textViewTriple, textViewDouble, textViewPenerbangan, textViewTempatHotelA, textViewNamaHotelA, textViewTempatHotelB, textViewNamaHotelB;
     private RecyclerView recyclerViewIttenerary, recyclerViewBiayaBelumTermasuk, recyclerViewBiayaSudahTermasuk;
     private String idPaket, idPaketWisata;
+    private MaterialButton materialButtonPesan;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,12 +72,21 @@ public class DetailPaketActivity extends AppCompatActivity {
         recyclerViewIttenerary = findViewById(R.id.recyclerViewIttenerary);
         recyclerViewBiayaBelumTermasuk = findViewById(R.id.recyclerViewBiayaBelumTermasuk);
         recyclerViewBiayaSudahTermasuk = findViewById(R.id.recyclerViewBiayaSudahTermasuk);
+        materialButtonPesan = findViewById(R.id.materialButtonPesan);
         recyclerViewIttenerary.setHasFixedSize(true);
         recyclerViewIttenerary.setLayoutManager(new LinearLayoutManager(this));
         recyclerViewBiayaBelumTermasuk.setHasFixedSize(true);
         recyclerViewBiayaBelumTermasuk.setLayoutManager(new LinearLayoutManager(this));
         recyclerViewBiayaSudahTermasuk.setHasFixedSize(true);
         recyclerViewBiayaSudahTermasuk.setLayoutManager(new LinearLayoutManager(this));
+
+        materialButtonPesan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), SyaratActivity.class);
+                startActivity(intent);
+            }
+        });
 
         if (idPaket != null) {
             detailPaketViewModel.getPaket(
@@ -269,7 +282,6 @@ public class DetailPaketActivity extends AppCompatActivity {
                     }
                 }
             });
-
 //            String s = "<ol><li><strong>testing</strong></li><li><i>testing</i></li></ol>";
 //            String[] senteces = s.split(">");
 //            Log.e("sizeSenteces", String.valueOf(senteces.length));

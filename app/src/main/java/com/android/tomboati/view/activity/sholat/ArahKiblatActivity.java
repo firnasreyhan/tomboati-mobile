@@ -1,28 +1,22 @@
-package com.android.tomboati.view.activity;
+package com.android.tomboati.view.activity.sholat;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-import androidx.lifecycle.Observer;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.location.Address;
 import android.location.Location;
-import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
@@ -34,7 +28,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.tomboati.R;
-import com.android.tomboati.api.response.BaseResponse;
 import com.android.tomboati.utils.Compass;
 import com.android.tomboati.utils.GPSTracker;
 import com.android.tomboati.utils.Utility;
@@ -43,11 +36,9 @@ import com.intentfilter.androidpermissions.PermissionManager;
 import com.intentfilter.androidpermissions.models.DeniedPermissions;
 
 import java.util.Arrays;
-import java.util.List;
 import java.util.Locale;
 
 import io.nlopez.smartlocation.OnLocationUpdatedListener;
-import io.nlopez.smartlocation.OnReverseGeocodingListener;
 import io.nlopez.smartlocation.SmartLocation;
 import io.nlopez.smartlocation.location.config.LocationParams;
 

@@ -8,6 +8,7 @@ import androidx.lifecycle.MutableLiveData;
 import com.android.tomboati.api.ApiClient;
 import com.android.tomboati.api.ApiInterfaceAlQuran;
 import com.android.tomboati.api.ApiInterfaceJadwalSholat;
+import com.android.tomboati.api.ApiInterfaceLokasi;
 import com.android.tomboati.api.ApiInterfaceMasjid;
 import com.android.tomboati.api.ApiInterfaceTahlil;
 import com.android.tomboati.api.ApiInterfaceTomboAti;
@@ -19,6 +20,7 @@ import com.android.tomboati.api.response.DoaHarianResponse;
 import com.android.tomboati.api.response.ItteneraryResponse;
 import com.android.tomboati.api.response.JadwalSholatResponse;
 import com.android.tomboati.api.response.KataMutiaraResponse;
+import com.android.tomboati.api.response.LokasiResponse;
 import com.android.tomboati.api.response.MasjidResponse;
 import com.android.tomboati.api.response.NewsResponse;
 import com.android.tomboati.api.response.PaketMonthResponse;
@@ -42,6 +44,7 @@ public class Repository {
     private ApiInterfaceMasjid apiInterfaceMasjid;
     private ApiInterfaceAlQuran apiInterfaceAlQuran;
     private ApiInterfaceTahlil apiInterfaceTahlil;
+    private ApiInterfaceLokasi apiInterfaceLokasi;
 
     public Repository() {
         this.apiInterfaceTomboAti = ApiClient.getClientTomboAti();
@@ -49,9 +52,12 @@ public class Repository {
         this.apiInterfaceMasjid = ApiClient.getClientMasjid();
         this.apiInterfaceAlQuran = ApiClient.getClientAlQuran();
         this.apiInterfaceTahlil = ApiClient.getClientDoaTahlil();
+        this.apiInterfaceLokasi = ApiClient.getClientLokasi();
     }
 
-    public MutableLiveData<BaseResponse> signOut(String email) {
+    public MutableLiveData<BaseResponse> signOut(
+            String email
+    ) {
         MutableLiveData<BaseResponse> listMutableLiveData = new MutableLiveData<>();
         apiInterfaceTomboAti.signOut(
                 email
@@ -95,7 +101,16 @@ public class Repository {
         return listMutableLiveData;
     }
 
-    public MutableLiveData<BaseResponse> signUp(RequestBody noKTP, RequestBody email, RequestBody password, RequestBody namaLengkap, RequestBody noHP, RequestBody token, MultipartBody.Part fileKTP, MultipartBody.Part foto) {
+    public MutableLiveData<BaseResponse> signUp(
+            RequestBody noKTP,
+            RequestBody email,
+            RequestBody password,
+            RequestBody namaLengkap,
+            RequestBody noHP,
+            RequestBody token,
+            MultipartBody.Part fileKTP,
+            MultipartBody.Part foto
+    ) {
         MutableLiveData<BaseResponse> baseResponseMutableLiveData = new MutableLiveData<>();
         apiInterfaceTomboAti.signUp(
                 noKTP,
@@ -145,7 +160,11 @@ public class Repository {
         return mutableLiveData;
     }
 
-    public MutableLiveData<BaseResponse> sendChat(RequestBody message, RequestBody idChatRoom, MultipartBody.Part img) {
+    public MutableLiveData<BaseResponse> sendChat(
+            RequestBody message,
+            RequestBody idChatRoom,
+            MultipartBody.Part img
+    ) {
         MutableLiveData<BaseResponse> mutableLiveData = new MutableLiveData<>();
 
         apiInterfaceTomboAti.sendChat(
@@ -170,7 +189,14 @@ public class Repository {
         return mutableLiveData;
     }
 
-    public MutableLiveData<JadwalSholatResponse> jadwalSholat(int year, int month, int day, double latitude, double longitude, int timezone) {
+    public MutableLiveData<JadwalSholatResponse> jadwalSholat(
+            int year,
+            int month,
+            int day,
+            double latitude,
+            double longitude,
+            int timezone
+    ) {
         MutableLiveData<JadwalSholatResponse> data = new MutableLiveData<>();
         apiInterfaceTomboAtiJadwalSholat.jadwalSholat(
                 year,
@@ -196,7 +222,12 @@ public class Repository {
         return data;
     }
 
-    public MutableLiveData<List<MasjidResponse.Feature>> masjid(String query, String proximity, int limit, String accessToken) {
+    public MutableLiveData<List<MasjidResponse.Feature>> masjid(
+            String query,
+            String proximity,
+            int limit,
+            String accessToken
+    ) {
         MutableLiveData<List<MasjidResponse.Feature>> data = new MutableLiveData<>();
         apiInterfaceMasjid.getMasjidTerdekat(
                 query,
@@ -239,7 +270,9 @@ public class Repository {
         return data;
     }
 
-    public MutableLiveData<AyatResponse> getAyat(String idSurah) {
+    public MutableLiveData<AyatResponse> getAyat(
+            String idSurah
+    ) {
         MutableLiveData<AyatResponse> data = new MutableLiveData<>();
         apiInterfaceAlQuran.getAyat(
                 idSurah
@@ -298,7 +331,10 @@ public class Repository {
         return data;
     }
 
-    public MutableLiveData<PaketResponse> getPaket(String paket, String bulan) {
+    public MutableLiveData<PaketResponse> getPaket(
+            String paket,
+            String bulan
+    ) {
         MutableLiveData<PaketResponse> data = new MutableLiveData<>();
         apiInterfaceTomboAti.getPaket(
                 paket,
@@ -320,7 +356,9 @@ public class Repository {
         return data;
     }
 
-    public MutableLiveData<PaketWisataResponse> getPaketWisata(String paket, String bulan) {
+    public MutableLiveData<PaketWisataResponse> getPaketWisata(
+            String paket, String bulan
+    ) {
         MutableLiveData<PaketWisataResponse> data = new MutableLiveData<>();
         apiInterfaceTomboAti.getPaketWisata(
                 paket,
@@ -342,7 +380,9 @@ public class Repository {
         return data;
     }
 
-    public MutableLiveData<PaketResponse> getDetailPaket(String idPaket) {
+    public MutableLiveData<PaketResponse> getDetailPaket(
+            String idPaket
+    ) {
         MutableLiveData<PaketResponse> data = new MutableLiveData<>();
         apiInterfaceTomboAti.getDetailPaket(
                 idPaket
@@ -363,7 +403,9 @@ public class Repository {
         return data;
     }
 
-    public MutableLiveData<PaketWisataResponse> getDetailPaketWisata(String idPaketWisata) {
+    public MutableLiveData<PaketWisataResponse> getDetailPaketWisata(
+            String idPaketWisata
+    ) {
         MutableLiveData<PaketWisataResponse> data = new MutableLiveData<>();
         apiInterfaceTomboAti.getDetailPaketWisata(
                 idPaketWisata
@@ -422,7 +464,13 @@ public class Repository {
         return data;
     }
 
-    public MutableLiveData<BaseResponse> updateProfile(String idUser, RequestBody noKTP, RequestBody email, RequestBody namaLengkap, RequestBody noHP) {
+    public MutableLiveData<BaseResponse> updateProfile(
+            String idUser,
+            RequestBody noKTP,
+            RequestBody email,
+            RequestBody namaLengkap,
+            RequestBody noHP
+    ) {
         MutableLiveData<BaseResponse> baseResponseMutableLiveData = new MutableLiveData<>();
         apiInterfaceTomboAti.updateProfile(
                 idUser,
@@ -447,7 +495,10 @@ public class Repository {
         return baseResponseMutableLiveData;
     }
 
-    public MutableLiveData<BaseResponse> updateFileKTP(String idUser, MultipartBody.Part fileKTP) {
+    public MutableLiveData<BaseResponse> updateFileKTP(
+            String idUser,
+            MultipartBody.Part fileKTP
+    ) {
         MutableLiveData<BaseResponse> baseResponseMutableLiveData = new MutableLiveData<>();
         apiInterfaceTomboAti.updateFileKTP(
                 idUser,
@@ -469,7 +520,10 @@ public class Repository {
         return baseResponseMutableLiveData;
     }
 
-    public MutableLiveData<BaseResponse> updateFoto(String idUser, MultipartBody.Part foto) {
+    public MutableLiveData<BaseResponse> updateFoto(
+            String idUser,
+            MultipartBody.Part foto
+    ) {
         MutableLiveData<BaseResponse> baseResponseMutableLiveData = new MutableLiveData<>();
         apiInterfaceTomboAti.updateFoto(
                 idUser,
@@ -491,7 +545,9 @@ public class Repository {
         return baseResponseMutableLiveData;
     }
 
-    public MutableLiveData<PaketMonthResponse> getPaketMonth(String paket) {
+    public MutableLiveData<PaketMonthResponse> getPaketMonth(
+            String paket
+    ) {
         MutableLiveData<PaketMonthResponse> data = new MutableLiveData<>();
         apiInterfaceTomboAti.getPaketMonth(
                 paket
@@ -512,7 +568,9 @@ public class Repository {
         return data;
     }
 
-    public MutableLiveData<PaketMonthResponse> getPaketWisataMonth(String paket) {
+    public MutableLiveData<PaketMonthResponse> getPaketWisataMonth(
+            String paket
+    ) {
         MutableLiveData<PaketMonthResponse> data = new MutableLiveData<>();
         apiInterfaceTomboAti.getPaketWisataMonth(
                 paket
@@ -609,7 +667,9 @@ public class Repository {
         return data;
     }
 
-    public MutableLiveData<ItteneraryResponse> getIttenerary(String idPaket) {
+    public MutableLiveData<ItteneraryResponse> getIttenerary(
+            String idPaket
+    ) {
         MutableLiveData<ItteneraryResponse> data = new MutableLiveData<>();
         apiInterfaceTomboAti.getIttenerary(
                 idPaket
@@ -630,7 +690,9 @@ public class Repository {
         return data;
     }
 
-    public MutableLiveData<ItteneraryResponse> getItteneraryWisata(String idWisataHalal) {
+    public MutableLiveData<ItteneraryResponse> getItteneraryWisata(
+            String idWisataHalal
+    ) {
         MutableLiveData<ItteneraryResponse> data = new MutableLiveData<>();
         apiInterfaceTomboAti.getItteneraryWisata(
                 idWisataHalal
@@ -667,6 +729,169 @@ public class Repository {
             public void onFailure(Call<BaseResponse> call, Throwable t) {
                 data.postValue(null);
                 Log.e("resetPassword", t.getMessage());
+            }
+        });
+        return data;
+    }
+
+    public MutableLiveData<BaseResponse> pendaftaran(
+            RequestBody idUserRegister,
+            RequestBody email,
+            RequestBody nomorPaspor,
+            RequestBody tempatDikeluarkan,
+            RequestBody tanggalPenerbitanPaspor,
+            RequestBody tanggalBerakhirPaspor,
+            RequestBody tempatLahir,
+            RequestBody tanggalLahir,
+            RequestBody jenisKelamin,
+            RequestBody statusPerkawinan,
+            RequestBody kewarganegaraan,
+            RequestBody alamat,
+            RequestBody kelurahan,
+            RequestBody kecamatan,
+            RequestBody kotaKabupaten,
+            RequestBody provinsi,
+            RequestBody kodePOS,
+            RequestBody nomorHP,
+            RequestBody pekerjaan,
+            RequestBody riwayatPenyakit,
+            RequestBody namaLengkap,
+            MultipartBody.Part fileKTP,
+            MultipartBody.Part fileKK,
+            MultipartBody.Part filePaspor,
+            MultipartBody.Part fileBukuNikah,
+            MultipartBody.Part fileAkteKelahiran,
+            MultipartBody.Part ttdPendaftar,
+            MultipartBody.Part fcKTPAlmarhum,
+            MultipartBody.Part fcKKAlmarhum,
+            MultipartBody.Part fcFotoAlmarhum
+    ) {
+        MutableLiveData<BaseResponse> baseResponseMutableLiveData = new MutableLiveData<>();
+        apiInterfaceTomboAti.pendaftaran(
+                idUserRegister,
+                email,
+                nomorPaspor,
+                tempatDikeluarkan,
+                tanggalPenerbitanPaspor,
+                tanggalBerakhirPaspor,
+                tempatLahir,
+                tanggalLahir,
+                jenisKelamin,
+                statusPerkawinan,
+                kewarganegaraan,
+                alamat,
+                kelurahan,
+                kecamatan,
+                kotaKabupaten,
+                provinsi,
+                kodePOS,
+                nomorHP,
+                pekerjaan,
+                riwayatPenyakit,
+                namaLengkap,
+                fileKTP,
+                fileKK,
+                filePaspor,
+                fileBukuNikah,
+                fileAkteKelahiran,
+                ttdPendaftar,
+                fcKTPAlmarhum,
+                fcKKAlmarhum,
+                fcFotoAlmarhum
+        ).enqueue(new Callback<BaseResponse>() {
+            @Override
+            public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
+                if (response.code() == 200) {
+                    baseResponseMutableLiveData.postValue(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<BaseResponse> call, Throwable t) {
+                baseResponseMutableLiveData.postValue(null);
+                Log.e("signUp", t.getMessage());
+            }
+        });
+        return baseResponseMutableLiveData;
+    }
+
+    public MutableLiveData<List<LokasiResponse>> getPropinsi() {
+        MutableLiveData<List<LokasiResponse>> data = new MutableLiveData<>();
+        apiInterfaceLokasi.getPropinsi().enqueue(new Callback<List<LokasiResponse>>() {
+            @Override
+            public void onResponse(Call<List<LokasiResponse>> call, Response<List<LokasiResponse>> response) {
+                if (response.code() == 200) {
+                    data.postValue(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<LokasiResponse>> call, Throwable t) {
+                data.postValue(null);
+                Log.e("getPropinsi", t.getMessage());
+            }
+        });
+        return data;
+    }
+
+    public MutableLiveData<List<LokasiResponse>> getKabupaten(String id) {
+        MutableLiveData<List<LokasiResponse>> data = new MutableLiveData<>();
+        apiInterfaceLokasi.getKabupaten(
+                id
+        ).enqueue(new Callback<List<LokasiResponse>>() {
+            @Override
+            public void onResponse(Call<List<LokasiResponse>> call, Response<List<LokasiResponse>> response) {
+                if (response.code() == 200) {
+                    data.postValue(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<LokasiResponse>> call, Throwable t) {
+                data.postValue(null);
+                Log.e("getKabupaten", t.getMessage());
+            }
+        });
+        return data;
+    }
+
+    public MutableLiveData<List<LokasiResponse>> getKecamatan(String id) {
+        MutableLiveData<List<LokasiResponse>> data = new MutableLiveData<>();
+        apiInterfaceLokasi.getKecamatan(
+                id
+        ).enqueue(new Callback<List<LokasiResponse>>() {
+            @Override
+            public void onResponse(Call<List<LokasiResponse>> call, Response<List<LokasiResponse>> response) {
+                if (response.code() == 200) {
+                    data.postValue(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<LokasiResponse>> call, Throwable t) {
+                data.postValue(null);
+                Log.e("getKecamatan", t.getMessage());
+            }
+        });
+        return data;
+    }
+
+    public MutableLiveData<List<LokasiResponse>> getKelurahan(String id) {
+        MutableLiveData<List<LokasiResponse>> data = new MutableLiveData<>();
+        apiInterfaceLokasi.getKelurahan(
+                id
+        ).enqueue(new Callback<List<LokasiResponse>>() {
+            @Override
+            public void onResponse(Call<List<LokasiResponse>> call, Response<List<LokasiResponse>> response) {
+                if (response.code() == 200) {
+                    data.postValue(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<LokasiResponse>> call, Throwable t) {
+                data.postValue(null);
+                Log.e("getKelurahan", t.getMessage());
             }
         });
         return data;

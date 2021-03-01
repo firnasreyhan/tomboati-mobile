@@ -14,8 +14,7 @@ import android.os.IBinder;
 import android.provider.Settings;
 import android.util.Log;
 
-import com.android.tomboati.R;
-import com.android.tomboati.view.activity.ArahKiblatActivity;
+import com.android.tomboati.view.activity.sholat.ArahKiblatActivity;
 
 public class GPSTracker extends Service implements LocationListener {
     private final Context mContext;

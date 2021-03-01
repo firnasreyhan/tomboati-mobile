@@ -147,4 +147,39 @@ public interface ApiInterfaceTomboAti {
     Call<BaseResponse> resetPassword(
             @Query("idUserRegister") String idUserRegister
     );
+
+    @Multipart
+    @POST("pendaftaran/pendaftaran_post")
+    Call<BaseResponse> pendaftaran(
+            @Part("idUserRegister") RequestBody idUserRegister,
+            @Part("email") RequestBody email,
+            @Part("nomorPaspor") RequestBody nomorPaspor,
+            @Part("tempatDikeluarkan") RequestBody tempatDikeluarkan,
+            @Part("tanggalPenerbitanPaspor") RequestBody tanggalPenerbitanPaspor,
+            @Part("tanggalBerakhirPaspor") RequestBody tanggalBerakhirPaspor,
+            @Part("tempatLahir") RequestBody tempatLahir,
+            @Part("tanggalLahir") RequestBody tanggalLahir,
+            @Part("jenisKelamin") RequestBody jenisKelamin,
+            @Part("statusPerkawinan") RequestBody statusPerkawinan,
+            @Part("kewarganegaraan") RequestBody kewarganegaraan,
+            @Part("alamat") RequestBody alamat,
+            @Part("kelurahan") RequestBody kelurahan,
+            @Part("kecamatan") RequestBody kecamatan,
+            @Part("kotaKabupaten") RequestBody kotaKabupaten,
+            @Part("provinsi") RequestBody provinsi,
+            @Part("kodePOS") RequestBody kodePOS,
+            @Part("nomorHP") RequestBody nomorHP,
+            @Part("pekerjaan") RequestBody pekerjaan,
+            @Part("riwayatPenyakit") RequestBody riwayatPenyakit,
+            @Part("namaLengkap") RequestBody namaLengkap,
+            @Part MultipartBody.Part fileKTP,
+            @Part MultipartBody.Part fileKK,
+            @Part MultipartBody.Part filePaspor,
+            @Part MultipartBody.Part fileBukuNikah,
+            @Part MultipartBody.Part fileAkteKelahiran,
+            @Part MultipartBody.Part ttdPendaftar,
+            @Part MultipartBody.Part fcKTPAlmarhum,
+            @Part MultipartBody.Part fcKKAlmarhum,
+            @Part MultipartBody.Part fcFotoAlmarhum
+    );
 }

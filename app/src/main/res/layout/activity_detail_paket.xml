@@ -419,22 +419,10 @@
             android:orientation="horizontal">
 
             <com.google.android.material.button.MaterialButton
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="@dimen/_3sdp"
-                android:layout_weight="1"
-                android:fontFamily="@font/catamaran_bold"
-                android:text="Simpan"
-                android:textAllCaps="false"
-                app:strokeColor="@color/dark_green"
-                android:textColor="@color/dark_green"/>
-
-            <com.google.android.material.button.MaterialButton
+                android:id="@+id/materialButtonPesan"
                 style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/_3sdp"
                 android:layout_weight="1"
                 android:fontFamily="@font/catamaran_bold"
                 android:text="Pesan"
