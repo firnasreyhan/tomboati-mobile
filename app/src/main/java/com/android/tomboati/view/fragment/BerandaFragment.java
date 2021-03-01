@@ -60,6 +60,7 @@ import com.intentfilter.androidpermissions.models.DeniedPermissions;
 import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType;
 import com.smarteist.autoimageslider.SliderAnimations;
 import com.smarteist.autoimageslider.SliderView;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -246,45 +247,60 @@ public class BerandaFragment extends Fragment {
                     if (!paketResponse.isError()) {
                         if (!paketResponse.getData().isEmpty()) {
                             if (paketResponse.getData().get(0) != null) {
-                                Glide.with(getActivity().getApplicationContext())
+                                Picasso.get()
                                         .load(paketResponse.getData().get(0).getImagePaket())
-                                        .diskCacheStrategy(DiskCacheStrategy.ALL)
-                                        .skipMemoryCache(true)
-                                        .dontAnimate()
-                                        .dontTransform()
-                                        .priority(Priority.IMMEDIATE)
-                                        .encodeFormat(Bitmap.CompressFormat.PNG)
-                                        .format(DecodeFormat.DEFAULT)
+                                        .priority(Picasso.Priority.HIGH)
                                         .placeholder(R.drawable.ic_logo)
                                         .into(imageViewPromoHaji1);
+//                                Glide.with(getActivity().getApplicationContext())
+//                                        .load(paketResponse.getData().get(0).getImagePaket())
+//                                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+//                                        .skipMemoryCache(true)
+//                                        .dontAnimate()
+//                                        .dontTransform()
+//                                        .priority(Priority.IMMEDIATE)
+//                                        .encodeFormat(Bitmap.CompressFormat.PNG)
+//                                        .format(DecodeFormat.DEFAULT)
+//                                        .placeholder(R.drawable.ic_logo)
+//                                        .into(imageViewPromoHaji1);
                             }
 
                             if (paketResponse.getData().get(1) != null) {
-                                Glide.with(getActivity().getApplicationContext())
+                                Picasso.get()
                                         .load(paketResponse.getData().get(1).getImagePaket())
-                                        .diskCacheStrategy(DiskCacheStrategy.ALL)
-                                        .skipMemoryCache(true)
-                                        .dontAnimate()
-                                        .dontTransform()
-                                        .priority(Priority.IMMEDIATE)
-                                        .encodeFormat(Bitmap.CompressFormat.PNG)
-                                        .format(DecodeFormat.DEFAULT)
+                                        .priority(Picasso.Priority.HIGH)
                                         .placeholder(R.drawable.ic_logo)
                                         .into(imageViewPromoHaji2);
+//                                Glide.with(getActivity().getApplicationContext())
+//                                        .load(paketResponse.getData().get(1).getImagePaket())
+//                                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+//                                        .skipMemoryCache(true)
+//                                        .dontAnimate()
+//                                        .dontTransform()
+//                                        .priority(Priority.IMMEDIATE)
+//                                        .encodeFormat(Bitmap.CompressFormat.PNG)
+//                                        .format(DecodeFormat.DEFAULT)
+//                                        .placeholder(R.drawable.ic_logo)
+//                                        .into(imageViewPromoHaji2);
                             }
 
                             if (paketResponse.getData().get(2) != null) {
-                                Glide.with(getActivity().getApplicationContext())
+                                Picasso.get()
                                         .load(paketResponse.getData().get(2).getImagePaket())
-                                        .diskCacheStrategy(DiskCacheStrategy.ALL)
-                                        .skipMemoryCache(true)
-                                        .dontAnimate()
-                                        .dontTransform()
-                                        .priority(Priority.IMMEDIATE)
-                                        .encodeFormat(Bitmap.CompressFormat.PNG)
-                                        .format(DecodeFormat.DEFAULT)
+                                        .priority(Picasso.Priority.HIGH)
                                         .placeholder(R.drawable.ic_logo)
                                         .into(imageViewPromoHaji3);
+//                                Glide.with(getActivity().getApplicationContext())
+//                                        .load(paketResponse.getData().get(2).getImagePaket())
+//                                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+//                                        .skipMemoryCache(true)
+//                                        .dontAnimate()
+//                                        .dontTransform()
+//                                        .priority(Priority.IMMEDIATE)
+//                                        .encodeFormat(Bitmap.CompressFormat.PNG)
+//                                        .format(DecodeFormat.DEFAULT)
+//                                        .placeholder(R.drawable.ic_logo)
+//                                        .into(imageViewPromoHaji3);
                             }
                         }
                     }
@@ -297,45 +313,60 @@ public class BerandaFragment extends Fragment {
                     if (!paketWisataResponse.isError()) {
                         if (!paketWisataResponse.getData().isEmpty()) {
                             if (paketWisataResponse.getData().get(0) != null) {
-                                Glide.with(getActivity().getApplicationContext())
+                                Picasso.get()
                                         .load(paketWisataResponse.getData().get(0).getImageWisata())
-                                        .diskCacheStrategy(DiskCacheStrategy.ALL)
-                                        .skipMemoryCache(true)
-                                        .dontAnimate()
-                                        .dontTransform()
-                                        .priority(Priority.IMMEDIATE)
-                                        .encodeFormat(Bitmap.CompressFormat.PNG)
-                                        .format(DecodeFormat.DEFAULT)
+                                        .priority(Picasso.Priority.HIGH)
                                         .placeholder(R.drawable.ic_logo)
                                         .into(imageViewPromoTour1);
+//                                Glide.with(getActivity().getApplicationContext())
+//                                        .load(paketWisataResponse.getData().get(0).getImageWisata())
+//                                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+//                                        .skipMemoryCache(true)
+//                                        .dontAnimate()
+//                                        .dontTransform()
+//                                        .priority(Priority.IMMEDIATE)
+//                                        .encodeFormat(Bitmap.CompressFormat.PNG)
+//                                        .format(DecodeFormat.DEFAULT)
+//                                        .placeholder(R.drawable.ic_logo)
+//                                        .into(imageViewPromoTour1);
                             }
 
                             if (paketWisataResponse.getData().get(1) != null) {
-                                Glide.with(getActivity().getApplicationContext())
+                                Picasso.get()
                                         .load(paketWisataResponse.getData().get(1).getImageWisata())
-                                        .diskCacheStrategy(DiskCacheStrategy.ALL)
-                                        .skipMemoryCache(true)
-                                        .dontAnimate()
-                                        .dontTransform()
-                                        .priority(Priority.IMMEDIATE)
-                                        .encodeFormat(Bitmap.CompressFormat.PNG)
-                                        .format(DecodeFormat.DEFAULT)
+                                        .priority(Picasso.Priority.HIGH)
                                         .placeholder(R.drawable.ic_logo)
                                         .into(imageViewPromoTour2);
+//                                Glide.with(getActivity().getApplicationContext())
+//                                        .load(paketWisataResponse.getData().get(1).getImageWisata())
+//                                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+//                                        .skipMemoryCache(true)
+//                                        .dontAnimate()
+//                                        .dontTransform()
+//                                        .priority(Priority.IMMEDIATE)
+//                                        .encodeFormat(Bitmap.CompressFormat.PNG)
+//                                        .format(DecodeFormat.DEFAULT)
+//                                        .placeholder(R.drawable.ic_logo)
+//                                        .into(imageViewPromoTour2);
                             }
 
                             if (paketWisataResponse.getData().get(2) != null) {
-                                Glide.with(getActivity().getApplicationContext())
+                                Picasso.get()
                                         .load(paketWisataResponse.getData().get(2).getImageWisata())
-                                        .diskCacheStrategy(DiskCacheStrategy.ALL)
-                                        .skipMemoryCache(true)
-                                        .dontAnimate()
-                                        .dontTransform()
-                                        .priority(Priority.IMMEDIATE)
-                                        .encodeFormat(Bitmap.CompressFormat.PNG)
-                                        .format(DecodeFormat.DEFAULT)
+                                        .priority(Picasso.Priority.HIGH)
                                         .placeholder(R.drawable.ic_logo)
                                         .into(imageViewPromoTour3);
+//                                Glide.with(getActivity().getApplicationContext())
+//                                        .load(paketWisataResponse.getData().get(2).getImageWisata())
+//                                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+//                                        .skipMemoryCache(true)
+//                                        .dontAnimate()
+//                                        .dontTransform()
+//                                        .priority(Priority.IMMEDIATE)
+//                                        .encodeFormat(Bitmap.CompressFormat.PNG)
+//                                        .format(DecodeFormat.DEFAULT)
+//                                        .placeholder(R.drawable.ic_logo)
+//                                        .into(imageViewPromoTour3);
                             }
                         }
                     }
@@ -347,17 +378,22 @@ public class BerandaFragment extends Fragment {
                 public void onChanged(NewsResponse newsResponse) {
                     if (!newsResponse.isError()) {
                         if (!newsResponse.getData().isEmpty()) {
-                            Glide.with(getActivity().getApplicationContext())
+                            Picasso.get()
                                     .load(newsResponse.getData().get(0).getFoto())
-                                    .diskCacheStrategy(DiskCacheStrategy.ALL)
-                                    .skipMemoryCache(true)
-                                    .dontAnimate()
-                                    .dontTransform()
-                                    .priority(Priority.IMMEDIATE)
-                                    .encodeFormat(Bitmap.CompressFormat.PNG)
-                                    .format(DecodeFormat.DEFAULT)
+                                    .priority(Picasso.Priority.HIGH)
                                     .placeholder(R.drawable.ic_logo)
                                     .into(imageViewNews);
+//                            Glide.with(getActivity().getApplicationContext())
+//                                    .load(newsResponse.getData().get(0).getFoto())
+//                                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+//                                    .skipMemoryCache(true)
+//                                    .dontAnimate()
+//                                    .dontTransform()
+//                                    .priority(Priority.IMMEDIATE)
+//                                    .encodeFormat(Bitmap.CompressFormat.PNG)
+//                                    .format(DecodeFormat.DEFAULT)
+//                                    .placeholder(R.drawable.ic_logo)
+//                                    .into(imageViewNews);
 
                             textViewJudulNews.setText(newsResponse.getData().get(0).getJudulNews());
 
@@ -647,16 +683,21 @@ public class BerandaFragment extends Fragment {
     private void setAkun() {
         textViewNamaLengkap.setText(AppPreference.getUser(getContext()).getNamaLengkap());
 
-        Glide.with(getActivity().getApplicationContext())
+        Picasso.get()
                 .load(AppPreference.getUser(getActivity()).getFoto())
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .skipMemoryCache(true)
-                .dontAnimate()
-                .dontTransform()
-                .priority(Priority.IMMEDIATE)
-                .encodeFormat(Bitmap.CompressFormat.PNG)
-                .format(DecodeFormat.DEFAULT)
+                .priority(Picasso.Priority.HIGH)
                 .placeholder(R.drawable.ic_logo)
                 .into(shapeableImageViewFoto);
+//        Glide.with(getActivity().getApplicationContext())
+//                .load(AppPreference.getUser(getActivity()).getFoto())
+//                .diskCacheStrategy(DiskCacheStrategy.ALL)
+//                .skipMemoryCache(true)
+//                .dontAnimate()
+//                .dontTransform()
+//                .priority(Priority.IMMEDIATE)
+//                .encodeFormat(Bitmap.CompressFormat.PNG)
+//                .format(DecodeFormat.DEFAULT)
+//                .placeholder(R.drawable.ic_logo)
+//                .into(shapeableImageViewFoto);
     }
 }
