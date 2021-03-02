@@ -647,14 +647,16 @@
                         android:textSize="@dimen/_14sdp" />
 
                     <ImageView
+                        android:id="@+id/imageViewNews"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_150sdp"
                         android:layout_marginTop="@dimen/_3sdp"
                         android:adjustViewBounds="true"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/ic_langit"/>
+                        android:src="@drawable/ic_logo" />
 
                     <TextView
+                        android:id="@+id/textViewJudulNews"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_3sdp"
@@ -714,29 +716,40 @@
                         android:orientation="horizontal">
 
                         <ImageView
-                            android:layout_width="@dimen/_77sdp"
-                            android:layout_height="@dimen/_77sdp"
+                            android:id="@+id/imageViewPromoTour1"
+                            android:layout_width="@dimen/_80sdp"
+                            android:layout_height="@dimen/_80sdp"
+                            android:layout_marginLeft="@dimen/_5sdp"
+                            android:layout_marginRight="@dimen/_5sdp"
                             android:adjustViewBounds="true"
-                            android:scaleType="fitXY"
-                            android:src="@drawable/ic_promo_tour_1" />
+                            android:scaleType="centerCrop"
+                            android:clickable="true"
+                            android:foreground="?selectableItemBackground"
+                            android:src="@drawable/ic_logo" />
 
                         <ImageView
-                            android:layout_width="@dimen/_77sdp"
-                            android:layout_height="@dimen/_77sdp"
-                            android:layout_marginStart="@dimen/_10sdp"
-                            android:layout_marginLeft="@dimen/_10sdp"
-                            android:layout_marginEnd="@dimen/_10sdp"
-                            android:layout_marginRight="@dimen/_10sdp"
+                            android:id="@+id/imageViewPromoTour2"
+                            android:layout_width="@dimen/_80sdp"
+                            android:layout_height="@dimen/_80sdp"
+                            android:layout_marginLeft="@dimen/_5sdp"
+                            android:layout_marginRight="@dimen/_5sdp"
                             android:adjustViewBounds="true"
-                            android:scaleType="fitXY"
-                            android:src="@drawable/ic_promo_tour_2" />
+                            android:scaleType="centerCrop"
+                            android:clickable="true"
+                            android:foreground="?selectableItemBackground"
+                            android:src="@drawable/ic_logo" />
 
                         <ImageView
-                            android:layout_width="@dimen/_77sdp"
-                            android:layout_height="@dimen/_77sdp"
+                            android:id="@+id/imageViewPromoTour3"
+                            android:layout_width="@dimen/_80sdp"
+                            android:layout_height="@dimen/_80sdp"
+                            android:layout_marginLeft="@dimen/_5sdp"
+                            android:layout_marginRight="@dimen/_5sdp"
                             android:adjustViewBounds="true"
-                            android:scaleType="fitXY"
-                            android:src="@drawable/ic_promo_tour_3"/>
+                            android:scaleType="centerCrop"
+                            android:clickable="true"
+                            android:foreground="?selectableItemBackground"
+                            android:src="@drawable/ic_logo"/>
 
                     </LinearLayout>
 
@@ -770,29 +783,40 @@
                         android:orientation="horizontal">
 
                         <ImageView
-                            android:layout_width="@dimen/_77sdp"
-                            android:layout_height="@dimen/_77sdp"
+                            android:id="@+id/imageViewPromoHaji1"
+                            android:layout_width="@dimen/_80sdp"
+                            android:layout_height="@dimen/_80sdp"
+                            android:layout_marginLeft="@dimen/_5sdp"
+                            android:layout_marginRight="@dimen/_5sdp"
                             android:adjustViewBounds="true"
-                            android:scaleType="fitXY"
-                            android:src="@drawable/ic_promo_haji_1" />
+                            android:scaleType="centerCrop"
+                            android:clickable="true"
+                            android:foreground="?selectableItemBackground"
+                            android:src="@drawable/ic_logo" />
 
                         <ImageView
-                            android:layout_width="@dimen/_77sdp"
-                            android:layout_height="@dimen/_77sdp"
-                            android:layout_marginStart="@dimen/_10sdp"
-                            android:layout_marginLeft="@dimen/_10sdp"
-                            android:layout_marginEnd="@dimen/_10sdp"
-                            android:layout_marginRight="@dimen/_10sdp"
+                            android:id="@+id/imageViewPromoHaji2"
+                            android:layout_width="@dimen/_80sdp"
+                            android:layout_height="@dimen/_80sdp"
+                            android:layout_marginLeft="@dimen/_5sdp"
+                            android:layout_marginRight="@dimen/_5sdp"
                             android:adjustViewBounds="true"
-                            android:scaleType="fitXY"
-                            android:src="@drawable/ic_promo_haji_2" />
+                            android:scaleType="centerCrop"
+                            android:clickable="true"
+                            android:foreground="?selectableItemBackground"
+                            android:src="@drawable/ic_logo"/>
 
                         <ImageView
-                            android:layout_width="@dimen/_77sdp"
-                            android:layout_height="@dimen/_77sdp"
+                            android:id="@+id/imageViewPromoHaji3"
+                            android:layout_width="@dimen/_80sdp"
+                            android:layout_height="@dimen/_80sdp"
+                            android:layout_marginLeft="@dimen/_5sdp"
+                            android:layout_marginRight="@dimen/_5sdp"
                             android:adjustViewBounds="true"
-                            android:scaleType="fitXY"
-                            android:src="@drawable/ic_promo_haji_3" />
+                            android:scaleType="centerCrop"
+                            android:clickable="true"
+                            android:foreground="?selectableItemBackground"
+                            android:src="@drawable/ic_logo"/>
 
                     </LinearLayout>
 
@@ -820,12 +844,13 @@
                         android:textSize="@dimen/_14sdp" />
 
                     <TextView
+                        android:id="@+id/textViewKataMutiara"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_3sdp"
                         android:fontFamily="@font/catamaran_regular"
                         android:gravity="center"
-                        android:text="&quot;Aku percaya, takdir Allah pastilah yang terbaik untukku dan untukmu juga.&quot;"
+                        android:text="&quot;-&quot;"
                         android:textColor="@android:color/black"
                         android:textSize="@dimen/_11sdp" />
 

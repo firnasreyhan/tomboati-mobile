@@ -1,59 +1,420 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@android:color/white"
-    tools:context=".view.activity.WudhuActivity">
+    tools:context=".view.activity.sholat.WudhuActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
         android:background="@color/dark_green"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-    <LinearLayout
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewWudhu"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:background="@color/background" />
 
-        <com.jsibbold.zoomage.ZoomageView
-            android:id="@+id/imageViewContent"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@android:color/white"
-            android:scaleType="fitCenter" />
+    <!--    <androidx.core.widget.NestedScrollView-->
+    <!--        android:visibility="gone"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent">-->
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/dark_green"
-            android:orientation="vertical"
-            android:padding="@dimen/_6sdp">
+    <!--        <LinearLayout-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:orientation="vertical"-->
+    <!--            android:padding="@dimen/_13sdp">-->
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/catamaran_regular"
-                android:text="*Geser kiri dan kanan dengan satu jari untuk berpindah halaman."
-                android:textColor="@android:color/white"
-                android:textStyle="italic" />
+    <!--            <com.codesgood.views.JustifiedTextView-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:fontFamily="@font/catamaran_medium"-->
+    <!--                android:textColor="@android:color/black"-->
+    <!--                android:textSize="@dimen/_13sdp"-->
+    <!--                android:text="Berikut adalah tata cara wudu sebagaimana dijelaskan Imam Al-Ghazali dalam Ihya Uluumiddin:"/>-->
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/catamaran_regular"
-                android:text="*Gunakan dua jari untuk memperbesar halaman."
-                android:textColor="@android:color/white"
-                android:textStyle="italic" />
+    <!--            <com.codesgood.views.JustifiedTextView-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_marginTop="@dimen/_13sdp"-->
+    <!--                android:fontFamily="@font/catamaran_bold"-->
+    <!--                android:textColor="@android:color/black"-->
+    <!--                android:textSize="@dimen/_13sdp"-->
+    <!--                android:text="Bersiwak"/>-->
 
-        </LinearLayout>
+    <!--            <com.codesgood.views.JustifiedTextView-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_marginTop="@dimen/_7sdp"-->
+    <!--                android:fontFamily="@font/catamaran_medium"-->
+    <!--                android:textColor="@android:color/black"-->
+    <!--                android:textSize="@dimen/_13sdp"-->
+    <!--                android:text="Disunahkan membersihkan gigi dan mulut dengan bersiwak sebelum memulai wudu. Jangan lupa meniatkan bersiwak untuk membaca Al-Qur’an dan berzikir kepada Allah Swt di dalam salat.\nImam An-Nawawi dalam Al-Adzkar menyatakan, sejatinya tidak ada doa khusus saat membasuh anggota wudu dari Rasulullah Saw. Akan tetapi diajurkan membaca doa-doa yang diajarkan para ulama salaf."/>-->
 
-    </LinearLayout>
+    <!--            <com.codesgood.views.JustifiedTextView-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_marginTop="@dimen/_13sdp"-->
+    <!--                android:fontFamily="@font/catamaran_bold"-->
+    <!--                android:textColor="@android:color/black"-->
+    <!--                android:textSize="@dimen/_13sdp"-->
+    <!--                android:text="Doa Sebelum Wudhu"/>-->
+
+    <!--            <com.codesgood.views.JustifiedTextView-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_marginTop="@dimen/_7sdp"-->
+    <!--                android:fontFamily="@font/amiri_bold"-->
+    <!--                android:text="بِسْمِ اللهِ الرَّحْمَنِ الرَّحِيْمِ. رَّبِّ أَعُوذُ بِكَ مِنْ هَمَزَاتِ الشَّيَاطِينِ. وَأَعُوْذُ بِكَ رَبِّ أَنْ يَحْضُرُوْنَِ"-->
+    <!--                android:textColor="@android:color/black"-->
+    <!--                android:textSize="@dimen/_24sdp" />-->
+
+    <!--            <com.codesgood.views.JustifiedTextView-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_marginTop="@dimen/_6sdp"-->
+    <!--                android:text="Bismillahirrahmanirrahim. Rabbi a’udzubika min hamazatisy syayatin wa a’udzubika an yahdhurun"-->
+    <!--                android:fontFamily="@font/catamaran_regular"-->
+    <!--                android:textColor="@android:color/black"-->
+    <!--                android:textSize="@dimen/_13sdp"-->
+    <!--                android:textStyle="italic"/>-->
+
+    <!--            <com.codesgood.views.JustifiedTextView-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_marginTop="@dimen/_6sdp"-->
+    <!--                android:text="Dengan nama Allah Yang Maha Pengasih lagi Maha Penyayang. Ya Tuhanku aku berlindung kepada-Mu dari bisikan-bisikan setan. Dan aku berlindung pada-Mu dari kedatangan mereka padaku."-->
+    <!--                android:fontFamily="@font/catamaran_regular"-->
+    <!--                android:textColor="@color/darker_grey"-->
+    <!--                android:textSize="@dimen/_13sdp"/>-->
+
+    <!--            <com.codesgood.views.JustifiedTextView-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_marginTop="@dimen/_13sdp"-->
+    <!--                android:fontFamily="@font/catamaran_bold"-->
+    <!--                android:textColor="@android:color/black"-->
+    <!--                android:textSize="@dimen/_13sdp"-->
+    <!--                android:text="Doa Ketika Menyentuh Air"/>-->
+
+    <!--            <com.codesgood.views.JustifiedTextView-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_marginTop="@dimen/_7sdp"-->
+    <!--                android:fontFamily="@font/amiri_bold"-->
+    <!--                android:text="الحَمْدُ لِلّهِ الَّذِي جَعَلَ المَاءَ طَهُوْرًا"-->
+    <!--                android:textColor="@android:color/black"-->
+    <!--                android:textSize="@dimen/_24sdp" />-->
+
+    <!--            <com.codesgood.views.JustifiedTextView-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_marginTop="@dimen/_6sdp"-->
+    <!--                android:text="Alhamdulillahiladzi ja’alal maa a thahuura"-->
+    <!--                android:fontFamily="@font/catamaran_regular"-->
+    <!--                android:textColor="@android:color/black"-->
+    <!--                android:textSize="@dimen/_13sdp"-->
+    <!--                android:textStyle="italic"/>-->
+
+    <!--            <com.codesgood.views.JustifiedTextView-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_marginTop="@dimen/_6sdp"-->
+    <!--                android:text="Segala puji bagi Allah yang menjadikan air ini suci."-->
+    <!--                android:fontFamily="@font/catamaran_regular"-->
+    <!--                android:textColor="@color/darker_grey"-->
+    <!--                android:textSize="@dimen/_13sdp"/>-->
+
+    <!--            <com.codesgood.views.JustifiedTextView-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_marginTop="@dimen/_13sdp"-->
+    <!--                android:fontFamily="@font/catamaran_bold"-->
+    <!--                android:textColor="@android:color/black"-->
+    <!--                android:textSize="@dimen/_13sdp"-->
+    <!--                android:text="Membasuh Kedua Tangan"/>-->
+
+    <!--            <com.codesgood.views.JustifiedTextView-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_marginTop="@dimen/_7sdp"-->
+    <!--                android:fontFamily="@font/catamaran_medium"-->
+    <!--                android:textColor="@android:color/black"-->
+    <!--                android:textSize="@dimen/_13sdp"-->
+    <!--                android:text="Sebelum membasuh anggota wudu, cucilah kedua tangan tiga kali sambil berdoa"/>-->
+
+    <!--            <com.codesgood.views.JustifiedTextView-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_marginTop="@dimen/_6sdp"-->
+    <!--                android:fontFamily="@font/amiri_bold"-->
+    <!--                android:text="اللَّهُمَّ إِنِّي أّسْأَلُكَ اليُمْنَ وَالبَرَكَةَ وَأَعُوْذُ بِكَ مِنَ الشُّؤْمِ  وَالهَلَكَةِ"-->
+    <!--                android:textColor="@android:color/black"-->
+    <!--                android:textSize="@dimen/_24sdp" />-->
+
+    <!--            <com.codesgood.views.JustifiedTextView-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_marginTop="@dimen/_6sdp"-->
+    <!--                android:text="Allahumma inni as-alukal yumna wal barakata wa a’udzubika minas syu-mi walhalakah"-->
+    <!--                android:fontFamily="@font/catamaran_regular"-->
+    <!--                android:textColor="@android:color/black"-->
+    <!--                android:textSize="@dimen/_13sdp"-->
+    <!--                android:textStyle="italic"/>-->
+
+    <!--            <com.codesgood.views.JustifiedTextView-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_marginTop="@dimen/_6sdp"-->
+    <!--                android:text="Ya Allah aku memohon kepada-Mu keberuntungan dan keberkahan, dan aku berlindung kepada-Mu dari keburukan dan kerusakan."-->
+    <!--                android:fontFamily="@font/catamaran_regular"-->
+    <!--                android:textColor="@color/darker_grey"-->
+    <!--                android:textSize="@dimen/_13sdp"/>-->
+
+    <!--            <com.codesgood.views.JustifiedTextView-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_marginTop="@dimen/_13sdp"-->
+    <!--                android:fontFamily="@font/catamaran_bold"-->
+    <!--                android:textColor="@android:color/black"-->
+    <!--                android:textSize="@dimen/_13sdp"-->
+    <!--                android:text="Niat Wudhu"/>-->
+
+    <!--            <com.codesgood.views.JustifiedTextView-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_marginTop="@dimen/_7sdp"-->
+    <!--                android:fontFamily="@font/catamaran_medium"-->
+    <!--                android:textColor="@android:color/black"-->
+    <!--                android:textSize="@dimen/_13sdp"-->
+    <!--                android:text="Berniat wudu guna menghilangkan hadas kecil untuk melaksanakan salat. Jangan hilangkan niat hingga membasuh wajah. Adapun lafaz niat wudu yaitu"/>-->
+
+    <!--            <com.codesgood.views.JustifiedTextView-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_marginTop="@dimen/_6sdp"-->
+    <!--                android:fontFamily="@font/amiri_bold"-->
+    <!--                android:text="نَوَيْتُ اْلوُضُوْءَ لِرَفْعِ اْلحَدَثِ اْلأَصْغَرِ فَرْضًا لِلّهِ تَعَالَىِ"-->
+    <!--                android:textColor="@android:color/black"-->
+    <!--                android:textSize="@dimen/_24sdp" />-->
+
+    <!--            <com.codesgood.views.JustifiedTextView-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_marginTop="@dimen/_6sdp"-->
+    <!--                android:text="Nawaitul wudhu’a li raf’il hadatsil ashghari fardhan lillahi ta’ala"-->
+    <!--                android:fontFamily="@font/catamaran_regular"-->
+    <!--                android:textColor="@android:color/black"-->
+    <!--                android:textSize="@dimen/_13sdp"-->
+    <!--                android:textStyle="italic"/>-->
+
+    <!--            <com.codesgood.views.JustifiedTextView-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_marginTop="@dimen/_6sdp"-->
+    <!--                android:text="Aku niat berwudu untuk mengangkat hadas kecil fardu karena Allah Ta’ala."-->
+    <!--                android:fontFamily="@font/catamaran_regular"-->
+    <!--                android:textColor="@color/darker_grey"-->
+    <!--                android:textSize="@dimen/_13sdp"/>-->
+
+    <!--            <com.codesgood.views.JustifiedTextView-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_marginTop="@dimen/_13sdp"-->
+    <!--                android:fontFamily="@font/catamaran_bold"-->
+    <!--                android:textColor="@android:color/black"-->
+    <!--                android:textSize="@dimen/_13sdp"-->
+    <!--                android:text="Berkumur"/>-->
+
+    <!--            <com.codesgood.views.JustifiedTextView-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_marginTop="@dimen/_7sdp"-->
+    <!--                android:fontFamily="@font/catamaran_medium"-->
+    <!--                android:textColor="@android:color/black"-->
+    <!--                android:textSize="@dimen/_13sdp"-->
+    <!--                android:text="Tampung air di kedua telapak tangan kemudian berkumurlah dengannya tiga kali. Putarkan air ke seluruh bagian mulut hingga mencapai pangkal tenggorokan dan berdoa"/>-->
+
+    <!--            <com.codesgood.views.JustifiedTextView-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_marginTop="@dimen/_6sdp"-->
+    <!--                android:fontFamily="@font/amiri_bold"-->
+    <!--                android:text="اللَّهُمَّ أَعِنِّيْ عَلَى تِلاَوَةِ  كِتَابِكَ وَكَثْرَةِ الذِّكْرِ لَكَ"-->
+    <!--                android:textColor="@android:color/black"-->
+    <!--                android:textSize="@dimen/_24sdp" />-->
+
+    <!--            <com.codesgood.views.JustifiedTextView-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_marginTop="@dimen/_6sdp"-->
+    <!--                android:text="Allahumma a’inni ‘alaa tilaawati kitaabika wa katsratidz dzikri laka"-->
+    <!--                android:fontFamily="@font/catamaran_regular"-->
+    <!--                android:textColor="@android:color/black"-->
+    <!--                android:textSize="@dimen/_13sdp"-->
+    <!--                android:textStyle="italic"/>-->
+
+    <!--            <com.codesgood.views.JustifiedTextView-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_marginTop="@dimen/_6sdp"-->
+    <!--                android:text="Ya Allah bantulah aku untuk membaca kitab-Mu dan memperbanyak zikir kepada-Mu."-->
+    <!--                android:fontFamily="@font/catamaran_regular"-->
+    <!--                android:textColor="@color/darker_grey"-->
+    <!--                android:textSize="@dimen/_13sdp"/>-->
+
+    <!--            <com.codesgood.views.JustifiedTextView-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_marginTop="@dimen/_13sdp"-->
+    <!--                android:fontFamily="@font/catamaran_bold"-->
+    <!--                android:textColor="@android:color/black"-->
+    <!--                android:textSize="@dimen/_13sdp"-->
+    <!--                android:text="Membasuh Hidung"/>-->
+
+    <!--            <com.codesgood.views.JustifiedTextView-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_marginTop="@dimen/_7sdp"-->
+    <!--                android:text="Memasukkan air ke hidung (Istinsyaq)"-->
+    <!--                android:fontFamily="@font/catamaran_regular"-->
+    <!--                android:textColor="@android:color/black"-->
+    <!--                android:textSize="@dimen/_13sdp"-->
+    <!--                android:textStyle="italic"/>-->
+
+    <!--            <com.codesgood.views.JustifiedTextView-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_marginTop="@dimen/_3sdp"-->
+    <!--                android:fontFamily="@font/catamaran_medium"-->
+    <!--                android:textColor="@android:color/black"-->
+    <!--                android:textSize="@dimen/_13sdp"-->
+    <!--                android:text="Ambil satu cakupan air di tangan, kemudian isap atau masukkanlah air tersebut ke dalam hidung sebanyak tiga kali, bersihkanlah kotoran yang ada di dalam hidung, juga berdoa"/>-->
+
+    <!--            <com.codesgood.views.JustifiedTextView-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_marginTop="@dimen/_6sdp"-->
+    <!--                android:fontFamily="@font/amiri_bold"-->
+    <!--                android:text="اللَّهُمَّ أَرِحْنِيْ رَائِحَةَالجَنَّةِ وَأَنْتَ عَنِّي رَاضٍ"-->
+    <!--                android:textColor="@android:color/black"-->
+    <!--                android:textSize="@dimen/_24sdp" />-->
+
+    <!--            <com.codesgood.views.JustifiedTextView-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_marginTop="@dimen/_6sdp"-->
+    <!--                android:text="Allahumma arihni raaihatal jannati wa anta ‘anni rhadin"-->
+    <!--                android:fontFamily="@font/catamaran_regular"-->
+    <!--                android:textColor="@android:color/black"-->
+    <!--                android:textSize="@dimen/_13sdp"-->
+    <!--                android:textStyle="italic"/>-->
+
+    <!--            <com.codesgood.views.JustifiedTextView-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_marginTop="@dimen/_6sdp"-->
+    <!--                android:text="Ya Allah Semoga Engkau menciumkan aku wangi surga dan semoga Engkau rida kepadaku."-->
+    <!--                android:fontFamily="@font/catamaran_regular"-->
+    <!--                android:textColor="@color/darker_grey"-->
+    <!--                android:textSize="@dimen/_13sdp"/>-->
+
+    <!--            <com.codesgood.views.JustifiedTextView-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_marginTop="@dimen/_16sdp"-->
+    <!--                android:text="Mengeluarkan air dari hidung (Istintsaar)"-->
+    <!--                android:fontFamily="@font/catamaran_regular"-->
+    <!--                android:textColor="@android:color/black"-->
+    <!--                android:textSize="@dimen/_13sdp"-->
+    <!--                android:textStyle="italic"/>-->
+
+    <!--            <com.codesgood.views.JustifiedTextView-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_marginTop="@dimen/_3sdp"-->
+    <!--                android:fontFamily="@font/catamaran_medium"-->
+    <!--                android:textColor="@android:color/black"-->
+    <!--                android:textSize="@dimen/_13sdp"-->
+    <!--                android:text="Keluarkanlah air dari hidung dan bacalah"/>-->
+
+    <!--            <com.codesgood.views.JustifiedTextView-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_marginTop="@dimen/_6sdp"-->
+    <!--                android:fontFamily="@font/amiri_bold"-->
+    <!--                android:text="اللّهُمَّ إِنِّي أَعُوذُ بِكَ مِنْ رَوَائِحِ النَّارِ وَسُوءِ الدَّارِ"-->
+    <!--                android:textColor="@android:color/black"-->
+    <!--                android:textSize="@dimen/_24sdp" />-->
+
+    <!--            <com.codesgood.views.JustifiedTextView-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_marginTop="@dimen/_6sdp"-->
+    <!--                android:text="Allahumma inni a’udzubika min rawaaihin naar wa suuid daar"-->
+    <!--                android:fontFamily="@font/catamaran_regular"-->
+    <!--                android:textColor="@android:color/black"-->
+    <!--                android:textSize="@dimen/_13sdp"-->
+    <!--                android:textStyle="italic"/>-->
+
+    <!--            <com.codesgood.views.JustifiedTextView-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:layout_marginTop="@dimen/_6sdp"-->
+    <!--                android:text="Ya Allah sesungguhnya aku berlindung kepada-Mu dari bau neraka dan keburukan tempat tinggal (di neraka)."-->
+    <!--                android:fontFamily="@font/catamaran_regular"-->
+    <!--                android:textColor="@color/darker_grey"-->
+    <!--                android:textSize="@dimen/_13sdp"/>-->
+
+    <!--        </LinearLayout>-->
+
+    <!--    </androidx.core.widget.NestedScrollView>-->
+
+    <!--    <LinearLayout-->
+    <!--        android:visibility="gone"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent"-->
+    <!--        android:orientation="vertical">-->
+
+    <!--        <com.jsibbold.zoomage.ZoomageView-->
+    <!--            android:id="@+id/imageViewContent"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="match_parent"-->
+    <!--            android:layout_weight="1"-->
+    <!--            android:background="@android:color/white"-->
+    <!--            android:scaleType="fitCenter" />-->
+
+    <!--        <LinearLayout-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:background="@color/dark_green"-->
+    <!--            android:orientation="vertical"-->
+    <!--            android:padding="@dimen/_6sdp">-->
+
+    <!--            <TextView-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:fontFamily="@font/catamaran_regular"-->
+    <!--                android:text="*Geser kiri dan kanan dengan satu jari untuk berpindah halaman."-->
+    <!--                android:textColor="@android:color/white"-->
+    <!--                android:textStyle="italic" />-->
+
+    <!--            <TextView-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:fontFamily="@font/catamaran_regular"-->
+    <!--                android:text="*Gunakan dua jari untuk memperbesar halaman."-->
+    <!--                android:textColor="@android:color/white"-->
+    <!--                android:textStyle="italic" />-->
+
+    <!--        </LinearLayout>-->
+
+    <!--    </LinearLayout>-->
 
 </LinearLayout>

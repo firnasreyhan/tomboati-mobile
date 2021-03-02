@@ -26,6 +26,12 @@ public class TahlilResponse {
         @Expose
         private String translation;
 
+        public Datum(String title, String arabic, String translation) {
+            this.title = title;
+            this.arabic = arabic;
+            this.translation = translation;
+        }
+
         public String getTitle() {
             return title;
         }
@@ -37,6 +43,8 @@ public class TahlilResponse {
         public String getTranslation() {
             return translation;
         }
+
+
 
     }
 

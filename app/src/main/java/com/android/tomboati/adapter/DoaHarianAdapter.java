@@ -34,6 +34,7 @@ public class DoaHarianAdapter extends RecyclerView.Adapter<DoaHarianAdapter.View
 
     @Override
     public void onBindViewHolder(@NonNull DoaHarianAdapter.ViewHolder holder, int position) {
+//        holder.tv_no.setText("" + (position + 1));
         holder.nama_doa.setText(response.get(position).getTitle());
         holder.cardViewListDoaHarian.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,11 +58,13 @@ public class DoaHarianAdapter extends RecyclerView.Adapter<DoaHarianAdapter.View
 
         private final CardView cardViewListDoaHarian;
         private final TextView nama_doa;
+//        private final TextView tv_no;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             cardViewListDoaHarian = itemView.findViewById(R.id.cardViewListDoaHarian);
             nama_doa = itemView.findViewById(R.id.nama_doa);
+//            tv_no = itemView.findViewById(R.id.tv_no);
         }
     }
 }

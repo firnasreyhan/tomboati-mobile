@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@android:color/white"
-    tools:context=".view.activity.AsmaulHusnaActivity">
+    tools:context=".view.activity.doa_dzikir.AsmaulHusnaActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"

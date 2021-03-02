@@ -654,13 +654,14 @@
     </androidx.core.widget.NestedScrollView>
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/materialButtonSetujuDanLanjutkan"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/dark_green"
         android:fontFamily="@font/catamaran_bold"
         android:padding="12dp"
-        android:text="setuju dan lanjutkan"
-        android:textAllCaps="true"
+        android:text="Setuju dan Lanjutkan"
+        android:textAllCaps="false"
         android:textSize="@dimen/_11sdp" />
 
 </LinearLayout>

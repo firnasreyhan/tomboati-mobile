@@ -111,6 +111,12 @@ dependencies {
     //Material Calendar View
     implementation 'com.applandeo:material-calendar-view:1.7.0'
 
+    //Percentage Progress View
+    implementation 'com.ramijemli.percentagechartview:percentagechartview:0.3.1'
+    
     //znavigator
     implementation 'com.zach.znavigator:znavigator:1.0.0'
+
+    //picasso
+    implementation 'com.squareup.picasso:picasso:2.71828'
 }

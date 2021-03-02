@@ -17,6 +17,7 @@ public class ApiClient {
     private static ApiInterfaceMasjid apiIinterfaceMasjid;
     private static ApiInterfaceAlQuran apiInterfaceAlQuran;
     private static ApiInterfaceTahlil apiInterfaceTahlil;
+    private static ApiInterfaceLokasi apiInterfaceLokasi;
 
     public static ApiInterfaceTomboAti getClientTomboAti() {
         if (apiInterfaceTomboAti == null) {
@@ -146,5 +147,31 @@ public class ApiClient {
             apiInterfaceTahlil = retrofit.create(ApiInterfaceTahlil.class);
         }
         return apiInterfaceTahlil;
+    }
+
+    public static ApiInterfaceLokasi getClientLokasi() {
+        if (apiInterfaceLokasi == null) {
+            Retrofit retrofit;
+
+            HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
+            httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+
+            OkHttpClient okHttpClient = new OkHttpClient.Builder()
+                    .readTimeout(60, TimeUnit.SECONDS)
+                    .connectTimeout(60, TimeUnit.SECONDS)
+                    .addInterceptor(httpLoggingInterceptor)
+                    .build();
+
+            Gson builder = new GsonBuilder().setLenient().create();
+
+            retrofit = new Retrofit.Builder()
+                    .addConverterFactory(GsonConverterFactory.create(builder))
+                    .client(okHttpClient)
+                    .baseUrl(Constant.baseURLLokasi)
+                    .build();
+
+            apiInterfaceLokasi = retrofit.create(ApiInterfaceLokasi.class);
+        }
+        return apiInterfaceLokasi;
     }
 }

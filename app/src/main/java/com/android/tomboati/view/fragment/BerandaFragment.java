@@ -3,7 +3,6 @@ package com.android.tomboati.view.fragment;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.location.Address;
 import android.location.Location;
@@ -24,28 +23,27 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.tomboati.R;
 import com.android.tomboati.adapter.SliderAdapter;
 import com.android.tomboati.api.response.JadwalSholatResponse;
-import com.android.tomboati.model.SliderModel;
+import com.android.tomboati.api.response.KataMutiaraResponse;
+import com.android.tomboati.api.response.NewsResponse;
+import com.android.tomboati.api.response.PaketResponse;
+import com.android.tomboati.api.response.PaketWisataResponse;
 import com.android.tomboati.preference.AppPreference;
 import com.android.tomboati.utils.Utility;
 import com.android.tomboati.view.activity.AlQuranActivity;
 import com.android.tomboati.view.activity.DetailNewsActivity;
-import com.android.tomboati.view.activity.DoaDzikirActivity;
-import com.android.tomboati.view.activity.JadwalSholatActivity;
+import com.android.tomboati.view.activity.doa_dzikir.DoaDzikirActivity;
 import com.android.tomboati.view.activity.KalenderHijriahActivity;
-import com.android.tomboati.view.activity.SholatActivity;
+import com.android.tomboati.view.activity.sholat.SholatActivity;
 import com.android.tomboati.view.activity.UmrohHajiActivity;
 import com.android.tomboati.view.activity.WisataReligiActivity;
 import com.android.tomboati.viewmodel.BerandaViewModel;
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.Priority;
-import com.bumptech.glide.load.DecodeFormat;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.facebook.shimmer.ShimmerFrameLayout;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.imageview.ShapeableImageView;
@@ -54,8 +52,8 @@ import com.intentfilter.androidpermissions.models.DeniedPermissions;
 import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType;
 import com.smarteist.autoimageslider.SliderAnimations;
 import com.smarteist.autoimageslider.SliderView;
+import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -73,8 +71,10 @@ public class BerandaFragment extends Fragment {
     private CardView cardViewUmrohHaji, cardViewWisataReligi, cardViewDoaDzikir, cardViewSholat, cardViewAlQuran, cardViewKalenderHijriah, cardViewQurbanAqiqah, cardViewKomunitas, cardViewTomboatiChannel, cardViewLiveMekkah;
 
     private ShapeableImageView shapeableImageViewFoto;
-    private TextView textViewNamaLengkap, textViewSortNews;
+    private TextView textViewNamaLengkap, textViewSortNews, textViewKataMutiara, textViewJudulNews;
     private MaterialButton materialButtonDetailNews;
+
+    private ImageView imageViewPromoHaji1, imageViewPromoHaji2, imageViewPromoHaji3, imageViewPromoTour1, imageViewPromoTour2, imageViewPromoTour3, imageViewNews;
 
     private PermissionManager permissionManager;
     private ProgressDialog dialog;
@@ -82,7 +82,7 @@ public class BerandaFragment extends Fragment {
 
     // Check gps provider is enabled
     private boolean isProviderEnable() {
-        return SmartLocation.with(getContext()).location().state().isAnyProviderAvailable();
+        return SmartLocation.with(getActivity()).location().state().isAnyProviderAvailable();
     }
 
     @Override
@@ -92,7 +92,7 @@ public class BerandaFragment extends Fragment {
         berandaViewModel = ViewModelProviders.of(getActivity()).get(BerandaViewModel.class);
         View view = inflater.inflate(R.layout.fragment_beranda, container, false);
         sliderView = view.findViewById(R.id.sliderView);
-        dialog = new ProgressDialog(getContext());
+        dialog = new ProgressDialog(getActivity());
         cardViewUmrohHaji = view.findViewById(R.id.cardViewUmrohHaji);
         cardViewSholat = view.findViewById(R.id.cardViewSholat);
         cardViewWisataReligi = view.findViewById(R.id.cardViewWisataReligi);
@@ -109,6 +109,15 @@ public class BerandaFragment extends Fragment {
         textViewNamaLengkap = view.findViewById(R.id.textViewNamaLengkap);
         textViewSortNews = view.findViewById(R.id.textViewSortNews);
         materialButtonDetailNews = view.findViewById(R.id.materialButtonDetailNews);
+        imageViewPromoHaji1 = view.findViewById(R.id.imageViewPromoHaji1);
+        imageViewPromoHaji2 = view.findViewById(R.id.imageViewPromoHaji2);
+        imageViewPromoHaji3 = view.findViewById(R.id.imageViewPromoHaji3);
+        imageViewPromoTour1 = view.findViewById(R.id.imageViewPromoTour1);
+        imageViewPromoTour2 = view.findViewById(R.id.imageViewPromoTour2);
+        imageViewPromoTour3 = view.findViewById(R.id.imageViewPromoTour3);
+        textViewKataMutiara = view.findViewById(R.id.textViewKataMutiara);
+        textViewJudulNews = view.findViewById(R.id.textViewJudulNews);
+        imageViewNews = view.findViewById(R.id.imageViewNews);
 
         sliderView.setIndicatorAnimation(IndicatorAnimationType.WORM); //set indicator animation by using IndicatorAnimationType. :WORM or THIN_WORM or COLOR or DROP or FILL or NONE or SCALE or SCALE_DOWN or SLIDE and SWAP!!
         sliderView.setSliderTransformAnimation(SliderAnimations.SIMPLETRANSFORMATION);
@@ -118,118 +127,292 @@ public class BerandaFragment extends Fragment {
         sliderView.setAutoCycle(true);
         sliderView.startAutoCycle();
 
-        if (AppPreference.getUser(getContext()) != null) {
-            setAkun();
-        }
-
-        String news = "Liputan6.com, Jakarta - Arab Saudi menangguhkan semua penerbangan internasional menuju negara tersebut selama sepekan. Penangguhan tersebut mulai berlaku Senin 21 Desember 2020. Sehubungan dengan hal ini, maskapai Garuda Indonesia terus melakukan komunikasi intensif dengan otoritas terkait guna memastikan hal yang perlu diantisipasi, menyusul pembatasan operasional layanan penerbangan tersebut.";
-        String[] senteces = news.split("\\. ");
-        Log.e("size", String.valueOf(senteces.length));
-        String shortNews = "";
-        for (int i = 0; i < 3; i++) {
-            shortNews = shortNews + senteces[i] + ". ";
-        }
-        textViewSortNews.setText(shortNews);
+        if (!getActivity().isFinishing()) {
+            if (AppPreference.getUser(getActivity()) != null) {
+                setAkun();
+            }
 
 //        sliderAdapter = new SliderAdapter(list);
 //        sliderView.setSliderAdapter(sliderAdapter);
 
-        cardViewUmrohHaji.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(v.getContext(), UmrohHajiActivity.class));
-            }
-        });
+            cardViewUmrohHaji.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(v.getContext(), UmrohHajiActivity.class));
+                }
+            });
 
-        cardViewSholat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(v.getContext(), SholatActivity.class));
-            }
-        });
+            cardViewSholat.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(v.getContext(), SholatActivity.class));
+                }
+            });
 
-        cardViewDoaDzikir.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(v.getContext(), DoaDzikirActivity.class));
-            }
-        });
+            cardViewDoaDzikir.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(v.getContext(), DoaDzikirActivity.class));
+                }
+            });
 
-        cardViewWisataReligi.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(v.getContext(), WisataReligiActivity.class));
-            }
-        });
+            cardViewWisataReligi.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(v.getContext(), WisataReligiActivity.class));
+                }
+            });
 
-        cardViewTomboatiChannel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/channel/UCwDEM2yv71YDtaoxAjrswLA")));
-            }
-        });
+            cardViewTomboatiChannel.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/channel/UCwDEM2yv71YDtaoxAjrswLA")));
+                }
+            });
 
-        cardViewLiveMekkah.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/watch?v=k2gOsvK8XNM")));
-            }
-        });
+            cardViewLiveMekkah.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/watch?v=k2gOsvK8XNM")));
+                }
+            });
 
-        cardViewAlQuran.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getContext(), AlQuranActivity.class));
-            }
-        });
+            cardViewAlQuran.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(v.getContext(), AlQuranActivity.class));
+                }
+            });
 
-        cardViewKalenderHijriah.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //Toast.makeText(v.getContext(), "Coming Soon...", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(getContext(), KalenderHijriahActivity.class));
-            }
-        });
+            cardViewKalenderHijriah.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //Toast.makeText(v.getContext(), "Coming Soon...", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(v.getContext(), KalenderHijriahActivity.class));
+                }
+            });
 
-        cardViewQurbanAqiqah.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(v.getContext(), "Coming Soon...", Toast.LENGTH_SHORT).show();
-            }
-        });
+            cardViewQurbanAqiqah.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(v.getContext(), "Coming Soon...", Toast.LENGTH_SHORT).show();
+                }
+            });
 
-        cardViewKomunitas.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(v.getContext(), "Coming Soon...", Toast.LENGTH_SHORT).show();
-            }
-        });
+            cardViewKomunitas.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(v.getContext(), "Coming Soon...", Toast.LENGTH_SHORT).show();
+                }
+            });
 
-        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                shimmerFrameLayoutSlider.startShimmer();
-                shimmerFrameLayoutSlider.setVisibility(View.VISIBLE);
-                sliderView.setVisibility(View.GONE);
+            swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+                @Override
+                public void onRefresh() {
+                    shimmerFrameLayoutSlider.startShimmer();
+                    shimmerFrameLayoutSlider.setVisibility(View.VISIBLE);
+                    sliderView.setVisibility(View.GONE);
 //                if (!Utility.getList().isEmpty()) {
 //                    Utility.getList().clear();
 //                    sliderAdapter.notifyDataSetChanged();
 //                }
-                checkLolation();
-                new Handler().postDelayed(new Runnable() {
-                    @Override public void run() {
-                        swipeRefreshLayout.setRefreshing(false);
-                    }
-                }, 3000);
-            }
-        });
+                    checkLolation();
+                    new Handler().postDelayed(new Runnable() {
+                        @Override public void run() {
+                            swipeRefreshLayout.setRefreshing(false);
+                        }
+                    }, 3000);
+                }
+            });
 
-        materialButtonDetailNews.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(v.getContext(), DetailNewsActivity.class));
-            }
-        });
+            materialButtonDetailNews.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(v.getContext(), DetailNewsActivity.class));
+                }
+            });
+
+            berandaViewModel.getPaket().observe(getActivity(), new Observer<PaketResponse>() {
+                @Override
+                public void onChanged(PaketResponse paketResponse) {
+                    if (!paketResponse.isError()) {
+                        if (!paketResponse.getData().isEmpty()) {
+                            if (paketResponse.getData().get(0) != null) {
+                                Picasso.get()
+                                        .load(paketResponse.getData().get(0).getImagePaket())
+                                        .priority(Picasso.Priority.HIGH)
+                                        .placeholder(R.drawable.ic_logo)
+                                        .into(imageViewPromoHaji1);
+//                                Glide.with(getActivity().getApplicationContext())
+//                                        .load(paketResponse.getData().get(0).getImagePaket())
+//                                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+//                                        .skipMemoryCache(true)
+//                                        .dontAnimate()
+//                                        .dontTransform()
+//                                        .priority(Priority.IMMEDIATE)
+//                                        .encodeFormat(Bitmap.CompressFormat.PNG)
+//                                        .format(DecodeFormat.DEFAULT)
+//                                        .placeholder(R.drawable.ic_logo)
+//                                        .into(imageViewPromoHaji1);
+                            }
+
+                            if (paketResponse.getData().get(1) != null) {
+                                Picasso.get()
+                                        .load(paketResponse.getData().get(1).getImagePaket())
+                                        .priority(Picasso.Priority.HIGH)
+                                        .placeholder(R.drawable.ic_logo)
+                                        .into(imageViewPromoHaji2);
+//                                Glide.with(getActivity().getApplicationContext())
+//                                        .load(paketResponse.getData().get(1).getImagePaket())
+//                                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+//                                        .skipMemoryCache(true)
+//                                        .dontAnimate()
+//                                        .dontTransform()
+//                                        .priority(Priority.IMMEDIATE)
+//                                        .encodeFormat(Bitmap.CompressFormat.PNG)
+//                                        .format(DecodeFormat.DEFAULT)
+//                                        .placeholder(R.drawable.ic_logo)
+//                                        .into(imageViewPromoHaji2);
+                            }
+
+                            if (paketResponse.getData().get(2) != null) {
+                                Picasso.get()
+                                        .load(paketResponse.getData().get(2).getImagePaket())
+                                        .priority(Picasso.Priority.HIGH)
+                                        .placeholder(R.drawable.ic_logo)
+                                        .into(imageViewPromoHaji3);
+//                                Glide.with(getActivity().getApplicationContext())
+//                                        .load(paketResponse.getData().get(2).getImagePaket())
+//                                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+//                                        .skipMemoryCache(true)
+//                                        .dontAnimate()
+//                                        .dontTransform()
+//                                        .priority(Priority.IMMEDIATE)
+//                                        .encodeFormat(Bitmap.CompressFormat.PNG)
+//                                        .format(DecodeFormat.DEFAULT)
+//                                        .placeholder(R.drawable.ic_logo)
+//                                        .into(imageViewPromoHaji3);
+                            }
+                        }
+                    }
+                }
+            });
+
+            berandaViewModel.getWisataHalal().observe(getActivity(), new Observer<PaketWisataResponse>() {
+                @Override
+                public void onChanged(PaketWisataResponse paketWisataResponse) {
+                    if (!paketWisataResponse.isError()) {
+                        if (!paketWisataResponse.getData().isEmpty()) {
+                            if (paketWisataResponse.getData().get(0) != null) {
+                                Picasso.get()
+                                        .load(paketWisataResponse.getData().get(0).getImageWisata())
+                                        .priority(Picasso.Priority.HIGH)
+                                        .placeholder(R.drawable.ic_logo)
+                                        .into(imageViewPromoTour1);
+//                                Glide.with(getActivity().getApplicationContext())
+//                                        .load(paketWisataResponse.getData().get(0).getImageWisata())
+//                                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+//                                        .skipMemoryCache(true)
+//                                        .dontAnimate()
+//                                        .dontTransform()
+//                                        .priority(Priority.IMMEDIATE)
+//                                        .encodeFormat(Bitmap.CompressFormat.PNG)
+//                                        .format(DecodeFormat.DEFAULT)
+//                                        .placeholder(R.drawable.ic_logo)
+//                                        .into(imageViewPromoTour1);
+                            }
+
+                            if (paketWisataResponse.getData().get(1) != null) {
+                                Picasso.get()
+                                        .load(paketWisataResponse.getData().get(1).getImageWisata())
+                                        .priority(Picasso.Priority.HIGH)
+                                        .placeholder(R.drawable.ic_logo)
+                                        .into(imageViewPromoTour2);
+//                                Glide.with(getActivity().getApplicationContext())
+//                                        .load(paketWisataResponse.getData().get(1).getImageWisata())
+//                                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+//                                        .skipMemoryCache(true)
+//                                        .dontAnimate()
+//                                        .dontTransform()
+//                                        .priority(Priority.IMMEDIATE)
+//                                        .encodeFormat(Bitmap.CompressFormat.PNG)
+//                                        .format(DecodeFormat.DEFAULT)
+//                                        .placeholder(R.drawable.ic_logo)
+//                                        .into(imageViewPromoTour2);
+                            }
+
+                            if (paketWisataResponse.getData().get(2) != null) {
+                                Picasso.get()
+                                        .load(paketWisataResponse.getData().get(2).getImageWisata())
+                                        .priority(Picasso.Priority.HIGH)
+                                        .placeholder(R.drawable.ic_logo)
+                                        .into(imageViewPromoTour3);
+//                                Glide.with(getActivity().getApplicationContext())
+//                                        .load(paketWisataResponse.getData().get(2).getImageWisata())
+//                                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+//                                        .skipMemoryCache(true)
+//                                        .dontAnimate()
+//                                        .dontTransform()
+//                                        .priority(Priority.IMMEDIATE)
+//                                        .encodeFormat(Bitmap.CompressFormat.PNG)
+//                                        .format(DecodeFormat.DEFAULT)
+//                                        .placeholder(R.drawable.ic_logo)
+//                                        .into(imageViewPromoTour3);
+                            }
+                        }
+                    }
+                }
+            });
+
+            berandaViewModel.getNews().observe(getActivity(), new Observer<NewsResponse>() {
+                @Override
+                public void onChanged(NewsResponse newsResponse) {
+                    if (!newsResponse.isError()) {
+                        if (!newsResponse.getData().isEmpty()) {
+                            Picasso.get()
+                                    .load(newsResponse.getData().get(0).getFoto())
+                                    .priority(Picasso.Priority.HIGH)
+                                    .placeholder(R.drawable.ic_logo)
+                                    .into(imageViewNews);
+//                            Glide.with(getActivity().getApplicationContext())
+//                                    .load(newsResponse.getData().get(0).getFoto())
+//                                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+//                                    .skipMemoryCache(true)
+//                                    .dontAnimate()
+//                                    .dontTransform()
+//                                    .priority(Priority.IMMEDIATE)
+//                                    .encodeFormat(Bitmap.CompressFormat.PNG)
+//                                    .format(DecodeFormat.DEFAULT)
+//                                    .placeholder(R.drawable.ic_logo)
+//                                    .into(imageViewNews);
+
+                            textViewJudulNews.setText(newsResponse.getData().get(0).getJudulNews());
+
+                            String s = newsResponse.getData().get(0).getContentNews().replaceAll("\\<.*?\\>", "");
+                            String[] senteces = s.split("\\. ");
+                            Log.e("size", String.valueOf(senteces.length));
+                            String shortNews = "";
+                            for (int i = 0; i < 5; i++) {
+                                shortNews = shortNews + senteces[i] + ". ";
+                            }
+                            textViewSortNews.setText(shortNews);
+                        }
+                    }
+                }
+            });
+
+            berandaViewModel.getKataMutiara().observe(getActivity(), new Observer<KataMutiaraResponse>() {
+                @Override
+                public void onChanged(KataMutiaraResponse kataMutiaraResponse) {
+                    if (!kataMutiaraResponse.isError()) {
+                        if (!kataMutiaraResponse.getData().isEmpty()) {
+                            String s = kataMutiaraResponse.getData().get(0).getTeksKataMutiara().replaceAll("\\<.*?\\>", "");
+                            textViewKataMutiara.setText(s);
+                        }
+                    }
+                }
+            });
+        }
 
         return view;
     }
@@ -476,7 +659,7 @@ public class BerandaFragment extends Fragment {
 
     private void showProgressDialog() {
         dialog.setMessage("Mohon Tunggu Sebentar...");
-        dialog.setCancelable(false);
+        dialog.setCancelable(true);
         dialog.show();
     }
 
@@ -491,16 +674,21 @@ public class BerandaFragment extends Fragment {
     private void setAkun() {
         textViewNamaLengkap.setText(AppPreference.getUser(getContext()).getNamaLengkap());
 
-        Glide.with(getContext())
-                .load(AppPreference.getUser(getContext()).getFoto())
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .skipMemoryCache(true)
-                .dontAnimate()
-                .dontTransform()
-                .priority(Priority.IMMEDIATE)
-                .encodeFormat(Bitmap.CompressFormat.PNG)
-                .format(DecodeFormat.DEFAULT)
+        Picasso.get()
+                .load(AppPreference.getUser(getActivity()).getFoto())
+                .priority(Picasso.Priority.HIGH)
                 .placeholder(R.drawable.ic_logo)
                 .into(shapeableImageViewFoto);
+//        Glide.with(getActivity().getApplicationContext())
+//                .load(AppPreference.getUser(getActivity()).getFoto())
+//                .diskCacheStrategy(DiskCacheStrategy.ALL)
+//                .skipMemoryCache(true)
+//                .dontAnimate()
+//                .dontTransform()
+//                .priority(Priority.IMMEDIATE)
+//                .encodeFormat(Bitmap.CompressFormat.PNG)
+//                .format(DecodeFormat.DEFAULT)
+//                .placeholder(R.drawable.ic_logo)
+//                .into(shapeableImageViewFoto);
     }
 }
