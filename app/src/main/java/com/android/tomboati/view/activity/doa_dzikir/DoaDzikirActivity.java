@@ -11,6 +11,7 @@ import android.view.View;
 import com.android.tomboati.R;
 import com.android.tomboati.utils.Utility;
 import com.android.tomboati.view.activity.NewAsmaulHusnaActivity;
+import com.android.tomboati.view.activity.TembangSholawatActivity;
 
 public class DoaDzikirActivity extends AppCompatActivity {
     private Toolbar toolbar;

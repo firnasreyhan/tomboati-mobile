@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.widget.NestedScrollView;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
@@ -44,7 +45,7 @@ public class AkunFragment extends Fragment {
     private AkunViewModel akunViewModel;
     private TextInputEditText textInputEditTextEmail, textInputEditTextPassword;
     private MaterialButton materialButtonSignIn, materialButtonSignOut, materialButtonKodeReferral, materialButtonProfileEdit, materialButtonPasswordEdit;
-    private ConstraintLayout constraintLayoutSignIn;
+    private NestedScrollView nestedScrollView;
     private LinearLayout linearLayoutAkun;
     private ShapeableImageView shapeableImageViewFoto;
     private TextView textViewNamaLengkap, textViewNomorHP;
@@ -61,7 +62,7 @@ public class AkunFragment extends Fragment {
         textInputEditTextEmail = view.findViewById(R.id.textInputEditTextEmail);
         textInputEditTextPassword = view.findViewById(R.id.textInputEditTextPassword);
         materialButtonSignIn = view.findViewById(R.id.materialButtonSignIn);
-        nestedScrollViewSignIn = view.findViewById(R.id.constraintLayoutSignIn);
+        nestedScrollView = view.findViewById(R.id.nestedScrollView);
         linearLayoutAkun = view.findViewById(R.id.linearLayoutAkun);
         shapeableImageViewFoto = view.findViewById(R.id.shapeableImageViewFoto);
         textViewNamaLengkap = view.findViewById(R.id.textViewNamaLengkap);
@@ -72,7 +73,7 @@ public class AkunFragment extends Fragment {
         materialButtonPasswordEdit = view.findViewById(R.id.materialButtonPasswordEdit);
 
         if (AppPreference.getUser(getContext()) != null) {
-            constraintLayoutSignIn.setVisibility(View.GONE);
+            nestedScrollView.setVisibility(View.GONE);
             linearLayoutAkun.setVisibility(View.VISIBLE);
 
             setAkun();
@@ -169,7 +170,7 @@ public class AkunFragment extends Fragment {
                 }
             });
         } else {
-            nestedScrollViewSignIn.setVisibility(View.VISIBLE);
+            nestedScrollView.setVisibility(View.VISIBLE);
             linearLayoutAkun.setVisibility(View.GONE);
             textViewSignUp.setOnClickListener(new View.OnClickListener() {
                 @Override

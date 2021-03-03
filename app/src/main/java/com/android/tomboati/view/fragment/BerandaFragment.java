@@ -38,6 +38,7 @@ import com.android.tomboati.preference.AppPreference;
 import com.android.tomboati.utils.Utility;
 import com.android.tomboati.view.activity.AlQuranActivity;
 import com.android.tomboati.view.activity.DetailNewsActivity;
+import com.android.tomboati.view.activity.DetailPaketActivity;
 import com.android.tomboati.view.activity.doa_dzikir.DoaDzikirActivity;
 import com.android.tomboati.view.activity.KalenderHijriahActivity;
 import com.android.tomboati.view.activity.sholat.SholatActivity;
@@ -79,6 +80,8 @@ public class BerandaFragment extends Fragment {
     private PermissionManager permissionManager;
     private ProgressDialog dialog;
     private AlertDialog.Builder alert;
+
+    private String idPaket1, idPaket2, idPaket3, idWisata1, idWisata2, idWisata3;
 
     // Check gps provider is enabled
     private boolean isProviderEnable() {
@@ -238,6 +241,7 @@ public class BerandaFragment extends Fragment {
                     if (!paketResponse.isError()) {
                         if (!paketResponse.getData().isEmpty()) {
                             if (paketResponse.getData().get(0) != null) {
+                                idPaket1 = paketResponse.getData().get(0).getIdPaket();
                                 Picasso.get()
                                         .load(paketResponse.getData().get(0).getImagePaket())
                                         .priority(Picasso.Priority.HIGH)
@@ -257,6 +261,7 @@ public class BerandaFragment extends Fragment {
                             }
 
                             if (paketResponse.getData().get(1) != null) {
+                                idPaket2 = paketResponse.getData().get(1).getIdPaket();
                                 Picasso.get()
                                         .load(paketResponse.getData().get(1).getImagePaket())
                                         .priority(Picasso.Priority.HIGH)
@@ -276,6 +281,7 @@ public class BerandaFragment extends Fragment {
                             }
 
                             if (paketResponse.getData().get(2) != null) {
+                                idPaket3 = paketResponse.getData().get(2).getIdPaket();
                                 Picasso.get()
                                         .load(paketResponse.getData().get(2).getImagePaket())
                                         .priority(Picasso.Priority.HIGH)
@@ -304,6 +310,7 @@ public class BerandaFragment extends Fragment {
                     if (!paketWisataResponse.isError()) {
                         if (!paketWisataResponse.getData().isEmpty()) {
                             if (paketWisataResponse.getData().get(0) != null) {
+                                idWisata1 = paketWisataResponse.getData().get(0).getIdWisataHalal();
                                 Picasso.get()
                                         .load(paketWisataResponse.getData().get(0).getImageWisata())
                                         .priority(Picasso.Priority.HIGH)
@@ -323,6 +330,7 @@ public class BerandaFragment extends Fragment {
                             }
 
                             if (paketWisataResponse.getData().get(1) != null) {
+                                idWisata2 = paketWisataResponse.getData().get(1).getIdWisataHalal();
                                 Picasso.get()
                                         .load(paketWisataResponse.getData().get(1).getImageWisata())
                                         .priority(Picasso.Priority.HIGH)
@@ -342,6 +350,7 @@ public class BerandaFragment extends Fragment {
                             }
 
                             if (paketWisataResponse.getData().get(2) != null) {
+                                idWisata3 = paketWisataResponse.getData().get(2).getIdWisataHalal();
                                 Picasso.get()
                                         .load(paketWisataResponse.getData().get(2).getImageWisata())
                                         .priority(Picasso.Priority.HIGH)
@@ -413,6 +422,60 @@ public class BerandaFragment extends Fragment {
                 }
             });
         }
+
+        imageViewPromoHaji1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), DetailPaketActivity.class);
+                intent.putExtra("ID_PAKET", idPaket1);
+                v.getContext().startActivity(intent);
+            }
+        });
+
+        imageViewPromoHaji2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), DetailPaketActivity.class);
+                intent.putExtra("ID_PAKET", idPaket2);
+                v.getContext().startActivity(intent);
+            }
+        });
+
+        imageViewPromoHaji3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), DetailPaketActivity.class);
+                intent.putExtra("ID_PAKET", idPaket3);
+                v.getContext().startActivity(intent);
+            }
+        });
+
+        imageViewPromoTour1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), DetailPaketActivity.class);
+                intent.putExtra("ID_PAKET_WISATA", idWisata1);
+                v.getContext().startActivity(intent);
+            }
+        });
+
+        imageViewPromoTour2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), DetailPaketActivity.class);
+                intent.putExtra("ID_PAKET_WISATA", idWisata2);
+                v.getContext().startActivity(intent);
+            }
+        });
+
+        imageViewPromoTour3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), DetailPaketActivity.class);
+                intent.putExtra("ID_PAKET_WISATA", idWisata3);
+                v.getContext().startActivity(intent);
+            }
+        });
 
         return view;
     }
