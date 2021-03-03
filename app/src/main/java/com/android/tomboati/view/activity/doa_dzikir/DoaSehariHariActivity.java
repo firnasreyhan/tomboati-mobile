@@ -15,6 +15,7 @@ import com.android.tomboati.R;
 import com.android.tomboati.adapter.DoaHarianAdapter;
 import com.android.tomboati.adapter.TahlilAdapter;
 import com.android.tomboati.api.response.DoaHarianResponse;
+import com.android.tomboati.utils.Utility;
 import com.android.tomboati.viewmodel.DoaHarianViewModel;
 import com.android.tomboati.viewmodel.DoaTahlilViewModel;
 import com.facebook.shimmer.ShimmerFrameLayout;
@@ -39,26 +40,28 @@ public class DoaSehariHariActivity extends AppCompatActivity {
         setTitle("Doa Sehari Hari");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-
-        doaHarianViewModel = ViewModelProviders.of(this).get(DoaHarianViewModel.class);
         recyclerViewDoaSehari = findViewById(R.id.recyclerViewDoaSehari);
         shimmerFrameLayoutDoa = findViewById(R.id.shimmerFrameLayoutDoa);
 
+        if(Utility.isConnecting(this)) {
 
-        recyclerViewDoaSehari.setHasFixedSize(true);
-        recyclerViewDoaSehari.setLayoutManager(new LinearLayoutManager(this));
+            doaHarianViewModel = ViewModelProviders.of(this).get(DoaHarianViewModel.class);
 
-        doaHarianViewModel.getDoaHarian().observe(this, new Observer<DoaHarianResponse>() {
-            @Override
-            public void onChanged(DoaHarianResponse doaHarianResponse) {
-                doaHarianAdapter = new DoaHarianAdapter(doaHarianResponse.getData());
-                recyclerViewDoaSehari.setAdapter(doaHarianAdapter);
+            recyclerViewDoaSehari.setHasFixedSize(true);
+            recyclerViewDoaSehari.setLayoutManager(new LinearLayoutManager(this));
 
-                recyclerViewDoaSehari.setVisibility(View.VISIBLE);
-                shimmerFrameLayoutDoa.setVisibility(View.GONE);
-                shimmerFrameLayoutDoa.stopShimmer();
-            }
-        });
+            doaHarianViewModel.getDoaHarian().observe(this, new Observer<DoaHarianResponse>() {
+                @Override
+                public void onChanged(DoaHarianResponse doaHarianResponse) {
+                    doaHarianAdapter = new DoaHarianAdapter(doaHarianResponse.getData());
+                    recyclerViewDoaSehari.setAdapter(doaHarianAdapter);
+
+                    recyclerViewDoaSehari.setVisibility(View.VISIBLE);
+                    shimmerFrameLayoutDoa.setVisibility(View.GONE);
+                    shimmerFrameLayoutDoa.stopShimmer();
+                }
+            });
+        }
     }
 
     @Override

@@ -64,7 +64,6 @@ public class JadwalSholatActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        jadwalSholatViewModel = ViewModelProviders.of(this).get(JadwalSholatViewModel.class);
         hijriah = findViewById(R.id.hijriah);
         masehi = findViewById(R.id.masehi);
         kota = findViewById(R.id.kota);
@@ -84,7 +83,7 @@ public class JadwalSholatActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //Check if gps provider is enabled
-                if(isProviderEnable()) {
+                if (isProviderEnable()) {
                     // Where gps provider is enabled than show date picker dialog
                     new DatePickerDialog(v.getContext(), new DatePickerDialog.OnDateSetListener() {
                         @Override
@@ -102,6 +101,7 @@ public class JadwalSholatActivity extends AppCompatActivity {
                 }
             }
         });
+
     }
 
     @Override
@@ -113,31 +113,35 @@ public class JadwalSholatActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        // Check if gps provider is not enabled
-        if(!isLoaded) {
-            if (!isProviderEnable()) {
-                // If is not enabled showing alert dialog
-                alert = new AlertDialog.Builder(this);
-                alert.setTitle("GPS settings");
-                alert.setMessage("GPS tidak diaktifkan. Apakah Anda ingin pergi ke menu pengaturan?");
-                alert.setCancelable(false);
-                alert.setPositiveButton("Ya", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        // Goto setting page for gps activated
-                        startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
-                    }
-                });
-                alert.setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                        finish();
-                    }
-                });
-                alert.show();
-            } else {
-                cekPermission();
+        // Check if network provider is not enabled
+        if(Utility.isConnecting(this)) {
+            jadwalSholatViewModel = ViewModelProviders.of(this).get(JadwalSholatViewModel.class);
+            // Check if gps provider is not enabled
+            if (!isLoaded) {
+                if (!isProviderEnable()) {
+                    // If is not enabled showing alert dialog
+                    alert = new AlertDialog.Builder(this);
+                    alert.setTitle("GPS settings");
+                    alert.setMessage("GPS tidak diaktifkan. Apakah Anda ingin pergi ke menu pengaturan?");
+                    alert.setCancelable(false);
+                    alert.setPositiveButton("Ya", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            // Goto setting page for gps activated
+                            startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+                        }
+                    });
+                    alert.setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                            finish();
+                        }
+                    });
+                    alert.show();
+                } else {
+                    cekPermission();
+                }
             }
         }
     }

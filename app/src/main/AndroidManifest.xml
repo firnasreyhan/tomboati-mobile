@@ -21,6 +21,7 @@
         android:supportsRtl="true"
         android:theme="@style/ThemeTomboAti">
         <activity android:name=".view.activity.pendaftaran.PendaftaranDataDiriActivity"></activity>
+        <activity android:name=".view.activity.TembangSholawatActivity"></activity>
         <activity android:name=".view.activity.HitungTasbihLainnyaActivity" />
         <activity android:name=".view.activity.sholat.SholatDiperjalananActivity" />
         <activity android:name=".view.activity.sholat.SholatJenazahActivity" />

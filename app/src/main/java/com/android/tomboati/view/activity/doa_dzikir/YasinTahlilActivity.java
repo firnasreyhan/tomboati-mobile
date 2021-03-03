@@ -8,6 +8,7 @@ import android.os.Bundle;
 
 import com.android.tomboati.R;
 import com.android.tomboati.adapter.TabAdapter;
+import com.android.tomboati.utils.Utility;
 import com.android.tomboati.view.fragment.TahlilFragment;
 import com.android.tomboati.view.fragment.YasinFragment;
 import com.google.android.material.tabs.TabLayout;
@@ -30,35 +31,37 @@ public class YasinTahlilActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-
         viewPager = findViewById(R.id.viewPager);
         tabLayout = findViewById(R.id.tabLayout);
 
-        tabAdapter = new TabAdapter(getSupportFragmentManager(), this);
-        tabAdapter.addFragment(new YasinFragment(), "Surah Yasin", R.drawable.ic_quran);
-        tabAdapter.addFragment(new TahlilFragment(), "Doa Tahlil", R.drawable.ic_quran);
+        if(Utility.isConnecting(this)) {
 
-        viewPager.setAdapter(tabAdapter);
-        tabLayout.setupWithViewPager(viewPager);
+            tabAdapter = new TabAdapter(getSupportFragmentManager(), this);
+            tabAdapter.addFragment(new YasinFragment(), "Surah Yasin", R.drawable.ic_quran);
+            tabAdapter.addFragment(new TahlilFragment(), "Doa Tahlil", R.drawable.ic_quran);
 
-        highLightCurrentTab(0);
+            viewPager.setAdapter(tabAdapter);
+            tabLayout.setupWithViewPager(viewPager);
 
-        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+            highLightCurrentTab(0);
 
-            }
+            viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+                @Override
+                public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
-            @Override
-            public void onPageSelected(int position) {
-                highLightCurrentTab(position);
-            }
+                }
 
-            @Override
-            public void onPageScrollStateChanged(int state) {
+                @Override
+                public void onPageSelected(int position) {
+                    highLightCurrentTab(position);
+                }
 
-            }
-        });
+                @Override
+                public void onPageScrollStateChanged(int state) {
+
+                }
+            });
+        }
     }
 
     @Override
