@@ -3,9 +3,12 @@ package com.android.tomboati.api;
 import com.android.tomboati.api.response.BaseResponse;
 import com.android.tomboati.api.response.ChatResponse;
 import com.android.tomboati.api.response.JadwalSholatResponse;
+import com.android.tomboati.api.response.KomunitasResponse;
 import com.android.tomboati.api.response.PaketMonthResponse;
 import com.android.tomboati.api.response.PaketResponse;
 import com.android.tomboati.api.response.SignInResponse;
+
+import java.util.List;
 
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -96,4 +99,7 @@ public interface ApiInterfaceTomboAti {
     Call<PaketMonthResponse> getPaketMonth(
             @Query("tipe") String tipe
     );
+
+    @GET("Komunitas/komunitas_get")
+    Call<KomunitasResponse> getKomunitas();
 }

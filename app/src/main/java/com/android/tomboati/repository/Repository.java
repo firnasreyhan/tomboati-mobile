@@ -17,6 +17,7 @@ import com.android.tomboati.api.response.BaseResponse;
 import com.android.tomboati.api.response.ChatResponse;
 import com.android.tomboati.api.response.DoaHarianResponse;
 import com.android.tomboati.api.response.JadwalSholatResponse;
+import com.android.tomboati.api.response.KomunitasResponse;
 import com.android.tomboati.api.response.MasjidResponse;
 import com.android.tomboati.api.response.PaketMonthResponse;
 import com.android.tomboati.api.response.PaketResponse;
@@ -438,6 +439,25 @@ public class Repository {
 
             @Override
             public void onFailure(Call<List<BacaanSholatResponse>> call, Throwable t) {
+                data.postValue(null);
+                Log.e("getDoaHarian", t.getMessage());
+            }
+        });
+        return data;
+    }
+
+    public MutableLiveData<List<KomunitasResponse.Datum>> getKomunitas() {
+        MutableLiveData<List<KomunitasResponse.Datum>> data = new MutableLiveData<>();
+        apiInterfaceTomboAti.getKomunitas().enqueue(new Callback<KomunitasResponse>() {
+            @Override
+            public void onResponse(Call<KomunitasResponse> call, Response<KomunitasResponse> response) {
+                if (response.code() == 200) {
+                    data.postValue(response.body().getData());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<KomunitasResponse> call, Throwable t) {
                 data.postValue(null);
                 Log.e("getDoaHarian", t.getMessage());
             }
