@@ -12,16 +12,17 @@
 
     <application
         android:allowBackup="true"
+        android:hardwareAccelerated="false"
         android:icon="@mipmap/ic_new_launcher"
         android:label="@string/app_name"
+        android:largeHeap="true"
         android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_new_launcher_round"
         android:supportsRtl="true"
-        android:hardwareAccelerated="false"
-        android:largeHeap="true"
         android:theme="@style/ThemeTomboAti">
-        <activity android:name=".view.activity.pendaftaran.PendaftaranDataDiriActivity"/>
-        <activity android:name=".view.activity.TembangSholawatActivity"/>
+        <activity android:name=".view.activity.pendaftaran.PendaftaranDataKeluargaActivity"></activity>
+        <activity android:name=".view.activity.pendaftaran.PendaftaranDataDiriActivity" />
+        <activity android:name=".view.activity.TembangSholawatActivity" />
         <activity android:name=".view.activity.HitungTasbihLainnyaActivity" />
         <activity android:name=".view.activity.sholat.SholatDiperjalananActivity" />
         <activity android:name=".view.activity.sholat.SholatJenazahActivity" />

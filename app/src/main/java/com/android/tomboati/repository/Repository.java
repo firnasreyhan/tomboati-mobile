@@ -764,7 +764,20 @@ public class Repository {
             MultipartBody.Part ttdPendaftar,
             MultipartBody.Part fcKTPAlmarhum,
             MultipartBody.Part fcKKAlmarhum,
-            MultipartBody.Part fcFotoAlmarhum
+            MultipartBody.Part fcFotoAlmarhum,
+            RequestBody idPaket,
+            RequestBody tanggalBerangkat,
+            RequestBody sheet,
+            RequestBody sheetHarga,
+            RequestBody waktu,
+            RequestBody namaLengkapKeluarga,
+            RequestBody alamatKeluarga,
+            RequestBody kelurahanKeluarga,
+            RequestBody kecamatanKeluarga,
+            RequestBody kotakabupatenKeluarga,
+            RequestBody provinsiKeluarga,
+            RequestBody kodePOSKeluarga,
+            RequestBody nomorHPKeluarga
     ) {
         MutableLiveData<BaseResponse> baseResponseMutableLiveData = new MutableLiveData<>();
         apiInterfaceTomboAti.pendaftaran(
@@ -797,7 +810,20 @@ public class Repository {
                 ttdPendaftar,
                 fcKTPAlmarhum,
                 fcKKAlmarhum,
-                fcFotoAlmarhum
+                fcFotoAlmarhum,
+                idPaket,
+                tanggalBerangkat,
+                sheet,
+                sheetHarga,
+                waktu,
+                namaLengkapKeluarga,
+                alamatKeluarga,
+                kelurahanKeluarga,
+                kecamatanKeluarga,
+                kotakabupatenKeluarga,
+                provinsiKeluarga,
+                kodePOSKeluarga,
+                nomorHPKeluarga
         ).enqueue(new Callback<BaseResponse>() {
             @Override
             public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {

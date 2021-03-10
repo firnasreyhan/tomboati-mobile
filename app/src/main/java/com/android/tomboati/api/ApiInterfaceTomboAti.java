@@ -180,6 +180,19 @@ public interface ApiInterfaceTomboAti {
             @Part MultipartBody.Part ttdPendaftar,
             @Part MultipartBody.Part fcKTPAlmarhum,
             @Part MultipartBody.Part fcKKAlmarhum,
-            @Part MultipartBody.Part fcFotoAlmarhum
+            @Part MultipartBody.Part fcFotoAlmarhum,
+            @Part("idPaket") RequestBody idPaket,
+            @Part("tanggalBerangkat") RequestBody tanggalBerangkat,
+            @Part("sheet") RequestBody sheet,
+            @Part("sheetHarga") RequestBody sheetHarga,
+            @Part("waktu") RequestBody waktu,
+            @Part("namaLengkapKeluarga") RequestBody namaLengkapKeluarga,
+            @Part("alamatKeluarga") RequestBody alamatKeluarga,
+            @Part("kelurahanKeluarga") RequestBody kelurahanKeluarga,
+            @Part("kecamatanKeluarga") RequestBody kecamatanKeluarga,
+            @Part("kotakabupatenKeluarga") RequestBody kotakabupatenKeluarga,
+            @Part("provinsiKeluarga") RequestBody provinsiKeluarga,
+            @Part("kodePOSKeluarga") RequestBody kodePOSKeluarga,
+            @Part("nomorHPKeluarga") RequestBody nomorHPKeluarga
     );
 }

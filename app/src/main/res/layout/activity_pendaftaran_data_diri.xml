@@ -20,6 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="@dimen/_13sdp"
+        android:overScrollMode="never"
         android:layout_weight="1">
 
         <LinearLayout
@@ -66,6 +67,7 @@
                         app:hintEnabled="false">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/textInputEditTextNomorKTP"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/catamaran_regular"
@@ -96,6 +98,7 @@
                         app:hintEnabled="false">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/textInputEditTextNamaLengkap"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/catamaran_regular"
@@ -126,6 +129,7 @@
                         app:hintEnabled="false">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/textInputEditTextNomorHandphone"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/catamaran_regular"
@@ -156,6 +160,7 @@
                         app:hintEnabled="false">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/textInputEditTextTempatLahir"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/catamaran_regular"
@@ -186,6 +191,7 @@
                         app:hintEnabled="false">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/textInputEditTanggalLahir"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/catamaran_regular"
@@ -264,6 +270,7 @@
                         app:hintEnabled="false">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/textInputEditTextPekerjaan"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/catamaran_regular"
@@ -294,6 +301,7 @@
                         app:hintEnabled="false">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/textInputEditRiwayatPenyakit"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:fontFamily="@font/catamaran_regular"
@@ -411,6 +419,7 @@
                         app:hintEnabled="false">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/textInputEditTextKodePos"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/catamaran_regular"
@@ -441,6 +450,7 @@
                         app:hintEnabled="false">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/textInputEditTextRincianAlamat"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:fontFamily="@font/catamaran_regular"
@@ -494,6 +504,7 @@
                         app:hintEnabled="false">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/textInputEditTextNomorPaspor"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/catamaran_regular"
@@ -524,6 +535,7 @@
                         app:hintEnabled="false">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/textInputEditTextTempatDikeluarkan"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/catamaran_regular"
@@ -554,6 +566,7 @@
                         app:hintEnabled="false">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/textInputEditTextTanggalPenerbitanPaspor"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/catamaran_regular"
@@ -584,6 +597,7 @@
                         app:hintEnabled="false">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/textInputEditTextTanggalBerakhirPaspor"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/catamaran_regular"
@@ -621,33 +635,20 @@
                 android:textSize="@dimen/_8sdp" />
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/cardViewFotoKTP"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_150sdp"
                 app:cardElevation="0dp"
                 app:cardCornerRadius="1dp"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
-                <LinearLayout
+                <ImageView
+                    android:id="@+id/imageViewKTP"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="@dimen/_24sdp"
-                        android:layout_height="@dimen/_24sdp"
-                        android:src="@drawable/ic_camera"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/catamaran_medium"
-                        android:text="ambil gambar"
-                        android:textAllCaps="true"
-                        android:textColor="@android:color/black"
-                        android:textSize="@dimen/_8sdp" />
-
-                </LinearLayout>
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_thumbnail_no_image"/>
 
             </androidx.cardview.widget.CardView>
 
@@ -662,33 +663,20 @@
                 android:textSize="@dimen/_8sdp" />
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/cardViewFotoAkteKelahiran"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_150sdp"
                 app:cardElevation="0dp"
                 app:cardCornerRadius="1dp"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
-                <LinearLayout
+                <ImageView
+                    android:id="@+id/imageViewAkteKelahiran"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="@dimen/_24sdp"
-                        android:layout_height="@dimen/_24sdp"
-                        android:src="@drawable/ic_camera"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/catamaran_medium"
-                        android:text="ambil gambar"
-                        android:textAllCaps="true"
-                        android:textColor="@android:color/black"
-                        android:textSize="@dimen/_8sdp" />
-
-                </LinearLayout>
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_thumbnail_no_image"/>
 
             </androidx.cardview.widget.CardView>
 
@@ -703,33 +691,20 @@
                 android:textSize="@dimen/_8sdp" />
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/cardViewFotoKartuKeluarga"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_150sdp"
                 app:cardCornerRadius="1dp"
                 app:cardElevation="0dp">
 
-                <LinearLayout
+                <ImageView
+                    android:id="@+id/imageViewKartuKeluarga"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="@dimen/_24sdp"
-                        android:layout_height="@dimen/_24sdp"
-                        android:src="@drawable/ic_camera" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/catamaran_medium"
-                        android:text="ambil gambar"
-                        android:textAllCaps="true"
-                        android:textColor="@android:color/black"
-                        android:textSize="@dimen/_8sdp" />
-
-                </LinearLayout>
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_thumbnail_no_image"/>
 
             </androidx.cardview.widget.CardView>
 
@@ -744,33 +719,20 @@
                 android:textSize="@dimen/_8sdp" />
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/cardViewFotoPaspor"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_150sdp"
                 app:cardCornerRadius="1dp"
                 app:cardElevation="0dp">
 
-                <LinearLayout
+                <ImageView
+                    android:id="@+id/imageViewPaspor"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="@dimen/_24sdp"
-                        android:layout_height="@dimen/_24sdp"
-                        android:src="@drawable/ic_camera" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/catamaran_medium"
-                        android:text="ambil gambar"
-                        android:textAllCaps="true"
-                        android:textColor="@android:color/black"
-                        android:textSize="@dimen/_8sdp" />
-
-                </LinearLayout>
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_thumbnail_no_image"/>
 
             </androidx.cardview.widget.CardView>
 
@@ -786,38 +748,50 @@
                 android:textSize="@dimen/_8sdp" />
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/cardViewFotoBukuNikah"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_150sdp"
                 app:cardCornerRadius="1dp"
                 app:cardElevation="0dp">
 
-                <LinearLayout
+                <ImageView
+                    android:id="@+id/imageViewBukuNikah"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="@dimen/_24sdp"
-                        android:layout_height="@dimen/_24sdp"
-                        android:src="@drawable/ic_camera" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/catamaran_medium"
-                        android:text="ambil gambar"
-                        android:textAllCaps="true"
-                        android:textColor="@android:color/black"
-                        android:textSize="@dimen/_8sdp" />
-
-                </LinearLayout>
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_thumbnail_no_image"/>
 
             </androidx.cardview.widget.CardView>
 
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@android:color/white">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_7sdp"
+            android:orientation="horizontal">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/materialButtonLanjutkan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/dark_green"
+                android:fontFamily="@font/catamaran_bold"
+                android:padding="12dp"
+                android:text="Lanjutkan"
+                android:textAllCaps="true" />
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
 
 </LinearLayout>
