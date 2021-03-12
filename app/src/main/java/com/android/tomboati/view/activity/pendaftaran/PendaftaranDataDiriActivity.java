@@ -20,6 +20,7 @@ import android.widget.Toast;
 import com.android.tomboati.R;
 import com.android.tomboati.api.response.LokasiResponse;
 import com.android.tomboati.model.PesananaModel;
+import com.android.tomboati.preference.AppPreference;
 import com.android.tomboati.view.activity.SignUpActivity;
 import com.android.tomboati.viewmodel.PendaftaranDataDiriViewModel;
 import com.google.android.material.button.MaterialButton;
@@ -27,6 +28,7 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,6 +51,11 @@ public class PendaftaranDataDiriActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setTheme(R.style.ThemeTomboAtiGreen);
         setContentView(R.layout.activity_pendaftaran_data_diri);
+
+        String idPaket = getIntent().getStringExtra("ID_PAKET");
+        String tanggalKeberangkatan = getIntent().getStringExtra("TANGGAL_BERANGKAT");
+        String sheet = getIntent().getStringExtra("SHEET");
+        String sheetHarga = getIntent().getStringExtra("SHEET_HARGA");
 
         viewModel = ViewModelProviders.of(this).get(PendaftaranDataDiriViewModel.class);
 
@@ -164,6 +171,12 @@ public class PendaftaranDataDiriActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (checkData()) {
+                    model.setIdUserRegister(AppPreference.getUser(v.getContext()).getIdUserRegister());
+                    model.setEmail(AppPreference.getUser(v.getContext()).getEmail());
+                    model.setIdPaket(idPaket);
+                    model.setTanggalBerangkat(tanggalKeberangkatan);
+                    model.setSheet(sheet);
+                    model.setSheetHarga(sheetHarga);
                     model.setNamaLengkap(textInputEditTextNamaLengkap.getText().toString());
                     model.setNomorHP(textInputEditTextNomorHandphone.getText().toString());
                     model.setTempatLahir(textInputEditTextTempatLahir.getText().toString());
@@ -178,18 +191,19 @@ public class PendaftaranDataDiriActivity extends AppCompatActivity {
                     model.setKecamatan(spinnerKecamatan.getSelectedItem().toString());
                     model.setKelurahan(spinnerKelurahan.getSelectedItem().toString());
                     model.setKodePOS(textInputEditTextKodePos.getText().toString());
+                    model.setAlamat(textInputEditTextRincianAlamat.getText().toString());
                     model.setNomorPaspor(textInputEditTextNomorPaspor.getText().toString());
                     model.setTempatDikeluarkan(textInputEditTextTempatDikeluarkan.getText().toString());
                     model.setTanggalPenerbitanPaspor(textInputEditTextTanggalPenerbitanPaspor.getText().toString());
                     model.setTanggalBerakhirPaspor(textInputEditTextTanggalBerakhirPaspor.getText().toString());
-                    model.setFileKTP(uriKTP);
-                    model.setFileAkteKelahiran(uriKTP);
-                    model.setFileKK(uriKartuKeluarga);
-                    model.setFilePaspor(uriFotoPaspor);
-                    model.setFileBukuNikah(uriFotoBukuNikah);
+                    model.setFileKTP(uriKTP.toString());
+                    model.setFileAkteKelahiran(uriAkteKelahiran.toString());
+                    model.setFileKK(uriKartuKeluarga.toString());
+                    model.setFilePaspor(uriFotoPaspor.toString());
+                    model.setFileBukuNikah(uriFotoBukuNikah.toString());
 
                     Intent intent = new Intent(v.getContext(), PendaftaranDataKeluargaActivity.class);
-                    intent.putExtra("OBJECT", model);
+                    intent.putExtra("OBJECT", (Serializable) model);
                     startActivity(intent);
                 }
             }

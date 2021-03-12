@@ -2,6 +2,7 @@ package com.android.tomboati.view.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.cardview.widget.CardView;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -27,6 +28,7 @@ import com.bumptech.glide.Priority;
 import com.bumptech.glide.load.DecodeFormat;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.card.MaterialCardView;
 
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
@@ -38,9 +40,15 @@ public class DetailPaketActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private ImageView imageViewPaket, imageViewMaskapai;
     private TextView textViewNamaPaket, textViewQuad, textViewTriple, textViewDouble, textViewPenerbangan, textViewTempatHotelA, textViewNamaHotelA, textViewTempatHotelB, textViewNamaHotelB;
+    private CardView cardViewQuad, cardViewTriple, cardViewDouble;
     private RecyclerView recyclerViewIttenerary, recyclerViewBiayaBelumTermasuk, recyclerViewBiayaSudahTermasuk;
     private String idPaket, idPaketWisata;
     private MaterialButton materialButtonPesan;
+
+    private int sheet = 0;
+    private double sheetHarga = 0;
+    private double hargaQuad, hargaTriple, hargaDouble;
+    private String tanggalKeberangkatan;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +80,9 @@ public class DetailPaketActivity extends AppCompatActivity {
         recyclerViewIttenerary = findViewById(R.id.recyclerViewIttenerary);
         recyclerViewBiayaBelumTermasuk = findViewById(R.id.recyclerViewBiayaBelumTermasuk);
         recyclerViewBiayaSudahTermasuk = findViewById(R.id.recyclerViewBiayaSudahTermasuk);
+        cardViewDouble = findViewById(R.id.cardViewDouble);
+        cardViewTriple = findViewById(R.id.cardViewTriple);
+        cardViewQuad = findViewById(R.id.cardViewQuad);
         materialButtonPesan = findViewById(R.id.materialButtonPesan);
         recyclerViewIttenerary.setHasFixedSize(true);
         recyclerViewIttenerary.setLayoutManager(new LinearLayoutManager(this));
@@ -79,14 +90,6 @@ public class DetailPaketActivity extends AppCompatActivity {
         recyclerViewBiayaBelumTermasuk.setLayoutManager(new LinearLayoutManager(this));
         recyclerViewBiayaSudahTermasuk.setHasFixedSize(true);
         recyclerViewBiayaSudahTermasuk.setLayoutManager(new LinearLayoutManager(this));
-
-        materialButtonPesan.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), SyaratActivity.class);
-                startActivity(intent);
-            }
-        });
 
         if (idPaket != null) {
             detailPaketViewModel.getPaket(
@@ -116,13 +119,18 @@ public class DetailPaketActivity extends AppCompatActivity {
 
                             if (paketResponse.getData().get(0).getQuadSheet() != 0) {
                                 textViewQuad.setText("Rp. " + decimalFormat.format(paketResponse.getData().get(0).getQuadSheet()));
+                                hargaQuad = paketResponse.getData().get(0).getQuadSheet();
                             }
                             if (paketResponse.getData().get(0).getTripleSheet() != 0) {
                                 textViewTriple.setText("Rp. " + decimalFormat.format(paketResponse.getData().get(0).getTripleSheet()));
+                                hargaTriple = paketResponse.getData().get(0).getTripleSheet();
                             }
                             if (paketResponse.getData().get(0).getDoubleSheet() != 0) {
                                 textViewDouble.setText("Rp. " + decimalFormat.format(paketResponse.getData().get(0).getDoubleSheet()));
+                                hargaDouble = paketResponse.getData().get(0).getDoubleSheet();
                             }
+
+                            tanggalKeberangkatan = paketResponse.getData().get(0).getTanggalKeberangkatan();
 
                             Glide.with(DetailPaketActivity.this)
                                     .load(paketResponse.getData().get(0).getImageMaskapai())
@@ -217,13 +225,18 @@ public class DetailPaketActivity extends AppCompatActivity {
 
                         if (paketWisataResponse.getData().get(0).getQuadSheet() != 0) {
                             textViewQuad.setText("Rp. " + decimalFormat.format(paketWisataResponse.getData().get(0).getQuadSheet()));
+                            hargaQuad = paketWisataResponse.getData().get(0).getQuadSheet();
                         }
                         if (paketWisataResponse.getData().get(0).getTripleSheet() != 0) {
                             textViewTriple.setText("Rp. " + decimalFormat.format(paketWisataResponse.getData().get(0).getTripleSheet()));
+                            hargaTriple = paketWisataResponse.getData().get(0).getTripleSheet();
                         }
                         if (paketWisataResponse.getData().get(0).getDoubleSheet() != 0) {
                             textViewDouble.setText("Rp. " + decimalFormat.format(paketWisataResponse.getData().get(0).getDoubleSheet()));
+                            hargaDouble = paketWisataResponse.getData().get(0).getDoubleSheet();
                         }
+
+                        tanggalKeberangkatan = paketWisataResponse.getData().get(0).getTanggalKeberangkatan();
 
                         Glide.with(DetailPaketActivity.this)
                                 .load(paketWisataResponse.getData().get(0).getImageMaskapai())
@@ -290,6 +303,54 @@ public class DetailPaketActivity extends AppCompatActivity {
 //                Log.e("sz" + String.valueOf(i), sz.replaceAll("\\<.*?\\>", ""));
 //            }
         }
+
+        cardViewQuad.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                cardViewQuad.setCardBackgroundColor(getResources().getColor(R.color.light_green));
+                cardViewTriple.setCardBackgroundColor(getResources().getColor(R.color.dark_green));
+                cardViewDouble.setCardBackgroundColor(getResources().getColor(R.color.dark_green));
+
+                sheet = 4;
+                sheetHarga = hargaQuad;
+            }
+        });
+
+        cardViewTriple.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                cardViewQuad.setCardBackgroundColor(getResources().getColor(R.color.dark_green));
+                cardViewTriple.setCardBackgroundColor(getResources().getColor(R.color.light_green));
+                cardViewDouble.setCardBackgroundColor(getResources().getColor(R.color.dark_green));
+
+                sheet = 3;
+                sheetHarga = hargaTriple;
+            }
+        });
+
+        cardViewDouble.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                cardViewQuad.setCardBackgroundColor(getResources().getColor(R.color.dark_green));
+                cardViewTriple.setCardBackgroundColor(getResources().getColor(R.color.dark_green));
+                cardViewDouble.setCardBackgroundColor(getResources().getColor(R.color.light_green));
+
+                sheet = 2;
+                sheetHarga = hargaDouble;
+            }
+        });
+
+        materialButtonPesan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), SyaratActivity.class);
+                intent.putExtra("ID_PAKET", idPaket.isEmpty() ? idPaketWisata : idPaket);
+                intent.putExtra("TANGGAL_BERANGKAT", tanggalKeberangkatan);
+                intent.putExtra("SHEET", String.valueOf(sheet));
+                intent.putExtra("SHEET_HARGA", String.valueOf(sheetHarga));
+                startActivity(intent);
+            }
+        });
     }
 
     @Override

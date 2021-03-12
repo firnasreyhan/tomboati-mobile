@@ -5,6 +5,10 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -16,6 +20,7 @@ import com.android.tomboati.R;
 import com.android.tomboati.api.response.BaseResponse;
 import com.android.tomboati.api.response.LokasiResponse;
 import com.android.tomboati.model.PesananaModel;
+import com.android.tomboati.view.activity.MainActivity;
 import com.android.tomboati.viewmodel.PendaftaranDataKeluargaViewModel;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
@@ -24,6 +29,7 @@ import java.util.List;
 
 public class PendaftaranDataKeluargaActivity extends AppCompatActivity {
     private PendaftaranDataKeluargaViewModel viewModel;
+    private ProgressDialog progressDialog;
 
     private Toolbar toolbar;
     private Spinner spinnerProvinsi, spinnerKotaKabupaten, spinnerKecamatan, spinnerKelurahan;
@@ -40,6 +46,10 @@ public class PendaftaranDataKeluargaActivity extends AppCompatActivity {
 
         viewModel = ViewModelProviders.of(this).get(PendaftaranDataKeluargaViewModel.class);
         model = (PesananaModel) getIntent().getSerializableExtra("OBJECT");
+
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Mohon tunggu sebentar...");
+        progressDialog.setCancelable(false);
 
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -64,6 +74,8 @@ public class PendaftaranDataKeluargaActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (checkData()) {
+                    progressDialog.show();
+
                     model.setNamaLengkapKeluarga(textInputEditTextNamaLengkap.getText().toString());
                     model.setNomorHPKeluarga(textInputEditTextNomorHandphone.getText().toString());
                     model.setProvinsiKeluarga(spinnerProvinsi.getSelectedItem().toString());
@@ -76,7 +88,28 @@ public class PendaftaranDataKeluargaActivity extends AppCompatActivity {
                     viewModel.pendaftaran(model).observe(PendaftaranDataKeluargaActivity.this, new Observer<BaseResponse>() {
                         @Override
                         public void onChanged(BaseResponse baseResponse) {
+                            if (progressDialog.isShowing()) {
+                                progressDialog.dismiss();
+                            }
 
+                            if (baseResponse != null) {
+                                new AlertDialog.Builder(PendaftaranDataKeluargaActivity.this)
+                                        .setTitle("Pesan")
+                                        .setMessage(baseResponse.getMessage())
+                                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                            @Override
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                if (!baseResponse.isError()) {
+                                                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                                    startActivity(intent);
+                                                }
+                                                dialog.dismiss();
+                                            }
+                                        })
+                                        .create()
+                                        .show();
+                            }
                         }
                     });
                 }

@@ -30,15 +30,15 @@ public class PesananaModel implements Serializable {
     private String pekerjaan;
     private String riwayatPenyakit;
     private String namaLengkap;
-    private Uri fileKTP;
-    private Uri fileKK;
-    private Uri filePaspor;
-    private Uri fileBukuNikah;
-    private Uri fileAkteKelahiran;
-    private Uri ttdPendaftar;
-    private Uri fcKTPAlmarhum;
-    private Uri fcKKAlmarhum;
-    private Uri fcFotoAlmarhum;
+    private String fileKTP;
+    private String fileKK;
+    private String filePaspor;
+    private String fileBukuNikah;
+    private String fileAkteKelahiran;
+    private String ttdPendaftar;
+    private String fcKTPAlmarhum;
+    private String fcKKAlmarhum;
+    private String fcFotoAlmarhum;
     private String idPaket;
     private String tanggalBerangkat;
     private String sheet;
@@ -221,75 +221,75 @@ public class PesananaModel implements Serializable {
         this.namaLengkap = namaLengkap;
     }
 
-    public Uri getFileKTP() {
+    public String getFileKTP() {
         return fileKTP;
     }
 
-    public void setFileKTP(Uri fileKTP) {
+    public void setFileKTP(String fileKTP) {
         this.fileKTP = fileKTP;
     }
 
-    public Uri getFileKK() {
+    public String getFileKK() {
         return fileKK;
     }
 
-    public void setFileKK(Uri fileKK) {
+    public void setFileKK(String fileKK) {
         this.fileKK = fileKK;
     }
 
-    public Uri getFilePaspor() {
+    public String getFilePaspor() {
         return filePaspor;
     }
 
-    public void setFilePaspor(Uri filePaspor) {
+    public void setFilePaspor(String filePaspor) {
         this.filePaspor = filePaspor;
     }
 
-    public Uri getFileBukuNikah() {
+    public String getFileBukuNikah() {
         return fileBukuNikah;
     }
 
-    public void setFileBukuNikah(Uri fileBukuNikah) {
+    public void setFileBukuNikah(String fileBukuNikah) {
         this.fileBukuNikah = fileBukuNikah;
     }
 
-    public Uri getFileAkteKelahiran() {
+    public String getFileAkteKelahiran() {
         return fileAkteKelahiran;
     }
 
-    public void setFileAkteKelahiran(Uri fileAkteKelahiran) {
+    public void setFileAkteKelahiran(String fileAkteKelahiran) {
         this.fileAkteKelahiran = fileAkteKelahiran;
     }
 
-    public Uri getTtdPendaftar() {
+    public String getTtdPendaftar() {
         return ttdPendaftar;
     }
 
-    public void setTtdPendaftar(Uri ttdPendaftar) {
+    public void setTtdPendaftar(String ttdPendaftar) {
         this.ttdPendaftar = ttdPendaftar;
     }
 
-    public Uri getFcKTPAlmarhum() {
+    public String getFcKTPAlmarhum() {
         return fcKTPAlmarhum;
     }
 
-    public void setFcKTPAlmarhum(Uri fcKTPAlmarhum) {
+    public void setFcKTPAlmarhum(String fcKTPAlmarhum) {
         this.fcKTPAlmarhum = fcKTPAlmarhum;
     }
 
-    public Uri getFcKKAlmarhum() {
+    public String getFcKKAlmarhum() {
         return fcKKAlmarhum;
     }
 
-    public void setFcKKAlmarhum(Uri fcKKAlmarhum) {
+    public void setFcKKAlmarhum(String fcKKAlmarhum) {
         this.fcKKAlmarhum = fcKKAlmarhum;
     }
 
-    public Uri getFcFotoAlmarhum() {
+    public String getFcFotoAlmarhum() {
         return fcFotoAlmarhum;
     }
 
-    public void setFcFotoAlmarhum(Uri fcFotoAlmarhum) {
+    public void setFcFotoAlmarhum(String fcFotoAlmarhum) {
         this.fcFotoAlmarhum = fcFotoAlmarhum;
     }
 
@@ -365,6 +365,14 @@ public class PesananaModel implements Serializable {
         this.kecamatanKeluarga = kecamatanKeluarga;
     }
 
+    public String getKotakabupatenKeluarga() {
+        return kotakabupatenKeluarga;
+    }
+
+    public void setKotakabupatenKeluarga(String kotakabupatenKeluarga) {
+        this.kotakabupatenKeluarga = kotakabupatenKeluarga;
+    }
+
     public String getProvinsiKeluarga() {
         return provinsiKeluarga;
     }
@@ -387,13 +395,5 @@ public class PesananaModel implements Serializable {
 
     public void setNomorHPKeluarga(String nomorHPKeluarga) {
         this.nomorHPKeluarga = nomorHPKeluarga;
-    }
-
-    public String getKotakabupatenKeluarga() {
-        return kotakabupatenKeluarga;
-    }
-
-    public void setKotakabupatenKeluarga(String kotakabupatenKeluarga) {
-        this.kotakabupatenKeluarga = kotakabupatenKeluarga;
     }
 }
