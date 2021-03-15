@@ -137,7 +137,6 @@ public class UpdateProfileActivity extends AppCompatActivity {
                                 AppPreference.getUser(UpdateProfileActivity.this).getIdUserRegister(),
                                 textInputEditTextNomorKTP.getText().toString(),
                                 textInputEditTextEmail.getText().toString(),
-                                AppPreference.getUser(UpdateProfileActivity.this).getPassword(),
                                 textInputEditTextNamaLengkap.getText().toString(),
                                 textInputEditTextNomorHP.getText().toString()
                         ).observe(UpdateProfileActivity.this, new Observer<BaseResponse>() {

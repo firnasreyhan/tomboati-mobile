@@ -17,8 +17,10 @@ import android.widget.Toast;
 
 import com.android.tomboati.R;
 import com.android.tomboati.adapter.PaketAdapter;
+import com.android.tomboati.adapter.PaketWisataAdapter;
 import com.android.tomboati.api.response.PaketMonthResponse;
 import com.android.tomboati.api.response.PaketResponse;
+import com.android.tomboati.api.response.PaketWisataResponse;
 import com.android.tomboati.model.BulanModel;
 import com.android.tomboati.model.PaketModel;
 import com.android.tomboati.viewmodel.ListPaketViewModel;
@@ -30,6 +32,7 @@ public class ListPaketActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private RecyclerView recyclerViewPaket;
     private PaketAdapter paketAdapter;
+    private PaketWisataAdapter paketWisataAdapter;
     private ListPaketViewModel listPaketViewModel;
     private ShimmerFrameLayout shimmerFrameLayoutPaket;
     private LinearLayout linearLayoutPaket, linearLayoutNoPaket;
@@ -45,10 +48,12 @@ public class ListPaketActivity extends AppCompatActivity {
         setContentView(R.layout.activity_list_paket);
 
         String paket = getIntent().getStringExtra("PAKET");
+        String title = getIntent().getStringExtra("TITLE");
+        String paketWisata = getIntent().getStringExtra("PAKET_WISATA");
 
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        setTitle("Paket");
+        setTitle(title);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
@@ -67,51 +72,99 @@ public class ListPaketActivity extends AppCompatActivity {
 
         spinnerBulan.setAdapter(adapter);
 
-        listPaketViewModel.getPaketMonth(
-                paket
-        ).observe(this, new Observer<PaketMonthResponse>() {
-            @Override
-            public void onChanged(PaketMonthResponse paketMonthResponse) {
-                if (!paketMonthResponse.isError()) {
-                    if (!paketMonthResponse.getData().getBulan().isEmpty()) {
-                        for (String nomor: paketMonthResponse.getData().getBulan()) {
-                            String bulan = "";
-                            if (nomor.equalsIgnoreCase("01")) {
-                                bulan = "Januari";
-                            } else if (nomor.equalsIgnoreCase("02")) {
-                                bulan = "Februari";
-                            } else if (nomor.equalsIgnoreCase("03")) {
-                                bulan = "Maret";
-                            } else if (nomor.equalsIgnoreCase("04")) {
-                                bulan = "April";
-                            } else if (nomor.equalsIgnoreCase("05")) {
-                                bulan = "Mei";
-                            } else if (nomor.equalsIgnoreCase("06")) {
-                                bulan = "Juni";
-                            } else if (nomor.equalsIgnoreCase("07")) {
-                                bulan = "Juli";
-                            } else if (nomor.equalsIgnoreCase("08")) {
-                                bulan = "Agustus";
-                            } else if (nomor.equalsIgnoreCase("09")) {
-                                bulan = "September";
-                            } else if (nomor.equalsIgnoreCase("10")) {
-                                bulan = "Oktober";
-                            } else if (nomor.equalsIgnoreCase("11")) {
-                                bulan = "November";
-                            } else if (nomor.equalsIgnoreCase("12")) {
-                                bulan = "Desember";
+        if (paket != null) {
+            listPaketViewModel.getPaketMonth(
+                    paket
+            ).observe(this, new Observer<PaketMonthResponse>() {
+                @Override
+                public void onChanged(PaketMonthResponse paketMonthResponse) {
+                    if (!paketMonthResponse.isError()) {
+                        if (!paketMonthResponse.getData().getBulan().isEmpty()) {
+                            for (String nomor: paketMonthResponse.getData().getBulan()) {
+                                String bulan = "";
+                                if (nomor.equalsIgnoreCase("01")) {
+                                    bulan = "Januari";
+                                } else if (nomor.equalsIgnoreCase("02")) {
+                                    bulan = "Februari";
+                                } else if (nomor.equalsIgnoreCase("03")) {
+                                    bulan = "Maret";
+                                } else if (nomor.equalsIgnoreCase("04")) {
+                                    bulan = "April";
+                                } else if (nomor.equalsIgnoreCase("05")) {
+                                    bulan = "Mei";
+                                } else if (nomor.equalsIgnoreCase("06")) {
+                                    bulan = "Juni";
+                                } else if (nomor.equalsIgnoreCase("07")) {
+                                    bulan = "Juli";
+                                } else if (nomor.equalsIgnoreCase("08")) {
+                                    bulan = "Agustus";
+                                } else if (nomor.equalsIgnoreCase("09")) {
+                                    bulan = "September";
+                                } else if (nomor.equalsIgnoreCase("10")) {
+                                    bulan = "Oktober";
+                                } else if (nomor.equalsIgnoreCase("11")) {
+                                    bulan = "November";
+                                } else if (nomor.equalsIgnoreCase("12")) {
+                                    bulan = "Desember";
+                                }
+                                list.add(new BulanModel(nomor, bulan));
                             }
-                            list.add(new BulanModel(nomor, bulan));
+
+                            ArrayAdapter<BulanModel> adapter = new ArrayAdapter<BulanModel>(getApplicationContext(),  android.R.layout.simple_spinner_dropdown_item, list);
+                            adapter.setDropDownViewResource( android.R.layout.simple_spinner_dropdown_item);
+
+                            spinnerBulan.setAdapter(adapter);
                         }
-
-                        ArrayAdapter<BulanModel> adapter = new ArrayAdapter<BulanModel>(getApplicationContext(),  android.R.layout.simple_spinner_dropdown_item, list);
-                        adapter.setDropDownViewResource( android.R.layout.simple_spinner_dropdown_item);
-
-                        spinnerBulan.setAdapter(adapter);
                     }
                 }
-            }
-        });
+            });
+        } else {
+            listPaketViewModel.getPaketWisataMonth(
+                    paketWisata
+            ).observe(this, new Observer<PaketMonthResponse>() {
+                @Override
+                public void onChanged(PaketMonthResponse paketMonthResponse) {
+                    if (!paketMonthResponse.isError()) {
+                        if (!paketMonthResponse.getData().getBulan().isEmpty()) {
+                            for (String nomor: paketMonthResponse.getData().getBulan()) {
+                                String bulan = "";
+                                if (nomor.equalsIgnoreCase("01")) {
+                                    bulan = "Januari";
+                                } else if (nomor.equalsIgnoreCase("02")) {
+                                    bulan = "Februari";
+                                } else if (nomor.equalsIgnoreCase("03")) {
+                                    bulan = "Maret";
+                                } else if (nomor.equalsIgnoreCase("04")) {
+                                    bulan = "April";
+                                } else if (nomor.equalsIgnoreCase("05")) {
+                                    bulan = "Mei";
+                                } else if (nomor.equalsIgnoreCase("06")) {
+                                    bulan = "Juni";
+                                } else if (nomor.equalsIgnoreCase("07")) {
+                                    bulan = "Juli";
+                                } else if (nomor.equalsIgnoreCase("08")) {
+                                    bulan = "Agustus";
+                                } else if (nomor.equalsIgnoreCase("09")) {
+                                    bulan = "September";
+                                } else if (nomor.equalsIgnoreCase("10")) {
+                                    bulan = "Oktober";
+                                } else if (nomor.equalsIgnoreCase("11")) {
+                                    bulan = "November";
+                                } else if (nomor.equalsIgnoreCase("12")) {
+                                    bulan = "Desember";
+                                }
+                                list.add(new BulanModel(nomor, bulan));
+                            }
+
+                            ArrayAdapter<BulanModel> adapter = new ArrayAdapter<BulanModel>(getApplicationContext(),  android.R.layout.simple_spinner_dropdown_item, list);
+                            adapter.setDropDownViewResource( android.R.layout.simple_spinner_dropdown_item);
+
+                            spinnerBulan.setAdapter(adapter);
+                        }
+                    }
+                }
+            });
+        }
 
         spinnerBulan.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -120,7 +173,11 @@ public class ListPaketActivity extends AppCompatActivity {
                 shimmerFrameLayoutPaket.setVisibility(View.VISIBLE);
                 linearLayoutNoPaket.setVisibility(View.GONE);
 
-                getPaket(paket, list.get(position).getUrutan());
+                if (paket != null) {
+                    getPaket(paket, list.get(position).getUrutan());
+                } else {
+                    getPaketWisata(paketWisata, list.get(position).getUrutan());
+                }
             }
 
             @Override
@@ -159,6 +216,34 @@ public class ListPaketActivity extends AppCompatActivity {
                     if (!paketResponse.getData().isEmpty()) {
                         paketAdapter = new PaketAdapter(paketResponse.getData());
                         recyclerViewPaket.setAdapter(paketAdapter);
+
+                        linearLayoutPaket.setVisibility(View.VISIBLE);
+                        linearLayoutNoPaket.setVisibility(View.GONE);
+                    } else {
+                        linearLayoutPaket.setVisibility(View.GONE);
+                        linearLayoutNoPaket.setVisibility(View.VISIBLE);
+                    }
+                } else {
+                    linearLayoutPaket.setVisibility(View.GONE);
+                    linearLayoutNoPaket.setVisibility(View.VISIBLE);
+                }
+                shimmerFrameLayoutPaket.setVisibility(View.GONE);
+                shimmerFrameLayoutPaket.stopShimmer();
+            }
+        });
+    }
+
+    public void getPaketWisata(String paket, String urutan) {
+        listPaketViewModel.getPaketWisata(
+                paket,
+                urutan
+        ).observe(this, new Observer<PaketWisataResponse>() {
+            @Override
+            public void onChanged(PaketWisataResponse paketWisataResponse) {
+                if (!paketWisataResponse.isError()) {
+                    if (!paketWisataResponse.getData().isEmpty()) {
+                        paketWisataAdapter = new PaketWisataAdapter(paketWisataResponse.getData());
+                        recyclerViewPaket.setAdapter(paketWisataAdapter);
 
                         linearLayoutPaket.setVisibility(View.VISIBLE);
                         linearLayoutNoPaket.setVisibility(View.GONE);

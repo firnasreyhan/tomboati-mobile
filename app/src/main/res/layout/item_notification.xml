@@ -11,14 +11,30 @@
         android:padding="@dimen/_13sdp"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/textViewTanggalNotifikasi"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/catamaran_regular"
-            android:textColor="@android:color/darker_gray"
-            android:textSize="@dimen/_7sdp"
-            android:text="1 Januari 2020"/>
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="@dimen/_13sdp"
+                android:layout_height="@dimen/_13sdp"
+                android:adjustViewBounds="true"
+                android:src="@drawable/ic_notification_green"/>
+
+            <TextView
+                android:id="@+id/textViewTanggalNotifikasi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_7sdp"
+                android:layout_weight="1"
+                android:fontFamily="@font/catamaran_regular"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="@dimen/_7sdp"
+                android:text="1 Januari 2020"/>
+
+        </LinearLayout>
 
         <TextView
             android:id="@+id/textViewJudulNotifikasi"

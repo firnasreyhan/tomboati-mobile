@@ -1,5 +1,6 @@
 package com.android.tomboati.adapter;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,7 @@ import com.android.tomboati.R;
 import com.android.tomboati.api.response.PaketResponse;
 import com.android.tomboati.model.PaketModel;
 import com.android.tomboati.preference.AppPreference;
+import com.android.tomboati.view.activity.DetailPaketActivity;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.Priority;
 import com.bumptech.glide.load.DecodeFormat;
@@ -39,7 +41,7 @@ public class PaketAdapter extends RecyclerView.Adapter<PaketAdapter.ViewHolder> 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return  new PaketAdapter.ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_paket, parent, false));
+        return new PaketAdapter.ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_paket, parent, false));
     }
 
     @Override
@@ -124,6 +126,15 @@ public class PaketAdapter extends RecyclerView.Adapter<PaketAdapter.ViewHolder> 
             textViewNamaHotelA = itemView.findViewById(R.id.textViewNamaHotelA);
             textViewTempatHotelB = itemView.findViewById(R.id.textViewTempatHotelB);
             textViewNamaHotelB = itemView.findViewById(R.id.textViewNamaHotelB);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(v.getContext(), DetailPaketActivity.class);
+                    intent.putExtra("ID_PAKET", list.get(getAdapterPosition()).getIdPaket());
+                    v.getContext().startActivity(intent);
+                }
+            });
         }
     }
 }

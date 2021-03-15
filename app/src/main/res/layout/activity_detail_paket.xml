@@ -16,9 +16,31 @@
         android:background="@color/dark_green"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_7sdp"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="@color/dark_green">
+
+        <TextView
+            android:id="@+id/textViewNamaPaket"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/catamaran_bold"
+            android:textSize="@dimen/_13sdp"
+            android:gravity="center"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:text="Nama Paket"/>
+
+    </LinearLayout>
+
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_weight="1">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -28,6 +50,7 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_13sdp"
                 app:cardCornerRadius="@dimen/_9sdp"
                 app:cardBackgroundColor="#F0F0F0">
 
@@ -37,8 +60,11 @@
                     android:orientation="vertical">
 
                     <ImageView
+                        android:id="@+id/imageViewPaket"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_120sdp"
+                        android:adjustViewBounds="true"
+                        android:scaleType="centerCrop"
                         android:src="@color/dark_green" />
 
                     <LinearLayout
@@ -63,6 +89,7 @@
                             android:orientation="horizontal">
 
                             <androidx.cardview.widget.CardView
+                                android:id="@+id/cardViewQuad"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="@dimen/_3sdp"
@@ -79,6 +106,7 @@
                                     android:gravity="center">
 
                                     <TextView
+                                        android:id="@+id/textViewQuad"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:fontFamily="@font/catamaran_bold"
@@ -100,6 +128,7 @@
                             </androidx.cardview.widget.CardView>
 
                             <androidx.cardview.widget.CardView
+                                android:id="@+id/cardViewTriple"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="@dimen/_3sdp"
@@ -116,12 +145,13 @@
                                     android:gravity="center">
 
                                     <TextView
+                                        android:id="@+id/textViewTriple"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:fontFamily="@font/catamaran_bold"
+                                        android:text="Rp. 20.500.000,-"
                                         android:textColor="@android:color/white"
-                                        android:textSize="@dimen/_9sdp"
-                                        android:text="Rp. 20.500.000,-"/>
+                                        android:textSize="@dimen/_9sdp" />
 
                                     <TextView
                                         android:layout_width="wrap_content"
@@ -137,6 +167,7 @@
                             </androidx.cardview.widget.CardView>
 
                             <androidx.cardview.widget.CardView
+                                android:id="@+id/cardViewDouble"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="@dimen/_3sdp"
@@ -153,6 +184,7 @@
                                     android:gravity="center">
 
                                     <TextView
+                                        android:id="@+id/textViewDouble"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:fontFamily="@font/catamaran_bold"
@@ -275,26 +307,95 @@
 
                         </LinearLayout>
 
-                        <TextView
+                        <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/_11sdp"
-                            android:fontFamily="@font/catamaran_bold"
-                            android:textSize="@dimen/_10sdp"
-                            android:textColor="@android:color/black"
-                            android:text="ITTENERARY"/>
+                            android:orientation="vertical">
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:padding="@dimen/_9sdp">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_11sdp"
+                                android:fontFamily="@font/catamaran_bold"
+                                android:textSize="@dimen/_10sdp"
+                                android:textColor="@android:color/black"
+                                android:text="ITTENERARY"/>
 
-
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_1sdp"
+                                android:background="@android:color/black"/>
 
                         </LinearLayout>
 
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recyclerViewIttenerary"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:overScrollMode="never"/>
 
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:fontFamily="@font/catamaran_bold"
+                            android:textSize="@dimen/_9sdp"
+                            android:textColor="#6F0101"
+                            android:text="*) Tanpa mengurangi nilai Ibadah para Jamaah Tombo Ati, Ittinerary ini dapat berubah sewaktu – waktu bila terjadi perubahan dari maskapai penerbangan dan kondisi di Arab Saudi."/>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_11sdp"
+                                android:fontFamily="@font/catamaran_bold"
+                                android:textSize="@dimen/_10sdp"
+                                android:textColor="@color/dark_green"
+                                android:text="BIAYA SUDAH TERMASUK"/>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_1sdp"
+                                android:background="@color/dark_green"/>
+
+                        </LinearLayout>
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recyclerViewBiayaSudahTermasuk"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:overScrollMode="never"/>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_11sdp"
+                                android:fontFamily="@font/catamaran_bold"
+                                android:textSize="@dimen/_10sdp"
+                                android:textColor="@color/dark_green"
+                                android:text="BIAYA BELUM TERMASUK"/>
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_1sdp"
+                                android:background="@color/dark_green"/>
+
+                        </LinearLayout>
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recyclerViewBiayaBelumTermasuk"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:overScrollMode="never"/>
 
                     </LinearLayout>
 
@@ -305,5 +406,32 @@
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@android:color/white">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_7sdp"
+            android:orientation="horizontal">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/materialButtonPesan"
+                style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/catamaran_bold"
+                android:text="Pesan"
+                android:textAllCaps="false"
+                app:backgroundTint="@color/dark_green"
+                android:textColor="@color/white"/>
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
 
 </LinearLayout>

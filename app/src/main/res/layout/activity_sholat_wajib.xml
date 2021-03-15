@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@android:color/white"
-    tools:context=".view.activity.SholatWajibActivity">
+    tools:context=".view.activity.sholat.SholatWajibActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"

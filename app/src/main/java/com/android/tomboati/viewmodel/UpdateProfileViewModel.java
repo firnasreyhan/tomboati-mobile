@@ -40,10 +40,9 @@ public class UpdateProfileViewModel extends AndroidViewModel {
         context = application.getApplicationContext();
     }
 
-    public MutableLiveData<BaseResponse> updateProfile(String idUser, String noKTP_, String email_, String password_, String namaLengkap_, String noHP_) {
+    public MutableLiveData<BaseResponse> updateProfile(String idUser, String noKTP_, String email_, String namaLengkap_, String noHP_) {
         RequestBody noKTP = RequestBody.create(MediaType.parse("text/plain"), noKTP_);
         RequestBody email = RequestBody.create(MediaType.parse("text/plain"), email_);
-        RequestBody password = RequestBody.create(MediaType.parse("text/plain"), password_);
         RequestBody namaLengkap = RequestBody.create(MediaType.parse("text/plain"), namaLengkap_);
         RequestBody noHP = RequestBody.create(MediaType.parse("text/plain"), "62"+ noHP_.substring(1));
 
@@ -51,7 +50,6 @@ public class UpdateProfileViewModel extends AndroidViewModel {
                 idUser,
                 noKTP,
                 email,
-                password,
                 namaLengkap,
                 noHP);
     }

@@ -32,6 +32,10 @@ public class AkunViewModel extends AndroidViewModel {
         return repository.signIn(email, password, updateToken(email));
     }
 
+    public MutableLiveData<BaseResponse> resetPassword(String idUserRegister) {
+        return repository.resetPassword(idUserRegister);
+    }
+
     public MutableLiveData<BaseResponse> signOut() {
         String userKey = AppPreference.getUser(context).getEmail().replaceAll("[-+.^:,]","");
         FirebaseDatabase.getInstance().getReference("TomboAti").child("Token").child(userKey).removeValue();
