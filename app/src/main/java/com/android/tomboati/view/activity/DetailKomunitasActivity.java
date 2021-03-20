@@ -29,7 +29,7 @@ public class DetailKomunitasActivity extends AppCompatActivity {
         ImageView image_detail = findViewById(R.id.image_detail);
         JustifiedTextView text_tagar_detail = findViewById(R.id.text_tagar_detail);
         JustifiedTextView text_judul_detail = findViewById(R.id.text_judul_detail);
-        WebView webview_content = findViewById(R.id.webview_content);
+        JustifiedTextView textViewContentNews = findViewById(R.id.textViewContentNews);
 
         Intent intent = this.getIntent();
         Picasso.get().load(intent.getStringExtra("IMAGE")).priority(Picasso.Priority.HIGH)
@@ -37,7 +37,9 @@ public class DetailKomunitasActivity extends AppCompatActivity {
 
         text_tagar_detail.setText(intent.getStringExtra("TEXT_TAGAR"));
         text_judul_detail.setText(intent.getStringExtra("TEXT_JUDUL"));
-        webview_content.loadData(intent.getStringExtra("CONTENT"), "text/html", "UTF-8");
+
+        String content = intent.getStringExtra("CONTENT").replaceAll("\\<.*?\\>", "");;
+        textViewContentNews.setText("\t".concat(content));
 
     }
 

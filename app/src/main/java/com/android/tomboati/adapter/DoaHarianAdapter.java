@@ -4,7 +4,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -12,8 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.tomboati.R;
 import com.android.tomboati.api.response.DoaHarianResponse;
-import com.android.tomboati.view.activity.DetailAsmaulHusnaActivity;
-import com.android.tomboati.view.activity.DetailDoaSehariHariActivity;
+import com.android.tomboati.view.activity.doa_dzikir.DetailDoaSehariHariActivity;
 
 import java.util.List;
 

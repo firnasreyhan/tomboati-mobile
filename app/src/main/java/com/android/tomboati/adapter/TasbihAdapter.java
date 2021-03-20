@@ -17,8 +17,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.android.tomboati.R;
 import com.android.tomboati.model.TasbihModel;
 import com.android.tomboati.utils.Utility;
-import com.android.tomboati.view.activity.HitungTasbihActivity;
-import com.android.tomboati.view.activity.HitungTasbihLainnyaActivity;
+import com.android.tomboati.view.activity.doa_dzikir.HitungTasbihActivity;
+import com.android.tomboati.view.activity.doa_dzikir.HitungTasbihLainnyaActivity;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.ArrayList;

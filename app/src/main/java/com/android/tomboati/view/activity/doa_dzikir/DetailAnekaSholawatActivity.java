@@ -1,4 +1,4 @@
-package com.android.tomboati.view.activity;
+package com.android.tomboati.view.activity.doa_dzikir;
 
 import android.content.Intent;
 import android.os.Bundle;

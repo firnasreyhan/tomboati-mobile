@@ -9,7 +9,7 @@
     android:scrollbarThumbHorizontal="@null"
     android:scrollbarThumbVertical="@null"
     android:scrollbars="none"
-    tools:context=".view.activity.DetailAnekaSholawatActivity">
+    tools:context=".view.activity.doa_dzikir.DetailAnekaSholawatActivity">
 
 
     <androidx.appcompat.widget.Toolbar

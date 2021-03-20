@@ -1,4 +1,4 @@
-package com.android.tomboati.view.activity;
+package com.android.tomboati.view.activity.doa_dzikir;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,37 +15,108 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.tomboati.R;
+import com.android.tomboati.model.TasbihModel;
 import com.android.tomboati.utils.Utility;
 import com.ramijemli.percentagechartview.PercentageChartView;
 
-public class HitungTasbihLainnyaActivity extends AppCompatActivity {
+import java.util.List;
+
+public class HitungTasbihActivity extends AppCompatActivity {
 
     private int count_tasbeeh = 0;
     private int max = 33;
     private int time_vibrate =40;
+    private int index = 0;
 
-    private TextView text_count, text_max, text_ayat;
+    private ImageView img_prev, img_next;
+    private TextView text_count, text_judul, text_arabic, text_translate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setTheme(R.style.ThemeTomboAtiGreen);
-        setContentView(R.layout.activity_hitung_tasbih_lainnya);
+        setContentView(R.layout.activity_hitung_tasbih);
+
+        index = this.getIntent().getIntExtra("POSITION", 0);
+
+        count_tasbeeh = Utility.getTasbihModel().get(index).getCount_tasbeeh();
 
         PercentageChartView chartView = findViewById(R.id.bar);
         chartView.setProgress(count_tasbeeh, true);
 
         text_count = findViewById(R.id.txt_count);
-        text_max = findViewById(R.id.text_max);
-        text_ayat = findViewById(R.id.text_ayat);
+        text_judul = findViewById(R.id.text_judul);
+        text_arabic = findViewById(R.id.text_arabic);
+        text_translate = findViewById(R.id.text_translate);
 
-        max = this.getIntent().getIntExtra("inpMax", max);
-
-        text_count.setText("" + count_tasbeeh);
-        text_max.setText("Dibaca " + this.getIntent().getIntExtra("inpMax", max) + " kali");
-        text_ayat.setText("\"" + this.getIntent().getStringExtra("inpAyat") + "\"");
+        text_count.setText("" + Utility.getTasbihModel().get(index).getCount_tasbeeh());
+        text_judul.setText(Utility.getTasbihModel().get(index).getJudul());
+        text_arabic.setText(Utility.getTasbihModel().get(index).getArabic());
+        text_translate.setText(Utility.getTasbihModel().get(index).getTranslate());
 
         final Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+
+        img_prev = findViewById(R.id.img_prev);
+        img_next = findViewById(R.id.img_next);
+
+        if(index == 0) {
+            img_prev.setVisibility(View.GONE);
+        }
+
+        if(index == Utility.getTasbihModel().size() - 1) {
+            img_next.setVisibility(View.GONE);
+        }
+
+        img_prev.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Utility.getTasbihModel().get(index).setCount_tasbeeh(count_tasbeeh);
+
+                index--;
+
+                count_tasbeeh = Utility.getTasbihModel().get(index).getCount_tasbeeh();
+
+                time_vibrate = 40;
+                text_count.setText("" + count_tasbeeh);
+                text_judul.setText(Utility.getTasbihModel().get(index).getJudul());
+                text_arabic.setText(Utility.getTasbihModel().get(index).getArabic());
+                text_translate.setText(Utility.getTasbihModel().get(index).getTranslate());
+                chartView.setProgress((count_tasbeeh / (float) max) * 100, true);
+
+                if(index == 0) {
+                    img_prev.setVisibility(View.GONE);
+                }else if(index < Utility.getTasbihModel().size() - 1) {
+                    img_next.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+
+        img_next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Utility.getTasbihModel().get(index).setCount_tasbeeh(count_tasbeeh);
+
+                index++;
+
+                count_tasbeeh = Utility.getTasbihModel().get(index).getCount_tasbeeh();
+
+                time_vibrate = 40;
+                text_count.setText("" + count_tasbeeh);
+                text_judul.setText(Utility.getTasbihModel().get(index).getJudul());
+                text_arabic.setText(Utility.getTasbihModel().get(index).getArabic());
+                text_translate.setText(Utility.getTasbihModel().get(index).getTranslate());
+                chartView.setProgress((count_tasbeeh / (float) max) * 100, true);
+
+                if(index == Utility.getTasbihModel().size() - 1) {
+                    img_next.setVisibility(View.GONE);
+                }
+
+                if(index > 0) {
+                    img_prev.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+
 
         findViewById(R.id.img_add).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -113,7 +184,7 @@ public class HitungTasbihLainnyaActivity extends AppCompatActivity {
                             count_tasbeeh = 0;
                             time_vibrate = 40;
                             text_count.setText("" + count_tasbeeh);
-                            chartView.setProgress(0, true);
+                            chartView.setProgress((count_tasbeeh / (float) max) * 100, true);
                         }
                     });
                     alert.show();
@@ -124,6 +195,7 @@ public class HitungTasbihLainnyaActivity extends AppCompatActivity {
         findViewById(R.id.back).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Utility.getTasbihModel().get(index).setCount_tasbeeh(count_tasbeeh);
                 onBackPressed();
             }
         });

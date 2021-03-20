@@ -24,14 +24,14 @@
         <activity android:name=".view.activity.KomunitasActivity" />
         <activity android:name=".view.activity.pendaftaran.PendaftaranDataKeluargaActivity"></activity>
         <activity android:name=".view.activity.pendaftaran.PendaftaranDataDiriActivity" />
-        <activity android:name=".view.activity.TembangSholawatActivity" />
-        <activity android:name=".view.activity.HitungTasbihLainnyaActivity" />
+        <activity android:name=".view.activity.doa_dzikir.TembangSholawatActivity" />
+        <activity android:name=".view.activity.doa_dzikir.HitungTasbihLainnyaActivity" />
         <activity android:name=".view.activity.sholat.SholatDiperjalananActivity" />
         <activity android:name=".view.activity.sholat.SholatJenazahActivity" />
         <activity android:name=".view.activity.doa_dzikir.AnekaSholawatActivity" />
         <activity android:name=".view.activity.sholat.AdabSholatActivity" />
         <activity android:name=".view.activity.sholat.SholatSunnahActivity" />
-        <activity android:name=".view.activity.HitungTasbihActivity" />
+        <activity android:name=".view.activity.doa_dzikir.HitungTasbihActivity" />
         <activity android:name=".view.activity.doa_dzikir.TasbihActivity" />
         <activity android:name=".view.activity.doa_dzikir.DoaRamadhanActivity" />
         <activity android:name=".view.activity.sholat.TayamumActivity" />
@@ -46,18 +46,18 @@
         <activity android:name=".view.activity.doa_dzikir.DoaZiarahActivity" />
         <activity android:name=".view.activity.doa_dzikir.DoaHajiActivity" />
         <activity android:name=".view.activity.doa_dzikir.DoaUmrahActivity" /> <!-- <activity android:name=".view.activity.DetailHajiUmrahActivity" /> -->
-        <activity android:name=".view.activity.DetailDoaSehariHariActivity" />
+        <activity android:name=".view.activity.doa_dzikir.DetailDoaSehariHariActivity" />
         <activity android:name=".view.activity.doa_dzikir.DoaSehariHariActivity" />
         <activity android:name=".view.activity.doa_dzikir.YasinTahlilActivity" />
         <activity android:name=".view.activity.doa_dzikir.IstighosahActivity" />
         <activity android:name=".view.activity.DetailJuzActivity" />
         <activity android:name=".view.activity.KalenderHijriahActivity" />
         <activity android:name=".view.activity.DetailNewsActivity" />
-        <activity android:name=".view.activity.DetailAsmaulHusnaActivity" />
-        <activity android:name=".view.activity.NewAsmaulHusnaActivity" />
+        <activity android:name=".view.activity.doa_dzikir.DetailAsmaulHusnaActivity" />
+        <activity android:name=".view.activity.doa_dzikir.NewAsmaulHusnaActivity" />
         <activity android:name=".view.activity.DetailAlQuranActivity" />
         <activity android:name=".view.activity.AlQuranActivity" />
-        <activity android:name=".view.activity.DetailAnekaSholawatActivity" />
+        <activity android:name=".view.activity.doa_dzikir.DetailAnekaSholawatActivity" />
 
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"

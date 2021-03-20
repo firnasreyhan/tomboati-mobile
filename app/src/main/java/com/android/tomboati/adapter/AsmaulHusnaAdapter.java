@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.tomboati.R;
 import com.android.tomboati.model.AsmaulHusnaModel;
-import com.android.tomboati.view.activity.DetailAsmaulHusnaActivity;
+import com.android.tomboati.view.activity.doa_dzikir.DetailAsmaulHusnaActivity;
 
 import java.util.List;
 

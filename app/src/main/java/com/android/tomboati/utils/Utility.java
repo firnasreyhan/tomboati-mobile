@@ -24,6 +24,8 @@ public class Utility {
     private static double latitude, longitude;
     private static final Calendar c = Calendar.getInstance();
     private static String kota;
+
+    private static String contentNews;
     private static int hour, minute;
     private static ArrayList<JadwalSholatResponse> list = new ArrayList<>();
     private static List<TasbihModel> models;
@@ -36,6 +38,14 @@ public class Utility {
         models.add(new TasbihModel("Istighfar 33x", "اَسْتَغْفِرُاللهَ الْعَظِيْمَ", "\"Astaghfirullahaladzim\"",33));
         models.add(new TasbihModel("Tahlil 33x", "لا إلهَ إِلاَّ اللهُ", "\"Lailaha Ilallah\"", 33));
         models.add(new TasbihModel("Sholawat 33x", "صَلَّى اللهُ عَلَى مُحَمَّدُ", "\"Shalallahuala Muhammad\"",33));
+    }
+
+    public static String getContentNews() {
+        return contentNews;
+    }
+
+    public static void setContentNews(String contentNews) {
+        Utility.contentNews = contentNews;
     }
 
     public static List<TasbihModel> getTasbihModel() {

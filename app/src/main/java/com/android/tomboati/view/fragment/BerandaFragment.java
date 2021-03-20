@@ -46,6 +46,7 @@ import com.android.tomboati.view.activity.sholat.SholatActivity;
 import com.android.tomboati.view.activity.UmrohHajiActivity;
 import com.android.tomboati.view.activity.WisataReligiActivity;
 import com.android.tomboati.viewmodel.BerandaViewModel;
+import com.codesgood.views.JustifiedTextView;
 import com.facebook.shimmer.ShimmerFrameLayout;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.imageview.ShapeableImageView;
@@ -73,7 +74,8 @@ public class BerandaFragment extends Fragment {
     private CardView cardViewUmrohHaji, cardViewWisataReligi, cardViewDoaDzikir, cardViewSholat, cardViewAlQuran, cardViewKalenderHijriah, cardViewQurbanAqiqah, cardViewKomunitas, cardViewTomboatiChannel, cardViewLiveMekkah;
 
     private ShapeableImageView shapeableImageViewFoto;
-    private TextView textViewNamaLengkap, textViewSortNews, textViewKataMutiara, textViewJudulNews;
+    private TextView textViewNamaLengkap, textViewKataMutiara, textViewJudulNews;
+    private JustifiedTextView textViewSortNews;
     private MaterialButton materialButtonDetailNews;
 
     private ImageView imageViewPromoHaji1, imageViewPromoHaji2, imageViewPromoHaji3, imageViewPromoTour1, imageViewPromoTour2, imageViewPromoTour3, imageViewNews;
@@ -386,28 +388,18 @@ public class BerandaFragment extends Fragment {
                                     .priority(Picasso.Priority.HIGH)
                                     .placeholder(R.drawable.ic_logo)
                                     .into(imageViewNews);
-//                            Glide.with(getActivity().getApplicationContext())
-//                                    .load(newsResponse.getData().get(0).getFoto())
-//                                    .diskCacheStrategy(DiskCacheStrategy.ALL)
-//                                    .skipMemoryCache(true)
-//                                    .dontAnimate()
-//                                    .dontTransform()
-//                                    .priority(Priority.IMMEDIATE)
-//                                    .encodeFormat(Bitmap.CompressFormat.PNG)
-//                                    .format(DecodeFormat.DEFAULT)
-//                                    .placeholder(R.drawable.ic_logo)
-//                                    .into(imageViewNews);
 
                             textViewJudulNews.setText(newsResponse.getData().get(0).getJudulNews());
 
                             String s = newsResponse.getData().get(0).getContentNews().replaceAll("\\<.*?\\>", "");
+                            Utility.setContentNews(s);
                             String[] senteces = s.split("\\. ");
                             Log.e("size", String.valueOf(senteces.length));
-                            String shortNews = "";
+                            StringBuilder shortNews = new StringBuilder();
                             for (int i = 0; i < 5; i++) {
-                                shortNews = shortNews + senteces[i] + ". ";
+                                shortNews.append(senteces[i]).append(". ");
                             }
-                            textViewSortNews.setText(shortNews);
+                            textViewSortNews.setText("\t\t\t".concat(shortNews.toString()));
                         }
                     }
                 }

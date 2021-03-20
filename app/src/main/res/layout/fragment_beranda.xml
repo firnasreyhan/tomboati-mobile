@@ -665,7 +665,7 @@
                         android:textColor="@android:color/black"
                         android:textSize="@dimen/_11sdp" />
 
-                    <TextView
+                    <com.codesgood.views.JustifiedTextView
                         android:id="@+id/textViewSortNews"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"

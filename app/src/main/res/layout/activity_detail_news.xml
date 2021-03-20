@@ -57,7 +57,7 @@
                 android:scaleType="centerCrop"
                 android:src="@drawable/ic_logo"/>
 
-            <TextView
+            <com.codesgood.views.JustifiedTextView
                 android:id="@+id/textViewContentNews"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

@@ -6,6 +6,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.graphics.Bitmap;
+import android.icu.util.UniversalTimeScale;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageView;
@@ -13,22 +14,27 @@ import android.widget.TextView;
 
 import com.android.tomboati.R;
 import com.android.tomboati.api.response.NewsResponse;
+import com.android.tomboati.utils.Utility;
 import com.android.tomboati.viewmodel.DetailNewsViewModel;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.Priority;
 import com.bumptech.glide.load.DecodeFormat;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.codesgood.views.JustifiedTextView;
 
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+import java.util.Random;
 
 public class DetailNewsActivity extends AppCompatActivity {
+
     private DetailNewsViewModel detailNewsViewModel;
     private Toolbar toolbar;
-    private TextView textViewJudulNews, textViewContentNews, textViewDateNews;
+    private TextView textViewJudulNews, textViewDateNews;
+    private JustifiedTextView textViewContentNews;
     private ImageView imageViewNews;
 
     @Override
@@ -46,9 +52,11 @@ public class DetailNewsActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         textViewJudulNews = findViewById(R.id.textViewJudulNews);
-        textViewContentNews = findViewById(R.id.textViewContentNews);
         textViewDateNews = findViewById(R.id.textViewDateNews);
+        textViewContentNews =  findViewById(R.id.textViewContentNews);
         imageViewNews = findViewById(R.id.imageViewNews);
+
+        textViewContentNews.setText("\t".concat(Utility.getContentNews()));
 
         detailNewsViewModel.getNews().observe(this, new Observer<NewsResponse>() {
             @Override
@@ -69,8 +77,8 @@ public class DetailNewsActivity extends AppCompatActivity {
 
                         textViewJudulNews.setText(newsResponse.getData().get(0).getJudulNews());
 
-                        String s = newsResponse.getData().get(0).getContentNews().replaceAll("\\<.*?\\>", "");
-                        textViewContentNews.setText(s);
+//                        String news = Utility.getContentNews().replaceAll("\\<.*?\\>" , "");
+
 
                         String nmyFormat = "dd MMMM yyyy"; //In which you need put here
                         SimpleDateFormat nsdf = new SimpleDateFormat(nmyFormat, new Locale("id", "ID"));
@@ -85,6 +93,7 @@ public class DetailNewsActivity extends AppCompatActivity {
                 }
             }
         });
+
     }
 
     @Override

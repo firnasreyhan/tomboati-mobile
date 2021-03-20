@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.tomboati.R;
 import com.android.tomboati.api.response.BacaanSholatResponse;
-import com.android.tomboati.view.activity.DetailDoaSehariHariActivity;
+import com.android.tomboati.view.activity.doa_dzikir.DetailDoaSehariHariActivity;
 
 import java.util.List;
 

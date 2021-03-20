@@ -1,5 +1,4 @@
 package com.android.tomboati.adapter;
-import android.app.Activity;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,8 +12,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.tomboati.R;
 import com.android.tomboati.model.DoaHajiUmrahModel;
-import com.android.tomboati.view.activity.DetailAnekaSholawatActivity;
-import com.android.tomboati.view.activity.DetailDoaSehariHariActivity;
+import com.android.tomboati.view.activity.doa_dzikir.DetailAnekaSholawatActivity;
+import com.android.tomboati.view.activity.doa_dzikir.DetailDoaSehariHariActivity;
 
 import java.util.List;
 
