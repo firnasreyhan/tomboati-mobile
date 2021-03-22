@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".view.fragment.AkunFragment">
-    
+
     <LinearLayout
         android:id="@+id/linearLayoutAkun"
         android:layout_width="match_parent"
@@ -27,10 +27,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="bottom"
-                android:paddingBottom="26dp"
+                android:orientation="horizontal"
                 android:paddingLeft="38dp"
                 android:paddingRight="38dp"
-                android:orientation="horizontal">
+                android:paddingBottom="26dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -43,11 +43,11 @@
                         android:id="@+id/shapeableImageViewFoto"
                         android:layout_width="60dp"
                         android:layout_height="60dp"
-                        android:src="@drawable/ic_logo"
                         android:adjustViewBounds="true"
-                        android:scaleType="centerCrop"
                         android:background="@android:color/white"
-                        app:shapeAppearance="@style/ShapeAppearance.App.CircleImageView"/>
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/ic_logo"
+                        app:shapeAppearance="@style/ShapeAppearance.App.CircleImageView" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -205,27 +205,27 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/materialButtonSignOut"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:backgroundTint="@color/background"
-            app:strokeWidth="1dp"
-            app:strokeColor="#DADADA"
-            app:elevation="0dp"
-            app:icon="@drawable/ic_sign_out"
-            app:iconTint="@color/dark_green"
-            app:iconGravity="start"
-            app:iconPadding="17dp"
-            android:gravity="left|center"
             android:fontFamily="@font/catamaran_bold"
-            android:textColor="@color/dark_green"
-            android:paddingTop="25dp"
-            android:paddingBottom="25dp"
+            android:gravity="left|center"
             android:paddingLeft="38dp"
+            android:paddingTop="25dp"
             android:paddingRight="38dp"
+            android:paddingBottom="25dp"
             android:text="Keluar"
             android:textAllCaps="false"
+            android:textColor="@color/dark_green"
             android:textSize="12sp"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
+            app:backgroundTint="@color/background"
+            app:elevation="0dp"
+            app:icon="@drawable/ic_sign_out"
+            app:iconGravity="start"
+            app:iconPadding="17dp"
+            app:iconTint="@color/dark_green"
+            app:strokeColor="#DADADA"
+            app:strokeWidth="1dp" />
 
     </LinearLayout>
 
@@ -233,7 +233,8 @@
         android:id="@+id/nestedScrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/ic_background_beranda">
+        android:background="@drawable/ic_background_beranda"
+        android:visibility="visible">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -289,9 +290,9 @@
                     android:id="@+id/textInputEditTextEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Email"
                     android:fontFamily="@font/catamaran_regular"
-                    android:inputType="textEmailAddress"
+                    android:hint="Email"
+                    android:inputType="text|textEmailAddress"
                     android:textColor="#333333" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -302,15 +303,15 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="18dp"
                 app:boxBackgroundColor="@android:color/white"
-                app:hintEnabled="false"
-                app:endIconMode="password_toggle">
+                app:endIconMode="password_toggle"
+                app:hintEnabled="false">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/textInputEditTextPassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Password"
                     android:fontFamily="@font/catamaran_regular"
+                    android:hint="Password"
                     android:inputType="textPassword"
                     android:textColor="#333333" />
 

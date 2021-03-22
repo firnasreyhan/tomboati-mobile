@@ -37,6 +37,7 @@ import com.android.tomboati.api.response.NewsResponse;
 import com.android.tomboati.api.response.PaketResponse;
 import com.android.tomboati.api.response.PaketWisataResponse;
 import com.android.tomboati.preference.AppPreference;
+import com.android.tomboati.utils.AlertProgress;
 import com.android.tomboati.utils.Utility;
 import com.android.tomboati.view.activity.quran.AlQuranActivity;
 import com.android.tomboati.view.activity.DetailNewsActivity;
@@ -84,12 +85,10 @@ public class BerandaFragment extends Fragment {
     private ImageView imageViewPromoHaji1, imageViewPromoHaji2, imageViewPromoHaji3, imageViewPromoTour1, imageViewPromoTour2, imageViewPromoTour3, imageViewNews;
 
     private PermissionManager permissionManager;
-    private ProgressDialog dialog;
     private AlertDialog.Builder alert;
-//    private Intent intent;
-
-    //    private String idPaket1, idPaket2, idPaket3, idWisata1, idWisata2, idWisata3;
     private String[] idPaket = new String[6];
+
+    private AlertProgress progress;
 
     // Check gps provider is enabled
     private boolean isProviderEnable() {
@@ -131,7 +130,7 @@ public class BerandaFragment extends Fragment {
         textViewJudulNews = view.findViewById(R.id.textViewJudulNews);
         imageViewNews = view.findViewById(R.id.imageViewNews);
 
-        dialog = new ProgressDialog(this.getActivity());
+        progress = new AlertProgress(view, "Sedang mengambil data");
 
         sliderView.setIndicatorAnimation(IndicatorAnimationType.WORM); //set indicator animation by using IndicatorAnimationType. :WORM or THIN_WORM or COLOR or DROP or FILL or NONE or SCALE or SCALE_DOWN or SLIDE and SWAP!!
         sliderView.setSliderTransformAnimation(SliderAnimations.SIMPLETRANSFORMATION);
@@ -153,16 +152,11 @@ public class BerandaFragment extends Fragment {
             swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
                 @Override
                 public void onRefresh() {
+                    swipeRefreshLayout.setRefreshing(false);
                     shimmerFrameLayoutSlider.startShimmer();
                     shimmerFrameLayoutSlider.setVisibility(View.VISIBLE);
                     sliderView.setVisibility(View.GONE);
-                    checkLocation();
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            swipeRefreshLayout.setRefreshing(false);
-                        }
-                    }, 3000);
+                    showLocation();
                 }
             });
 
@@ -275,7 +269,6 @@ public class BerandaFragment extends Fragment {
             imgArr[i].setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Log.d("IJ", idPaket[j]);
                     Intent intent = new Intent(v.getContext(), DetailPaketActivity.class);
                     intent.putExtra((j > 2) ? "ID_PAKET_WISATA" : "ID_PAKET", idPaket[j]);
                     v.getContext().startActivity(intent);
@@ -365,9 +358,9 @@ public class BerandaFragment extends Fragment {
             shimmerFrameLayoutSlider.setVisibility(View.GONE);
             sliderView.setVisibility(View.VISIBLE);
 
-            if (dialog.isShowing()) {
-                dialog.dismiss();
-            }
+//            if (dialog.isShowing()) {
+//                dialog.dismiss();
+//            }
         }
     }
 
@@ -387,21 +380,21 @@ public class BerandaFragment extends Fragment {
     private void cekPermission() {
         permissionManager = PermissionManager.getInstance(getActivity());
         permissionManager.checkPermissions(Arrays.asList(Utility.PERMISSION),
-                new PermissionManager.PermissionRequestListener() {
-                    @Override
-                    public void onPermissionGranted() {
-                        showLocation();
-                    }
+            new PermissionManager.PermissionRequestListener() {
+                @Override
+                public void onPermissionGranted() {
+                    showLocation();
+                }
 
-                    @Override
-                    public void onPermissionDenied(DeniedPermissions deniedPermissions) {
-                        showDialogSetting();
-                    }
-                });
+                @Override
+                public void onPermissionDenied(DeniedPermissions deniedPermissions) {
+                    showDialogSetting();
+                }
+            });
     }
 
     private void showLocation() {
-        showProgressDialog();
+        progress.showDialog();
 
         SmartLocation.with(getContext()).location().config(LocationParams.BEST_EFFORT).oneFix().start(new OnLocationUpdatedListener() {
             @Override
@@ -479,8 +472,8 @@ public class BerandaFragment extends Fragment {
                     shimmerFrameLayoutSlider.setVisibility(View.GONE);
                     sliderView.setVisibility(View.VISIBLE);
 
-                    if (dialog.isShowing()) {
-                        dialog.dismiss();
+                    if (progress.isDialogShowing()) {
+                        progress.dismissDialog();
                     }
                 }
             }
@@ -509,12 +502,6 @@ public class BerandaFragment extends Fragment {
             }
         });
         alert.show();
-    }
-
-    private void showProgressDialog() {
-        dialog.setMessage("Mohon Tunggu Sebentar...");
-        dialog.setCancelable(true);
-        dialog.show();
     }
 
     private void openSetting() {

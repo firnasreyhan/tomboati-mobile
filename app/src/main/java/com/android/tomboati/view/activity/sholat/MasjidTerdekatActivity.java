@@ -19,6 +19,7 @@ import android.provider.Settings;
 import com.android.tomboati.R;
 import com.android.tomboati.adapter.MasjidAdapter;
 import com.android.tomboati.api.response.MasjidResponse;
+import com.android.tomboati.utils.AlertProgress;
 import com.android.tomboati.utils.Utility;
 import com.android.tomboati.viewmodel.MasjidTerdekatViewModel;
 import com.intentfilter.androidpermissions.PermissionManager;
@@ -37,9 +38,9 @@ public class MasjidTerdekatActivity extends AppCompatActivity {
     private final int LIMIT = 10;
     private final String QUERY = "Mosque";
     private RecyclerView recyclerViewMasjidTerdekat;
-    private ProgressDialog dialog;
     private AlertDialog.Builder alert;
     private PermissionManager permissionManager;
+    private AlertProgress progress;
 
     private boolean isLoaded = false;
 
@@ -60,7 +61,8 @@ public class MasjidTerdekatActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-            recyclerViewMasjidTerdekat = findViewById(R.id.recyclerViewMasjidTerdekat);
+        progress = new AlertProgress(this, "Sedang mengambil data");
+        recyclerViewMasjidTerdekat = findViewById(R.id.recyclerViewMasjidTerdekat);
 
     }
 
@@ -128,7 +130,7 @@ public class MasjidTerdekatActivity extends AppCompatActivity {
 
     private void showLocation() {
         // Start ProgressDialog
-        showProgressDialog();
+        progress.showDialog();
 
         // Get location using library SmartLocation
         SmartLocation.with(this).location().config(LocationParams.BEST_EFFORT).oneFix().start(new OnLocationUpdatedListener() {
@@ -164,13 +166,6 @@ public class MasjidTerdekatActivity extends AppCompatActivity {
         alert.show();
     }
 
-    private void showProgressDialog() {
-        dialog = new ProgressDialog(this);
-        dialog.setMessage("Tunggu Sebentar...");
-        dialog.setCancelable(true);
-        dialog.show();
-    }
-
     private void openSetting() {
         // Open setting application page detail for allow permission
         Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
@@ -193,8 +188,8 @@ public class MasjidTerdekatActivity extends AppCompatActivity {
                     recyclerViewMasjidTerdekat.setLayoutManager(new LinearLayoutManager(MasjidTerdekatActivity.this));
                     recyclerViewMasjidTerdekat.setAdapter(masjidAdapter);
                 }
-                if (dialog.isShowing()) {
-                    dialog.dismiss();
+                if (progress.isDialogShowing()) {
+                    progress.dismissDialog();
                 }
             }
         });

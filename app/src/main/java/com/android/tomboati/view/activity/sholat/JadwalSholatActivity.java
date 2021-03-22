@@ -22,6 +22,7 @@ import android.widget.Toast;
 
 import com.android.tomboati.R;
 import com.android.tomboati.api.response.JadwalSholatResponse;
+import com.android.tomboati.utils.AlertProgress;
 import com.android.tomboati.utils.Utility;
 import com.android.tomboati.viewmodel.JadwalSholatViewModel;
 import com.google.android.material.button.MaterialButton;
@@ -42,7 +43,7 @@ public class JadwalSholatActivity extends AppCompatActivity {
     private JadwalSholatViewModel jadwalSholatViewModel;
     private TextView hijriah, masehi, kota, imsak, subuh, terbit, dhuha, dzuhur, ashar, maghrib, isya;
     private PermissionManager permissionManager;
-    private ProgressDialog dialog;
+    private AlertProgress progress;
     private AlertDialog.Builder alert;
 
     private boolean isLoaded = false;
@@ -77,6 +78,7 @@ public class JadwalSholatActivity extends AppCompatActivity {
         isya = findViewById(R.id.isya);
 
         MaterialButton change_date = findViewById(R.id.ubah_tanggal);
+        progress = new AlertProgress(this, "Sedang mengambil data");
 
         // Where button change date is on clicking
         change_date.setOnClickListener(new View.OnClickListener() {
@@ -88,7 +90,7 @@ public class JadwalSholatActivity extends AppCompatActivity {
                     new DatePickerDialog(v.getContext(), new DatePickerDialog.OnDateSetListener() {
                         @Override
                         public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                            showProgressDialog();
+                            progress.showDialog();
                             // Show jadwal sholat using date obtained from date picker
                             // and using latitude, longitude from Utility temporary for to
                             // avoid location repeatedly
@@ -119,26 +121,7 @@ public class JadwalSholatActivity extends AppCompatActivity {
             // Check if gps provider is not enabled
             if (!isLoaded) {
                 if (!isProviderEnable()) {
-                    // If is not enabled showing alert dialog
-                    alert = new AlertDialog.Builder(this);
-                    alert.setTitle("GPS settings");
-                    alert.setMessage("GPS tidak diaktifkan. Apakah Anda ingin pergi ke menu pengaturan?");
-                    alert.setCancelable(false);
-                    alert.setPositiveButton("Ya", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            // Goto setting page for gps activated
-                            startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
-                        }
-                    });
-                    alert.setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.dismiss();
-                            finish();
-                        }
-                    });
-                    alert.show();
+                    showDialogSetting();
                 } else {
                     cekPermission();
                 }
@@ -168,7 +151,7 @@ public class JadwalSholatActivity extends AppCompatActivity {
 
     private void showLocation() {
         // Start ProgressDialog
-        showProgressDialog();
+        progress.showDialog();
 
         // Get location using library SmartLocation
         SmartLocation.with(this).location().config(LocationParams.BEST_EFFORT).oneFix().start(new OnLocationUpdatedListener() {
@@ -210,13 +193,7 @@ public class JadwalSholatActivity extends AppCompatActivity {
     }
 
     private void showJadwalSholat(int year, int month, int day, double latitude, double longitude, int timezone) {
-        jadwalSholatViewModel.jadwalSholat(
-                year,
-                month,
-                day,
-                latitude,
-                longitude,
-                timezone
+        jadwalSholatViewModel.jadwalSholat( year, month, day, latitude, longitude, timezone
         ).observe(this, new Observer<JadwalSholatResponse>() {
             @Override
             public void onChanged(JadwalSholatResponse jadwalSholatResponse) {
@@ -237,7 +214,9 @@ public class JadwalSholatActivity extends AppCompatActivity {
 
                     isLoaded = true;
                 }
-                dialog.dismiss();
+                if(progress.isDialogShowing()) {
+                    progress.dismissDialog();
+                }
             }
         });
     }
@@ -265,13 +244,6 @@ public class JadwalSholatActivity extends AppCompatActivity {
             }
         });
         alert.show();
-    }
-
-    private void showProgressDialog() {
-        dialog = new ProgressDialog(this);
-        dialog.setMessage("Tunggu Sebentar...");
-        dialog.setCancelable(true);
-        dialog.show();
     }
 
     private void openSetting() {

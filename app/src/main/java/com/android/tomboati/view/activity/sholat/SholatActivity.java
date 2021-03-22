@@ -12,9 +12,19 @@ import com.android.tomboati.R;
 
 public class SholatActivity extends AppCompatActivity {
     private Toolbar toolbar;
-    private CardView cardViewSholatWajib, cardViewWudhu, cardViewArahKiblat, cardViewJadwalSholat
-    , cardViewMasjidTerdekat, cardViewSyaratSholat, cardViewDoaSesudahSholat, cardViewTayamum,
-    cardViewSholatSunnah, cardViewAdabSholat, cardViewSholatJenazah, cardViewSholatDiperjalanan;
+
+    private final int[] arrId = {
+            R.id.cardViewSholatWajib, R.id.cardViewWudhu, R.id.cardViewArahKiblat, R.id.cardViewJadwalSholat, 
+            R.id.cardViewMasjidTerdekat, R.id.cardViewSyaratSholat, R.id.cardViewDoaSesudahSholat, R.id.cardViewTayamum,
+            R.id.cardViewSholatSunnah, R.id.cardViewAdabSholat, R.id.cardViewSholatJenazah, R.id.cardViewSholatDiperjalanan
+    };
+
+    private final AppCompatActivity[] arrActivity = {
+            new SholatWajibActivity(), new WudhuActivity(), new ArahKiblatActivity(),
+            new JadwalSholatActivity(), new MasjidTerdekatActivity(), new SyaratSholatActivity(),
+            new DoaSesudahSholatActivity(), new TayamumActivity(), new SholatSunnahActivity(),
+            new AdabSholatActivity(), new SholatJenazahActivity(), new SholatDiperjalananActivity()
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,102 +38,15 @@ public class SholatActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        cardViewSholatWajib = findViewById(R.id.cardViewSholatWajib);
-        cardViewWudhu = findViewById(R.id.cardViewWudhu);
-        cardViewArahKiblat = findViewById(R.id.cardViewArahKiblat);
-        cardViewJadwalSholat = findViewById(R.id.cardViewJadwalSholat);
-        cardViewMasjidTerdekat = findViewById(R.id.cardViewMasjidTerdekat);
-        cardViewSyaratSholat = findViewById(R.id.cardViewSyaratSholat);
-        cardViewDoaSesudahSholat = findViewById(R.id.cardViewDoaSesudahSholat);
-        cardViewTayamum = findViewById(R.id.cardViewTayamum);
-        cardViewSholatSunnah = findViewById(R.id.cardViewSholatSunnah);
-        cardViewAdabSholat = findViewById(R.id.cardViewAdabSholat);
-        cardViewSholatJenazah = findViewById(R.id.cardViewSholatJenazah);
-        cardViewSholatDiperjalanan = findViewById(R.id.cardViewSholatDiperjalanan);
-
-        cardViewSholatWajib.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(v.getContext(), SholatWajibActivity.class));
-            }
-        });
-
-        cardViewWudhu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(v.getContext(), WudhuActivity.class));
-            }
-        });
-
-        cardViewArahKiblat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(v.getContext(), ArahKiblatActivity.class));
-            }
-        });
-
-        cardViewJadwalSholat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(v.getContext(), JadwalSholatActivity.class));
-            }
-        });
-
-        cardViewMasjidTerdekat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(v.getContext(), MasjidTerdekatActivity.class));
-            }
-        });
-
-        cardViewSyaratSholat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(v.getContext(), SyaratSholatActivity.class));
-            }
-        });
-
-        cardViewDoaSesudahSholat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(v.getContext(), DoaSesudahSholatActivity.class));
-            }
-        });
-
-        cardViewTayamum.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(v.getContext(), TayamumActivity.class));
-            }
-        });
-
-        cardViewSholatSunnah.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(v.getContext(), SholatSunnahActivity.class));
-            }
-        });
-
-        cardViewAdabSholat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(v.getContext(), AdabSholatActivity.class));
-            }
-        });
-
-        cardViewSholatJenazah.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(v.getContext(), SholatJenazahActivity.class));
-            }
-        });
-
-        cardViewSholatDiperjalanan.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(v.getContext(), SholatDiperjalananActivity.class));
-            }
-        });
+        for(int i = 0; i < arrId.length; i++) {
+            int j = i;
+            findViewById(arrId[i]).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(v.getContext(), arrActivity[j].getClass()));
+                }
+            });
+        }
     }
 
     @Override
