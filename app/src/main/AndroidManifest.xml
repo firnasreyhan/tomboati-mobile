@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.android.tomboati">
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -50,13 +51,13 @@
         <activity android:name=".view.activity.doa_dzikir.DoaSehariHariActivity" />
         <activity android:name=".view.activity.doa_dzikir.YasinTahlilActivity" />
         <activity android:name=".view.activity.doa_dzikir.IstighosahActivity" />
-        <activity android:name=".view.activity.DetailJuzActivity" />
+        <activity android:name=".view.activity.quran.DetailJuzActivity" />
         <activity android:name=".view.activity.KalenderHijriahActivity" />
         <activity android:name=".view.activity.DetailNewsActivity" />
         <activity android:name=".view.activity.doa_dzikir.DetailAsmaulHusnaActivity" />
         <activity android:name=".view.activity.doa_dzikir.NewAsmaulHusnaActivity" />
-        <activity android:name=".view.activity.DetailAlQuranActivity" />
-        <activity android:name=".view.activity.AlQuranActivity" />
+        <activity android:name=".view.activity.quran.DetailAlQuranActivity" />
+        <activity android:name=".view.activity.quran.AlQuranActivity" />
         <activity android:name=".view.activity.doa_dzikir.DetailAnekaSholawatActivity" />
 
         <meta-data

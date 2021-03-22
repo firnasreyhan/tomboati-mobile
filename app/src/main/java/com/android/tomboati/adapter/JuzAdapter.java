@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.tomboati.R;
 import com.android.tomboati.model.JuzModel;
-import com.android.tomboati.view.activity.DetailJuzActivity;
+import com.android.tomboati.view.activity.quran.DetailJuzActivity;
 
 import java.util.List;
 

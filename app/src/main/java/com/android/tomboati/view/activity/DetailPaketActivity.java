@@ -191,13 +191,6 @@ public class DetailPaketActivity extends AppCompatActivity {
                 }
             });
 
-//            String s = "<ol><li><strong>testing</strong></li><li><i>testing</i></li></ol>";
-//            String[] senteces = s.split(">");
-//            Log.e("sizeSenteces", String.valueOf(senteces.length));
-//            for (int i = 0; i < senteces.length; i++) {
-//                String sz = senteces[i] + ">";
-//                Log.e("sz" + String.valueOf(i), sz.replaceAll("\\<.*?\\>", ""));
-//            }
         } else {
             detailPaketViewModel.getPaketWisata(
                     idPaketWisata
@@ -295,13 +288,6 @@ public class DetailPaketActivity extends AppCompatActivity {
                     }
                 }
             });
-//            String s = "<ol><li><strong>testing</strong></li><li><i>testing</i></li></ol>";
-//            String[] senteces = s.split(">");
-//            Log.e("sizeSenteces", String.valueOf(senteces.length));
-//            for (int i = 0; i < senteces.length; i++) {
-//                String sz = senteces[i] + ">";
-//                Log.e("sz" + String.valueOf(i), sz.replaceAll("\\<.*?\\>", ""));
-//            }
         }
 
         cardViewQuad.setOnClickListener(new View.OnClickListener() {

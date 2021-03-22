@@ -1,5 +1,6 @@
 package com.android.tomboati.view.fragment;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -11,6 +12,7 @@ import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
@@ -36,7 +38,7 @@ import com.android.tomboati.api.response.PaketResponse;
 import com.android.tomboati.api.response.PaketWisataResponse;
 import com.android.tomboati.preference.AppPreference;
 import com.android.tomboati.utils.Utility;
-import com.android.tomboati.view.activity.AlQuranActivity;
+import com.android.tomboati.view.activity.quran.AlQuranActivity;
 import com.android.tomboati.view.activity.DetailNewsActivity;
 import com.android.tomboati.view.activity.DetailPaketActivity;
 import com.android.tomboati.view.activity.doa_dzikir.DoaDzikirActivity;
@@ -57,6 +59,7 @@ import com.smarteist.autoimageslider.SliderAnimations;
 import com.smarteist.autoimageslider.SliderView;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -83,8 +86,10 @@ public class BerandaFragment extends Fragment {
     private PermissionManager permissionManager;
     private ProgressDialog dialog;
     private AlertDialog.Builder alert;
+//    private Intent intent;
 
-    private String idPaket1, idPaket2, idPaket3, idWisata1, idWisata2, idWisata3;
+    //    private String idPaket1, idPaket2, idPaket3, idWisata1, idWisata2, idWisata3;
+    private String[] idPaket = new String[6];
 
     // Check gps provider is enabled
     private boolean isProviderEnable() {
@@ -95,10 +100,11 @@ public class BerandaFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        berandaViewModel = ViewModelProviders.of(getActivity()).get(BerandaViewModel.class);
+        berandaViewModel = ViewModelProviders.of(this).get(BerandaViewModel.class);
         View view = inflater.inflate(R.layout.fragment_beranda, container, false);
+
+        // Initiate component
         sliderView = view.findViewById(R.id.sliderView);
-        dialog = new ProgressDialog(getActivity());
         cardViewUmrohHaji = view.findViewById(R.id.cardViewUmrohHaji);
         cardViewSholat = view.findViewById(R.id.cardViewSholat);
         cardViewWisataReligi = view.findViewById(R.id.cardViewWisataReligi);
@@ -125,6 +131,8 @@ public class BerandaFragment extends Fragment {
         textViewJudulNews = view.findViewById(R.id.textViewJudulNews);
         imageViewNews = view.findViewById(R.id.imageViewNews);
 
+        dialog = new ProgressDialog(this.getActivity());
+
         sliderView.setIndicatorAnimation(IndicatorAnimationType.WORM); //set indicator animation by using IndicatorAnimationType. :WORM or THIN_WORM or COLOR or DROP or FILL or NONE or SCALE or SCALE_DOWN or SLIDE and SWAP!!
         sliderView.setSliderTransformAnimation(SliderAnimations.SIMPLETRANSFORMATION);
         sliderView.setIndicatorSelectedColor(Color.WHITE);
@@ -134,105 +142,31 @@ public class BerandaFragment extends Fragment {
         sliderView.startAutoCycle();
 
         if (!getActivity().isFinishing()) {
+
             if (AppPreference.getUser(getActivity()) != null) {
                 setAkun();
             }
 
-//        sliderAdapter = new SliderAdapter(list);
-//        sliderView.setSliderAdapter(sliderAdapter);
+            initOnClickMenu();
 
-            cardViewUmrohHaji.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    startActivity(new Intent(v.getContext(), UmrohHajiActivity.class));
-                }
-            });
-
-            cardViewSholat.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    startActivity(new Intent(v.getContext(), SholatActivity.class));
-                }
-            });
-
-            cardViewDoaDzikir.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    startActivity(new Intent(v.getContext(), DoaDzikirActivity.class));
-                }
-            });
-
-            cardViewWisataReligi.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    startActivity(new Intent(v.getContext(), WisataReligiActivity.class));
-                }
-            });
-
-            cardViewTomboatiChannel.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/channel/UCwDEM2yv71YDtaoxAjrswLA")));
-                }
-            });
-
-            cardViewLiveMekkah.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/watch?v=k2gOsvK8XNM")));
-                }
-            });
-
-            cardViewAlQuran.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    startActivity(new Intent(v.getContext(), AlQuranActivity.class));
-                }
-            });
-
-            cardViewKalenderHijriah.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    //Toast.makeText(v.getContext(), "Coming Soon...", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(v.getContext(), KalenderHijriahActivity.class));
-                }
-            });
-
-            cardViewQurbanAqiqah.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Toast.makeText(v.getContext(), "Coming Soon...", Toast.LENGTH_SHORT).show();
-                }
-            });
-
-            cardViewKomunitas.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(v.getContext(), KomunitasActivity.class);
-                    v.getContext().startActivity(intent);
-                    // Toast.makeText(v.getContext(), "Coming Soon...", Toast.LENGTH_SHORT).show();
-                }
-            });
-
+            // ON Swipe Layout ===================
             swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
                 @Override
                 public void onRefresh() {
                     shimmerFrameLayoutSlider.startShimmer();
                     shimmerFrameLayoutSlider.setVisibility(View.VISIBLE);
                     sliderView.setVisibility(View.GONE);
-//                if (!Utility.getList().isEmpty()) {
-//                    Utility.getList().clear();
-//                    sliderAdapter.notifyDataSetChanged();
-//                }
-                    checkLolation();
+                    checkLocation();
                     new Handler().postDelayed(new Runnable() {
-                        @Override public void run() {
+                        @Override
+                        public void run() {
                             swipeRefreshLayout.setRefreshing(false);
                         }
                     }, 3000);
                 }
             });
 
+            // Button detail news is clicked  ===================
             materialButtonDetailNews.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -240,144 +174,51 @@ public class BerandaFragment extends Fragment {
                 }
             });
 
+            // Show paket umrah  ===================
             berandaViewModel.getPaket().observe(getActivity(), new Observer<PaketResponse>() {
                 @Override
                 public void onChanged(PaketResponse paketResponse) {
                     if (!paketResponse.isError()) {
                         if (!paketResponse.getData().isEmpty()) {
-                            if (paketResponse.getData().get(0) != null) {
-                                idPaket1 = paketResponse.getData().get(0).getIdPaket();
-                                Picasso.get()
-                                        .load(paketResponse.getData().get(0).getImagePaket())
-                                        .priority(Picasso.Priority.HIGH)
-                                        .placeholder(R.drawable.ic_logo)
-                                        .into(imageViewPromoHaji1);
-//                                Glide.with(getActivity().getApplicationContext())
-//                                        .load(paketResponse.getData().get(0).getImagePaket())
-//                                        .diskCacheStrategy(DiskCacheStrategy.ALL)
-//                                        .skipMemoryCache(true)
-//                                        .dontAnimate()
-//                                        .dontTransform()
-//                                        .priority(Priority.IMMEDIATE)
-//                                        .encodeFormat(Bitmap.CompressFormat.PNG)
-//                                        .format(DecodeFormat.DEFAULT)
-//                                        .placeholder(R.drawable.ic_logo)
-//                                        .into(imageViewPromoHaji1);
-                            }
-
-                            if (paketResponse.getData().get(1) != null) {
-                                idPaket2 = paketResponse.getData().get(1).getIdPaket();
-                                Picasso.get()
-                                        .load(paketResponse.getData().get(1).getImagePaket())
-                                        .priority(Picasso.Priority.HIGH)
-                                        .placeholder(R.drawable.ic_logo)
-                                        .into(imageViewPromoHaji2);
-//                                Glide.with(getActivity().getApplicationContext())
-//                                        .load(paketResponse.getData().get(1).getImagePaket())
-//                                        .diskCacheStrategy(DiskCacheStrategy.ALL)
-//                                        .skipMemoryCache(true)
-//                                        .dontAnimate()
-//                                        .dontTransform()
-//                                        .priority(Priority.IMMEDIATE)
-//                                        .encodeFormat(Bitmap.CompressFormat.PNG)
-//                                        .format(DecodeFormat.DEFAULT)
-//                                        .placeholder(R.drawable.ic_logo)
-//                                        .into(imageViewPromoHaji2);
-                            }
-
-                            if (paketResponse.getData().get(2) != null) {
-                                idPaket3 = paketResponse.getData().get(2).getIdPaket();
-                                Picasso.get()
-                                        .load(paketResponse.getData().get(2).getImagePaket())
-                                        .priority(Picasso.Priority.HIGH)
-                                        .placeholder(R.drawable.ic_logo)
-                                        .into(imageViewPromoHaji3);
-//                                Glide.with(getActivity().getApplicationContext())
-//                                        .load(paketResponse.getData().get(2).getImagePaket())
-//                                        .diskCacheStrategy(DiskCacheStrategy.ALL)
-//                                        .skipMemoryCache(true)
-//                                        .dontAnimate()
-//                                        .dontTransform()
-//                                        .priority(Priority.IMMEDIATE)
-//                                        .encodeFormat(Bitmap.CompressFormat.PNG)
-//                                        .format(DecodeFormat.DEFAULT)
-//                                        .placeholder(R.drawable.ic_logo)
-//                                        .into(imageViewPromoHaji3);
+                            ImageView[] arrImage = {imageViewPromoHaji1, imageViewPromoHaji2, imageViewPromoHaji3};
+                            for (int i = 0; i < 3; i++) {
+                                if (paketResponse.getData().get(i) != null) {
+                                    idPaket[i] = paketResponse.getData().get(i).getIdPaket();
+                                    Picasso.get()
+                                            .load(paketResponse.getData().get(i).getImagePaket())
+                                            .priority(Picasso.Priority.HIGH)
+                                            .placeholder(R.drawable.ic_logo)
+                                            .into(arrImage[i]);
+                                }
                             }
                         }
                     }
                 }
             });
 
+            // Show paket wisata halal  ===================
             berandaViewModel.getWisataHalal().observe(getActivity(), new Observer<PaketWisataResponse>() {
                 @Override
                 public void onChanged(PaketWisataResponse paketWisataResponse) {
                     if (!paketWisataResponse.isError()) {
                         if (!paketWisataResponse.getData().isEmpty()) {
-                            if (paketWisataResponse.getData().get(0) != null) {
-                                idWisata1 = paketWisataResponse.getData().get(0).getIdWisataHalal();
-                                Picasso.get()
-                                        .load(paketWisataResponse.getData().get(0).getImageWisata())
-                                        .priority(Picasso.Priority.HIGH)
-                                        .placeholder(R.drawable.ic_logo)
-                                        .into(imageViewPromoTour1);
-//                                Glide.with(getActivity().getApplicationContext())
-//                                        .load(paketWisataResponse.getData().get(0).getImageWisata())
-//                                        .diskCacheStrategy(DiskCacheStrategy.ALL)
-//                                        .skipMemoryCache(true)
-//                                        .dontAnimate()
-//                                        .dontTransform()
-//                                        .priority(Priority.IMMEDIATE)
-//                                        .encodeFormat(Bitmap.CompressFormat.PNG)
-//                                        .format(DecodeFormat.DEFAULT)
-//                                        .placeholder(R.drawable.ic_logo)
-//                                        .into(imageViewPromoTour1);
-                            }
-
-                            if (paketWisataResponse.getData().get(1) != null) {
-                                idWisata2 = paketWisataResponse.getData().get(1).getIdWisataHalal();
-                                Picasso.get()
-                                        .load(paketWisataResponse.getData().get(1).getImageWisata())
-                                        .priority(Picasso.Priority.HIGH)
-                                        .placeholder(R.drawable.ic_logo)
-                                        .into(imageViewPromoTour2);
-//                                Glide.with(getActivity().getApplicationContext())
-//                                        .load(paketWisataResponse.getData().get(1).getImageWisata())
-//                                        .diskCacheStrategy(DiskCacheStrategy.ALL)
-//                                        .skipMemoryCache(true)
-//                                        .dontAnimate()
-//                                        .dontTransform()
-//                                        .priority(Priority.IMMEDIATE)
-//                                        .encodeFormat(Bitmap.CompressFormat.PNG)
-//                                        .format(DecodeFormat.DEFAULT)
-//                                        .placeholder(R.drawable.ic_logo)
-//                                        .into(imageViewPromoTour2);
-                            }
-
-                            if (paketWisataResponse.getData().get(2) != null) {
-                                idWisata3 = paketWisataResponse.getData().get(2).getIdWisataHalal();
-                                Picasso.get()
-                                        .load(paketWisataResponse.getData().get(2).getImageWisata())
-                                        .priority(Picasso.Priority.HIGH)
-                                        .placeholder(R.drawable.ic_logo)
-                                        .into(imageViewPromoTour3);
-//                                Glide.with(getActivity().getApplicationContext())
-//                                        .load(paketWisataResponse.getData().get(2).getImageWisata())
-//                                        .diskCacheStrategy(DiskCacheStrategy.ALL)
-//                                        .skipMemoryCache(true)
-//                                        .dontAnimate()
-//                                        .dontTransform()
-//                                        .priority(Priority.IMMEDIATE)
-//                                        .encodeFormat(Bitmap.CompressFormat.PNG)
-//                                        .format(DecodeFormat.DEFAULT)
-//                                        .placeholder(R.drawable.ic_logo)
-//                                        .into(imageViewPromoTour3);
+                            ImageView[] arrImage = {imageViewPromoTour1, imageViewPromoTour2, imageViewPromoTour3};
+                            for (int i = 0; i < 3; i++) {
+                                if (paketWisataResponse.getData().get(i) != null) {
+                                    idPaket[i + 3] = paketWisataResponse.getData().get(i).getIdWisataHalal();
+                                    Picasso.get()
+                                            .load(paketWisataResponse.getData().get(i).getImageWisata())
+                                            .priority(Picasso.Priority.HIGH)
+                                            .placeholder(R.drawable.ic_logo)
+                                            .into(arrImage[i]);
+                                }
                             }
                         }
                     }
                 }
             });
 
+            // Show news  ===================
             berandaViewModel.getNews().observe(getActivity(), new Observer<NewsResponse>() {
                 @Override
                 public void onChanged(NewsResponse newsResponse) {
@@ -394,7 +235,6 @@ public class BerandaFragment extends Fragment {
                             String s = newsResponse.getData().get(0).getContentNews().replaceAll("\\<.*?\\>", "");
                             Utility.setContentNews(s);
                             String[] senteces = s.split("\\. ");
-                            Log.e("size", String.valueOf(senteces.length));
                             StringBuilder shortNews = new StringBuilder();
                             for (int i = 0; i < 5; i++) {
                                 shortNews.append(senteces[i]).append(". ");
@@ -405,6 +245,7 @@ public class BerandaFragment extends Fragment {
                 }
             });
 
+            // Show kata mutiara  ===================
             berandaViewModel.getKataMutiara().observe(getActivity(), new Observer<KataMutiaraResponse>() {
                 @Override
                 public void onChanged(KataMutiaraResponse kataMutiaraResponse) {
@@ -418,66 +259,76 @@ public class BerandaFragment extends Fragment {
             });
         }
 
-        imageViewPromoHaji1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), DetailPaketActivity.class);
-                intent.putExtra("ID_PAKET", idPaket1);
-                v.getContext().startActivity(intent);
-            }
-        });
-
-        imageViewPromoHaji2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), DetailPaketActivity.class);
-                intent.putExtra("ID_PAKET", idPaket2);
-                v.getContext().startActivity(intent);
-            }
-        });
-
-        imageViewPromoHaji3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), DetailPaketActivity.class);
-                intent.putExtra("ID_PAKET", idPaket3);
-                v.getContext().startActivity(intent);
-            }
-        });
-
-        imageViewPromoTour1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), DetailPaketActivity.class);
-                intent.putExtra("ID_PAKET_WISATA", idWisata1);
-                v.getContext().startActivity(intent);
-            }
-        });
-
-        imageViewPromoTour2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), DetailPaketActivity.class);
-                intent.putExtra("ID_PAKET_WISATA", idWisata2);
-                v.getContext().startActivity(intent);
-            }
-        });
-
-        imageViewPromoTour3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), DetailPaketActivity.class);
-                intent.putExtra("ID_PAKET_WISATA", idWisata3);
-                v.getContext().startActivity(intent);
-            }
-        });
+        initOnClickPromo();
 
         return view;
     }
 
-    public void checkLolation() {
+    private void initOnClickPromo() {
+
+        ImageView[] imgArr = {
+                imageViewPromoHaji1, imageViewPromoHaji2, imageViewPromoHaji3, imageViewPromoTour1, imageViewPromoTour2, imageViewPromoTour3
+        };
+
+        for (int i = 0; i < imgArr.length; i++) {
+            int j = i;
+            imgArr[i].setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Log.d("IJ", idPaket[j]);
+                    Intent intent = new Intent(v.getContext(), DetailPaketActivity.class);
+                    intent.putExtra((j > 2) ? "ID_PAKET_WISATA" : "ID_PAKET", idPaket[j]);
+                    v.getContext().startActivity(intent);
+                }
+            });
+        }
+
+    }
+
+    private void initOnClickMenu() {
+
+        CardView[] cardArr = {
+                cardViewUmrohHaji, cardViewSholat, cardViewDoaDzikir, cardViewWisataReligi,
+                cardViewAlQuran, cardViewKalenderHijriah, cardViewKomunitas,
+                cardViewTomboatiChannel, cardViewLiveMekkah
+        };
+
+        AppCompatActivity[] activityArr = {
+                new UmrohHajiActivity(), new SholatActivity(), new DoaDzikirActivity(),
+                new WisataReligiActivity(), new AlQuranActivity(), new KalenderHijriahActivity(),
+                new KomunitasActivity()
+        };
+
+        String[] uriArr = {
+                "https://www.youtube.com/channel/UCwDEM2yv71YDtaoxAjrswLA",
+                "https://www.youtube.com/watch?v=k2gOsvK8XNM"
+        };
+
+        for (int i = 0; i < cardArr.length; i++) {
+            int j = i;
+            cardArr[i].setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(
+                        (j > activityArr.length - 1) ?
+                            new Intent(Intent.ACTION_VIEW, Uri.parse(uriArr[j - activityArr.length]))
+                            :
+                            new Intent(v.getContext(), activityArr[j].getClass())
+                    );
+                }
+            });
+        }
+
+        cardViewQurbanAqiqah.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(v.getContext(), "Coming Soon...", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    public void checkLocation() {
         if (!isProviderEnable()) {
-            // If is not enabled showing alert dialog
             alert = new AlertDialog.Builder(getContext());
             alert.setTitle("GPS settings");
             alert.setMessage("GPS tidak diaktifkan. Apakah Anda ingin pergi ke menu pengaturan?");
@@ -485,7 +336,6 @@ public class BerandaFragment extends Fragment {
             alert.setPositiveButton("Ya", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    // Goto setting page for gps activated
                     startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
                 }
             });
@@ -493,6 +343,7 @@ public class BerandaFragment extends Fragment {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     dialog.dismiss();
+                    getActivity().finish();
                 }
             });
             alert.show();
@@ -505,7 +356,7 @@ public class BerandaFragment extends Fragment {
     public void onStart() {
         super.onStart();
         if (Utility.getList().isEmpty()) {
-            checkLolation();
+            checkLocation();
         } else {
             sliderAdapter = new SliderAdapter(Utility.getList());
             sliderView.setSliderAdapter(sliderAdapter);
@@ -532,69 +383,48 @@ public class BerandaFragment extends Fragment {
         super.onPause();
     }
 
-    // Request permission function
+
     private void cekPermission() {
-        // Show permission dialog using library androidPermission
         permissionManager = PermissionManager.getInstance(getActivity());
         permissionManager.checkPermissions(Arrays.asList(Utility.PERMISSION),
                 new PermissionManager.PermissionRequestListener() {
                     @Override
                     public void onPermissionGranted() {
-                        // Write command here where permission is granted
-                        if (Utility.getLatitude() == 0.0 && Utility.getLongitude() == 0.0) {
-                            showLocation();
-                        } else {
-                            showJadwalSholat(
-                                    Utility.getYear(), Utility.getMonth(), Utility.getDay(),
-                                    Utility.getLatitude(),
-                                    Utility.getLongitude(), Utility.getGMT()
-                            );
-                        }
+                        showLocation();
                     }
 
                     @Override
                     public void onPermissionDenied(DeniedPermissions deniedPermissions) {
-                        // Write command here where permission is denied
                         showDialogSetting();
                     }
                 });
     }
 
     private void showLocation() {
-        // Start ProgressDialog
         showProgressDialog();
 
-        // Get location using library SmartLocation
         SmartLocation.with(getContext()).location().config(LocationParams.BEST_EFFORT).oneFix().start(new OnLocationUpdatedListener() {
             @Override
             public void onLocationUpdated(Location location) {
 
-                // Get location using reverse geocode
                 SmartLocation.with(getActivity()).geocoding().reverse(location, new OnReverseGeocodingListener() {
                     @Override
                     public void onAddressResolved(Location location, List<Address> list) {
                         String text_kota = null;
                         if (list.size() > 0) {
                             String kab = list.get(0).getSubAdminArea();
-                            String kecamatan = list.get(0).getLocality();
-                            String negara = list.get(0).getCountryName();
 
-                            // Setting text kota with kecamatan, kab - negara
-//                            text_kota = kecamatan.concat(", ").concat(kab).concat(" - ").concat(negara);
                             text_kota = kab;
                         } else {
                             text_kota = "Location Not Found!";
                         }
-                        //kota.setText(text_kota);
                         Utility.setKota(text_kota);
                     }
                 });
 
-                // Save latitude and longitude into Utility as temporary
                 Utility.setLatitude(location.getLatitude());
                 Utility.setLongitude(location.getLongitude());
 
-                // Show jadwal sholat using response API
                 showJadwalSholat(
                         Utility.getYear(), Utility.getMonth(), Utility.getDay(),
                         location.getLatitude(),
@@ -609,72 +439,38 @@ public class BerandaFragment extends Fragment {
             Utility.getList().clear();
             sliderAdapter.notifyDataSetChanged();
         }
-        berandaViewModel.jadwalSholat(
-                year,
-                month,
-                day,
-                latitude,
-                longitude,
-                timezone
-        ).observe(getActivity(), new Observer<JadwalSholatResponse>() {
+        berandaViewModel.jadwalSholat(year, month, day, latitude, longitude, timezone ).observe(this
+                , new Observer<JadwalSholatResponse>() {
             @Override
             public void onChanged(@Nullable JadwalSholatResponse jadwalSholatResponse) {
                 if (jadwalSholatResponse != null) {
                     Utility.getList().add(jadwalSholatResponse);
-                    Log.e("showJadwalSholat", jadwalSholatResponse.getData().getName());
-                    showJadwalSholatMecca(year,
-                            month,
-                            day,
-                            21.422487,
-                            39.826206,
-                            timezone);
+                    showJadwalSholatMecca(year, month, day, 21.422487, 39.826206, timezone);
                 }
             }
         });
     }
 
     public void showJadwalSholatMecca(int year, int month, int day, double latitude, double longitude, int timezone) {
-        berandaViewModel.jadwalSholat(
-                year,
-                month,
-                day,
-                latitude,
-                longitude,
-                timezone
-        ).observe(getActivity(), new Observer<JadwalSholatResponse>() {
+        berandaViewModel.jadwalSholat( year, month, day, latitude, longitude, timezone ).observe(this
+                , new Observer<JadwalSholatResponse>() {
             @Override
             public void onChanged(@Nullable JadwalSholatResponse jadwalSholatResponse) {
                 if (jadwalSholatResponse != null) {
                     Utility.getList().add(jadwalSholatResponse);
-                    Log.e("showJadwalSholatMecca", jadwalSholatResponse.getData().getName());
-                    Log.e("size", String.valueOf(Utility.getList().size()));
-                    showJadwalSholatMedina(year,
-                            month,
-                            day,
-                            24.470901,
-                            39.612236,
-                            timezone);
+                    showJadwalSholatMedina(year, month, day, 24.470901, 39.612236, timezone);
                 }
             }
         });
     }
 
     public void showJadwalSholatMedina(int year, int month, int day, double latitude, double longitude, int timezone) {
-        berandaViewModel.jadwalSholat(
-                year,
-                month,
-                day,
-                latitude,
-                longitude,
-                timezone
-        ).observe(getActivity(), new Observer<JadwalSholatResponse>() {
+        berandaViewModel.jadwalSholat( year, month, day, latitude, longitude, timezone  ).observe(this
+                , new Observer<JadwalSholatResponse>() {
             @Override
             public void onChanged(@Nullable JadwalSholatResponse jadwalSholatResponse) {
                 if (jadwalSholatResponse != null) {
                     Utility.getList().add(jadwalSholatResponse);
-
-                    Log.e("showJadwalSholatMedina", jadwalSholatResponse.getData().getName());
-                    Log.e("size", String.valueOf(Utility.getList().size()));
 
                     sliderAdapter = new SliderAdapter(Utility.getList());
                     sliderView.setSliderAdapter(sliderAdapter);
@@ -722,7 +518,6 @@ public class BerandaFragment extends Fragment {
     }
 
     private void openSetting() {
-        // Open setting application page detail for allow permission
         Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
         Uri uri = Uri.fromParts("package", getContext().getPackageName(), null);
         intent.setData(uri);
@@ -737,16 +532,5 @@ public class BerandaFragment extends Fragment {
                 .priority(Picasso.Priority.HIGH)
                 .placeholder(R.drawable.ic_logo)
                 .into(shapeableImageViewFoto);
-//        Glide.with(getActivity().getApplicationContext())
-//                .load(AppPreference.getUser(getActivity()).getFoto())
-//                .diskCacheStrategy(DiskCacheStrategy.ALL)
-//                .skipMemoryCache(true)
-//                .dontAnimate()
-//                .dontTransform()
-//                .priority(Priority.IMMEDIATE)
-//                .encodeFormat(Bitmap.CompressFormat.PNG)
-//                .format(DecodeFormat.DEFAULT)
-//                .placeholder(R.drawable.ic_logo)
-//                .into(shapeableImageViewFoto);
     }
 }

@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.tomboati.R;
 import com.android.tomboati.model.IstighosahModel;
-import com.android.tomboati.view.activity.DetailAlQuranActivity;
+import com.android.tomboati.view.activity.quran.DetailAlQuranActivity;
 
 import java.util.List;
 

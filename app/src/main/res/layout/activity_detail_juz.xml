@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/background"
-    tools:context=".view.activity.DetailJuzActivity">
+    tools:context=".view.activity.quran.DetailJuzActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"

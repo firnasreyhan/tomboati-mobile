@@ -38,7 +38,7 @@ public class ListPaketActivity extends AppCompatActivity {
     private LinearLayout linearLayoutPaket, linearLayoutNoPaket;
     private Spinner spinnerBulan;
 
-    private ArrayList<BulanModel> list = new ArrayList<>();
+    private final ArrayList<BulanModel> list = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.tomboati.R;
 import com.android.tomboati.api.response.SurahResponse;
-import com.android.tomboati.view.activity.DetailAlQuranActivity;
+import com.android.tomboati.view.activity.quran.DetailAlQuranActivity;
 
 import java.util.List;
 

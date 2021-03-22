@@ -81,7 +81,7 @@ public class SplashScreenActivity extends AppCompatActivity {
     }
 
     private void toMainActivity() {
-        int loadingTime = 3000;
+        int loadingTime = 2000;
         new Handler().postDelayed(() -> {
             startActivity(new Intent(SplashScreenActivity.this, MainActivity.class));
             finish();
