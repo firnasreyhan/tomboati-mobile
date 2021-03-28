@@ -253,9 +253,10 @@
 
                                 <TextView
                                     android:id="@+id/textViewTempatHotelA"
-                                    android:layout_width="wrap_content"
+                                    android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/catamaran_bold"
+                                    android:gravity="center_horizontal"
                                     android:text="MADINAH"
                                     android:textAllCaps="true"
                                     android:textColor="@android:color/black"
@@ -263,9 +264,10 @@
 
                                 <TextView
                                     android:id="@+id/textViewNamaHotelA"
-                                    android:layout_width="wrap_content"
+                                    android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/catamaran_regular"
+                                    android:gravity="center_horizontal"
                                     android:text="Concorde / setaraf"
                                     android:textColor="@android:color/black"
                                     android:textSize="@dimen/_9sdp" />
@@ -286,9 +288,10 @@
 
                                 <TextView
                                     android:id="@+id/textViewTempatHotelB"
-                                    android:layout_width="wrap_content"
+                                    android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/catamaran_bold"
+                                    android:gravity="center_horizontal"
                                     android:text="MEKKAH"
                                     android:textAllCaps="true"
                                     android:textColor="@android:color/black"
@@ -296,9 +299,10 @@
 
                                 <TextView
                                     android:id="@+id/textViewNamaHotelB"
-                                    android:layout_width="wrap_content"
+                                    android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/catamaran_regular"
+                                    android:gravity="center_horizontal"
                                     android:text="Deafah / setaraf"
                                     android:textColor="@android:color/black"
                                     android:textSize="@dimen/_9sdp" />

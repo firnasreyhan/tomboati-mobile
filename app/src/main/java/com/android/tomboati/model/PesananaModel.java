@@ -1,5 +1,6 @@
 package com.android.tomboati.model;
 
+import android.graphics.Bitmap;
 import android.net.Uri;
 
 import java.io.Serializable;
@@ -35,7 +36,7 @@ public class PesananaModel implements Serializable {
     private String filePaspor;
     private String fileBukuNikah;
     private String fileAkteKelahiran;
-    private String ttdPendaftar;
+    private Bitmap ttdPendaftar;
     private String fcKTPAlmarhum;
     private String fcKKAlmarhum;
     private String fcFotoAlmarhum;
@@ -261,11 +262,11 @@ public class PesananaModel implements Serializable {
         this.fileAkteKelahiran = fileAkteKelahiran;
     }
 
-    public String getTtdPendaftar() {
+    public Bitmap getTtdPendaftar() {
         return ttdPendaftar;
     }
 
-    public void setTtdPendaftar(String ttdPendaftar) {
+    public void setTtdPendaftar(Bitmap ttdPendaftar) {
         this.ttdPendaftar = ttdPendaftar;
     }
 

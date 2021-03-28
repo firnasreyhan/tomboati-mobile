@@ -22,13 +22,7 @@ public class BerandaViewModel extends AndroidViewModel {
     }
 
     public MutableLiveData<JadwalSholatResponse> jadwalSholat(int year, int month, int day, double latitude, double longitude, int timezone) {
-        return repository.jadwalSholat(
-                year,
-                (month + 1),
-                day,
-                latitude,
-                longitude,
-                timezone);
+        return repository.jadwalSholat( year, (month + 1), day, latitude, longitude, timezone);
     }
 
     public MutableLiveData<PaketResponse> getPaket() {

@@ -178,11 +178,7 @@ public class BerandaFragment extends Fragment {
                             for (int i = 0; i < 3; i++) {
                                 if (paketResponse.getData().get(i) != null) {
                                     idPaket[i] = paketResponse.getData().get(i).getIdPaket();
-                                    Picasso.get()
-                                            .load(paketResponse.getData().get(i).getImagePaket())
-                                            .priority(Picasso.Priority.HIGH)
-                                            .placeholder(R.drawable.ic_logo)
-                                            .into(arrImage[i]);
+                                    picassoLoad(paketResponse.getData().get(i).getImagePaket(), arrImage[i]);
                                 }
                             }
                         }
@@ -200,11 +196,7 @@ public class BerandaFragment extends Fragment {
                             for (int i = 0; i < 3; i++) {
                                 if (paketWisataResponse.getData().get(i) != null) {
                                     idPaket[i + 3] = paketWisataResponse.getData().get(i).getIdWisataHalal();
-                                    Picasso.get()
-                                            .load(paketWisataResponse.getData().get(i).getImageWisata())
-                                            .priority(Picasso.Priority.HIGH)
-                                            .placeholder(R.drawable.ic_logo)
-                                            .into(arrImage[i]);
+                                    picassoLoad(paketWisataResponse.getData().get(i).getImageWisata(), arrImage[i]);
                                 }
                             }
                         }
@@ -218,11 +210,7 @@ public class BerandaFragment extends Fragment {
                 public void onChanged(NewsResponse newsResponse) {
                     if (!newsResponse.isError()) {
                         if (!newsResponse.getData().isEmpty()) {
-                            Picasso.get()
-                                    .load(newsResponse.getData().get(0).getFoto())
-                                    .priority(Picasso.Priority.HIGH)
-                                    .placeholder(R.drawable.ic_logo)
-                                    .into(imageViewNews);
+                            picassoLoad(newsResponse.getData().get(0).getFoto(), imageViewNews);
 
                             textViewJudulNews.setText(newsResponse.getData().get(0).getJudulNews());
 
@@ -357,10 +345,6 @@ public class BerandaFragment extends Fragment {
             shimmerFrameLayoutSlider.stopShimmer();
             shimmerFrameLayoutSlider.setVisibility(View.GONE);
             sliderView.setVisibility(View.VISIBLE);
-
-//            if (dialog.isShowing()) {
-//                dialog.dismiss();
-//            }
         }
     }
 
@@ -406,7 +390,6 @@ public class BerandaFragment extends Fragment {
                         String text_kota = null;
                         if (list.size() > 0) {
                             String kab = list.get(0).getSubAdminArea();
-
                             text_kota = kab;
                         } else {
                             text_kota = "Location Not Found!";
@@ -420,8 +403,7 @@ public class BerandaFragment extends Fragment {
 
                 showJadwalSholat(
                         Utility.getYear(), Utility.getMonth(), Utility.getDay(),
-                        location.getLatitude(),
-                        location.getLongitude(), Utility.getGMT()
+                        location.getLatitude(), location.getLongitude(), Utility.getGMT()
                 );
             }
         });
@@ -513,11 +495,10 @@ public class BerandaFragment extends Fragment {
 
     private void setAkun() {
         textViewNamaLengkap.setText(AppPreference.getUser(getContext()).getNamaLengkap());
+        picassoLoad(AppPreference.getUser(getActivity()).getFoto(), shapeableImageViewFoto);
+    }
 
-        Picasso.get()
-                .load(AppPreference.getUser(getActivity()).getFoto())
-                .priority(Picasso.Priority.HIGH)
-                .placeholder(R.drawable.ic_logo)
-                .into(shapeableImageViewFoto);
+    private void picassoLoad(String uri, ImageView imageView) {
+        Picasso.get().load(uri).priority(Picasso.Priority.HIGH).placeholder(R.drawable.ic_logo).into(imageView);
     }
 }

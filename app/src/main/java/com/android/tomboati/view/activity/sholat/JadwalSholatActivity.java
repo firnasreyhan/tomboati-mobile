@@ -121,7 +121,24 @@ public class JadwalSholatActivity extends AppCompatActivity {
             // Check if gps provider is not enabled
             if (!isLoaded) {
                 if (!isProviderEnable()) {
-                    showDialogSetting();
+                    alert = new AlertDialog.Builder(getApplicationContext());
+                    alert.setTitle("GPS settings");
+                    alert.setMessage("GPS tidak diaktifkan. Apakah Anda ingin pergi ke menu pengaturan?");
+                    alert.setCancelable(false);
+                    alert.setPositiveButton("Ya", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+                        }
+                    });
+                    alert.setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                            finish();
+                        }
+                    });
+                    alert.show();
                 } else {
                     cekPermission();
                 }

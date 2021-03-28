@@ -27,6 +27,7 @@ import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface ApiInterfaceTomboAti {
+
     @POST("user/login_post")
     @FormUrlEncoded
     Call<SignInResponse> signIn(
@@ -184,9 +185,9 @@ public interface ApiInterfaceTomboAti {
             @Part MultipartBody.Part fileBukuNikah,
             @Part MultipartBody.Part fileAkteKelahiran,
             @Part MultipartBody.Part ttdPendaftar,
-            @Part MultipartBody.Part fcKTPAlmarhum,
-            @Part MultipartBody.Part fcKKAlmarhum,
-            @Part MultipartBody.Part fcFotoAlmarhum,
+//            @Part MultipartBody.Part fcKTPAlmarhum,
+//            @Part MultipartBody.Part fcKKAlmarhum,
+//            @Part MultipartBody.Part fcFotoAlmarhum,
             @Part("idPaket") RequestBody idPaket,
             @Part("tanggalBerangkat") RequestBody tanggalBerangkat,
             @Part("sheet") RequestBody sheet,

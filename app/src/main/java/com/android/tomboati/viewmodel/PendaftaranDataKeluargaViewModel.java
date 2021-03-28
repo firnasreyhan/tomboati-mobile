@@ -14,18 +14,14 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.android.tomboati.api.response.BaseResponse;
 import com.android.tomboati.api.response.LokasiResponse;
-import com.android.tomboati.api.response.SignInResponse;
 import com.android.tomboati.model.PesananaModel;
-import com.android.tomboati.preference.AppPreference;
 import com.android.tomboati.repository.Repository;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.util.List;
 
-import id.zelory.compressor.Compressor;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -79,15 +75,16 @@ public class PendaftaranDataKeluargaViewModel extends AndroidViewModel {
                 RequestBody.create(MediaType.parse("text/plain"), model.getPekerjaan()),
                 RequestBody.create(MediaType.parse("text/plain"), model.getRiwayatPenyakit()),
                 RequestBody.create(MediaType.parse("text/plain"), model.getNamaLengkap()),
-                compressFile(Uri.parse(model.getFileKTP()), "fileKTP"),
-                compressFile(Uri.parse(model.getFileKK()), "fileKK"),
-                compressFile(Uri.parse(model.getFilePaspor()), "filePaspor"),
-                compressFile(Uri.parse(model.getFileBukuNikah()), "fileBukuNikah"),
-                compressFile(Uri.parse(model.getFileAkteKelahiran()), "fileAkteKelahiran"),
-                compressFile(Uri.parse(model.getFileKTP()), "ttdPendaftar"),
-                compressFile(Uri.parse(model.getFileKTP()), "fcKTPAlmarhum"),
-                compressFile(Uri.parse(model.getFileKTP()), "fcKKAlmarhum"),
-                compressFile(Uri.parse(model.getFileKTP()), "fcFotoAlmarhum"),
+                compressFile(saveToPictureFromUri(Uri.parse(model.getFileKTP())), "fileKTP"),
+                compressFile(saveToPictureFromUri(Uri.parse(model.getFileKK())), "fileKK"),
+                compressFile(saveToPictureFromUri(Uri.parse(model.getFilePaspor())), "filePaspor"),
+                compressFile(saveToPictureFromUri(Uri.parse(model.getFileBukuNikah())), "fileBukuNikah"),
+                compressFile(saveToPictureFromUri(Uri.parse(model.getFileAkteKelahiran())), "fileAkteKelahiran"),
+
+                compressFile(saveToPictureFromBitmap(model.getTtdPendaftar()), "ttdPendaftar"),
+//                compressFile(saveToPictureFromUri(Uri.parse(model.getFileKTP())), "fcKTPAlmarhum"),
+//                compressFile(saveToPictureFromUri(Uri.parse(model.getFileKTP())), "fcKKAlmarhum"),
+//                compressFile(saveToPictureFromUri(Uri.parse(model.getFileKTP())), "fcFotoAlmarhum"),
                 RequestBody.create(MediaType.parse("text/plain"), model.getIdPaket()),
                 RequestBody.create(MediaType.parse("text/plain"), model.getTanggalBerangkat()),
                 RequestBody.create(MediaType.parse("text/plain"), model.getSheet()),
@@ -104,42 +101,48 @@ public class PendaftaranDataKeluargaViewModel extends AndroidViewModel {
         );
     }
 
-    private File createTempFile(Uri uri) {
-        Bitmap bitmap = null;
+    private File saveToPictureFromUri(Uri u) {
+        Bitmap b = null;
         try {
-            bitmap = MediaStore.Images.Media.getBitmap(context.getContentResolver(), uri);
-        } catch (IOException e) {
-            e.printStackTrace();
+            b = MediaStore.Images.Media.getBitmap(context.getContentResolver(), u);
+        } catch (Exception e) {
+            Log.e("Error save images : ", e.getMessage());
         }
-        File file = new File(context.getExternalFilesDir(Environment.DIRECTORY_PICTURES)
-                , System.currentTimeMillis() +".JPEG");
-        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG,100, byteArrayOutputStream);
-        byte[] byteArray = byteArrayOutputStream.toByteArray();
-        //write the bytes in file
+        return saveToPictureFromBitmap(b);
+    }
+
+    private File saveToPictureFromBitmap(Bitmap b) {
+        String rootPath = context.getExternalFilesDir(Environment.DIRECTORY_PICTURES).toString();
+        String nameTimeStamp = "" + System.currentTimeMillis();
+        File file = new File(rootPath, nameTimeStamp + ".png");
+
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        Bitmap scale = scaleDown(b, true);
+        b.compress(Bitmap.CompressFormat.PNG, 100, out);
+        final byte[] byteOut = out.toByteArray();
+
         try {
-            FileOutputStream fileOutputStream = new FileOutputStream(file);
-            fileOutputStream.write(byteArray);
-            fileOutputStream.flush();
-            fileOutputStream.close();
-        } catch (IOException e) {
-            e.printStackTrace();
+            FileOutputStream outputStream = new FileOutputStream(file);
+            outputStream.write(byteOut);
+            outputStream.flush();
+            outputStream.close();
+        } catch (Exception e) {
+            Log.e("Error save bitmap : ", e.getMessage());
         }
+
         return file;
     }
 
-    private MultipartBody.Part compressFile(Uri uri, String path) {
-        File file = new File(uri.getPath());
-        try {
-            File fileCompress = new Compressor(context)
-                    .setCompressFormat(Bitmap.CompressFormat.JPEG)
-                    .compressToFile(file);
-            File file1 = createTempFile(Uri.fromFile(fileCompress.getAbsoluteFile()));
-            Log.e("path", file1.getAbsolutePath());
-            return MultipartBody.Part.createFormData(path, file1.getName(), RequestBody.create(MediaType.parse("image/*"), file1));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return null;
+    private Bitmap scaleDown(Bitmap b, boolean filter) {
+        final double ratio = Math.min((double) 600 / b.getWidth(), (double) 600 / b.getHeight());
+        final double width = Math.round(ratio * b.getWidth());
+        final double height = Math.round(ratio * b.getHeight());
+        return Bitmap.createScaledBitmap(b, (int) width, (int) height, filter);
     }
+
+    private MultipartBody.Part compressFile(File file, String path) {
+        return MultipartBody.Part.createFormData(path, file.getName(), RequestBody.create(MediaType.parse("image/*"), file));
+    }
+
+
 }

@@ -44,6 +44,7 @@ public class PendaftaranDataDiriActivity extends AppCompatActivity {
     private Uri uriKTP, uriAkteKelahiran, uriKartuKeluarga, uriFotoPaspor, uriFotoBukuNikah;
     private int uriNumber;
 
+
     private PesananaModel model;
 
     @Override
@@ -52,14 +53,9 @@ public class PendaftaranDataDiriActivity extends AppCompatActivity {
         setTheme(R.style.ThemeTomboAtiGreen);
         setContentView(R.layout.activity_pendaftaran_data_diri);
 
-        String idPaket = getIntent().getStringExtra("ID_PAKET");
-        String tanggalKeberangkatan = getIntent().getStringExtra("TANGGAL_BERANGKAT");
-        String sheet = getIntent().getStringExtra("SHEET");
-        String sheetHarga = getIntent().getStringExtra("SHEET_HARGA");
-
         viewModel = ViewModelProviders.of(this).get(PendaftaranDataDiriViewModel.class);
 
-        model = new PesananaModel();
+        model = (PesananaModel) getIntent().getSerializableExtra("OBJECT");
 
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -120,9 +116,7 @@ public class PendaftaranDataDiriActivity extends AppCompatActivity {
         cardViewFotoKTP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CropImage.activity()
-                        .setGuidelines(CropImageView.Guidelines.OFF)
-                        .start(PendaftaranDataDiriActivity.this);
+                CropImage.activity().setGuidelines(CropImageView.Guidelines.OFF).start(PendaftaranDataDiriActivity.this);
                 uriNumber = 1;
             }
         });
@@ -130,9 +124,7 @@ public class PendaftaranDataDiriActivity extends AppCompatActivity {
         cardViewFotoAkteKelahiran.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CropImage.activity()
-                        .setGuidelines(CropImageView.Guidelines.OFF)
-                        .start(PendaftaranDataDiriActivity.this);
+                CropImage.activity().setGuidelines(CropImageView.Guidelines.OFF).start(PendaftaranDataDiriActivity.this);
                 uriNumber = 2;
             }
         });
@@ -140,9 +132,7 @@ public class PendaftaranDataDiriActivity extends AppCompatActivity {
         cardViewFotoKartuKeluarga.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CropImage.activity()
-                        .setGuidelines(CropImageView.Guidelines.OFF)
-                        .start(PendaftaranDataDiriActivity.this);
+                CropImage.activity().setGuidelines(CropImageView.Guidelines.OFF).start(PendaftaranDataDiriActivity.this);
                 uriNumber = 3;
             }
         });
@@ -150,9 +140,7 @@ public class PendaftaranDataDiriActivity extends AppCompatActivity {
         cardViewFotoPaspor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CropImage.activity()
-                        .setGuidelines(CropImageView.Guidelines.OFF)
-                        .start(PendaftaranDataDiriActivity.this);
+                CropImage.activity().setGuidelines(CropImageView.Guidelines.OFF).start(PendaftaranDataDiriActivity.this);
                 uriNumber = 4;
             }
         });
@@ -160,9 +148,7 @@ public class PendaftaranDataDiriActivity extends AppCompatActivity {
         cardViewFotoBukuNikah.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CropImage.activity()
-                        .setGuidelines(CropImageView.Guidelines.OFF)
-                        .start(PendaftaranDataDiriActivity.this);
+                CropImage.activity().setGuidelines(CropImageView.Guidelines.OFF).start(PendaftaranDataDiriActivity.this);
                 uriNumber = 5;
             }
         });
@@ -173,15 +159,11 @@ public class PendaftaranDataDiriActivity extends AppCompatActivity {
                 if (checkData()) {
                     model.setIdUserRegister(AppPreference.getUser(v.getContext()).getIdUserRegister());
                     model.setEmail(AppPreference.getUser(v.getContext()).getEmail());
-                    model.setIdPaket(idPaket);
-                    model.setTanggalBerangkat(tanggalKeberangkatan);
-                    model.setSheet(sheet);
-                    model.setSheetHarga(sheetHarga);
                     model.setNamaLengkap(textInputEditTextNamaLengkap.getText().toString());
                     model.setNomorHP(textInputEditTextNomorHandphone.getText().toString());
                     model.setTempatLahir(textInputEditTextTempatLahir.getText().toString());
                     model.setTanggalLahir(textInputEditTanggalLahir.getText().toString());
-                    model.setJenisKelamin("1");
+                    model.setJenisKelamin("" + spinnerJenisKelamin.getSelectedItemPosition());
                     model.setStatusPerkawinan(spinnerStatusPerkawinan.getSelectedItem().toString());
                     model.setKewarganegaraan(spinnerKewarganegaraan.getSelectedItem().toString());
                     model.setPekerjaan(textInputEditTextPekerjaan.getText().toString());
@@ -245,7 +227,8 @@ public class PendaftaranDataDiriActivity extends AppCompatActivity {
                         break;
                 }
             } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
-                Exception error = result.getError();
+                String error = result.getError().getMessage();
+                Toast.makeText(this, error, Toast.LENGTH_SHORT).show();
             }
         }
     }
@@ -353,115 +336,40 @@ public class PendaftaranDataDiriActivity extends AppCompatActivity {
     }
 
     private boolean checkData() {
-        boolean cek1 = true;
-        boolean cek2 = true;
-        boolean cek3 = true;
-        boolean cek4 = true;
-        boolean cek5 = true;
-        boolean cek6 = true;
-        boolean cek7 = true;
-        boolean cek8 = true;
-        boolean cek9 = true;
-        boolean cek10 = true;
-        boolean cek11 = true;
-        boolean cek12 = true;
-        boolean cek13 = true;
-        boolean cek14 = true;
-        boolean cek15 = true;
-        boolean cek16 = true;
-        boolean cek17 = true;
-        boolean cek18 = true;
 
-        if (textInputEditTextNomorKTP.getText().toString().isEmpty()) {
-            textInputEditTextNomorKTP.setError("Mohon isi data berikut");
-            cek1 = false;
+        int countError = 0;
+
+        final TextInputEditText[] editText = {
+                textInputEditTextNomorKTP, textInputEditTextNamaLengkap, textInputEditTextNomorHandphone,
+                textInputEditTextTempatLahir, textInputEditTanggalLahir, textInputEditTextPekerjaan,
+                textInputEditRiwayatPenyakit, textInputEditTextKodePos, textInputEditTextRincianAlamat,
+                textInputEditTextNomorPaspor, textInputEditTextTempatDikeluarkan, textInputEditTextTanggalPenerbitanPaspor,
+                textInputEditTextTanggalBerakhirPaspor
+        };
+
+        final Uri[] uriImg = {
+                uriKTP, uriAkteKelahiran, uriKartuKeluarga, uriFotoPaspor, uriFotoBukuNikah
+        };
+
+        final String[] prefix = {
+                "KTP", "akte kelahiran", "kartu keluarga", "paspor", "buku nikah"
+        };
+
+        for (int i = 0; i < editText.length; i++) {
+            if (editText[i].getText().toString().isEmpty()) {
+                editText[i].setError("Mohon isi data berikut");
+                countError++;
+            }
+
+            if(i < uriImg.length) {
+                if(uriImg[i] == null) {
+                    Toast.makeText(this, "Harap upload foto " + prefix[i] + " anda", Toast.LENGTH_SHORT).show();
+                    countError++;
+                }
+            }
+
         }
 
-        if (textInputEditTextNamaLengkap.getText().toString().isEmpty()) {
-            textInputEditTextNamaLengkap.setError("Mohon isi data berikut");
-            cek2 = false;
-        }
-
-        if (textInputEditTextNomorHandphone.getText().toString().isEmpty()) {
-            textInputEditTextNomorHandphone.setError("Mohon isi data berikut");
-            cek3 = false;
-        }
-
-        if (textInputEditTextTempatLahir.getText().toString().isEmpty()) {
-            textInputEditTextTempatLahir.setError("Mohon isi data berikut");
-            cek4 = false;
-        }
-
-        if (textInputEditTanggalLahir.getText().toString().isEmpty()) {
-            textInputEditTanggalLahir.setError("Mohon isi data berikut");
-            cek5 = false;
-        }
-
-        if (textInputEditTextPekerjaan.getText().toString().isEmpty()) {
-            textInputEditTextPekerjaan.setError("Mohon isi data berikut");
-            cek6 = false;
-        }
-
-        if (textInputEditRiwayatPenyakit.getText().toString().isEmpty()) {
-            textInputEditRiwayatPenyakit.setError("Mohon isi data berikut");
-            cek7 = false;
-        }
-
-        if (textInputEditTextKodePos.getText().toString().isEmpty()) {
-            textInputEditTextKodePos.setError("Mohon isi data berikut");
-            cek8 = false;
-        }
-
-        if (textInputEditTextRincianAlamat.getText().toString().isEmpty()) {
-            textInputEditTextRincianAlamat.setError("Mohon isi data berikut");
-            cek9 = false;
-        }
-
-        if (textInputEditTextNomorPaspor.getText().toString().isEmpty()) {
-            textInputEditTextNomorPaspor.setError("Mohon isi data berikut");
-            cek10 = false;
-        }
-
-        if (textInputEditTextTempatDikeluarkan.getText().toString().isEmpty()) {
-            textInputEditTextTempatDikeluarkan.setError("Mohon isi data berikut");
-            cek11 = false;
-        }
-
-        if (textInputEditTextTanggalPenerbitanPaspor.getText().toString().isEmpty()) {
-            textInputEditTextTanggalPenerbitanPaspor.setError("Mohon isi data berikut");
-            cek12 = false;
-        }
-
-        if (textInputEditTextTanggalBerakhirPaspor.getText().toString().isEmpty()) {
-            textInputEditTextTanggalBerakhirPaspor.setError("Mohon isi data berikut");
-            cek13 = false;
-        }
-
-        if (uriKTP == null) {
-            Toast.makeText(this, "Harap upload foto KTP anda", Toast.LENGTH_SHORT).show();
-            cek14 = false;
-        }
-
-        if (uriAkteKelahiran == null) {
-            Toast.makeText(this, "Harap upload foto akte kelahiran anda", Toast.LENGTH_SHORT).show();
-            cek15 = false;
-        }
-
-        if (uriKartuKeluarga == null) {
-            Toast.makeText(this, "Harap upload foto kartu keluarga anda", Toast.LENGTH_SHORT).show();
-            cek16 = false;
-        }
-
-        if (uriFotoPaspor == null) {
-            Toast.makeText(this, "Harap upload foto paspor anda", Toast.LENGTH_SHORT).show();
-            cek17 = false;
-        }
-
-        if (uriFotoBukuNikah == null) {
-            Toast.makeText(this, "Harap upload foto buku nikah anda", Toast.LENGTH_SHORT).show();
-            cek18 = false;
-        }
-
-        return cek1 && cek2 && cek3 && cek4 && cek5 && cek6 && cek7 && cek8 && cek9 && cek10 && cek11 && cek12 && cek13 && cek14 && cek15 && cek16 && cek17 && cek18;
+        return (countError == 0);
     }
 }

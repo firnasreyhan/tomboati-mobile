@@ -77,7 +77,6 @@ public class AkunFragment extends Fragment {
         if (AppPreference.getUser(getContext()) != null) {
             nestedScrollView.setVisibility(View.GONE);
             linearLayoutAkun.setVisibility(View.VISIBLE);
-//            setAkun();
         } else {
             nestedScrollView.setVisibility(View.VISIBLE);
             linearLayoutAkun.setVisibility(View.GONE);
@@ -124,16 +123,15 @@ public class AkunFragment extends Fragment {
                     progress.showDialog();
 
                     new Handler().postDelayed(() -> {
-                        akunViewModel.signIn(arrValue[0], arrValue[1]).observe(getViewLifecycleOwner(),
+                        akunViewModel.signIn(arrValue[0], arrValue[1]).observe(getActivity(),
                                 new Observer<SignInResponse>() {
                                     @Override
                                     public void onChanged(SignInResponse signInResponse) {
+                                        if (progress.isDialogShowing()) {
+                                            progress.dismissDialog();
+                                        }
                                         if (!signInResponse.isError()) {
                                             if (!signInResponse.getData().isEmpty()) {
-                                                if (progress.isDialogShowing()) {
-                                                    progress.dismissDialog();
-                                                }
-
                                                 AppPreference.saveUser(v.getContext(), signInResponse.getData().get(0));
                                                 Intent intent = new Intent(getContext(), MainActivity.class);
                                                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -141,6 +139,9 @@ public class AkunFragment extends Fragment {
 
                                                 Toast.makeText(v.getContext(), "Berhasil masuk!", Toast.LENGTH_SHORT).show();
                                             }
+                                        } else {
+                                            AlertInfo info = new AlertInfo(v, "Email atau password anda salah!");
+                                            info.showDialog();
                                         }
                                     }
                                 });
@@ -226,9 +227,6 @@ public class AkunFragment extends Fragment {
                     });
             }
         });
-
-
-
 
         return view;
     }

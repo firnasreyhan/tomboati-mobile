@@ -20,6 +20,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.Priority;
 import com.bumptech.glide.load.DecodeFormat;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.squareup.picasso.Picasso;
 
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
@@ -47,31 +48,11 @@ public class PaketAdapter extends RecyclerView.Adapter<PaketAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         if (list.get(position).getImagePaket() != null) {
-            Glide.with(holder.itemView.getContext())
-                    .load(list.get(position).getImagePaket())
-                    .diskCacheStrategy(DiskCacheStrategy.ALL)
-                    .skipMemoryCache(true)
-                    .dontAnimate()
-                    .dontTransform()
-                    .priority(Priority.IMMEDIATE)
-                    .encodeFormat(Bitmap.CompressFormat.PNG)
-                    .format(DecodeFormat.DEFAULT)
-                    .placeholder(R.drawable.ic_logo)
-                    .into(holder.imageViewPaket);
+            picassoLoad(list.get(position).getImagePaket(), holder.imageViewPaket);
         }
 
         if (list.get(position).getImageMaskapai() != null) {
-            Glide.with(holder.itemView.getContext())
-                    .load(list.get(position).getImageMaskapai())
-                    .diskCacheStrategy(DiskCacheStrategy.ALL)
-                    .skipMemoryCache(true)
-                    .dontAnimate()
-                    .dontTransform()
-                    .priority(Priority.IMMEDIATE)
-                    .encodeFormat(Bitmap.CompressFormat.PNG)
-                    .format(DecodeFormat.DEFAULT)
-                    .placeholder(R.drawable.ic_logo)
-                    .into(holder.imageViewMaskapai);
+            picassoLoad(list.get(position).getImageMaskapai(),holder.imageViewMaskapai);
         }
 
         if (list.get(position).getNamaPaket() != null) {
@@ -79,11 +60,8 @@ public class PaketAdapter extends RecyclerView.Adapter<PaketAdapter.ViewHolder> 
         }
 
         if (list.get(position).getQuadSheet() != 0 && list.get(position).getDurasiPaket() != null) {
-            DecimalFormatSymbols decimalFormatSymbols = new DecimalFormatSymbols();
-            decimalFormatSymbols.setDecimalSeparator(',');
-            DecimalFormat decimalFormat = new DecimalFormat("###,###,###,###", decimalFormatSymbols);
-
-            holder.textViewHargaPaketDurasi.setText("Rp. " + decimalFormat.format(list.get(position).getQuadSheet()) + " (" + list.get(position).getDurasiPaket() + " Hari)");
+            String amount = String.format("%,.0f%3s", list.get(position).getQuadSheet(), ",- (") + list.get(position).getDurasiPaket() + " Hari)";
+            holder.textViewHargaPaketDurasi.setText("Rp. ".concat(amount));
         }
 
         if (list.get(position).getPenerbangan() != null) {
@@ -110,6 +88,10 @@ public class PaketAdapter extends RecyclerView.Adapter<PaketAdapter.ViewHolder> 
     @Override
     public int getItemCount() {
         return list.size();
+    }
+
+    private void picassoLoad(String uri, ImageView imageView) {
+        Picasso.get().load(uri).priority(Picasso.Priority.HIGH).placeholder(R.drawable.ic_logo).into(imageView);
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

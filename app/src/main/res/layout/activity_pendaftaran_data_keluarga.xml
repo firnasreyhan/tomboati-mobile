@@ -257,13 +257,13 @@
             android:orientation="horizontal">
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/materialButtonPesanSekarang"
+                android:id="@+id/materialButtonLanjutkanPesan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/dark_green"
                 android:fontFamily="@font/catamaran_bold"
                 android:padding="12dp"
-                android:text="Pesan Sekarang"
+                android:text="Lanjutkan"
                 android:textAllCaps="true" />
 
         </LinearLayout>

@@ -11,7 +11,6 @@ import android.view.View;
 import com.android.tomboati.R;
 
 public class SholatActivity extends AppCompatActivity {
-    private Toolbar toolbar;
 
     private final int[] arrId = {
             R.id.cardViewSholatWajib, R.id.cardViewWudhu, R.id.cardViewArahKiblat, R.id.cardViewJadwalSholat, 
@@ -32,7 +31,7 @@ public class SholatActivity extends AppCompatActivity {
         setTheme(R.style.ThemeTomboAtiGreen);
         setContentView(R.layout.activity_sholat);
 
-        toolbar = findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         setTitle("Sholat");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
