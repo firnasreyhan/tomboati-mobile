@@ -94,14 +94,12 @@ public class DrawTandaTanganPendaftaran extends AppCompatActivity {
                                         progress.dismissDialog();
                                     }
 
-
                                     AlertInfo info;
 
                                     if (!baseResponse.isError()) {
                                         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                         info = new AlertInfo(v.getContext(),"Pendaftaran berhasil", intent);
-//                                        info.showDialog();
                                     } else {
                                         info = new AlertInfo(v, "Gagal mengirim data");
                                     }

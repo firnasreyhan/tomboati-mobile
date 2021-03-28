@@ -56,262 +56,186 @@ public class Repository {
         this.apiInterfaceLokasi = ApiClient.getClientLokasi();
     }
 
-    public MutableLiveData<BaseResponse> signOut(
-            String email
-    ) {
-        MutableLiveData<BaseResponse> listMutableLiveData = new MutableLiveData<>();
-        apiInterfaceTomboAti.signOut(
-                email
-        ).enqueue(new Callback<BaseResponse>() {
+    //==
+
+    public MutableLiveData<BaseResponse> signOut(String email) {
+        MutableLiveData<BaseResponse> data = new MutableLiveData<>();
+        apiInterfaceTomboAti.signOut(email).enqueue(new Callback<BaseResponse>() {
             @Override
             public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
-                if (response.code() == 200) {
-                    listMutableLiveData.postValue(response.body());
-                }
+                if (response.code() == 200) { data.postValue(response.body()); }
             }
 
             @Override
             public void onFailure(Call<BaseResponse> call, Throwable t) {
-                listMutableLiveData.postValue(null);
-                Log.e("signOut", t.getMessage());
+                data.postValue(null);
             }
-        });
-        return listMutableLiveData;
+        }); return data;
     }
 
+    //==
+
     public MutableLiveData<SignInResponse> signIn(String email, String password, String token) {
-        MutableLiveData<SignInResponse> listMutableLiveData = new MutableLiveData<>();
-        apiInterfaceTomboAti.signIn(
-                email,
-                password,
-                token
-        ).enqueue(new Callback<SignInResponse>() {
+        MutableLiveData<SignInResponse> data = new MutableLiveData<>();
+        apiInterfaceTomboAti.signIn(email, password, token).enqueue(new Callback<SignInResponse>() {
             @Override
             public void onResponse(Call<SignInResponse> call, Response<SignInResponse> response) {
-                if (response.code() == 200) {
-                    listMutableLiveData.postValue(response.body());
-                }
+                if (response.code() == 200) { data.postValue(response.body()); }
             }
 
             @Override
             public void onFailure(Call<SignInResponse> call, Throwable t) {
-                listMutableLiveData.postValue(null);
-                Log.e("signIn", t.getMessage());
+                data.postValue(null);
             }
-        });
-        return listMutableLiveData;
+        }); return data;
     }
 
+    //==
+
     public MutableLiveData<BaseResponse> signUp(
-            RequestBody noKTP,
-            RequestBody email,
-            RequestBody password,
-            RequestBody namaLengkap,
-            RequestBody noHP,
-            RequestBody token,
-            MultipartBody.Part fileKTP,
-            MultipartBody.Part foto
+            RequestBody noKTP, RequestBody email, RequestBody password, RequestBody namaLengkap,
+            RequestBody noHP, RequestBody token, MultipartBody.Part fileKTP, MultipartBody.Part foto
     ) {
-        MutableLiveData<BaseResponse> baseResponseMutableLiveData = new MutableLiveData<>();
+        MutableLiveData<BaseResponse> data = new MutableLiveData<>();
         apiInterfaceTomboAti.signUp(
-                noKTP,
-                email,
-                password,
-                namaLengkap,
-                noHP,
-                token,
-                fileKTP,
-                foto
+            noKTP, email, password, namaLengkap, noHP, token, fileKTP, foto
         ).enqueue(new Callback<BaseResponse>() {
             @Override
             public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
-                if (response.code() == 200) {
-                    baseResponseMutableLiveData.postValue(response.body());
-                }
+                if (response.code() == 200) { data.postValue(response.body()); }
             }
 
             @Override
-            public void onFailure(Call<BaseResponse> call, Throwable t) {
-                baseResponseMutableLiveData.postValue(null);
-                Log.e("signUp", t.getMessage());
-            }
-        });
-        return baseResponseMutableLiveData;
+            public void onFailure(Call<BaseResponse> call, Throwable t) { data.postValue(null); }
+        }); return data;
     }
 
-    public MutableLiveData<ChatResponse> getChat(String idChatRoom) {
-        MutableLiveData<ChatResponse> mutableLiveData = new MutableLiveData<>();
+    //==
 
-        apiInterfaceTomboAti.getChat(
-                idChatRoom
-        ).enqueue(new Callback<ChatResponse>() {
+    public MutableLiveData<ChatResponse> getChat(String idChatRoom) {
+        MutableLiveData<ChatResponse> data = new MutableLiveData<>();
+        apiInterfaceTomboAti.getChat(idChatRoom).enqueue(new Callback<ChatResponse>() {
             @Override
             public void onResponse(Call<ChatResponse> call, Response<ChatResponse> response) {
-                if (response.code() == 200) {
-                    mutableLiveData.postValue(response.body());
-                }
+                if (response.code() == 200) { data.postValue(response.body()); }
             }
 
             @Override
             public void onFailure(Call<ChatResponse> call, Throwable t) {
-                mutableLiveData.postValue(null);
-                Log.e("signUp", t.getMessage());
+                data.postValue(null);
             }
-        });
-        return mutableLiveData;
+        });  return data;
     }
 
-    public MutableLiveData<BaseResponse> sendChat(
-            RequestBody message,
-            RequestBody idChatRoom,
-            MultipartBody.Part img
-    ) {
-        MutableLiveData<BaseResponse> mutableLiveData = new MutableLiveData<>();
+    //==
 
-        apiInterfaceTomboAti.sendChat(
-                message,
-                idChatRoom,
-                img
-        ).enqueue(new Callback<BaseResponse>() {
+    public MutableLiveData<BaseResponse> sendChat(RequestBody message, RequestBody idChatRoom, MultipartBody.Part img) {
+        MutableLiveData<BaseResponse> data = new MutableLiveData<>();
+        apiInterfaceTomboAti.sendChat(message, idChatRoom, img).enqueue(new Callback<BaseResponse>() {
             @Override
             public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
-                if (response.code() == 200) {
-                    mutableLiveData.postValue(response.body());
-                }
+                if (response.code() == 200) { data.postValue(response.body()); }
             }
 
             @Override
             public void onFailure(Call<BaseResponse> call, Throwable t) {
-                mutableLiveData.postValue(null);
-                Log.e("sendChat", t.getMessage());
+                data.postValue(null);
             }
-        });
-
-        return mutableLiveData;
+        }); return data;
     }
 
+    //==
+
     public MutableLiveData<JadwalSholatResponse> jadwalSholat(
-            int year,
-            int month,
-            int day,
-            double latitude,
-            double longitude,
-            int timezone
+            int year, int month, int day, double latitude, double longitude, int timezone
     ) {
         MutableLiveData<JadwalSholatResponse> data = new MutableLiveData<>();
         apiInterfaceTomboAtiJadwalSholat.jadwalSholat(
-                year,
-                month,
-                day,
-                latitude,
-                longitude,
-                timezone
+                year, month, day, latitude, longitude, timezone
         ).enqueue(new Callback<JadwalSholatResponse>() {
             @Override
             public void onResponse(Call<JadwalSholatResponse> call, Response<JadwalSholatResponse> response) {
-                if (response.code() == 200) {
-                    data.postValue(response.body());
-                }
+                if (response.code() == 200) { data.postValue(response.body()); }
             }
 
             @Override
             public void onFailure(Call<JadwalSholatResponse> call, Throwable t) {
                 data.postValue(null);
-                Log.e("signUp", t.getMessage());
             }
-        });
-        return data;
+        }); return data;
     }
 
+    //==
+
     public MutableLiveData<List<MasjidResponse.Feature>> masjid(
-            String query,
-            String proximity,
-            int limit,
-            String accessToken
+            String query, String proximity, int limit, String accessToken
     ) {
         MutableLiveData<List<MasjidResponse.Feature>> data = new MutableLiveData<>();
-        apiInterfaceMasjid.getMasjidTerdekat(
-                query,
-                proximity,
-                limit,
-                accessToken
-        ).enqueue(new Callback<MasjidResponse>() {
+        apiInterfaceMasjid.getMasjidTerdekat(query, proximity, limit, accessToken).enqueue(new Callback<MasjidResponse>() {
             @Override
             public void onResponse(Call<MasjidResponse> call, Response<MasjidResponse> response) {
-                if (response.code() == 200) {
-                    data.postValue(response.body().getFeatures());
-                }
+                if (response.code() == 200) { data.postValue(response.body().getFeatures()); }
             }
 
             @Override
             public void onFailure(Call<MasjidResponse> call, Throwable t) {
                 data.postValue(null);
-                Log.e("signUp", t.getMessage());
             }
-        });
-        return data;
+        }); return data;
     }
+
+    //==
 
     public MutableLiveData<List<SurahResponse>> getSurah() {
         MutableLiveData<List<SurahResponse>> data = new MutableLiveData<>();
         apiInterfaceAlQuran.getSurah().enqueue(new Callback<List<SurahResponse>>() {
             @Override
             public void onResponse(Call<List<SurahResponse>> call, Response<List<SurahResponse>> response) {
-                if (response.code() == 200) {
-                    data.postValue(response.body());
-                }
+                if (response.code() == 200) { data.postValue(response.body()); }
             }
 
             @Override
             public void onFailure(Call<List<SurahResponse>> call, Throwable t) {
-                data.postValue(null);
-                Log.e("getSurah", t.getMessage());
+                data.postValue(null); 
             }
-        });
-        return data;
+        }); return data;
     }
 
-    public MutableLiveData<AyatResponse> getAyat(
-            String idSurah
-    ) {
+    //==
+
+    public MutableLiveData<AyatResponse> getAyat(String idSurah) {
         MutableLiveData<AyatResponse> data = new MutableLiveData<>();
-        apiInterfaceAlQuran.getAyat(
-                idSurah
-        ).enqueue(new Callback<AyatResponse>() {
+        apiInterfaceAlQuran.getAyat(idSurah).enqueue(new Callback<AyatResponse>() {
             @Override
             public void onResponse(Call<AyatResponse> call, Response<AyatResponse> response) {
-                if (response.code() == 200) {
-                    data.postValue(response.body());
-                }
+                if (response.code() == 200) { data.postValue(response.body()); }
             }
 
             @Override
             public void onFailure(Call<AyatResponse> call, Throwable t) {
-                data.postValue(null);
-                Log.e("getAyat", t.getMessage());
+                data.postValue(null); 
             }
-        });
-        return data;
+        }); return data;
     }
-
+    
+    //==
+    
     public MutableLiveData<TahlilResponse> getDoaTahlil() {
         MutableLiveData<TahlilResponse> data = new MutableLiveData<>();
         apiInterfaceTahlil.getDoaTahlil().enqueue(new Callback<TahlilResponse>() {
             @Override
             public void onResponse(Call<TahlilResponse> call, Response<TahlilResponse> response) {
-                if (response.code() == 200) {
-                    data.postValue(response.body());
-                }
+                if (response.code() == 200) { data.postValue(response.body()); }
             }
 
             @Override
             public void onFailure(Call<TahlilResponse> call, Throwable t) {
-                data.postValue(null);
-                Log.e("getDoaTahlil", t.getMessage());
+                data.postValue(null); 
             }
-        });
-        return data;
+        }); return data;
     }
+
+    //==
 
     public MutableLiveData<DoaHarianResponse> getDoaHarian() {
         MutableLiveData<DoaHarianResponse> data = new MutableLiveData<>();
@@ -332,427 +256,368 @@ public class Repository {
         return data;
     }
 
-    public MutableLiveData<PaketResponse> getPaket(
-            String paket,
-            String bulan
-    ) {
+    //==
+
+    public MutableLiveData<PaketResponse> getPaket(String paket, String bulan) {
         MutableLiveData<PaketResponse> data = new MutableLiveData<>();
-        apiInterfaceTomboAti.getPaket(
-                paket,
-                bulan
-        ).enqueue(new Callback<PaketResponse>() {
+        apiInterfaceTomboAti.getPaket(paket, bulan).enqueue(new Callback<PaketResponse>() {
             @Override
             public void onResponse(Call<PaketResponse> call, Response<PaketResponse> response) {
-                if (response.code() == 200) {
-                    data.postValue(response.body());
-                }
+                if (response.code() == 200) { data.postValue(response.body()); }
             }
 
             @Override
             public void onFailure(Call<PaketResponse> call, Throwable t) {
                 data.postValue(null);
-                Log.e("getPaket", t.getMessage());
             }
-        });
-        return data;
+        });  return data;
     }
 
-    public MutableLiveData<PaketWisataResponse> getPaketWisata(
-            String paket, String bulan
-    ) {
-        MutableLiveData<PaketWisataResponse> data = new MutableLiveData<>();
-        apiInterfaceTomboAti.getPaketWisata(
-                paket,
-                bulan
-        ).enqueue(new Callback<PaketWisataResponse>() {
-            @Override
-            public void onResponse(Call<PaketWisataResponse> call, Response<PaketWisataResponse> response) {
-                if (response.code() == 200) {
-                    data.postValue(response.body());
-                }
-            }
+    //==
 
-            @Override
-            public void onFailure(Call<PaketWisataResponse> call, Throwable t) {
-                data.postValue(null);
-                Log.e("getPaket", t.getMessage());
-            }
-        });
-        return data;
-    }
-
-    public MutableLiveData<PaketResponse> getDetailPaket(
-            String idPaket
-    ) {
+    public MutableLiveData<PaketResponse> getPaketHaji( String paket, String bulan ) {
         MutableLiveData<PaketResponse> data = new MutableLiveData<>();
-        apiInterfaceTomboAti.getDetailPaket(
-                idPaket
-        ).enqueue(new Callback<PaketResponse>() {
+        apiInterfaceTomboAti.getPaketHaji( paket, bulan ).enqueue(new Callback<PaketResponse>() {
             @Override
             public void onResponse(Call<PaketResponse> call, Response<PaketResponse> response) {
-                if (response.code() == 200) {
-                    data.postValue(response.body());
-                }
+                if (response.code() == 200) { data.postValue(response.body()); }
             }
 
             @Override
             public void onFailure(Call<PaketResponse> call, Throwable t) {
                 data.postValue(null);
-                Log.e("getPaket", t.getMessage());
             }
-        });
-        return data;
+        });  return data;
     }
 
-    public MutableLiveData<PaketWisataResponse> getDetailPaketWisata(
-            String idPaketWisata
-    ) {
+    //==
+
+    public MutableLiveData<PaketWisataResponse> getPaketWisata( String paket, String bulan) {
         MutableLiveData<PaketWisataResponse> data = new MutableLiveData<>();
-        apiInterfaceTomboAti.getDetailPaketWisata(
-                idPaketWisata
-        ).enqueue(new Callback<PaketWisataResponse>() {
+        apiInterfaceTomboAti.getPaketWisata(paket, bulan).enqueue(new Callback<PaketWisataResponse>() {
             @Override
             public void onResponse(Call<PaketWisataResponse> call, Response<PaketWisataResponse> response) {
-                if (response.code() == 200) {
-                    data.postValue(response.body());
-                }
+                if (response.code() == 200) { data.postValue(response.body()); }
             }
 
             @Override
             public void onFailure(Call<PaketWisataResponse> call, Throwable t) {
                 data.postValue(null);
-                Log.e("getDetailPaketWisata", t.getMessage());
             }
-        });
-        return data;
+        }); return data;
     }
+
+    //==
+
+    public MutableLiveData<PaketResponse> getDetailPaket(String idPaket) {
+        MutableLiveData<PaketResponse> data = new MutableLiveData<>();
+        apiInterfaceTomboAti.getDetailPaket(idPaket).enqueue(new Callback<PaketResponse>() {
+            @Override
+            public void onResponse(Call<PaketResponse> call, Response<PaketResponse> response) {
+                if (response.code() == 200) { data.postValue(response.body()); }
+            }
+
+            @Override
+            public void onFailure(Call<PaketResponse> call, Throwable t) {
+                data.postValue(null);
+            }
+        }); return data;
+    }
+
+    //==
+
+    public MutableLiveData<PaketWisataResponse> getDetailPaketWisata(String idPaketWisata) {
+        MutableLiveData<PaketWisataResponse> data = new MutableLiveData<>();
+        apiInterfaceTomboAti.getDetailPaketWisata(idPaketWisata).enqueue(new Callback<PaketWisataResponse>() {
+            @Override
+            public void onResponse(Call<PaketWisataResponse> call, Response<PaketWisataResponse> response) {
+                if (response.code() == 200) { data.postValue(response.body()); }
+            }
+
+            @Override
+            public void onFailure(Call<PaketWisataResponse> call, Throwable t) {
+                data.postValue(null);
+            }
+        }); return data;
+    }
+
+    //==
 
     public MutableLiveData<PaketResponse> getPaketLimit() {
         MutableLiveData<PaketResponse> data = new MutableLiveData<>();
         apiInterfaceTomboAti.getPaketLimit().enqueue(new Callback<PaketResponse>() {
             @Override
             public void onResponse(Call<PaketResponse> call, Response<PaketResponse> response) {
-                if (response.code() == 200) {
-                    data.postValue(response.body());
-                }
+                if (response.code() == 200) { data.postValue(response.body()); }
             }
 
             @Override
             public void onFailure(Call<PaketResponse> call, Throwable t) {
                 data.postValue(null);
-                Log.e("getPaket", t.getMessage());
             }
-        });
-        return data;
+        });  return data;
     }
+
+    //==
 
     public MutableLiveData<PaketWisataResponse> getWisataHalalLimit() {
         MutableLiveData<PaketWisataResponse> data = new MutableLiveData<>();
         apiInterfaceTomboAti.getWisataHalalLimit().enqueue(new Callback<PaketWisataResponse>() {
             @Override
             public void onResponse(Call<PaketWisataResponse> call, Response<PaketWisataResponse> response) {
-                if (response.code() == 200) {
-                    data.postValue(response.body());
-                }
+                if (response.code() == 200) { data.postValue(response.body()); }
             }
 
             @Override
             public void onFailure(Call<PaketWisataResponse> call, Throwable t) {
                 data.postValue(null);
-                Log.e("getPaket", t.getMessage());
             }
-        });
-        return data;
+        }); return data;
     }
+
+    //==
 
     public MutableLiveData<BaseResponse> updateProfile(
-            String idUser,
-            RequestBody noKTP,
-            RequestBody email,
-            RequestBody namaLengkap,
-            RequestBody noHP
+            String idUser, RequestBody noKTP, RequestBody email, RequestBody namaLengkap, RequestBody noHP
     ) {
-        MutableLiveData<BaseResponse> baseResponseMutableLiveData = new MutableLiveData<>();
-        apiInterfaceTomboAti.updateProfile(
-                idUser,
-                noKTP,
-                email,
-                namaLengkap,
-                noHP
-        ).enqueue(new Callback<BaseResponse>() {
+        MutableLiveData<BaseResponse> data = new MutableLiveData<>();
+        apiInterfaceTomboAti.updateProfile(idUser, noKTP, email, namaLengkap, noHP).enqueue(new Callback<BaseResponse>() {
             @Override
             public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
-                if (response.code() == 200) {
-                    baseResponseMutableLiveData.postValue(response.body());
-                }
+                if (response.code() == 200) { data.postValue(response.body()); }
             }
 
             @Override
             public void onFailure(Call<BaseResponse> call, Throwable t) {
-                baseResponseMutableLiveData.postValue(null);
-                Log.e("updateProfile", t.getMessage());
+                data.postValue(null); 
             }
-        });
-        return baseResponseMutableLiveData;
+        }); return data;
     }
 
-    public MutableLiveData<BaseResponse> updateFileKTP(
-            String idUser,
-            MultipartBody.Part fileKTP
-    ) {
-        MutableLiveData<BaseResponse> baseResponseMutableLiveData = new MutableLiveData<>();
-        apiInterfaceTomboAti.updateFileKTP(
-                idUser,
-                fileKTP
-        ).enqueue(new Callback<BaseResponse>() {
+    //==
+
+    public MutableLiveData<BaseResponse> updateFileKTP(String idUser, MultipartBody.Part fileKTP) {
+        MutableLiveData<BaseResponse> data = new MutableLiveData<>();
+        apiInterfaceTomboAti.updateFileKTP(idUser, fileKTP).enqueue(new Callback<BaseResponse>() {
             @Override
             public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
-                if (response.code() == 200) {
-                    baseResponseMutableLiveData.postValue(response.body());
-                }
+                if (response.code() == 200) { data.postValue(response.body()); }
             }
 
             @Override
             public void onFailure(Call<BaseResponse> call, Throwable t) {
-                baseResponseMutableLiveData.postValue(null);
-                Log.e("updateProfile", t.getMessage());
+                data.postValue(null); 
             }
-        });
-        return baseResponseMutableLiveData;
+        }); return data;
     }
 
-    public MutableLiveData<BaseResponse> updateFoto(
-            String idUser,
-            MultipartBody.Part foto
-    ) {
-        MutableLiveData<BaseResponse> baseResponseMutableLiveData = new MutableLiveData<>();
-        apiInterfaceTomboAti.updateFoto(
-                idUser,
-                foto
-        ).enqueue(new Callback<BaseResponse>() {
+    //==
+
+    public MutableLiveData<BaseResponse> updateFoto(String idUser, MultipartBody.Part foto) {
+        MutableLiveData<BaseResponse> data = new MutableLiveData<>();
+        apiInterfaceTomboAti.updateFoto(idUser, foto).enqueue(new Callback<BaseResponse>() {
             @Override
             public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
-                if (response.code() == 200) {
-                    baseResponseMutableLiveData.postValue(response.body());
-                }
+                if (response.code() == 200) { data.postValue(response.body()); }
             }
 
             @Override
             public void onFailure(Call<BaseResponse> call, Throwable t) {
-                baseResponseMutableLiveData.postValue(null);
-                Log.e("updateProfile", t.getMessage());
+                data.postValue(null); 
             }
-        });
-        return baseResponseMutableLiveData;
+        }); return data;
     }
 
-    public MutableLiveData<PaketMonthResponse> getPaketMonth(
-            String paket
-    ) {
+    //==
+
+    public MutableLiveData<PaketMonthResponse> getPaketMonth(String tipe) {
         MutableLiveData<PaketMonthResponse> data = new MutableLiveData<>();
-        apiInterfaceTomboAti.getPaketMonth(
-                paket
-        ).enqueue(new Callback<PaketMonthResponse>() {
+        apiInterfaceTomboAti.getPaketMonth(tipe).enqueue(new Callback<PaketMonthResponse>() {
             @Override
             public void onResponse(Call<PaketMonthResponse> call, Response<PaketMonthResponse> response) {
-                if (response.code() == 200) {
-                    data.postValue(response.body());
-                }
+                if (response.code() == 200) { data.postValue(response.body()); }
             }
 
             @Override
             public void onFailure(Call<PaketMonthResponse> call, Throwable t) {
                 data.postValue(null);
-                Log.e("getPaketMonth", t.getMessage());
             }
         });
         return data;
     }
 
-    public MutableLiveData<PaketMonthResponse> getPaketWisataMonth(
-            String paket
-    ) {
+    //==
+
+    public MutableLiveData<PaketMonthResponse> getPaketHajiMonth(String tipe) {
         MutableLiveData<PaketMonthResponse> data = new MutableLiveData<>();
-        apiInterfaceTomboAti.getPaketWisataMonth(
-                paket
-        ).enqueue(new Callback<PaketMonthResponse>() {
+        apiInterfaceTomboAti.getPaketHajiMonth(tipe).enqueue(new Callback<PaketMonthResponse>() {
             @Override
             public void onResponse(Call<PaketMonthResponse> call, Response<PaketMonthResponse> response) {
-                if (response.code() == 200) {
-                    data.postValue(response.body());
-                }
+                if (response.code() == 200) { data.postValue(response.body()); }
             }
 
             @Override
             public void onFailure(Call<PaketMonthResponse> call, Throwable t) {
                 data.postValue(null);
-                Log.e("getPaketWisataMonth", t.getMessage());
             }
         });
         return data;
     }
+
+    //==
+
+    public MutableLiveData<PaketMonthResponse> getPaketWisataMonth(String paket) {
+        MutableLiveData<PaketMonthResponse> data = new MutableLiveData<>();
+        apiInterfaceTomboAti.getPaketWisataMonth(paket).enqueue(new Callback<PaketMonthResponse>() {
+            @Override
+            public void onResponse(Call<PaketMonthResponse> call, Response<PaketMonthResponse> response) {
+                if (response.code() == 200) { data.postValue(response.body()); }
+            }
+
+            @Override
+            public void onFailure(Call<PaketMonthResponse> call, Throwable t) {
+                data.postValue(null);
+            }
+        }); return data;
+    }
+
+    //==
 
     public MutableLiveData<List<BacaanSholatResponse>> getBacaanSholat() {
         MutableLiveData<List<BacaanSholatResponse>> data = new MutableLiveData<>();
         apiInterfaceTahlil.getBacaanSholat().enqueue(new Callback<List<BacaanSholatResponse>>() {
             @Override
             public void onResponse(Call<List<BacaanSholatResponse>> call, Response<List<BacaanSholatResponse>> response) {
-                if (response.code() == 200) {
-                    data.postValue(response.body());
-                }
+                if (response.code() == 200) { data.postValue(response.body()); }
             }
 
             @Override
             public void onFailure(Call<List<BacaanSholatResponse>> call, Throwable t) {
                 data.postValue(null);
-                Log.e("getBacaanSholat", t.getMessage());
             }
-        });
-        return data;
+        }); return data;
     }
+
+    //==
 
     public MutableLiveData<List<BacaanSholatResponse>> getNiatSholat() {
         MutableLiveData<List<BacaanSholatResponse>> data = new MutableLiveData<>();
         apiInterfaceTahlil.getNiatSholat().enqueue(new Callback<List<BacaanSholatResponse>>() {
             @Override
             public void onResponse(Call<List<BacaanSholatResponse>> call, Response<List<BacaanSholatResponse>> response) {
-                if (response.code() == 200) {
-                    data.postValue(response.body());
-                }
+                if (response.code() == 200) { data.postValue(response.body()); }
             }
 
             @Override
             public void onFailure(Call<List<BacaanSholatResponse>> call, Throwable t) {
                 data.postValue(null);
-                Log.e("getNiatSholat", t.getMessage());
             }
-        });
-        return data;
+        }); return data;
     }
+
+    //==
 
     public MutableLiveData<List<KomunitasResponse.Datum>> getKomunitas() {
         MutableLiveData<List<KomunitasResponse.Datum>> data = new MutableLiveData<>();
         apiInterfaceTomboAti.getKomunitas().enqueue(new Callback<KomunitasResponse>() {
             @Override
             public void onResponse(Call<KomunitasResponse> call, Response<KomunitasResponse> response) {
-                if (response.code() == 200) {
-                    data.postValue(response.body().getData());
-                }
+                if (response.code() == 200) { data.postValue(response.body().getData()); }
             }
 
             @Override
             public void onFailure(Call<KomunitasResponse> call, Throwable t) {
                 data.postValue(null);
-                Log.e("getKomunitas", t.getMessage());
             }
-        });
-        return data;
+        }); return data;
     }
+
+    //==
 
     public MutableLiveData<NewsResponse> getNews() {
         MutableLiveData<NewsResponse> data = new MutableLiveData<>();
         apiInterfaceTomboAti.getNews().enqueue(new Callback<NewsResponse>() {
             @Override
             public void onResponse(Call<NewsResponse> call, Response<NewsResponse> response) {
-                if (response.code() == 200) {
-                    data.postValue(response.body());
-                }
+                if (response.code() == 200) { data.postValue(response.body()); }
             }
 
             @Override
             public void onFailure(Call<NewsResponse> call, Throwable t) {
                 data.postValue(null);
-                Log.e("getNews", t.getMessage());
             }
-        });
-        return data;
+        }); return data;
     }
+
+    //==
 
     public MutableLiveData<KataMutiaraResponse> getKataMutiara() {
         MutableLiveData<KataMutiaraResponse> data = new MutableLiveData<>();
         apiInterfaceTomboAti.getKataMutiara().enqueue(new Callback<KataMutiaraResponse>() {
             @Override
             public void onResponse(Call<KataMutiaraResponse> call, Response<KataMutiaraResponse> response) {
-                if (response.code() == 200) {
-                    data.postValue(response.body());
-                }
+                if (response.code() == 200) { data.postValue(response.body()); }
             }
 
             @Override
             public void onFailure(Call<KataMutiaraResponse> call, Throwable t) {
                 data.postValue(null);
-                Log.e("getKataMutiara", t.getMessage());
             }
-        });
-        return data;
+        }); return data;
     }
 
-    public MutableLiveData<ItteneraryResponse> getIttenerary(
-            String idPaket
-    ) {
+    //==
+
+    public MutableLiveData<ItteneraryResponse> getIttenerary(String idPaket) {
         MutableLiveData<ItteneraryResponse> data = new MutableLiveData<>();
-        apiInterfaceTomboAti.getIttenerary(
-                idPaket
-        ).enqueue(new Callback<ItteneraryResponse>() {
+        apiInterfaceTomboAti.getIttenerary(idPaket).enqueue(new Callback<ItteneraryResponse>() {
             @Override
             public void onResponse(Call<ItteneraryResponse> call, Response<ItteneraryResponse> response) {
-                if (response.code() == 200) {
-                    data.postValue(response.body());
-                }
+                if (response.code() == 200) { data.postValue(response.body()); }
             }
 
             @Override
             public void onFailure(Call<ItteneraryResponse> call, Throwable t) {
                 data.postValue(null);
-                Log.e("getIttenerary", t.getMessage());
             }
-        });
-        return data;
+        }); return data;
     }
 
-    public MutableLiveData<ItteneraryResponse> getItteneraryWisata(
-            String idWisataHalal
-    ) {
+    //==
+
+    public MutableLiveData<ItteneraryResponse> getItteneraryWisata(String idWisataHalal) {
         MutableLiveData<ItteneraryResponse> data = new MutableLiveData<>();
-        apiInterfaceTomboAti.getItteneraryWisata(
-                idWisataHalal
-        ).enqueue(new Callback<ItteneraryResponse>() {
+        apiInterfaceTomboAti.getItteneraryWisata(idWisataHalal).enqueue(new Callback<ItteneraryResponse>() {
             @Override
             public void onResponse(Call<ItteneraryResponse> call, Response<ItteneraryResponse> response) {
-                if (response.code() == 200) {
-                    data.postValue(response.body());
-                }
+                if (response.code() == 200) { data.postValue(response.body());}
             }
 
             @Override
             public void onFailure(Call<ItteneraryResponse> call, Throwable t) {
                 data.postValue(null);
-                Log.e("getIttenerary", t.getMessage());
             }
-        });
-        return data;
+        }); return data;
     }
+
+    //==
 
     public MutableLiveData<BaseResponse> resetPassword(String idUserRegister) {
         MutableLiveData<BaseResponse> data = new MutableLiveData<>();
-        apiInterfaceTomboAti.resetPassword(
-                idUserRegister
-        ).enqueue(new Callback<BaseResponse>() {
+        apiInterfaceTomboAti.resetPassword(idUserRegister).enqueue(new Callback<BaseResponse>() {
             @Override
             public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
-                if (response.code() == 200) {
-                    data.postValue(response.body());
-                }
+                if (response.code() == 200) { data.postValue(response.body()); }
             }
 
             @Override
             public void onFailure(Call<BaseResponse> call, Throwable t) {
                 data.postValue(null);
-                Log.e("resetPassword", t.getMessage());
             }
-        });
-        return data;
+        }); return data;
     }
+
+    //==
 
     public MutableLiveData<BaseResponse> pendaftaran(
             RequestBody idUserRegister,
@@ -799,7 +664,7 @@ public class Repository {
             RequestBody kodePOSKeluarga,
             RequestBody nomorHPKeluarga
     ) {
-        MutableLiveData<BaseResponse> baseResponseMutableLiveData = new MutableLiveData<>();
+        MutableLiveData<BaseResponse> data = new MutableLiveData<>();
         apiInterfaceTomboAti.pendaftaran(
                 idUserRegister,
                 email,
@@ -847,99 +712,81 @@ public class Repository {
         ).enqueue(new Callback<BaseResponse>() {
             @Override
             public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
-                if (response.code() == 200) {
-                    baseResponseMutableLiveData.postValue(response.body());
-                }
+                if (response.code() == 200) { data.postValue(response.body()); }
             }
 
             @Override
             public void onFailure(Call<BaseResponse> call, Throwable t) {
-                baseResponseMutableLiveData.postValue(null);
-                Log.e("signUp", t.getMessage());
+                data.postValue(null);
             }
-        });
-        return baseResponseMutableLiveData;
+        }); return data;
     }
+
+    //==
 
     public MutableLiveData<List<LokasiResponse>> getPropinsi() {
         MutableLiveData<List<LokasiResponse>> data = new MutableLiveData<>();
         apiInterfaceLokasi.getPropinsi().enqueue(new Callback<List<LokasiResponse>>() {
             @Override
             public void onResponse(Call<List<LokasiResponse>> call, Response<List<LokasiResponse>> response) {
-                if (response.code() == 200) {
-                    data.postValue(response.body());
-                }
+                if (response.code() == 200) { data.postValue(response.body()); }
             }
 
             @Override
             public void onFailure(Call<List<LokasiResponse>> call, Throwable t) {
                 data.postValue(null);
-                Log.e("getPropinsi", t.getMessage());
             }
-        });
-        return data;
+        }); return data;
     }
+
+    //==
 
     public MutableLiveData<List<LokasiResponse>> getKabupaten(String id) {
         MutableLiveData<List<LokasiResponse>> data = new MutableLiveData<>();
-        apiInterfaceLokasi.getKabupaten(
-                id
-        ).enqueue(new Callback<List<LokasiResponse>>() {
+        apiInterfaceLokasi.getKabupaten(id).enqueue(new Callback<List<LokasiResponse>>() {
             @Override
             public void onResponse(Call<List<LokasiResponse>> call, Response<List<LokasiResponse>> response) {
-                if (response.code() == 200) {
-                    data.postValue(response.body());
-                }
+                if (response.code() == 200) { data.postValue(response.body()); }
             }
 
             @Override
             public void onFailure(Call<List<LokasiResponse>> call, Throwable t) {
                 data.postValue(null);
-                Log.e("getKabupaten", t.getMessage());
             }
-        });
-        return data;
+        }); return data;
     }
+
+    //==
 
     public MutableLiveData<List<LokasiResponse>> getKecamatan(String id) {
         MutableLiveData<List<LokasiResponse>> data = new MutableLiveData<>();
-        apiInterfaceLokasi.getKecamatan(
-                id
-        ).enqueue(new Callback<List<LokasiResponse>>() {
+        apiInterfaceLokasi.getKecamatan(id).enqueue(new Callback<List<LokasiResponse>>() {
             @Override
             public void onResponse(Call<List<LokasiResponse>> call, Response<List<LokasiResponse>> response) {
-                if (response.code() == 200) {
-                    data.postValue(response.body());
-                }
+                if (response.code() == 200) { data.postValue(response.body()); }
             }
 
             @Override
             public void onFailure(Call<List<LokasiResponse>> call, Throwable t) {
                 data.postValue(null);
-                Log.e("getKecamatan", t.getMessage());
             }
-        });
-        return data;
+        }); return data;
     }
+
+    //==
 
     public MutableLiveData<List<LokasiResponse>> getKelurahan(String id) {
         MutableLiveData<List<LokasiResponse>> data = new MutableLiveData<>();
-        apiInterfaceLokasi.getKelurahan(
-                id
-        ).enqueue(new Callback<List<LokasiResponse>>() {
+        apiInterfaceLokasi.getKelurahan(id).enqueue(new Callback<List<LokasiResponse>>() {
             @Override
             public void onResponse(Call<List<LokasiResponse>> call, Response<List<LokasiResponse>> response) {
-                if (response.code() == 200) {
-                    data.postValue(response.body());
-                }
+                if (response.code() == 200) { data.postValue(response.body()); }
             }
 
             @Override
             public void onFailure(Call<List<LokasiResponse>> call, Throwable t) {
                 data.postValue(null);
-                Log.e("getKelurahan", t.getMessage());
             }
-        });
-        return data;
+        }); return data;
     }
 }

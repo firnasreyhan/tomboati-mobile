@@ -7,7 +7,7 @@
     android:padding="@dimen/_9sdp"
     android:background="@color/background">
 
-    <TextView
+    <com.codesgood.views.JustifiedTextView
         android:id="@+id/textViewBiaya"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

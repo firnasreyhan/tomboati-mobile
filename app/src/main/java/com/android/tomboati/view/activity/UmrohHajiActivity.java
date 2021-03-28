@@ -11,8 +11,21 @@ import android.view.View;
 import com.android.tomboati.R;
 
 public class UmrohHajiActivity extends AppCompatActivity {
-    private Toolbar toolbar;
-    private CardView cardViewUmrohPromo, cardViewUmrohHemat, cardViewUmrohBisnis, cardViewUmrohVIP, cardViewUmrohPlus;
+
+    final int[] arrId = {
+        R.id.cardViewUmrohPromo, R.id.cardViewUmrohHemat, R.id.cardViewUmrohBisnis,
+        R.id.cardViewUmrohVIP, R.id.cardViewUmrohPlus, R.id.cardViewHajiPlus,
+        R.id.cardViewHajiTanpaAntri
+    };
+
+    final String[] arrTitle = {
+        "Umroh Promo", "Umroh Hemat", "Umroh Bisnis", "Umroh VIP", "Umroh Plus",
+        "Haji Plus", "Haji Tanpa Antri"
+    };
+
+    final String[] arrNamePaket = {
+        "Promo", "Hemat", "Bisnis", "VIP", "Plus", "Plus", "TanpaAntri"
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,67 +33,24 @@ public class UmrohHajiActivity extends AppCompatActivity {
         setTheme(R.style.ThemeTomboAtiGreen);
         setContentView(R.layout.activity_umroh_haji);
 
-        toolbar = findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         setTitle("Umroh & Haji");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        cardViewUmrohPromo = findViewById(R.id.cardViewUmrohPromo);
-        cardViewUmrohHemat = findViewById(R.id.cardViewUmrohHemat);
-        cardViewUmrohBisnis = findViewById(R.id.cardViewUmrohBisnis);
-        cardViewUmrohVIP = findViewById(R.id.cardViewUmrohVIP);
-        cardViewUmrohPlus = findViewById(R.id.cardViewUmrohPlus);
-
-        cardViewUmrohPromo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), ListPaketActivity.class);
-                intent.putExtra("PAKET", "Promo");
-                intent.putExtra("TITLE", "Umroh Promo");
-                startActivity(intent);
-            }
-        });
-
-        cardViewUmrohHemat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), ListPaketActivity.class);
-                intent.putExtra("PAKET", "Hemat");
-                intent.putExtra("TITLE", "Umroh Hemat");
-                startActivity(intent);
-            }
-        });
-
-        cardViewUmrohBisnis.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), ListPaketActivity.class);
-                intent.putExtra("PAKET", "Bisnis");
-                intent.putExtra("TITLE", "Umroh Bisnis");
-                startActivity(intent);
-            }
-        });
-
-        cardViewUmrohVIP.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), ListPaketActivity.class);
-                intent.putExtra("PAKET", "VIP");
-                intent.putExtra("TITLE", "Umroh VIP");
-                startActivity(intent);
-            }
-        });
-
-        cardViewUmrohPlus.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), ListPaketActivity.class);
-                intent.putExtra("PAKET", "Plus");
-                intent.putExtra("TITLE", "Umroh Plus");
-                startActivity(intent);
-            }
-        });
+        for(int i = 0; i < arrId.length; i++) {
+            final int j = i;
+            findViewById(arrId[i]).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(v.getContext(), ListPaketActivity.class);
+                    intent.putExtra((j < 5) ? "PAKET": "PAKET_HAJI",arrNamePaket[j]);
+                    intent.putExtra("TITLE", arrTitle[j]);
+                    startActivity(intent);
+                }
+            });
+        }
     }
 
     @Override

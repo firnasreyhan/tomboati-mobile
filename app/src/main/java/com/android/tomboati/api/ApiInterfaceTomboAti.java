@@ -28,6 +28,7 @@ import retrofit2.http.Query;
 
 public interface ApiInterfaceTomboAti {
 
+    // ACCOUNT API ===================
     @POST("user/login_post")
     @FormUrlEncoded
     Call<SignInResponse> signIn(
@@ -56,48 +57,6 @@ public interface ApiInterfaceTomboAti {
     );
 
     @Multipart
-    @POST("chat/chat_post")
-    Call<BaseResponse> sendChat(
-            @Part("message") RequestBody message,
-            @Part("idChatRoom") RequestBody idChatRoom,
-            @Part MultipartBody.Part img
-    );
-
-    @POST("chat/chat_get")
-    @FormUrlEncoded
-    Call<ChatResponse> getChat(
-            @Field("idChatRoom") String idChatRoom
-    );
-
-    @GET("paket/paket_get")
-    Call<PaketResponse> getPaket(
-            @Query("tipe") String tipe,
-            @Query("bulan") String bulan
-    );
-
-    @GET("WisataHalal/wisatahalal_get")
-    Call<PaketWisataResponse> getPaketWisata(
-            @Query("tipe") String tipe,
-            @Query("bulan") String bulan
-    );
-
-    @GET("Paket/detailPaket")
-    Call<PaketResponse> getDetailPaket(
-            @Query("idPaket") String idPaket
-    );
-
-    @GET("WisataHalal/detailWisataHalal")
-    Call<PaketWisataResponse> getDetailPaketWisata(
-            @Query("idWisataHalal") String idWisataHalal
-    );
-
-    @GET("paket/getpaketlimit")
-    Call<PaketResponse> getPaketLimit();
-
-    @GET("WisataHalal/getwisatahalallimit")
-    Call<PaketWisataResponse> getWisataHalalLimit();
-
-    @Multipart
     @POST("user/updateProfil")
     Call<BaseResponse> updateProfile(
             @Query("idUser") String idUser,
@@ -121,28 +80,88 @@ public interface ApiInterfaceTomboAti {
             @Part MultipartBody.Part foto
     );
 
+    @POST("user/gantiPassword")
+    Call<BaseResponse> resetPassword(
+            @Query("idUserRegister") String idUserRegister
+    );
+
+
+    // CHAT API ===================
+    @Multipart
+    @POST("chat/chat_post")
+    Call<BaseResponse> sendChat(
+            @Part("message") RequestBody message,
+            @Part("idChatRoom") RequestBody idChatRoom,
+            @Part MultipartBody.Part img
+    );
+
+    @POST("chat/chat_get")
+    @FormUrlEncoded
+    Call<ChatResponse> getChat(
+            @Field("idChatRoom") String idChatRoom
+    );
+
+
+    // PACKET API ===================
+    @GET("paket/paket_get")
+    Call<PaketResponse> getPaket(
+            @Query("tipe") String tipe,
+            @Query("bulan") String bulan
+    );
+
+    @GET("Paket/detailPaket")
+    Call<PaketResponse> getDetailPaket(
+            @Query("idPaket") String idPaket
+    );
+
     @GET("paket/getPaketMonth")
     Call<PaketMonthResponse> getPaketMonth(
             @Query("tipe") String tipe
     );
 
-    @GET("Komunitas/komunitas_get")
-    Call<KomunitasResponse> getKomunitas();
-    
-    @GET("WisataHalal/getWisataHalalMonth")
-    Call<PaketMonthResponse> getPaketWisataMonth(
-            @Query("tipe") String tipe
-    );
-
-    @GET("News/getNewsLimit")
-    Call<NewsResponse> getNews();
-
-    @GET("KataMutiara/getKataMutiaraLimit")
-    Call<KataMutiaraResponse> getKataMutiara();
-
     @GET("paket/detailItinerary")
     Call<ItteneraryResponse> getIttenerary(
             @Query("idPaket") String idPaket
+    );
+
+    @GET("paket/getpaketlimit")
+    Call<PaketResponse> getPaketLimit();
+
+
+
+
+
+    // PACKET HAJJ API  ===================
+    @GET("paket/paketHaji")
+    Call<PaketResponse> getPaketHaji(
+            @Query("tipe") String tipe,
+            @Query("bulan") String bulan
+    );
+
+    @GET("Paket/getPaketHajiMonth")
+    Call<PaketMonthResponse> getPaketHajiMonth(
+            @Query("tipe") String tipe
+    );
+
+
+
+
+
+    // PACKET HALAL TOURISM API ===================
+    @GET("WisataHalal/wisatahalal_get")
+    Call<PaketWisataResponse> getPaketWisata(
+            @Query("tipe") String tipe,
+            @Query("bulan") String bulan
+    );
+
+    @GET("WisataHalal/detailWisataHalal")
+    Call<PaketWisataResponse> getDetailPaketWisata(
+            @Query("idWisataHalal") String idWisataHalal
+    );
+
+    @GET("WisataHalal/getWisataHalalMonth")
+    Call<PaketMonthResponse> getPaketWisataMonth(
+            @Query("tipe") String tipe
     );
 
     @GET("WisataHalal/detailItinerary")
@@ -150,11 +169,28 @@ public interface ApiInterfaceTomboAti {
             @Query("idWisataHalal") String idWisataHalal
     );
 
-    @POST("user/gantiPassword")
-    Call<BaseResponse> resetPassword(
-            @Query("idUserRegister") String idUserRegister
-    );
+    @GET("WisataHalal/getwisatahalallimit")
+    Call<PaketWisataResponse> getWisataHalalLimit();
 
+
+
+
+
+    // NEWS COMMUNITY API ===================
+    @GET("Komunitas/komunitas_get")
+    Call<KomunitasResponse> getKomunitas();
+
+    @GET("News/getNewsLimit")
+    Call<NewsResponse> getNews();
+
+    @GET("KataMutiara/getKataMutiaraLimit")
+    Call<KataMutiaraResponse> getKataMutiara();
+
+
+
+
+
+    // REGISTER PACKET API  ===================
     @Multipart
     @POST("pendaftaran/pendaftaran_post")
     Call<BaseResponse> pendaftaran(

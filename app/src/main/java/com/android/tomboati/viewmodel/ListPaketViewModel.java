@@ -23,12 +23,22 @@ public class ListPaketViewModel extends AndroidViewModel {
         return repository.getPaket(paket, bulan);
     }
 
+    public MutableLiveData<PaketResponse> getPaketHaji(String paket, String bulan) {
+        return repository.getPaketHaji(paket, bulan);
+    }
+
     public MutableLiveData<PaketWisataResponse> getPaketWisata(String paket, String bulan) {
         return repository.getPaketWisata(paket, bulan);
     }
 
+    //==
+
     public MutableLiveData<PaketMonthResponse> getPaketMonth(String paket) {
         return repository.getPaketMonth(paket);
+    }
+
+    public MutableLiveData<PaketMonthResponse> getPaketHajiMonth(String paket) {
+        return repository.getPaketHajiMonth(paket);
     }
 
     public MutableLiveData<PaketMonthResponse> getPaketWisataMonth(String paket) {

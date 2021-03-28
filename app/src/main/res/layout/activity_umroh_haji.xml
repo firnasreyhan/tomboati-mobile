@@ -455,13 +455,14 @@
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/cardViewHajiPlus"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:clickable="true"
                     android:foreground="?selectableItemBackground"
-                    app:cardElevation="0dp"
-                    app:cardBackgroundColor="@android:color/transparent">
+                    app:cardBackgroundColor="@android:color/transparent"
+                    app:cardElevation="0dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -496,13 +497,14 @@
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/cardViewHajiTanpaAntri"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:clickable="true"
                     android:foreground="?selectableItemBackground"
-                    app:cardElevation="0dp"
-                    app:cardBackgroundColor="@android:color/transparent">
+                    app:cardBackgroundColor="@android:color/transparent"
+                    app:cardElevation="0dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -634,7 +636,8 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical"
-                    tools:visibility="invisible"/>
+                    android:visibility="visible"
+                    tools:visibility="visible" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -642,7 +645,7 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical"
-                    tools:visibility="invisible"/>
+                    tools:visibility="visible" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -650,7 +653,8 @@
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical"
-                    tools:visibility="invisible"/>
+                    android:visibility="visible"
+                    tools:visibility="visible" />
 
             </LinearLayout>
 

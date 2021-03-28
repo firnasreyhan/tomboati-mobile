@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -18,6 +19,7 @@ import android.widget.Spinner;
 import com.android.tomboati.R;
 import com.android.tomboati.adapter.PaketAdapter;
 import com.android.tomboati.adapter.PaketWisataAdapter;
+import com.android.tomboati.api.response.BaseResponse;
 import com.android.tomboati.api.response.PaketMonthResponse;
 import com.android.tomboati.api.response.PaketResponse;
 import com.android.tomboati.api.response.PaketWisataResponse;
@@ -54,8 +56,9 @@ public class ListPaketActivity extends AppCompatActivity {
         list = new ArrayList<>();
 
         String paket = getIntent().getStringExtra("PAKET");
-        String title = getIntent().getStringExtra("TITLE");
+        String paketHaji = getIntent().getStringExtra("PAKET_HAJI");
         String paketWisata = getIntent().getStringExtra("PAKET_WISATA");
+        String title = getIntent().getStringExtra("TITLE");
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -74,19 +77,23 @@ public class ListPaketActivity extends AppCompatActivity {
         list.add(new BulanModel("99","Semuanya"));
         setSpinnerAdapter(list);
 
-        MutableLiveData<PaketMonthResponse> paketMonthResponse = (paket != null) ?
-            listPaketViewModel.getPaketMonth(paket)
-                :
-            listPaketViewModel.getPaketWisataMonth(paketWisata)
-        ;
+        MutableLiveData<PaketMonthResponse> paketMonthResponse = null;
+
+        if(paket != null) {
+            paketMonthResponse = listPaketViewModel.getPaketMonth(paket);
+        } else if(paketHaji != null) {
+            paketMonthResponse = listPaketViewModel.getPaketHajiMonth(paketHaji);
+        } else {
+            paketMonthResponse = listPaketViewModel.getPaketWisataMonth(paketWisata);
+        }
 
         paketMonthResponse.observe(this, new Observer<PaketMonthResponse>() {
             @Override
             public void onChanged(PaketMonthResponse paketMonthResponse) {
                 if(!paketMonthResponse.isError()) {
                     if(!paketMonthResponse.isError()) {
-                        for (String nomor: paketMonthResponse.getData().getBulan()) {
-                            list.add(new BulanModel(nomor, month[Integer.parseInt(nomor) - 1]));
+                        for (String no: paketMonthResponse.getData().getBulan()) {
+                            list.add(new BulanModel(no, month[Integer.parseInt(no) - 1]));
                         }
                         setSpinnerAdapter(list);
                     }
@@ -102,22 +109,24 @@ public class ListPaketActivity extends AppCompatActivity {
                 linearLayoutNoPaket.setVisibility(View.GONE);
 
                 if (paket != null) {
-                    getPaket(paket, list.get(position).getUrutan());
+                    getPaket(paket, list.get(position).getUrutan(), true);
+                } else if (paketHaji != null) {
+                    getPaket(paketHaji, list.get(position).getUrutan(), false);
                 } else {
                     getPaketWisata(paketWisata, list.get(position).getUrutan());
                 }
             }
 
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
+            @Override public void onNothingSelected(AdapterView<?> parent) { }
         });
     }
 
-    private void getPaket(String paket, String urutan) {
-        listPaketViewModel.getPaket(paket, urutan )
-            .observe(this, new Observer<PaketResponse>() {
+    private void getPaket(String paket, String urutan, boolean isPaketUmrah) {
+        MutableLiveData<PaketResponse> data = isPaketUmrah ?
+            listPaketViewModel.getPaket(paket, urutan)
+                :
+            listPaketViewModel.getPaketHaji(paket, urutan);
+        data.observe(this, new Observer<PaketResponse>() {
             @Override
             public void onChanged(PaketResponse paketResponse) {
                 if (!paketResponse.isError()) {
@@ -142,8 +151,7 @@ public class ListPaketActivity extends AppCompatActivity {
     }
 
     private void getPaketWisata(String paket, String urutan) {
-        listPaketViewModel.getPaketWisata(paket, urutan )
-            .observe(this, new Observer<PaketWisataResponse>() {
+        listPaketViewModel.getPaketWisata(paket, urutan).observe(this, new Observer<PaketWisataResponse>() {
             @Override
             public void onChanged(PaketWisataResponse paketWisataResponse) {
                 if (!paketWisataResponse.isError()) {
@@ -167,6 +175,7 @@ public class ListPaketActivity extends AppCompatActivity {
         });
 
     }
+
 
     private void setSpinnerAdapter(List<BulanModel> list) {
         ArrayAdapter<BulanModel> adapter = new ArrayAdapter<BulanModel>(getApplicationContext(),  android.R.layout.simple_spinner_dropdown_item, list);
