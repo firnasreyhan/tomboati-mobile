@@ -16,6 +16,7 @@ import com.android.tomboati.api.response.BaseResponse;
 import com.android.tomboati.api.response.LokasiResponse;
 import com.android.tomboati.model.PesananaModel;
 import com.android.tomboati.repository.Repository;
+import com.android.tomboati.utils.ImageSaves;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -27,13 +28,14 @@ import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 
 public class PendaftaranDataKeluargaViewModel extends AndroidViewModel {
+
     private Repository repository;
-    private Context context;
+    private ImageSaves imageSaves;
 
     public PendaftaranDataKeluargaViewModel(@NonNull Application application) {
         super(application);
         repository = new Repository();
-        context = application.getApplicationContext();
+        imageSaves = new ImageSaves(application.getApplicationContext());
     }
 
     public MutableLiveData<List<LokasiResponse>> getProvinsi() {
@@ -75,16 +77,12 @@ public class PendaftaranDataKeluargaViewModel extends AndroidViewModel {
                 RequestBody.create(MediaType.parse("text/plain"), model.getPekerjaan()),
                 RequestBody.create(MediaType.parse("text/plain"), model.getRiwayatPenyakit()),
                 RequestBody.create(MediaType.parse("text/plain"), model.getNamaLengkap()),
-                compressFile(saveToPictureFromUri(Uri.parse(model.getFileKTP())), "fileKTP"),
-                compressFile(saveToPictureFromUri(Uri.parse(model.getFileKK())), "fileKK"),
-                compressFile(saveToPictureFromUri(Uri.parse(model.getFilePaspor())), "filePaspor"),
-                compressFile(saveToPictureFromUri(Uri.parse(model.getFileBukuNikah())), "fileBukuNikah"),
-                compressFile(saveToPictureFromUri(Uri.parse(model.getFileAkteKelahiran())), "fileAkteKelahiran"),
-
-                compressFile(saveToPictureFromBitmap(model.getTtdPendaftar()), "ttdPendaftar"),
-//                compressFile(saveToPictureFromUri(Uri.parse(model.getFileKTP())), "fcKTPAlmarhum"),
-//                compressFile(saveToPictureFromUri(Uri.parse(model.getFileKTP())), "fcKKAlmarhum"),
-//                compressFile(saveToPictureFromUri(Uri.parse(model.getFileKTP())), "fcFotoAlmarhum"),
+                compressFile(imageSaves.saveToPictureFromUri(Uri.parse(model.getFileKTP())),"fileKTP"),
+                compressFile(imageSaves.saveToPictureFromUri(Uri.parse(model.getFileKK())), "fileKK"),
+                compressFile(imageSaves.saveToPictureFromUri(Uri.parse(model.getFilePaspor())), "filePaspor"),
+                compressFile(imageSaves.saveToPictureFromUri(Uri.parse(model.getFileBukuNikah())), "fileBukuNikah"),
+                compressFile(imageSaves.saveToPictureFromUri(Uri.parse(model.getFileAkteKelahiran())), "fileAkteKelahiran"),
+                compressFile(imageSaves.saveToPictureFromBitmap(model.getTtdPendaftar()), "ttdPendaftar"),
                 RequestBody.create(MediaType.parse("text/plain"), model.getIdPaket()),
                 RequestBody.create(MediaType.parse("text/plain"), model.getTanggalBerangkat()),
                 RequestBody.create(MediaType.parse("text/plain"), model.getSheet()),
@@ -99,45 +97,6 @@ public class PendaftaranDataKeluargaViewModel extends AndroidViewModel {
                 RequestBody.create(MediaType.parse("text/plain"), model.getKodePOSKeluarga()),
                 RequestBody.create(MediaType.parse("text/plain"), model.getNomorHPKeluarga())
         );
-    }
-
-    private File saveToPictureFromUri(Uri u) {
-        Bitmap b = null;
-        try {
-            b = MediaStore.Images.Media.getBitmap(context.getContentResolver(), u);
-        } catch (Exception e) {
-            Log.e("Error save images : ", e.getMessage());
-        }
-        return saveToPictureFromBitmap(b);
-    }
-
-    private File saveToPictureFromBitmap(Bitmap b) {
-        String rootPath = context.getExternalFilesDir(Environment.DIRECTORY_PICTURES).toString();
-        String nameTimeStamp = "" + System.currentTimeMillis();
-        File file = new File(rootPath, nameTimeStamp + ".png");
-
-        ByteArrayOutputStream out = new ByteArrayOutputStream();
-        Bitmap scale = scaleDown(b, true);
-        b.compress(Bitmap.CompressFormat.PNG, 100, out);
-        final byte[] byteOut = out.toByteArray();
-
-        try {
-            FileOutputStream outputStream = new FileOutputStream(file);
-            outputStream.write(byteOut);
-            outputStream.flush();
-            outputStream.close();
-        } catch (Exception e) {
-            Log.e("Error save bitmap : ", e.getMessage());
-        }
-
-        return file;
-    }
-
-    private Bitmap scaleDown(Bitmap b, boolean filter) {
-        final double ratio = Math.min((double) 600 / b.getWidth(), (double) 600 / b.getHeight());
-        final double width = Math.round(ratio * b.getWidth());
-        final double height = Math.round(ratio * b.getHeight());
-        return Bitmap.createScaledBitmap(b, (int) width, (int) height, filter);
     }
 
     private MultipartBody.Part compressFile(File file, String path) {

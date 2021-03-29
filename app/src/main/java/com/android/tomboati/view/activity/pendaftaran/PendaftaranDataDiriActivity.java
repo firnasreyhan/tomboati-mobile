@@ -113,45 +113,60 @@ public class PendaftaranDataDiriActivity extends AppCompatActivity {
 
         getProvinsi();
 
-        cardViewFotoKTP.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                CropImage.activity().setGuidelines(CropImageView.Guidelines.OFF).start(PendaftaranDataDiriActivity.this);
-                uriNumber = 1;
-            }
-        });
+        final CardView[] arrCardView = {
+            cardViewFotoKTP, cardViewFotoAkteKelahiran, cardViewFotoKartuKeluarga, cardViewFotoPaspor, cardViewFotoBukuNikah
+        };
 
-        cardViewFotoAkteKelahiran.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                CropImage.activity().setGuidelines(CropImageView.Guidelines.OFF).start(PendaftaranDataDiriActivity.this);
-                uriNumber = 2;
-            }
-        });
-
-        cardViewFotoKartuKeluarga.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                CropImage.activity().setGuidelines(CropImageView.Guidelines.OFF).start(PendaftaranDataDiriActivity.this);
-                uriNumber = 3;
-            }
-        });
-
-        cardViewFotoPaspor.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                CropImage.activity().setGuidelines(CropImageView.Guidelines.OFF).start(PendaftaranDataDiriActivity.this);
-                uriNumber = 4;
-            }
-        });
-
-        cardViewFotoBukuNikah.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                CropImage.activity().setGuidelines(CropImageView.Guidelines.OFF).start(PendaftaranDataDiriActivity.this);
-                uriNumber = 5;
-            }
-        });
+        for(int i = 0; i < arrCardView.length; i++) {
+            int j = i;
+            arrCardView[i].setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    CropImage.activity().setGuidelines(CropImageView.Guidelines.OFF).start(PendaftaranDataDiriActivity.this);
+                    uriNumber = j + 1;
+                }
+            });
+        }
+//
+//        .setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                CropImage.activity().setGuidelines(CropImageView.Guidelines.OFF).start(PendaftaranDataDiriActivity.this);
+//                uriNumber = 1;
+//            }
+//        });
+//
+//        .setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                CropImage.activity().setGuidelines(CropImageView.Guidelines.OFF).start(PendaftaranDataDiriActivity.this);
+//                uriNumber = 2;
+//            }
+//        });
+//
+//        .setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                CropImage.activity().setGuidelines(CropImageView.Guidelines.OFF).start(PendaftaranDataDiriActivity.this);
+//                uriNumber = 3;
+//            }
+//        });
+//
+//        .setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                CropImage.activity().setGuidelines(CropImageView.Guidelines.OFF).start(PendaftaranDataDiriActivity.this);
+//                uriNumber = 4;
+//            }
+//        });
+//
+//        .setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                CropImage.activity().setGuidelines(CropImageView.Guidelines.OFF).start(PendaftaranDataDiriActivity.this);
+//                uriNumber = 5;
+//            }
+//        });
 
         materialButtonLanjutkan.setOnClickListener(new View.OnClickListener() {
             @Override

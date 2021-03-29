@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/background"
-    tools:context=".view.activity.ListPaketActivity">
+    tools:context=".view.activity.pendaftaran.ListPaketActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -26,25 +26,26 @@
             android:layout_height="wrap_content">
 
             <LinearLayout
+                android:id="@+id/layoutPilihBulan"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center"
                 android:orientation="horizontal"
-                android:padding="@dimen/_13sdp"
-                android:gravity="center">
+                android:padding="@dimen/_13sdp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/catamaran_medium"
-                    android:textSize="@dimen/_10sdp"
+                    android:text="Pilih Bulan : "
                     android:textColor="@android:color/black"
-                    android:text="Pilih Bulan : "/>
+                    android:textSize="@dimen/_10sdp" />
 
                 <Spinner
                     android:id="@+id/spinnerBulan"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:spinnerMode="dialog"/>
+                    android:spinnerMode="dialog" />
 
             </LinearLayout>
 

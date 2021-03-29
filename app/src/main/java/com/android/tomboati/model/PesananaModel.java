@@ -37,9 +37,6 @@ public class PesananaModel implements Serializable {
     private String fileBukuNikah;
     private String fileAkteKelahiran;
     private Bitmap ttdPendaftar;
-    private String fcKTPAlmarhum;
-    private String fcKKAlmarhum;
-    private String fcFotoAlmarhum;
     private String idPaket;
     private String tanggalBerangkat;
     private String sheet;
@@ -268,30 +265,6 @@ public class PesananaModel implements Serializable {
 
     public void setTtdPendaftar(Bitmap ttdPendaftar) {
         this.ttdPendaftar = ttdPendaftar;
-    }
-
-    public String getFcKTPAlmarhum() {
-        return fcKTPAlmarhum;
-    }
-
-    public void setFcKTPAlmarhum(String fcKTPAlmarhum) {
-        this.fcKTPAlmarhum = fcKTPAlmarhum;
-    }
-
-    public String getFcKKAlmarhum() {
-        return fcKKAlmarhum;
-    }
-
-    public void setFcKKAlmarhum(String fcKKAlmarhum) {
-        this.fcKKAlmarhum = fcKKAlmarhum;
-    }
-
-    public String getFcFotoAlmarhum() {
-        return fcFotoAlmarhum;
-    }
-
-    public void setFcFotoAlmarhum(String fcFotoAlmarhum) {
-        this.fcFotoAlmarhum = fcFotoAlmarhum;
     }
 
     public String getIdPaket() {

@@ -619,50 +619,72 @@ public class Repository {
 
     //==
 
+    public MutableLiveData<BaseResponse> pendaftaranBadalHaji(
+        RequestBody idUserRegister,
+        RequestBody idPaket,
+        MultipartBody.Part fcKTPAlmarhum,
+        MultipartBody.Part fcKKAlmarhum,
+        MultipartBody.Part fcFotoAlmarhum
+    ){
+        MutableLiveData<BaseResponse> data = new MutableLiveData<>();
+        apiInterfaceTomboAti.pendaftaranBadalHaji(
+            idUserRegister, idPaket, fcKTPAlmarhum, fcKKAlmarhum, fcFotoAlmarhum
+        ).enqueue(new Callback<BaseResponse>() {
+            @Override
+            public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
+                if (response.code() == 200) { data.postValue(response.body()); }
+            }
+
+            @Override
+            public void onFailure(Call<BaseResponse> call, Throwable t)  {
+                data.postValue(null);
+            }
+        }); return data;
+    }
+
+    //==
+
     public MutableLiveData<BaseResponse> pendaftaran(
-            RequestBody idUserRegister,
-            RequestBody email,
-            RequestBody nomorPaspor,
-            RequestBody tempatDikeluarkan,
-            RequestBody tanggalPenerbitanPaspor,
-            RequestBody tanggalBerakhirPaspor,
-            RequestBody tempatLahir,
-            RequestBody tanggalLahir,
-            RequestBody jenisKelamin,
-            RequestBody statusPerkawinan,
-            RequestBody kewarganegaraan,
-            RequestBody alamat,
-            RequestBody kelurahan,
-            RequestBody kecamatan,
-            RequestBody kotaKabupaten,
-            RequestBody provinsi,
-            RequestBody kodePOS,
-            RequestBody nomorHP,
-            RequestBody pekerjaan,
-            RequestBody riwayatPenyakit,
-            RequestBody namaLengkap,
-            MultipartBody.Part fileKTP,
-            MultipartBody.Part fileKK,
-            MultipartBody.Part filePaspor,
-            MultipartBody.Part fileBukuNikah,
-            MultipartBody.Part fileAkteKelahiran,
-            MultipartBody.Part ttdPendaftar,
-//            MultipartBody.Part fcKTPAlmarhum,
-//            MultipartBody.Part fcKKAlmarhum,
-//            MultipartBody.Part fcFotoAlmarhum,
-            RequestBody idPaket,
-            RequestBody tanggalBerangkat,
-            RequestBody sheet,
-            RequestBody sheetHarga,
-            RequestBody waktu,
-            RequestBody namaLengkapKeluarga,
-            RequestBody alamatKeluarga,
-            RequestBody kelurahanKeluarga,
-            RequestBody kecamatanKeluarga,
-            RequestBody kotakabupatenKeluarga,
-            RequestBody provinsiKeluarga,
-            RequestBody kodePOSKeluarga,
-            RequestBody nomorHPKeluarga
+        RequestBody idUserRegister,
+        RequestBody email,
+        RequestBody nomorPaspor,
+        RequestBody tempatDikeluarkan,
+        RequestBody tanggalPenerbitanPaspor,
+        RequestBody tanggalBerakhirPaspor,
+        RequestBody tempatLahir,
+        RequestBody tanggalLahir,
+        RequestBody jenisKelamin,
+        RequestBody statusPerkawinan,
+        RequestBody kewarganegaraan,
+        RequestBody alamat,
+        RequestBody kelurahan,
+        RequestBody kecamatan,
+        RequestBody kotaKabupaten,
+        RequestBody provinsi,
+        RequestBody kodePOS,
+        RequestBody nomorHP,
+        RequestBody pekerjaan,
+        RequestBody riwayatPenyakit,
+        RequestBody namaLengkap,
+        MultipartBody.Part fileKTP,
+        MultipartBody.Part fileKK,
+        MultipartBody.Part filePaspor,
+        MultipartBody.Part fileBukuNikah,
+        MultipartBody.Part fileAkteKelahiran,
+        MultipartBody.Part ttdPendaftar,
+        RequestBody idPaket,
+        RequestBody tanggalBerangkat,
+        RequestBody sheet,
+        RequestBody sheetHarga,
+        RequestBody waktu,
+        RequestBody namaLengkapKeluarga,
+        RequestBody alamatKeluarga,
+        RequestBody kelurahanKeluarga,
+        RequestBody kecamatanKeluarga,
+        RequestBody kotakabupatenKeluarga,
+        RequestBody provinsiKeluarga,
+        RequestBody kodePOSKeluarga,
+        RequestBody nomorHPKeluarga
     ) {
         MutableLiveData<BaseResponse> data = new MutableLiveData<>();
         apiInterfaceTomboAti.pendaftaran(

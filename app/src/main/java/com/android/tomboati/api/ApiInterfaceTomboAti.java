@@ -143,7 +143,15 @@ public interface ApiInterfaceTomboAti {
             @Query("tipe") String tipe
     );
 
-
+    @Multipart
+    @POST("pendaftaran/pendaftaranBadalHaji")
+    Call<BaseResponse> pendaftaranBadalHaji(
+            @Part("idUserRegister") RequestBody idUserRegister,
+            @Part("idPaket") RequestBody idPaket,
+            @Part MultipartBody.Part fcKTPAlmarhum,
+            @Part MultipartBody.Part fcKKAlmarhum,
+            @Part MultipartBody.Part fcFotoAlmarhum
+    );
 
 
 
@@ -221,9 +229,6 @@ public interface ApiInterfaceTomboAti {
             @Part MultipartBody.Part fileBukuNikah,
             @Part MultipartBody.Part fileAkteKelahiran,
             @Part MultipartBody.Part ttdPendaftar,
-//            @Part MultipartBody.Part fcKTPAlmarhum,
-//            @Part MultipartBody.Part fcKKAlmarhum,
-//            @Part MultipartBody.Part fcFotoAlmarhum,
             @Part("idPaket") RequestBody idPaket,
             @Part("tanggalBerangkat") RequestBody tanggalBerangkat,
             @Part("sheet") RequestBody sheet,

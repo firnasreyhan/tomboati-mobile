@@ -23,13 +23,13 @@ public class TembangSholawatAdapter extends RecyclerView.Adapter<TembangSholawat
     private final TembangSholawatAdapter.onSelectedData onSelectedData;
     private final List<TembangSholawatModel> tembangModel;
 
+    public interface onSelectedData{
+        void onSelected(int position);
+    }
+
     public TembangSholawatAdapter(List<TembangSholawatModel> tembangModel, TembangSholawatAdapter.onSelectedData onSelectedData) {
         this.tembangModel = tembangModel;
         this.onSelectedData = onSelectedData;
-    }
-
-    public interface onSelectedData{
-        void onSelected(int position);
     }
 
     @NonNull

@@ -1,205 +1,211 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="@dimen/_215sdp"
-    app:cardCornerRadius="@dimen/_13sdp"
+    android:layout_marginBottom="@dimen/_9sdp"
     android:clickable="true"
     android:foreground="?selectableItemBackground"
-    android:layout_marginBottom="@dimen/_9sdp">
+    app:cardCornerRadius="@dimen/_13sdp"
+    android:focusable="true">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
         <ImageView
             android:id="@+id/imageViewPaket"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="@dimen/_8sdp"
             android:layout_weight="1"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
-            android:src="@color/dark_green" />
+            android:src="@color/dark_green"
+            app:layout_constraintBottom_toTopOf="@+id/textViewNamaPaket"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/textViewNamaPaket"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="17dp"
+            android:layout_marginLeft="17dp"
+            android:fontFamily="@font/cinzel_bold"
+            android:text="UMROH PROMO 9 HARI"
+            android:textAllCaps="true"
+            android:textColor="@color/dark_green"
+            android:textSize="@dimen/_13sdp"
+            app:layout_constraintBottom_toTopOf="@+id/textViewHargaPaketDurasi"
+            app:layout_constraintEnd_toStartOf="@+id/imageView4"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/textViewHargaPaketDurasi"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="17dp"
+            android:layout_marginLeft="17dp"
+            android:layout_marginBottom="@dimen/_9sdp"
+            android:fontFamily="@font/catamaran_regular"
+            android:text="Rp 20.000.000,- (Durasi 9 Hari)"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/_9sdp"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+            app:layout_constraintEnd_toStartOf="@+id/imageView4"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="@dimen/_13sdp"
+            android:layout_height="@dimen/_13sdp"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:src="@drawable/ic_share"
+            app:layout_constraintEnd_toStartOf="@+id/ratingBar"
+            app:layout_constraintTop_toBottomOf="@+id/imageViewPaket" />
+
+        <RatingBar
+            android:id="@+id/ratingBar"
+            style="@style/Widget.AppCompat.RatingBar.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:layout_marginEnd="@dimen/_13sdp"
+            android:layout_marginRight="@dimen/_13sdp"
+            android:numStars="3"
+            android:rating="3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageViewPaket" />
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:id="@+id/linearLayout"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingLeft="@dimen/_13sdp"
-            android:paddingTop="@dimen/_8sdp"
-            android:paddingRight="@dimen/_13sdp"
-            android:paddingBottom="@dimen/_8sdp">
+            android:layout_marginStart="@dimen/_13sdp"
+            android:layout_marginLeft="@dimen/_13sdp"
+            android:layout_marginEnd="@dimen/_13sdp"
+            android:layout_marginRight="@dimen/_13sdp"
+            android:layout_marginBottom="@dimen/_8sdp"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:paddingLeft="@dimen/_4sdp"
+                android:paddingRight="@dimen/_4sdp">
 
-                <LinearLayout
+                <ImageView
+                    android:id="@+id/imageViewMaskapai"
+                    android:layout_width="@dimen/_57sdp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/ic_lion_air" />
+
+                <TextView
+                    android:id="@+id/textViewPenerbangan"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/textViewNamaPaket"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/cinzel_bold"
-                        android:text="UMROH PROMO 9 HARI"
-                        android:textAllCaps="true"
-                        android:textColor="@color/dark_green"
-                        android:textSize="@dimen/_13sdp" />
-
-                    <TextView
-                        android:id="@+id/textViewHargaPaketDurasi"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/catamaran_regular"
-                        android:text="Rp 20.000.000,- (Durasi 9 Hari)"
-                        android:textColor="@android:color/black"
-                        android:textSize="@dimen/_9sdp" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:layout_width="@dimen/_13sdp"
-                        android:layout_height="@dimen/_13sdp"
-                        android:layout_marginRight="@dimen/_7sdp"
-                        android:src="@drawable/ic_share" />
-
-                    <RatingBar
-                        style="@style/Widget.AppCompat.RatingBar.Small"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:numStars="3"
-                        android:rating="3" />
-
-                </LinearLayout>
+                    android:fontFamily="@font/catamaran_bold"
+                    android:gravity="center"
+                    android:text="SUB - JED"
+                    android:textAllCaps="true"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/_9sdp" />
 
             </LinearLayout>
 
+            <View
+                android:layout_width="@dimen/_1sdp"
+                android:layout_height="match_parent"
+                android:background="@android:color/black" />
+
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_9sdp"
-                android:orientation="horizontal">
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingLeft="@dimen/_4sdp"
+                android:paddingRight="@dimen/_4sdp">
 
-                <LinearLayout
+                <TextView
+                    android:id="@+id/textViewTempatHotelA"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingLeft="@dimen/_4sdp"
-                    android:paddingRight="@dimen/_4sdp"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:id="@+id/imageViewMaskapai"
-                        android:layout_width="@dimen/_57sdp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:adjustViewBounds="true"
-                        android:src="@drawable/ic_lion_air" />
-
-                    <TextView
-                        android:id="@+id/textViewPenerbangan"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:fontFamily="@font/catamaran_bold"
-                        android:text="SUB - JED"
-                        android:textAllCaps="true"
-                        android:textColor="@android:color/black"
-                        android:textSize="@dimen/_9sdp" />
-
-                </LinearLayout>
-
-                <View
-                    android:layout_width="@dimen/_1sdp"
-                    android:layout_height="match_parent"
-                    android:background="@android:color/black" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:paddingLeft="@dimen/_4sdp"
-                    android:paddingRight="@dimen/_4sdp"
-                    android:layout_weight="1"
+                    android:fontFamily="@font/catamaran_bold"
                     android:gravity="center"
-                    android:orientation="vertical">
+                    android:text="MADINAH"
+                    android:textAllCaps="true"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/_9sdp" />
 
-                    <TextView
-                        android:id="@+id/textViewTempatHotelA"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:fontFamily="@font/catamaran_bold"
-                        android:text="MADINAH"
-                        android:textAllCaps="true"
-                        android:textColor="@android:color/black"
-                        android:textSize="@dimen/_9sdp" />
-
-                    <TextView
-                        android:id="@+id/textViewNamaHotelA"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:fontFamily="@font/catamaran_regular"
-                        android:text="Concorde / setaraf"
-                        android:textColor="@android:color/black"
-                        android:textSize="@dimen/_9sdp" />
-
-                </LinearLayout>
-
-                <View
-                    android:layout_width="@dimen/_1sdp"
-                    android:layout_height="match_parent"
-                    android:background="@android:color/black" />
-
-                <LinearLayout
+                <TextView
+                    android:id="@+id/textViewNamaHotelA"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:paddingLeft="@dimen/_4sdp"
-                    android:paddingRight="@dimen/_4sdp"
-                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/catamaran_regular"
                     android:gravity="center"
-                    android:orientation="vertical">
+                    android:text="Concorde / setaraf"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/_9sdp" />
 
-                    <TextView
-                        android:id="@+id/textViewTempatHotelB"
+            </LinearLayout>
 
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:fontFamily="@font/catamaran_bold"
-                        android:text="MEKKAH"
-                        android:textAllCaps="true"
-                        android:textColor="@android:color/black"
-                        android:textSize="@dimen/_9sdp" />
+            <View
+                android:layout_width="@dimen/_1sdp"
+                android:layout_height="match_parent"
+                android:background="@android:color/black" />
 
-                    <TextView
-                        android:id="@+id/textViewNamaHotelB"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingLeft="@dimen/_4sdp"
+                android:paddingRight="@dimen/_4sdp">
 
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:fontFamily="@font/catamaran_regular"
-                        android:text="Deafah / setaraf"
-                        android:textColor="@android:color/black"
-                        android:textSize="@dimen/_9sdp" />
+                <TextView
+                    android:id="@+id/textViewTempatHotelB"
 
-                </LinearLayout>
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/catamaran_bold"
+                    android:gravity="center"
+                    android:text="MEKKAH"
+                    android:textAllCaps="true"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/_9sdp" />
+
+                <TextView
+                    android:id="@+id/textViewNamaHotelB"
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/catamaran_regular"
+                    android:gravity="center"
+                    android:text="Deafah / setaraf"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/_9sdp" />
 
             </LinearLayout>
 
         </LinearLayout>
 
-    </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.cardview.widget.CardView>

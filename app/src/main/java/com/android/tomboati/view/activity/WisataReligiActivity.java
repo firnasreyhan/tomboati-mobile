@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.android.tomboati.R;
+import com.android.tomboati.view.activity.pendaftaran.ListPaketActivity;
 import com.google.android.material.card.MaterialCardView;
 
 public class WisataReligiActivity extends AppCompatActivity {

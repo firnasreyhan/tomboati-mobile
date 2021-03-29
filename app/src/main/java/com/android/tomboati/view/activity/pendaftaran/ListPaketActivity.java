@@ -1,4 +1,4 @@
-package com.android.tomboati.view.activity;
+package com.android.tomboati.view.activity.pendaftaran;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -71,6 +71,7 @@ public class ListPaketActivity extends AppCompatActivity {
         linearLayoutPaket = findViewById(R.id.linearLayoutPaket);
         linearLayoutNoPaket = findViewById(R.id.linearLayoutNoPaket);
         spinnerBulan = findViewById(R.id.spinnerBulan);
+
         recyclerViewPaket.setLayoutManager(new LinearLayoutManager(this));
         recyclerViewPaket.setHasFixedSize(true);
 
