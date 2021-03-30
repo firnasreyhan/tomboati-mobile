@@ -120,6 +120,8 @@ public class ListPaketHajiActivity extends AppCompatActivity implements PaketHaj
         intent.putExtra("IS_PAKET_HAJI", true);
         if(this.paket.equals("Badal")) {
             intent.putExtra("IS_PAKET_HAJI_BADAL", true);
+        } else {
+            intent.putExtra("NAMA_PAKET", title);
         }
         this.startActivity(intent);
     }

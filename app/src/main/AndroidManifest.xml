@@ -21,7 +21,8 @@
         android:roundIcon="@mipmap/ic_new_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/ThemeTomboAti">
-        <activity android:name=".view.activity.pendaftaran.PendaftaranBadalHajiActivity"></activity>
+        <activity android:name=".view.activity.pendaftaran.PendaftaranHajiRegulerActivity"></activity>
+        <activity android:name=".view.activity.pendaftaran.PendaftaranBadalHajiActivity" />
         <activity android:name=".view.activity.pendaftaran.DrawTandaTanganPendaftaran" />
         <activity android:name=".view.activity.DetailKomunitasActivity" />
         <activity android:name=".view.activity.KomunitasActivity" />

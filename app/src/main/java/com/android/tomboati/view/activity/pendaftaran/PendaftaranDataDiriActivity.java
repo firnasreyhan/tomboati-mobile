@@ -127,46 +127,6 @@ public class PendaftaranDataDiriActivity extends AppCompatActivity {
                 }
             });
         }
-//
-//        .setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                CropImage.activity().setGuidelines(CropImageView.Guidelines.OFF).start(PendaftaranDataDiriActivity.this);
-//                uriNumber = 1;
-//            }
-//        });
-//
-//        .setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                CropImage.activity().setGuidelines(CropImageView.Guidelines.OFF).start(PendaftaranDataDiriActivity.this);
-//                uriNumber = 2;
-//            }
-//        });
-//
-//        .setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                CropImage.activity().setGuidelines(CropImageView.Guidelines.OFF).start(PendaftaranDataDiriActivity.this);
-//                uriNumber = 3;
-//            }
-//        });
-//
-//        .setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                CropImage.activity().setGuidelines(CropImageView.Guidelines.OFF).start(PendaftaranDataDiriActivity.this);
-//                uriNumber = 4;
-//            }
-//        });
-//
-//        .setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                CropImage.activity().setGuidelines(CropImageView.Guidelines.OFF).start(PendaftaranDataDiriActivity.this);
-//                uriNumber = 5;
-//            }
-//        });
 
         materialButtonLanjutkan.setOnClickListener(new View.OnClickListener() {
             @Override

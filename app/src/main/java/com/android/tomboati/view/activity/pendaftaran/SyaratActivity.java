@@ -48,7 +48,9 @@ public class SyaratActivity extends AppCompatActivity {
                             intent.putExtra("OBJECT", (Serializable) model);
                             startActivity(intent);
                         } else {
-                            Toast.makeText(v.getContext(), "Coming Soon", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(v.getContext(), PendaftaranHajiRegulerActivity.class);
+                            intent.putExtra("NAMA_PAKET", getIntent().getStringExtra("NAMA_PAKET"));
+                            startActivity(intent);
                         }
                     } else {
                         Toast.makeText(v.getContext(), "Mohon login terlebih dahulu", Toast.LENGTH_SHORT).show();
