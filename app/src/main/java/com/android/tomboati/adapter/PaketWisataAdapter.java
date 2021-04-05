@@ -1,8 +1,6 @@
 package com.android.tomboati.adapter;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,17 +11,10 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.tomboati.R;
-import com.android.tomboati.api.response.PaketResponse;
 import com.android.tomboati.api.response.PaketWisataResponse;
-import com.android.tomboati.view.activity.DetailPaketActivity;
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.Priority;
-import com.bumptech.glide.load.DecodeFormat;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.android.tomboati.view.activity.pendaftaran.DetailPaketActivity;
 import com.squareup.picasso.Picasso;
 
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
 import java.util.List;
 
 public class PaketWisataAdapter extends RecyclerView.Adapter<PaketWisataAdapter.ViewHolder> {

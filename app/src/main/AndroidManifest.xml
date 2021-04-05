@@ -21,7 +21,8 @@
         android:roundIcon="@mipmap/ic_new_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/ThemeTomboAti">
-        <activity android:name=".view.activity.pendaftaran.PendaftaranHajiRegulerActivity"></activity>
+        <activity android:name=".view.activity.pendaftaran.Syarat2Activity" />
+        <activity android:name=".view.activity.pendaftaran.PendaftaranHajiRegulerActivity" />
         <activity android:name=".view.activity.pendaftaran.PendaftaranBadalHajiActivity" />
         <activity android:name=".view.activity.pendaftaran.DrawTandaTanganPendaftaran" />
         <activity android:name=".view.activity.DetailKomunitasActivity" />
@@ -43,7 +44,7 @@
         <activity android:name=".view.activity.sholat.DoaSesudahSholatActivity" />
         <activity android:name=".view.activity.sholat.SyaratSholatActivity" />
         <activity android:name=".view.activity.KodeReferralActivity" />
-        <activity android:name=".view.activity.DetailPaketActivity" />
+        <activity android:name=".view.activity.pendaftaran.DetailPaketActivity" />
         <activity android:name=".view.activity.doa_dzikir.AdabBerdoaActivity" />
         <activity android:name=".view.activity.doa_dzikir.WaktuMustajabActivity" />
         <activity android:name=".view.activity.doa_dzikir.TampatMustajabActivity" />

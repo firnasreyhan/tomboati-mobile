@@ -35,10 +35,11 @@ public class KomunitasAdapter extends RecyclerView.Adapter<KomunitasAdapter.View
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Picasso.get().load(data.get(position).getFOTO()).priority(Picasso.Priority.HIGH)
-            .placeholder(R.drawable.ic_logo).into(holder.img_list_komunitas);
+        Picasso.get().load(data.get(position).getFOTO()).priority(Picasso.Priority.HIGH).placeholder(R.drawable.ic_logo).into(holder.img_list_komunitas);
+
         holder.text_judul_komunitas.setText(data.get(position).getJUDULNEWS());
-        String s = data.get(position).getCONTENTNEWS().replaceAll("\\<.*?\\>", "");
+
+        String s = data.get(position).getCONTENTNEWS().replaceAll("\\<.*?\\>", "").replaceAll("&.*?;", " ");
         String[] senteces = s.split("\\. ");
         StringBuilder shortNews = new StringBuilder();
         for (int i = 0; i < 2; i++) {

@@ -1,7 +1,6 @@
 package com.android.tomboati.adapter;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,18 +12,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.tomboati.R;
 import com.android.tomboati.api.response.PaketResponse;
-import com.android.tomboati.model.PaketModel;
-import com.android.tomboati.preference.AppPreference;
-import com.android.tomboati.view.activity.DetailPaketActivity;
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.Priority;
-import com.bumptech.glide.load.DecodeFormat;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.android.tomboati.view.activity.pendaftaran.DetailPaketActivity;
 import com.squareup.picasso.Picasso;
 
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
-import java.util.ArrayList;
 import java.util.List;
 
 public class PaketAdapter extends RecyclerView.Adapter<PaketAdapter.ViewHolder> {

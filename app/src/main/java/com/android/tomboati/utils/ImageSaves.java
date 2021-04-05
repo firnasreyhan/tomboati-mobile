@@ -37,7 +37,7 @@ public class ImageSaves {
 
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         Bitmap scale = scaleDown(b, true);
-        b.compress(Bitmap.CompressFormat.PNG, 100, out);
+        scale.compress(Bitmap.CompressFormat.PNG, 100, out);
         final byte[] byteOut = out.toByteArray();
 
         try {

@@ -73,7 +73,6 @@ public class PendaftaranDataKeluargaActivity extends AppCompatActivity {
 
         getProvinsi();
 
-
         materialButtonLanjutkanPesan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -88,7 +87,7 @@ public class PendaftaranDataKeluargaActivity extends AppCompatActivity {
                     model.setKodePOSKeluarga(textInputEditTextKodePos.getText().toString());
                     model.setAlamatKeluarga(textInputEditTextRincianAlamat.getText().toString());
 
-                    Intent intent = new Intent(v.getContext(), DrawTandaTanganPendaftaran.class);
+                    Intent intent = new Intent(v.getContext(), Syarat2Activity.class);
                     intent.putExtra("OBJECT", (Serializable) model);
                     startActivity(intent);
                 }

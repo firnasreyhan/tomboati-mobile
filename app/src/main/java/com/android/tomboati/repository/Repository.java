@@ -715,10 +715,106 @@ public class Repository {
                 fileBukuNikah,
                 fileAkteKelahiran,
                 ttdPendaftar,
-//                fcKTPAlmarhum,
-//                fcKKAlmarhum,
-//                fcFotoAlmarhum,
                 idPaket,
+                tanggalBerangkat,
+                sheet,
+                sheetHarga,
+                waktu,
+                namaLengkapKeluarga,
+                alamatKeluarga,
+                kelurahanKeluarga,
+                kecamatanKeluarga,
+                kotakabupatenKeluarga,
+                provinsiKeluarga,
+                kodePOSKeluarga,
+                nomorHPKeluarga
+        ).enqueue(new Callback<BaseResponse>() {
+            @Override
+            public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
+                if (response.code() == 200) { data.postValue(response.body()); }
+            }
+
+            @Override
+            public void onFailure(Call<BaseResponse> call, Throwable t) {
+                data.postValue(null);
+            }
+        }); return data;
+    }
+
+    //==
+
+    public MutableLiveData<BaseResponse> pendaftaranWisataHalal(
+        RequestBody idUserRegister,
+        RequestBody email,
+        RequestBody nomorPaspor,
+        RequestBody tempatDikeluarkan,
+        RequestBody tanggalPenerbitanPaspor,
+        RequestBody tanggalBerakhirPaspor,
+        RequestBody tempatLahir,
+        RequestBody tanggalLahir,
+        RequestBody jenisKelamin,
+        RequestBody statusPerkawinan,
+        RequestBody kewarganegaraan,
+        RequestBody alamat,
+        RequestBody kelurahan,
+        RequestBody kecamatan,
+        RequestBody kotaKabupaten,
+        RequestBody provinsi,
+        RequestBody kodePOS,
+        RequestBody nomorHP,
+        RequestBody pekerjaan,
+        RequestBody riwayatPenyakit,
+        RequestBody namaLengkap,
+        MultipartBody.Part fileKTP,
+        MultipartBody.Part fileKK,
+        MultipartBody.Part filePaspor,
+        MultipartBody.Part fileBukuNikah,
+        MultipartBody.Part fileAkteKelahiran,
+        MultipartBody.Part ttdPendaftar,
+        RequestBody idWisataHalal,
+        RequestBody tanggalBerangkat,
+        RequestBody sheet,
+        RequestBody sheetHarga,
+        RequestBody waktu,
+        RequestBody namaLengkapKeluarga,
+        RequestBody alamatKeluarga,
+        RequestBody kelurahanKeluarga,
+        RequestBody kecamatanKeluarga,
+        RequestBody kotakabupatenKeluarga,
+        RequestBody provinsiKeluarga,
+        RequestBody kodePOSKeluarga,
+        RequestBody nomorHPKeluarga
+    ) {
+        MutableLiveData<BaseResponse> data = new MutableLiveData<>();
+        apiInterfaceTomboAti.pendaftaranWisataHalal(
+                idUserRegister,
+                email,
+                nomorPaspor,
+                tempatDikeluarkan,
+                tanggalPenerbitanPaspor,
+                tanggalBerakhirPaspor,
+                tempatLahir,
+                tanggalLahir,
+                jenisKelamin,
+                statusPerkawinan,
+                kewarganegaraan,
+                alamat,
+                kelurahan,
+                kecamatan,
+                kotaKabupaten,
+                provinsi,
+                kodePOS,
+                nomorHP,
+                pekerjaan,
+                riwayatPenyakit,
+                namaLengkap,
+                fileKTP,
+                fileKK,
+                filePaspor,
+                fileBukuNikah,
+                fileAkteKelahiran,
+                ttdPendaftar,
+                idWisataHalal,
                 tanggalBerangkat,
                 sheet,
                 sheetHarga,

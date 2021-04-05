@@ -1,7 +1,5 @@
 package com.android.tomboati.view.fragment;
 
-import android.app.Activity;
-import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
@@ -19,9 +17,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-import android.os.Handler;
 import android.provider.Settings;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,9 +35,9 @@ import com.android.tomboati.api.response.PaketWisataResponse;
 import com.android.tomboati.preference.AppPreference;
 import com.android.tomboati.utils.AlertProgress;
 import com.android.tomboati.utils.Utility;
+import com.android.tomboati.view.activity.pendaftaran.DetailPaketActivity;
 import com.android.tomboati.view.activity.quran.AlQuranActivity;
 import com.android.tomboati.view.activity.DetailNewsActivity;
-import com.android.tomboati.view.activity.DetailPaketActivity;
 import com.android.tomboati.view.activity.doa_dzikir.DoaDzikirActivity;
 import com.android.tomboati.view.activity.KalenderHijriahActivity;
 import com.android.tomboati.view.activity.KomunitasActivity;
@@ -60,7 +56,6 @@ import com.smarteist.autoimageslider.SliderAnimations;
 import com.smarteist.autoimageslider.SliderView;
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 

@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/ic_background_beranda"
-    tools:context=".view.activity.DetailPaketActivity">
+    tools:context=".view.activity.pendaftaran.DetailPaketActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -426,13 +426,13 @@
                 android:id="@+id/materialButtonPesan"
                 style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/_40sdp"
                 android:layout_weight="1"
                 android:fontFamily="@font/catamaran_bold"
                 android:text="Pesan"
                 android:textAllCaps="false"
-                app:backgroundTint="@color/dark_green"
-                android:textColor="@color/white"/>
+                android:textColor="@color/white"
+                app:backgroundTint="@color/dark_green" />
 
         </LinearLayout>
 

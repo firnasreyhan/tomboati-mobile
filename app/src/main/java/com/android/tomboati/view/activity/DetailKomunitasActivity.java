@@ -38,7 +38,7 @@ public class DetailKomunitasActivity extends AppCompatActivity {
         text_tagar_detail.setText(intent.getStringExtra("TEXT_TAGAR"));
         text_judul_detail.setText(intent.getStringExtra("TEXT_JUDUL"));
 
-        String content = intent.getStringExtra("CONTENT").replaceAll("\\<.*?\\>", "");;
+        String content = intent.getStringExtra("CONTENT").replaceAll("\\<.*?\\>", "").replaceAll("&.*?;", " ");;;
         textViewContentNews.setText("\t".concat(content));
 
     }
