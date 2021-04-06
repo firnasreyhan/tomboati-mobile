@@ -21,6 +21,7 @@ import com.android.tomboati.api.response.ItteneraryResponse;
 import com.android.tomboati.api.response.JadwalSholatResponse;
 import com.android.tomboati.api.response.KomunitasResponse;
 import com.android.tomboati.api.response.KataMutiaraResponse;
+import com.android.tomboati.api.response.ListPaketVerifyRespone;
 import com.android.tomboati.api.response.LokasiResponse;
 import com.android.tomboati.api.response.MasjidResponse;
 import com.android.tomboati.api.response.NewsResponse;
@@ -903,6 +904,40 @@ public class Repository {
 
             @Override
             public void onFailure(Call<List<LokasiResponse>> call, Throwable t) {
+                data.postValue(null);
+            }
+        }); return data;
+    }
+
+    //==
+
+    public MutableLiveData<ListPaketVerifyRespone> getPaketWisataHalalVerif(String id) {
+        MutableLiveData<ListPaketVerifyRespone> data = new MutableLiveData<>();
+        apiInterfaceTomboAti.getPaketWisataHalalVerif(id).enqueue(new Callback<ListPaketVerifyRespone>() {
+            @Override
+            public void onResponse(Call<ListPaketVerifyRespone> call, Response<ListPaketVerifyRespone> response) {
+                if (response.code() == 200) { data.postValue(response.body()); }
+            }
+
+            @Override
+            public void onFailure(Call<ListPaketVerifyRespone> call, Throwable t) {
+                data.postValue(null);
+            }
+        }); return data;
+    }
+
+    //==
+
+    public MutableLiveData<ListPaketVerifyRespone> getPaketHajiUmrahVerif(String id) {
+        MutableLiveData<ListPaketVerifyRespone> data = new MutableLiveData<>();
+        apiInterfaceTomboAti.getPaketHajiUmrahVerif(id).enqueue(new Callback<ListPaketVerifyRespone>() {
+            @Override
+            public void onResponse(Call<ListPaketVerifyRespone> call, Response<ListPaketVerifyRespone> response) {
+                if (response.code() == 200) { data.postValue(response.body()); }
+            }
+
+            @Override
+            public void onFailure(Call<ListPaketVerifyRespone> call, Throwable t) {
                 data.postValue(null);
             }
         }); return data;

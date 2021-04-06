@@ -6,6 +6,7 @@ import com.android.tomboati.api.response.ItteneraryResponse;
 import com.android.tomboati.api.response.JadwalSholatResponse;
 import com.android.tomboati.api.response.KomunitasResponse;
 import com.android.tomboati.api.response.KataMutiaraResponse;
+import com.android.tomboati.api.response.ListPaketVerifyRespone;
 import com.android.tomboati.api.response.NewsResponse;
 import com.android.tomboati.api.response.PaketMonthResponse;
 import com.android.tomboati.api.response.PaketResponse;
@@ -127,6 +128,10 @@ public interface ApiInterfaceTomboAti {
     @GET("paket/getpaketlimit")
     Call<PaketResponse> getPaketLimit();
 
+    @GET("transaksi/pesananUmrohHaji")
+    Call<ListPaketVerifyRespone> getPaketHajiUmrahVerif(
+            @Query("idUserRegister") String idUserRegister
+    );
 
 
 
@@ -180,7 +185,10 @@ public interface ApiInterfaceTomboAti {
     @GET("WisataHalal/getwisatahalallimit")
     Call<PaketWisataResponse> getWisataHalalLimit();
 
-
+    @GET("transaksi/pesananWisataHalal")
+    Call<ListPaketVerifyRespone> getPaketWisataHalalVerif(
+            @Query("idUserRegister") String idUserRegister
+    );
 
 
 

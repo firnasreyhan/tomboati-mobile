@@ -215,7 +215,8 @@ public class DetailPaketActivity extends AppCompatActivity {
                     Toast.makeText(v.getContext(), "Mohon pilih paket terlebih dahulu", Toast.LENGTH_SHORT).show();
                 } else {
                     Intent intent = new Intent(v.getContext(), SyaratActivity.class);
-                    intent.putExtra("ID_PAKET", (idPaket == null) ? idPaketWisata : idPaket);
+                    intent.putExtra("ID_PAKET", idPaket);
+                    intent.putExtra("ID_PAKET_WISATA", idPaketWisata);
                     intent.putExtra("TANGGAL_BERANGKAT", tanggalKeberangkatan);
                     intent.putExtra("SHEET", String.valueOf(sheet));
                     intent.putExtra("SHEET_HARGA", String.valueOf(sheetHarga));

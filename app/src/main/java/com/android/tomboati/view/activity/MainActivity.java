@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.android.tomboati.R;
+import com.android.tomboati.utils.Utility;
 import com.android.tomboati.view.fragment.AkunFragment;
 import com.android.tomboati.view.fragment.BerandaFragment;
 import com.android.tomboati.view.fragment.InboxFragment;
@@ -34,19 +35,26 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         setSupportActionBar(toolbar);
         setTitle("");
 
-        loadFragment(new BerandaFragment());
-        fragmentActive = new BerandaFragment();
-        bottomNavigationView.setOnNavigationItemSelectedListener(this);
+        if(Utility.isConnecting(this)) {
+            loadFragment(new BerandaFragment());
+            fragmentActive = new BerandaFragment();
+            bottomNavigationView.setOnNavigationItemSelectedListener(this);
+        }
+
     }
 
     @Override
     public void onBackPressed() {
-        if (doubleBackToExit) {
-            super.onBackPressed();
-            return;
+        if(Utility.isConnecting(this)) {
+            if (doubleBackToExit) {
+                super.onBackPressed();
+                return;
+            }
+            this.doubleBackToExit = true;
+            Toast.makeText(this, "Tekan sekali lagi untuk keluar.", Toast.LENGTH_SHORT).show();
+        } else {
+            finish();
         }
-        this.doubleBackToExit = true;
-        Toast.makeText(this, "Tekan sekali lagi untuk keluar.", Toast.LENGTH_SHORT).show();
     }
 
     @Override

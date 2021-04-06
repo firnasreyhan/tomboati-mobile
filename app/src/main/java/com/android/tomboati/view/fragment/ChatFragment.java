@@ -35,10 +35,9 @@ public class ChatFragment extends Fragment {
     private LinearLayout linearLayoutNoSignIn, linearLayoutYesSignIn;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        chatViewModel = ViewModelProviders.of(getActivity()).get(ChatViewModel.class);
+        chatViewModel = ViewModelProviders.of(this).get(ChatViewModel.class);
         View view = inflater.inflate(R.layout.fragment_chat, container, false);
 
         recyclerViewChat = view.findViewById(R.id.recyclerViewChat);
@@ -54,39 +53,18 @@ public class ChatFragment extends Fragment {
         recyclerViewChat.setNestedScrollingEnabled(false);
         recyclerViewChat.setHasFixedSize(true);
 
-        if (AppPreference.getUser(getContext()) != null) {
+        if (AppPreference.getUser(view.getContext()) != null) {
             linearLayoutYesSignIn.setVisibility(View.VISIBLE);
             linearLayoutNoSignIn.setVisibility(View.GONE);
-            chatViewModel.getChat().observe(getActivity(), new Observer<ChatResponse>() {
-                @Override
-                public void onChanged(ChatResponse chatResponse) {
-                    if (!chatResponse.isError()) {
-                        if (!chatResponse.getData().isEmpty()) {
-                            chatAdapter = new ChatAdapter(chatResponse.getData());
-                            recyclerViewChat.setAdapter(chatAdapter);
-                            recyclerViewChat.smoothScrollToPosition(chatAdapter.getItemCount() -1);
-                        }
-                    }
-                }
-            });
-
 
             floatingActionButtonSend.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if (!textInputEditTextChat.getText().toString().isEmpty()) {
-                        chatViewModel.sendChat(
-                                textInputEditTextChat.getText().toString()
-                        ).observe(getActivity(), new Observer<BaseResponse>() {
+                        chatViewModel.sendChat(textInputEditTextChat.getText().toString()).observe(getActivity(), new Observer<BaseResponse>() {
                             @Override
                             public void onChanged(BaseResponse baseResponse) {
                                 if (!baseResponse.isError()) {
-//                                    ChatResponse.ChatModel model = new ChatResponse.ChatModel();
-//                                    model.setMessage(textInputEditTextChat.getText().toString());
-//                                    model.setIsAdmin(0);
-//                                    model.setIsSeen(0);
-//                                    chatAdapter.addData(model);
-//                                    recyclerViewChat.scrollToPosition(chatAdapter.getItemCount() - 1);
                                     textInputEditTextChat.getText().clear();
                                     onResume();
                                 }
@@ -115,8 +93,8 @@ public class ChatFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        if (AppPreference.getUser(getContext()) != null) {
-            chatViewModel.getChat().observe(getActivity(), new Observer<ChatResponse>() {
+        if (AppPreference.getUser(getActivity()) != null) {
+            chatViewModel.getChat().observe(this, new Observer<ChatResponse>() {
                 @Override
                 public void onChanged(ChatResponse chatResponse) {
                     if (!chatResponse.isError()) {

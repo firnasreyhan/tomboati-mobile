@@ -125,7 +125,7 @@ public class BerandaFragment extends Fragment {
         textViewJudulNews = view.findViewById(R.id.textViewJudulNews);
         imageViewNews = view.findViewById(R.id.imageViewNews);
 
-        progress = new AlertProgress(view, "Sedang mengambil data");
+        progress = new AlertProgress(view, "Sedang meyiapkan data");
 
         sliderView.setIndicatorAnimation(IndicatorAnimationType.WORM); //set indicator animation by using IndicatorAnimationType. :WORM or THIN_WORM or COLOR or DROP or FILL or NONE or SCALE or SCALE_DOWN or SLIDE and SWAP!!
         sliderView.setSliderTransformAnimation(SliderAnimations.SIMPLETRANSFORMATION);

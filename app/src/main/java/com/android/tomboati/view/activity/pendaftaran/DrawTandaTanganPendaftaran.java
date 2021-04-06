@@ -2,6 +2,8 @@ package com.android.tomboati.view.activity.pendaftaran;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.lifecycle.LifecycleOwner;
+import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
@@ -12,6 +14,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.android.tomboati.viewmodel.PendaftaranWisataHalalViewModel;
 import com.rm.freedrawview.FreeDrawView;
 import com.rm.freedrawview.PathRedoUndoCountChangeListener;
 
@@ -27,9 +30,11 @@ import com.google.android.material.button.MaterialButton;
 public class DrawTandaTanganPendaftaran extends AppCompatActivity {
 
     private PendaftaranDataKeluargaViewModel viewModel;
+    private PendaftaranWisataHalalViewModel viewModelWisata;
     private PesananaModel model;
     private MaterialButton materialButtonPesanSekarang;
     private FreeDrawView freeDrawing;
+    private final LifecycleOwner OWNER = this;
     private int undoCounts, redoCounts;
 
     @Override
@@ -44,6 +49,7 @@ public class DrawTandaTanganPendaftaran extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         viewModel = ViewModelProviders.of(this).get(PendaftaranDataKeluargaViewModel.class);
+        viewModelWisata = ViewModelProviders.of(this).get(PendaftaranWisataHalalViewModel.class);
         model = (PesananaModel) getIntent().getSerializableExtra("OBJECT");
 
         freeDrawing = findViewById(R.id.freeDrawing);
@@ -87,7 +93,14 @@ public class DrawTandaTanganPendaftaran extends AppCompatActivity {
                     freeDrawing.getDrawScreenshot(new FreeDrawView.DrawCreatorListener() {
                         @Override  public void onDrawCreated(Bitmap draw) {
                             model.setTtdPendaftar(draw);
-                            viewModel.pendaftaran(model).observe(DrawTandaTanganPendaftaran.this, new Observer<BaseResponse>() {
+
+                            MutableLiveData<BaseResponse> pendaftaran = (model.isPaketWisata()) ?
+                                viewModelWisata.pendaftaranWisataHalal(model)
+                                    :
+                                viewModel.pendaftaran(model)
+                            ;
+
+                            pendaftaran.observe(OWNER, new Observer<BaseResponse>() {
                                 @Override
                                 public void onChanged(BaseResponse baseResponse) {
                                     if (progress.isDialogShowing()) {

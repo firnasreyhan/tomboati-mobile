@@ -51,6 +51,16 @@ public class PesananaModel implements Serializable {
     private String kodePOSKeluarga;
     private String nomorHPKeluarga;
 
+    private boolean paketWisata = false;
+
+    public boolean isPaketWisata() {
+        return paketWisata;
+    }
+
+    public void setPaketWisata(boolean paketWisata) {
+        this.paketWisata = paketWisata;
+    }
+
     public String getIdUserRegister() {
         return idUserRegister;
     }

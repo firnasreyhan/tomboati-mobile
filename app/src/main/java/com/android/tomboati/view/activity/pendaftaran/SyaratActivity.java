@@ -27,6 +27,7 @@ public class SyaratActivity extends AppCompatActivity {
         setContentView(R.layout.activity_syarat);
 
         String idPaket = getIntent().getStringExtra("ID_PAKET");
+        String idPaketWisata = getIntent().getStringExtra("ID_PAKET_WISATA");
         String tanggalKeberangkatan = getIntent().getStringExtra("TANGGAL_BERANGKAT");
         String sheet = getIntent().getStringExtra("SHEET");
         String sheetHarga = getIntent().getStringExtra("SHEET_HARGA");
@@ -57,7 +58,8 @@ public class SyaratActivity extends AppCompatActivity {
                     }
                 } else {
                     final PesananaModel model = new PesananaModel();
-                    model.setIdPaket(idPaket);
+                    model.setPaketWisata(idPaketWisata != null);
+                    model.setIdPaket((idPaket != null) ? idPaket : idPaketWisata);
                     model.setTanggalBerangkat(tanggalKeberangkatan);
                     model.setSheet(sheet);
                     model.setSheetHarga(sheetHarga);
