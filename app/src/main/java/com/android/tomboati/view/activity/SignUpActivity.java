@@ -182,13 +182,13 @@ public class SignUpActivity extends AppCompatActivity {
                     int loadingTime = 3000;
                     new Handler().postDelayed(() -> {
                         signUpViewModel.signUp(
-                                textInputEditTextNomorKTP.getText().toString(),
-                                textInputEditTextEmail.getText().toString(),
-                                textInputEditTextPassword.getText().toString(),
-                                textInputEditTextNamaLengkap.getText().toString(),
-                                textInputEditTextNomorHP.getText().toString(),
-                                uriKTP,
-                                uriFoto
+                            textInputEditTextNomorKTP.getText().toString(),
+                            textInputEditTextEmail.getText().toString(),
+                            textInputEditTextPassword.getText().toString(),
+                            textInputEditTextNamaLengkap.getText().toString(),
+                            textInputEditTextNomorHP.getText().toString(),
+                            uriKTP,
+                            uriFoto
                         ).observe(SignUpActivity.this, new Observer<BaseResponse>() {
                             @Override
                             public void onChanged(BaseResponse baseResponse) {

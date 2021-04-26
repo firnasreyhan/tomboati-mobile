@@ -119,7 +119,7 @@ public class AkunFragment extends Fragment {
                 }
 
                 if (countError == 0) {
-                    AlertProgress progress = new AlertProgress(v, "Sedang memperiksa data");
+                    AlertProgress progress = new AlertProgress(v, "Sedang mengautentikasi data");
                     progress.showDialog();
 
                     new Handler().postDelayed(() -> {
@@ -189,7 +189,8 @@ public class AkunFragment extends Fragment {
 
                                         Toast.makeText(getContext(), "Berhasil keluar!", Toast.LENGTH_SHORT).show();
 
-                                        AppPreference.removeUser(getContext());
+                                        AppPreference.removeUser(v.getContext());
+                                        AppPreference.removeNotif(v.getContext());
                                         Intent intent = new Intent(getContext(), MainActivity.class);
                                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                         startActivity(intent);

@@ -11,22 +11,33 @@ import androidx.annotation.NonNull;
 import androidx.core.app.NotificationCompat;
 
 import com.android.tomboati.R;
+import com.android.tomboati.preference.AppPreference;
 import com.android.tomboati.view.activity.SplashScreenActivity;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
-@SuppressLint("MissingFirebaseInstanceTokenRefresh")
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class MyFireBaseMessagingService extends FirebaseMessagingService {
-    private final String ADMIN_CHANNEL_ID ="admin_channel";
-    String title,message;
 
     @Override
     public void onMessageReceived(@NonNull RemoteMessage remoteMessage) {
         super.onMessageReceived(remoteMessage);
-        title = remoteMessage.getData().get("Title");
-        message = remoteMessage.getData().get("Message");
 
-        Log.d("msg", "onMessageReceived: " + remoteMessage.getData().get("Message"));
+        if (!remoteMessage.getNotification().getTitle().equals("Admin")) {
+            @SuppressLint("SimpleDateFormat")
+            String tanggal = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
+            AppPreference.saveNotif(
+                    getApplicationContext(),
+                    tanggal,
+                    remoteMessage.getNotification().getTitle(),
+                    remoteMessage.getNotification().getBody()
+            );
+        }
+
+//        Log.d("+_+_+_+_+_+_+_+_+_+", remoteMessage.getData());
+
         Intent intent = new Intent(this, SplashScreenActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_ONE_SHOT);
@@ -35,12 +46,19 @@ public class MyFireBaseMessagingService extends FirebaseMessagingService {
             .Builder(this, channelId)
             .setSmallIcon(R.drawable.ic_stat_icon)
             .setContentTitle(remoteMessage.getNotification().getTitle())
-            .setContentText(remoteMessage.getNotification().getBody()).setAutoCancel(true).setContentIntent(pendingIntent);
+            .setContentText(remoteMessage.getNotification().getBody())
+            .setAutoCancel(true)
+            .setContentIntent(pendingIntent);
         NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannel channel = new NotificationChannel(channelId, "Default channel", NotificationManager.IMPORTANCE_DEFAULT);
             manager.createNotificationChannel(channel);
         }
         manager.notify(0, builder.build());
+    }
+
+    @Override
+    public boolean handleIntentOnMainThread(Intent intent) {
+        return super.handleIntentOnMainThread(intent);
     }
 }

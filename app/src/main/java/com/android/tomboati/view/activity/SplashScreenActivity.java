@@ -11,11 +11,13 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.android.tomboati.R;
+import com.android.tomboati.preference.AppPreference;
 
 public class SplashScreenActivity extends AppCompatActivity {
 

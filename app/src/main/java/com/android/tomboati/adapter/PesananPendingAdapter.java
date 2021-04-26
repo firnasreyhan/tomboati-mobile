@@ -51,6 +51,14 @@ public class PesananPendingAdapter  extends RecyclerView.Adapter<PesananPendingA
         } else {
             holder.textHeader.setText("Haji / Umrah");
         }
+
+        String idPaket = (list.get(position).getIDPAKET() != null) ? list.get(position).getIDPAKET() : list.get(position).getIDWISATAHALAL();
+        String idTransaksi = list.get(position).getIDTRANSAKSI();
+        String kodePendaftaran = list.get(position).getKODEPENDAFTARAN();
+        int sheet = list.get(position).getSHEET();
+
+        holder.textKodeTransaksi.setText(idTransaksi + "/" + sheet + "/" + idPaket + "/" + kodePendaftaran);
+
     }
 
     @SuppressLint("DefaultLocale")
@@ -65,7 +73,7 @@ public class PesananPendingAdapter  extends RecyclerView.Adapter<PesananPendingA
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView textNamaPaket, textTanggalBerangkat, textHargaSheet, textHeader;
+        private TextView textNamaPaket, textTanggalBerangkat, textHargaSheet, textHeader, textKodeTransaksi;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -73,6 +81,7 @@ public class PesananPendingAdapter  extends RecyclerView.Adapter<PesananPendingA
             textTanggalBerangkat = itemView.findViewById(R.id.textTanggalBerangkat);
             textHargaSheet = itemView.findViewById(R.id.textHargaSheet);
             textHeader = itemView.findViewById(R.id.textHeader);
+            textKodeTransaksi = itemView.findViewById(R.id.textKodeTransaksi);
         }
     }
 }

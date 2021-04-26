@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import com.android.tomboati.R;
 import com.android.tomboati.adapter.PesananPendingAdapter;
@@ -31,6 +32,7 @@ public class PesananPendingFragment extends Fragment {
     private final LifecycleOwner OWNER = this;
     private RecyclerView recyclerView;
     private ShimmerFrameLayout shimmerFrameLayoutPesanan;
+    private LinearLayout linearLayoutNoSignIn;
     private PesananPendingAdapter adapter;
     private List<ListPaketVerifyRespone.DataItem> list;
 
@@ -49,6 +51,7 @@ public class PesananPendingFragment extends Fragment {
 
         recyclerView = view.findViewById(R.id.recyclerViewPesananPending);
         shimmerFrameLayoutPesanan = view.findViewById(R.id.shimmerFrameLayoutPesanan);
+        linearLayoutNoSignIn = view.findViewById(R.id.linearLayoutNoSignIn);
 
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
@@ -58,24 +61,31 @@ public class PesananPendingFragment extends Fragment {
         viewModel.getPaketHajiUmrahVerif(idUser).observe(OWNER, new Observer<ListPaketVerifyRespone>() {
             @Override
             public void onChanged(ListPaketVerifyRespone listPaketVerifyRespone) {
-                if(!listPaketVerifyRespone.isError()) {
-                    if(!listPaketVerifyRespone.getData().isEmpty()) {
-                        list.addAll(listPaketVerifyRespone.getData());
+                if(listPaketVerifyRespone != null) {
+                    if (!listPaketVerifyRespone.isError()) {
+                        if (!listPaketVerifyRespone.getData().isEmpty()) {
+                            list.addAll(listPaketVerifyRespone.getData());
+                        }
                     }
                 }
                 viewModel.getPaketWisataHalalVerif(idUser).observe(OWNER, new Observer<ListPaketVerifyRespone>() {
                     @Override
                     public void onChanged(ListPaketVerifyRespone listPaketVerifyRespone) {
-                        if(!listPaketVerifyRespone.isError()) {
-                            if(!listPaketVerifyRespone.getData().isEmpty()) {
-                                list.addAll(listPaketVerifyRespone.getData());
-                                adapter = new PesananPendingAdapter(list);
-                                recyclerView.setAdapter(adapter);
+                        shimmerFrameLayoutPesanan.setVisibility(View.GONE);
+                        shimmerFrameLayoutPesanan.stopShimmer();
+                        if(listPaketVerifyRespone != null) {
+                            if (!listPaketVerifyRespone.isError()) {
+                                if (!listPaketVerifyRespone.getData().isEmpty()) {
+                                    list.addAll(listPaketVerifyRespone.getData());
+                                    adapter = new PesananPendingAdapter(list);
+                                    recyclerView.setAdapter(adapter);
 
-                                recyclerView.setVisibility(View.VISIBLE);
-                                shimmerFrameLayoutPesanan.setVisibility(View.GONE);
-                                shimmerFrameLayoutPesanan.stopShimmer();
+                                    recyclerView.setVisibility(View.VISIBLE);
+                                }
                             }
+                        } else {
+                            linearLayoutNoSignIn.setVisibility(View.VISIBLE);
+                            recyclerView.setVisibility(View.GONE);
                         }
                     }
                 });
@@ -83,7 +93,6 @@ public class PesananPendingFragment extends Fragment {
         });
 
     }
-
 
     @Override
     public void onResume() {

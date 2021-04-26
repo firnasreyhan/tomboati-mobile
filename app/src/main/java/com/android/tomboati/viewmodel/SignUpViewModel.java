@@ -17,6 +17,7 @@ import com.android.tomboati.api.response.SignInResponse;
 import com.android.tomboati.preference.AppPreference;
 import com.android.tomboati.repository.Repository;
 import com.android.tomboati.utils.Constant;
+import com.android.tomboati.utils.ImageSaves;
 import com.android.tomboati.utils.notif.Token;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.iid.FirebaseInstanceId;
@@ -33,12 +34,12 @@ import okhttp3.RequestBody;
 
 public class SignUpViewModel extends AndroidViewModel {
     private Repository repository;
-    private Context context;
+    private ImageSaves imageSaves;
 
     public SignUpViewModel(@NonNull Application application) {
         super(application);
         this.repository = new Repository();
-        context = application.getApplicationContext();
+        imageSaves = new ImageSaves(application.getApplicationContext());
     }
 
     public MutableLiveData<BaseResponse> signUp(String noKTP_, String email_, String password_, String namaLengkap_, String noHP_, Uri fileKTP, Uri foto) {
@@ -55,52 +56,13 @@ public class SignUpViewModel extends AndroidViewModel {
                 namaLengkap,
                 noHP,
                 token,
-                compressFile(fileKTP, "fileKTP"),
-                compressFile(foto, "foto")
+                compressFile(imageSaves.saveToPictureFromUri(fileKTP),"fileKTP"),
+                compressFile(imageSaves.saveToPictureFromUri(foto),"foto")
         );
     }
 
     public MutableLiveData<SignInResponse> signIn(String email, String password) {
         return repository.signIn(email, password, updateToken(email));
-    }
-
-    private File createTempFile(Uri uri) {
-        Bitmap bitmap = null;
-        try {
-            bitmap = MediaStore.Images.Media.getBitmap(context.getContentResolver(), uri);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        File file = new File(context.getExternalFilesDir(Environment.DIRECTORY_PICTURES)
-                , System.currentTimeMillis() +".JPEG");
-        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG,100, byteArrayOutputStream);
-        byte[] byteArray = byteArrayOutputStream.toByteArray();
-        //write the bytes in file
-        try {
-            FileOutputStream fileOutputStream = new FileOutputStream(file);
-            fileOutputStream.write(byteArray);
-            fileOutputStream.flush();
-            fileOutputStream.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return file;
-    }
-
-    private MultipartBody.Part compressFile(Uri uri, String path) {
-        File file = new File(uri.getPath());
-        try {
-            File fileCompress = new Compressor(context)
-                    .setCompressFormat(Bitmap.CompressFormat.JPEG)
-                    .compressToFile(file);
-            File file1 = createTempFile(Uri.fromFile(fileCompress.getAbsoluteFile()));
-            Log.e("path", file1.getAbsolutePath());
-            return MultipartBody.Part.createFormData(path, file1.getName(), RequestBody.create(MediaType.parse("image/*"), file1));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return null;
     }
 
     private String updateToken(String email) {
@@ -110,5 +72,9 @@ public class SignUpViewModel extends AndroidViewModel {
         Token token = new Token(refreshToken);
         FirebaseDatabase.getInstance().getReference("TomboAti").child("Token").child(userKey).setValue(token);
         return refreshToken;
+    }
+
+    private MultipartBody.Part compressFile(File file, String path) {
+        return MultipartBody.Part.createFormData(path, file.getName(), RequestBody.create(MediaType.parse("image/*"), file));
     }
 }

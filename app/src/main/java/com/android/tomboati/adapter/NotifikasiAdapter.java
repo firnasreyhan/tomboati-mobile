@@ -11,13 +11,18 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.android.tomboati.R;
 import com.android.tomboati.model.NotifikasiModel;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class NotifikasiAdapter extends RecyclerView.Adapter<NotifikasiAdapter.ViewHolder> {
-    private List<NotifikasiModel> list;
+    private List<NotifikasiModel.DataItem> list;
 
-    public NotifikasiAdapter(List<NotifikasiModel> list) {
-        this.list = list;
+    public NotifikasiAdapter(NotifikasiModel model) {
+        if (model != null) {
+            this.list = model.getData();
+        } else {
+            this.list = new ArrayList<>();
+        }
     }
 
     @Override
@@ -33,9 +38,9 @@ public class NotifikasiAdapter extends RecyclerView.Adapter<NotifikasiAdapter.Vi
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.textViewTanggalNotifikasi.setText(list.get(position).getTanggal());
-        holder.textViewJudulNotifikasi.setText(list.get(position).getJudul());
-        holder.textViewIsiNotifikasi.setText(list.get(position).getIsi());
+        holder.textViewTanggalNotifikasi.setText(list.get(position).getIsi());
+        holder.textViewJudulNotifikasi.setText(list.get(position).getTanggal());
+        holder.textViewIsiNotifikasi.setText(list.get(position).getJudul());
     }
 
     @Override
@@ -45,6 +50,7 @@ public class NotifikasiAdapter extends RecyclerView.Adapter<NotifikasiAdapter.Vi
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         private TextView textViewTanggalNotifikasi, textViewJudulNotifikasi, textViewIsiNotifikasi;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             textViewTanggalNotifikasi = itemView.findViewById(R.id.textViewTanggalNotifikasi);

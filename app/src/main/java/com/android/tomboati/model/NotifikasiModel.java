@@ -1,25 +1,44 @@
 package com.android.tomboati.model;
 
-public class NotifikasiModel {
-    private String tanggal;
-    private String judul;
-    private String isi;
+import java.util.List;
+import com.google.gson.annotations.SerializedName;
 
-    public NotifikasiModel(String tanggal, String judul, String isi) {
-        this.tanggal = tanggal;
-        this.judul = judul;
-        this.isi = isi;
-    }
+public class NotifikasiModel{
 
-    public String getTanggal() {
-        return tanggal;
-    }
+	@SerializedName("data")
+	private List<DataItem> data;
 
-    public String getJudul() {
-        return judul;
-    }
+	public List<DataItem> getData(){
+		return data;
+	}
 
-    public String getIsi() {
-        return isi;
-    }
+	public static class DataItem{
+
+		@SerializedName("isi:")
+		private String isi;
+
+		@SerializedName("tanggal:")
+		private String tanggal;
+
+		@SerializedName("judul:")
+		private String judul;
+
+		public DataItem(String isi, String tanggal, String judul) {
+			this.isi = isi;
+			this.tanggal = tanggal;
+			this.judul = judul;
+		}
+
+		public String getIsi(){
+			return isi;
+		}
+
+		public String getTanggal(){
+			return tanggal;
+		}
+
+		public String getJudul(){
+			return judul;
+		}
+	}
 }
