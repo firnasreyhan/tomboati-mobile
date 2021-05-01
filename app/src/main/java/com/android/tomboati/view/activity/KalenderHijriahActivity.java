@@ -1,31 +1,16 @@
 package com.android.tomboati.view.activity;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
-import android.util.Log;
-import android.widget.TextView;
 
 import com.android.tomboati.R;
 import com.android.tomboati.adapter.TabAdapter;
-import com.android.tomboati.view.fragment.JuzFragment;
-import com.android.tomboati.view.fragment.KalenderHijriahFragment;
-import com.android.tomboati.view.fragment.KalenderMasehiFragment;
-import com.android.tomboati.view.fragment.SurahFragment;
-import com.github.eltohamy.materialhijricalendarview.CalendarDay;
-import com.github.eltohamy.materialhijricalendarview.MaterialHijriCalendarView;
-import com.github.eltohamy.materialhijricalendarview.OnDateSelectedListener;
-import com.github.eltohamy.materialhijricalendarview.OnMonthChangedListener;
+import com.android.tomboati.view.fragment.kalender.KalenderHijriahFragment;
+import com.android.tomboati.view.fragment.kalender.KalenderMasehiFragment;
 import com.google.android.material.tabs.TabLayout;
-
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Locale;
 
 public class KalenderHijriahActivity extends AppCompatActivity {
     private Toolbar toolbar;

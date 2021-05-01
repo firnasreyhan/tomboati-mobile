@@ -7,7 +7,7 @@
     android:padding="@dimen/_13sdp"
     android:orientation="vertical"
     android:background="@color/background"
-    tools:context=".view.fragment.KalenderMasehiFragment">
+    tools:context=".view.fragment.kalender.KalenderMasehiFragment">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"

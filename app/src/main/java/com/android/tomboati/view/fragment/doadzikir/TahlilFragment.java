@@ -1,4 +1,4 @@
-package com.android.tomboati.view.fragment;
+package com.android.tomboati.view.fragment.doadzikir;
 
 import android.os.Bundle;
 
@@ -14,42 +14,38 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.android.tomboati.R;
-import com.android.tomboati.adapter.SholatAdapter;
 import com.android.tomboati.adapter.TahlilAdapter;
-import com.android.tomboati.api.response.BacaanSholatResponse;
 import com.android.tomboati.api.response.TahlilResponse;
 import com.android.tomboati.viewmodel.DoaTahlilViewModel;
 import com.facebook.shimmer.ShimmerFrameLayout;
 
-import java.util.List;
-
-public class BacaanSholatFragment extends Fragment {
+public class TahlilFragment extends Fragment {
 
     private DoaTahlilViewModel doaTahlilViewModel;
-    private RecyclerView recyclerViewBacaanSholat;
+    private RecyclerView recyclerViewTahlil;
     private LinearLayout linearLayoutContent;
     private ShimmerFrameLayout shimmerFrameLayoutAyat;
-    private SholatAdapter sholatAdapter;
+    private TahlilAdapter tahlilAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_bacaan_sholat, container, false);
+        View view = inflater.inflate(R.layout.fragment_tahlil, container, false);
 
         doaTahlilViewModel = ViewModelProviders.of(this).get(DoaTahlilViewModel.class);
-        recyclerViewBacaanSholat = view.findViewById(R.id.recyclerViewBacaanSholat);
+        recyclerViewTahlil = view.findViewById(R.id.recyclerViewTahlil);
         shimmerFrameLayoutAyat = view.findViewById(R.id.shimmerFrameLayoutAyat);
         linearLayoutContent = view.findViewById(R.id.linearLayoutContent);
 
 
-        recyclerViewBacaanSholat.setHasFixedSize(true);
-        recyclerViewBacaanSholat.setLayoutManager(new LinearLayoutManager(view.getContext()));
+        recyclerViewTahlil.setHasFixedSize(true);
+        recyclerViewTahlil.setLayoutManager(new LinearLayoutManager(view.getContext()));
 
-        doaTahlilViewModel.getBacaanSholat().observe(this, new Observer<List<BacaanSholatResponse>>() {
+        doaTahlilViewModel.getDoaTahlil().observe(this, new Observer<TahlilResponse>() {
             @Override
-            public void onChanged(List<BacaanSholatResponse> bacaanSholatResponses) {
-                sholatAdapter = new SholatAdapter(bacaanSholatResponses, R.layout.item_istighosah);
-                recyclerViewBacaanSholat.setAdapter(sholatAdapter);
+            public void onChanged(TahlilResponse tahlilResponse) {
+                tahlilAdapter = new TahlilAdapter(tahlilResponse.getData());
+                recyclerViewTahlil.setAdapter(tahlilAdapter);
 
                 linearLayoutContent.setVisibility(View.VISIBLE);
                 shimmerFrameLayoutAyat.setVisibility(View.GONE);

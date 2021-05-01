@@ -40,7 +40,7 @@ import com.android.tomboati.view.activity.quran.AlQuranActivity;
 import com.android.tomboati.view.activity.DetailNewsActivity;
 import com.android.tomboati.view.activity.doa_dzikir.DoaDzikirActivity;
 import com.android.tomboati.view.activity.KalenderHijriahActivity;
-import com.android.tomboati.view.activity.KomunitasActivity;
+import com.android.tomboati.view.activity.komunitas.KomunitasActivity;
 import com.android.tomboati.view.activity.sholat.SholatActivity;
 import com.android.tomboati.view.activity.UmrohHajiActivity;
 import com.android.tomboati.view.activity.WisataReligiActivity;

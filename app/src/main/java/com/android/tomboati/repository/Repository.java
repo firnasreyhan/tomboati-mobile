@@ -16,6 +16,7 @@ import com.android.tomboati.api.response.AyatResponse;
 import com.android.tomboati.api.response.BacaanSholatResponse;
 import com.android.tomboati.api.response.BaseResponse;
 import com.android.tomboati.api.response.ChatResponse;
+import com.android.tomboati.api.response.DetailPembayaranResponse;
 import com.android.tomboati.api.response.DoaHarianResponse;
 import com.android.tomboati.api.response.ItteneraryResponse;
 import com.android.tomboati.api.response.JadwalSholatResponse;
@@ -28,6 +29,7 @@ import com.android.tomboati.api.response.NewsResponse;
 import com.android.tomboati.api.response.PaketMonthResponse;
 import com.android.tomboati.api.response.PaketResponse;
 import com.android.tomboati.api.response.PaketWisataResponse;
+import com.android.tomboati.api.response.PembayaranResponse;
 import com.android.tomboati.api.response.SignInResponse;
 import com.android.tomboati.api.response.SurahResponse;
 import com.android.tomboati.api.response.TahlilResponse;
@@ -938,6 +940,63 @@ public class Repository {
 
             @Override
             public void onFailure(Call<ListPaketVerifyRespone> call, Throwable t) {
+                data.postValue(null);
+            }
+        }); return data;
+    }
+
+    //==
+
+    public MutableLiveData<BaseResponse> postPembayaran(
+        String idTransaksi,
+        RequestBody jumlahPembayaran,
+        RequestBody tanggalPembayaran,
+        RequestBody deskripsi,
+        MultipartBody.Part buktiPembayaran
+    ) {
+        MutableLiveData<BaseResponse> data = new MutableLiveData<>();
+        apiInterfaceTomboAti.postPembayaran(idTransaksi, jumlahPembayaran, tanggalPembayaran, deskripsi, buktiPembayaran).enqueue(new Callback<BaseResponse>() {
+            @Override
+            public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
+                if (response.code() == 200) { data.postValue(response.body()); }
+            }
+
+            @Override
+            public void onFailure(Call<BaseResponse> call, Throwable t) {
+                data.postValue(null);
+            }
+        }); return data;
+    }
+
+    //==
+
+    public MutableLiveData<PembayaranResponse> getPembayaran(String id) {
+        MutableLiveData<PembayaranResponse> data = new MutableLiveData<>();
+        apiInterfaceTomboAti.getPembayaran(id).enqueue(new Callback<PembayaranResponse>() {
+            @Override
+            public void onResponse(Call<PembayaranResponse> call, Response<PembayaranResponse> response) {
+                if (response.code() == 200) { data.postValue(response.body()); }
+            }
+
+            @Override
+            public void onFailure(Call<PembayaranResponse> call, Throwable t) {
+                data.postValue(null);
+            }
+        }); return data;
+    }
+
+    //==
+
+    public MutableLiveData<DetailPembayaranResponse> getDetailPembayaran(String idPembayaran) {
+        MutableLiveData<DetailPembayaranResponse> data = new MutableLiveData<>();
+        apiInterfaceTomboAti.getDetailPembayaran(idPembayaran).enqueue(new Callback<DetailPembayaranResponse>() {
+            @Override
+            public void onResponse(Call<DetailPembayaranResponse> call, Response<DetailPembayaranResponse> response) {
+                if (response.code() == 200) { data.postValue(response.body()); }
+            }
+
+            @Override
+            public void onFailure(Call<DetailPembayaranResponse> call, Throwable t) {
                 data.postValue(null);
             }
         }); return data;

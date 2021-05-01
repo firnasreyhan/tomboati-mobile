@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:background="@color/background"
-    tools:context=".view.fragment.SurahFragment">
+    tools:context=".view.fragment.doadzikir.SurahFragment">
 
     <com.facebook.shimmer.ShimmerFrameLayout
         android:id="@+id/shimmerFrameLayoutSurah"

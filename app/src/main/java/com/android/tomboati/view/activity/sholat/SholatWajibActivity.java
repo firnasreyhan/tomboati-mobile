@@ -1,34 +1,17 @@
 package com.android.tomboati.view.activity.sholat;
 
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.pdf.PdfRenderer;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.ParcelFileDescriptor;
-import android.view.View;
-import android.widget.ZoomControls;
 
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager.widget.ViewPager;
 
 import com.android.tomboati.R;
 import com.android.tomboati.adapter.TabAdapter;
-import com.android.tomboati.utils.OnSwipeTouchListener;
 import com.android.tomboati.utils.Utility;
-import com.android.tomboati.view.fragment.BacaanSholatFragment;
-import com.android.tomboati.view.fragment.NiatSholatFragment;
-import com.android.tomboati.view.fragment.TahlilFragment;
-import com.android.tomboati.view.fragment.YasinFragment;
+import com.android.tomboati.view.fragment.doadzikir.BacaanSholatFragment;
+import com.android.tomboati.view.fragment.doadzikir.NiatSholatFragment;
 import com.google.android.material.tabs.TabLayout;
-import com.jsibbold.zoomage.ZoomageView;
-
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
 
 public class SholatWajibActivity extends AppCompatActivity {
 

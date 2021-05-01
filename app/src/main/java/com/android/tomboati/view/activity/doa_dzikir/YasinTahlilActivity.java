@@ -9,8 +9,8 @@ import android.os.Bundle;
 import com.android.tomboati.R;
 import com.android.tomboati.adapter.TabAdapter;
 import com.android.tomboati.utils.Utility;
-import com.android.tomboati.view.fragment.TahlilFragment;
-import com.android.tomboati.view.fragment.YasinFragment;
+import com.android.tomboati.view.fragment.doadzikir.TahlilFragment;
+import com.android.tomboati.view.fragment.doadzikir.YasinFragment;
 import com.google.android.material.tabs.TabLayout;
 
 public class YasinTahlilActivity extends AppCompatActivity {

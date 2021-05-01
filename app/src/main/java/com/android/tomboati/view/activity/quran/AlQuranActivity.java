@@ -8,8 +8,8 @@ import android.os.Bundle;
 
 import com.android.tomboati.R;
 import com.android.tomboati.adapter.TabAdapter;
-import com.android.tomboati.view.fragment.JuzFragment;
-import com.android.tomboati.view.fragment.SurahFragment;
+import com.android.tomboati.view.fragment.doadzikir.JuzFragment;
+import com.android.tomboati.view.fragment.doadzikir.SurahFragment;
 import com.google.android.material.tabs.TabLayout;
 
 public class AlQuranActivity extends AppCompatActivity {

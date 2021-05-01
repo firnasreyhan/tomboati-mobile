@@ -4,8 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/ic_background_beranda"
-    tools:context=".view.activity.komunitas.KomunitasActivity">
+    android:background="@color/background"
+    tools:context=".view.activity.pembayaran.DetailPembayaranActivity">
+
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -18,40 +19,45 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.facebook.shimmer.ShimmerFrameLayout
-        android:id="@+id/shimmerFrameLayoutKomunitas"
+        android:id="@+id/shimmerFrameLayoutDetailPembayaran"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:layout_gravity="center"
         android:orientation="vertical"
-        android:visibility="visible"
-        app:duration="800">
+        android:padding="10dp"
+        app:duration="800"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <include layout="@layout/item_shimmer_komunitas" />
+            <include layout="@layout/item_shimmer_pesanan" />
 
-            <include layout="@layout/item_shimmer_komunitas" />
+            <include layout="@layout/item_shimmer_pesanan" />
 
-            <include layout="@layout/item_shimmer_komunitas" />
+            <include layout="@layout/item_shimmer_pesanan" />
 
-            <include layout="@layout/item_shimmer_komunitas" />
+            <include layout="@layout/item_shimmer_pesanan" />
 
-            <include layout="@layout/item_shimmer_komunitas" />
+            <include layout="@layout/item_shimmer_pesanan" />
+
+            <include layout="@layout/item_shimmer_pesanan" />
 
         </LinearLayout>
 
     </com.facebook.shimmer.ShimmerFrameLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewKomunitas"
+        android:id="@+id/recycleViewDetailPembayaran"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
-
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        tools:layout_editor_absoluteX="183dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

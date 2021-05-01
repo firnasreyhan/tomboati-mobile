@@ -1,4 +1,4 @@
-package com.android.tomboati.view.fragment;
+package com.android.tomboati.view.fragment.doadzikir;
 
 import android.os.Bundle;
 

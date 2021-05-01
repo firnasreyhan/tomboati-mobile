@@ -1,6 +1,7 @@
 package com.android.tomboati.adapter;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.tomboati.R;
 import com.android.tomboati.api.response.ListPaketVerifyRespone;
+import com.android.tomboati.view.activity.pembayaran.InformasiPembayaranActivity;
 
 import java.util.List;
 
@@ -82,6 +84,16 @@ public class PesananPendingAdapter  extends RecyclerView.Adapter<PesananPendingA
             textHargaSheet = itemView.findViewById(R.id.textHargaSheet);
             textHeader = itemView.findViewById(R.id.textHeader);
             textKodeTransaksi = itemView.findViewById(R.id.textKodeTransaksi);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    final Intent intent = new Intent(v.getContext(), InformasiPembayaranActivity.class);
+                    intent.putExtra("ID_TRANSAKSI", list.get(getAdapterPosition()).getIDTRANSAKSI());
+                    v.getContext().startActivity(intent);
+                }
+            });
         }
+
     }
 }

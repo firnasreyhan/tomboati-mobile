@@ -1,4 +1,4 @@
-package com.android.tomboati.view.activity;
+package com.android.tomboati.view.activity.komunitas;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;

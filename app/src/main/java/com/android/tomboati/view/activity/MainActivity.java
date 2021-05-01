@@ -6,6 +6,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -48,10 +49,15 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         if(Utility.isConnecting(this)) {
             if (doubleBackToExit) {
                 super.onBackPressed();
-                return;
             }
             this.doubleBackToExit = true;
             Toast.makeText(this, "Tekan sekali lagi untuk keluar.", Toast.LENGTH_SHORT).show();
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    doubleBackToExit = false;
+                }
+            }, 8000);
         } else {
             finish();
         }

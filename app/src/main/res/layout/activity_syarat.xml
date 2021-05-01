@@ -373,7 +373,7 @@
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/materialButtonSetujuDanLanjutkan"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_40sdp"
+                android:layout_height="@dimen/_50sdp"
                 android:backgroundTint="@color/dark_green"
                 android:fontFamily="@font/catamaran_bold"
                 android:padding="12dp"

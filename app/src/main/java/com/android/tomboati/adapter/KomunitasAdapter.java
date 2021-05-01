@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.tomboati.R;
 import com.android.tomboati.api.response.KomunitasResponse;
-import com.android.tomboati.view.activity.DetailKomunitasActivity;
+import com.android.tomboati.view.activity.komunitas.DetailKomunitasActivity;
 import com.codesgood.views.JustifiedTextView;
 import com.google.android.material.button.MaterialButton;
 import com.squareup.picasso.Picasso;

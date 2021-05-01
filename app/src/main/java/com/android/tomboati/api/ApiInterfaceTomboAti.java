@@ -2,6 +2,7 @@ package com.android.tomboati.api;
 
 import com.android.tomboati.api.response.BaseResponse;
 import com.android.tomboati.api.response.ChatResponse;
+import com.android.tomboati.api.response.DetailPembayaranResponse;
 import com.android.tomboati.api.response.ItteneraryResponse;
 import com.android.tomboati.api.response.JadwalSholatResponse;
 import com.android.tomboati.api.response.KomunitasResponse;
@@ -11,6 +12,7 @@ import com.android.tomboati.api.response.NewsResponse;
 import com.android.tomboati.api.response.PaketMonthResponse;
 import com.android.tomboati.api.response.PaketResponse;
 import com.android.tomboati.api.response.PaketWisataResponse;
+import com.android.tomboati.api.response.PembayaranResponse;
 import com.android.tomboati.api.response.SignInResponse;
 
 import java.util.List;
@@ -203,7 +205,26 @@ public interface ApiInterfaceTomboAti {
     Call<KataMutiaraResponse> getKataMutiara();
 
 
+    // PEMBAYARAN API ===================
+    @Multipart
+    @POST("pembayaran/pembayaran")
+    Call<BaseResponse> postPembayaran(
+        @Query("idTransaksi") String idTransaksi,
+        @Part("jumlahPembayaran") RequestBody jumlahPembayaran,
+        @Part("tanggalPembayaran") RequestBody tanggalPembayaran,
+        @Part("deskripsi") RequestBody deskripsi,
+        @Part MultipartBody.Part buktiPembayaran
+    );
 
+    @GET("pembayaran/getPembayaran")
+    Call<PembayaranResponse> getPembayaran(
+        @Query("idTransaksi") String idTransaksi
+    );
+
+    @GET("pembayaran/getDetailPembayaran")
+    Call<DetailPembayaranResponse> getDetailPembayaran(
+        @Query("idPembayaran") String idPembayaran
+    );
 
 
     // REGISTER PACKET API  ===================
