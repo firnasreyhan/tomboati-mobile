@@ -72,32 +72,9 @@ public class DetailJuzActivity extends AppCompatActivity {
         JuzModel juzModel = new JuzUtility().getList().get(position);
         List<AyatResponse.AyatModel> list = new ArrayList<>();
 
-//        for (JuzModel.JuzDetailModel juzDetailModel : juzModel.getList()) {
-//            apiInterfaceAlQuran.getAyat(
-//                    juzDetailModel.getNomorSurah()
-//            ).enqueue(new Callback<AyatResponse>() {
-//                @Override
-//                public void onResponse(Call<AyatResponse> call, Response<AyatResponse> response) {
-//                    if (response.body().isStatus()) {
-//                        list1.add(response.body());
-//                        Log.e("surah", response.body().getNamaLatin());
-//                    }
-//                }
-//
-//                @Override
-//                public void onFailure(Call<AyatResponse> call, Throwable t) {
-//
-//                }
-//            });
-//        }
 
         for (JuzModel.JuzDetailModel juzDetailModel : juzModel.getList()) {
-//            Log.e("surah", juzDetailModel.getNomorSurah());
-//            Log.e("awal", String.valueOf(juzDetailModel.getAwalAyat()));
-//            Log.e("akhir", String.valueOf(juzDetailModel.getAkhirAyat()));
-            detailAlQuranViewModel.getAyat(
-                    juzDetailModel.getNomorSurah()
-            ).observe(this, new Observer<AyatResponse>() {
+            detailAlQuranViewModel.getAyat(juzDetailModel.getNomorSurah()).observe(this, new Observer<AyatResponse>() {
                 @Override
                 public void onChanged(AyatResponse ayatResponse) {
                     if (ayatResponse.isStatus()) {

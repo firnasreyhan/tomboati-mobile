@@ -21,6 +21,14 @@ public class BacaanSholatResponse {
     @Expose
     private String terjemahan;
 
+    public BacaanSholatResponse(Integer id, String name, String arabic, String latin, String terjemahan) {
+        this.id = id;
+        this.name = name;
+        this.arabic = arabic;
+        this.latin = latin;
+        this.terjemahan = terjemahan;
+    }
+
     public Integer getId() {
         return id;
     }

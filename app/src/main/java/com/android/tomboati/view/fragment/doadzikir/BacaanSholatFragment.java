@@ -48,6 +48,10 @@ public class BacaanSholatFragment extends Fragment {
         doaTahlilViewModel.getBacaanSholat().observe(this, new Observer<List<BacaanSholatResponse>>() {
             @Override
             public void onChanged(List<BacaanSholatResponse> bacaanSholatResponses) {
+                bacaanSholatResponses.add(3, new BacaanSholatResponse(
+                        9, "Bacaan I'tidal", "سَمِعَ اللهُ لِمَنْ حَمِدَهُ", "Sami'allaahu liman " +
+                        "hamidah", "Allah maha mendengar terhadap orang yang memujinya."
+                ));
                 sholatAdapter = new SholatAdapter(bacaanSholatResponses, R.layout.item_istighosah);
                 recyclerViewBacaanSholat.setAdapter(sholatAdapter);
 

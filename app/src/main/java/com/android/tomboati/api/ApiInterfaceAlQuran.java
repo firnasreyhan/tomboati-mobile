@@ -29,4 +29,6 @@ public interface ApiInterfaceAlQuran {
     Call<AyatResponse> getAyat(
             @Path("idSurah") String idSurah
     );
+
+
 }

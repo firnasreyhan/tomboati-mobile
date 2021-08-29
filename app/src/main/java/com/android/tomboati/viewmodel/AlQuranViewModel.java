@@ -9,6 +9,7 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.tomboati.api.response.AyatResponse;
+import com.android.tomboati.api.response.QuranListResponse;
 import com.android.tomboati.api.response.SurahResponse;
 import com.android.tomboati.repository.Repository;
 
@@ -25,4 +26,9 @@ public class AlQuranViewModel extends AndroidViewModel {
     public MutableLiveData<List<SurahResponse>> getSurah() {
         return repository.getSurah();
     }
+
+    public MutableLiveData<QuranListResponse> getSurahNew() {
+        return repository.getListSurahNew();
+    }
+
 }

@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.android.tomboati.api.ApiClient;
 import com.android.tomboati.api.ApiInterfaceAlQuran;
+import com.android.tomboati.api.ApiInterfaceAlQuranNew;
 import com.android.tomboati.api.ApiInterfaceJadwalSholat;
 import com.android.tomboati.api.ApiInterfaceLokasi;
 import com.android.tomboati.api.ApiInterfaceMasjid;
@@ -30,6 +31,8 @@ import com.android.tomboati.api.response.PaketMonthResponse;
 import com.android.tomboati.api.response.PaketResponse;
 import com.android.tomboati.api.response.PaketWisataResponse;
 import com.android.tomboati.api.response.PembayaranResponse;
+import com.android.tomboati.api.response.QuranListResponse;
+import com.android.tomboati.api.response.QuranSurahResponse;
 import com.android.tomboati.api.response.SignInResponse;
 import com.android.tomboati.api.response.SurahResponse;
 import com.android.tomboati.api.response.TahlilResponse;
@@ -47,6 +50,7 @@ public class Repository {
     private ApiInterfaceJadwalSholat apiInterfaceTomboAtiJadwalSholat;
     private ApiInterfaceMasjid apiInterfaceMasjid;
     private ApiInterfaceAlQuran apiInterfaceAlQuran;
+    private ApiInterfaceAlQuranNew apiInterfaceAlQuranNew;
     private ApiInterfaceTahlil apiInterfaceTahlil;
     private ApiInterfaceLokasi apiInterfaceLokasi;
 
@@ -55,6 +59,7 @@ public class Repository {
         this.apiInterfaceTomboAtiJadwalSholat = ApiClient.getClientJadwalSholat();
         this.apiInterfaceMasjid = ApiClient.getClientMasjid();
         this.apiInterfaceAlQuran = ApiClient.getClientAlQuran();
+        this.apiInterfaceAlQuranNew = ApiClient.getClientAlQuranNew();
         this.apiInterfaceTahlil = ApiClient.getClientDoaTahlil();
         this.apiInterfaceLokasi = ApiClient.getClientLokasi();
     }
@@ -217,6 +222,40 @@ public class Repository {
             @Override
             public void onFailure(Call<AyatResponse> call, Throwable t) {
                 data.postValue(null); 
+            }
+        }); return data;
+    }
+
+    //==
+
+    public MutableLiveData<QuranListResponse> getListSurahNew() {
+        MutableLiveData<QuranListResponse> data = new MutableLiveData<>();
+        apiInterfaceAlQuranNew.getListSurah().enqueue(new Callback<QuranListResponse>() {
+            @Override
+            public void onResponse(Call<QuranListResponse> call, Response<QuranListResponse> response) {
+                if (response.code() == 200) { data.postValue(response.body()); }
+            }
+
+            @Override
+            public void onFailure(Call<QuranListResponse> call, Throwable t) {
+                data.postValue(null);
+            }
+        }); return data;
+    }
+
+    //==
+
+    public MutableLiveData<QuranSurahResponse> getAyatNew(String idSurah) {
+        MutableLiveData<QuranSurahResponse> data = new MutableLiveData<>();
+        apiInterfaceAlQuranNew.getSurah(idSurah).enqueue(new Callback<QuranSurahResponse>() {
+            @Override
+            public void onResponse(Call<QuranSurahResponse> call, Response<QuranSurahResponse> response) {
+                if (response.code() == 200) { data.postValue(response.body()); }
+            }
+
+            @Override
+            public void onFailure(Call<QuranSurahResponse> call, Throwable t) {
+                data.postValue(null);
             }
         }); return data;
     }

@@ -5,14 +5,14 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
-
 import com.android.tomboati.R;
 import com.android.tomboati.adapter.TabAdapter;
 import com.android.tomboati.view.fragment.quran.JuzFragment;
 import com.android.tomboati.view.fragment.quran.SurahFragment;
+import com.android.tomboati.view.fragment.quran.SurahNewFragment;
 import com.google.android.material.tabs.TabLayout;
 
-public class AlQuranActivity extends AppCompatActivity {
+public class AlQuranNewActivity extends AppCompatActivity {
 
     private TabAdapter tabAdapter;
     private TabLayout tabLayout;
@@ -21,7 +21,7 @@ public class AlQuranActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setTheme(R.style.ThemeTomboAtiGreen);
-        setContentView(R.layout.activity_al_quran);
+        setContentView(R.layout.activity_al_quran_new);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -33,7 +33,7 @@ public class AlQuranActivity extends AppCompatActivity {
         tabLayout = findViewById(R.id.tabLayout);
 
         tabAdapter = new TabAdapter(getSupportFragmentManager(), this);
-        tabAdapter.addFragment(new SurahFragment(), "Surat", R.drawable.ic_star);
+        tabAdapter.addFragment(new SurahNewFragment(), "Surah", R.drawable.ic_star);
         tabAdapter.addFragment(new JuzFragment(), "Juz", R.drawable.ic_star);
 
         viewPager.setAdapter(tabAdapter);

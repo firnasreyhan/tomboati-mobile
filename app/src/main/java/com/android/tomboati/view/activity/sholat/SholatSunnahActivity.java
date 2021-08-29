@@ -40,7 +40,7 @@ public class SholatSunnahActivity extends AppCompatActivity {
 
         addItem("Niat Sholat Wudhu","اُصَلِّى سُنَّةً الْوُضُوءِ رَكْعَتَيْنِ لِلّٰهِ تَعَالَى","Ushollii Sunnatal Wudhuu’i Rok’ataini Lillaahi Ta’aalaa.","Aku niat shalat sunnah wudhu dua rakaat karena Allah Ta’ala.","Niat Sholat ini dikerjakan dua raka’at sebagaimana Sholat yang lain dengan ikhlash sampai salam. Semoga kita dimudahkan oleh Allah untuk melakukan Sholat wudhu setiap kita selesai wudhu.");
 
-        addItem("Niat Sholat Tahiyatul Masjid","أصَلِّي تَحِيَّةَ الْمَسْجِدِ رَكْعَتَيْنِ سُنَّةَ لِلّهَ تَعَاَلَى","Usholi tahiyyatul masjid, rok’ataini sunnatan lillahi ta’ala.","Aku niat sholat tahiyatul masjid dua rakaat sunnah karena Allah Ta’ala.","disimpulkan bahwa ketika seseorang datang terlambat ke masjid, dan khatib sudah naik mimbar dan memulia khutbah, maka kesunnahan sholat tahiyatul masjid tetap berlaku.");
+        addItem("Niat Sholat Tahiyatul Masjid","أُصَلِّى سُنَّةَ التَّحِيَّةَ الْمَسْجِدِ رَكْعَتَيْنِ لله تعالى","Ushallii sunnatat tahiyatal masjidi rak'ataini lillahi ta'aala","Aku niat sholat sunnah tahiyatul masjid dua rakaat sunnah karena Allah Ta’ala.","disimpulkan bahwa ketika seseorang datang terlambat ke masjid, dan khatib sudah naik mimbar dan memulia khutbah, maka kesunnahan sholat tahiyatul masjid tetap berlaku.");
 
         addItem("Niat Sholat Dhuha","اُصَلِّى سُنَّةَ الضَّحٰى رَكْعَتَيْنِ مُسْتَقْبِلَ الْقِبْلَةِ اَدَاءً ِللهِ تَعَالَى","Ushalli Sunnatadh-dhuhaa rak'ataini lillaahi ta'aalaa.","Aku niat sholat sunat dhuha dua rakaat, karena Allah ta'ala.","Barang siapa sholat dhuha 12 rakaat, Allah akan membuatkan untuknya istana di surga. (H.R. Tarmizi dan Abu Majah).");
 
@@ -49,6 +49,8 @@ public class SholatSunnahActivity extends AppCompatActivity {
         addItem("Niat Sholat Rawatib Sebelum Dhuhur","اُصَلِّى سُنَّةً الظُّهْرِرَكْعَتَيْنِ قَبْلِيَّةً مُسْتَقْبِلَ الْقِبْلَةِ ِللهِ تَعَالَى","Ushalli Sunnatadh Dhuhri Rok’ataini Qobliyatan Mustaqbilal Qiblati Lillahi Ta’ala.","Aku niat mengerjakan salat sunah sebelum zuhur 2 rakaat, menghadap kiblat karena Allah Ta’ala.","");
 
         addItem("Niat Sholat Rawatib Sesudah Dhuhur","اُصَلِّى سُنَّةً الظُّهْرِرَكْعَتَيْنِ بَعْدِيَّةً مُسْتَقْبِلَ الْقِبْلَةِ ِللهِ تَعَالَى","Ushalli Sunnatadh Dhuhri Rok’ataini Ba’diyah Mustaqbilal Qiblati Lillahi Ta’ala.","Aku niat mengerjakan salat sunah sesudah zuhur 2 rakaat, menghadap kiblat karena Allah Ta’ala.","");
+
+        addItem("Niat Sholat Rawatib Sebelum Ashar","اُصَلِّيْ سُنَّةَ الْعَصْرِ رَكْعَتَيْنِ قَبْلِيَّةً مُسْتَقْبِلَ اْلقِبْلَةِ اَدَاءً لِلَّهِ تَعَالَى","Ushalli sunnatadlashri rok’ataini qabliyatan mustaqbilal qiblati ada’an lillahi ta’ala.", "Aku niat sholat sunnah sebelum ashar dua rakaat menghadap kiblat karena Allah Ta'ala","");
 
         addItem("Niat Sholat Rawatib Sesudah Maghrib","اُصَلِّى سُنَّةً الْمَغْرِبِ رَكْعَتَيْنِ بَعْدِيَّةً مُسْتَقْبِلَ الْقِبْلَةِ ِللهِ تَعَالَى","Usholli Sunnatal Maghribi Rok’ataini Ba’diyah Mustaqbilal Qiblati Lillahi Ta’ala.","Aku niat mengerjakan salat sunah sesudah magrib 2 rakaat, menghadap kiblat karena Allah Ta’ala.","");
 

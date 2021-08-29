@@ -1,4 +1,4 @@
-package com.android.tomboati.view.fragment.doadzikir;
+package com.android.tomboati.view.fragment.quran;
 
 import android.os.Bundle;
 

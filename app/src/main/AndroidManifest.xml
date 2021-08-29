@@ -21,7 +21,17 @@
         android:roundIcon="@mipmap/ic_new_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/ThemeTomboAti">
-        <activity android:name=".view.activity.pembayaran.FormPembayaranActivity"></activity>
+        <activity
+            android:name=".view.activity.quran.DetailAlQuranNewActivity"
+            android:exported="true" />
+        <activity android:name=".view.activity.quran.AlQuranNewActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".view.activity.pembayaran.FormPembayaranActivity" />
         <activity android:name=".view.activity.pembayaran.DetailPembayaranActivity" />
         <activity android:name=".view.activity.pembayaran.InformasiPembayaranActivity" />
         <activity android:name=".view.activity.pendaftaran.Syarat2Activity" />
@@ -91,13 +101,7 @@
         <activity android:name=".view.activity.sholat.SholatActivity" />
         <activity android:name=".view.activity.UmrohHajiActivity" />
         <activity android:name=".view.activity.MainActivity" />
-        <activity android:name=".view.activity.SplashScreenActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".view.activity.SplashScreenActivity"></activity>
 
         <service
             android:name=".utils.notif.MyFireBaseMessagingService"

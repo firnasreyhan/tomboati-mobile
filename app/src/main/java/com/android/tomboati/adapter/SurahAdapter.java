@@ -22,11 +22,6 @@ public class SurahAdapter extends RecyclerView.Adapter<SurahAdapter.ViewHolder> 
         this.list = list;
     }
 
-    @Override
-    public int getItemViewType(int position) {
-        return position;
-    }
-
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

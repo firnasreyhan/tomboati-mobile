@@ -6,10 +6,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:background="@color/background"
-    tools:context=".view.fragment.quran.JuzFragment">
+    tools:context=".view.fragment.quran.SurahNewFragment">
 
     <com.facebook.shimmer.ShimmerFrameLayout
-        android:id="@+id/shimmerFrameLayoutAyatPenuh"
+        android:id="@+id/shimmerFrameLayoutSurah"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
@@ -21,34 +21,29 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <include layout="@layout/item_shimmer_ayat" />
+            <include layout="@layout/item_shimmer_surah" />
 
-            <include layout="@layout/item_shimmer_ayat" />
+            <include layout="@layout/item_shimmer_surah" />
 
-            <include layout="@layout/item_shimmer_ayat" />
+            <include layout="@layout/item_shimmer_surah" />
 
-            <include layout="@layout/item_shimmer_ayat" />
+            <include layout="@layout/item_shimmer_surah" />
 
-            <include layout="@layout/item_shimmer_ayat" />
+            <include layout="@layout/item_shimmer_surah" />
 
-            <include layout="@layout/item_shimmer_ayat" />
-
-            <include layout="@layout/item_shimmer_ayat" />
-
-            <include layout="@layout/item_shimmer_ayat" />
-
-            <include layout="@layout/item_shimmer_ayat" />
-
-            <include layout="@layout/item_shimmer_ayat" />
+            <include layout="@layout/item_shimmer_surah" />
 
         </LinearLayout>
 
     </com.facebook.shimmer.ShimmerFrameLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerViewAyatPenuh"
+        android:id="@+id/recyclerViewSurah"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:overScrollMode="never"/>
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:overScrollMode="never"
+        android:visibility="gone"
+        android:focusable="true" />
 
 </LinearLayout>

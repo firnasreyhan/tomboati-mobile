@@ -41,6 +41,7 @@ import com.android.tomboati.view.activity.DetailNewsActivity;
 import com.android.tomboati.view.activity.doa_dzikir.DoaDzikirActivity;
 import com.android.tomboati.view.activity.KalenderHijriahActivity;
 import com.android.tomboati.view.activity.komunitas.KomunitasActivity;
+import com.android.tomboati.view.activity.quran.AlQuranNewActivity;
 import com.android.tomboati.view.activity.sholat.SholatActivity;
 import com.android.tomboati.view.activity.UmrohHajiActivity;
 import com.android.tomboati.view.activity.WisataReligiActivity;
@@ -271,7 +272,7 @@ public class BerandaFragment extends Fragment {
 
         AppCompatActivity[] activityArr = {
                 new UmrohHajiActivity(), new SholatActivity(), new DoaDzikirActivity(),
-                new WisataReligiActivity(), new AlQuranActivity(), new KalenderHijriahActivity(),
+                new WisataReligiActivity(), new AlQuranNewActivity(), new KalenderHijriahActivity(),
                 new KomunitasActivity()
         };
 
