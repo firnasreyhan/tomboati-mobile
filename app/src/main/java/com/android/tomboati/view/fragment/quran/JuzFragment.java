@@ -29,7 +29,7 @@ public class JuzFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_juz, container, false);
 
-        detailAlQuranViewModel = ViewModelProviders.of(getActivity()).get(DetailAlQuranViewModel.class);
+        detailAlQuranViewModel = ViewModelProviders.of(this).get(DetailAlQuranViewModel.class);
         recyclerViewAyatPenuh = view.findViewById(R.id.recyclerViewAyatPenuh);
         shimmerFrameLayoutAyatPenuh = view.findViewById(R.id.shimmerFrameLayoutAyatPenuh);
 
@@ -44,28 +44,6 @@ public class JuzFragment extends Fragment {
         shimmerFrameLayoutAyatPenuh.setVisibility(View.GONE);
         shimmerFrameLayoutAyatPenuh.stopShimmer();
 
-//        List<AyatResponse.AyatModel> list = new ArrayList<>();
-//        for (int i = 1; i <= 114; i++) {
-//            int x = i;
-//            detailAlQuranViewModel.getAyat(
-//                    String.valueOf(i)
-//            ).observe(this, new Observer<AyatResponse>() {
-//                @Override
-//                public void onChanged(AyatResponse ayatResponses) {
-//                    if (ayatResponses.isStatus()) {
-//                        list.addAll(ayatResponses.getAyat());
-//                        if (x == 114) {
-//                            juzAdapter = new JuzAdapter(list);
-//                            recyclerViewAyatPenuh.setAdapter(juzAdapter);
-//
-//                            recyclerViewAyatPenuh.setVisibility(View.VISIBLE);
-//                            shimmerFrameLayoutAyatPenuh.setVisibility(View.GONE);
-//                            shimmerFrameLayoutAyatPenuh.stopShimmer();
-//                        }
-//                    }
-//                }
-//            });
-//        }
 
         return view;
     }

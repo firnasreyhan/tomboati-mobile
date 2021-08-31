@@ -8,6 +8,7 @@ import android.os.Bundle;
 import com.android.tomboati.R;
 import com.android.tomboati.adapter.TabAdapter;
 import com.android.tomboati.view.fragment.quran.JuzFragment;
+import com.android.tomboati.view.fragment.quran.JuzNewFragment;
 import com.android.tomboati.view.fragment.quran.SurahFragment;
 import com.android.tomboati.view.fragment.quran.SurahNewFragment;
 import com.google.android.material.tabs.TabLayout;
@@ -34,7 +35,7 @@ public class AlQuranNewActivity extends AppCompatActivity {
 
         tabAdapter = new TabAdapter(getSupportFragmentManager(), this);
         tabAdapter.addFragment(new SurahNewFragment(), "Surah", R.drawable.ic_star);
-        tabAdapter.addFragment(new JuzFragment(), "Juz", R.drawable.ic_star);
+        tabAdapter.addFragment(new JuzNewFragment(), "Juz", R.drawable.ic_star);
 
         viewPager.setAdapter(tabAdapter);
         tabLayout.setupWithViewPager(viewPager);

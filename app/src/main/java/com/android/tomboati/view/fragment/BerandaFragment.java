@@ -278,7 +278,7 @@ public class BerandaFragment extends Fragment {
 
         String[] uriArr = {
                 "https://www.youtube.com/channel/UCwDEM2yv71YDtaoxAjrswLA",
-                "https://www.youtube.com/watch?v=k2gOsvK8XNM"
+                "https://www.youtube.com/results?search_query=livemakkah"
         };
 
         for (int i = 0; i < cardArr.length; i++) {

@@ -22,15 +22,10 @@
         android:supportsRtl="true"
         android:theme="@style/ThemeTomboAti">
         <activity
-            android:name=".view.activity.quran.DetailAlQuranNewActivity"
+            android:name=".view.activity.quran.DetailJuzNewActivity"
             android:exported="true" />
-        <activity android:name=".view.activity.quran.AlQuranNewActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".view.activity.quran.DetailAlQuranNewActivity" />
+        <activity android:name=".view.activity.quran.AlQuranNewActivity"></activity>
         <activity android:name=".view.activity.pembayaran.FormPembayaranActivity" />
         <activity android:name=".view.activity.pembayaran.DetailPembayaranActivity" />
         <activity android:name=".view.activity.pembayaran.InformasiPembayaranActivity" />
@@ -88,7 +83,7 @@
         <activity android:name=".view.activity.sholat.ArahKiblatActivity" />
         <activity
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
-            android:screenOrientation="portrait"
+            android:screenOrientation="fullSensor"
             android:theme="@style/Base.Theme.AppCompat" />
         <activity android:name=".view.activity.sholat.WudhuActivity" />
         <activity android:name=".view.activity.sholat.SholatWajibActivity" />
@@ -101,7 +96,13 @@
         <activity android:name=".view.activity.sholat.SholatActivity" />
         <activity android:name=".view.activity.UmrohHajiActivity" />
         <activity android:name=".view.activity.MainActivity" />
-        <activity android:name=".view.activity.SplashScreenActivity"></activity>
+        <activity android:name=".view.activity.SplashScreenActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
         <service
             android:name=".utils.notif.MyFireBaseMessagingService"

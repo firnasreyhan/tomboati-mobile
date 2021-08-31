@@ -41,22 +41,20 @@ public class IstighosahActivity extends AppCompatActivity {
         super.onStart();
 
         listModel.clear();
-        addModel("بِسْمِ اللهِ الرَّحْمَنِ الرَّحِيم", "Bismillahirrahmanirrahim", 1);
-        addModel("بِسْمِ اللهِ الرَّ حْمَنِ الرَّ حِيْمِ . اَلْحَمْدُ لِلهِ رَبِّ الْعَا " + "لَمِيْنَ . اَلرَّحْمَنِ الرَّحِيْمِ . مَلِكِ يَوْمِ الدِّيْنِ . اِيَّا " +
-                "كَنَعْبُدُ وَاِيَّا كَنَسْتَعِيْنُ . اِهْدِنَا الصِّرَاطَ الَّمُسْتَقِيْمَ . " + "صِرَاطَ الَّذِ يْنَ اَنْعَمْتَ عَلَيْهِمْ غَيْرِالْمَغْضُوْبِ عَلَيْهِمْ وَلَا " +
-                "الضَّالِّيْنَ . اَمِينْ", "(Alfateha) Bismillaa hirrahmaanir rahiim " +
+        addModel("بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ. اَلْحَمْدُ لِلّٰهِ رَبِّ الْعٰلَمِيْنَ. الرَّحْمٰنِ الرَّحِيْمِ. مٰلِكِ يَوْمِ الدِّيْنِ. اِيَّاكَ نَعْبُدُ وَاِيَّاكَ نَسْتَعِيْنُ. اِھْدِنَا الصِّرَاطَ الْمُسْتَـقِيْمَ. صِرَاطَ الَّذِيۡنَ اَنۡعَمۡتَ عَلَيۡهِمۡ ۙ غَيۡرِ الۡمَغۡضُوۡبِ عَلَيۡهِمۡ وَلَا الضَّآلِّيۡ",
+                "(Alfateha) Bismillaa hirrahmaanir rahiim " +
                 "Alhamdulillaahi rabbill’aalamiin. Arrohmaanir rahiim. Maalikiyaumiddin. Iyyaakana’budu wa " +
                 "iyyaakanasta’iin. Ihdinash shiraathal mustaqiim. Shiraathal ladziina an’amta " +
                 "‘alaihim ghoiril maghdhuubi’alaihim waladhaalliin. Aamiinn", 1);
         addModel("أسْتَغْفِرُ اللهَ الْعَظِيْمَ", "Astaghfirullahal ‘Adhiim", 3);
-        addModel("بلَاحَوْلَ وَلَا قُوَّةَ إلَّا بِا للهِ الْعَلِيِّ الْعَظِيْمِ", "Laa Haula Wa " +
+        addModel("لَاحَوْلَ وَلَا قُوَّةَ إلَّا بِا للهِ الْعَلِيِّ الْعَظِيْمِ", "Laa Haula Wa " +
                 "Laa Quwwata Illaa Billahil ‘Aliyyil Adhiim", 3);
         addModel("أللَّهُمَّ صَلِّي عَلَى سَيِّدِنَا مُحَمَّدٍ وَعَلَى آلِ سَيِّدِنَا مُحَمَّدٍ",
                 "Allahumma Shallii ‘Alaa Sayyidinaa Muhammadin Wa ‘Alaa Aali Sayyidinaa " +
                         "Muhammadin", 3);
         addModel("لَا إلهَ إلَّا أنْتَ سُبْحَانَكَ إنِّي كُنْتُ مِنَ الظَّالِمِيْنَ", "Laa Ilaaha" +
                 " Illaa Anta Subhaanaka Innii Kuntu Minazhzhoolimiin", 40);
-        addModel("بيَا اَللهُ يَا قَدِيْمُ", "Yaa Allahu Yaa Qadiim", 33);
+        addModel("يَا اَللهُ يَا قَدِيْمُ", "Yaa Allahu Yaa Qadiim", 33);
         addModel("يَا سَمِيْعُ يَا بَصِيْرُ", "Yaa Samii’U Yaa Bashiir", 33);
         addModel("يَا مُبْدِعُ يَا خَالِقُ", "Yaa Mubdi’U Yaa Khaaliq", 33);
         addModel("يَا حَفِيْظُ يَا نَصِيْرُ يَا وَكِيْلُ ياَ اللهُ", "Yaa Hafiizhu Yaa Nashiiru " +
@@ -64,7 +62,7 @@ public class IstighosahActivity extends AppCompatActivity {
         addModel("يَا حَيُّ يَا قَيُّوْمُ بِرَحْمَتِكَ أسْتَغِيْثُ", "Yaa Hayyu Yaa Qayyuumu " +
                 "Birahmatika Astaghiits", 33);
         addModel("يَا لَطِيْفُ", "Yaa Lathiif", 41);
-        addModel("بأسْتَغْفِرُ اللهَ الْعَظِيْمَ إنَّهُ كَانَ غَفَّارًا", "Astaghfirullahal" +
+        addModel("أسْتَغْفِرُ اللهَ الْعَظِيْمَ إنَّهُ كَانَ غَفَّارًا", "Astaghfirullahal" +
                 "’Azhiima Innahu Kaana Ghaffaraa", 33);
         addModel("أللَّهُمَّ صَلِّي عَلَى سَيِّدِنَا مُحَمَّدٍ قَدْ ضَاقَتْ حِيْلَتِي أدْرِكْنِي " +
                 "يَا اَللهُ", "Allahumma Shallii ‘Alaa Sayyidinaa Muhammadin Qad Dhaaqat " +
@@ -96,20 +94,19 @@ public class IstighosahActivity extends AppCompatActivity {
                 "Bismillahi Maasyaa-Allahu Laa Yashrifus Suu-A Illallahu Bismillahi Maasyaa-Allahu " +
                 "Maa Kaana Min Ni’Matin Faminallhi Bismillahi Maasyaa-Allahu Laa Haula Wa Laa " +
                 "Quwwata Illaa Billahil’Aliyyil ‘Azhimm", 1);
-        addModel("بسَألْتُكَ يَا غَفَّارُ عَفْوًا وَتَوْبَةً وَبِالْقَهْرِ يَا قَهَّارُ خُذْ مَنْ" +
+        addModel("سَألْتُكَ يَا غَفَّارُ عَفْوًا وَتَوْبَةً وَبِالْقَهْرِ يَا قَهَّارُ خُذْ مَنْ" +
                 " تَحَيَّلَا", "Sa-Altuka Yaa Ghaffaaru ‘Afwan Wa Taubata Wa Bilqahri Yaa " +
                 "Qahhaaru Khudz Man Tahayyalaa", 33);
-        addModel("بيَا جَبَّارُ يَا قَهَّارُ يَا ذَا الْبَطْشِ الشَّدِيْدِ خُذْ حَقَّنَا وَحَقَّ " +
+        addModel("يَا جَبَّارُ يَا قَهَّارُ يَا ذَا الْبَطْشِ الشَّدِيْدِ خُذْ حَقَّنَا وَحَقَّ " +
                 "الْمُسْلِمِيْنَ مِمَّنْ ظَلَمَنَا وَالْمُسْلِمِيْنَ وَتَعَدَّى عَلَيْنَا وَعَلَى" +
                 " الْمُسْلِمِيْنَ", "Yaa Jabbaaru Yaa Qahhaaru Yaa Dzal Bath-Syisy Syadiidi Khudz " +
                 "Haqqanaa Wa Haqqal Muslimiina Mimman Zhalamnaa Wal Muslimiina Wa Ta’Addaa ‘Alainaa " +
                 "Wa ‘Alalmuslimiin", 33);
-        addModel("بِسْمِ اللهِ الرَّ حْمَنِ الرَّ حِيْمِ . اَلْحَمْدُ لِلهِ رَبِّ الْعَا " + "لَمِيْنَ . اَلرَّحْمَنِ الرَّحِيْمِ . مَلِكِ يَوْمِ الدِّيْنِ . اِيَّا " +
-                "كَنَعْبُدُ وَاِيَّا كَنَسْتَعِيْنُ . اِهْدِنَا الصِّرَاطَ الَّمُسْتَقِيْمَ . " + "صِرَاطَ الَّذِ يْنَ اَنْعَمْتَ عَلَيْهِمْ غَيْرِالْمَغْضُوْبِ عَلَيْهِمْ وَلَا " +
-                "الضَّالِّيْنَ . اَمِينْ", "(Alfateha) Bismillaa hirrahmaanir rahiim " +
-                "Alhamdulillaahi rabbill’aalamiin. Arrohmaanir rahiim. Maalikiyaumiddin. Iyyaakana’budu wa " +
-                "iyyaakanasta’iin. Ihdinash shiraathal mustaqiim. Shiraathal ladziina an’amta " +
-                "‘alaihim ghoiril maghdhuubi’alaihim waladhaalliin. Aamiinn", 1);
+        addModel("بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ. اَلْحَمْدُ لِلّٰهِ رَبِّ الْعٰلَمِيْنَ. الرَّحْمٰنِ الرَّحِيْمِ. مٰلِكِ يَوْمِ الدِّيْنِ. اِيَّاكَ نَعْبُدُ وَاِيَّاكَ نَسْتَعِيْنُ. اِھْدِنَا الصِّرَاطَ الْمُسْتَـقِيْمَ. صِرَاطَ الَّذِيۡنَ اَنۡعَمۡتَ عَلَيۡهِمۡ ۙ غَيۡرِ الۡمَغۡضُوۡبِ عَلَيۡهِمۡ وَلَا الضَّآلِّيۡ",
+                "(Alfateha) Bismillaa hirrahmaanir rahiim " +
+                        "Alhamdulillaahi rabbill’aalamiin. Arrohmaanir rahiim. Maalikiyaumiddin. Iyyaakana’budu wa " +
+                        "iyyaakanasta’iin. Ihdinash shiraathal mustaqiim. Shiraathal ladziina an’amta " +
+                        "‘alaihim ghoiril maghdhuubi’alaihim waladhaalliin. Aamiinn", 1);
 
         IstighosahAdapter adapter = new IstighosahAdapter(listModel);
         recyclerView.setLayoutManager(new LinearLayoutManager(IstighosahActivity.this));

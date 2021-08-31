@@ -91,8 +91,6 @@ public class DetailJuzActivity extends AppCompatActivity {
                             ayatAdapter = new AyatAdapter(list);
                             recyclerViewAyat.setAdapter(ayatAdapter);
 
-                            Log.e("size", String.valueOf(list.size()));
-
                             recyclerViewAyat.setVisibility(View.VISIBLE);
                             shimmerFrameLayoutAyat.setVisibility(View.GONE);
                             shimmerFrameLayoutAyat.stopShimmer();

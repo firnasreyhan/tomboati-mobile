@@ -99,20 +99,31 @@ public class QuranSurahResponse {
 
         public static class Verse {
 
+            @SerializedName("number")
+            @Expose
+            private Numbers number;
+
             @SerializedName("text")
             @Expose
             private Text text;
+
             @SerializedName("translation")
             @Expose
             private Translation translation;
+
             @SerializedName("audio")
             @Expose
             private Audio audio;
 
-            public Verse(Text text, Translation translation, Audio audio) {
+            public Verse(Numbers number, Text text, Translation translation, Audio audio) {
+                this.number = number;
                 this.text = text;
                 this.translation = translation;
                 this.audio = audio;
+            }
+
+            public Numbers getNumber() {
+                return number;
             }
 
             public Text getText() {
@@ -127,11 +138,34 @@ public class QuranSurahResponse {
                 return audio;
             }
 
+            public static class Numbers {
+                @SerializedName("inSurah")
+                @Expose
+                private int inSurah;
+                @SerializedName("inQuran")
+                @Expose
+                private int inQuran;
+
+                public Numbers(int inSurah, int inQuran) {
+                    this.inSurah = inSurah;
+                    this.inQuran = inQuran;
+                }
+
+                public int getInSurah() {
+                    return inSurah;
+                }
+
+                public int getInQuran() {
+                    return inQuran;
+                }
+            }
+
             public static class Text {
 
                 @SerializedName("arab")
                 @Expose
                 private String arab;
+
                 @SerializedName("transliteration")
                 @Expose
                 private Transliteration__1 transliteration;

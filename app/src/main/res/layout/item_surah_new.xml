@@ -59,9 +59,9 @@
             android:layout_marginStart="12dp"
             android:layout_marginLeft="12dp"
             android:layout_marginTop="16dp"
-            android:fontFamily="@font/catamaran_bold"
+            android:fontFamily="@font/cinzel_bold"
             android:text="Al Fatihah"
-            android:textColor="@color/black"
+            android:textColor="@color/dark_green"
             android:textSize="20sp"
             app:layout_constraintStart_toEndOf="@+id/frameLayout"
             app:layout_constraintTop_toTopOf="parent" />

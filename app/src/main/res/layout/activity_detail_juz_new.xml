@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".view.activity.quran.DetailAlQuranNewActivity">
+    android:background="@color/background"
+    tools:context=".view.activity.quran.DetailJuzNewActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -46,20 +47,10 @@
 
     </com.facebook.shimmer.ShimmerFrameLayout>
 
-    <LinearLayout
-        android:id="@+id/linearLayoutContent"
-        android:visibility="gone"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewAyat"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerViewAyat"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:overScrollMode="never"
-            android:layout_weight="1"/>
-
-    </LinearLayout>
+        android:overScrollMode="never"/>
 
 </LinearLayout>

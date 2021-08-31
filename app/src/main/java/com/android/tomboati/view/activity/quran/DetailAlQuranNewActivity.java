@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.LinearLayout;
 
 import com.android.tomboati.R;
@@ -24,8 +25,8 @@ public class DetailAlQuranNewActivity extends AppCompatActivity {
 
     private DetailAlQuranViewModel detailAlQuranViewModel;
     private RecyclerView recyclerViewAyat;
-//    private ShimmerFrameLayout shimmerFrameLayoutAyat;
-//    private LinearLayout linearLayoutContent;
+    private ShimmerFrameLayout shimmerFrameLayoutAyat;
+    private LinearLayout linearLayoutContent;
     private AyatNewAdapter ayatNewAdapter;
 
     @Override
@@ -41,8 +42,8 @@ public class DetailAlQuranNewActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         recyclerViewAyat = findViewById(R.id.recyclerViewAyat);
-//        shimmerFrameLayoutAyat = findViewById(R.id.shimmerFrameLayoutAyat);
-//        linearLayoutContent = findViewById(R.id.linearLayoutContent);
+        shimmerFrameLayoutAyat = findViewById(R.id.shimmerFrameLayoutAyat);
+        linearLayoutContent = findViewById(R.id.linearLayoutContent);
 
         detailAlQuranViewModel = ViewModelProviders.of(this).get(DetailAlQuranViewModel.class);
 
@@ -60,6 +61,7 @@ public class DetailAlQuranNewActivity extends AppCompatActivity {
                     final List<QuranSurahResponse.Data.Verse> LIST_DATA = quranSurahResponse.getData().getVerses();
                     if(ID_SURAH > 1) {
                         LIST_DATA.add(0, new QuranSurahResponse.Data.Verse(
+                                new QuranSurahResponse.Data.Verse.Numbers(0, 0),
                                 new QuranSurahResponse.Data.Verse.Text(
                                         "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ",
                                         new QuranSurahResponse.Data.Verse.Text.Transliteration__1("Bismillaahir Rahmaanir Raheem")
@@ -70,6 +72,11 @@ public class DetailAlQuranNewActivity extends AppCompatActivity {
                     }
                     ayatNewAdapter = new AyatNewAdapter(LIST_DATA);
                     recyclerViewAyat.setAdapter(ayatNewAdapter);
+
+
+                    linearLayoutContent.setVisibility(View.VISIBLE);
+                    shimmerFrameLayoutAyat.setVisibility(View.GONE);
+                    shimmerFrameLayoutAyat.stopShimmer();
                 }
             }
         });
@@ -86,12 +93,12 @@ public class DetailAlQuranNewActivity extends AppCompatActivity {
     @Override
     public void onResume() {
         super.onResume();
-//        shimmerFrameLayoutAyat.startShimmer();
+        shimmerFrameLayoutAyat.startShimmer();
     }
 
     @Override
     public void onPause() {
-//        shimmerFrameLayoutAyat.stopShimmer();
+        shimmerFrameLayoutAyat.stopShimmer();
         super.onPause();
     }
 }
