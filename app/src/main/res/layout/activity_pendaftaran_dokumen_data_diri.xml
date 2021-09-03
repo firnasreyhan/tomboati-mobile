@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    tools:context=".view.activity.pembayaran.FormPembayaranActivity">
+    tools:context=".view.activity.pendaftaran.PendaftaranDokumenDataDiriActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -50,121 +50,11 @@
                     android:layout_marginLeft="16dp"
                     android:layout_marginTop="8dp"
                     android:fontFamily="@font/cinzel_bold"
-                    android:text="Data Pembayaran"
+                    android:text="Dokumen Data Diri"
                     android:textColor="@color/dark_green"
                     android:textSize="16sp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/textView11"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginTop="16dp"
-                    android:fontFamily="@font/catamaran_medium"
-                    android:text="Jumlah Pembayaran (Rp.)"
-                    android:textColor="@color/black"
-                    android:textSize="12sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView10" />
-
-                <EditText
-                    android:id="@+id/editTextJumlahPembayaran"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginRight="16dp"
-                    android:background="@drawable/round_border_form"
-                    android:ems="10"
-                    android:fontFamily="@font/catamaran_medium"
-                    android:hint="35000000"
-                    android:inputType="numberSigned|numberDecimal"
-                    android:padding="10dp"
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/darker_grey"
-                    android:textSize="12sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView11" />
-
-                <TextView
-                    android:id="@+id/textView12"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginTop="10dp"
-                    android:fontFamily="@font/catamaran_medium"
-                    android:text="Tanggal Pembayaran"
-                    android:textColor="@color/black"
-                    android:textSize="12sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/editTextJumlahPembayaran" />
-
-                <TextView
-                    android:id="@+id/editTextTanggalPembayaran"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginRight="16dp"
-                    android:background="@drawable/round_border_form"
-                    android:ems="10"
-                    android:fontFamily="@font/catamaran_medium"
-                    android:hint="Pilih Tanggal"
-                    android:inputType="textPersonName"
-                    android:padding="10dp"
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/darker_grey"
-                    android:textSize="12sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView12" />
-
-                <TextView
-                    android:id="@+id/textView15"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginTop="10dp"
-                    android:fontFamily="@font/catamaran_medium"
-                    android:text="Deskripsi"
-                    android:textColor="@color/black"
-                    android:textSize="12sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/editTextTanggalPembayaran" />
-
-                <EditText
-                    android:id="@+id/editTextDeskripsi"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginRight="16dp"
-                    android:background="@drawable/round_border_form"
-                    android:ems="10"
-                    android:fontFamily="@font/catamaran_medium"
-                    android:hint="Masukkan Deskripsi"
-                    android:inputType="textPersonName"
-                    android:padding="10dp"
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/darker_grey"
-                    android:textSize="12sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView15" />
 
                 <TextView
                     android:id="@+id/textView16"
@@ -172,16 +62,188 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginLeft="16dp"
-                    android:layout_marginTop="32dp"
+                    android:layout_marginTop="16dp"
                     android:fontFamily="@font/catamaran_medium"
-                    android:text="Foto Bukti Pembayaran"
+                    android:text="Foto KTP"
                     android:textColor="@color/black"
                     android:textSize="12sp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/editTextDeskripsi" />
+                    app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
                 <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/cardViewFotoBuktiPembayaran"
+                    android:id="@+id/cardViewFotoKTP"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_150sdp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:clickable="true"
+                    app:cardCornerRadius="5dp"
+                    app:cardPreventCornerOverlap="false"
+                    app:cardUseCompatPadding="false"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView16"
+                    app:strokeColor="@color/dark_green"
+                    app:strokeWidth="2dp">
+
+                    <ImageView
+                        android:id="@+id/imageViewKTP"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="1dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/ic_thumbnail_no_image" />
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <TextView
+                    android:id="@+id/textView17"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/catamaran_medium"
+                    android:text="Foto Akta Kelahiran"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/cardViewFotoKTP" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardViewFotoAkteKelahiran"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_150sdp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:clickable="true"
+                    app:cardCornerRadius="5dp"
+                    app:cardPreventCornerOverlap="false"
+                    app:cardUseCompatPadding="false"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView17"
+                    app:strokeColor="@color/dark_green"
+                    app:strokeWidth="2dp">
+
+                    <ImageView
+                        android:id="@+id/imageViewAkteKelahiran"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="1dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/ic_thumbnail_no_image" />
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <TextView
+                    android:id="@+id/textView18"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/catamaran_medium"
+                    android:text="Foto Kartu Keluarga"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/cardViewFotoAkteKelahiran" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardViewFotoKartuKeluarga"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_150sdp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:clickable="true"
+                    app:cardCornerRadius="5dp"
+                    app:cardPreventCornerOverlap="false"
+                    app:cardUseCompatPadding="false"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView18"
+                    app:strokeColor="@color/dark_green"
+                    app:strokeWidth="2dp">
+
+                    <ImageView
+                        android:id="@+id/imageViewKartuKeluarga"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="1dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/ic_thumbnail_no_image"/>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <TextView
+                    android:id="@+id/textView19"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/catamaran_medium"
+                    android:text="Foto Paspor"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/cardViewFotoKartuKeluarga" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardViewFotoPaspor"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_150sdp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginRight="16dp"
+                    android:clickable="true"
+                    app:cardCornerRadius="5dp"
+                    app:cardPreventCornerOverlap="false"
+                    app:cardUseCompatPadding="false"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView19"
+                    app:strokeColor="@color/dark_green"
+                    app:strokeWidth="2dp">
+
+                    <ImageView
+                        android:id="@+id/imageViewPaspor"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="1dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/ic_thumbnail_no_image" />
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <TextView
+                    android:id="@+id/textView20"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/catamaran_medium"
+                    android:text="Foto Buku Nikah (*Opsional)"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/cardViewFotoPaspor" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardViewFotoBukuNikah"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/_150sdp"
                     android:layout_marginStart="16dp"
@@ -197,21 +259,17 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView16"
+                    app:layout_constraintTop_toBottomOf="@+id/textView20"
                     app:strokeColor="@color/dark_green"
                     app:strokeWidth="2dp">
 
                     <ImageView
-                        android:id="@+id/imageViewBuktiPembayaran"
+                        android:id="@+id/imageViewBukuNikah"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_margin="1dp"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/ic_thumbnail_no_image"
-                        android:visibility="visible"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/textView16" />
+                        android:src="@drawable/ic_thumbnail_no_image" />
 
                 </com.google.android.material.card.MaterialCardView>
 
@@ -237,13 +295,13 @@
             android:padding="@dimen/_7sdp">
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/materialButtonSimpanPembayaran"
+                android:id="@+id/materialButtonLanjutkan"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_50sdp"
                 android:backgroundTint="@color/dark_green"
                 android:fontFamily="@font/catamaran_bold"
                 android:padding="12dp"
-                android:text="Simpan Pembayaran"
+                android:text="Lanjutkan"
                 android:textAllCaps="true" />
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>

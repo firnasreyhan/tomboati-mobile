@@ -16,6 +16,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -39,8 +40,8 @@ public class PendaftaranDataKeluargaActivity extends AppCompatActivity {
     private PendaftaranDataKeluargaViewModel viewModel;
 
     private Spinner spinnerProvinsi, spinnerKotaKabupaten, spinnerKecamatan, spinnerKelurahan;
-    private TextInputEditText textInputEditTextNamaLengkap, textInputEditTextNomorHandphone, textInputEditTextKodePos, textInputEditTextRincianAlamat;
-    private MaterialButton materialButtonLanjutkanPesan;
+    private EditText textInputEditTextNamaLengkap, textInputEditTextNomorHandphone, textInputEditTextKodePos, textInputEditTextRincianAlamat;
+    private MaterialButton materialButtonLanjutkan;
 
     private PesananaModel model;
 
@@ -69,11 +70,11 @@ public class PendaftaranDataKeluargaActivity extends AppCompatActivity {
         textInputEditTextNomorHandphone = findViewById(R.id.textInputEditTextNomorHandphone);
         textInputEditTextKodePos = findViewById(R.id.textInputEditTextKodePos);
         textInputEditTextRincianAlamat = findViewById(R.id.textInputEditTextRincianAlamat);
-        materialButtonLanjutkanPesan = findViewById(R.id.materialButtonLanjutkanPesan);
+        materialButtonLanjutkan = findViewById(R.id.materialButtonLanjutkan);
 
         getProvinsi();
 
-        materialButtonLanjutkanPesan.setOnClickListener(new View.OnClickListener() {
+        materialButtonLanjutkan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (checkData()) {
@@ -179,11 +180,11 @@ public class PendaftaranDataKeluargaActivity extends AppCompatActivity {
 
         int countError = 0;
 
-        final TextInputEditText[] editText = {
+        final EditText[] editText = {
                 textInputEditTextNamaLengkap, textInputEditTextNomorHandphone, textInputEditTextKodePos, textInputEditTextRincianAlamat
         };
 
-        for (TextInputEditText textInputEditText : editText) {
+        for (EditText textInputEditText : editText) {
             if (textInputEditText.getText().toString().isEmpty()) {
                 textInputEditText.setError("Mohon isi data berikut");
                 countError++;

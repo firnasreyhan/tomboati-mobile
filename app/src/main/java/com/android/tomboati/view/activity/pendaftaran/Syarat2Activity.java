@@ -41,7 +41,6 @@ public class Syarat2Activity extends AppCompatActivity {
                     intent = new Intent(v.getContext(), FormPembayaranActivity.class);
                     intent.putExtra("ID_TRANSAKSI", ID_TRANSAKSI);
                 }
-                finish();
                 startActivity(intent);
             }
         });
@@ -65,4 +64,5 @@ public class Syarat2Activity extends AppCompatActivity {
 
 
     }
+
 }

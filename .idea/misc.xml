@@ -3,12 +3,23 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/round_bg.xml" value="0.16458333333333333" />
+        <entry key="app/src/main/res/drawable/round_border.xml" value="0.16458333333333333" />
+        <entry key="app/src/main/res/drawable/round_border_form.xml" value="0.16458333333333333" />
         <entry key="app/src/main/res/layout/activity_al_quran_new.xml" value="0.14947916666666666" />
         <entry key="app/src/main/res/layout/activity_detail_al_quran.xml" value="0.14947916666666666" />
         <entry key="app/src/main/res/layout/activity_detail_al_quran_new.xml" value="0.2" />
         <entry key="app/src/main/res/layout/activity_detail_juz.xml" value="0.14722222222222223" />
         <entry key="app/src/main/res/layout/activity_detail_juz_new.xml" value="0.14947916666666666" />
+        <entry key="app/src/main/res/layout/activity_doa_sehari_hari.xml" value="0.13703703703703704" />
+        <entry key="app/src/main/res/layout/activity_form_pembayaran.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_pendaftaran_data_diri.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_pendaftaran_data_diri_new.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_pendaftaran_data_keluarga.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_pendaftaran_dokumen_data_diri.xml" value="0.2677238805970149" />
+        <entry key="app/src/main/res/layout/activity_sholat.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_splash_screen.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_syarat2.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_wudhu.xml" value="0.14947916666666666" />
         <entry key="app/src/main/res/layout/fragment_beranda.xml" value="0.21087435709037472" />
         <entry key="app/src/main/res/layout/fragment_juz.xml" value="0.14947916666666666" />
@@ -20,6 +31,8 @@
         <entry key="app/src/main/res/layout/item_ayat_new.xml" value="0.25" />
         <entry key="app/src/main/res/layout/item_surah.xml" value="0.14947916666666666" />
         <entry key="app/src/main/res/layout/item_surah_new.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/view_custom_dialog.xml" value="0.14947916666666666" />
+        <entry key="app/src/main/res/layout/view_custom_dialog_info.xml" value="0.14947916666666666" />
       </map>
     </option>
   </component>

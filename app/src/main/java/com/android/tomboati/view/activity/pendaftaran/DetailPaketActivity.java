@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -46,11 +47,12 @@ public class DetailPaketActivity extends AppCompatActivity {
 
     private int sheet = 0;
     private double sheetHarga = 0;
-    private double hargaQuad, hargaTriple, hargaDouble;
     private String tanggalKeberangkatan;
     private boolean isSheetSelected = false;
 
     private PesananaModel model;
+
+    final double[] arrSheetHarga = new double[3];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -108,13 +110,13 @@ public class DetailPaketActivity extends AppCompatActivity {
                             picassoLoad(paketResponse.getData().get(0).getImagePaket(), imageViewPaket);
 
                             textViewQuad.setText("Rp. ".concat(formatCurrency(paketResponse.getData().get(0).getQuadSheet())));
-                            hargaQuad = paketResponse.getData().get(0).getQuadSheet();
+                            arrSheetHarga[2] = paketResponse.getData().get(0).getQuadSheet();
 
                             textViewTriple.setText("Rp. ".concat(formatCurrency(paketResponse.getData().get(0).getTripleSheet())));
-                            hargaTriple = paketResponse.getData().get(0).getTripleSheet();
+                            arrSheetHarga[1] = paketResponse.getData().get(0).getTripleSheet();
 
                             textViewDouble.setText("Rp. ".concat(formatCurrency(paketResponse.getData().get(0).getDoubleSheet())));
-                            hargaDouble = paketResponse.getData().get(0).getDoubleSheet();
+                            arrSheetHarga[0] = paketResponse.getData().get(0).getDoubleSheet();
 
                             tanggalKeberangkatan = paketResponse.getData().get(0).getTanggalKeberangkatan();
 
@@ -145,13 +147,13 @@ public class DetailPaketActivity extends AppCompatActivity {
                         picassoLoad(paketWisataResponse.getData().get(0).getImageWisata(), imageViewPaket);
 
                         textViewQuad.setText("Rp. ".concat(formatCurrency(paketWisataResponse.getData().get(0).getQuadSheet())));
-                        hargaQuad = paketWisataResponse.getData().get(0).getQuadSheet();
+                        arrSheetHarga[2] = paketWisataResponse.getData().get(0).getQuadSheet();
 
                         textViewTriple.setText("Rp. ".concat(formatCurrency(paketWisataResponse.getData().get(0).getTripleSheet())));
-                        hargaTriple = paketWisataResponse.getData().get(0).getTripleSheet();
+                        arrSheetHarga[1] = paketWisataResponse.getData().get(0).getTripleSheet();
 
                         textViewDouble.setText("Rp. ".concat(formatCurrency(paketWisataResponse.getData().get(0).getDoubleSheet())));
-                        hargaDouble = paketWisataResponse.getData().get(0).getDoubleSheet();
+                        arrSheetHarga[0] = paketWisataResponse.getData().get(0).getDoubleSheet();
 
                         tanggalKeberangkatan = paketWisataResponse.getData().get(0).getTanggalKeberangkatan();
 
@@ -191,7 +193,6 @@ public class DetailPaketActivity extends AppCompatActivity {
         });
 
         final CardView[] arrCardView = {cardViewDouble, cardViewTriple, cardViewQuad};
-        final double[] arrSheetHarga = {hargaDouble, hargaTriple, hargaQuad};
 
         for (int i = 0; i < arrCardView.length; i++) {
             int j = i;

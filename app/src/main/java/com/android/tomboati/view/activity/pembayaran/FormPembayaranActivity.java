@@ -8,22 +8,28 @@ import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.DatePicker;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.tomboati.R;
 import com.android.tomboati.api.response.BaseResponse;
 import com.android.tomboati.utils.AlertInfo;
 import com.android.tomboati.utils.AlertProgress;
+import com.android.tomboati.utils.Utility;
 import com.android.tomboati.view.activity.MainActivity;
 import com.android.tomboati.view.activity.pendaftaran.PendaftaranDataDiriActivity;
 import com.android.tomboati.viewmodel.PembayaranViewModel;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
@@ -31,12 +37,18 @@ public class FormPembayaranActivity extends AppCompatActivity {
 
     private Uri uriBuktiPembayaran = null;
     private ImageView imageViewBuktiPembayaran;
-    private TextInputEditText textInputEditTextJumlahPembayaran, textInputEditTextTanggalPembayaran, textInputEditTextDeskripsi;
+    private TextView editTextJumlahPembayaran, editTextTanggalPembayaran, editTextDeskripsi;
     private CardView cardViewFotoBuktiPembayaran;
     private MaterialButton materialButtonSimpanPembayaran;
 
+    private String tanggal = "";
+
     private PembayaranViewModel viewModel;
     private LifecycleOwner OWNER = this;
+
+    private String[] bulan = {
+            "Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September","Oktober", "November", "Desember"
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,9 +67,10 @@ public class FormPembayaranActivity extends AppCompatActivity {
         final String ID_TRANSAKSI = getIntent().getStringExtra("ID_TRANSAKSI");
 
         imageViewBuktiPembayaran = findViewById(R.id.imageViewBuktiPembayaran);
-        textInputEditTextJumlahPembayaran = findViewById(R.id.textInputEditTextJumlahPembayaran);
-        textInputEditTextTanggalPembayaran = findViewById(R.id.textInputEditTextTanggalPembayaran);
-        textInputEditTextDeskripsi = findViewById(R.id.textInputEditTextDeskripsi);
+        editTextJumlahPembayaran = findViewById(R.id.editTextJumlahPembayaran);
+        editTextTanggalPembayaran = findViewById(R.id.editTextTanggalPembayaran);
+        editTextDeskripsi = findViewById(R.id.editTextDeskripsi);
+
         cardViewFotoBuktiPembayaran = findViewById(R.id.cardViewFotoBuktiPembayaran);
         materialButtonSimpanPembayaran = findViewById(R.id.materialButtonSimpanPembayaran);
 
@@ -65,6 +78,21 @@ public class FormPembayaranActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 CropImage.activity().setGuidelines(CropImageView.Guidelines.OFF).start(FormPembayaranActivity.this);
+            }
+        });
+
+        editTextTanggalPembayaran.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new DatePickerDialog(v.getContext(), new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                        tanggal = "" + year + "-" + (month + 1) + "-" + dayOfMonth;
+                        editTextTanggalPembayaran.setText(
+                                String.format("%02d ", dayOfMonth) + bulan[month] + " " + year
+                        );
+                    }
+                }, Utility.getYear(), Utility.getMonth(), Utility.getDay()).show();
             }
         });
 
@@ -76,17 +104,18 @@ public class FormPembayaranActivity extends AppCompatActivity {
                     progress.showDialog();
                     viewModel.postPembayaran(
                         ID_TRANSAKSI,
-                        textInputEditTextJumlahPembayaran.getText().toString(),
-                        textInputEditTextTanggalPembayaran.getText().toString(),
-                        textInputEditTextDeskripsi.getText().toString(),
+                        editTextJumlahPembayaran.getText().toString(),
+                        tanggal,
+                        editTextDeskripsi.getText().toString(),
                         uriBuktiPembayaran.toString()
                     ).observe(OWNER, new Observer<BaseResponse>() {
                         @Override
                         public void onChanged(BaseResponse baseResponse) {
                             progress.dismissDialog();
                             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                            final AlertInfo info = new AlertInfo(v.getContext(), "Data berhasil tersimpan", intent);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            final AlertInfo info = new AlertInfo(FormPembayaranActivity.this, "Data berhasil tersimpan", intent);
                             info.showDialog();
                         }
                     });
@@ -106,23 +135,23 @@ public class FormPembayaranActivity extends AppCompatActivity {
             count++;
         }
 
-        if(textInputEditTextJumlahPembayaran.getText().toString().isEmpty()) {
+        if(editTextJumlahPembayaran.getText().toString().isEmpty()) {
             Toast.makeText(getApplicationContext(), "Jumlah Pembayaran Masih Kosong", Toast.LENGTH_SHORT).show();
             count++;
         }
 
-        if(textInputEditTextJumlahPembayaran.getText().toString().equals("0")) {
-            Toast.makeText(getApplicationContext(), "Jumlah Pembayaran tidak boleh nol Kosong", Toast.LENGTH_SHORT).show();
+        if(editTextJumlahPembayaran.getText().toString().equals("0")) {
+            Toast.makeText(getApplicationContext(), "Jumlah Pembayaran tidak boleh nol", Toast.LENGTH_SHORT).show();
             count++;
         }
 
-        if(textInputEditTextTanggalPembayaran.getText().toString().isEmpty()) {
-            Toast.makeText(getApplicationContext(), "Tanggal Pembayaran Masih Kosong", Toast.LENGTH_SHORT).show();
-            count++;
-        }
-
-        if(textInputEditTextDeskripsi.getText().toString().isEmpty()) {
+        if(editTextJumlahPembayaran.getText().toString().isEmpty()) {
             Toast.makeText(getApplicationContext(), "Deskripsi Pembayaran Masih Kosong", Toast.LENGTH_SHORT).show();
+            count++;
+        }
+
+        if(tanggal.isEmpty()) {
+            Toast.makeText(getApplicationContext(), "Mohon pilih tanggal pembayaran", Toast.LENGTH_SHORT).show();
             count++;
         }
 

@@ -29,6 +29,13 @@ public class DoaHarianResponse {
         @Expose
         private String translation;
 
+        public Datum(String title, String arabic, String latin, String translation) {
+            this.title = title;
+            this.arabic = arabic;
+            this.latin = latin;
+            this.translation = translation;
+        }
+
         public String getTitle() {
             return title;
         }

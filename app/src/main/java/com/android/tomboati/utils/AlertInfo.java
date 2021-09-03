@@ -36,7 +36,7 @@ public class AlertInfo {
         });
     }
 
-    public AlertInfo(Context c, String textCustom, Intent intent) {
+    public AlertInfo(Activity c, String textCustom, Intent intent) {
         AlertDialog.Builder dialog = new AlertDialog.Builder(c);
         views = LayoutInflater.from(c).inflate(R.layout.view_custom_dialog_info, null);
 
@@ -53,6 +53,7 @@ public class AlertInfo {
             @Override
             public void onClick(View v) {
                 c.startActivity(intent);
+                c.finish();
             }
         });
     }

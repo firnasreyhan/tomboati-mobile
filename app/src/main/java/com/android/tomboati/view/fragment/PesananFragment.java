@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -78,19 +79,22 @@ public class PesananFragment extends Fragment {
                     }
                     viewModel.getPaketWisataHalalVerif(idUser).observe(OWNER, new Observer<ListPaketVerifyRespone>() {
                         @Override
-                        public void onChanged(ListPaketVerifyRespone listPaketVerifyRespone) {
+                        public void onChanged(ListPaketVerifyRespone listPaketVerifyRespone1) {
                             shimmerFrameLayoutPesanan.setVisibility(View.GONE);
                             shimmerFrameLayoutPesanan.stopShimmer();
-                            if (listPaketVerifyRespone != null) {
-                                if (!listPaketVerifyRespone.isError()) {
-                                    if (!listPaketVerifyRespone.getData().isEmpty()) {
-                                        list.addAll(listPaketVerifyRespone.getData());
-                                        adapter = new PesananPendingAdapter(list);
-                                        recyclerView.setAdapter(adapter);
-
-                                        recyclerView.setVisibility(View.VISIBLE);
+                            if (listPaketVerifyRespone1 != null) {
+                                if (!listPaketVerifyRespone1.isError()) {
+                                    if (!listPaketVerifyRespone1.getData().isEmpty()) {
+                                        list.addAll(listPaketVerifyRespone1.getData());
                                     }
                                 }
+                            }
+
+                            if(listPaketVerifyRespone != null || listPaketVerifyRespone1 != null) {
+                                adapter = new PesananPendingAdapter(list);
+                                recyclerView.setAdapter(adapter);
+//
+                                recyclerView.setVisibility(View.VISIBLE);
                             } else {
                                 linearLayoutNoSignIn.setVisibility(View.VISIBLE);
                                 recyclerView.setVisibility(View.GONE);

@@ -33,7 +33,7 @@ public class DoaHarianAdapter extends RecyclerView.Adapter<DoaHarianAdapter.View
     @Override
     public void onBindViewHolder(@NonNull DoaHarianAdapter.ViewHolder holder, int position) {
 //        holder.tv_no.setText("" + (position + 1));
-        holder.nama_doa.setText(response.get(position).getTitle());
+        holder.nama_doa.setText(response.get(position).getTitle().toUpperCase());
         holder.cardViewListDoaHarian.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

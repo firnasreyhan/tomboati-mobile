@@ -80,7 +80,11 @@ public class PendaftaranDataKeluargaViewModel extends AndroidViewModel {
                 compressFile(imageSaves.saveToPictureFromUri(Uri.parse(model.getFileKTP())),"fileKTP"),
                 compressFile(imageSaves.saveToPictureFromUri(Uri.parse(model.getFileKK())), "fileKK"),
                 compressFile(imageSaves.saveToPictureFromUri(Uri.parse(model.getFilePaspor())), "filePaspor"),
-                compressFile(imageSaves.saveToPictureFromUri(Uri.parse(model.getFileBukuNikah())), "fileBukuNikah"),
+                (model.getFileBukuNikah().isEmpty()) ?
+                    compressFile(null, "fileBukuNikah")
+                :
+                    compressFile(imageSaves.saveToPictureFromUri(Uri.parse(model.getFileBukuNikah())), "fileBukuNikah")
+                ,
                 compressFile(imageSaves.saveToPictureFromUri(Uri.parse(model.getFileAkteKelahiran())), "fileAkteKelahiran"),
                 compressFile(imageSaves.saveToPictureFromBitmap(model.getTtdPendaftar()), "ttdPendaftar"),
                 RequestBody.create(MediaType.parse("text/plain"), model.getIdPaket()),

@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -109,12 +110,14 @@ public class DrawTandaTanganPendaftaran extends AppCompatActivity {
 
                                     AlertInfo info;
 
+                                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
                                     if (!baseResponse.isError()) {
-                                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                        info = new AlertInfo(v.getContext(),"Pendaftaran berhasil", intent);
+                                        info = new AlertInfo(DrawTandaTanganPendaftaran.this, "Pendaftaran berhasil", intent);
                                     } else {
-                                        info = new AlertInfo(v, "Gagal mengirim data");
+                                        info = new AlertInfo(DrawTandaTanganPendaftaran.this, "Gagal Mengirimkan Data", intent);
                                     }
                                     info.showDialog();
                                 }

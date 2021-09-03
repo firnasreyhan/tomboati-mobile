@@ -7,20 +7,26 @@ import androidx.cardview.widget.CardView;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.tomboati.R;
 import com.android.tomboati.api.response.LokasiResponse;
 import com.android.tomboati.model.PesananaModel;
 import com.android.tomboati.preference.AppPreference;
+import com.android.tomboati.utils.Utility;
 import com.android.tomboati.view.activity.SignUpActivity;
 import com.android.tomboati.viewmodel.PendaftaranDataDiriViewModel;
 import com.google.android.material.button.MaterialButton;
@@ -34,30 +40,31 @@ import java.util.List;
 
 public class PendaftaranDataDiriActivity extends AppCompatActivity {
     private PendaftaranDataDiriViewModel viewModel;
-    private Toolbar toolbar;
     private Spinner spinnerJenisKelamin, spinnerStatusPerkawinan, spinnerKewarganegaraan, spinnerProvinsi, spinnerKotaKabupaten, spinnerKecamatan, spinnerKelurahan;
-    private TextInputEditText textInputEditTextNomorKTP, textInputEditTextNamaLengkap, textInputEditTextNomorHandphone, textInputEditTextTempatLahir, textInputEditTanggalLahir, textInputEditTextPekerjaan, textInputEditRiwayatPenyakit, textInputEditTextKodePos, textInputEditTextRincianAlamat, textInputEditTextNomorPaspor, textInputEditTextTempatDikeluarkan, textInputEditTextTanggalPenerbitanPaspor, textInputEditTextTanggalBerakhirPaspor;
-    private CardView cardViewFotoKTP, cardViewFotoAkteKelahiran, cardViewFotoKartuKeluarga, cardViewFotoPaspor, cardViewFotoBukuNikah;
-    private ImageView imageViewKTP, imageViewAkteKelahiran, imageViewKartuKeluarga, imageViewPaspor, imageViewBukuNikah;
+    private EditText textInputEditTextNomorKTP, textInputEditTextNamaLengkap, textInputEditTextNomorHandphone, textInputEditTextTempatLahir, textInputEditTextPekerjaan, textInputEditRiwayatPenyakit, textInputEditTextKodePos, textInputEditTextRincianAlamat, textInputEditTextNomorPaspor, textInputEditTextTempatDikeluarkan;
+
     private MaterialButton materialButtonLanjutkan;
+    private TextView textInputEditTanggalLahir, textInputEditTextTanggalPenerbitanPaspor, textInputEditTextTanggalBerakhirPaspor;
 
-    private Uri uriKTP, uriAkteKelahiran, uriKartuKeluarga, uriFotoPaspor, uriFotoBukuNikah;
-    private int uriNumber;
-
+    private String[] bulan = {
+            "Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September","Oktober", "November", "Desember"
+    };
 
     private PesananaModel model;
+
+    private String tanggalLahir = "", tanggalPenerbitanPaspor = "", tanggalBerakhirPaspor = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setTheme(R.style.ThemeTomboAtiGreen);
-        setContentView(R.layout.activity_pendaftaran_data_diri);
+        setContentView(R.layout.activity_pendaftaran_data_diri_new);
 
         viewModel = ViewModelProviders.of(this).get(PendaftaranDataDiriViewModel.class);
 
         model = (PesananaModel) getIntent().getSerializableExtra("OBJECT");
 
-        toolbar = findViewById(R.id.toolbar);
+        final Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         setTitle("Pendaftaran");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -75,31 +82,20 @@ public class PendaftaranDataDiriActivity extends AppCompatActivity {
         textInputEditTextNamaLengkap = findViewById(R.id.textInputEditTextNamaLengkap);
         textInputEditTextNomorHandphone = findViewById(R.id.textInputEditTextNomorHandphone);
         textInputEditTextTempatLahir = findViewById(R.id.textInputEditTextTempatLahir);
-        textInputEditTanggalLahir = findViewById(R.id.textInputEditTanggalLahir);
         textInputEditTextPekerjaan = findViewById(R.id.textInputEditTextPekerjaan);
         textInputEditRiwayatPenyakit = findViewById(R.id.textInputEditRiwayatPenyakit);
         textInputEditTextKodePos = findViewById(R.id.textInputEditTextKodePos);
         textInputEditTextRincianAlamat = findViewById(R.id.textInputEditTextRincianAlamat);
         textInputEditTextNomorPaspor = findViewById(R.id.textInputEditTextNomorPaspor);
         textInputEditTextTempatDikeluarkan = findViewById(R.id.textInputEditTextTempatDikeluarkan);
-        textInputEditTextTanggalPenerbitanPaspor = findViewById(R.id.textInputEditTextTanggalPenerbitanPaspor);
-        textInputEditTextTanggalBerakhirPaspor = findViewById(R.id.textInputEditTextTanggalBerakhirPaspor);
 
-        cardViewFotoKTP = findViewById(R.id.cardViewFotoKTP);
-        cardViewFotoAkteKelahiran = findViewById(R.id.cardViewFotoAkteKelahiran);
-        cardViewFotoKartuKeluarga = findViewById(R.id.cardViewFotoKartuKeluarga);
-        cardViewFotoPaspor = findViewById(R.id.cardViewFotoPaspor);
-        cardViewFotoBukuNikah = findViewById(R.id.cardViewFotoBukuNikah);
-
-        imageViewKTP = findViewById(R.id.imageViewKTP);
-        imageViewAkteKelahiran = findViewById(R.id.imageViewAkteKelahiran);
-        imageViewKartuKeluarga = findViewById(R.id.imageViewKartuKeluarga);
-        imageViewPaspor = findViewById(R.id.imageViewPaspor);
-        imageViewBukuNikah = findViewById(R.id.imageViewBukuNikah);
+        textInputEditTanggalLahir = findViewById(R.id.textViewTanggalLahir); //=
+        textInputEditTextTanggalPenerbitanPaspor = findViewById(R.id.textViewTanggalPenerbitanPaspor); //=
+        textInputEditTextTanggalBerakhirPaspor = findViewById(R.id.textViewTanggalBerakhirPaspor); //=
 
         materialButtonLanjutkan = findViewById(R.id.materialButtonLanjutkan);
 
-        String[] jenisKelamin = new String[] {"Laki-laki", "Perempuan"};
+        String[] jenisKelamin = new String[] {"Perempuan", "Laki-laki"};
         ArrayAdapter<String> jenisKelaminAdapter = new ArrayAdapter<>(this, R.layout.item_spinner, jenisKelamin);
         spinnerJenisKelamin.setAdapter(jenisKelaminAdapter);
 
@@ -113,20 +109,46 @@ public class PendaftaranDataDiriActivity extends AppCompatActivity {
 
         getProvinsi();
 
-        final CardView[] arrCardView = {
-            cardViewFotoKTP, cardViewFotoAkteKelahiran, cardViewFotoKartuKeluarga, cardViewFotoPaspor, cardViewFotoBukuNikah
-        };
+        textInputEditTanggalLahir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new DatePickerDialog(v.getContext(), new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                        tanggalLahir = "" + year + "-" + (month + 1) + "-" + dayOfMonth;
 
-        for(int i = 0; i < arrCardView.length; i++) {
-            int j = i;
-            arrCardView[i].setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    CropImage.activity().setGuidelines(CropImageView.Guidelines.OFF).start(PendaftaranDataDiriActivity.this);
-                    uriNumber = j + 1;
-                }
-            });
-        }
+                        Log.d("=======", "onClick: " + tanggalLahir);
+                        textInputEditTanggalLahir.setText(String.format("%02d ", dayOfMonth) + bulan[month] + " " + year);
+                    }
+                }, Utility.getYear(), Utility.getMonth(), Utility.getDay()).show();
+            }
+        });
+
+        textInputEditTextTanggalPenerbitanPaspor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new DatePickerDialog(v.getContext(), new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                        tanggalPenerbitanPaspor = "" + year + "-" + (month + 1) + "-" + dayOfMonth;
+                        textInputEditTextTanggalPenerbitanPaspor.setText(String.format("%02d ", dayOfMonth) + bulan[month] + " " + year);
+                    }
+                }, Utility.getYear(), Utility.getMonth(), Utility.getDay()).show();
+            }
+        });
+
+        textInputEditTextTanggalBerakhirPaspor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new DatePickerDialog(v.getContext(), new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                        tanggalBerakhirPaspor = "" + year + "-" + (month + 1) + "-" + dayOfMonth;
+                        textInputEditTextTanggalBerakhirPaspor.setText(String.format("%02d ", dayOfMonth) + bulan[month] + " " + year);
+                    }
+                }, Utility.getYear(), Utility.getMonth(), Utility.getDay()).show();
+            }
+        });
 
         materialButtonLanjutkan.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -153,13 +175,8 @@ public class PendaftaranDataDiriActivity extends AppCompatActivity {
                     model.setTempatDikeluarkan(textInputEditTextTempatDikeluarkan.getText().toString());
                     model.setTanggalPenerbitanPaspor(textInputEditTextTanggalPenerbitanPaspor.getText().toString());
                     model.setTanggalBerakhirPaspor(textInputEditTextTanggalBerakhirPaspor.getText().toString());
-                    model.setFileKTP(uriKTP.toString());
-                    model.setFileAkteKelahiran(uriAkteKelahiran.toString());
-                    model.setFileKK(uriKartuKeluarga.toString());
-                    model.setFilePaspor(uriFotoPaspor.toString());
-                    model.setFileBukuNikah(uriFotoBukuNikah.toString());
 
-                    Intent intent = new Intent(v.getContext(), PendaftaranDataKeluargaActivity.class);
+                    Intent intent = new Intent(v.getContext(), PendaftaranDokumenDataDiriActivity.class);
                     intent.putExtra("OBJECT", (Serializable) model);
                     startActivity(intent);
                 }
@@ -167,45 +184,11 @@ public class PendaftaranDataDiriActivity extends AppCompatActivity {
         });
     }
 
+
     @Override
     public boolean onSupportNavigateUp() {
         onBackPressed();
         return true;
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
-            CropImage.ActivityResult result = CropImage.getActivityResult(data);
-            if (resultCode == RESULT_OK) {
-                switch (uriNumber) {
-                    case 1:
-                        uriKTP = result.getUri();
-                        imageViewKTP.setImageURI(uriKTP);
-                        break;
-                    case 2:
-                        uriAkteKelahiran = result.getUri();
-                        imageViewAkteKelahiran.setImageURI(uriAkteKelahiran);
-                        break;
-                    case 3:
-                        uriKartuKeluarga = result.getUri();
-                        imageViewKartuKeluarga.setImageURI(uriKartuKeluarga);
-                        break;
-                    case 4:
-                        uriFotoPaspor = result.getUri();
-                        imageViewPaspor.setImageURI(uriFotoPaspor);
-                        break;
-                    case 5:
-                        uriFotoBukuNikah = result.getUri();
-                        imageViewBukuNikah.setImageURI(uriFotoBukuNikah);
-                        break;
-                }
-            } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
-                String error = result.getError().getMessage();
-                Toast.makeText(this, error, Toast.LENGTH_SHORT).show();
-            }
-        }
     }
 
     public void getProvinsi() {
@@ -314,35 +297,33 @@ public class PendaftaranDataDiriActivity extends AppCompatActivity {
 
         int countError = 0;
 
-        final TextInputEditText[] editText = {
+        final EditText[] editText = {
                 textInputEditTextNomorKTP, textInputEditTextNamaLengkap, textInputEditTextNomorHandphone,
-                textInputEditTextTempatLahir, textInputEditTanggalLahir, textInputEditTextPekerjaan,
+                textInputEditTextTempatLahir, textInputEditTextPekerjaan,
                 textInputEditRiwayatPenyakit, textInputEditTextKodePos, textInputEditTextRincianAlamat,
-                textInputEditTextNomorPaspor, textInputEditTextTempatDikeluarkan, textInputEditTextTanggalPenerbitanPaspor,
-                textInputEditTextTanggalBerakhirPaspor
+                textInputEditTextNomorPaspor, textInputEditTextTempatDikeluarkan,
         };
 
-        final Uri[] uriImg = {
-                uriKTP, uriAkteKelahiran, uriKartuKeluarga, uriFotoPaspor, uriFotoBukuNikah
+        final String[] tanggal = {
+                tanggalLahir, tanggalPenerbitanPaspor, tanggalBerakhirPaspor
         };
 
         final String[] prefix = {
-                "KTP", "akte kelahiran", "kartu keluarga", "paspor", "buku nikah"
+                "Tanggal Lahir", "Tanggal Penerbitan Paspor", "Tanggal Berakhir Paspor"
         };
 
-        for (int i = 0; i < editText.length; i++) {
+        for (int i = 0; i <editText.length ; i++) {
             if (editText[i].getText().toString().isEmpty()) {
                 editText[i].setError("Mohon isi data berikut");
                 countError++;
             }
 
-            if(i < uriImg.length) {
-                if(uriImg[i] == null) {
-                    Toast.makeText(this, "Harap upload foto " + prefix[i] + " anda", Toast.LENGTH_SHORT).show();
+            if(i < tanggal.length) {
+                if(tanggal[i].isEmpty()) {
+                    Toast.makeText(getApplicationContext(), "Mohon Pilih " + prefix[i] + " Terlebih dahulu", Toast.LENGTH_SHORT).show();
                     countError++;
                 }
             }
-
         }
 
         return (countError == 0);
