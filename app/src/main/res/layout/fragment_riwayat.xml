@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/background"
-    tools:context=".view.fragment.RiwayatFragment">
+    tools:context=".view.fragment.homepage.RiwayatFragment">
 
     <LinearLayout
         android:id="@+id/linearLayoutNoSignIn"

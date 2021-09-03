@@ -12,11 +12,11 @@ import android.widget.Toast;
 
 import com.android.tomboati.R;
 import com.android.tomboati.utils.Utility;
-import com.android.tomboati.view.fragment.AkunFragment;
-import com.android.tomboati.view.fragment.BerandaFragment;
-import com.android.tomboati.view.fragment.InboxFragment;
-import com.android.tomboati.view.fragment.PesananFragment;
-import com.android.tomboati.view.fragment.RiwayatFragment;
+import com.android.tomboati.view.fragment.homepage.AkunFragment;
+import com.android.tomboati.view.fragment.homepage.BerandaFragment;
+import com.android.tomboati.view.fragment.homepage.InboxFragment;
+import com.android.tomboati.view.fragment.homepage.PesananFragment;
+import com.android.tomboati.view.fragment.homepage.RiwayatFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {

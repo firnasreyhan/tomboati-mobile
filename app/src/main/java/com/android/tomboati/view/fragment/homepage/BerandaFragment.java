@@ -1,4 +1,4 @@
-package com.android.tomboati.view.fragment;
+package com.android.tomboati.view.fragment.homepage;
 
 import android.content.DialogInterface;
 import android.content.Intent;
