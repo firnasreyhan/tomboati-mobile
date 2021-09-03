@@ -18,8 +18,24 @@ import android.widget.Toast;
 
 import com.android.tomboati.R;
 import com.android.tomboati.preference.AppPreference;
+import com.intentfilter.androidpermissions.PermissionManager;
+import com.intentfilter.androidpermissions.models.DeniedPermissions;
+
+import java.util.Arrays;
 
 public class SplashScreenActivity extends AppCompatActivity {
+
+    private PermissionManager permissionManager;
+
+    private final String[] PERMISSIONS = {
+            Manifest.permission.INTERNET,
+            Manifest.permission.CAMERA,
+            Manifest.permission.CAMERA,
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE,
+            Manifest.permission.ACCESS_FINE_LOCATION,
+            Manifest.permission.ACCESS_COARSE_LOCATION,
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,59 +43,19 @@ public class SplashScreenActivity extends AppCompatActivity {
         setTheme(R.style.ThemeSplashScreenTomboAti);
         setContentView(R.layout.activity_splash_screen);
 
-        //list permission yang dibutuhkan dimasukkan ke string array
-        String[] PERMISSIONS = {
-                Manifest.permission.INTERNET,
-                Manifest.permission.CAMERA,
-                Manifest.permission.CAMERA,
-                Manifest.permission.READ_EXTERNAL_STORAGE,
-                Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                Manifest.permission.ACCESS_FINE_LOCATION,
-                Manifest.permission.ACCESS_COARSE_LOCATION,
-        };
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            Window w = getWindow();
-            w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
-        }
-
-        if (!hasPermissions(PERMISSIONS)) {
-            ActivityCompat.requestPermissions(this, PERMISSIONS, 0);
-        } else {
-            toMainActivity();
-        }
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        switch (requestCode) {
-            case 0: {
-                if (grantResults[0] != PackageManager.PERMISSION_GRANTED
-                        || grantResults[1] != PackageManager.PERMISSION_GRANTED
-                        || grantResults[2] != PackageManager.PERMISSION_GRANTED
-                        || grantResults[3] != PackageManager.PERMISSION_GRANTED
-                        || grantResults[4] != PackageManager.PERMISSION_GRANTED
-                        || grantResults[5] != PackageManager.PERMISSION_GRANTED
-                        || grantResults[6] != PackageManager.PERMISSION_GRANTED) {
-                    Toast.makeText(this, "Izin diperlukan untuk menggunakan aplikasi", Toast.LENGTH_SHORT).show();
-                    finish();
-                } else {
-                    toMainActivity();
-                }
+        permissionManager = PermissionManager.getInstance(this);
+        permissionManager.checkPermissions(Arrays.asList(PERMISSIONS), new PermissionManager.PermissionRequestListener() {
+            @Override
+            public void onPermissionGranted() {
+                toMainActivity();
             }
-        }
-    }
 
-    private boolean hasPermissions(String... permissions) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && permissions != null) {
-            for (String permission : permissions) {
-                if (ContextCompat.checkSelfPermission(this, permission) != PackageManager.PERMISSION_GRANTED) {
-                    return false;
-                }
+            @Override
+            public void onPermissionDenied(DeniedPermissions deniedPermissions) {
+                Toast.makeText(getApplicationContext(), "Izin diperlukan untuk menggunakan aplikasi", Toast.LENGTH_SHORT).show();
+                finish();
             }
-        }
-        return true;
+        });
     }
 
     private void toMainActivity() {

@@ -57,7 +57,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
-                        android:fontFamily="@font/catamaran_bold"
+                        android:fontFamily="@font/catamaran_medium"
                         android:text="Nomor KTP"
                         android:textColor="@color/black"
                         android:textSize="12sp" />
@@ -83,7 +83,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:fontFamily="@font/catamaran_bold"
+                        android:fontFamily="@font/catamaran_medium"
                         android:text="Nama Lengkap"
                         android:textColor="@color/black"
                         android:textSize="12sp" />
@@ -109,7 +109,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:fontFamily="@font/catamaran_bold"
+                        android:fontFamily="@font/catamaran_medium"
                         android:text="NO. Handphone"
                         android:textColor="@color/black"
                         android:textSize="12sp" />
@@ -135,7 +135,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:fontFamily="@font/catamaran_bold"
+                        android:fontFamily="@font/catamaran_medium"
                         android:text="Tempat Lahir"
                         android:textColor="@color/black"
                         android:textSize="12sp" />
@@ -161,7 +161,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:fontFamily="@font/catamaran_bold"
+                        android:fontFamily="@font/catamaran_medium"
                         android:text="Tanggal Lahir"
                         android:textColor="@color/black"
                         android:textSize="12sp" />
@@ -186,7 +186,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:fontFamily="@font/catamaran_bold"
+                        android:fontFamily="@font/catamaran_medium"
                         android:text="Jenis Kelamin"
                         android:textColor="@color/black"
                         android:textSize="12sp" />
@@ -208,7 +208,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:fontFamily="@font/catamaran_bold"
+                        android:fontFamily="@font/catamaran_medium"
                         android:text="Status Perkawinan"
                         android:textColor="@color/black"
                         android:textSize="12sp" />
@@ -230,7 +230,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:fontFamily="@font/catamaran_bold"
+                        android:fontFamily="@font/catamaran_medium"
                         android:text="Kewarganegaraan"
                         android:textColor="@color/black"
                         android:textSize="12sp" />
@@ -252,7 +252,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:fontFamily="@font/catamaran_bold"
+                        android:fontFamily="@font/catamaran_medium"
                         android:text="Pekerjaan"
                         android:textColor="@color/black"
                         android:textSize="12sp" />
@@ -278,7 +278,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:fontFamily="@font/catamaran_bold"
+                        android:fontFamily="@font/catamaran_medium"
                         android:text="Riwayat Penyakit"
                         android:textColor="@color/black"
                         android:textSize="12sp" />

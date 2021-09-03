@@ -81,9 +81,9 @@ public class PendaftaranDataKeluargaViewModel extends AndroidViewModel {
                 compressFile(imageSaves.saveToPictureFromUri(Uri.parse(model.getFileKK())), "fileKK"),
                 compressFile(imageSaves.saveToPictureFromUri(Uri.parse(model.getFilePaspor())), "filePaspor"),
                 (model.getFileBukuNikah().isEmpty()) ?
-                    compressFile(null, "fileBukuNikah")
-                :
-                    compressFile(imageSaves.saveToPictureFromUri(Uri.parse(model.getFileBukuNikah())), "fileBukuNikah")
+                        sendEmpty("fileBukuNikah")
+                    :
+                        compressFile(imageSaves.saveToPictureFromUri(Uri.parse(model.getFileBukuNikah())), "fileBukuNikah")
                 ,
                 compressFile(imageSaves.saveToPictureFromUri(Uri.parse(model.getFileAkteKelahiran())), "fileAkteKelahiran"),
                 compressFile(imageSaves.saveToPictureFromBitmap(model.getTtdPendaftar()), "ttdPendaftar"),
@@ -105,6 +105,10 @@ public class PendaftaranDataKeluargaViewModel extends AndroidViewModel {
 
     private MultipartBody.Part compressFile(File file, String path) {
         return MultipartBody.Part.createFormData(path, file.getName(), RequestBody.create(MediaType.parse("image/*"), file));
+    }
+
+    private MultipartBody.Part sendEmpty(String path) {
+        return MultipartBody.Part.createFormData(path, "", RequestBody.create(MediaType.parse("text/plain"), ""));
     }
 
 

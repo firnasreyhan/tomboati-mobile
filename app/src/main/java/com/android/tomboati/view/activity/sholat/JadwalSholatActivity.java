@@ -179,7 +179,7 @@ public class JadwalSholatActivity extends AppCompatActivity {
                 SmartLocation.with(JadwalSholatActivity.this).geocoding().reverse(location, new OnReverseGeocodingListener() {
                     @Override
                     public void onAddressResolved(Location location, List<Address> list) {
-                        String text_kota = null;
+                        String text_kota;
                         if (list.size() > 0) {
                             String kab = list.get(0).getSubAdminArea();
                             String kecamatan = list.get(0).getLocality();

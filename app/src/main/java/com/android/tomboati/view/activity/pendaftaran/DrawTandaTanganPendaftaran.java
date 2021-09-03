@@ -41,6 +41,7 @@ public class DrawTandaTanganPendaftaran extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTheme(R.style.ThemeTomboAtiGreen);
         setContentView(R.layout.activity_draw_tanda_tangan_pendaftaran);
 
         Toolbar toolbar = findViewById(R.id.toolbar);

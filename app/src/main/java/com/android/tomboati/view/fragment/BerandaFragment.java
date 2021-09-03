@@ -36,7 +36,6 @@ import com.android.tomboati.preference.AppPreference;
 import com.android.tomboati.utils.AlertProgress;
 import com.android.tomboati.utils.Utility;
 import com.android.tomboati.view.activity.pendaftaran.DetailPaketActivity;
-import com.android.tomboati.view.activity.quran.AlQuranActivity;
 import com.android.tomboati.view.activity.DetailNewsActivity;
 import com.android.tomboati.view.activity.doa_dzikir.DoaDzikirActivity;
 import com.android.tomboati.view.activity.KalenderHijriahActivity;
@@ -51,13 +50,11 @@ import com.facebook.shimmer.ShimmerFrameLayout;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.imageview.ShapeableImageView;
 import com.intentfilter.androidpermissions.PermissionManager;
-import com.intentfilter.androidpermissions.models.DeniedPermissions;
 import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType;
 import com.smarteist.autoimageslider.SliderAnimations;
 import com.smarteist.autoimageslider.SliderView;
 import com.squareup.picasso.Picasso;
 
-import java.util.Arrays;
 import java.util.List;
 
 import io.nlopez.smartlocation.OnLocationUpdatedListener;
@@ -80,7 +77,6 @@ public class BerandaFragment extends Fragment {
 
     private ImageView imageViewPromoHaji1, imageViewPromoHaji2, imageViewPromoHaji3, imageViewPromoTour1, imageViewPromoTour2, imageViewPromoTour3, imageViewNews;
 
-    private PermissionManager permissionManager;
     private AlertDialog.Builder alert;
     private String[] idPaket = new String[6];
 
@@ -171,7 +167,7 @@ public class BerandaFragment extends Fragment {
                     if (!paketResponse.isError()) {
                         if (!paketResponse.getData().isEmpty()) {
                             ImageView[] arrImage = {imageViewPromoHaji1, imageViewPromoHaji2, imageViewPromoHaji3};
-                            for (int i = 0; i < 3; i++) {
+                            for (int i = 0; i < paketResponse.getData().size(); i++) {
                                 if (paketResponse.getData().get(i) != null) {
                                     idPaket[i] = paketResponse.getData().get(i).getIdPaket();
                                     picassoLoad(paketResponse.getData().get(i).getImagePaket(), arrImage[i]);
@@ -189,7 +185,7 @@ public class BerandaFragment extends Fragment {
                     if (!paketWisataResponse.isError()) {
                         if (!paketWisataResponse.getData().isEmpty()) {
                             ImageView[] arrImage = {imageViewPromoTour1, imageViewPromoTour2, imageViewPromoTour3};
-                            for (int i = 0; i < 3; i++) {
+                            for (int i = 0; i < paketWisataResponse.getData().size(); i++) {
                                 if (paketWisataResponse.getData().get(i) != null) {
                                     idPaket[i + 3] = paketWisataResponse.getData().get(i).getIdWisataHalal();
                                     picassoLoad(paketWisataResponse.getData().get(i).getImageWisata(), arrImage[i]);
@@ -253,9 +249,13 @@ public class BerandaFragment extends Fragment {
             imgArr[i].setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(v.getContext(), DetailPaketActivity.class);
-                    intent.putExtra((j > 2) ? "ID_PAKET_WISATA" : "ID_PAKET", idPaket[j]);
-                    v.getContext().startActivity(intent);
+                    if(idPaket[j] != null) {
+                        Intent intent = new Intent(v.getContext(), DetailPaketActivity.class);
+                        intent.putExtra((j > 2) ? "ID_PAKET_WISATA" : "ID_PAKET", idPaket[j]);
+                        v.getContext().startActivity(intent);
+                    } else {
+                        Toast.makeText(v.getContext(), "Paket Kosong!", Toast.LENGTH_SHORT).show();
+                    }
                 }
             });
         }
@@ -325,7 +325,7 @@ public class BerandaFragment extends Fragment {
             });
             alert.show();
         } else {
-            cekPermission();
+            showLocation();
         }
     }
 
@@ -356,22 +356,6 @@ public class BerandaFragment extends Fragment {
         super.onPause();
     }
 
-
-    private void cekPermission() {
-        permissionManager = PermissionManager.getInstance(getActivity());
-        permissionManager.checkPermissions(Arrays.asList(Utility.PERMISSION),
-            new PermissionManager.PermissionRequestListener() {
-                @Override
-                public void onPermissionGranted() {
-                    showLocation();
-                }
-
-                @Override
-                public void onPermissionDenied(DeniedPermissions deniedPermissions) {
-                    showDialogSetting();
-                }
-            });
-    }
 
     private void showLocation() {
         progress.showDialog();
@@ -456,37 +440,6 @@ public class BerandaFragment extends Fragment {
                 }
             }
         });
-    }
-
-    private void showDialogSetting() {
-        // Showing alert dialog where permission is denied
-        alert = new AlertDialog.Builder(getContext());
-        alert.setTitle("Diperlukan akses lokasi!");
-        alert.setMessage("Aplikasi ini membutuhkan akses lokasi, Apakah anda setuju?");
-        alert.setCancelable(false);
-        alert.setPositiveButton("Pengaturan", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                // Showing setting page where setting button is pressed
-                openSetting();
-                dialog.dismiss();
-            }
-        });
-        alert.setNegativeButton("Kembali", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                // Closing activity where back button is pressed
-                dialog.dismiss();
-            }
-        });
-        alert.show();
-    }
-
-    private void openSetting() {
-        Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
-        Uri uri = Uri.fromParts("package", getContext().getPackageName(), null);
-        intent.setData(uri);
-        startActivityForResult(intent, permissionManager.getResultCode());
     }
 
     private void setAkun() {

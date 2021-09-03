@@ -30,7 +30,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_20sdp"
+                android:layout_height="match_parent"
                 android:layout_marginLeft="@dimen/_8sdp"
                 android:layout_marginRight="@dimen/_8sdp"
                 app:boxBackgroundColor="@color/white"
@@ -38,7 +38,7 @@
                 app:boxCornerRadiusBottomStart="@dimen/_30sdp"
                 app:boxCornerRadiusTopEnd="@dimen/_30sdp"
                 app:boxCornerRadiusTopStart="@dimen/_30sdp"
-                app:endIconMode="clear_text"
+                app:endIconMode="none"
                 app:hintEnabled="false"
                 app:startIconDrawable="@drawable/ic_search">
 
@@ -700,9 +700,9 @@
                             android:layout_marginLeft="@dimen/_5sdp"
                             android:layout_marginRight="@dimen/_5sdp"
                             android:adjustViewBounds="true"
-                            android:scaleType="centerCrop"
                             android:clickable="true"
                             android:foreground="?selectableItemBackground"
+                            android:scaleType="fitCenter"
                             android:src="@drawable/ic_logo" />
 
                         <ImageView
@@ -712,9 +712,9 @@
                             android:layout_marginLeft="@dimen/_5sdp"
                             android:layout_marginRight="@dimen/_5sdp"
                             android:adjustViewBounds="true"
-                            android:scaleType="centerCrop"
                             android:clickable="true"
                             android:foreground="?selectableItemBackground"
+                            android:scaleType="fitCenter"
                             android:src="@drawable/ic_logo" />
 
                         <ImageView
@@ -724,10 +724,10 @@
                             android:layout_marginLeft="@dimen/_5sdp"
                             android:layout_marginRight="@dimen/_5sdp"
                             android:adjustViewBounds="true"
-                            android:scaleType="centerCrop"
                             android:clickable="true"
                             android:foreground="?selectableItemBackground"
-                            android:src="@drawable/ic_logo"/>
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/ic_logo" />
 
                     </LinearLayout>
 
@@ -767,9 +767,9 @@
                             android:layout_marginLeft="@dimen/_5sdp"
                             android:layout_marginRight="@dimen/_5sdp"
                             android:adjustViewBounds="true"
-                            android:scaleType="centerCrop"
                             android:clickable="true"
                             android:foreground="?selectableItemBackground"
+                            android:scaleType="fitCenter"
                             android:src="@drawable/ic_logo" />
 
                         <ImageView
@@ -779,10 +779,10 @@
                             android:layout_marginLeft="@dimen/_5sdp"
                             android:layout_marginRight="@dimen/_5sdp"
                             android:adjustViewBounds="true"
-                            android:scaleType="centerCrop"
                             android:clickable="true"
                             android:foreground="?selectableItemBackground"
-                            android:src="@drawable/ic_logo"/>
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/ic_logo" />
 
                         <ImageView
                             android:id="@+id/imageViewPromoHaji3"
@@ -791,10 +791,10 @@
                             android:layout_marginLeft="@dimen/_5sdp"
                             android:layout_marginRight="@dimen/_5sdp"
                             android:adjustViewBounds="true"
-                            android:scaleType="centerCrop"
                             android:clickable="true"
                             android:foreground="?selectableItemBackground"
-                            android:src="@drawable/ic_logo"/>
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/ic_logo" />
 
                     </LinearLayout>
 
