@@ -11,8 +11,6 @@ import android.view.ViewGroup;
 
 import com.android.tomboati.R;
 import com.android.tomboati.adapter.TabAdapter;
-import com.android.tomboati.view.fragment.ChatFragment;
-import com.android.tomboati.view.fragment.NotificationFragment;
 import com.google.android.material.tabs.TabLayout;
 
 public class InboxFragment extends Fragment {

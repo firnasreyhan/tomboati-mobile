@@ -9,11 +9,11 @@ import androidx.lifecycle.MutableLiveData;
 import com.android.tomboati.api.response.ListPaketVerifyRespone;
 import com.android.tomboati.repository.Repository;
 
-public class TransaksiViewModel extends AndroidViewModel {
+public class PesananViewModel extends AndroidViewModel {
 
     private final Repository repository;
 
-    public TransaksiViewModel(@NonNull Application application) {
+    public PesananViewModel(@NonNull Application application) {
         super(application);
         repository = new Repository();
     }

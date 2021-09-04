@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/ic_background_beranda"
-    tools:context=".view.activity.UpdateProfileActivity">
+    tools:context=".view.activity.homepage.UpdateProfileActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"

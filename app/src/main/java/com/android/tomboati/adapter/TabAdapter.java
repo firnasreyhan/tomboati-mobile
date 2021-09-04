@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
@@ -15,8 +14,6 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
 import com.android.tomboati.R;
-import com.android.tomboati.view.fragment.ChatFragment;
-import com.android.tomboati.view.fragment.NotificationFragment;
 
 import java.util.ArrayList;
 import java.util.List;

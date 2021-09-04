@@ -1,4 +1,4 @@
-package com.android.tomboati.view.activity;
+package com.android.tomboati.view.activity.homepage;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;

@@ -49,10 +49,10 @@
         <activity android:name=".view.activity.doa_dzikir.TasbihActivity" />
         <activity android:name=".view.activity.doa_dzikir.DoaRamadhanActivity" />
         <activity android:name=".view.activity.sholat.TayamumActivity" />
-        <activity android:name=".view.activity.UpdateProfileActivity" />
+        <activity android:name=".view.activity.homepage.UpdateProfileActivity" />
         <activity android:name=".view.activity.sholat.DoaSesudahSholatActivity" />
         <activity android:name=".view.activity.sholat.SyaratSholatActivity" />
-        <activity android:name=".view.activity.KodeReferralActivity" />
+        <activity android:name=".view.activity.homepage.KodeReferralActivity" />
         <activity android:name=".view.activity.pendaftaran.DetailPaketActivity" />
         <activity android:name=".view.activity.doa_dzikir.AdabBerdoaActivity" />
         <activity android:name=".view.activity.doa_dzikir.WaktuMustajabActivity" />
