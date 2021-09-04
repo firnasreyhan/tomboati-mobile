@@ -1,15 +1,12 @@
 package com.android.tomboati.view.activity.pendaftaran;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.cardview.widget.CardView;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -17,7 +14,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,15 +23,10 @@ import com.android.tomboati.api.response.LokasiResponse;
 import com.android.tomboati.model.PesananaModel;
 import com.android.tomboati.preference.AppPreference;
 import com.android.tomboati.utils.Utility;
-import com.android.tomboati.view.activity.SignUpActivity;
-import com.android.tomboati.viewmodel.PendaftaranDataDiriViewModel;
+import com.android.tomboati.viewmodel.tomboati.pendaftaran.PendaftaranDataDiriViewModel;
 import com.google.android.material.button.MaterialButton;
-import com.google.android.material.textfield.TextInputEditText;
-import com.theartofdev.edmodo.cropper.CropImage;
-import com.theartofdev.edmodo.cropper.CropImageView;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 public class PendaftaranDataDiriActivity extends AppCompatActivity {
@@ -159,7 +150,7 @@ public class PendaftaranDataDiriActivity extends AppCompatActivity {
                     model.setNamaLengkap(textInputEditTextNamaLengkap.getText().toString());
                     model.setNomorHP(textInputEditTextNomorHandphone.getText().toString());
                     model.setTempatLahir(textInputEditTextTempatLahir.getText().toString());
-                    model.setTanggalLahir(textInputEditTanggalLahir.getText().toString());
+                    model.setTanggalLahir(tanggalLahir);
                     model.setJenisKelamin("" + spinnerJenisKelamin.getSelectedItemPosition());
                     model.setStatusPerkawinan(spinnerStatusPerkawinan.getSelectedItem().toString());
                     model.setKewarganegaraan(spinnerKewarganegaraan.getSelectedItem().toString());
@@ -173,8 +164,8 @@ public class PendaftaranDataDiriActivity extends AppCompatActivity {
                     model.setAlamat(textInputEditTextRincianAlamat.getText().toString());
                     model.setNomorPaspor(textInputEditTextNomorPaspor.getText().toString());
                     model.setTempatDikeluarkan(textInputEditTextTempatDikeluarkan.getText().toString());
-                    model.setTanggalPenerbitanPaspor(textInputEditTextTanggalPenerbitanPaspor.getText().toString());
-                    model.setTanggalBerakhirPaspor(textInputEditTextTanggalBerakhirPaspor.getText().toString());
+                    model.setTanggalPenerbitanPaspor(tanggalPenerbitanPaspor);
+                    model.setTanggalBerakhirPaspor(tanggalBerakhirPaspor);
 
                     Intent intent = new Intent(v.getContext(), PendaftaranDokumenDataDiriActivity.class);
                     intent.putExtra("OBJECT", (Serializable) model);

@@ -16,7 +16,7 @@ import android.widget.LinearLayout;
 import com.android.tomboati.R;
 import com.android.tomboati.adapter.TahlilAdapter;
 import com.android.tomboati.api.response.TahlilResponse;
-import com.android.tomboati.viewmodel.DoaTahlilViewModel;
+import com.android.tomboati.viewmodel.doa.DoaTahlilViewModel;
 import com.facebook.shimmer.ShimmerFrameLayout;
 
 public class TahlilFragment extends Fragment {

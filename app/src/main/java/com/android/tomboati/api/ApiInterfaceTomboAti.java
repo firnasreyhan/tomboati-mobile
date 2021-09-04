@@ -89,6 +89,15 @@ public interface ApiInterfaceTomboAti {
     );
 
 
+
+
+
+
+
+
+
+
+
     // CHAT API ===================
     @Multipart
     @POST("chat/chat_post")
@@ -103,6 +112,15 @@ public interface ApiInterfaceTomboAti {
     Call<ChatResponse> getChat(
             @Field("idChatRoom") String idChatRoom
     );
+
+
+
+
+
+
+
+
+
 
 
     // PACKET API ===================
@@ -130,10 +148,12 @@ public interface ApiInterfaceTomboAti {
     @GET("paket/getpaketlimit")
     Call<PaketResponse> getPaketLimit();
 
-    @GET("transaksi/pesananUmrohHaji")
-    Call<ListPaketVerifyRespone> getPaketHajiUmrahVerif(
-            @Query("idUserRegister") String idUserRegister
-    );
+
+
+
+
+
+
 
 
 
@@ -159,6 +179,24 @@ public interface ApiInterfaceTomboAti {
             @Part MultipartBody.Part fcKKAlmarhum,
             @Part MultipartBody.Part fcFotoAlmarhum
     );
+
+    @GET("transaksi/pesananUmrohHaji") // <= TRANSAKSI
+    Call<ListPaketVerifyRespone> getPaketHajiUmrahVerif(
+            @Query("idUserRegister") String idUserRegister
+    );
+
+    @GET("transaksi/riwayatUmrohHaji") // <= RIWAYAT
+    Call<ListPaketVerifyRespone> getRiwayatPaketHajiUmrahVerif(
+            @Query("idUserRegister") String idUserRegister
+    );
+
+
+
+
+
+
+
+
 
 
 
@@ -187,10 +225,23 @@ public interface ApiInterfaceTomboAti {
     @GET("WisataHalal/getwisatahalallimit")
     Call<PaketWisataResponse> getWisataHalalLimit();
 
-    @GET("transaksi/pesananWisataHalal")
+    @GET("transaksi/pesananWisataHalal") // <= TRANSAKSI
     Call<ListPaketVerifyRespone> getPaketWisataHalalVerif(
             @Query("idUserRegister") String idUserRegister
     );
+
+    @GET("transaksi/riwayatWisataHalal") // <= RIWAYAT
+    Call<ListPaketVerifyRespone> getRiwayatPaketWisataHalalVerif(
+            @Query("idUserRegister") String idUserRegister
+    );
+
+
+
+
+
+
+
+
 
 
 
@@ -203,6 +254,15 @@ public interface ApiInterfaceTomboAti {
 
     @GET("KataMutiara/getKataMutiaraLimit")
     Call<KataMutiaraResponse> getKataMutiara();
+
+
+
+
+
+
+
+
+
 
 
     // PEMBAYARAN API ===================
@@ -225,6 +285,15 @@ public interface ApiInterfaceTomboAti {
     Call<DetailPembayaranResponse> getDetailPembayaran(
         @Query("idPembayaran") String idPembayaran
     );
+
+
+
+
+
+
+
+
+
 
 
     // REGISTER PACKET API  ===================

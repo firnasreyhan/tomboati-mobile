@@ -19,15 +19,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.tomboati.R;
 import com.android.tomboati.api.response.BaseResponse;
 import com.android.tomboati.api.response.SignInResponse;
 import com.android.tomboati.preference.AppPreference;
-import com.android.tomboati.viewmodel.SignUpViewModel;
-import com.android.tomboati.viewmodel.UpdateProfileViewModel;
+import com.android.tomboati.viewmodel.tomboati.auth.UpdateProfileViewModel;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.Priority;
 import com.bumptech.glide.load.DecodeFormat;

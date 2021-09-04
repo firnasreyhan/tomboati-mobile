@@ -11,14 +11,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.android.tomboati.R;
 import com.android.tomboati.api.response.PembayaranResponse;
 import com.android.tomboati.utils.AlertProgress;
 import com.android.tomboati.view.activity.pendaftaran.Syarat2Activity;
-import com.android.tomboati.viewmodel.PembayaranViewModel;
+import com.android.tomboati.viewmodel.tomboati.homepage.PembayaranViewModel;
 import com.google.android.material.button.MaterialButton;
 
 public class InformasiPembayaranActivity extends AppCompatActivity {

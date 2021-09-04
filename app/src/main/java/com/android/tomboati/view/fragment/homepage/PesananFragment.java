@@ -12,7 +12,6 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,7 +22,7 @@ import com.android.tomboati.R;
 import com.android.tomboati.adapter.PesananPendingAdapter;
 import com.android.tomboati.api.response.ListPaketVerifyRespone;
 import com.android.tomboati.preference.AppPreference;
-import com.android.tomboati.viewmodel.PesananViewModel;
+import com.android.tomboati.viewmodel.tomboati.homepage.TransaksiViewModel;
 import com.facebook.shimmer.ShimmerFrameLayout;
 
 import java.util.ArrayList;
@@ -31,7 +30,7 @@ import java.util.List;
 
 public class PesananFragment extends Fragment {
 
-    private PesananViewModel viewModel;
+    private TransaksiViewModel viewModel;
     private final LifecycleOwner OWNER = this;
     private RecyclerView recyclerView;
     private ShimmerFrameLayout shimmerFrameLayoutPesanan;
@@ -52,7 +51,7 @@ public class PesananFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        viewModel = ViewModelProviders.of(this).get(PesananViewModel.class);
+        viewModel = ViewModelProviders.of(this).get(TransaksiViewModel.class);
 
         list = new ArrayList<>();
 

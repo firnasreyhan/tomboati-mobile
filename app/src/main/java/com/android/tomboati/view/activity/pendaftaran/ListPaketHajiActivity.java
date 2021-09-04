@@ -2,7 +2,6 @@ package com.android.tomboati.view.activity.pendaftaran;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -10,27 +9,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
-import android.widget.Spinner;
 
 import com.android.tomboati.R;
-import com.android.tomboati.adapter.PaketAdapter;
 import com.android.tomboati.adapter.PaketHajiAdapter;
-import com.android.tomboati.adapter.PaketWisataAdapter;
-import com.android.tomboati.api.response.BaseResponse;
-import com.android.tomboati.api.response.PaketMonthResponse;
 import com.android.tomboati.api.response.PaketResponse;
-import com.android.tomboati.api.response.PaketWisataResponse;
-import com.android.tomboati.model.BulanModel;
-import com.android.tomboati.viewmodel.ListPaketViewModel;
+import com.android.tomboati.viewmodel.tomboati.pendaftaran.ListPaketViewModel;
 import com.facebook.shimmer.ShimmerFrameLayout;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class ListPaketHajiActivity extends AppCompatActivity implements PaketHajiAdapter.onSelectedData{
 

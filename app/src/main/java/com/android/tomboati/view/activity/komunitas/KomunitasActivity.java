@@ -8,15 +8,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
 import com.android.tomboati.R;
-import com.android.tomboati.adapter.DoaHarianAdapter;
 import com.android.tomboati.adapter.KomunitasAdapter;
 import com.android.tomboati.api.response.KomunitasResponse;
 import com.android.tomboati.utils.Utility;
-import com.android.tomboati.viewmodel.KomunitasViewModel;
+import com.android.tomboati.viewmodel.tomboati.homepage.KomunitasViewModel;
 import com.facebook.shimmer.ShimmerFrameLayout;
 
 import java.util.List;

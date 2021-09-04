@@ -15,10 +15,8 @@ import android.widget.LinearLayout;
 
 import com.android.tomboati.R;
 import com.android.tomboati.adapter.SholatAdapter;
-import com.android.tomboati.adapter.TahlilAdapter;
 import com.android.tomboati.api.response.BacaanSholatResponse;
-import com.android.tomboati.api.response.TahlilResponse;
-import com.android.tomboati.viewmodel.DoaTahlilViewModel;
+import com.android.tomboati.viewmodel.doa.DoaTahlilViewModel;
 import com.facebook.shimmer.ShimmerFrameLayout;
 
 import java.util.List;

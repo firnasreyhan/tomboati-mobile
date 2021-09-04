@@ -10,12 +10,10 @@ import androidx.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.android.tomboati.viewmodel.PendaftaranWisataHalalViewModel;
+import com.android.tomboati.viewmodel.tomboati.pendaftaran.PendaftaranWisataHalalViewModel;
 import com.rm.freedrawview.FreeDrawView;
 import com.rm.freedrawview.PathRedoUndoCountChangeListener;
 
@@ -24,8 +22,8 @@ import com.android.tomboati.api.response.BaseResponse;
 import com.android.tomboati.model.PesananaModel;
 import com.android.tomboati.utils.AlertInfo;
 import com.android.tomboati.utils.AlertProgress;
-import com.android.tomboati.view.activity.MainActivity;
-import com.android.tomboati.viewmodel.PendaftaranDataKeluargaViewModel;
+import com.android.tomboati.view.activity.homepage.MainActivity;
+import com.android.tomboati.viewmodel.tomboati.pendaftaran.PendaftaranDataKeluargaViewModel;
 import com.google.android.material.button.MaterialButton;
 
 public class DrawTandaTanganPendaftaran extends AppCompatActivity {

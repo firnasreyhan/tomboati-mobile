@@ -9,7 +9,6 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,10 +16,8 @@ import android.view.ViewGroup;
 import com.android.tomboati.R;
 import com.android.tomboati.adapter.SurahNewAdapter;
 import com.android.tomboati.api.response.QuranListResponse;
-import com.android.tomboati.viewmodel.AlQuranViewModel;
+import com.android.tomboati.viewmodel.quran.AlQuranViewModel;
 import com.facebook.shimmer.ShimmerFrameLayout;
-
-import java.util.List;
 
 public class SurahNewFragment extends Fragment {
 

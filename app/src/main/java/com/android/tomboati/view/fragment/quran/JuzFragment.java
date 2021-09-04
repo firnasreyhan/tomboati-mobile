@@ -14,7 +14,7 @@ import android.view.ViewGroup;
 import com.android.tomboati.R;
 import com.android.tomboati.adapter.JuzAdapter;
 import com.android.tomboati.utils.JuzUtility;
-import com.android.tomboati.viewmodel.DetailAlQuranViewModel;
+import com.android.tomboati.viewmodel.quran.DetailAlQuranViewModel;
 import com.facebook.shimmer.ShimmerFrameLayout;
 
 public class JuzFragment extends Fragment {

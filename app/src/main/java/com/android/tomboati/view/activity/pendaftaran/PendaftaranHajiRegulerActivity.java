@@ -3,7 +3,6 @@ package com.android.tomboati.view.activity.pendaftaran;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.cardview.widget.CardView;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
@@ -20,8 +19,8 @@ import com.android.tomboati.R;
 import com.android.tomboati.api.response.BaseResponse;
 import com.android.tomboati.utils.AlertInfo;
 import com.android.tomboati.utils.AlertProgress;
-import com.android.tomboati.view.activity.MainActivity;
-import com.android.tomboati.viewmodel.ImageChatViewModel;
+import com.android.tomboati.view.activity.homepage.MainActivity;
+import com.android.tomboati.viewmodel.tomboati.homepage.ImageChatViewModel;
 import com.google.android.material.textfield.TextInputEditText;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;

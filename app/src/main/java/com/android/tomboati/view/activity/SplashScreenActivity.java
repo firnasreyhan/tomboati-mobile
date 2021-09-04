@@ -1,23 +1,15 @@
 package com.android.tomboati.view.activity;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 
 import android.Manifest;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.android.tomboati.R;
-import com.android.tomboati.preference.AppPreference;
+import com.android.tomboati.view.activity.homepage.MainActivity;
 import com.intentfilter.androidpermissions.PermissionManager;
 import com.intentfilter.androidpermissions.models.DeniedPermissions;
 

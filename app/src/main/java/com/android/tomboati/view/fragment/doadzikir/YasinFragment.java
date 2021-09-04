@@ -16,7 +16,7 @@ import android.widget.LinearLayout;
 import com.android.tomboati.R;
 import com.android.tomboati.adapter.AyatAdapter;
 import com.android.tomboati.api.response.AyatResponse;
-import com.android.tomboati.viewmodel.DetailAlQuranViewModel;
+import com.android.tomboati.viewmodel.quran.DetailAlQuranViewModel;
 import com.facebook.shimmer.ShimmerFrameLayout;
 
 public class YasinFragment extends Fragment {

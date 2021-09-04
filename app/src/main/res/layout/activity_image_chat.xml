@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@android:color/black"
-    tools:context=".view.activity.ImageChatActivity">
+    tools:context=".view.activity.homepage.ImageChatActivity">
 
     <ImageView
         android:id="@+id/imageViewChat"

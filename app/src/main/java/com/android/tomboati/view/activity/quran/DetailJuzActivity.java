@@ -7,36 +7,20 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.ProgressDialog;
-import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.os.Environment;
-import android.os.Handler;
-import android.util.Log;
 import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.SeekBar;
-import android.widget.TextView;
 
 import com.android.tomboati.R;
 import com.android.tomboati.adapter.AyatAdapter;
-import com.android.tomboati.api.ApiClient;
-import com.android.tomboati.api.ApiInterfaceAlQuran;
 import com.android.tomboati.api.response.AyatResponse;
 import com.android.tomboati.model.JuzModel;
 import com.android.tomboati.utils.JuzUtility;
-import com.android.tomboati.viewmodel.DetailAlQuranViewModel;
+import com.android.tomboati.viewmodel.quran.DetailAlQuranViewModel;
 import com.facebook.shimmer.ShimmerFrameLayout;
-import com.google.android.material.button.MaterialButton;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class DetailJuzActivity extends AppCompatActivity {
     private DetailAlQuranViewModel detailAlQuranViewModel;

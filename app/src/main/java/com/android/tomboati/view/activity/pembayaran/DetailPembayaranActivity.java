@@ -12,9 +12,8 @@ import android.view.View;
 
 import com.android.tomboati.R;
 import com.android.tomboati.adapter.DetailPembayaranAdapter;
-import com.android.tomboati.adapter.WaktuMustajabAdapter;
 import com.android.tomboati.api.response.DetailPembayaranResponse;
-import com.android.tomboati.viewmodel.PembayaranViewModel;
+import com.android.tomboati.viewmodel.tomboati.homepage.PembayaranViewModel;
 import com.facebook.shimmer.ShimmerFrameLayout;
 
 import java.util.List;

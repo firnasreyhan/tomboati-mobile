@@ -986,6 +986,40 @@ public class Repository {
 
     //==
 
+    public MutableLiveData<ListPaketVerifyRespone> getRiwayatPaketWisataHalalVerif(String id) {
+        MutableLiveData<ListPaketVerifyRespone> data = new MutableLiveData<>();
+        apiInterfaceTomboAti.getRiwayatPaketWisataHalalVerif(id).enqueue(new Callback<ListPaketVerifyRespone>() {
+            @Override
+            public void onResponse(Call<ListPaketVerifyRespone> call, Response<ListPaketVerifyRespone> response) {
+                if (response.code() == 200) { data.postValue(response.body()); }
+            }
+
+            @Override
+            public void onFailure(Call<ListPaketVerifyRespone> call, Throwable t) {
+                data.postValue(null);
+            }
+        }); return data;
+    }
+
+    //==
+
+    public MutableLiveData<ListPaketVerifyRespone> getRiwayatPaketHajiUmrahVerif(String id) {
+        MutableLiveData<ListPaketVerifyRespone> data = new MutableLiveData<>();
+        apiInterfaceTomboAti.getRiwayatPaketHajiUmrahVerif(id).enqueue(new Callback<ListPaketVerifyRespone>() {
+            @Override
+            public void onResponse(Call<ListPaketVerifyRespone> call, Response<ListPaketVerifyRespone> response) {
+                if (response.code() == 200) { data.postValue(response.body()); }
+            }
+
+            @Override
+            public void onFailure(Call<ListPaketVerifyRespone> call, Throwable t) {
+                data.postValue(null);
+            }
+        }); return data;
+    }
+
+    //==
+
     public MutableLiveData<BaseResponse> postPembayaran(
         String idTransaksi,
         RequestBody jumlahPembayaran,

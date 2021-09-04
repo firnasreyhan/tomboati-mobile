@@ -3,14 +3,12 @@ package com.android.tomboati.view.activity.pendaftaran;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.cardview.widget.CardView;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -21,8 +19,8 @@ import com.android.tomboati.model.DataHajiBadalModel;
 import com.android.tomboati.preference.AppPreference;
 import com.android.tomboati.utils.AlertInfo;
 import com.android.tomboati.utils.AlertProgress;
-import com.android.tomboati.view.activity.MainActivity;
-import com.android.tomboati.viewmodel.PendaftaranHajiViewModel;
+import com.android.tomboati.view.activity.homepage.MainActivity;
+import com.android.tomboati.viewmodel.tomboati.pendaftaran.PendaftaranHajiViewModel;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 

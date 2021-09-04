@@ -2,23 +2,15 @@ package com.android.tomboati.view.activity.doa_dzikir;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.view.View;
-import android.widget.LinearLayout;
 
 import com.android.tomboati.R;
 import com.android.tomboati.adapter.DoaHarianAdapter;
-import com.android.tomboati.adapter.TahlilAdapter;
 import com.android.tomboati.api.response.DoaHarianResponse;
-import com.android.tomboati.utils.Utility;
-import com.android.tomboati.viewmodel.DoaHarianViewModel;
-import com.android.tomboati.viewmodel.DoaTahlilViewModel;
-import com.facebook.shimmer.ShimmerFrameLayout;
+import com.android.tomboati.viewmodel.doa.DoaHarianViewModel;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -10,23 +10,17 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.View;
 
 import com.android.tomboati.R;
-import com.android.tomboati.adapter.AyatAdapter;
 import com.android.tomboati.adapter.AyatJuzNewAdapter;
-import com.android.tomboati.adapter.AyatNewAdapter;
-import com.android.tomboati.api.response.AyatResponse;
 import com.android.tomboati.api.response.QuranSurahResponse;
 import com.android.tomboati.model.JuzModelNew;
 import com.android.tomboati.utils.JuzUtilityNew;
-import com.android.tomboati.utils.Utility;
-import com.android.tomboati.viewmodel.DetailAlQuranViewModel;
+import com.android.tomboati.viewmodel.quran.DetailAlQuranViewModel;
 import com.facebook.shimmer.ShimmerFrameLayout;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;

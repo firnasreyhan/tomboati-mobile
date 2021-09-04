@@ -65,8 +65,8 @@
         <activity android:name=".view.activity.doa_dzikir.YasinTahlilActivity" />
         <activity android:name=".view.activity.doa_dzikir.IstighosahActivity" />
         <activity android:name=".view.activity.quran.DetailJuzActivity" />
-        <activity android:name=".view.activity.KalenderHijriahActivity" />
-        <activity android:name=".view.activity.DetailNewsActivity" />
+        <activity android:name=".view.activity.homepage.KalenderHijriahActivity" />
+        <activity android:name=".view.activity.homepage.DetailNewsActivity" />
         <activity android:name=".view.activity.doa_dzikir.DetailAsmaulHusnaActivity" />
         <activity android:name=".view.activity.doa_dzikir.NewAsmaulHusnaActivity" />
         <activity android:name=".view.activity.quran.DetailAlQuranActivity" />
@@ -81,13 +81,13 @@
         <activity android:name=".view.activity.sholat.SholatWajibActivity" />
         <activity android:name=".view.activity.doa_dzikir.AsmaulHusnaActivity" />
         <activity android:name=".view.activity.pendaftaran.SyaratActivity" />
-        <activity android:name=".view.activity.SignUpActivity" />
-        <activity android:name=".view.activity.ImageChatActivity" />
-        <activity android:name=".view.activity.WisataReligiActivity" />
+        <activity android:name=".view.activity.homepage.SignUpActivity" />
+        <activity android:name=".view.activity.homepage.ImageChatActivity" />
+        <activity android:name=".view.activity.homepage.WisataReligiActivity" />
         <activity android:name=".view.activity.doa_dzikir.DoaDzikirActivity" />
         <activity android:name=".view.activity.sholat.SholatActivity" />
-        <activity android:name=".view.activity.UmrohHajiActivity" />
-        <activity android:name=".view.activity.MainActivity" />
+        <activity android:name=".view.activity.homepage.UmrohHajiActivity" />
+        <activity android:name=".view.activity.homepage.MainActivity" />
         <activity android:name=".view.activity.SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

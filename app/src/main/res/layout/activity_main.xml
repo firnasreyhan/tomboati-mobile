@@ -8,7 +8,7 @@
     android:orientation="vertical"
     android:background="@color/background"
     android:focusableInTouchMode="true"
-    tools:context=".view.activity.MainActivity">
+    tools:context=".view.activity.homepage.MainActivity">
 
     <FrameLayout
         android:id="@+id/frameLayoutFragment"

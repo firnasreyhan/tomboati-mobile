@@ -7,7 +7,6 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.app.DatePickerDialog;
-import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.location.Address;
@@ -24,7 +23,7 @@ import com.android.tomboati.R;
 import com.android.tomboati.api.response.JadwalSholatResponse;
 import com.android.tomboati.utils.AlertProgress;
 import com.android.tomboati.utils.Utility;
-import com.android.tomboati.viewmodel.JadwalSholatViewModel;
+import com.android.tomboati.viewmodel.sholat.JadwalSholatViewModel;
 import com.google.android.material.button.MaterialButton;
 import com.intentfilter.androidpermissions.PermissionManager;
 import com.intentfilter.androidpermissions.models.DeniedPermissions;

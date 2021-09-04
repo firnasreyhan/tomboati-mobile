@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -26,8 +25,7 @@ import com.android.tomboati.api.response.PaketResponse;
 import com.android.tomboati.api.response.PaketWisataResponse;
 import com.android.tomboati.model.PesananaModel;
 import com.android.tomboati.preference.AppPreference;
-import com.android.tomboati.view.activity.pendaftaran.SyaratActivity;
-import com.android.tomboati.viewmodel.DetailPaketViewModel;
+import com.android.tomboati.viewmodel.tomboati.pendaftaran.DetailPaketViewModel;
 import com.google.android.material.button.MaterialButton;
 import com.squareup.picasso.Picasso;
 

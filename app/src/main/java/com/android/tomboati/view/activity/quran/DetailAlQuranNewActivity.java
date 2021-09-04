@@ -13,10 +13,9 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 import com.android.tomboati.R;
-import com.android.tomboati.adapter.AyatAdapter;
 import com.android.tomboati.adapter.AyatNewAdapter;
 import com.android.tomboati.api.response.QuranSurahResponse;
-import com.android.tomboati.viewmodel.DetailAlQuranViewModel;
+import com.android.tomboati.viewmodel.quran.DetailAlQuranViewModel;
 import com.facebook.shimmer.ShimmerFrameLayout;
 
 import java.util.List;

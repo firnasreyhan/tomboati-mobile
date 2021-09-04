@@ -13,7 +13,6 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -29,17 +28,13 @@ import android.widget.TextView;
 
 import com.android.tomboati.R;
 import com.android.tomboati.adapter.AyatAdapter;
-import com.android.tomboati.adapter.SurahAdapter;
 import com.android.tomboati.api.response.AyatResponse;
-import com.android.tomboati.viewmodel.DetailAlQuranViewModel;
+import com.android.tomboati.viewmodel.quran.DetailAlQuranViewModel;
 import com.facebook.shimmer.ShimmerFrameLayout;
 import com.google.android.material.button.MaterialButton;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 public class DetailAlQuranActivity extends AppCompatActivity {
     private DetailAlQuranViewModel detailAlQuranViewModel;

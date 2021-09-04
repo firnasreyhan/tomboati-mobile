@@ -2,7 +2,6 @@ package com.android.tomboati.view.fragment.quran;
 
 import android.os.Bundle;
 
-import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
@@ -16,7 +15,7 @@ import android.view.ViewGroup;
 import com.android.tomboati.R;
 import com.android.tomboati.adapter.SurahAdapter;
 import com.android.tomboati.api.response.SurahResponse;
-import com.android.tomboati.viewmodel.AlQuranViewModel;
+import com.android.tomboati.viewmodel.quran.AlQuranViewModel;
 import com.facebook.shimmer.ShimmerFrameLayout;
 
 import java.util.List;

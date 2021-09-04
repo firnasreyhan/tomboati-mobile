@@ -8,7 +8,6 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.location.Location;
@@ -21,7 +20,7 @@ import com.android.tomboati.adapter.MasjidAdapter;
 import com.android.tomboati.api.response.MasjidResponse;
 import com.android.tomboati.utils.AlertProgress;
 import com.android.tomboati.utils.Utility;
-import com.android.tomboati.viewmodel.MasjidTerdekatViewModel;
+import com.android.tomboati.viewmodel.sholat.MasjidTerdekatViewModel;
 import com.intentfilter.androidpermissions.PermissionManager;
 import com.intentfilter.androidpermissions.models.DeniedPermissions;
 
