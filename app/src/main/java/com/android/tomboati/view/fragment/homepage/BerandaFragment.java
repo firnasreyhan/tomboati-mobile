@@ -38,7 +38,6 @@ import com.android.tomboati.utils.Utility;
 import com.android.tomboati.view.activity.pendaftaran.DetailPaketActivity;
 import com.android.tomboati.view.activity.homepage.DetailNewsActivity;
 import com.android.tomboati.view.activity.doa_dzikir.DoaDzikirActivity;
-import com.android.tomboati.view.activity.homepage.KalenderHijriahActivity;
 import com.android.tomboati.view.activity.komunitas.KomunitasActivity;
 import com.android.tomboati.view.activity.quran.AlQuranNewActivity;
 import com.android.tomboati.view.activity.sholat.SholatActivity;
@@ -265,13 +264,13 @@ public class BerandaFragment extends Fragment {
 
         CardView[] cardArr = {
                 cardViewUmrohHaji, cardViewSholat, cardViewDoaDzikir, cardViewWisataReligi,
-                cardViewAlQuran, cardViewKalenderHijriah, cardViewKomunitas,
+                cardViewAlQuran, cardViewKomunitas,
                 cardViewTomboatiChannel, cardViewLiveMekkah
         };
 
         AppCompatActivity[] activityArr = {
                 new UmrohHajiActivity(), new SholatActivity(), new DoaDzikirActivity(),
-                new WisataReligiActivity(), new AlQuranNewActivity(), new KalenderHijriahActivity(),
+                new WisataReligiActivity(), new AlQuranNewActivity(),
                 new KomunitasActivity()
         };
 

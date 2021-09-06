@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
     android:orientation="vertical"
     tools:context=".view.activity.sholat.SholatJenazahActivity">
 
@@ -49,8 +48,8 @@
                 android:fontFamily="@font/catamaran_regular"
                 android:text="- Adapun syarat-syarat sholat jenazah adalah sebagai berikut:"
                 android:textColor="@color/black"
-                android:textStyle="bold"
-                android:textSize="@dimen/_13sdp" />
+                android:textSize="@dimen/_13sdp"
+                android:textStyle="bold" />
 
             <com.codesgood.views.JustifiedTextView
                 android:layout_width="match_parent"
@@ -86,8 +85,8 @@
                 android:fontFamily="@font/catamaran_regular"
                 android:text="- Sementara Rukun-rukun sholat jenazah sebagai berikut : "
                 android:textColor="@color/black"
-                android:textStyle="bold"
-                android:textSize="@dimen/_13sdp" />
+                android:textSize="@dimen/_13sdp"
+                android:textStyle="bold" />
 
 
             <com.codesgood.views.JustifiedTextView
@@ -170,9 +169,9 @@
                 android:text="Niat Sholat Jenazah"
                 android:textColor="@color/dark_green"
                 android:textSize="@dimen/_14sdp"
-                
-                
-                 />
+
+
+                />
 
             <com.codesgood.views.JustifiedTextView
                 android:layout_width="match_parent"
@@ -181,18 +180,18 @@
                 android:fontFamily="@font/catamaran_regular"
                 android:text="- Niat sholat jenazah laki laki : "
                 android:textColor="@color/black"
-                android:textStyle="bold"
-                android:textSize="@dimen/_13sdp" />
+                android:textSize="@dimen/_13sdp"
+                android:textStyle="bold" />
 
             <com.codesgood.views.JustifiedTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:fontFamily="@font/catamaran_regular"
-                android:textStyle="italic"
                 android:text="&quot;Usholli 'alaa haadzal mayyiti arba'a takbirootin fardhol kifaayati makmuuman lillahi ta'aalaa.&quot;"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_13sdp" />
+                android:textSize="@dimen/_13sdp"
+                android:textStyle="italic" />
 
             <com.codesgood.views.JustifiedTextView
                 android:layout_width="match_parent"
@@ -211,18 +210,18 @@
                 android:fontFamily="@font/catamaran_regular"
                 android:text="- Niat sholat jenazah perempuan : "
                 android:textColor="@color/black"
-                android:textStyle="bold"
-                android:textSize="@dimen/_13sdp" />
+                android:textSize="@dimen/_13sdp"
+                android:textStyle="bold" />
 
             <com.codesgood.views.JustifiedTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:fontFamily="@font/catamaran_regular"
-                android:textStyle="italic"
                 android:text="&quot;Usholli 'alaa haadzihil mayyitati arba'a takbiratatin fardhol kifayaatai ma'muuman lillahi ta'aala.&quot;"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_13sdp" />
+                android:textSize="@dimen/_13sdp"
+                android:textStyle="italic" />
 
             <com.codesgood.views.JustifiedTextView
                 android:layout_width="match_parent"
@@ -241,9 +240,9 @@
                 android:text="Tata Cara Sholat Jenazah"
                 android:textColor="@color/dark_green"
                 android:textSize="@dimen/_14sdp"
-                
-                
-                 />
+
+
+                />
 
             <com.codesgood.views.JustifiedTextView
                 android:layout_width="match_parent"
@@ -252,8 +251,8 @@
                 android:fontFamily="@font/catamaran_regular"
                 android:text="- Sholat jenazah tidak disertai dengan rukuk dan sujud, tidak juga dengan adzan dan iqmat. Setelah berdiri sebagaimana mestinya, maka yang harus dilakukan adalah : "
                 android:textColor="@color/black"
-                android:textStyle="bold"
-                android:textSize="@dimen/_13sdp" />
+                android:textSize="@dimen/_13sdp"
+                android:textStyle="bold" />
 
             <com.codesgood.views.JustifiedTextView
                 android:layout_width="match_parent"

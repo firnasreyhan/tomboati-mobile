@@ -49,7 +49,7 @@ public class PendaftaranDataDiriActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setTheme(R.style.ThemeTomboAtiGreen);
-        setContentView(R.layout.activity_pendaftaran_data_diri_new);
+        setContentView(R.layout.activity_pendaftaran_data_diri);
 
         viewModel = ViewModelProviders.of(this).get(PendaftaranDataDiriViewModel.class);
 
@@ -146,6 +146,7 @@ public class PendaftaranDataDiriActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (checkData()) {
                     model.setIdUserRegister(AppPreference.getUser(v.getContext()).getIdUserRegister());
+                    model.setNomorKTP(textInputEditTextNomorKTP.getText().toString());
                     model.setEmail(AppPreference.getUser(v.getContext()).getEmail());
                     model.setNamaLengkap(textInputEditTextNamaLengkap.getText().toString());
                     model.setNomorHP(textInputEditTextNomorHandphone.getText().toString());

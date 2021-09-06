@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.tomboati.R;
 import com.android.tomboati.model.IstighosahModel;
-import com.android.tomboati.view.activity.quran.DetailAlQuranActivity;
+import com.android.tomboati.view.activity.quran.DetailAlQuranNewActivity;
 
 import java.util.List;
 
@@ -49,9 +49,8 @@ public class IstighosahAdapter extends RecyclerView.Adapter<IstighosahAdapter.Vi
             holder.textTranslate.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(v.getContext(), DetailAlQuranActivity.class);
-                    intent.putExtra("ID_SURAH", "36");
-                    intent.putExtra("NAMA_SURAH", "Surah Yasin");
+                    Intent intent = new Intent(v.getContext(), DetailAlQuranNewActivity.class);
+                    intent.putExtra("ID_SURAH", 36);
                     v.getContext().startActivity(intent);
                 }
             });

@@ -64,13 +64,9 @@
         <activity android:name=".view.activity.doa_dzikir.DoaSehariHariActivity" />
         <activity android:name=".view.activity.doa_dzikir.YasinTahlilActivity" />
         <activity android:name=".view.activity.doa_dzikir.IstighosahActivity" />
-        <activity android:name=".view.activity.quran.DetailJuzActivity" />
-        <activity android:name=".view.activity.homepage.KalenderHijriahActivity" />
         <activity android:name=".view.activity.homepage.DetailNewsActivity" />
         <activity android:name=".view.activity.doa_dzikir.DetailAsmaulHusnaActivity" />
         <activity android:name=".view.activity.doa_dzikir.NewAsmaulHusnaActivity" />
-        <activity android:name=".view.activity.quran.DetailAlQuranActivity" />
-        <activity android:name=".view.activity.quran.AlQuranActivity" />
         <activity android:name=".view.activity.doa_dzikir.DetailAnekaSholawatActivity" />
         <activity android:name=".view.activity.sholat.MasjidTerdekatActivity" />
         <activity android:name=".view.activity.sholat.JadwalSholatActivity" />
@@ -79,7 +75,6 @@
         <activity android:name=".view.activity.sholat.ArahKiblatActivity" />
         <activity android:name=".view.activity.sholat.WudhuActivity" />
         <activity android:name=".view.activity.sholat.SholatWajibActivity" />
-        <activity android:name=".view.activity.doa_dzikir.AsmaulHusnaActivity" />
         <activity android:name=".view.activity.pendaftaran.SyaratActivity" />
         <activity android:name=".view.activity.homepage.SignUpActivity" />
         <activity android:name=".view.activity.homepage.ImageChatActivity" />

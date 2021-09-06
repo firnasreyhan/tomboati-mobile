@@ -35,12 +35,6 @@
 
             <include layout="@layout/item_shimmer_doa_sehari_hari" />
 
-            <include layout="@layout/item_shimmer_doa_sehari_hari" />
-
-            <include layout="@layout/item_shimmer_doa_sehari_hari" />
-
-            <include layout="@layout/item_shimmer_doa_sehari_hari" />
-
         </LinearLayout>
 
     </com.facebook.shimmer.ShimmerFrameLayout>

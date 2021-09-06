@@ -27,7 +27,7 @@ public class DoaHarianAdapter extends RecyclerView.Adapter<DoaHarianAdapter.View
     @NonNull
     @Override
     public DoaHarianAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new DoaHarianAdapter.ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_doa_sehari_hari, parent, false));
+        return new DoaHarianAdapter.ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_doa_doa, parent, false));
     }
 
     @Override

@@ -35,12 +35,6 @@
 
             <include layout="@layout/item_shimmer_ayat" />
 
-            <include layout="@layout/item_shimmer_ayat" />
-
-            <include layout="@layout/item_shimmer_ayat" />
-
-            <include layout="@layout/item_shimmer_ayat" />
-
         </LinearLayout>
 
     </com.facebook.shimmer.ShimmerFrameLayout>

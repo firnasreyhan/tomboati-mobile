@@ -37,7 +37,7 @@ public class DoaHajiUmrahAdapter extends RecyclerView.Adapter<DoaHajiUmrahAdapte
     @NonNull
     @Override
     public DoaHajiUmrahAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_doa_sehari_hari, parent, false));
+        return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_doa_doa, parent, false));
     }
 
     @Override

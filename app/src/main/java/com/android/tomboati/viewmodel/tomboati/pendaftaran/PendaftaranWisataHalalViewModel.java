@@ -33,6 +33,7 @@ public class PendaftaranWisataHalalViewModel extends AndroidViewModel {
     public MutableLiveData<BaseResponse> pendaftaranWisataHalal(PesananaModel model) {
         return repository.pendaftaranWisataHalal(
                 RequestBody.create(MediaType.parse("text/plain"), model.getIdUserRegister()),
+                RequestBody.create(MediaType.parse("text/plain"), model.getNomorKTP()),
                 RequestBody.create(MediaType.parse("text/plain"), model.getEmail()),
                 RequestBody.create(MediaType.parse("text/plain"), model.getNomorPaspor()),
                 RequestBody.create(MediaType.parse("text/plain"), model.getTempatDikeluarkan()),
@@ -56,7 +57,11 @@ public class PendaftaranWisataHalalViewModel extends AndroidViewModel {
                 compressFile(imageSaves.saveToPictureFromUri(Uri.parse(model.getFileKTP())),"fileKTP"),
                 compressFile(imageSaves.saveToPictureFromUri(Uri.parse(model.getFileKK())), "fileKK"),
                 compressFile(imageSaves.saveToPictureFromUri(Uri.parse(model.getFilePaspor())), "filePaspor"),
-                compressFile(imageSaves.saveToPictureFromUri(Uri.parse(model.getFileBukuNikah())), "fileBukuNikah"),
+                (model.getFileBukuNikah().isEmpty()) ?
+                        sendEmpty("fileBukuNikah")
+                        :
+                        compressFile(imageSaves.saveToPictureFromUri(Uri.parse(model.getFileBukuNikah())), "fileBukuNikah")
+                ,
                 compressFile(imageSaves.saveToPictureFromUri(Uri.parse(model.getFileAkteKelahiran())), "fileAkteKelahiran"),
                 compressFile(imageSaves.saveToPictureFromBitmap(model.getTtdPendaftar()), "ttdPendaftar"),
                 RequestBody.create(MediaType.parse("text/plain"), model.getIdPaket()),
@@ -77,6 +82,10 @@ public class PendaftaranWisataHalalViewModel extends AndroidViewModel {
 
     private MultipartBody.Part compressFile(File file, String path) {
         return MultipartBody.Part.createFormData(path, file.getName(), RequestBody.create(MediaType.parse("image/*"), file));
+    }
+
+    private MultipartBody.Part sendEmpty(String path) {
+        return MultipartBody.Part.createFormData(path, "", RequestBody.create(MediaType.parse("text/plain"), ""));
     }
 
 

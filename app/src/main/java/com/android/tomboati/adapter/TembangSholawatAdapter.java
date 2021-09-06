@@ -36,7 +36,7 @@ public class TembangSholawatAdapter extends RecyclerView.Adapter<TembangSholawat
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         this.view = parent;
-        return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_mp3_play, parent, false));
+        return new ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_tembang_sholawat_mp3_play, parent, false));
     }
 
     @Override

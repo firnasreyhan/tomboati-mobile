@@ -35,7 +35,7 @@ public class MasjidAdapter extends RecyclerView.Adapter<MasjidAdapter.ViewHolder
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return  new MasjidAdapter.ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_masjid, parent, false));
+        return  new MasjidAdapter.ViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_masjid_terdekat, parent, false));
     }
 
     @Override

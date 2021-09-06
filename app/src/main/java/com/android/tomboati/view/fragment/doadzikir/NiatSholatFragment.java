@@ -43,7 +43,7 @@ public class NiatSholatFragment extends Fragment {
         doaTahlilViewModel.getNiatSholat().observe(this, new Observer<List<BacaanSholatResponse>>() {
             @Override
             public void onChanged(List<BacaanSholatResponse> bacaanSholatResponses) {
-                sholatAdapter = new SholatAdapter(bacaanSholatResponses, R.layout.item_doa_sehari_hari);
+                sholatAdapter = new SholatAdapter(bacaanSholatResponses, R.layout.item_doa_doa);
                 recyclerViewNiatSholat.setAdapter(sholatAdapter);
 
                 recyclerViewNiatSholat.setVisibility(View.VISIBLE);

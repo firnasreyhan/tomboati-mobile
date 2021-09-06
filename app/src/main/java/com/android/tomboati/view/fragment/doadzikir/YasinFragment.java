@@ -14,43 +14,54 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.android.tomboati.R;
-import com.android.tomboati.adapter.AyatAdapter;
-import com.android.tomboati.api.response.AyatResponse;
+import com.android.tomboati.adapter.AyatNewAdapter;
+import com.android.tomboati.api.response.QuranSurahResponse;
 import com.android.tomboati.viewmodel.quran.DetailAlQuranViewModel;
 import com.facebook.shimmer.ShimmerFrameLayout;
+
+import java.util.List;
 
 public class YasinFragment extends Fragment {
 
     private DetailAlQuranViewModel detailAlQuranViewModel;
     private RecyclerView recyclerViewAyat;
-    private LinearLayout linearLayoutContent;
     private ShimmerFrameLayout shimmerFrameLayoutAyat;
-    private AyatAdapter ayatAdapter;
+    private LinearLayout linearLayoutContent;
+    private AyatNewAdapter ayatNewAdapter;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_yasin, container, false);
 
-        String idSurahYasin = "36";
+        String ID_SURAH = "36";
 
-        detailAlQuranViewModel = ViewModelProviders.of(this).get(DetailAlQuranViewModel.class);
         recyclerViewAyat = view.findViewById(R.id.recyclerViewAyat);
         shimmerFrameLayoutAyat = view.findViewById(R.id.shimmerFrameLayoutAyat);
         linearLayoutContent = view.findViewById(R.id.linearLayoutContent);
 
-
+        detailAlQuranViewModel = ViewModelProviders.of(this).get(DetailAlQuranViewModel.class);
         recyclerViewAyat.setHasFixedSize(true);
-        recyclerViewAyat.setLayoutManager(new LinearLayoutManager(view.getContext()));
+        recyclerViewAyat.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        detailAlQuranViewModel.getAyat(
-                idSurahYasin
-        ).observe(this, new Observer<AyatResponse>() {
+        detailAlQuranViewModel.getAyatNew(ID_SURAH).observe(this, new Observer<QuranSurahResponse>() {
             @Override
-            public void onChanged(AyatResponse ayatResponses) {
-                if (ayatResponses.isStatus()) {
-                    ayatAdapter = new AyatAdapter(ayatResponses.getAyat());
-                    recyclerViewAyat.setAdapter(ayatAdapter);
+            public void onChanged(QuranSurahResponse quranSurahResponse) {
+                if (quranSurahResponse.getCode() == 200) {
+                    final List<QuranSurahResponse.Data.Verse> LIST_DATA = quranSurahResponse.getData().getVerses();
+
+                    LIST_DATA.add(0, new QuranSurahResponse.Data.Verse(
+                            new QuranSurahResponse.Data.Verse.Numbers(0, 0),
+                            new QuranSurahResponse.Data.Verse.Text(
+                                    "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ",
+                                    new QuranSurahResponse.Data.Verse.Text.Transliteration__1("Bismillaahir Rahmaanir Raheem")
+                            ),
+                            new QuranSurahResponse.Data.Verse.Translation("Dengan nama Allah Yang Maha Pengasih, Maha Penyayang."),
+                            new QuranSurahResponse.Data.Verse.Audio("https://cdn.alquran.cloud/media/audio/ayah/ar.alafasy/1")
+                    ));
+
+                    ayatNewAdapter = new AyatNewAdapter(LIST_DATA);
+                    recyclerViewAyat.setAdapter(ayatNewAdapter);
+
 
                     linearLayoutContent.setVisibility(View.VISIBLE);
                     shimmerFrameLayoutAyat.setVisibility(View.GONE);

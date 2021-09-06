@@ -7,9 +7,7 @@ import androidx.viewpager.widget.ViewPager;
 import android.os.Bundle;
 import com.android.tomboati.R;
 import com.android.tomboati.adapter.TabAdapter;
-import com.android.tomboati.view.fragment.quran.JuzFragment;
 import com.android.tomboati.view.fragment.quran.JuzNewFragment;
-import com.android.tomboati.view.fragment.quran.SurahFragment;
 import com.android.tomboati.view.fragment.quran.SurahNewFragment;
 import com.google.android.material.tabs.TabLayout;
 

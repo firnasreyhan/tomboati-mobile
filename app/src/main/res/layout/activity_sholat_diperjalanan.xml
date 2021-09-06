@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
     android:orientation="vertical"
     tools:context=".view.activity.sholat.SholatJenazahActivity">
 
@@ -65,7 +64,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_8sdp"
                 android:fontFamily="@font/catamaran_regular"
-               android:text="Jika posisi kamu di mobil dalam keadaan macet dan susah mendapatkan air maka kamu sangat boleh melakukan tayamum di mobil. Kalau di mobil memang terdapat air minum dan kamu juga membutuhkan air untuk berwudhu, maka sebaiknya kamu bersuci dengan tayamum dan air minum digunakan untuk minum."
+                android:text="Jika posisi kamu di mobil dalam keadaan macet dan susah mendapatkan air maka kamu sangat boleh melakukan tayamum di mobil. Kalau di mobil memang terdapat air minum dan kamu juga membutuhkan air untuk berwudhu, maka sebaiknya kamu bersuci dengan tayamum dan air minum digunakan untuk minum."
                 android:textColor="@color/black"
                 android:textSize="@dimen/_13sdp" />
 
@@ -140,8 +139,8 @@
                 android:fontFamily="@font/catamaran_regular"
                 android:text="NAWAITUT TAYAMMUMA LISSTIBAAHATISH SHALAATI FARDLOL LILLAAHI TA’AALAA"
                 android:textColor="@color/black"
-                android:textStyle="italic"
-                android:textSize="@dimen/_13sdp" />
+                android:textSize="@dimen/_13sdp"
+                android:textStyle="italic" />
 
             <com.codesgood.views.JustifiedTextView
                 android:layout_width="match_parent"
@@ -177,8 +176,8 @@
                 android:fontFamily="@font/catamaran_regular"
                 android:text="Asyhadu Allaa Ilaaha Illalloohu Wandahuu Laa. Syariika Lahu Wa Asyhadu Anna Muhammadan 'Abduhuuwa Rosuuluhuu, Alloohummaj'alnii Minat Tawwaabiina Waj'alnii Minal Mutathohhiriina."
                 android:textColor="@color/black"
-                android:textStyle="italic"
-                android:textSize="@dimen/_13sdp" />
+                android:textSize="@dimen/_13sdp"
+                android:textStyle="italic" />
 
             <com.codesgood.views.JustifiedTextView
                 android:layout_width="match_parent"

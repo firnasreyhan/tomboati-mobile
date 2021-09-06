@@ -20,8 +20,6 @@
         android:id="@+id/recyclerViewMasjidTerdekat"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingTop="@dimen/_13sdp"
-        android:paddingLeft="@dimen/_13sdp"
-        android:paddingRight="@dimen/_13sdp"/>
+        android:padding="10dp" />
 
 </LinearLayout>

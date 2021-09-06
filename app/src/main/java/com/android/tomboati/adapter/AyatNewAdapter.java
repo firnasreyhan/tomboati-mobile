@@ -10,7 +10,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.tomboati.R;
-import com.android.tomboati.api.response.AyatResponse;
 import com.android.tomboati.api.response.QuranSurahResponse;
 import com.codesgood.views.JustifiedTextView;
 

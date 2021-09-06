@@ -51,7 +51,7 @@ public class TasbihAdapter extends RecyclerView.Adapter<TasbihAdapter.ViewHolder
                 if(position == models.size() - 1) {
 
                     final AlertDialog.Builder dialog = new AlertDialog.Builder(v.getContext());
-                    final View view = LayoutInflater.from(v.getContext()).inflate(R.layout.view_custom_dialog, null);
+                    final View view = LayoutInflater.from(v.getContext()).inflate(R.layout.view_custom_dialog_konfirmasi_tasbih, null);
 
                     dialog.setView(view);
                     dialog.setCancelable(false);

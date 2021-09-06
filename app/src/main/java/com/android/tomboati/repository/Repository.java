@@ -6,14 +6,12 @@ import android.util.Log;
 import androidx.lifecycle.MutableLiveData;
 
 import com.android.tomboati.api.ApiClient;
-import com.android.tomboati.api.ApiInterfaceAlQuran;
 import com.android.tomboati.api.ApiInterfaceAlQuranNew;
 import com.android.tomboati.api.ApiInterfaceJadwalSholat;
 import com.android.tomboati.api.ApiInterfaceLokasi;
 import com.android.tomboati.api.ApiInterfaceMasjid;
 import com.android.tomboati.api.ApiInterfaceTahlil;
 import com.android.tomboati.api.ApiInterfaceTomboAti;
-import com.android.tomboati.api.response.AyatResponse;
 import com.android.tomboati.api.response.BacaanSholatResponse;
 import com.android.tomboati.api.response.BaseResponse;
 import com.android.tomboati.api.response.ChatResponse;
@@ -49,7 +47,6 @@ public class Repository {
     private ApiInterfaceTomboAti apiInterfaceTomboAti;
     private ApiInterfaceJadwalSholat apiInterfaceTomboAtiJadwalSholat;
     private ApiInterfaceMasjid apiInterfaceMasjid;
-    private ApiInterfaceAlQuran apiInterfaceAlQuran;
     private ApiInterfaceAlQuranNew apiInterfaceAlQuranNew;
     private ApiInterfaceTahlil apiInterfaceTahlil;
     private ApiInterfaceLokasi apiInterfaceLokasi;
@@ -58,7 +55,6 @@ public class Repository {
         this.apiInterfaceTomboAti = ApiClient.getClientTomboAti();
         this.apiInterfaceTomboAtiJadwalSholat = ApiClient.getClientJadwalSholat();
         this.apiInterfaceMasjid = ApiClient.getClientMasjid();
-        this.apiInterfaceAlQuran = ApiClient.getClientAlQuran();
         this.apiInterfaceAlQuranNew = ApiClient.getClientAlQuranNew();
         this.apiInterfaceTahlil = ApiClient.getClientDoaTahlil();
         this.apiInterfaceLokasi = ApiClient.getClientLokasi();
@@ -188,40 +184,6 @@ public class Repository {
             @Override
             public void onFailure(Call<MasjidResponse> call, Throwable t) {
                 data.postValue(null);
-            }
-        }); return data;
-    }
-
-    //==
-
-    public MutableLiveData<List<SurahResponse>> getSurah() {
-        MutableLiveData<List<SurahResponse>> data = new MutableLiveData<>();
-        apiInterfaceAlQuran.getSurah().enqueue(new Callback<List<SurahResponse>>() {
-            @Override
-            public void onResponse(Call<List<SurahResponse>> call, Response<List<SurahResponse>> response) {
-                if (response.code() == 200) { data.postValue(response.body()); }
-            }
-
-            @Override
-            public void onFailure(Call<List<SurahResponse>> call, Throwable t) {
-                data.postValue(null); 
-            }
-        }); return data;
-    }
-
-    //==
-
-    public MutableLiveData<AyatResponse> getAyat(String idSurah) {
-        MutableLiveData<AyatResponse> data = new MutableLiveData<>();
-        apiInterfaceAlQuran.getAyat(idSurah).enqueue(new Callback<AyatResponse>() {
-            @Override
-            public void onResponse(Call<AyatResponse> call, Response<AyatResponse> response) {
-                if (response.code() == 200) { data.postValue(response.body()); }
-            }
-
-            @Override
-            public void onFailure(Call<AyatResponse> call, Throwable t) {
-                data.postValue(null); 
             }
         }); return data;
     }
@@ -688,6 +650,7 @@ public class Repository {
 
     public MutableLiveData<BaseResponse> pendaftaran(
         RequestBody idUserRegister,
+        RequestBody nomorKTP,
         RequestBody email,
         RequestBody nomorPaspor,
         RequestBody tempatDikeluarkan,
@@ -731,6 +694,7 @@ public class Repository {
         MutableLiveData<BaseResponse> data = new MutableLiveData<>();
         apiInterfaceTomboAti.pendaftaran(
                 idUserRegister,
+                nomorKTP,
                 email,
                 nomorPaspor,
                 tempatDikeluarkan,
@@ -787,6 +751,7 @@ public class Repository {
 
     public MutableLiveData<BaseResponse> pendaftaranWisataHalal(
         RequestBody idUserRegister,
+        RequestBody nomorKTP,
         RequestBody email,
         RequestBody nomorPaspor,
         RequestBody tempatDikeluarkan,
@@ -830,6 +795,7 @@ public class Repository {
         MutableLiveData<BaseResponse> data = new MutableLiveData<>();
         apiInterfaceTomboAti.pendaftaranWisataHalal(
                 idUserRegister,
+                nomorKTP,
                 email,
                 nomorPaspor,
                 tempatDikeluarkan,

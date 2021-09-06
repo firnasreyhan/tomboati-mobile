@@ -11,6 +11,7 @@ import retrofit2.http.Part;
 
 public class PesananaModel implements Serializable {
     private String idUserRegister;
+    private String nomorKTP;
     private String email;
     private String nomorPaspor;
     private String tempatDikeluarkan;
@@ -67,6 +68,14 @@ public class PesananaModel implements Serializable {
 
     public void setIdUserRegister(String idUserRegister) {
         this.idUserRegister = idUserRegister;
+    }
+
+    public String getNomorKTP() {
+        return nomorKTP;
+    }
+
+    public void setNomorKTP(String nomorKTP) {
+        this.nomorKTP = nomorKTP;
     }
 
     public String getEmail() {

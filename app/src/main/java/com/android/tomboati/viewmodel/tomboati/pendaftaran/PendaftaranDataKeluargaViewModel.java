@@ -57,6 +57,7 @@ public class PendaftaranDataKeluargaViewModel extends AndroidViewModel {
     public MutableLiveData<BaseResponse> pendaftaran(PesananaModel model) {
         return repository.pendaftaran(
                 RequestBody.create(MediaType.parse("text/plain"), model.getIdUserRegister()),
+                RequestBody.create(MediaType.parse("text/plain"), model.getNomorKTP()),
                 RequestBody.create(MediaType.parse("text/plain"), model.getEmail()),
                 RequestBody.create(MediaType.parse("text/plain"), model.getNomorPaspor()),
                 RequestBody.create(MediaType.parse("text/plain"), model.getTempatDikeluarkan()),

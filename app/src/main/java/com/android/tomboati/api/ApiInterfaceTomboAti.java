@@ -301,6 +301,7 @@ public interface ApiInterfaceTomboAti {
     @POST("pendaftaran/pendaftaran_post")
     Call<BaseResponse> pendaftaran(
             @Part("idUserRegister") RequestBody idUserRegister,
+            @Part("nomorKTP") RequestBody nomorKTP,
             @Part("email") RequestBody email,
             @Part("nomorPaspor") RequestBody nomorPaspor,
             @Part("tempatDikeluarkan") RequestBody tempatDikeluarkan,
@@ -347,6 +348,7 @@ public interface ApiInterfaceTomboAti {
     @POST("pendaftaran/pendaftaranWisataHalal")
     Call<BaseResponse> pendaftaranWisataHalal(
             @Part("idUserRegister") RequestBody idUserRegister,
+            @Part("nomorKTP") RequestBody nomorKTP,
             @Part("email") RequestBody email,
             @Part("nomorPaspor") RequestBody nomorPaspor,
             @Part("tempatDikeluarkan") RequestBody tempatDikeluarkan,
