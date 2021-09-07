@@ -6,19 +6,25 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.tomboati.R;
 import com.android.tomboati.api.response.BaseResponse;
 import com.android.tomboati.utils.AlertInfo;
 import com.android.tomboati.utils.AlertProgress;
+import com.android.tomboati.utils.Utility;
 import com.android.tomboati.view.activity.homepage.MainActivity;
 import com.android.tomboati.viewmodel.tomboati.homepage.ImageChatViewModel;
 import com.google.android.material.textfield.TextInputEditText;
@@ -27,11 +33,18 @@ import com.theartofdev.edmodo.cropper.CropImageView;
 
 public class PendaftaranHajiRegulerActivity extends AppCompatActivity {
 
-    private TextInputEditText textInputEditTextNomorKTP, textInputEditTextNamaLengkap, textInputEditTextTempatLahir, textInputEditTextTanggalLahir;
+    private EditText textInputEditTextNomorKTP, textInputEditTextNamaLengkap, textInputEditTextTempatLahir;
+    private TextView textInputEditTextTanggalLahir;
     private ImageChatViewModel viewModel;
     private Spinner spinnerJenisKelamin;
     private ImageView imageViewKTP;
     private Uri uriFotoKtp = null;
+
+    private String[] bulan = {
+            "Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September","Oktober", "November", "Desember"
+    };
+
+    private String tanggalLahir = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +72,19 @@ public class PendaftaranHajiRegulerActivity extends AppCompatActivity {
         ArrayAdapter<String> jenisKelaminAdapter = new ArrayAdapter<>(this, R.layout.item_spinner, jenisKelamin);
         spinnerJenisKelamin.setAdapter(jenisKelaminAdapter);
 
+        textInputEditTextTanggalLahir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new DatePickerDialog(v.getContext(), new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                        tanggalLahir = String.format("%02d-%02d-%4d", dayOfMonth, (month + 1), year);
+                        textInputEditTextTanggalLahir.setText(String.format("%02d ", dayOfMonth) + bulan[month] + " " + year);
+                    }
+                }, Utility.getYear(), Utility.getMonth(), Utility.getDay()).show();
+            }
+        });
+
         findViewById(R.id.cardViewFotoKTP).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -79,7 +105,7 @@ public class PendaftaranHajiRegulerActivity extends AppCompatActivity {
                             "No KTP : " + textInputEditTextNomorKTP.getText().toString() + ", </br>" +
                             "Jenis Kelamin : " + spinnerJenisKelamin.getSelectedItem().toString() + ", </br>" +
                             "Tempat, Tanggal Lahir : " + textInputEditTextTempatLahir.getText().toString() +
-                            ", " + textInputEditTextTanggalLahir.getText().toString() + ", </br>" +
+                            ", " + tanggalLahir + ", </br>" +
                             "Berminat untuk mendaftar paket " + nama_paket;
 
                     viewModel.sendChat(message, uriFotoKtp).observe(PendaftaranHajiRegulerActivity.this,new Observer<BaseResponse>() {
@@ -141,16 +167,20 @@ public class PendaftaranHajiRegulerActivity extends AppCompatActivity {
 
         int countError = 0;
 
-        final TextInputEditText[] editText = {
-                textInputEditTextNomorKTP, textInputEditTextNamaLengkap,
-                textInputEditTextTanggalLahir, textInputEditTextTempatLahir
+        final EditText[] editText = {
+                textInputEditTextNomorKTP, textInputEditTextNamaLengkap, textInputEditTextTempatLahir
         };
 
-        for (TextInputEditText textInputEditText : editText) {
+        for (EditText textInputEditText : editText) {
             if (textInputEditText.getText().toString().isEmpty()) {
                 textInputEditText.setError("Mohon isi data berikut");
                 countError++;
             }
+        }
+
+        if(tanggalLahir.isEmpty()) {
+            Toast.makeText(this, "Harap pilih tanggal lahir", Toast.LENGTH_SHORT).show();
+            countError++;
         }
 
         if(uriFotoKtp == null) {

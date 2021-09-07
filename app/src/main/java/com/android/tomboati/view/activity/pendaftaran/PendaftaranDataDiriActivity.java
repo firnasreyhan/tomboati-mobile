@@ -107,8 +107,6 @@ public class PendaftaranDataDiriActivity extends AppCompatActivity {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                         tanggalLahir = "" + year + "-" + (month + 1) + "-" + dayOfMonth;
-
-                        Log.d("=======", "onClick: " + tanggalLahir);
                         textInputEditTanggalLahir.setText(String.format("%02d ", dayOfMonth) + bulan[month] + " " + year);
                     }
                 }, Utility.getYear(), Utility.getMonth(), Utility.getDay()).show();
