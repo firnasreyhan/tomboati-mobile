@@ -22,6 +22,7 @@ import com.android.tomboati.R;
 import com.android.tomboati.adapter.PesananPendingAdapter;
 import com.android.tomboati.api.response.ListPaketVerifyRespone;
 import com.android.tomboati.preference.AppPreference;
+import com.android.tomboati.preference.PreferenceAkun;
 import com.android.tomboati.viewmodel.tomboati.homepage.RiwayatViewModel;
 import com.facebook.shimmer.ShimmerFrameLayout;
 
@@ -64,8 +65,8 @@ public class RiwayatFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
 
 
-        if (AppPreference.getUser(view.getContext()) != null) {
-            String idUser = AppPreference.getUser(view.getContext()).getIdUserRegister();
+//        if (AppPreference.getUser(view.getContext()) != null) {
+            String idUser = PreferenceAkun.getAkun(getContext()).getId();
             viewModel.getRiwayatPaketHajiUmrahVerif(idUser).observe(OWNER, new Observer<ListPaketVerifyRespone>() {
                 @Override
                 public void onChanged(ListPaketVerifyRespone listPaketVerifyRespone) {
@@ -102,13 +103,13 @@ public class RiwayatFragment extends Fragment {
                     });
                 }
             });
-        } else {
-            shimmerFrameLayoutPesanan.setVisibility(View.GONE);
-            shimmerFrameLayoutPesanan.stopShimmer();
-            linearLayoutNoSignIn.setVisibility(View.VISIBLE);
-            recyclerView.setVisibility(View.GONE);
-            textView.setText("Masuk untuk melihat riwayat");
-        }
+//        } else {
+//            shimmerFrameLayoutPesanan.setVisibility(View.GONE);
+//            shimmerFrameLayoutPesanan.stopShimmer();
+//            linearLayoutNoSignIn.setVisibility(View.VISIBLE);
+//            recyclerView.setVisibility(View.GONE);
+//            textView.setText("Masuk untuk melihat riwayat");
+//        }
     }
 
     @Override

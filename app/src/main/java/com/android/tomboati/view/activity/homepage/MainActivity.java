@@ -2,27 +2,31 @@ package com.android.tomboati.view.activity.homepage;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.android.tomboati.R;
+import com.android.tomboati.preference.PreferenceAkun;
 import com.android.tomboati.utils.Utility;
-import com.android.tomboati.view.fragment.homepage.AkunFragment;
+import com.android.tomboati.view.fragment.homepage.akun.AkunMitraFragment;
+import com.android.tomboati.view.fragment.homepage.akun.AkunNonMitraFragment;
 import com.android.tomboati.view.fragment.homepage.BerandaFragment;
 import com.android.tomboati.view.fragment.homepage.InboxFragment;
 import com.android.tomboati.view.fragment.homepage.PesananFragment;
 import com.android.tomboati.view.fragment.homepage.RiwayatFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity {
 
     private boolean doubleBackToExit;
-    private Fragment fragmentActive;
+    private boolean loginUserFix = false;
+
+    private Fragment berandaFragment, riwayatFragment, pesananFragment, akunFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,16 +34,58 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         setTheme(R.style.ThemeTomboAtiGreen);
         setContentView(R.layout.activity_main);
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        if(PreferenceAkun.getAkun(this).isFieldFilled()) {
+            loginUserFix = true;
+        }
+
+        berandaFragment = new BerandaFragment();
+        riwayatFragment = new RiwayatFragment();
+        pesananFragment = new PesananFragment();
+        akunFragment =
+            PreferenceAkun.getAkun(this).getPaket().equals("MITRA") ?
+                new AkunMitraFragment()
+                        :
+                new AkunNonMitraFragment()
+        ;
+
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
-        setSupportActionBar(toolbar);
-        setTitle("");
-
         if(Utility.isConnecting(this)) {
-            loadFragment(new BerandaFragment());
-            fragmentActive = new BerandaFragment();
-            bottomNavigationView.setOnNavigationItemSelectedListener(this);
+            setFragment(berandaFragment);
+            bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+                @SuppressLint("NonConstantResourceId")
+                @Override
+                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                    Fragment fragmentActive = berandaFragment;
+                    switch (item.getItemId()){
+                        case R.id.menu_beranda:
+                            fragmentActive = berandaFragment;
+                            break;
+                        case R.id.menu_riwayat:
+                            fragmentActive = loginUserFix ? riwayatFragment : null;
+                            break;
+                        case R.id.menu_pesanan:
+                            fragmentActive = loginUserFix ? pesananFragment : null;
+                            break;
+                        case R.id.menu_inbox:
+                            fragmentActive = loginUserFix ? new InboxFragment() : null;
+                            break;
+                        case R.id.menu_akun:
+                            fragmentActive = akunFragment;
+                            break;
+                    }
+//                    return false;
+                    if(fragmentActive != null) {
+                        if(!fragmentActive.isInLayout()) {
+                            setFragment(fragmentActive);
+                        }
+                        return true;
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Mohon lengkapi data diri anda untuk menggunakan fitur ini", Toast.LENGTH_SHORT).show();
+                        return false;
+                    }
+                }
+            });
         }
 
     }
@@ -63,40 +109,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         }
     }
 
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        Fragment fragment = null;
-        switch (item.getItemId()){
-            case R.id.menu_beranda:
-                fragment = new BerandaFragment();
-                break;
-            case R.id.menu_riwayat:
-                fragment = new RiwayatFragment();
-                break;
-            case R.id.menu_pesanan:
-                fragment = new PesananFragment();
-                break;
-            case R.id.menu_inbox:
-                fragment = new InboxFragment();
-                break;
-            case R.id.menu_akun:
-                fragment = new AkunFragment();
-                break;
-        }
-
-        if (!fragment.getClass().getName().equalsIgnoreCase(fragmentActive.getClass().getName())) {
-            return loadFragment(fragment);
-        } else {
-            return false;
-        }
+    public void setFragment(Fragment fragment) {
+        getSupportFragmentManager().beginTransaction().replace(R.id.frameLayoutFragment, fragment).commit();
     }
 
-    private boolean loadFragment(Fragment fragment) {
-        if (fragment != null) {
-            fragmentActive = fragment;
-            getSupportFragmentManager().beginTransaction().replace(R.id.frameLayoutFragment, fragment).commit();
-            return true;
-        }
-        return false;
-    }
 }

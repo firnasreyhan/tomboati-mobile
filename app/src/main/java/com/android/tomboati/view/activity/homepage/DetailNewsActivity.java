@@ -5,7 +5,6 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -14,11 +13,8 @@ import com.android.tomboati.R;
 import com.android.tomboati.api.response.NewsResponse;
 import com.android.tomboati.utils.Utility;
 import com.android.tomboati.viewmodel.tomboati.homepage.DetailNewsViewModel;
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.Priority;
-import com.bumptech.glide.load.DecodeFormat;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.codesgood.views.JustifiedTextView;
+import com.squareup.picasso.Picasso;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -60,17 +56,8 @@ public class DetailNewsActivity extends AppCompatActivity {
             public void onChanged(NewsResponse newsResponse) {
                 if (!newsResponse.isError()) {
                     if (!newsResponse.getData().isEmpty()) {
-                        Glide.with(DetailNewsActivity.this)
-                                .load(newsResponse.getData().get(0).getFoto())
-                                .diskCacheStrategy(DiskCacheStrategy.ALL)
-                                .skipMemoryCache(true)
-                                .dontAnimate()
-                                .dontTransform()
-                                .priority(Priority.IMMEDIATE)
-                                .encodeFormat(Bitmap.CompressFormat.PNG)
-                                .format(DecodeFormat.DEFAULT)
-                                .placeholder(R.drawable.ic_logo)
-                                .into(imageViewNews);
+
+                        picassoLoad(newsResponse.getData().get(0).getFoto(), imageViewNews);
 
                         textViewJudulNews.setText(newsResponse.getData().get(0).getJudulNews());
 
@@ -91,6 +78,10 @@ public class DetailNewsActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void picassoLoad(String uri, ImageView imageView) {
+        Picasso.get().load(uri).priority(Picasso.Priority.HIGH).placeholder(R.drawable.ic_logo).into(imageView);
     }
 
     @Override

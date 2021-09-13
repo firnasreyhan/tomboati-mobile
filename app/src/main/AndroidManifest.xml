@@ -21,9 +21,15 @@
         android:roundIcon="@mipmap/ic_new_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/ThemeTomboAti">
-        <activity android:name=".view.activity.pendaftaran.PendaftaranDokumenDataDiriActivity">
-
-        </activity>
+        <activity
+            android:name=".view.activity.mitra.pendaftaran.RegistrasiDataPembayaranMitraActivity"
+            android:exported="true" />
+        <activity android:name=".view.activity.mitra.pendaftaran.RegistrasiDataDiriMitraActivity"></activity>
+        <activity android:name=".view.activity.mitra.pendaftaran.SyaratPembatalanMitraActivity" />
+        <activity android:name=".view.activity.mitra.pendaftaran.SyaratPendaftaranMitraActivity" />
+        <activity android:name=".view.activity.mitra.auth.AuthLoginMitraActivity" />
+        <activity android:name=".view.activity.mitra.auth.AuthRegisterUserActivity" />
+        <activity android:name=".view.activity.pendaftaran.PendaftaranDokumenDataDiriActivity" />
         <activity android:name=".view.activity.quran.DetailJuzNewActivity" />
         <activity android:name=".view.activity.quran.DetailAlQuranNewActivity" />
         <activity android:name=".view.activity.quran.AlQuranNewActivity" />
@@ -36,8 +42,8 @@
         <activity android:name=".view.activity.pendaftaran.DrawTandaTanganPendaftaran" />
         <activity android:name=".view.activity.komunitas.DetailKomunitasActivity" />
         <activity android:name=".view.activity.komunitas.KomunitasActivity" />
-        <activity android:name=".view.activity.pendaftaran.PendaftaranDataKeluargaActivity"/>
-        <activity android:name=".view.activity.pendaftaran.PendaftaranDataDiriActivity"/>
+        <activity android:name=".view.activity.pendaftaran.PendaftaranDataKeluargaActivity" />
+        <activity android:name=".view.activity.pendaftaran.PendaftaranDataDiriActivity" />
         <activity android:name=".view.activity.doa_dzikir.TembangSholawatActivity" />
         <activity android:name=".view.activity.doa_dzikir.HitungTasbihLainnyaActivity" />
         <activity android:name=".view.activity.sholat.SholatDiperjalananActivity" />
@@ -88,6 +94,17 @@
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="dash-tombo.bgskr-project.my.id"
+                    android:pathPrefix="/referral"
+                    android:scheme="https" />
             </intent-filter>
         </activity>
         <activity

@@ -11,11 +11,13 @@
 
     <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"
-        android:layout_height="60dp" />
+        android:layout_height="60dp"
+        android:visibility="gone" />
 
     <com.codesgood.views.JustifiedTextView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginTop="15dp"
         android:fontFamily="@font/cinzel_medium"
         android:gravity="center"
         android:text="Syarat Pendaftaran &amp; Ketentuan"

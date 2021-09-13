@@ -1,0 +1,994 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/ic_background_beranda"
+    android:orientation="vertical"
+    tools:context=".view.activity.mitra.pendaftaran.SyaratPendaftaranMitraActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:visibility="gone" />
+
+    <com.codesgood.views.JustifiedTextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/cinzel_medium"
+        android:gravity="center"
+        android:text="Syarat Pendaftaran &amp; Pembayaran,\nBiaya Termasuk &amp; Tidak Termasuk"
+        android:textColor="@color/dark_green"
+        android:textSize="@dimen/_13sdp" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_9sdp"
+                android:background="@color/white"
+                android:elevation="0dp"
+                app:cardCornerRadius="@dimen/_8sdp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/_13sdp">
+
+                    <com.codesgood.views.JustifiedTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/catamaran_bold"
+                        android:text="syarat pendaftaran"
+                        android:textAllCaps="true"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/_10sdp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_3sdp"
+                        android:gravity="top|left"
+                        android:orientation="horizontal">
+
+                        <com.codesgood.views.JustifiedTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/catamaran_regular"
+                            android:text="1. "
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_9sdp" />
+
+                        <com.codesgood.views.JustifiedTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/catamaran_regular"
+                            android:text="Mengisi Formulir Pendaftaran Umrah"
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_9sdp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_3sdp"
+                        android:gravity="top|left"
+                        android:orientation="horizontal">
+
+                        <com.codesgood.views.JustifiedTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/catamaran_regular"
+                            android:text="2. "
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_9sdp" />
+
+                        <com.codesgood.views.JustifiedTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/catamaran_regular"
+                            android:text="Paspor masa berlaku min. 1 tahun dari tanggal keberangkatan"
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_9sdp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_3sdp"
+                        android:gravity="top|left"
+                        android:orientation="horizontal">
+
+                        <com.codesgood.views.JustifiedTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/catamaran_regular"
+                            android:text="3. "
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_9sdp" />
+
+                        <com.codesgood.views.JustifiedTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/catamaran_regular"
+                            android:text="Foto Kopy KTP dan Kartu Keluarga"
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_9sdp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_3sdp"
+                        android:gravity="top|left"
+                        android:orientation="horizontal">
+
+                        <com.codesgood.views.JustifiedTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/catamaran_regular"
+                            android:text="4. "
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_9sdp" />
+
+                        <com.codesgood.views.JustifiedTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/catamaran_regular"
+                            android:text="Buku Nikah (bagi suami + istri)"
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_9sdp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_3sdp"
+                        android:gravity="top|left"
+                        android:orientation="horizontal">
+
+                        <com.codesgood.views.JustifiedTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/catamaran_regular"
+                            android:text="5. "
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_9sdp" />
+
+                        <com.codesgood.views.JustifiedTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/catamaran_regular"
+                            android:text="Akte Lahir (bagi anak – anak)"
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_9sdp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_3sdp"
+                        android:gravity="top|left"
+                        android:orientation="horizontal">
+
+                        <com.codesgood.views.JustifiedTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/catamaran_regular"
+                            android:text="6. "
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_9sdp" />
+
+                        <com.codesgood.views.JustifiedTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/catamaran_regular"
+                            android:text="Surat Muhrim (bagi wanita yang berangkat tanpa didampingi oleh muhrimnya)"
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_9sdp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_3sdp"
+                        android:gravity="top|left"
+                        android:orientation="horizontal">
+
+                        <com.codesgood.views.JustifiedTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/catamaran_regular"
+                            android:text="7. "
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_9sdp" />
+
+                        <com.codesgood.views.JustifiedTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/catamaran_regular"
+                            android:text="Foto berwarna 4 x 6 = 3 lembar"
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_9sdp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_3sdp"
+                        android:gravity="top|left"
+                        android:orientation="horizontal">
+
+                        <com.codesgood.views.JustifiedTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/catamaran_regular"
+                            android:text="8. "
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_9sdp" />
+
+                        <com.codesgood.views.JustifiedTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/catamaran_regular"
+                            android:text="Persyaratan ini diserahkan paling lambat 1 bulan sebelum keberangkatan yang telah ditentukan."
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_9sdp" />
+
+                    </LinearLayout>
+
+                    <!--                    ====-->
+
+                    <com.codesgood.views.JustifiedTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:fontFamily="@font/catamaran_bold"
+                        android:text="SYARAT PEMBAYARAN"
+                        android:textAllCaps="true"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/_10sdp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_3sdp"
+                        android:gravity="top|left"
+                        android:orientation="horizontal">
+
+                        <com.codesgood.views.JustifiedTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/catamaran_regular"
+                            android:text="1. "
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_9sdp" />
+
+                        <com.codesgood.views.JustifiedTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/catamaran_regular"
+                            android:text="Biaya paket dalam mata uang U$ Dollar, bisa dibayar rupiah dengan kurs yang berlaku pada saat pembayaran dilakukan."
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_9sdp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_3sdp"
+                        android:gravity="top|left"
+                        android:orientation="horizontal">
+
+                        <com.codesgood.views.JustifiedTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/catamaran_regular"
+                            android:text="2. "
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_9sdp" />
+
+                        <com.codesgood.views.JustifiedTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/catamaran_regular"
+                            android:text="Pembayaran dilakukan langsung ke Kantor Pusat TOMBOATI TOUR Di Ruko Wilis Center Jl. Simpang Wilis 1-E Malang."
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_9sdp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_3sdp"
+                        android:gravity="top|left"
+                        android:orientation="horizontal">
+
+                        <com.codesgood.views.JustifiedTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/catamaran_regular"
+                            android:text="3. "
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_9sdp" />
+
+                        <com.codesgood.views.JustifiedTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/catamaran_regular"
+                            android:text="Pendaftaran melalui Kantor Cabang atau Mitra kami, pembayaran dapat dilakukan melalui bank (transfer) ke Rekening, dimohon jamaah menunjukkan bukti transfer asli dari bank yang bersangkutan untuk diberikan tanda bukti (kwitansi) pembayaran."
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_9sdp" />
+
+                    </LinearLayout>
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_7sdp"
+                        android:layout_marginBottom="@dimen/_7sdp"
+                        app:cardBackgroundColor="@color/dark_green"
+                        app:cardCornerRadius="@dimen/_13sdp"
+                        app:cardElevation="0dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:paddingLeft="@dimen/_22sdp"
+                            android:paddingTop="@dimen/_4sdp"
+                            android:paddingRight="@dimen/_22sdp"
+                            android:paddingBottom="@dimen/_4sdp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/catamaran_bold"
+                                android:gravity="center_horizontal"
+                                android:text="Pembayaran dianggap sah apabila transfer melalui rekening perusahaan a/n PT. TOMBO ATI MASYHUR"
+                                android:textAllCaps="false"
+                                android:textColor="@android:color/white"
+                                android:textSize="@dimen/_10sdp" />
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/textView19"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:fontFamily="@font/catamaran_bold"
+                                    android:text="- MANDIRI \n- BRI \n- BCA "
+                                    android:textColor="@android:color/white"
+                                    android:textSize="@dimen/_10sdp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/catamaran_bold"
+                                    android:text=": 144-00-159-77-298\n: 0429-01-000592-560 \n: 440-031-5758"
+                                    android:textColor="@android:color/white"
+                                    android:textSize="@dimen/_10sdp" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_3sdp"
+                        android:gravity="top|left"
+                        android:orientation="horizontal">
+
+                        <com.codesgood.views.JustifiedTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/catamaran_regular"
+                            android:text="4. "
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_9sdp" />
+
+                        <com.codesgood.views.JustifiedTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/catamaran_regular"
+                            android:text="Pembayaran diluar ketentuan diatas, bukan tanggung jawab kami."
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_9sdp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_3sdp"
+                        android:gravity="top|left"
+                        android:orientation="horizontal">
+
+                        <com.codesgood.views.JustifiedTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/catamaran_regular"
+                            android:text="5. "
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_9sdp" />
+
+                        <com.codesgood.views.JustifiedTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/catamaran_regular"
+                            android:text="Harga dan jadwal dapat berubah disebabkan oleh adanya perubahan tarif dan jadwal penerbangan, regulasi baru Negara tujuan dan lain-lain tanpa mengurangi nilai Ibadah."
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_9sdp" />
+
+                    </LinearLayout>
+
+                    <!--                    ===-->
+
+                    <com.codesgood.views.JustifiedTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:fontFamily="@font/catamaran_bold"
+                        android:text="BIAYA SUDAH TERMASUK"
+                        android:textAllCaps="true"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/_10sdp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_3sdp"
+                        android:gravity="top|left"
+                        android:orientation="horizontal">
+
+                        <com.codesgood.views.JustifiedTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/catamaran_regular"
+                            android:text="1. "
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_9sdp" />
+
+                        <com.codesgood.views.JustifiedTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/catamaran_regular"
+                            android:text="Tiket Pesawat Sub - Mad / Jed PP sesuai program"
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_9sdp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_3sdp"
+                        android:gravity="top|left"
+                        android:orientation="horizontal">
+
+                        <com.codesgood.views.JustifiedTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/catamaran_regular"
+                            android:text="2. "
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_9sdp" />
+
+                        <com.codesgood.views.JustifiedTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/catamaran_regular"
+                            android:text="Akomodasi / Hotel sesuai program"
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_9sdp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_3sdp"
+                        android:gravity="top|left"
+                        android:orientation="horizontal">
+
+                        <com.codesgood.views.JustifiedTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/catamaran_regular"
+                            android:text="3. "
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_9sdp" />
+
+                        <com.codesgood.views.JustifiedTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/catamaran_regular"
+                            android:text="Bimbingan Manasik Umrah"
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_9sdp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_3sdp"
+                        android:gravity="top|left"
+                        android:orientation="horizontal">
+
+                        <com.codesgood.views.JustifiedTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/catamaran_regular"
+                            android:text="4. "
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_9sdp" />
+
+                        <com.codesgood.views.JustifiedTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/catamaran_regular"
+                            android:text="Transportasi Bus AC eksekutif"
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_9sdp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_3sdp"
+                        android:gravity="top|left"
+                        android:orientation="horizontal">
+
+                        <com.codesgood.views.JustifiedTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/catamaran_regular"
+                            android:text="5. "
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_9sdp" />
+
+                        <com.codesgood.views.JustifiedTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/catamaran_regular"
+                            android:text="Konsumsi 3 kali sehari menu Indonesia"
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_9sdp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_3sdp"
+                        android:gravity="top|left"
+                        android:orientation="horizontal">
+
+                        <com.codesgood.views.JustifiedTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/catamaran_regular"
+                            android:text="6. "
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_9sdp" />
+
+                        <com.codesgood.views.JustifiedTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/catamaran_regular"
+                            android:text="Muthawwif / Pembimbing berpengalaman"
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_9sdp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_3sdp"
+                        android:gravity="top|left"
+                        android:orientation="horizontal">
+
+                        <com.codesgood.views.JustifiedTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/catamaran_regular"
+                            android:text="7. "
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_9sdp" />
+
+                        <com.codesgood.views.JustifiedTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/catamaran_regular"
+                            android:text="Perlengkapan ibadah : koper, tas tentengan, tas pasport, kain ihrom, mukena, jilbab, seragam"
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_9sdp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_3sdp"
+                        android:gravity="top|left"
+                        android:orientation="horizontal">
+
+                        <com.codesgood.views.JustifiedTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/catamaran_regular"
+                            android:text="8. "
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_9sdp" />
+
+                        <com.codesgood.views.JustifiedTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/catamaran_regular"
+                            android:text="Air zam – zam 5 liter"
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_9sdp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_3sdp"
+                        android:gravity="top|left"
+                        android:orientation="horizontal">
+
+                        <com.codesgood.views.JustifiedTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/catamaran_regular"
+                            android:text="9. "
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_9sdp" />
+
+                        <com.codesgood.views.JustifiedTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/catamaran_regular"
+                            android:text="Bagasi sesuai dengan ketentuan penerbangan max 20 kg"
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_9sdp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_3sdp"
+                        android:gravity="top|left"
+                        android:orientation="horizontal">
+
+                        <com.codesgood.views.JustifiedTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/catamaran_regular"
+                            android:text="10."
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_9sdp" />
+
+                        <com.codesgood.views.JustifiedTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/catamaran_regular"
+                            android:text="Asuransi perjalanan selama mengikuti program"
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_9sdp" />
+
+                    </LinearLayout>
+
+                    <!--                    ===-->
+
+                    <com.codesgood.views.JustifiedTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:fontFamily="@font/catamaran_bold"
+                        android:text="BIAYA BELUM TERMASUK"
+                        android:textAllCaps="true"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/_10sdp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_3sdp"
+                        android:gravity="top|left"
+                        android:orientation="horizontal">
+
+                        <com.codesgood.views.JustifiedTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/catamaran_regular"
+                            android:text="1. "
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_9sdp" />
+
+                        <com.codesgood.views.JustifiedTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/catamaran_regular"
+                            android:text="Pembuatan Pasport dan penambahan nama (bila diperlukan)"
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_9sdp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_3sdp"
+                        android:gravity="top|left"
+                        android:orientation="horizontal">
+
+                        <com.codesgood.views.JustifiedTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/catamaran_regular"
+                            android:text="2. "
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_9sdp" />
+
+                        <com.codesgood.views.JustifiedTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/catamaran_regular"
+                            android:text="Pengurusan surat Muhrim (bila diperlukan)"
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_9sdp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_3sdp"
+                        android:gravity="top|left"
+                        android:orientation="horizontal">
+
+                        <com.codesgood.views.JustifiedTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/catamaran_regular"
+                            android:text="3. "
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_9sdp" />
+
+                        <com.codesgood.views.JustifiedTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/catamaran_regular"
+                            android:text="Pemeriksaan kesehatan dan vaksin Miningitis"
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_9sdp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_3sdp"
+                        android:gravity="top|left"
+                        android:orientation="horizontal">
+
+                        <com.codesgood.views.JustifiedTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/catamaran_regular"
+                            android:text="4. "
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_9sdp" />
+
+                        <com.codesgood.views.JustifiedTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/catamaran_regular"
+                            android:text="Kursi roda pada waktu thawaf dan sa'i bagi yang memerlukan"
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_9sdp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_3sdp"
+                        android:gravity="top|left"
+                        android:orientation="horizontal">
+
+                        <com.codesgood.views.JustifiedTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/catamaran_regular"
+                            android:text="5. "
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_9sdp" />
+
+                        <com.codesgood.views.JustifiedTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/catamaran_regular"
+                            android:text="Akomodasi, Transportasi dan acara diluar program"
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_9sdp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_3sdp"
+                        android:gravity="top|left"
+                        android:orientation="horizontal">
+
+                        <com.codesgood.views.JustifiedTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/catamaran_regular"
+                            android:text="6. "
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_9sdp" />
+
+                        <com.codesgood.views.JustifiedTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/catamaran_regular"
+                            android:text="Pengeluaran pribadi : telp, laundry dll"
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_9sdp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_3sdp"
+                        android:gravity="top|left"
+                        android:orientation="horizontal">
+
+                        <com.codesgood.views.JustifiedTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/catamaran_regular"
+                            android:text="7. "
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_9sdp" />
+
+                        <com.codesgood.views.JustifiedTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/catamaran_regular"
+                            android:text="Kehilangan barang / bagasi diluar tanggung jawab penyelenggara"
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_9sdp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_3sdp"
+                        android:gravity="top|left"
+                        android:orientation="horizontal">
+
+                        <com.codesgood.views.JustifiedTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/catamaran_regular"
+                            android:text="8. "
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_9sdp" />
+
+                        <com.codesgood.views.JustifiedTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/catamaran_regular"
+                            android:text="Force Majeur"
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_9sdp" />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@android:color/white">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="@dimen/_7sdp">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/materialButtonSetujuDanLanjutkan"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_50sdp"
+                android:backgroundTint="@color/dark_green"
+                android:fontFamily="@font/catamaran_bold"
+                android:padding="12dp"
+                android:text="Setuju dan Lanjutkan"
+                android:textAllCaps="false"
+                android:textSize="@dimen/_11sdp" />
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</LinearLayout>

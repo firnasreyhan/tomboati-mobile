@@ -10,6 +10,7 @@ import androidx.lifecycle.MutableLiveData;
 import com.android.tomboati.api.response.BaseResponse;
 import com.android.tomboati.api.response.ChatResponse;
 import com.android.tomboati.preference.AppPreference;
+import com.android.tomboati.preference.PreferenceAkun;
 import com.android.tomboati.repository.Repository;
 
 import okhttp3.MediaType;
@@ -26,12 +27,12 @@ public class ChatViewModel extends AndroidViewModel {
     }
 
     public MutableLiveData<ChatResponse> getChat() {
-        return repository.getChat(AppPreference.getUser(context).getIdChatRoom());
+        return repository.getChat(PreferenceAkun.getAkun(context).getIdChatRoom());
     }
 
     public MutableLiveData<BaseResponse> sendChat(String message_) {
         RequestBody message = RequestBody.create(MediaType.parse("text/plain"), message_);
-        RequestBody idChatRoom = RequestBody.create(MediaType.parse("text/plain"), AppPreference.getUser(context).getIdChatRoom());
+        RequestBody idChatRoom = RequestBody.create(MediaType.parse("text/plain"), PreferenceAkun.getAkun(context).getIdChatRoom());
         return repository.sendChat(message, idChatRoom, null);
     }
 }

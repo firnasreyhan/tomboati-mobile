@@ -14,10 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.tomboati.R;
 import com.android.tomboati.api.response.ChatResponse;
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.Priority;
-import com.bumptech.glide.load.DecodeFormat;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.squareup.picasso.Picasso;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -55,17 +52,9 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
 
             if (list.get(position).getImg() != null) {
                 holder.imageViewIncoming.setVisibility(View.VISIBLE);
-                Glide.with(holder.itemView.getContext())
-                        .load(list.get(position).getImg())
-                        .diskCacheStrategy(DiskCacheStrategy.ALL)
-                        .skipMemoryCache(true)
-                        .dontAnimate()
-                        .dontTransform()
-                        .priority(Priority.IMMEDIATE)
-                        .encodeFormat(Bitmap.CompressFormat.PNG)
-                        .format(DecodeFormat.DEFAULT)
-                        .placeholder(R.drawable.ic_logo)
-                        .into(holder.imageViewIncoming);
+
+                picassoLoad(list.get(position).getImg(), holder.imageViewIncoming);
+
                 String nmyFormat = "dd/MM/yyyy - hh:mm"; //In which you need put here
                 SimpleDateFormat nsdf = new SimpleDateFormat(nmyFormat, new Locale("id", "ID"));
                 DateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss", Locale.ENGLISH);
@@ -84,18 +73,9 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
 
             if (list.get(position).getImg() != null) {
                 holder.imageViewOutgoing.setVisibility(View.VISIBLE);
-                Glide.with(holder.itemView.getContext())
-                        .load(list.get(position).getImg())
-                        .diskCacheStrategy(DiskCacheStrategy.ALL)
-                        .skipMemoryCache(true)
-                        .dontAnimate()
-                        .dontTransform()
-                        .priority(Priority.IMMEDIATE)
-                        .encodeFormat(Bitmap.CompressFormat.PNG)
-                        .format(DecodeFormat.DEFAULT)
-                        .placeholder(R.drawable.ic_logo)
-                        .into(holder.imageViewOutgoing);
+                picassoLoad(list.get(position).getImg(), holder.imageViewOutgoing);
             }
+
 
             String nmyFormat = "dd/MM/yyyy - hh:mm"; //In which you need put here
             SimpleDateFormat nsdf = new SimpleDateFormat(nmyFormat, new Locale("id", "ID"));
@@ -118,6 +98,10 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
     @Override
     public int getItemCount() {
         return list.size();
+    }
+
+    private void picassoLoad(String uri, ImageView imageView) {
+        Picasso.get().load(uri).priority(Picasso.Priority.HIGH).placeholder(R.drawable.ic_logo).into(imageView);
     }
 
     public void addData(ChatResponse.ChatModel model) {

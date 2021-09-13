@@ -33,6 +33,7 @@ import com.android.tomboati.api.response.NewsResponse;
 import com.android.tomboati.api.response.PaketResponse;
 import com.android.tomboati.api.response.PaketWisataResponse;
 import com.android.tomboati.preference.AppPreference;
+import com.android.tomboati.preference.PreferenceAkun;
 import com.android.tomboati.utils.AlertProgress;
 import com.android.tomboati.utils.Utility;
 import com.android.tomboati.view.activity.pendaftaran.DetailPaketActivity;
@@ -69,7 +70,7 @@ public class BerandaFragment extends Fragment {
     private CardView cardViewUmrohHaji, cardViewWisataReligi, cardViewDoaDzikir, cardViewSholat, cardViewAlQuran, cardViewKalenderHijriah, cardViewQurbanAqiqah, cardViewKomunitas, cardViewTomboatiChannel, cardViewLiveMekkah;
 
     private ShapeableImageView shapeableImageViewFoto;
-    private TextView textViewNamaLengkap, textViewKataMutiara, textViewJudulNews;
+    private TextView textViewNamaLengkap, textViewKataMutiara, textViewJudulNews, textViewStatusUser;
     private JustifiedTextView textViewSortNews;
     private MaterialButton materialButtonDetailNews;
 
@@ -119,6 +120,7 @@ public class BerandaFragment extends Fragment {
         textViewKataMutiara = view.findViewById(R.id.textViewKataMutiara);
         textViewJudulNews = view.findViewById(R.id.textViewJudulNews);
         imageViewNews = view.findViewById(R.id.imageViewNews);
+        textViewStatusUser = view.findViewById(R.id.textViewStatusUser);
 
         progress = new AlertProgress(view, "Sedang menyiapkan data");
 
@@ -132,9 +134,15 @@ public class BerandaFragment extends Fragment {
 
         if (!getActivity().isFinishing()) {
 
-            if (AppPreference.getUser(getActivity()) != null) {
-                setAkun();
+            if (PreferenceAkun.getAkun(getContext()).getName() != null) {
+                textViewNamaLengkap.setText(PreferenceAkun.getAkun(getContext()).getName());
             }
+
+            if (PreferenceAkun.getAkun(getContext()).getPhoto() != null) {
+                picassoLoad(PreferenceAkun.getAkun(getContext()).getPhoto(),shapeableImageViewFoto);
+            }
+
+            textViewStatusUser.setText(PreferenceAkun.getAkun(getContext()).getPaket());
 
             initOnClickMenu();
 
@@ -441,8 +449,6 @@ public class BerandaFragment extends Fragment {
     }
 
     private void setAkun() {
-        textViewNamaLengkap.setText(AppPreference.getUser(getContext()).getNamaLengkap());
-        picassoLoad(AppPreference.getUser(getActivity()).getFoto(), shapeableImageViewFoto);
     }
 
     private void picassoLoad(String uri, ImageView imageView) {

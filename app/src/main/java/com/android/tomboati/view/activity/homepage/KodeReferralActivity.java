@@ -4,11 +4,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.os.Bundle;
+import android.widget.TextView;
 
 import com.android.tomboati.R;
+import com.android.tomboati.preference.PreferenceAkun;
+import com.google.android.material.textfield.TextInputEditText;
 
 public class KodeReferralActivity extends AppCompatActivity {
-    private Toolbar toolbar;
+
+    private TextView textInputEditReferralFrom;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,11 +20,14 @@ public class KodeReferralActivity extends AppCompatActivity {
         setTheme(R.style.ThemeTomboAtiGreen);
         setContentView(R.layout.activity_kode_referral);
 
-        toolbar = findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         setTitle("Kode Referral");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        textInputEditReferralFrom = findViewById(R.id. textInputEditReferralFrom);
+        textInputEditReferralFrom.setText(PreferenceAkun.getAkun(this).getReferral());
     }
 
     @Override

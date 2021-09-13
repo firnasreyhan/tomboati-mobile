@@ -22,6 +22,7 @@ import com.android.tomboati.R;
 import com.android.tomboati.api.response.LokasiResponse;
 import com.android.tomboati.model.PesananaModel;
 import com.android.tomboati.preference.AppPreference;
+import com.android.tomboati.preference.PreferenceAkun;
 import com.android.tomboati.utils.Utility;
 import com.android.tomboati.viewmodel.tomboati.pendaftaran.PendaftaranDataDiriViewModel;
 import com.google.android.material.button.MaterialButton;
@@ -143,9 +144,9 @@ public class PendaftaranDataDiriActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (checkData()) {
-                    model.setIdUserRegister(AppPreference.getUser(v.getContext()).getIdUserRegister());
+                    model.setIdUserRegister(PreferenceAkun.getAkun(v.getContext()).getId());
                     model.setNomorKTP(textInputEditTextNomorKTP.getText().toString());
-                    model.setEmail(AppPreference.getUser(v.getContext()).getEmail());
+                    model.setEmail(PreferenceAkun.getAkun(v.getContext()).getEmail());
                     model.setNamaLengkap(textInputEditTextNamaLengkap.getText().toString());
                     model.setNomorHP(textInputEditTextNomorHandphone.getText().toString());
                     model.setTempatLahir(textInputEditTextTempatLahir.getText().toString());

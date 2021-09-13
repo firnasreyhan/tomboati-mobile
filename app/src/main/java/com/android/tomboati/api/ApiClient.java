@@ -13,6 +13,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiClient {
     private static ApiInterfaceTomboAti apiInterfaceTomboAti;
+    private static ApiInterfaceTomboAtiMitra apiInterfaceTomboAtiMitra;
     private static ApiInterfaceJadwalSholat apiInterfaceJadwalSholat;
     private static ApiInterfaceMasjid apiInterfaceMasjid;
     private static ApiInterfaceAlQuranNew apiInterfaceAlQuranNew;
@@ -43,6 +44,32 @@ public class ApiClient {
             apiInterfaceTomboAti = retrofit.create(ApiInterfaceTomboAti.class);
         }
         return apiInterfaceTomboAti;
+    }
+
+    public static ApiInterfaceTomboAtiMitra getClientTomboAtiMitra() {
+        if (apiInterfaceTomboAtiMitra == null) {
+            Retrofit retrofit;
+
+            HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
+            httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+
+            OkHttpClient okHttpClient = new OkHttpClient.Builder()
+                    .readTimeout(60, TimeUnit.SECONDS)
+                    .connectTimeout(60, TimeUnit.SECONDS)
+                    .addInterceptor(httpLoggingInterceptor)
+                    .build();
+
+            Gson builder = new GsonBuilder().setLenient().create();
+
+            retrofit = new Retrofit.Builder()
+                    .addConverterFactory(GsonConverterFactory.create(builder))
+                    .client(okHttpClient)
+                    .baseUrl(Constant.baseURLTomboAtiMitra)
+                    .build();
+
+            apiInterfaceTomboAtiMitra = retrofit.create(ApiInterfaceTomboAtiMitra.class);
+        }
+        return apiInterfaceTomboAtiMitra;
     }
 
     public static ApiInterfaceJadwalSholat getClientJadwalSholat() {

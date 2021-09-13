@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".view.fragment.homepage.AkunFragment">
+    tools:context=".view.fragment.homepage.akun.AkunFragment">
 
     <LinearLayout
         android:id="@+id/linearLayoutAkun"
@@ -13,7 +13,7 @@
         android:layout_height="match_parent"
         android:background="@color/background"
         android:orientation="vertical"
-        android:visibility="gone">
+        android:visibility="visible">
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
@@ -234,7 +234,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/ic_background_beranda"
-        android:visibility="visible">
+        android:visibility="gone">
 
         <LinearLayout
             android:layout_width="match_parent"

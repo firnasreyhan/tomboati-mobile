@@ -11,6 +11,7 @@ import androidx.lifecycle.MutableLiveData;
 import com.android.tomboati.api.response.BaseResponse;
 import com.android.tomboati.api.response.SignInResponse;
 import com.android.tomboati.preference.AppPreference;
+import com.android.tomboati.preference.PreferenceAkun;
 import com.android.tomboati.repository.Repository;
 import com.android.tomboati.utils.Constant;
 import com.android.tomboati.utils.notif.Token;
@@ -37,9 +38,9 @@ public class AkunViewModel extends AndroidViewModel {
     }
 
     public MutableLiveData<BaseResponse> signOut() {
-        String userKey = AppPreference.getUser(context).getEmail().replaceAll("[-+.^:,]","");
+        String userKey = "".replaceAll("[-+.^:,]","");
         FirebaseDatabase.getInstance().getReference("TomboAti").child("Token").child(userKey).removeValue();
-        return repository.signOut(AppPreference.getUser(context).getEmail());
+        return repository.signOut(PreferenceAkun.getAkun(context).getEmail());
     }
 
     private String updateToken(String email) {

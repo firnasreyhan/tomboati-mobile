@@ -25,6 +25,7 @@ import com.android.tomboati.api.response.PaketResponse;
 import com.android.tomboati.api.response.PaketWisataResponse;
 import com.android.tomboati.model.PesananaModel;
 import com.android.tomboati.preference.AppPreference;
+import com.android.tomboati.preference.PreferenceAkun;
 import com.android.tomboati.viewmodel.tomboati.pendaftaran.DetailPaketViewModel;
 import com.google.android.material.button.MaterialButton;
 import com.squareup.picasso.Picasso;
@@ -208,8 +209,8 @@ public class DetailPaketActivity extends AppCompatActivity {
         materialButtonPesan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (AppPreference.getUser(v.getContext()) == null) {
-                    Toast.makeText(v.getContext(), "Mohon mendaftar terlebih dahulu", Toast.LENGTH_SHORT).show();
+                if (!PreferenceAkun.getAkun(v.getContext()).isFieldFilled()) {
+                    Toast.makeText(v.getContext(), "Mohon lengkapi data diri terlebih dahulu", Toast.LENGTH_SHORT).show();
                 } else if (!isSheetSelected) {
                     Toast.makeText(v.getContext(), "Mohon pilih paket terlebih dahulu", Toast.LENGTH_SHORT).show();
                 } else {

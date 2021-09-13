@@ -35,23 +35,24 @@
                 android:src="@drawable/ic_gift"/>
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_13sdp"
                 android:fontFamily="@font/catamaran_bold"
-                android:textSize="@dimen/_13sdp"
+                android:gravity="center_horizontal"
+                android:text="Saatnya untuk menjadi mitra\nTombo Ati Tour"
                 android:textColor="@android:color/black"
-                android:text="Ajak Teman, Dapat Cashback."/>
+                android:textSize="20sp" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_13sdp"
-                android:gravity="center"
                 android:fontFamily="@font/catamaran_regular"
-                android:textSize="@dimen/_10sdp"
+                android:gravity="center"
+                android:text="Tombo Ati Tour membua peluang secara terbuka epada masyaraan umum untuk bersama - sama menjadi Freelance Inspirasi Baitullah dekat di Hati.\n\nBentuk peluang yang diberian berupa kesempatan untuk menjadi Mitra atau sebagai antor Cabang di daerah"
                 android:textColor="@android:color/black"
-                android:text="Dapatkan Cashback senilai Rp25.000 untuk setiap teman yang mendaftar dan berinvestasi di Bibit menggunakan kode referral kamu.\n\nTeman kamu juga mendapatkan cashback senilai Rp25.000 yang dapat dipakai pada saat pembelian reksa dana."/>
+                android:textSize="@dimen/_10sdp" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -63,25 +64,17 @@
                 android:textColor="@color/darker_grey"
                 android:text="Share Kode Referralmu"/>
 
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_3sdp"
-                app:boxBackgroundColor="@color/light_green"
-                app:hintEnabled="false">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/catamaran_bold"
-                    android:gravity="center_vertical"
-                    android:text="3507131234560009"
-                    android:inputType="number"
-                    android:maxLines="1"
-                    android:textColor="@android:color/white" />
-
-            </com.google.android.material.textfield.TextInputLayout>
+                android:background="@color/dark_green"
+                android:fontFamily="@font/catamaran_bold"
+                android:gravity="center|center_vertical"
+                android:inputType="number"
+                android:maxLines="1"
+                android:padding="12dp"
+                android:textColor="@android:color/white"
+                android:textSize="20sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -142,41 +135,24 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/catamaran_bold"
-                            android:textSize="@dimen/_13sdp"
+                            android:text="Kode Referral Yang Kamu Gunakan"
                             android:textColor="@android:color/black"
-                            android:text="Masukkan Kode Referral"/>
+                            android:textSize="@dimen/_13sdp" />
 
-                        <com.google.android.material.textfield.TextInputLayout
-                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+
+                        <TextView
+                            android:id="@+id/textInputEditReferralFrom"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/_6sdp"
-                            app:boxBackgroundColor="@color/white"
-                            app:hintEnabled="false">
-
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/textInputEditTextNomorKTP"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/catamaran_regular"
-                                android:gravity="center_vertical"
-                                android:hint="3507131234560009"
-                                android:inputType="number"
-                                android:maxLines="1"
-                                android:textColor="@android:color/black" />
-
-                        </com.google.android.material.textfield.TextInputLayout>
-
-                        <com.google.android.material.button.MaterialButton
-                            style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/_6sdp"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/round_border_form"
                             android:fontFamily="@font/catamaran_bold"
-                            android:text="Gunakan"
-                            android:textAllCaps="false"
-                            app:backgroundTint="@color/dark_green"
-                            android:textColor="@color/white"/>
+                            android:gravity="center|center_vertical"
+                            android:paddingTop="15dp"
+                            android:paddingBottom="15dp"
+                            android:text="34326345"
+                            android:textColor="@color/dark_green"
+                            android:textSize="20sp" />
 
                     </LinearLayout>
 

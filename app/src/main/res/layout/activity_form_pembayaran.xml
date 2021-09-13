@@ -206,11 +206,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/ic_thumbnail_no_image"
-                        android:visibility="visible"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/textView16" />
+                        android:src="@drawable/ic_thumbnail_no_image"/>
 
                 </com.google.android.material.card.MaterialCardView>
 

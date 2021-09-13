@@ -50,14 +50,13 @@ public class AppPreference {
         context.getSharedPreferences(PREF_NOTIF, Context.MODE_PRIVATE).edit().putString(NOTIF_PREF, object.toString()).apply();
     }
 
-    public static SignInResponse.SignInModel getUser(Context context){
-        SharedPreferences pref = context.getSharedPreferences(PREF, Context.MODE_PRIVATE);
-        if(pref.contains(USER_PREF)){
-            return new Gson().fromJson(pref.getString(USER_PREF, ""), SignInResponse.SignInModel.class);
-        }
-
-        return null;
-    }
+//    public static SignInResponse.SignInModel getUser(Context context){
+//        SharedPreferences pref = context.getSharedPreferences(PREF, Context.MODE_PRIVATE);
+//        if(pref.contains(USER_PREF)){
+//            return new Gson().fromJson(pref.getString(USER_PREF, ""), SignInResponse.SignInModel.class);
+//        }
+//        return null;
+//    }
 
     public static NotifikasiModel getNotifData(Context context){
         SharedPreferences pref = context.getSharedPreferences(PREF_NOTIF, Context.MODE_PRIVATE);

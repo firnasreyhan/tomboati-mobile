@@ -3,8 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/ic_empty_cart.xml" value="0.1234375" />
         <entry key="app/src/main/res/drawable/round_bg.xml" value="0.16458333333333333" />
+        <entry key="app/src/main/res/drawable/round_bg_akun.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/round_border.xml" value="0.16458333333333333" />
+        <entry key="app/src/main/res/drawable/round_border_auth.xml" value="0.12152777777777778" />
         <entry key="app/src/main/res/drawable/round_border_form.xml" value="0.16458333333333333" />
         <entry key="app/src/main/res/layout/activity_adab_berdoa.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_adab_sholat.xml" value="0.22" />
@@ -12,6 +15,8 @@
         <entry key="app/src/main/res/layout/activity_aneka_sholawat.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_arah_kiblat.xml" value="0.14947916666666666" />
         <entry key="app/src/main/res/layout/activity_asmaul_husna.xml" value="0.14947916666666666" />
+        <entry key="app/src/main/res/layout/activity_auth_login_mitra.xml" value="0.18" />
+        <entry key="app/src/main/res/layout/activity_auth_register_user.xml" value="0.16" />
         <entry key="app/src/main/res/layout/activity_detail_al_quran.xml" value="0.14947916666666666" />
         <entry key="app/src/main/res/layout/activity_detail_al_quran_new.xml" value="0.2" />
         <entry key="app/src/main/res/layout/activity_detail_aneka_sholawat.xml" value="0.1" />
@@ -30,22 +35,24 @@
         <entry key="app/src/main/res/layout/activity_doa_umrah.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_doa_ziarah.xml" value="0.14947916666666666" />
         <entry key="app/src/main/res/layout/activity_draw_tanda_tangan_pendaftaran.xml" value="0.22" />
-        <entry key="app/src/main/res/layout/activity_form_pembayaran.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_form_pembayaran.xml" value="0.2" />
         <entry key="app/src/main/res/layout/activity_hitung_tasbih.xml" value="0.18" />
         <entry key="app/src/main/res/layout/activity_hitung_tasbih_lainnya.xml" value="0.18" />
         <entry key="app/src/main/res/layout/activity_informasi_pembayaran.xml" value="0.18" />
         <entry key="app/src/main/res/layout/activity_istighosah.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_kode_referral.xml" value="0.14947916666666666" />
+        <entry key="app/src/main/res/layout/activity_kode_referral.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_komunitas.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_list_paket.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.112109375" />
         <entry key="app/src/main/res/layout/activity_masjid_terdekat.xml" value="0.14947916666666666" />
         <entry key="app/src/main/res/layout/activity_new_asmaul_husna.xml" value="0.14947916666666666" />
         <entry key="app/src/main/res/layout/activity_pendaftaran_badal_haji.xml" value="0.14947916666666666" />
-        <entry key="app/src/main/res/layout/activity_pendaftaran_data_diri.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_pendaftaran_data_diri.xml" value="0.2045616535994298" />
         <entry key="app/src/main/res/layout/activity_pendaftaran_data_diri_new.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_pendaftaran_data_keluarga.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_pendaftaran_dokumen_data_diri.xml" value="0.2677238805970149" />
         <entry key="app/src/main/res/layout/activity_pendaftaran_haji_reguler.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_registrasi_data_diri_mitra.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_sholat.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_sholat_diperjalanan.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_sholat_jenazah.xml" value="0.14947916666666666" />
@@ -53,21 +60,28 @@
         <entry key="app/src/main/res/layout/activity_sholat_wajib.xml" value="0.14947916666666666" />
         <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.14947916666666666" />
         <entry key="app/src/main/res/layout/activity_splash_screen.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/activity_syarat2.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_syarat.xml" value="0.21" />
+        <entry key="app/src/main/res/layout/activity_syarat2.xml" value="0.2" />
+        <entry key="app/src/main/res/layout/activity_syarat_pembatalan_mitra.xml" value="0.21176470588235294" />
+        <entry key="app/src/main/res/layout/activity_syarat_pendaftaran_mitra.xml" value="0.2" />
         <entry key="app/src/main/res/layout/activity_syarat_sholat.xml" value="0.14947916666666666" />
         <entry key="app/src/main/res/layout/activity_tampat_mustajab.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_tasbih.xml" value="0.14947916666666666" />
         <entry key="app/src/main/res/layout/activity_tayamum.xml" value="0.14947916666666666" />
         <entry key="app/src/main/res/layout/activity_tembang_sholawat.xml" value="0.14947916666666666" />
         <entry key="app/src/main/res/layout/activity_umroh_haji.xml" value="0.14947916666666666" />
-        <entry key="app/src/main/res/layout/activity_update_profile.xml" value="0.14947916666666666" />
+        <entry key="app/src/main/res/layout/activity_update_profile.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_waktu_mustajab.xml" value="0.18" />
         <entry key="app/src/main/res/layout/activity_wisata_religi.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_wudhu.xml" value="0.14947916666666666" />
         <entry key="app/src/main/res/layout/activity_yasin_tahlil.xml" value="0.15" />
-        <entry key="app/src/main/res/layout/auth.xml" value="0.14947916666666666" />
+        <entry key="app/src/main/res/layout/akun.xml" value="0.2" />
+        <entry key="app/src/main/res/layout/akun2.xml" value="0.16" />
+        <entry key="app/src/main/res/layout/auth.xml" value="0.2" />
         <entry key="app/src/main/res/layout/custom_tab.xml" value="0.5" />
-        <entry key="app/src/main/res/layout/fragment_akun.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/fragment_akun.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_akun_mitra.xml" value="0.17" />
+        <entry key="app/src/main/res/layout/fragment_akun_non_mitra.xml" value="0.15" />
         <entry key="app/src/main/res/layout/fragment_bacaan_sholat.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_beranda.xml" value="0.33" />
         <entry key="app/src/main/res/layout/fragment_data_keluarga_jamaah.xml" value="0.14947916666666666" />
@@ -117,6 +131,7 @@
         <entry key="app/src/main/res/layout/item_tempat_mustajab.xml" value="0.25" />
         <entry key="app/src/main/res/layout/item_waktu_mustajab.xml" value="0.25" />
         <entry key="app/src/main/res/layout/item_wudhu.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/register.xml" value="0.21" />
         <entry key="app/src/main/res/layout/view_custom_dialog.xml" value="0.33" />
         <entry key="app/src/main/res/layout/view_custom_dialog_info.xml" value="0.25" />
         <entry key="app/src/main/res/layout/view_custom_dialog_keluar.xml" value="0.25" />

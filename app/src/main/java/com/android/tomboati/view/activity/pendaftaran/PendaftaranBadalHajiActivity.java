@@ -17,6 +17,7 @@ import com.android.tomboati.R;
 import com.android.tomboati.api.response.BaseResponse;
 import com.android.tomboati.model.DataHajiBadalModel;
 import com.android.tomboati.preference.AppPreference;
+import com.android.tomboati.preference.PreferenceAkun;
 import com.android.tomboati.utils.AlertInfo;
 import com.android.tomboati.utils.AlertProgress;
 import com.android.tomboati.view.activity.homepage.MainActivity;
@@ -73,7 +74,7 @@ public class PendaftaranBadalHajiActivity extends AppCompatActivity {
                     AlertProgress progress = new AlertProgress(v, "Sedang mengirim data");
                     progress.showDialog();
 
-                    model.setIdUserRegister(AppPreference.getUser(v.getContext()).getIdUserRegister());
+                    model.setIdUserRegister(PreferenceAkun.getAkun(v.getContext()).getUserId());
                     viewModel.pendaftaranBadalHaji(model).observe(PendaftaranBadalHajiActivity.this, new Observer<BaseResponse>() {
                         @Override
                         public void onChanged(BaseResponse baseResponse) {

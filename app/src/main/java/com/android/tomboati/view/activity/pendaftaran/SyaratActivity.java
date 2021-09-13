@@ -12,6 +12,7 @@ import com.android.tomboati.R;
 import com.android.tomboati.model.DataHajiBadalModel;
 import com.android.tomboati.model.PesananaModel;
 import com.android.tomboati.preference.AppPreference;
+import com.android.tomboati.preference.PreferenceAkun;
 import com.android.tomboati.view.activity.pendaftaran.PendaftaranDataDiriActivity;
 import com.google.android.material.button.MaterialButton;
 
@@ -42,7 +43,7 @@ public class SyaratActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(isPaketHaji) {
-                    if(AppPreference.getUser(v.getContext()) != null) {
+                    if(PreferenceAkun.getAkun(v.getContext()).isFieldFilled()) {
                         if(isPaketHajiBadal) {
                             final DataHajiBadalModel model = new DataHajiBadalModel();
                             model.setIdPaket(idPaket);
@@ -55,7 +56,7 @@ public class SyaratActivity extends AppCompatActivity {
                             startActivity(intent);
                         }
                     } else {
-                        Toast.makeText(v.getContext(), "Mohon login terlebih dahulu", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(v.getContext(), "Mohon lengkapi data diri terlebih dahulu", Toast.LENGTH_SHORT).show();
                     }
                 } else {
                     final PesananaModel model = new PesananaModel();

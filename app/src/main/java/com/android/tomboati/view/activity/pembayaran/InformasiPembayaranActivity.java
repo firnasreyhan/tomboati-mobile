@@ -74,7 +74,7 @@ public class InformasiPembayaranActivity extends AppCompatActivity {
                         PembayaranResponse.DataItem data = pembayaranResponse.getData().get(0);
                         idPembayaran = data.getIDPEMBAYARAN();
                         final boolean isValidation = data.getSTATUSPEMBAYARAN().equals("1");
-                        textViewStatus.setText(isValidation ? "Terverifikasi" : "Belum Terverifikasi");
+                        textViewStatus.setText(isValidation ? "LUNAS" : "Belum Lunas");
                         textViewStatus.setBackgroundResource(isValidation ? R.drawable.round_bg : R.drawable.round_bg_red);
                         textViewIdPembayaran.setText(data.getIDPEMBAYARAN());
                         textViewTotalPembayaran.setText(String.format("Rp. %,.02f", Double.parseDouble(data.getTOTALPEMBAYARAN())));

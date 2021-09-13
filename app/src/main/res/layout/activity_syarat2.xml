@@ -10,8 +10,8 @@
     <TextView
         android:id="@+id/textView3"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="55dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="15dp"
         android:fontFamily="@font/cinzel_medium"
         android:gravity="center"
         android:text="Syarat Pembayaran &amp; Pembatalan"
@@ -24,7 +24,7 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="@dimen/_8sdp"
         android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toTopOf="@+id/materialCardView3"
         app:layout_constraintEnd_toEndOf="parent"
@@ -160,7 +160,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/catamaran_bold"
                             android:gravity="center_horizontal"
-                            android:text="Pembayaran dianggap sah apabila transfer melalui rekening perusahaan a/n PT. TOMBO AYI MASYHUR"
+                            android:text="Pembayaran dianggap sah apabila transfer melalui rekening perusahaan a/n PT. TOMBO ATI MASYHUR"
                             android:textAllCaps="false"
                             android:textColor="@android:color/white"
                             android:textSize="@dimen/_10sdp" />

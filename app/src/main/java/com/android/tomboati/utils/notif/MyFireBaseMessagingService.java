@@ -56,9 +56,4 @@ public class MyFireBaseMessagingService extends FirebaseMessagingService {
         }
         manager.notify(0, builder.build());
     }
-
-    @Override
-    public boolean handleIntentOnMainThread(Intent intent) {
-        return super.handleIntentOnMainThread(intent);
-    }
 }

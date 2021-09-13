@@ -12,6 +12,8 @@ import com.android.tomboati.api.ApiInterfaceLokasi;
 import com.android.tomboati.api.ApiInterfaceMasjid;
 import com.android.tomboati.api.ApiInterfaceTahlil;
 import com.android.tomboati.api.ApiInterfaceTomboAti;
+import com.android.tomboati.api.ApiInterfaceTomboAtiMitra;
+import com.android.tomboati.api.response.AkunResponse;
 import com.android.tomboati.api.response.BacaanSholatResponse;
 import com.android.tomboati.api.response.BaseResponse;
 import com.android.tomboati.api.response.ChatResponse;
@@ -42,9 +44,12 @@ import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.http.Part;
+import retrofit2.http.Query;
 
 public class Repository {
     private ApiInterfaceTomboAti apiInterfaceTomboAti;
+    private ApiInterfaceTomboAtiMitra apiInterfaceTomboAtiMitra;
     private ApiInterfaceJadwalSholat apiInterfaceTomboAtiJadwalSholat;
     private ApiInterfaceMasjid apiInterfaceMasjid;
     private ApiInterfaceAlQuranNew apiInterfaceAlQuranNew;
@@ -53,6 +58,7 @@ public class Repository {
 
     public Repository() {
         this.apiInterfaceTomboAti = ApiClient.getClientTomboAti();
+        this.apiInterfaceTomboAtiMitra = ApiClient.getClientTomboAtiMitra();
         this.apiInterfaceTomboAtiJadwalSholat = ApiClient.getClientJadwalSholat();
         this.apiInterfaceMasjid = ApiClient.getClientMasjid();
         this.apiInterfaceAlQuranNew = ApiClient.getClientAlQuranNew();
@@ -742,6 +748,7 @@ public class Repository {
 
             @Override
             public void onFailure(Call<BaseResponse> call, Throwable t) {
+                Log.d("FAILURE!", "onFailure: " + t.getMessage());
                 data.postValue(null);
             }
         }); return data;
@@ -1036,6 +1043,30 @@ public class Repository {
 
             @Override
             public void onFailure(Call<DetailPembayaranResponse> call, Throwable t) {
+                data.postValue(null);
+            }
+        }); return data;
+    }
+
+    //==
+
+    public MutableLiveData<AkunResponse> registerAkun(
+            String function,
+            String nomorHP,
+            String referral,
+            String token
+    ) {
+        MutableLiveData<AkunResponse> data = new MutableLiveData<>();
+        apiInterfaceTomboAtiMitra.registerAkun(
+                function, nomorHP, referral, token
+        ).enqueue(new Callback<AkunResponse>() {
+            @Override
+            public void onResponse(Call<AkunResponse> call, Response<AkunResponse> response) {
+                if (response.code() == 200) { data.postValue(response.body()); }
+            }
+
+            @Override
+            public void onFailure(Call<AkunResponse> call, Throwable t) {
                 data.postValue(null);
             }
         }); return data;

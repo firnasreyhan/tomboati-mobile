@@ -24,15 +24,13 @@ import com.android.tomboati.R;
 import com.android.tomboati.api.response.BaseResponse;
 import com.android.tomboati.api.response.SignInResponse;
 import com.android.tomboati.preference.AppPreference;
+import com.android.tomboati.preference.PreferenceAkun;
 import com.android.tomboati.viewmodel.tomboati.auth.UpdateProfileViewModel;
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.Priority;
-import com.bumptech.glide.load.DecodeFormat;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.imageview.ShapeableImageView;
 import com.google.android.material.textfield.TextInputEditText;
+import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
@@ -131,7 +129,7 @@ public class UpdateProfileActivity extends AppCompatActivity {
                     int loadingTime = 3000;
                     new Handler().postDelayed(() -> {
                         updateProfileViewModel.updateProfile(
-                                AppPreference.getUser(UpdateProfileActivity.this).getIdUserRegister(),
+                                PreferenceAkun.getAkun(v.getContext()).getUserId(),
                                 textInputEditTextNomorKTP.getText().toString(),
                                 textInputEditTextEmail.getText().toString(),
                                 textInputEditTextNamaLengkap.getText().toString(),
@@ -145,7 +143,7 @@ public class UpdateProfileActivity extends AppCompatActivity {
 
                                 if (uriKTP != null) {
                                     updateProfileViewModel.updateFileKTP(
-                                            AppPreference.getUser(UpdateProfileActivity.this).getIdUserRegister(),
+                                            PreferenceAkun.getAkun(v.getContext()).getUserId(),
                                             uriKTP
                                     ).observe(UpdateProfileActivity.this, new Observer<BaseResponse>() {
                                         @Override
@@ -157,7 +155,7 @@ public class UpdateProfileActivity extends AppCompatActivity {
 
                                 if (uriFoto != null) {
                                     updateProfileViewModel.updateFoto(
-                                            AppPreference.getUser(UpdateProfileActivity.this).getIdUserRegister(),
+                                            PreferenceAkun.getAkun(v.getContext()).getUserId(),
                                             uriFoto
                                     ).observe(UpdateProfileActivity.this, new Observer<BaseResponse>() {
                                         @Override
@@ -169,8 +167,8 @@ public class UpdateProfileActivity extends AppCompatActivity {
 
                                 if (!baseResponse.isError()) {
                                     updateProfileViewModel.signIn(
-                                            AppPreference.getUser(UpdateProfileActivity.this).getEmail(),
-                                            AppPreference.getUser(UpdateProfileActivity.this).getPassword()
+                                            "",
+                                            ""
                                     ).observe(UpdateProfileActivity.this, new Observer<SignInResponse>() {
                                         @Override
                                         public void onChanged(SignInResponse signInResponse) {
@@ -206,52 +204,6 @@ public class UpdateProfileActivity extends AppCompatActivity {
                                 }
                             }
                         });
-
-//                        updateProfileViewModel.updateProfile(
-//                                AppPreference.getUser(UpdateProfileActivity.this).getIdUserRegister(),
-//                                textInputEditTextNomorKTP.getText().toString(),
-//                                textInputEditTextEmail.getText().toString(),
-//                                AppPreference.getUser(UpdateProfileActivity.this).getPassword(),
-//                                textInputEditTextNamaLengkap.getText().toString(),
-//                                textInputEditTextNomorHP.getText().toString(),
-//                                uriKTP,
-//                                uriFoto
-//                        ).observe(UpdateProfileActivity.this, new Observer<SignInResponse>() {
-//                            @Override
-//                            public void onChanged(SignInResponse signInResponse) {
-//                                if (progressDialog.isShowing()) {
-//                                    progressDialog.dismiss();
-//                                }
-//                                if (!signInResponse.isError()) {
-//                                    new AlertDialog.Builder(v.getContext())
-//                                            .setTitle("Pesan")
-//                                            .setMessage(signInResponse.getMessage())
-//                                            .setCancelable(false)
-//                                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-//                                                @Override
-//                                                public void onClick(DialogInterface dialog, int which) {
-//                                                    AppPreference.removeUser(UpdateProfileActivity.this);
-//                                                    AppPreference.saveUser(UpdateProfileActivity.this, signInResponse.getData().get(0));
-//                                                    dialog.dismiss();
-//                                                    finish();
-//                                                }
-//                                            })
-//                                            .show();
-//                                } else {
-//                                    new AlertDialog.Builder(v.getContext())
-//                                            .setTitle("Pesan")
-//                                            .setMessage(signInResponse.getMessage())
-//                                            .setCancelable(false)
-//                                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-//                                                @Override
-//                                                public void onClick(DialogInterface dialog, int which) {
-//                                                    dialog.dismiss();
-//                                                }
-//                                            })
-//                                            .show();
-//                                }
-//                            }
-//                        });
                     }, loadingTime);
                 }
             }
@@ -267,36 +219,15 @@ public class UpdateProfileActivity extends AppCompatActivity {
                 switch (uriNumber) {
                     case 1:
                         uriFoto = result.getUri();
-                        //shapeableImageViewFoto.setImageURI(uriFoto);
 
-                        Glide.with(this)
-                                .load(uriFoto)
-                                .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
-                                .skipMemoryCache(true)
-                                .dontAnimate()
-                                .dontTransform()
-                                .priority(Priority.IMMEDIATE)
-                                .encodeFormat(Bitmap.CompressFormat.PNG)
-                                .format(DecodeFormat.DEFAULT)
-                                .placeholder(R.drawable.ic_logo)
-                                .into(shapeableImageViewFoto);
+                        picassoLoad(uriFoto.toString(), shapeableImageViewFoto);
 
                         break;
                     case 2:
                         uriKTP = result.getUri();
-                        //imageViewKTP.setImageURI(uriKTP);
 
-                        Glide.with(this)
-                                .load(uriKTP)
-                                .diskCacheStrategy(DiskCacheStrategy.ALL)
-                                .skipMemoryCache(true)
-                                .dontAnimate()
-                                .dontTransform()
-                                .priority(Priority.IMMEDIATE)
-                                .encodeFormat(Bitmap.CompressFormat.PNG)
-                                .format(DecodeFormat.DEFAULT)
-                                .placeholder(R.drawable.ic_logo)
-                                .into(imageViewKTP);
+                        picassoLoad(uriKTP.toString(), imageViewKTP);
+
                         imageViewKTP.setVisibility(View.VISIBLE);
                         linearLayoutEmptyKTP.setVisibility(View.GONE);
                         break;
@@ -317,34 +248,16 @@ public class UpdateProfileActivity extends AppCompatActivity {
         imageViewKTP.setVisibility(View.VISIBLE);
         linearLayoutEmptyKTP.setVisibility(View.GONE);
 
-        textInputEditTextNamaLengkap.setText(AppPreference.getUser(this).getNamaLengkap());
-        textInputEditTextEmail.setText(AppPreference.getUser(this).getEmail());
-        textInputEditTextNomorKTP.setText(AppPreference.getUser(this).getNomorKTP());
-        textInputEditTextNomorHP.setText(AppPreference.getUser(this).getNomorHP());
+        textInputEditTextNamaLengkap.setText("");
+        textInputEditTextEmail.setText("");
+        textInputEditTextNomorKTP.setText("");
+        textInputEditTextNomorHP.setText("");
 
-        Glide.with(this)
-                .load(AppPreference.getUser(this).getFoto())
-                .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
-                .skipMemoryCache(true)
-                .dontAnimate()
-                .dontTransform()
-                .priority(Priority.IMMEDIATE)
-                .encodeFormat(Bitmap.CompressFormat.PNG)
-                .format(DecodeFormat.DEFAULT)
-                .placeholder(R.drawable.ic_logo)
-                .into(shapeableImageViewFoto);
+        picassoLoad("", shapeableImageViewFoto);
+        picassoLoad("", imageViewKTP);
+    }
 
-
-        Glide.with(this)
-                .load(AppPreference.getUser(this).getFileKTP())
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .skipMemoryCache(true)
-                .dontAnimate()
-                .dontTransform()
-                .priority(Priority.IMMEDIATE)
-                .encodeFormat(Bitmap.CompressFormat.PNG)
-                .format(DecodeFormat.DEFAULT)
-                .placeholder(R.drawable.ic_logo)
-                .into(imageViewKTP);
+    private void picassoLoad(String uri, ImageView imageView) {
+        Picasso.get().load(uri).priority(Picasso.Priority.HIGH).placeholder(R.drawable.ic_logo).into(imageView);
     }
 }

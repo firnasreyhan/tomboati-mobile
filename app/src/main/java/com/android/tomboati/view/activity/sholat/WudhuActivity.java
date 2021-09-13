@@ -1,31 +1,15 @@
 package com.android.tomboati.view.activity.sholat;
 
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.pdf.PdfRenderer;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.ParcelFileDescriptor;
-import android.view.View;
-import android.widget.ImageView;
 
 import com.android.tomboati.R;
 import com.android.tomboati.adapter.WudhuAdapter;
 import com.android.tomboati.model.WudhuModel;
-import com.android.tomboati.utils.OnSwipeTouchListener;
-import com.google.android.material.button.MaterialButton;
-import com.jsibbold.zoomage.ZoomageView;
-
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 

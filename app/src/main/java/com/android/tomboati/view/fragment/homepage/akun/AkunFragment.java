@@ -1,4 +1,4 @@
-package com.android.tomboati.view.fragment.homepage;
+package com.android.tomboati.view.fragment.homepage.akun;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -23,6 +23,7 @@ import com.android.tomboati.R;
 import com.android.tomboati.api.response.BaseResponse;
 import com.android.tomboati.api.response.SignInResponse;
 import com.android.tomboati.preference.AppPreference;
+import com.android.tomboati.preference.PreferenceAkun;
 import com.android.tomboati.utils.AlertInfo;
 import com.android.tomboati.utils.AlertProgress;
 import com.android.tomboati.view.activity.homepage.KodeReferralActivity;
@@ -72,7 +73,7 @@ public class AkunFragment extends Fragment {
         materialButtonProfileEdit = view.findViewById(R.id.materialButtonProfileEdit);
         materialButtonPasswordEdit = view.findViewById(R.id.materialButtonPasswordEdit);
 
-        if (AppPreference.getUser(getContext()) != null) {
+        if (PreferenceAkun.getAkun(getContext()) != null) {
             nestedScrollView.setVisibility(View.GONE);
             linearLayoutAkun.setVisibility(View.VISIBLE);
         } else {
@@ -209,7 +210,7 @@ public class AkunFragment extends Fragment {
                 AlertProgress progress = new AlertProgress(v, "Sedang mengirimkan data");
                 progress.showDialog();
 
-                akunViewModel.resetPassword(AppPreference.getUser(v.getContext()).getIdUserRegister())
+                akunViewModel.resetPassword(PreferenceAkun.getAkun(v.getContext()).getId())
                     .observe(getActivity(), new Observer<BaseResponse>() {
                         @Override
                         public void onChanged(BaseResponse baseResponse) {
@@ -232,11 +233,11 @@ public class AkunFragment extends Fragment {
 
     // Set account to preferences  ===================
     private void setAkun() {
-        textViewNamaLengkap.setText(AppPreference.getUser(getContext()).getNamaLengkap());
-        textViewNomorHP.setText("+" + AppPreference.getUser(getContext()).getNomorHP());
+        textViewNamaLengkap.setText("");
+        textViewNomorHP.setText("");
 
         Picasso.get()
-                .load(AppPreference.getUser(getContext()).getFoto())
+                .load("")
                 .priority(Picasso.Priority.HIGH)
                 .placeholder(R.drawable.ic_logo)
                 .into(shapeableImageViewFoto);
@@ -246,7 +247,7 @@ public class AkunFragment extends Fragment {
     public void onResume() {
         super.onResume();
         // If user is logged then set account to active  ===================
-        if (AppPreference.getUser(getContext()) != null) {
+        if (PreferenceAkun.getAkun(getContext()) != null) {
             setAkun();
         }
     }

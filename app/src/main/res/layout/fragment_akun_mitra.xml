@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:orientation="vertical">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:background="@drawable/round_bg_akun">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile_image"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginLeft="24dp"
+            android:src="@drawable/ic_person"
+            app:civ_circle_background_color="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/profile_image"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/textView43"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/catamaran_bold"
+                android:text="Fakhri Fahreza"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView45"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:fontFamily="@font/catamaran_bold"
+                android:text="0"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageView10"
+                app:layout_constraintTop_toBottomOf="@+id/textView43" />
+
+            <ImageView
+                android:id="@+id/imageView10"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView43"
+                app:srcCompat="@drawable/ic_coin"
+                tools:ignore="VectorDrawableCompat" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/textView44"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_weight="1"
+            android:background="@drawable/round_bg_placeholder"
+            android:fontFamily="@font/catamaran_bold"
+            android:paddingLeft="15dp"
+            android:paddingTop="5dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="5dp"
+            android:text="MITRA AKTIF"
+            android:textColor="@color/dark_green"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:clickable="true">
+
+        <ImageView
+            android:id="@+id/imageView13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginLeft="32dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_edit"
+            app:tint="@color/dark_green"
+            tools:ignore="VectorDrawableCompat" />
+
+        <TextView
+            android:id="@+id/textView49"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginLeft="32dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/catamaran_bold"
+            android:text="Ubah Profil"
+            android:textColor="@color/dark_green"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/imageView13"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView50"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginLeft="32dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="@font/catamaran_regular"
+            android:text="Ubah foto, dan biodata anda"
+            android:textColor="@color/darker_grey"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageView13"
+            app:layout_constraintTop_toBottomOf="@+id/textView49" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true">
+
+        <ImageView
+            android:id="@+id/imageView23"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginLeft="32dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_password"
+            app:tint="@color/dark_green"
+            tools:ignore="VectorDrawableCompat" />
+
+        <TextView
+            android:id="@+id/textView59"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginLeft="32dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/catamaran_bold"
+            android:text="Ubah Password"
+            android:textColor="@color/dark_green"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/imageView23"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView60"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginLeft="32dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="@font/catamaran_regular"
+            android:text="Password anda akan dikirimkan email"
+            android:textColor="@color/darker_grey"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageView23"
+            app:layout_constraintTop_toBottomOf="@+id/textView59" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true">
+
+        <ImageView
+            android:id="@+id/imageView33"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginLeft="32dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_voucher"
+            app:tint="@color/dark_green"
+            tools:ignore="VectorDrawableCompat" />
+
+        <TextView
+            android:id="@+id/textView69"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginLeft="32dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/catamaran_bold"
+            android:text="Kode Referral"
+            android:textColor="@color/dark_green"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/imageView33"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView70"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginLeft="32dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="@font/catamaran_regular"
+            android:text="Lihat kode refererral anda dan mitra anda"
+            android:textColor="@color/darker_grey"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageView33"
+            app:layout_constraintTop_toBottomOf="@+id/textView69" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusable="true">
+
+        <ImageView
+            android:id="@+id/imageView43"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginLeft="32dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_privacy_policy"
+            app:tint="@color/dark_green"
+            tools:ignore="VectorDrawableCompat" />
+
+        <TextView
+            android:id="@+id/textView79"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginLeft="32dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/catamaran_bold"
+            android:text="Kebijakan Privasi"
+            android:textColor="@color/dark_green"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/imageView43"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView80"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginLeft="32dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="@font/catamaran_regular"
+            android:text="pernyataan atau dokumen hukum"
+            android:textColor="@color/darker_grey"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageView43"
+            app:layout_constraintTop_toBottomOf="@+id/textView79" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/very_light_green"
+        android:clickable="true"
+        android:focusable="true">
+
+        <View
+            android:id="@+id/view20"
+            android:layout_width="wrap_content"
+            android:layout_height="0.4dp"
+            android:background="@color/dark_green"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageView53"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginLeft="32dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_sign_out"
+            app:tint="@color/dark_green"
+            tools:ignore="VectorDrawableCompat" />
+
+        <TextView
+            android:id="@+id/textView89"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginLeft="32dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="24dp"
+            android:fontFamily="@font/catamaran_bold"
+            android:text="Keluar"
+            android:textColor="@color/dark_green"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageView53"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/view21"
+            android:layout_width="wrap_content"
+            android:layout_height="0.4dp"
+            android:background="@color/dark_green"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</LinearLayout>

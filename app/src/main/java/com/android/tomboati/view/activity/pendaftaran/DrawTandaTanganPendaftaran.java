@@ -107,18 +107,22 @@ public class DrawTandaTanganPendaftaran extends AppCompatActivity {
                                         progress.dismissDialog();
                                     }
 
-                                    AlertInfo info;
+                                    if(baseResponse != null) {
+                                        AlertInfo info;
 
-                                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
-                                    if (!baseResponse.isError()) {
-                                        info = new AlertInfo(DrawTandaTanganPendaftaran.this, "Pendaftaran berhasil", intent);
+                                        if (!baseResponse.isError()) {
+                                            info = new AlertInfo(DrawTandaTanganPendaftaran.this, "Pendaftaran berhasil", intent);
+                                        } else {
+                                            info = new AlertInfo(DrawTandaTanganPendaftaran.this, "Gagal Mengirimkan Data", intent);
+                                        }
+                                        info.showDialog();
                                     } else {
-                                        info = new AlertInfo(DrawTandaTanganPendaftaran.this, "Gagal Mengirimkan Data", intent);
+
                                     }
-                                    info.showDialog();
                                 }
                             });
                         } @Override  public void onDrawCreationError() { }
