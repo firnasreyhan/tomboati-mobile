@@ -117,7 +117,7 @@ public class DrawTandaTanganPendaftaran extends AppCompatActivity {
                                         if (!baseResponse.isError()) {
                                             info = new AlertInfo(DrawTandaTanganPendaftaran.this, "Pendaftaran berhasil", intent);
                                         } else {
-                                            info = new AlertInfo(DrawTandaTanganPendaftaran.this, "Gagal Mengirimkan Data", intent);
+                                            info = new AlertInfo(DrawTandaTanganPendaftaran.this, baseResponse.getMessage(), intent);
                                         }
                                         info.showDialog();
                                     } else {

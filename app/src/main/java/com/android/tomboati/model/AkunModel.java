@@ -29,6 +29,8 @@ public class AkunModel implements Serializable {
     private String referral; // <= AUTO
     private String idChatRoom; // <= AUTO
 
+    private boolean suksesDaftarMitra = false;
+
 
     public boolean isFieldFilled() {
 
@@ -44,6 +46,14 @@ public class AkunModel implements Serializable {
             }
         }
         return (count == 0);
+    }
+
+    public boolean isSuksesDaftarMitra() {
+        return suksesDaftarMitra;
+    }
+
+    public void setSuksesDaftarMitra(boolean suksesDaftarMitra) {
+        this.suksesDaftarMitra = suksesDaftarMitra;
     }
 
     public String getIdChatRoom() {

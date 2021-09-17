@@ -29,8 +29,8 @@ import okhttp3.RequestBody;
 
 public class PendaftaranDataKeluargaViewModel extends AndroidViewModel {
 
-    private Repository repository;
-    private ImageSaves imageSaves;
+    private final Repository repository;
+    private final ImageSaves imageSaves;
 
     public PendaftaranDataKeluargaViewModel(@NonNull Application application) {
         super(application);

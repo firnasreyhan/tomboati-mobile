@@ -49,6 +49,10 @@ public class AkunNonMitraFragment extends Fragment {
             textViewNamaPengguna.setText(PreferenceAkun.getAkun(getContext()).getName());
         }
 
+        if(PreferenceAkun.getAkun(view.getContext()).isSuksesDaftarMitra()) {
+            menuDaftarSebagaiMitra.setVisibility(View.GONE);
+        }
+
         menuLengkapiBiodata.setOnClickListener(v -> {
             final Intent INTENT = new Intent(v.getContext(), RegistrasiDataDiriMitraActivity.class);
             INTENT.putExtra("IS_DAFTAR_MITRA", false);

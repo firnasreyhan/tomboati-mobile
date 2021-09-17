@@ -79,6 +79,9 @@ public class RegistrasiDataDiriMitraActivity extends AppCompatActivity {
                     );
                     akunModel.setKodePos(editTextRegistrasiKodePos.getText().toString());
 
+                    PreferenceAkun.removeAkun(v.getContext());
+                    PreferenceAkun.setAkun(v.getContext(), akunModel);
+
                     final Class CLASS_LANJUTAN = IS_DAFTAR_MITRA ?
                             RegistrasiDataPembayaranMitraActivity.class
                         :
@@ -87,8 +90,6 @@ public class RegistrasiDataDiriMitraActivity extends AppCompatActivity {
 
                     final Intent intent = new Intent(v.getContext(), CLASS_LANJUTAN);
                     if(!IS_DAFTAR_MITRA) {
-                        PreferenceAkun.removeAkun(v.getContext());
-                        PreferenceAkun.setAkun(v.getContext(), akunModel);
 
                         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -96,7 +97,6 @@ public class RegistrasiDataDiriMitraActivity extends AppCompatActivity {
                         final AlertInfo alertInfo = new AlertInfo(RegistrasiDataDiriMitraActivity.this, "Data berhasil disimpan!", intent);
                         alertInfo.showDialog();
                     }  else {
-                        intent.putExtra("OBJECT", akunModel);
                         startActivity(intent);
                     }
                 }

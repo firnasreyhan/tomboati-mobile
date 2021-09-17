@@ -1071,4 +1071,63 @@ public class Repository {
             }
         }); return data;
     }
+
+    //==
+
+    public MutableLiveData<BaseResponse> registerMitra(
+            String function,
+            RequestBody nomorKTP,
+            RequestBody email,
+            RequestBody name,
+            RequestBody nomorHp,
+            RequestBody address,
+            RequestBody username,
+            RequestBody kecamatan,
+            RequestBody kota,
+            RequestBody provinsi,
+            RequestBody kodePos,
+            RequestBody country,
+            RequestBody bank,
+            RequestBody nomorRekening,
+            RequestBody atasNama,
+            RequestBody cabang,
+            RequestBody referral,
+            MultipartBody.Part fotoKtp,
+            MultipartBody.Part fotoProfil,
+            MultipartBody.Part buktiBayar
+    ) {
+        MutableLiveData<BaseResponse> data = new MutableLiveData<>();
+        apiInterfaceTomboAtiMitra.registerMitra(
+                function,
+                nomorKTP,
+                email,
+                name,
+                nomorHp,
+                address,
+                username,
+                kecamatan,
+                kota,
+                provinsi,
+                kodePos,
+                country,
+                bank,
+                nomorRekening,
+                atasNama,
+                cabang,
+                referral,
+                fotoKtp,
+                fotoProfil,
+                buktiBayar
+        ).enqueue(new Callback<BaseResponse>() {
+            @Override
+            public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
+                if (response.code() == 200) { data.postValue(response.body()); }
+            }
+
+            @Override
+            public void onFailure(Call<BaseResponse> call, Throwable t) {
+                data.postValue(null);
+            }
+        }); return data;
+    }
 }

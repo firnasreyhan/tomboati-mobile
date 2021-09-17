@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    tools:context=".view.activity.mitra.pendaftaran.RegistrasiDataDiriMitraActivity">
+    tools:context=".view.activity.mitra.pendaftaran.RegistrasiDataPembayaranMitraActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -41,21 +41,32 @@
                     android:orientation="vertical"
                     android:padding="20dp">
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/cinzel_bold"
+                        android:text="Profil"
+                        android:textColor="@color/dark_green"
+                        android:textSize="16sp" />
+
                     <FrameLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginTop="15dp">
 
-                        <ImageView
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/imageViewRegistrasiFotoProfile"
                             android:layout_width="150dp"
                             android:layout_height="150dp"
                             android:contentDescription="TODO"
-                            app:srcCompat="@drawable/ic_no_profile" />
+                            android:src="@drawable/ic_no_profile"
+                            app:civ_circle_background_color="@color/background" />
 
 
                         <com.google.android.material.floatingactionbutton.FloatingActionButton
-                            android:id="@+id/floatingActionButtonFoto"
+                            android:id="@+id/floatingActionButtonFotoProfile"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="bottom|right"
@@ -77,12 +88,14 @@
                         android:textSize="12sp" />
 
                     <EditText
+                        android:id="@+id/editTextRegistrasiNomorKTP"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:background="@drawable/round_border_form"
                         android:fontFamily="@font/catamaran_medium"
                         android:hint="8971662781927812"
+                        android:inputType="numberSigned|number|numberDecimal"
                         android:paddingLeft="10dp"
                         android:paddingTop="12dp"
                         android:paddingBottom="12dp"
@@ -107,6 +120,7 @@
                         android:background="@drawable/round_border_form"
                         android:fontFamily="@font/catamaran_medium"
                         android:hint="FAKHRI1212"
+                        android:inputType="none"
                         android:paddingLeft="10dp"
                         android:paddingTop="12dp"
                         android:paddingBottom="12dp"
@@ -132,6 +146,7 @@
                         android:background="@drawable/round_border_form"
                         android:fontFamily="@font/catamaran_medium"
                         android:hint="fahri@gmail.com"
+                        android:inputType="textEmailAddress"
                         android:paddingLeft="10dp"
                         android:paddingTop="12dp"
                         android:paddingBottom="12dp"
@@ -149,6 +164,7 @@
                         android:textSize="12sp" />
 
                     <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cardViewRegistrasiKTP"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_150sdp"
                         android:layout_marginTop="16dp"
@@ -160,7 +176,7 @@
                         app:strokeWidth="2dp">
 
                         <ImageView
-                            android:id="@+id/imageViewKTP"
+                            android:id="@+id/imageViewRegistrasiKTP"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:scaleType="centerCrop"
@@ -173,6 +189,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/cardViewFotoKTP"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -203,12 +220,14 @@
                         android:textSize="12sp" />
 
                     <EditText
+                        android:id="@+id/editTextRegistrasiNomorRekening"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:background="@drawable/round_border_form"
                         android:fontFamily="@font/catamaran_medium"
                         android:hint="2205771827361"
+                        android:inputType="numberSigned|numberDecimal"
                         android:paddingLeft="10dp"
                         android:paddingTop="12dp"
                         android:paddingBottom="12dp"
@@ -226,6 +245,7 @@
                         android:textSize="12sp" />
 
                     <EditText
+                        android:id="@+id/editTextRegistrasiNamaBank"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
@@ -249,6 +269,7 @@
                         android:textSize="12sp" />
 
                     <EditText
+                        android:id="@+id/editTextRegistrasiCabangBank"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
@@ -272,6 +293,7 @@
                         android:textSize="12sp" />
 
                     <EditText
+                        android:id="@+id/editTextRegistrasiAtasNama"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
@@ -295,6 +317,7 @@
                         android:textSize="12sp" />
 
                     <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cardViewRegisrasiBuktiPembayaran"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_150sdp"
                         android:layout_marginTop="16dp"
@@ -307,11 +330,11 @@
                         app:strokeWidth="2dp">
 
                         <ImageView
-                            android:id="@+id/imageViewBuktiPembayaran"
+                            android:id="@+id/imageViewRegistrasiBuktiPembayaran"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:scaleType="centerCrop"
-                            android:src="@drawable/ic_thumbnail_no_image"/>
+                            android:src="@drawable/ic_thumbnail_no_image" />
 
                     </com.google.android.material.card.MaterialCardView>
 
@@ -340,7 +363,7 @@
             android:padding="@dimen/_7sdp">
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/materialButtonDaftarkanDataDiri"
+                android:id="@+id/materialButtonLanjutkan"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_50sdp"
                 android:backgroundTint="@color/dark_green"
