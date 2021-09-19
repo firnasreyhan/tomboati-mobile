@@ -29,6 +29,7 @@ public class AkunModel implements Serializable {
     private String referral; // <= AUTO
     private String idChatRoom; // <= AUTO
 
+
     private boolean suksesDaftarMitra = false;
 
 

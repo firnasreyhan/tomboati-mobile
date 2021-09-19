@@ -65,6 +65,7 @@
                 android:text="Share Kode Referralmu"/>
 
             <TextView
+                android:id="@+id/textViewKodeReferral"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/dark_green"
@@ -141,7 +142,7 @@
 
 
                         <TextView
-                            android:id="@+id/textInputEditReferralFrom"
+                            android:id="@+id/textViewReferralFrom"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"

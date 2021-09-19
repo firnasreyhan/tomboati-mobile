@@ -36,6 +36,7 @@ public class PreferenceAkun {
     public static void removeAkun(Context context) {
         SharedPreferences.Editor editor = getPreferenceEditor(context);
         editor.remove(KEY_AKUN);
+        editor.apply();
     }
 
     public static void setToken(Context context, String token) {

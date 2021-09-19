@@ -33,7 +33,6 @@ import com.android.tomboati.api.response.KataMutiaraResponse;
 import com.android.tomboati.api.response.NewsResponse;
 import com.android.tomboati.api.response.PaketResponse;
 import com.android.tomboati.api.response.PaketWisataResponse;
-import com.android.tomboati.preference.AppPreference;
 import com.android.tomboati.preference.PreferenceAkun;
 import com.android.tomboati.utils.AlertProgress;
 import com.android.tomboati.utils.Utility;
@@ -224,20 +223,9 @@ public class BerandaFragment extends Fragment {
                                     sortNews.append(s.get(i));
                                 }
                             }
-
-//                            String s = newsResponse.getData().get(0).getContentNews().replaceAll("\\<.*?\\>", "");
                             Utility.setContentNews(news.toString());
                             Utility.setShortNews(sortNews.toString());
-//                            Log.d("TAG", "onChanged: " + );
                             textViewSortNews.setText(Utility.getShortNews());
-//                            String[] senteces = s.split("\\. ");
-//                            StringBuilder shortNews = new StringBuilder();
-//                            int maxString = Math.min(s.size(), 3);
-//                            for (int i = 0; i < maxString; i++) {
-//                                shortNews.append(senteces[i]).append(". ");
-//                                Log.d("TAG", "onChanged: " + senteces[i]);
-//                            }
-//                            textViewSortNews.setText(sortNews.toString());
                         }
                     }
                 }
@@ -478,9 +466,6 @@ public class BerandaFragment extends Fragment {
                 }
             }
         });
-    }
-
-    private void setAkun() {
     }
 
     private void picassoLoad(String uri, ImageView imageView) {

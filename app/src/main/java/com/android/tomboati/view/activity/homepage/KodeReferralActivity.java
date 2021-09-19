@@ -7,12 +7,12 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import com.android.tomboati.R;
+import com.android.tomboati.model.AkunModel;
 import com.android.tomboati.preference.PreferenceAkun;
-import com.google.android.material.textfield.TextInputEditText;
 
 public class KodeReferralActivity extends AppCompatActivity {
 
-    private TextView textInputEditReferralFrom;
+    private TextView textViewReferralFrom, textViewKodeReferral;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,8 +26,16 @@ public class KodeReferralActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        textInputEditReferralFrom = findViewById(R.id. textInputEditReferralFrom);
-        textInputEditReferralFrom.setText(PreferenceAkun.getAkun(this).getReferral());
+        textViewReferralFrom = findViewById(R.id. textViewReferralFrom);
+        textViewKodeReferral = findViewById(R.id. textViewKodeReferral);
+
+        AkunModel data = PreferenceAkun.getAkun(this);
+
+        textViewReferralFrom.setText(data.getReferral());
+
+        if(data.getPaket().equals("MITRA")) {
+            textViewKodeReferral.setText(data.getUserId());
+        }
     }
 
     @Override

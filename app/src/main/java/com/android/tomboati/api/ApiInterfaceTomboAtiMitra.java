@@ -1,5 +1,6 @@
 package com.android.tomboati.api;
 
+import com.android.tomboati.api.response.AkunMitraResponse;
 import com.android.tomboati.api.response.AkunResponse;
 import com.android.tomboati.api.response.BaseResponse;
 
@@ -53,6 +54,30 @@ public interface ApiInterfaceTomboAtiMitra {
             @Part MultipartBody.Part fotoKtp,
             @Part MultipartBody.Part fotoProfil,
             @Part MultipartBody.Part buktiBayar
-            );
+    );
 
+    @FormUrlEncoded
+    @POST("User.php")
+    Call<AkunMitraResponse> loginMitra(
+            @Query("function") String function,
+            @Field("username") String username,
+            @Field("password") String password,
+            @Field("token") String token
+    );
+
+    @FormUrlEncoded
+    @POST("User.php")
+    Call<BaseResponse> gantiPassword(
+            @Query("function") String function,
+            @Query("idUserRegister") String idUserRegister,
+            @Field("oldPassword") String oldPassword,
+            @Field("newPassword") String newPassword,
+            @Field("repeatPassword") String repeatPassword
+    );
+
+    @POST("User.php")
+    Call<BaseResponse> logout(
+            @Query("function") String function,
+            @Query("email") String email
+    );
 }

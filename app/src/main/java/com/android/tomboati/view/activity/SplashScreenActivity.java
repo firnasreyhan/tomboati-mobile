@@ -62,6 +62,7 @@ public class SplashScreenActivity extends AppCompatActivity {
         int loadingTime = 2000;
         new Handler().postDelayed(() -> {
             final boolean isLogged = PreferenceAkun.getAkun(SplashScreenActivity.this) != null;
+
             final Class activity = isLogged ?
                     MainActivity.class
                             :

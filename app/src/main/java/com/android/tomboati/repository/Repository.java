@@ -13,6 +13,7 @@ import com.android.tomboati.api.ApiInterfaceMasjid;
 import com.android.tomboati.api.ApiInterfaceTahlil;
 import com.android.tomboati.api.ApiInterfaceTomboAti;
 import com.android.tomboati.api.ApiInterfaceTomboAtiMitra;
+import com.android.tomboati.api.response.AkunMitraResponse;
 import com.android.tomboati.api.response.AkunResponse;
 import com.android.tomboati.api.response.BacaanSholatResponse;
 import com.android.tomboati.api.response.BaseResponse;
@@ -1115,6 +1116,7 @@ public class Repository {
             }
         }); return data;
     }
+
     //==
 
     public MutableLiveData<BaseResponse> registerDataDiri(
@@ -1151,4 +1153,93 @@ public class Repository {
             }
         }); return data;
     }
+
+    //==
+
+    public MutableLiveData<AkunMitraResponse> loginMitra(
+            String function,
+            String username,
+            String password,
+            String token
+    ) {
+        MutableLiveData<AkunMitraResponse> data = new MutableLiveData<>();
+        apiInterfaceTomboAtiMitra.loginMitra(
+                function,
+                username,
+                password,
+                token
+        ).enqueue(new Callback<AkunMitraResponse>() {
+            @Override
+            public void onResponse(Call<AkunMitraResponse> call, Response<AkunMitraResponse> response) {
+                if(response.code() == 200) {
+                    data.postValue(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<AkunMitraResponse> call, Throwable t) {
+                data.postValue(null);
+            }
+        }); return data;
+    }
+
+    //==
+
+    public MutableLiveData<BaseResponse> gantiPassword(
+            String function,
+            String idUserRegister,
+            String oldPassword,
+            String newPassword,
+            String repeatPassword
+    ) {
+        MutableLiveData<BaseResponse> data = new MutableLiveData<>();
+        apiInterfaceTomboAtiMitra.gantiPassword(
+                function,
+                idUserRegister,
+                oldPassword,
+                newPassword,
+                repeatPassword
+        ).enqueue(new Callback<BaseResponse>() {
+            @Override
+            public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
+                if(response.code() == 200) {
+                    data.postValue(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<BaseResponse> call, Throwable t) {
+                data.postValue(null);
+            }
+        }); return data;
+    }
+
+    //==
+
+    public MutableLiveData<BaseResponse> logout(
+            String function,
+            String email
+    ) {
+        MutableLiveData<BaseResponse> data = new MutableLiveData<>();
+        apiInterfaceTomboAtiMitra.logout(
+                function,
+                email
+        ).enqueue(new Callback<BaseResponse>() {
+            @Override
+            public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
+                if(response.code() == 200) {
+                    data.postValue(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<BaseResponse> call, Throwable t) {
+                data.postValue(null);
+            }
+        }); return data;
+    }
+
+
+
+
 }

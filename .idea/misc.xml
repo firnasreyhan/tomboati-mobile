@@ -43,7 +43,7 @@
         <entry key="app/src/main/res/layout/activity_hitung_tasbih_lainnya.xml" value="0.18" />
         <entry key="app/src/main/res/layout/activity_informasi_pembayaran.xml" value="0.18" />
         <entry key="app/src/main/res/layout/activity_istighosah.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_kode_referral.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_kode_referral.xml" value="0.18" />
         <entry key="app/src/main/res/layout/activity_komunitas.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_list_paket.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.112109375" />
@@ -84,7 +84,7 @@
         <entry key="app/src/main/res/layout/auth.xml" value="0.2" />
         <entry key="app/src/main/res/layout/custom_tab.xml" value="0.5" />
         <entry key="app/src/main/res/layout/fragment_akun.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/fragment_akun_mitra.xml" value="0.17" />
+        <entry key="app/src/main/res/layout/fragment_akun_mitra.xml" value="0.2" />
         <entry key="app/src/main/res/layout/fragment_akun_non_mitra.xml" value="0.22" />
         <entry key="app/src/main/res/layout/fragment_bacaan_sholat.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_beranda.xml" value="0.18" />

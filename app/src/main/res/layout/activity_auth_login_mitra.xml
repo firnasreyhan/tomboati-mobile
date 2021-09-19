@@ -48,7 +48,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView38" />
 
         <EditText
-            android:id="@+id/editTextTextPersonName"
+            android:id="@+id/editTextLoginUsername"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
@@ -59,8 +59,8 @@
             android:background="@drawable/round_border_auth"
             android:ems="10"
             android:fontFamily="@font/catamaran_regular"
-            android:hint="Email"
-            android:inputType="textEmailAddress"
+            android:hint="Username"
+            android:inputType="none"
             android:paddingLeft="15dp"
             android:paddingTop="20dp"
             android:paddingBottom="20dp"
@@ -71,8 +71,9 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView39" />
 
+
         <EditText
-            android:id="@+id/editTextTextPersonName2"
+            android:id="@+id/editTextLoginPassword"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
@@ -93,10 +94,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+            app:layout_constraintTop_toBottomOf="@+id/editTextLoginUsername" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/materialButtonLanjutkan"
+            android:id="@+id/materialButtonMasuk"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_50sdp"
             android:layout_marginStart="40dp"
@@ -111,7 +112,7 @@
             android:textAllCaps="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
+            app:layout_constraintTop_toBottomOf="@+id/editTextLoginPassword" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -122,7 +123,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/materialButtonLanjutkan">
+            app:layout_constraintTop_toBottomOf="@+id/materialButtonMasuk">
 
             <TextView
                 android:id="@+id/textViewPrefix"
@@ -132,7 +133,7 @@
                 android:layout_marginRight="5dp"
                 android:layout_weight="1"
                 android:fontFamily="@font/catamaran_regular"
-                android:text="Belum punya akun mitra?"
+                android:text="Daftar sebagai user?"
                 android:textColor="@color/black"
                 android:visibility="gone" />
 
