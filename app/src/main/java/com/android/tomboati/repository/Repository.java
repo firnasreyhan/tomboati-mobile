@@ -44,6 +44,7 @@ import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.http.Field;
 import retrofit2.http.Part;
 import retrofit2.http.Query;
 
@@ -1076,22 +1077,14 @@ public class Repository {
 
     public MutableLiveData<BaseResponse> registerMitra(
             String function,
+            String idUserRegister,
             RequestBody nomorKTP,
             RequestBody email,
-            RequestBody name,
-            RequestBody nomorHp,
-            RequestBody address,
             RequestBody username,
-            RequestBody kecamatan,
-            RequestBody kota,
-            RequestBody provinsi,
-            RequestBody kodePos,
-            RequestBody country,
             RequestBody bank,
             RequestBody nomorRekening,
             RequestBody atasNama,
             RequestBody cabang,
-            RequestBody referral,
             MultipartBody.Part fotoKtp,
             MultipartBody.Part fotoProfil,
             MultipartBody.Part buktiBayar
@@ -1099,25 +1092,53 @@ public class Repository {
         MutableLiveData<BaseResponse> data = new MutableLiveData<>();
         apiInterfaceTomboAtiMitra.registerMitra(
                 function,
+                idUserRegister,
                 nomorKTP,
                 email,
-                name,
-                nomorHp,
-                address,
                 username,
-                kecamatan,
-                kota,
-                provinsi,
-                kodePos,
-                country,
                 bank,
                 nomorRekening,
                 atasNama,
                 cabang,
-                referral,
                 fotoKtp,
                 fotoProfil,
                 buktiBayar
+        ).enqueue(new Callback<BaseResponse>() {
+            @Override
+            public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
+                if (response.code() == 200) { data.postValue(response.body()); }
+            }
+
+            @Override
+            public void onFailure(Call<BaseResponse> call, Throwable t) {
+                data.postValue(null);
+            }
+        }); return data;
+    }
+    //==
+
+    public MutableLiveData<BaseResponse> registerDataDiri(
+            String function,
+            String idUserRegister,
+            String nama,
+            String provinsi,
+            String kota,
+            String kecamatan,
+            String address,
+            String kodePos,
+            String country
+    ) {
+        MutableLiveData<BaseResponse> data = new MutableLiveData<>();
+        apiInterfaceTomboAtiMitra.registerDataDiri(
+                function,
+                idUserRegister,
+                nama,
+                provinsi,
+                kota,
+                kecamatan,
+                address,
+                kodePos,
+                country
         ).enqueue(new Callback<BaseResponse>() {
             @Override
             public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {

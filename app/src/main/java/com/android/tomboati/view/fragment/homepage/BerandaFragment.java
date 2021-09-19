@@ -18,6 +18,7 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.provider.Settings;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,6 +55,7 @@ import com.smarteist.autoimageslider.SliderAnimations;
 import com.smarteist.autoimageslider.SliderView;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import io.nlopez.smartlocation.OnLocationUpdatedListener;
@@ -212,14 +214,30 @@ public class BerandaFragment extends Fragment {
 
                             textViewJudulNews.setText(newsResponse.getData().get(0).getJudulNews());
 
-                            String s = newsResponse.getData().get(0).getContentNews().replaceAll("\\<.*?\\>", "");
-                            Utility.setContentNews(s);
-                            String[] senteces = s.split("\\. ");
-                            StringBuilder shortNews = new StringBuilder();
-                            for (int i = 0; i < 5; i++) {
-                                shortNews.append(senteces[i]).append(". ");
+                            List<String> s = splitText(newsResponse.getData().get(0).getContentNews());
+                            StringBuilder news = new StringBuilder();
+                            StringBuilder sortNews = new StringBuilder();
+                            for(int i = 0; i < s.size(); i++) {
+                                news.append(s.get(i));
+                                int maxString = Math.min(s.size(), 3);
+                                if(maxString > i) {
+                                    sortNews.append(s.get(i));
+                                }
                             }
-                            textViewSortNews.setText("\t\t\t".concat(shortNews.toString()));
+
+//                            String s = newsResponse.getData().get(0).getContentNews().replaceAll("\\<.*?\\>", "");
+                            Utility.setContentNews(news.toString());
+                            Utility.setShortNews(sortNews.toString());
+//                            Log.d("TAG", "onChanged: " + );
+                            textViewSortNews.setText(Utility.getShortNews());
+//                            String[] senteces = s.split("\\. ");
+//                            StringBuilder shortNews = new StringBuilder();
+//                            int maxString = Math.min(s.size(), 3);
+//                            for (int i = 0; i < maxString; i++) {
+//                                shortNews.append(senteces[i]).append(". ");
+//                                Log.d("TAG", "onChanged: " + senteces[i]);
+//                            }
+//                            textViewSortNews.setText(sortNews.toString());
                         }
                     }
                 }
@@ -266,6 +284,20 @@ public class BerandaFragment extends Fragment {
             });
         }
 
+    }
+
+    private List<String> splitText(String text) {
+        List<String> list = new ArrayList<>();
+        String[] texts = text.split(">");
+        for (String s : texts) {
+            String sz = s + ">";
+            sz = sz.replaceAll("<.*?>", "");
+            sz = sz.replaceAll("&.*?;", " dan ");
+            if (!sz.isEmpty()) {
+                list.add(sz);
+            }
+        }
+        return list;
     }
 
     private void initOnClickMenu() {

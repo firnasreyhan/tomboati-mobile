@@ -24,26 +24,32 @@ public interface ApiInterfaceTomboAtiMitra {
             @Field("token") String token
     );
 
+    @FormUrlEncoded
+    @POST("User.php")
+    Call<BaseResponse> registerDataDiri(
+        @Query("function") String function,
+        @Query("idUserRegister") String idUserRegister,
+        @Field("nama") String nama,
+        @Field("provinsi") String provinsi,
+        @Field("kota") String kota,
+        @Field("kecamatan") String kecamatan,
+        @Field("address") String address,
+        @Field("kodePos") String kodePos,
+        @Field("country") String country
+    );
+
     @Multipart
     @POST("User.php")
     Call<BaseResponse> registerMitra(
             @Query("function") String function,
+            @Query("idUserRegister") String idUserRegister,
             @Part("ktp") RequestBody nomorKTP,
             @Part("email") RequestBody email,
-            @Part("name") RequestBody name,
-            @Part("nomorHP") RequestBody nomorHp,
-            @Part("address") RequestBody address,
             @Part("username") RequestBody username,
-            @Part("kecamatan") RequestBody kecamatan,
-            @Part("kota") RequestBody kota,
-            @Part("provinsi") RequestBody provinsi,
-            @Part("kode_pos") RequestBody kodePos,
-            @Part("country") RequestBody country,
             @Part("bank") RequestBody bank,
             @Part("rekening") RequestBody nomorRekening,
             @Part("atasnama") RequestBody atasNama,
             @Part("cabang") RequestBody cabang,
-            @Part("referral") RequestBody referral,
             @Part MultipartBody.Part fotoKtp,
             @Part MultipartBody.Part fotoProfil,
             @Part MultipartBody.Part buktiBayar

@@ -43,6 +43,7 @@ public class SyaratPembatalanMitraActivity extends AppCompatActivity {
                 final AlertInfo info;
                 if(baseResponse.isError()) {
                     info = new AlertInfo(v, baseResponse.getMessage());
+                    info.setDialogError();
                 } else {
                     akunModel.setSuksesDaftarMitra(true);
                     PreferenceAkun.removeAkun(v.getContext());

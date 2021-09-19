@@ -64,19 +64,6 @@ public class ChatFragment extends Fragment {
         linearLayoutYesSignIn.setVisibility(View.VISIBLE);
         linearLayoutNoSignIn.setVisibility(View.GONE);
 
-        chatViewModel.getChat().observe(this, new Observer<ChatResponse>() {
-            @Override
-            public void onChanged(ChatResponse chatResponse) {
-                if (!chatResponse.isError()) {
-                    if (!chatResponse.getData().isEmpty()) {
-                        chatAdapter = new ChatAdapter(chatResponse.getData());
-                        recyclerViewChat.setAdapter(chatAdapter);
-                        recyclerViewChat.smoothScrollToPosition(chatAdapter.getItemCount() -1);
-                    }
-                }
-            }
-        });
-
         floatingActionButtonSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -86,7 +73,7 @@ public class ChatFragment extends Fragment {
                         public void onChanged(BaseResponse baseResponse) {
                             if (!baseResponse.isError()) {
                                 textInputEditTextChat.getText().clear();
-                                onResume();
+                                onStart();
                             }
                         }
                     });
@@ -114,7 +101,18 @@ public class ChatFragment extends Fragment {
 
     @Override
     public void onStart() {
-        Log.d("TAG", "onStart: ");
+        chatViewModel.getChat().observe(this, new Observer<ChatResponse>() {
+            @Override
+            public void onChanged(ChatResponse chatResponse) {
+                if (!chatResponse.isError()) {
+                    if (!chatResponse.getData().isEmpty()) {
+                        chatAdapter = new ChatAdapter(chatResponse.getData());
+                        recyclerViewChat.setAdapter(chatAdapter);
+                        recyclerViewChat.smoothScrollToPosition(chatAdapter.getItemCount() -1);
+                    }
+                }
+            }
+        });
         super.onStart();
     }
 }

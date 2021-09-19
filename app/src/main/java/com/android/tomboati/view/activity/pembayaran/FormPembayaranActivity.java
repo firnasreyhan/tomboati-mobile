@@ -108,10 +108,17 @@ public class FormPembayaranActivity extends AppCompatActivity {
                         @Override
                         public void onChanged(BaseResponse baseResponse) {
                             progress.dismissDialog();
-                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                            final AlertInfo info = new AlertInfo(FormPembayaranActivity.this, "Data berhasil tersimpan", intent);
+                            final AlertInfo info;
+                            if(!baseResponse.isError()) {
+                                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                info = new AlertInfo(FormPembayaranActivity.this, "Data berhasil tersimpan", intent);
+                            } else {
+                                info = new AlertInfo(v, "Data berhasil tersimpan");
+                                info.setDialogError();
+                            }
+
                             info.showDialog();
                         }
                     });

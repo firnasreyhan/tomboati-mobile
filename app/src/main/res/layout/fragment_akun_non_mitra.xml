@@ -14,7 +14,7 @@
         android:background="@drawable/round_bg_akun">
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/profile_image"
+            android:id="@+id/imageVIewProfile"
             android:layout_width="75dp"
             android:layout_height="75dp"
             android:layout_marginStart="24dp"
@@ -32,7 +32,7 @@
             android:layout_marginLeft="16dp"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/profile_image"
+            app:layout_constraintStart_toEndOf="@+id/imageVIewProfile"
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
@@ -118,7 +118,7 @@
             tools:ignore="VectorDrawableCompat" />
 
         <TextView
-            android:id="@+id/textView49"
+            android:id="@+id/textLengkapiBiodata"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
@@ -132,7 +132,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView50"
+            android:id="@+id/textDeskripsiBiodata"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
@@ -145,7 +145,7 @@
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imageView13"
-            app:layout_constraintTop_toBottomOf="@+id/textView49" />
+            app:layout_constraintTop_toBottomOf="@+id/textLengkapiBiodata" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout

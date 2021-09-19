@@ -16,10 +16,12 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 import com.android.tomboati.R;
+import com.android.tomboati.api.response.BaseResponse;
 import com.android.tomboati.api.response.LokasiResponse;
 import com.android.tomboati.model.AkunModel;
 import com.android.tomboati.preference.PreferenceAkun;
 import com.android.tomboati.utils.AlertInfo;
+import com.android.tomboati.utils.AlertProgress;
 import com.android.tomboati.view.activity.homepage.MainActivity;
 import com.android.tomboati.view.activity.pendaftaran.PendaftaranDataDiriActivity;
 import com.android.tomboati.viewmodel.tomboati.mitra.RegisterDataDiriViewModel;
@@ -34,6 +36,7 @@ public class RegistrasiDataDiriMitraActivity extends AppCompatActivity {
     private MaterialButton materialButtonDaftarkanDataDiri;
     private RegisterDataDiriViewModel viewModel;
     private final LifecycleOwner OWNER = this;
+    private AkunModel MODEL;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +49,8 @@ public class RegistrasiDataDiriMitraActivity extends AppCompatActivity {
         setTitle("Registrasi Data Diri");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        MODEL = PreferenceAkun.getAkun(this);
 
         viewModel = ViewModelProviders.of(this).get(RegisterDataDiriViewModel.class);
         spinnerProvinsi = findViewById(R.id.spinnerProvinsi);
@@ -64,6 +69,13 @@ public class RegistrasiDataDiriMitraActivity extends AppCompatActivity {
 
         getProvinsi();
 
+        if(MODEL.isFieldFilled()) {
+            final String[] ADDRESS = MODEL.getAddress().split("\\|");
+            editTextRegistrasiNama.setText(MODEL.getName());
+            editTextRegistrasiKodePos.setText(MODEL.getKodePos());
+            editTextRegistrasiRincianAlamat.setText(ADDRESS[0]);
+        }
+
         materialButtonDaftarkanDataDiri.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -74,7 +86,7 @@ public class RegistrasiDataDiriMitraActivity extends AppCompatActivity {
                     akunModel.setKota(spinnerKotaKabupaten.getSelectedItem().toString());
                     akunModel.setKecamatan(spinnerKecamatan.getSelectedItem().toString());
                     akunModel.setAddress(
-                            editTextRegistrasiRincianAlamat.getText().toString() + ", " +
+                            editTextRegistrasiRincianAlamat.getText().toString() + "|" +
                             spinnerKelurahan.getSelectedItem().toString()
                     );
                     akunModel.setKodePos(editTextRegistrasiKodePos.getText().toString());
@@ -90,12 +102,22 @@ public class RegistrasiDataDiriMitraActivity extends AppCompatActivity {
 
                     final Intent intent = new Intent(v.getContext(), CLASS_LANJUTAN);
                     if(!IS_DAFTAR_MITRA) {
+                        final AlertProgress progress = new AlertProgress(v, "Sedang menyimpan data");
+                        progress.showDialog();
+                        viewModel.registerDataDiri(akunModel).observe(OWNER, baseResponse -> {
+                            progress.dismissDialog();
+                            final AlertInfo alertInfo;
+                            if(baseResponse.isError()) {
+                                alertInfo = new AlertInfo(v, baseResponse.getMessage());
+                                alertInfo.setDialogError();
+                            } else {
+                                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                alertInfo = new AlertInfo(RegistrasiDataDiriMitraActivity.this, "Data berhasil disimpan!", intent);
 
-                        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-
-                        final AlertInfo alertInfo = new AlertInfo(RegistrasiDataDiriMitraActivity.this, "Data berhasil disimpan!", intent);
-                        alertInfo.showDialog();
+                            }
+                            alertInfo.showDialog();
+                        });
                     }  else {
                         startActivity(intent);
                     }
@@ -120,90 +142,105 @@ public class RegistrasiDataDiriMitraActivity extends AppCompatActivity {
     }
 
     private void getProvinsi() {
-        viewModel.getProvinsi().observe(OWNER, new Observer<List<LokasiResponse>>() {
-            @Override
-            public void onChanged(List<LokasiResponse> lokasiResponses) {
-                if (lokasiResponses != null) {
-                    ArrayAdapter<LokasiResponse> adapter = new ArrayAdapter<LokasiResponse>(getApplicationContext(), R.layout.item_spinner, lokasiResponses);
-                    spinnerProvinsi.setAdapter(adapter);
+        viewModel.getProvinsi().observe(OWNER, lokasiResponses -> {
+            if (lokasiResponses != null) {
+                ArrayAdapter<LokasiResponse> adapter = new ArrayAdapter<>(getApplicationContext(), R.layout.item_spinner, lokasiResponses);
+                spinnerProvinsi.setAdapter(adapter);
 
-                    spinnerProvinsi.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                        @Override
-                        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                            getKotaKabupaten(lokasiResponses.get(position).getId());
+                if(MODEL.isFieldFilled()) {
+                    for(int i = 0; i < lokasiResponses.size(); i++) {
+                        if(MODEL.getPropinsi().equals(lokasiResponses.get(i).getNama())) {
+                            spinnerProvinsi.setSelection(i);
                         }
-
-                        @Override
-                        public void onNothingSelected(AdapterView<?> parent) {
-
-                        }
-                    });
+                    }
                 }
+
+                spinnerProvinsi.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                        getKotaKabupaten(lokasiResponses.get(position).getId());
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
+
+                    }
+                });
             }
         });
     }
 
     private void getKotaKabupaten(String idLokasi) {
-        viewModel.getKotaKabupaten(
-                idLokasi
-        ).observe(OWNER, new Observer<List<LokasiResponse>>() {
-            @Override
-            public void onChanged(List<LokasiResponse> lokasiResponses) {
-                if (lokasiResponses != null) {
-                    ArrayAdapter<LokasiResponse> adapter = new ArrayAdapter<LokasiResponse>(getApplicationContext(), R.layout.item_spinner, lokasiResponses);
-                    spinnerKotaKabupaten.setAdapter(adapter);
+        viewModel.getKotaKabupaten(idLokasi).observe(OWNER, lokasiResponses -> {
+            if (lokasiResponses != null) {
+                ArrayAdapter<LokasiResponse> adapter = new ArrayAdapter<>(getApplicationContext(), R.layout.item_spinner, lokasiResponses);
+                spinnerKotaKabupaten.setAdapter(adapter);
 
-                    spinnerKotaKabupaten.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                        @Override
-                        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                            getKecamatan(lokasiResponses.get(position).getId());
+                if(MODEL.isFieldFilled()) {
+                    for(int i = 0; i < lokasiResponses.size(); i++) {
+                        if(MODEL.getKota().equals(lokasiResponses.get(i).getNama())) {
+                            spinnerKotaKabupaten.setSelection(i);
                         }
-
-                        @Override
-                        public void onNothingSelected(AdapterView<?> parent) {
-
-                        }
-                    });
+                    }
                 }
+
+                spinnerKotaKabupaten.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                        getKecamatan(lokasiResponses.get(position).getId());
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
+
+                    }
+                });
             }
         });
     }
 
     private void getKecamatan(String idLokasi) {
-        viewModel.getKecamatan(
-                idLokasi
-        ).observe(OWNER, new Observer<List<LokasiResponse>>() {
-            @Override
-            public void onChanged(List<LokasiResponse> lokasiResponses) {
-                if (lokasiResponses != null) {
-                    ArrayAdapter<LokasiResponse> adapter = new ArrayAdapter<LokasiResponse>(getApplicationContext(), R.layout.item_spinner, lokasiResponses);
-                    spinnerKecamatan.setAdapter(adapter);
+        viewModel.getKecamatan(idLokasi).observe(OWNER, lokasiResponses -> {
+            if (lokasiResponses != null) {
+                ArrayAdapter<LokasiResponse> adapter = new ArrayAdapter<>(getApplicationContext(), R.layout.item_spinner, lokasiResponses);
+                spinnerKecamatan.setAdapter(adapter);
 
-                    spinnerKecamatan.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                        @Override
-                        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                            getKelurahan(lokasiResponses.get(position).getId());
+                if(MODEL.isFieldFilled()) {
+                    for(int i = 0; i < lokasiResponses.size(); i++) {
+                        if(MODEL.getKecamatan().equals(lokasiResponses.get(i).getNama())) {
+                            spinnerKecamatan.setSelection(i);
                         }
-
-                        @Override
-                        public void onNothingSelected(AdapterView<?> parent) {
-
-                        }
-                    });
+                    }
                 }
+
+                spinnerKecamatan.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                        getKelurahan(lokasiResponses.get(position).getId());
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
+
+                    }
+                });
             }
         });
     }
 
     private void getKelurahan(String idLokasi) {
-        viewModel.getKelurahan(
-                idLokasi
-        ).observe(OWNER, new Observer<List<LokasiResponse>>() {
-            @Override
-            public void onChanged(List<LokasiResponse> lokasiResponses) {
-                if (lokasiResponses != null) {
-                    ArrayAdapter<LokasiResponse> adapter = new ArrayAdapter<LokasiResponse>(getApplicationContext(), R.layout.item_spinner, lokasiResponses);
-                    spinnerKelurahan.setAdapter(adapter);
+        viewModel.getKelurahan(idLokasi).observe(OWNER, lokasiResponses -> {
+            if (lokasiResponses != null) {
+                ArrayAdapter<LokasiResponse> adapter = new ArrayAdapter<>(getApplicationContext(), R.layout.item_spinner, lokasiResponses);
+                spinnerKelurahan.setAdapter(adapter);
+
+                if(MODEL.isFieldFilled()) {
+                    for(int i = 0; i < lokasiResponses.size(); i++) {
+                        String kelurahan = MODEL.getAddress().split("\\|")[1];
+                        if(kelurahan.equals(lokasiResponses.get(i).getNama())) {
+                            spinnerKelurahan.setSelection(i);
+                        }
+                    }
                 }
             }
         });

@@ -40,25 +40,31 @@ public class RegisterAkunMitraViewModel extends AndroidViewModel {
         );
     }
 
+    public MutableLiveData<BaseResponse> registerDataDiri(AkunModel akunModel) {
+        return this.repository.registerDataDiri(
+                "registerDataDiri_post",
+                akunModel.getId(),
+                akunModel.getName(),
+                akunModel.getPropinsi(),
+                akunModel.getKota(),
+                akunModel.getKecamatan(),
+                akunModel.getAddress(),
+                akunModel.getKodePos(),
+                akunModel.getCountry()
+        );
+    }
+
     public MutableLiveData<BaseResponse> registerMitra(AkunModel akunModel) {
         return this.repository.registerMitra(
                 "registerMitra_post",
+                akunModel.getId(),
                 RequestBody.create(MediaType.parse("text/plain"), akunModel.getKtp()),
                 RequestBody.create(MediaType.parse("text/plain"), akunModel.getEmail()),
-                RequestBody.create(MediaType.parse("text/plain"), akunModel.getName()),
-                RequestBody.create(MediaType.parse("text/plain"), akunModel.getHphone()),
-                RequestBody.create(MediaType.parse("text/plain"), akunModel.getAddress()),
                 RequestBody.create(MediaType.parse("text/plain"), akunModel.getUserId()),
-                RequestBody.create(MediaType.parse("text/plain"), akunModel.getKecamatan()),
-                RequestBody.create(MediaType.parse("text/plain"), akunModel.getKota()),
-                RequestBody.create(MediaType.parse("text/plain"), akunModel.getPropinsi()),
-                RequestBody.create(MediaType.parse("text/plain"), akunModel.getKodePos()),
-                RequestBody.create(MediaType.parse("text/plain"), akunModel.getCountry()),
                 RequestBody.create(MediaType.parse("text/plain"), akunModel.getBank()),
                 RequestBody.create(MediaType.parse("text/plain"), akunModel.getRekening()),
                 RequestBody.create(MediaType.parse("text/plain"), akunModel.getAtasNama()),
                 RequestBody.create(MediaType.parse("text/plain"), akunModel.getCabang()),
-                RequestBody.create(MediaType.parse("text/plain"), akunModel.getReferral()),
                 compressFile(imageSaves.saveToPictureFromUri(Uri.parse(akunModel.getFotoKTP())), "fotoktp"),
                 compressFile(imageSaves.saveToPictureFromUri(Uri.parse(akunModel.getPhoto())), "fotoprofil"),
                 compressFile(imageSaves.saveToPictureFromUri(Uri.parse(akunModel.getBuktiBayar())), "buktibayar")

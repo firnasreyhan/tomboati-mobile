@@ -123,7 +123,8 @@ public class PendaftaranHajiRegulerActivity extends AppCompatActivity {
                                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                 info = new AlertInfo(PendaftaranHajiRegulerActivity.this,"Pendaftaran berhasil", intent);
                             } else {
-                                info = new AlertInfo(v, "Gagal mengirim data");
+                                info = new AlertInfo(v, baseResponse.getMessage());
+                                info.setDialogError();
                             }
                             info.showDialog();
                         }

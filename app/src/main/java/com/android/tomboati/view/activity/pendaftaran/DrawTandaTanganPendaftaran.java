@@ -118,10 +118,9 @@ public class DrawTandaTanganPendaftaran extends AppCompatActivity {
                                             info = new AlertInfo(DrawTandaTanganPendaftaran.this, "Pendaftaran berhasil", intent);
                                         } else {
                                             info = new AlertInfo(DrawTandaTanganPendaftaran.this, baseResponse.getMessage(), intent);
+                                            info.setDialogError();
                                         }
                                         info.showDialog();
-                                    } else {
-
                                     }
                                 }
                             });

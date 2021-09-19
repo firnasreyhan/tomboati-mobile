@@ -8,11 +8,12 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.android.tomboati.R;
+import com.android.tomboati.preference.PreferenceAkun;
 
 public class AuthLoginMitraActivity extends AppCompatActivity {
 
 
-    private TextView textViewDaftar;
+    private TextView textViewBack, textViewPrefix;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,16 +21,19 @@ public class AuthLoginMitraActivity extends AppCompatActivity {
         setTheme(R.style.ThemeTomboAtiGreen);
         setContentView(R.layout.activity_auth_login_mitra);
 
-        textViewDaftar = findViewById(R.id.textViewDaftar);
+        textViewBack = findViewById(R.id.textViewBack);
+        textViewPrefix = findViewById(R.id.textViewPrefix);
+
+        if(PreferenceAkun.getAkun(this) == null){
+            textViewBack.setText("Daftar");
+            textViewPrefix.setVisibility(View.VISIBLE);
+        }
 
 
-
-        textViewDaftar.setOnClickListener(new View.OnClickListener() {
+        textViewBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), AuthLoginMitraActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                startActivity(intent);
+                finish();
             }
         });
 

@@ -91,6 +91,7 @@ public class PendaftaranBadalHajiActivity extends AppCompatActivity {
                                 info = new AlertInfo(PendaftaranBadalHajiActivity.this, "Pendaftaran berhasil", intent);
                             } else {
                                 info = new AlertInfo(v, "Gagal mengirim data");
+                                info.setDialogError();
                             }
                             info.showDialog();
                         }

@@ -125,7 +125,7 @@
             app:layout_constraintTop_toBottomOf="@+id/materialButtonLanjutkan">
 
             <TextView
-                android:id="@+id/textView41"
+                android:id="@+id/textViewPrefix"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="5dp"
@@ -133,15 +133,16 @@
                 android:layout_weight="1"
                 android:fontFamily="@font/catamaran_regular"
                 android:text="Belum punya akun mitra?"
-                android:textColor="@color/black" />
+                android:textColor="@color/black"
+                android:visibility="gone" />
 
             <TextView
-                android:id="@+id/textViewDaftar"
+                android:id="@+id/textViewBack"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:fontFamily="@font/catamaran_medium"
-                android:text="Daftar"
+                android:text="Kembali ke menu utama"
                 android:textColor="@color/dark_green" />
         </LinearLayout>
 

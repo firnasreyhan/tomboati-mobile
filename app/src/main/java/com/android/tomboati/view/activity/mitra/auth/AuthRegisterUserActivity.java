@@ -59,7 +59,6 @@ public class AuthRegisterUserActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), AuthLoginMitraActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
             }
         });
@@ -81,7 +80,7 @@ public class AuthRegisterUserActivity extends AppCompatActivity {
                     progress.showDialog();
                     viewModel.registerAkun(
                             editTextDaftarNomorTelepon.getText().toString(),
-                            editTextDaftarKodeReferral.getText().toString().toUpperCase()
+                            editTextDaftarKodeReferral.getText().toString()
                     ).observe(OWNER, new Observer<AkunResponse>() {
                         @Override
                         public void onChanged(AkunResponse akunResponse) {
@@ -109,6 +108,7 @@ public class AuthRegisterUserActivity extends AppCompatActivity {
                                 Toast.makeText(v.getContext(), "Berhasil mendaftar!", Toast.LENGTH_SHORT).show();
                             } else {
                                 AlertInfo info = new AlertInfo(v, akunResponse.getMessage());
+                                info.setDialogError();
                                 info.showDialog();
                             }
                         }

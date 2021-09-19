@@ -20,27 +20,28 @@ public class ApiClient {
     private static ApiInterfaceTahlil apiInterfaceTahlil;
     private static ApiInterfaceLokasi apiInterfaceLokasi;
 
+    private static OkHttpClient getOkHTTPClient() {
+        HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
+        httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+
+        return new OkHttpClient.Builder()
+                .readTimeout(60, TimeUnit.SECONDS)
+                .connectTimeout(60, TimeUnit.SECONDS)
+                .addInterceptor(httpLoggingInterceptor)
+                .build();
+    }
+
+    private static GsonConverterFactory getGsonConverterFactory() {
+        return GsonConverterFactory.create();
+    }
+
     public static ApiInterfaceTomboAti getClientTomboAti() {
         if (apiInterfaceTomboAti == null) {
-            Retrofit retrofit;
-
-            HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
-            httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-
-            OkHttpClient okHttpClient = new OkHttpClient.Builder()
-                    .readTimeout(60, TimeUnit.SECONDS)
-                    .connectTimeout(60, TimeUnit.SECONDS)
-                    .addInterceptor(httpLoggingInterceptor)
-                    .build();
-
-            Gson builder = new GsonBuilder().setLenient().create();
-
-            retrofit = new Retrofit.Builder()
-                    .addConverterFactory(GsonConverterFactory.create(builder))
-                    .client(okHttpClient)
+            Retrofit retrofit = new Retrofit.Builder()
+                    .addConverterFactory(getGsonConverterFactory())
+                    .client(getOkHTTPClient())
                     .baseUrl(Constant.baseURLTomboAti)
                     .build();
-
             apiInterfaceTomboAti = retrofit.create(ApiInterfaceTomboAti.class);
         }
         return apiInterfaceTomboAti;
@@ -48,25 +49,11 @@ public class ApiClient {
 
     public static ApiInterfaceTomboAtiMitra getClientTomboAtiMitra() {
         if (apiInterfaceTomboAtiMitra == null) {
-            Retrofit retrofit;
-
-            HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
-            httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-
-            OkHttpClient okHttpClient = new OkHttpClient.Builder()
-                    .readTimeout(60, TimeUnit.SECONDS)
-                    .connectTimeout(60, TimeUnit.SECONDS)
-                    .addInterceptor(httpLoggingInterceptor)
-                    .build();
-
-            Gson builder = new GsonBuilder().setLenient().create();
-
-            retrofit = new Retrofit.Builder()
-                    .addConverterFactory(GsonConverterFactory.create(builder))
-                    .client(okHttpClient)
+            Retrofit retrofit= new Retrofit.Builder()
+                    .addConverterFactory(getGsonConverterFactory())
+                    .client(getOkHTTPClient())
                     .baseUrl(Constant.baseURLTomboAtiMitra)
                     .build();
-
             apiInterfaceTomboAtiMitra = retrofit.create(ApiInterfaceTomboAtiMitra.class);
         }
         return apiInterfaceTomboAtiMitra;
@@ -74,25 +61,11 @@ public class ApiClient {
 
     public static ApiInterfaceJadwalSholat getClientJadwalSholat() {
         if (apiInterfaceJadwalSholat == null) {
-            Retrofit retrofit;
-
-            HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
-            httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-
-            OkHttpClient okHttpClient = new OkHttpClient.Builder()
-                    .readTimeout(60, TimeUnit.SECONDS)
-                    .connectTimeout(60, TimeUnit.SECONDS)
-                    .addInterceptor(httpLoggingInterceptor)
-                    .build();
-
-            Gson builder = new GsonBuilder().setLenient().create();
-
-            retrofit = new Retrofit.Builder()
-                    .addConverterFactory(GsonConverterFactory.create(builder))
-                    .client(okHttpClient)
+            Retrofit retrofit = new Retrofit.Builder()
+                    .addConverterFactory(getGsonConverterFactory())
+                    .client(getOkHTTPClient())
                     .baseUrl(Constant.baseURLJadwalSholat)
                     .build();
-
             apiInterfaceJadwalSholat = retrofit.create(ApiInterfaceJadwalSholat.class);
         }
         return apiInterfaceJadwalSholat;
@@ -100,25 +73,11 @@ public class ApiClient {
 
     public static ApiInterfaceMasjid getClientMasjid() {
         if (apiInterfaceMasjid == null) {
-            Retrofit retrofit;
-
-            HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
-            httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-
-            OkHttpClient okHttpClient = new OkHttpClient.Builder()
-                    .readTimeout(60, TimeUnit.SECONDS)
-                    .connectTimeout(60, TimeUnit.SECONDS)
-                    .addInterceptor(httpLoggingInterceptor)
-                    .build();
-
-            Gson builder = new GsonBuilder().setLenient().create();
-
-            retrofit = new Retrofit.Builder()
-                    .addConverterFactory(GsonConverterFactory.create(builder))
-                    .client(okHttpClient)
+            Retrofit retrofit = new Retrofit.Builder()
+                    .addConverterFactory(getGsonConverterFactory())
+                    .client(getOkHTTPClient())
                     .baseUrl(Constant.baseURLMasjid)
                     .build();
-
             apiInterfaceMasjid = retrofit.create(ApiInterfaceMasjid.class);
         }
         return apiInterfaceMasjid;
@@ -126,25 +85,11 @@ public class ApiClient {
 
     public static ApiInterfaceAlQuranNew getClientAlQuranNew() {
         if (apiInterfaceAlQuranNew == null) {
-            Retrofit retrofit;
-
-            HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
-            httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-
-            OkHttpClient okHttpClient = new OkHttpClient.Builder()
-                    .readTimeout(60, TimeUnit.SECONDS)
-                    .connectTimeout(60, TimeUnit.SECONDS)
-                    .addInterceptor(httpLoggingInterceptor)
-                    .build();
-
-            Gson builder = new GsonBuilder().setLenient().create();
-
-            retrofit = new Retrofit.Builder()
-                    .addConverterFactory(GsonConverterFactory.create(builder))
-                    .client(okHttpClient)
+            Retrofit retrofit = new Retrofit.Builder()
+                    .addConverterFactory(getGsonConverterFactory())
+                    .client(getOkHTTPClient())
                     .baseUrl(Constant.baseURLAlQuranNew)
                     .build();
-
             apiInterfaceAlQuranNew = retrofit.create(ApiInterfaceAlQuranNew.class);
         }
         return apiInterfaceAlQuranNew;
@@ -152,25 +97,11 @@ public class ApiClient {
 
     public static ApiInterfaceTahlil getClientDoaTahlil() {
         if (apiInterfaceTahlil == null) {
-            Retrofit retrofit;
-
-            HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
-            httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-
-            OkHttpClient okHttpClient = new OkHttpClient.Builder()
-                    .readTimeout(60, TimeUnit.SECONDS)
-                    .connectTimeout(60, TimeUnit.SECONDS)
-                    .addInterceptor(httpLoggingInterceptor)
-                    .build();
-
-            Gson builder = new GsonBuilder().setLenient().create();
-
-            retrofit = new Retrofit.Builder()
-                    .addConverterFactory(GsonConverterFactory.create(builder))
-                    .client(okHttpClient)
+            Retrofit retrofit = new Retrofit.Builder()
+                    .addConverterFactory(getGsonConverterFactory())
+                    .client(getOkHTTPClient())
                     .baseUrl(Constant.baseURLDoaTahlil)
                     .build();
-
             apiInterfaceTahlil = retrofit.create(ApiInterfaceTahlil.class);
         }
         return apiInterfaceTahlil;
@@ -178,25 +109,11 @@ public class ApiClient {
 
     public static ApiInterfaceLokasi getClientLokasi() {
         if (apiInterfaceLokasi == null) {
-            Retrofit retrofit;
-
-            HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
-            httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-
-            OkHttpClient okHttpClient = new OkHttpClient.Builder()
-                    .readTimeout(60, TimeUnit.SECONDS)
-                    .connectTimeout(60, TimeUnit.SECONDS)
-                    .addInterceptor(httpLoggingInterceptor)
-                    .build();
-
-            Gson builder = new GsonBuilder().setLenient().create();
-
-            retrofit = new Retrofit.Builder()
-                    .addConverterFactory(GsonConverterFactory.create(builder))
-                    .client(okHttpClient)
+            Retrofit retrofit = new Retrofit.Builder()
+                    .addConverterFactory(getGsonConverterFactory())
+                    .client(getOkHTTPClient())
                     .baseUrl(Constant.baseURLLokasi)
                     .build();
-
             apiInterfaceLokasi = retrofit.create(ApiInterfaceLokasi.class);
         }
         return apiInterfaceLokasi;

@@ -25,7 +25,7 @@ public class Utility {
     private static final Calendar c = Calendar.getInstance();
     private static String kota;
 
-    private static String contentNews;
+    private static String contentNews, shortNews;
     private static int hour, minute;
     private static ArrayList<JadwalSholatResponse> list = new ArrayList<>();
     private static List<TasbihModel> models;
@@ -43,9 +43,15 @@ public class Utility {
     public static String getContentNews() {
         return contentNews;
     }
+    public static String getShortNews() {
+        return shortNews;
+    }
 
     public static void setContentNews(String contentNews) {
         Utility.contentNews = contentNews;
+    }
+    public static void setShortNews(String shortNews) {
+        Utility.shortNews = shortNews;
     }
 
     public static List<TasbihModel> getTasbihModel() {

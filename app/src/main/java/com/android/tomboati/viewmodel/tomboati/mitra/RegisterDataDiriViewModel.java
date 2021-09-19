@@ -6,7 +6,9 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
+import com.android.tomboati.api.response.BaseResponse;
 import com.android.tomboati.api.response.LokasiResponse;
+import com.android.tomboati.model.AkunModel;
 import com.android.tomboati.repository.Repository;
 
 import java.util.List;
@@ -20,7 +22,19 @@ public class RegisterDataDiriViewModel extends AndroidViewModel {
         this.repository = new Repository();
     }
 
-
+    public MutableLiveData<BaseResponse> registerDataDiri(AkunModel akunModel) {
+        return this.repository.registerDataDiri(
+                "registerDataDiri_post",
+                akunModel.getId(),
+                akunModel.getName(),
+                akunModel.getPropinsi(),
+                akunModel.getKota(),
+                akunModel.getKecamatan(),
+                akunModel.getAddress(),
+                akunModel.getKodePos(),
+                akunModel.getCountry()
+        );
+    }
 
     public MutableLiveData<List<LokasiResponse>> getProvinsi() {
         return repository.getPropinsi();

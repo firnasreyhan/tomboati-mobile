@@ -6,6 +6,9 @@
         <entry key="app/src/main/res/drawable/ic_empty_cart.xml" value="0.1234375" />
         <entry key="app/src/main/res/drawable/round_bg.xml" value="0.16458333333333333" />
         <entry key="app/src/main/res/drawable/round_bg_akun.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/round_bg_dark_red.xml" value="0.1234375" />
+        <entry key="app/src/main/res/drawable/round_bg_placeholder_top.xml" value="0.1234375" />
+        <entry key="app/src/main/res/drawable/round_bg_red.xml" value="0.1234375" />
         <entry key="app/src/main/res/drawable/round_border.xml" value="0.16458333333333333" />
         <entry key="app/src/main/res/drawable/round_border_auth.xml" value="0.12152777777777778" />
         <entry key="app/src/main/res/drawable/round_border_form.xml" value="0.16458333333333333" />
@@ -15,7 +18,7 @@
         <entry key="app/src/main/res/layout/activity_aneka_sholawat.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_arah_kiblat.xml" value="0.14947916666666666" />
         <entry key="app/src/main/res/layout/activity_asmaul_husna.xml" value="0.14947916666666666" />
-        <entry key="app/src/main/res/layout/activity_auth_login_mitra.xml" value="0.18" />
+        <entry key="app/src/main/res/layout/activity_auth_login_mitra.xml" value="0.2" />
         <entry key="app/src/main/res/layout/activity_auth_register_user.xml" value="0.16" />
         <entry key="app/src/main/res/layout/activity_detail_al_quran.xml" value="0.14947916666666666" />
         <entry key="app/src/main/res/layout/activity_detail_al_quran_new.xml" value="0.2" />
@@ -82,9 +85,9 @@
         <entry key="app/src/main/res/layout/custom_tab.xml" value="0.5" />
         <entry key="app/src/main/res/layout/fragment_akun.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_akun_mitra.xml" value="0.17" />
-        <entry key="app/src/main/res/layout/fragment_akun_non_mitra.xml" value="0.15" />
+        <entry key="app/src/main/res/layout/fragment_akun_non_mitra.xml" value="0.22" />
         <entry key="app/src/main/res/layout/fragment_bacaan_sholat.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/fragment_beranda.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/fragment_beranda.xml" value="0.18" />
         <entry key="app/src/main/res/layout/fragment_data_keluarga_jamaah.xml" value="0.14947916666666666" />
         <entry key="app/src/main/res/layout/fragment_inbox.xml" value="0.14947916666666666" />
         <entry key="app/src/main/res/layout/fragment_juz.xml" value="0.14947916666666666" />

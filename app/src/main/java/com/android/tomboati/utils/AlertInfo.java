@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.android.tomboati.R;
@@ -15,6 +16,8 @@ import com.android.tomboati.R;
 public class AlertInfo {
 
     private final AlertDialog alert;
+    private Button dismiss;
+    private LinearLayout layoutHeader;
     private final View views;
 
     public AlertInfo(View v) {
@@ -27,7 +30,9 @@ public class AlertInfo {
         this.alert.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
 
 
-        Button dismiss = this.views.findViewById(R.id.btnDismiss);
+        dismiss = this.views.findViewById(R.id.btnDismiss);
+        layoutHeader = this.views.findViewById(R.id.layoutHeader);
+
         dismiss.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,6 +71,11 @@ public class AlertInfo {
 
     public void showDialog() {
         this.alert.show();
+    }
+
+    public void setDialogError() {
+        layoutHeader.setBackgroundColor(views.getResources().getColor(R.color.dark_red));
+        dismiss.setBackgroundResource(R.drawable.round_bg_dark_red);
     }
 
     private void dismissDialog() {
