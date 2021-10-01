@@ -97,9 +97,9 @@ public class AuthLoginMitraActivity extends AppCompatActivity {
                         PreferenceAkun.setAkun(v.getContext(), akunModel);
 
 
-//                        Intent intent = new Intent(v.getContext(), MainActivity.class);
-//                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-//                        startActivity(intent);
+                        Intent intent = new Intent(v.getContext(), MainActivity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(intent);
 
                         Toast.makeText(v.getContext(), "Selamat Datang!", Toast.LENGTH_SHORT).show();
                     }

@@ -2,7 +2,6 @@ package com.android.tomboati.view.fragment.homepage.akun;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,14 +20,14 @@ import com.android.tomboati.view.activity.homepage.KodeReferralActivity;
 import com.android.tomboati.view.activity.mitra.auth.AuthLoginMitraActivity;
 import com.android.tomboati.view.activity.mitra.pendaftaran.RegistrasiDataDiriMitraActivity;
 import com.android.tomboati.view.activity.mitra.pendaftaran.SyaratPendaftaranMitraActivity;
-import com.google.android.material.button.MaterialButton;
+import com.android.tomboati.view.activity.homepage.HubungiKamiActivity;
 import com.squareup.picasso.Picasso;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class AkunNonMitraFragment extends Fragment {
 
-    private ConstraintLayout menuLengkapiBiodata, menuDaftarSebagaiMitra, menuMasukSebagaiMitra, menuKodeReferral, menuKebijakanPrivasi;
+    private ConstraintLayout menuLengkapiBiodata, menuDaftarSebagaiMitra, menuMasukSebagaiMitra, menuKodeReferral, menuHubungiKami;
     private TextView textViewNamaPengguna, textLengkapiBiodata, textDeskripsiBiodata;
     private CircleImageView imageViewProfil;
     private AkunModel MODEL;
@@ -46,7 +45,7 @@ public class AkunNonMitraFragment extends Fragment {
         menuDaftarSebagaiMitra = view.findViewById(R.id.menuDaftarSebagaiMitra);
         menuMasukSebagaiMitra = view.findViewById(R.id.menuMasukSebagaiMitra);
         menuKodeReferral = view.findViewById(R.id.menuKodeReferral);
-        menuKebijakanPrivasi = view.findViewById(R.id.menuHubungiKami);
+        menuHubungiKami = view.findViewById(R.id.menuHubungiKami);
         textViewNamaPengguna = view.findViewById(R.id.textViewNamaPengguna);
         textLengkapiBiodata = view.findViewById(R.id.textLengkapiBiodata);
         textDeskripsiBiodata = view.findViewById(R.id.textDeskripsiBiodata);
@@ -76,6 +75,8 @@ public class AkunNonMitraFragment extends Fragment {
         menuKodeReferral.setOnClickListener(v -> startActivity(new Intent(v.getContext(), KodeReferralActivity.class)));
 
         menuDaftarSebagaiMitra.setOnClickListener(v -> startActivity(new Intent(v.getContext(), SyaratPendaftaranMitraActivity.class)));
+
+        menuHubungiKami.setOnClickListener(v -> startActivity(new Intent(v.getContext(), HubungiKamiActivity.class)));
     }
 
     private void picassoLoad(String uri, ImageView imageView) {
