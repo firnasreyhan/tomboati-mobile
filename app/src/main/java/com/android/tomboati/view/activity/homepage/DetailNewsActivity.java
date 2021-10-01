@@ -26,8 +26,7 @@ public class DetailNewsActivity extends AppCompatActivity {
 
     private DetailNewsViewModel detailNewsViewModel;
     private Toolbar toolbar;
-    private TextView textViewJudulNews, textViewDateNews;
-    private JustifiedTextView textViewContentNews;
+    private TextView textViewJudulNews, textViewDateNews, textViewContentNews;
     private ImageView imageViewNews;
 
     @Override

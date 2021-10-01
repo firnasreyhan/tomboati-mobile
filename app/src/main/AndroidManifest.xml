@@ -22,9 +22,11 @@
         android:supportsRtl="true"
         android:theme="@style/ThemeTomboAti">
         <activity
-            android:name=".view.activity.mitra.pendaftaran.RegistrasiDataPembayaranMitraActivity"
+            android:name=".view.fragment.homepage.HubungiKamiActivity"
             android:exported="true" />
-        <activity android:name=".view.activity.mitra.pendaftaran.RegistrasiDataDiriMitraActivity"></activity>
+        <activity android:name=".view.activity.mitra.auth.UbahPasswordActivity"></activity>
+        <activity android:name=".view.activity.mitra.pendaftaran.RegistrasiDataPembayaranMitraActivity" />
+        <activity android:name=".view.activity.mitra.pendaftaran.RegistrasiDataDiriMitraActivity" />
         <activity android:name=".view.activity.mitra.pendaftaran.SyaratPembatalanMitraActivity" />
         <activity android:name=".view.activity.mitra.pendaftaran.SyaratPendaftaranMitraActivity" />
         <activity android:name=".view.activity.mitra.auth.AuthLoginMitraActivity" />
@@ -102,7 +104,7 @@
                 <category android:name="android.intent.category.BROWSABLE" />
 
                 <data
-                    android:host="dash-tombo.bgskr-project.my.id"
+                    android:host="tomboatitour.biz"
                     android:pathPrefix="/referral"
                     android:scheme="https" />
             </intent-filter>

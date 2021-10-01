@@ -58,6 +58,7 @@ public class AuthRegisterUserActivity extends AppCompatActivity {
         textViewMasuk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                finish();
                 Intent intent = new Intent(v.getContext(), AuthLoginMitraActivity.class);
                 startActivity(intent);
             }

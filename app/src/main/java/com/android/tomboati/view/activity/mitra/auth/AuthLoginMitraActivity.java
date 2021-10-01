@@ -81,25 +81,25 @@ public class AuthLoginMitraActivity extends AppCompatActivity {
                         akunModel.setHphone(data.getNomorhp());
                         akunModel.setFotoKTP(data.getFilektp());
                         akunModel.setPhoto(data.getFoto());
-                        akunModel.setBuktiBayar(data.getBuktibayar());
+//                        akunModel.setBuktiBayar(data.getBuktibayar());
                         akunModel.setUserId(data.getUsername());
                         akunModel.setKecamatan(data.getKecamatan());
                         akunModel.setAddress(data.getAlamat());
                         akunModel.setPropinsi(data.getProvinsi());
                         akunModel.setKodePos(data.getKodepos());
-                        akunModel.setCabang(data.getCabang());
-                        akunModel.setAtasNama(data.getAtasnama());
-                        akunModel.setRekening(data.getRekening());
-                        akunModel.setBank(data.getBank());
+//                        akunModel.setCabang(data.getCabang());
+//                        akunModel.setAtasNama(data.getAtasnama());
+//                        akunModel.setRekening(data.getRekening());
+//                        akunModel.setBank(data.getBank());
                         akunModel.setKota(data.getKota());
                         akunModel.setIdChatRoom(data.getIdChatRoom());
                         PreferenceAkun.removeAkun(v.getContext());
                         PreferenceAkun.setAkun(v.getContext(), akunModel);
 
 
-                        Intent intent = new Intent(v.getContext(), MainActivity.class);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                        startActivity(intent);
+//                        Intent intent = new Intent(v.getContext(), MainActivity.class);
+//                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//                        startActivity(intent);
 
                         Toast.makeText(v.getContext(), "Selamat Datang!", Toast.LENGTH_SHORT).show();
                     }

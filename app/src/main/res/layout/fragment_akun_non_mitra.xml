@@ -299,7 +299,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/menuKebijakanPrivasi"
+        android:id="@+id/menuHubungiKami"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clickable="true"
@@ -314,7 +314,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_privacy_policy"
+            app:srcCompat="@drawable/ic_contact_support_24"
             app:tint="@color/dark_green"
             tools:ignore="VectorDrawableCompat" />
 
@@ -326,7 +326,7 @@
             android:layout_marginLeft="32dp"
             android:layout_marginTop="16dp"
             android:fontFamily="@font/catamaran_bold"
-            android:text="Kebijakan Privasi"
+            android:text="Informasi Kami"
             android:textColor="@color/dark_green"
             android:textSize="18sp"
             app:layout_constraintStart_toEndOf="@+id/imageView43"
@@ -341,7 +341,7 @@
             android:layout_marginTop="4dp"
             android:layout_marginBottom="16dp"
             android:fontFamily="@font/catamaran_regular"
-            android:text="pernyataan atau dokumen hukum"
+            android:text="Detail informasi dan kontak kami"
             android:textColor="@color/darker_grey"
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"

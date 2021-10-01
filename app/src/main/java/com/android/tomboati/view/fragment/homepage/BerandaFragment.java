@@ -3,6 +3,7 @@ package com.android.tomboati.view.fragment.homepage;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.text.LineBreaker;
 import android.location.Address;
 import android.location.Location;
 import android.net.Uri;
@@ -72,7 +73,7 @@ public class BerandaFragment extends Fragment {
 
     private ShapeableImageView shapeableImageViewFoto;
     private TextView textViewNamaLengkap, textViewKataMutiara, textViewJudulNews, textViewStatusUser;
-    private JustifiedTextView textViewSortNews;
+    private TextView textViewSortNews;
     private MaterialButton materialButtonDetailNews;
 
     private ImageView imageViewPromoHaji1, imageViewPromoHaji2, imageViewPromoHaji3, imageViewPromoTour1, imageViewPromoTour2, imageViewPromoTour3, imageViewNews;
@@ -226,6 +227,7 @@ public class BerandaFragment extends Fragment {
                             Utility.setContentNews(news.toString());
                             Utility.setShortNews(sortNews.toString());
                             textViewSortNews.setText(Utility.getShortNews());
+//                            textViewSortNews.setJustificationMode(LineBreaker.JUSTIFICATION_MODE_INTER_WORD);
                         }
                     }
                 }

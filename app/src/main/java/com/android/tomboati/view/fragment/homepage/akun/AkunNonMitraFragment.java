@@ -46,7 +46,7 @@ public class AkunNonMitraFragment extends Fragment {
         menuDaftarSebagaiMitra = view.findViewById(R.id.menuDaftarSebagaiMitra);
         menuMasukSebagaiMitra = view.findViewById(R.id.menuMasukSebagaiMitra);
         menuKodeReferral = view.findViewById(R.id.menuKodeReferral);
-        menuKebijakanPrivasi = view.findViewById(R.id.menuKebijakanPrivasi);
+        menuKebijakanPrivasi = view.findViewById(R.id.menuHubungiKami);
         textViewNamaPengguna = view.findViewById(R.id.textViewNamaPengguna);
         textLengkapiBiodata = view.findViewById(R.id.textLengkapiBiodata);
         textDeskripsiBiodata = view.findViewById(R.id.textDeskripsiBiodata);

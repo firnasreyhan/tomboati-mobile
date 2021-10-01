@@ -644,13 +644,14 @@
                         android:textColor="@android:color/black"
                         android:textSize="@dimen/_11sdp" />
 
-                    <com.codesgood.views.JustifiedTextView
+                    <TextView
                         android:id="@+id/textViewSortNews"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_3sdp"
                         android:fontFamily="@font/catamaran_regular"
                         android:textColor="@android:color/black"
+                        android:justificationMode="inter_word"
                         android:text="Liputan6.com, Jakarta - Arab Saudi menangguhkan semua penerbangan internasional menuju negara tersebut selama sepekan. Penangguhan tersebut mulai berlaku Senin 21 Desember 2020. Sehubungan dengan hal ini, maskapai Garuda Indonesia terus melakukan komunikasi intensif dengan otoritas terkait guna memastikan hal yang perlu diantisipasi, menyusul pembatasan operasional layanan penerbangan tersebut."
                         android:textSize="@dimen/_9sdp" />
 

@@ -50,7 +50,7 @@
                 android:layout_marginTop="@dimen/_13sdp"
                 android:fontFamily="@font/catamaran_regular"
                 android:gravity="center"
-                android:text="Tombo Ati Tour membua peluang secara terbuka epada masyaraan umum untuk bersama - sama menjadi Freelance Inspirasi Baitullah dekat di Hati.\n\nBentuk peluang yang diberian berupa kesempatan untuk menjadi Mitra atau sebagai antor Cabang di daerah"
+                android:text="Tombo Ati Tour membuka peluang secara terbuka kepada masyarakat umum untuk bersama - sama menjadi Freelance Inspirasi Baitullah dekat di Hati.\n\nBentuk peluang yang diberikan berupa kesempatan untuk menjadi Mitra atau sebagai Kantor Cabang di daerah"
                 android:textColor="@android:color/black"
                 android:textSize="@dimen/_10sdp" />
 
@@ -84,6 +84,7 @@
                 android:orientation="horizontal">
 
                 <com.google.android.material.button.MaterialButton
+                    android:id="@+id/materialButtonCopy"
                     style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -92,10 +93,11 @@
                     android:fontFamily="@font/catamaran_bold"
                     android:text="Copy"
                     android:textAllCaps="false"
-                    app:strokeColor="@color/dark_green"
-                    android:textColor="@color/dark_green"/>
+                    android:textColor="@color/dark_green"
+                    app:strokeColor="@color/dark_green" />
 
                 <com.google.android.material.button.MaterialButton
+                    android:id="@+id/materialButtonShare"
                     style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -104,8 +106,8 @@
                     android:fontFamily="@font/catamaran_bold"
                     android:text="Share"
                     android:textAllCaps="false"
-                    app:backgroundTint="@color/dark_green"
-                    android:textColor="@color/white"/>
+                    android:textColor="@color/white"
+                    app:backgroundTint="@color/dark_green" />
 
             </LinearLayout>
 

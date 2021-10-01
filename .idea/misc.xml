@@ -3,7 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable/ic_contact_support_24.xml" value="0.1234375" />
+        <entry key="app/src/main/res/drawable/ic_contact_us.xml" value="0.16" />
         <entry key="app/src/main/res/drawable/ic_empty_cart.xml" value="0.1234375" />
+        <entry key="app/src/main/res/drawable/ic_eye_invisible.xml" value="0.1234375" />
+        <entry key="app/src/main/res/drawable/ic_eye_visible.xml" value="0.1234375" />
+        <entry key="app/src/main/res/drawable/ic_gmail.xml" value="0.1234375" />
+        <entry key="app/src/main/res/drawable/ic_whatsapp.xml" value="0.1234375" />
         <entry key="app/src/main/res/drawable/round_bg.xml" value="0.16458333333333333" />
         <entry key="app/src/main/res/drawable/round_bg_akun.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/round_bg_dark_red.xml" value="0.1234375" />
@@ -27,6 +33,7 @@
         <entry key="app/src/main/res/layout/activity_detail_doa_sehari_hari.xml" value="0.14947916666666666" />
         <entry key="app/src/main/res/layout/activity_detail_juz.xml" value="0.14722222222222223" />
         <entry key="app/src/main/res/layout/activity_detail_juz_new.xml" value="0.14947916666666666" />
+        <entry key="app/src/main/res/layout/activity_detail_komunitas.xml" value="0.112109375" />
         <entry key="app/src/main/res/layout/activity_detail_news.xml" value="0.18" />
         <entry key="app/src/main/res/layout/activity_detail_paket.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_detail_pembayaran.xml" value="0.14947916666666666" />
@@ -41,9 +48,10 @@
         <entry key="app/src/main/res/layout/activity_form_pembayaran.xml" value="0.2" />
         <entry key="app/src/main/res/layout/activity_hitung_tasbih.xml" value="0.18" />
         <entry key="app/src/main/res/layout/activity_hitung_tasbih_lainnya.xml" value="0.18" />
+        <entry key="app/src/main/res/layout/activity_hubungi_kami.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_informasi_pembayaran.xml" value="0.18" />
         <entry key="app/src/main/res/layout/activity_istighosah.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_kode_referral.xml" value="0.18" />
+        <entry key="app/src/main/res/layout/activity_kode_referral.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_komunitas.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_list_paket.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.112109375" />
@@ -73,6 +81,7 @@
         <entry key="app/src/main/res/layout/activity_tasbih.xml" value="0.14947916666666666" />
         <entry key="app/src/main/res/layout/activity_tayamum.xml" value="0.14947916666666666" />
         <entry key="app/src/main/res/layout/activity_tembang_sholawat.xml" value="0.14947916666666666" />
+        <entry key="app/src/main/res/layout/activity_ubah_password.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_umroh_haji.xml" value="0.14947916666666666" />
         <entry key="app/src/main/res/layout/activity_update_profile.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_waktu_mustajab.xml" value="0.18" />
@@ -84,8 +93,8 @@
         <entry key="app/src/main/res/layout/auth.xml" value="0.2" />
         <entry key="app/src/main/res/layout/custom_tab.xml" value="0.5" />
         <entry key="app/src/main/res/layout/fragment_akun.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/fragment_akun_mitra.xml" value="0.2" />
-        <entry key="app/src/main/res/layout/fragment_akun_non_mitra.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/fragment_akun_mitra.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_akun_non_mitra.xml" value="0.2" />
         <entry key="app/src/main/res/layout/fragment_bacaan_sholat.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_beranda.xml" value="0.18" />
         <entry key="app/src/main/res/layout/fragment_data_keluarga_jamaah.xml" value="0.14947916666666666" />
@@ -117,7 +126,7 @@
         <entry key="app/src/main/res/layout/item_masjid_terdekat.xml" value="0.14947916666666666" />
         <entry key="app/src/main/res/layout/item_mp3_play.xml" value="0.22" />
         <entry key="app/src/main/res/layout/item_notification.xml" value="0.33" />
-        <entry key="app/src/main/res/layout/item_paket.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/item_paket.xml" value="0.14" />
         <entry key="app/src/main/res/layout/item_paket_haji.xml" value="0.14947916666666666" />
         <entry key="app/src/main/res/layout/item_pesanan.xml" value="0.33" />
         <entry key="app/src/main/res/layout/item_shimmer_ayat.xml" value="0.18" />

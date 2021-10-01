@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.webkit.WebView;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.android.tomboati.R;
 import com.codesgood.views.JustifiedTextView;
@@ -29,7 +30,7 @@ public class DetailKomunitasActivity extends AppCompatActivity {
         ImageView image_detail = findViewById(R.id.image_detail);
         JustifiedTextView text_tagar_detail = findViewById(R.id.text_tagar_detail);
         JustifiedTextView text_judul_detail = findViewById(R.id.text_judul_detail);
-        JustifiedTextView textViewContentNews = findViewById(R.id.textViewContentNews);
+        TextView textViewContentNews = findViewById(R.id.textViewContentNews);
 
         Intent intent = this.getIntent();
         Picasso.get().load(intent.getStringExtra("IMAGE")).priority(Picasso.Priority.HIGH)
