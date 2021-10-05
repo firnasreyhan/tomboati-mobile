@@ -148,6 +148,7 @@
         <entry key="app/src/main/res/layout/view_custom_dialog.xml" value="0.33" />
         <entry key="app/src/main/res/layout/view_custom_dialog_info.xml" value="0.25" />
         <entry key="app/src/main/res/layout/view_custom_dialog_keluar.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/view_custom_dialog_konfirmasi_tasbih.xml" value="0.112109375" />
         <entry key="app/src/main/res/layout/view_custom_dialog_progress.xml" value="0.25" />
         <entry key="app/src/main/res/layouts/fragment/layout/activity_adab_berdoa.xml" value="0.14947916666666666" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_new_launcher.xml" value="0.1234375" />
