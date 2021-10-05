@@ -79,8 +79,16 @@ public class AuthRegisterUserActivity extends AppCompatActivity {
                 } else {
                     AlertProgress progress = new AlertProgress(v, "Sedang meregistrasi data");
                     progress.showDialog();
+
+                    String noTelp = editTextDaftarNomorTelepon.getText().toString();
+                    if(noTelp.charAt(0) == '0') {
+                        noTelp = noTelp.replaceFirst("0", "62");
+                    } else if(noTelp.charAt(0) == '+') {
+                        noTelp = noTelp.replaceFirst("\\+", "");
+                    }
+
                     viewModel.registerAkun(
-                            editTextDaftarNomorTelepon.getText().toString(),
+                            noTelp,
                             editTextDaftarKodeReferral.getText().toString()
                     ).observe(OWNER, new Observer<AkunResponse>() {
                         @Override

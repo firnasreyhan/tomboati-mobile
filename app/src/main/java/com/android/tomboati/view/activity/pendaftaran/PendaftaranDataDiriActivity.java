@@ -33,7 +33,8 @@ import java.util.List;
 public class PendaftaranDataDiriActivity extends AppCompatActivity {
     private PendaftaranDataDiriViewModel viewModel;
     private Spinner spinnerJenisKelamin, spinnerStatusPerkawinan, spinnerKewarganegaraan, spinnerProvinsi, spinnerKotaKabupaten, spinnerKecamatan, spinnerKelurahan;
-    private EditText textInputEditTextNomorKTP, textInputEditTextNamaLengkap, textInputEditTextNomorHandphone, textInputEditTextTempatLahir, textInputEditTextPekerjaan, textInputEditRiwayatPenyakit, textInputEditTextKodePos, textInputEditTextRincianAlamat, textInputEditTextNomorPaspor, textInputEditTextTempatDikeluarkan;
+    private EditText textInputEditEmail, textInputEditTextNomorKTP, textInputEditTextNamaLengkap,
+            textInputEditTextNomorHandphone, textInputEditTextTempatLahir, textInputEditTextPekerjaan, textInputEditRiwayatPenyakit, textInputEditTextKodePos, textInputEditTextRincianAlamat, textInputEditTextNomorPaspor, textInputEditTextTempatDikeluarkan;
 
     private MaterialButton materialButtonLanjutkan;
     private TextView textInputEditTanggalLahir, textInputEditTextTanggalPenerbitanPaspor, textInputEditTextTanggalBerakhirPaspor;
@@ -80,6 +81,7 @@ public class PendaftaranDataDiriActivity extends AppCompatActivity {
         textInputEditTextRincianAlamat = findViewById(R.id.textInputEditTextRincianAlamat);
         textInputEditTextNomorPaspor = findViewById(R.id.textInputEditTextNomorPaspor);
         textInputEditTextTempatDikeluarkan = findViewById(R.id.textInputEditTextTempatDikeluarkan);
+        textInputEditEmail = findViewById(R.id.textInputEditEmail);
 
         textInputEditTanggalLahir = findViewById(R.id.textViewTanggalLahir); //=
         textInputEditTextTanggalPenerbitanPaspor = findViewById(R.id.textViewTanggalPenerbitanPaspor); //=
@@ -144,11 +146,19 @@ public class PendaftaranDataDiriActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (checkData()) {
+
+                    String noTelp = textInputEditTextNomorHandphone.getText().toString();
+                    if(noTelp.charAt(0) == '0') {
+                        noTelp = noTelp.replaceFirst("0", "62");
+                    } else if(noTelp.charAt(0) == '+') {
+                        noTelp = noTelp.replaceFirst("\\+", "");
+                    }
+
                     model.setIdUserRegister(PreferenceAkun.getAkun(v.getContext()).getId());
                     model.setNomorKTP(textInputEditTextNomorKTP.getText().toString());
-                    model.setEmail(PreferenceAkun.getAkun(v.getContext()).getEmail());
+                    model.setEmail(textInputEditEmail.getText().toString());
                     model.setNamaLengkap(textInputEditTextNamaLengkap.getText().toString());
-                    model.setNomorHP(textInputEditTextNomorHandphone.getText().toString());
+                    model.setNomorHP(noTelp);
                     model.setTempatLahir(textInputEditTextTempatLahir.getText().toString());
                     model.setTanggalLahir(tanggalLahir);
                     model.setJenisKelamin("" + spinnerJenisKelamin.getSelectedItemPosition());
