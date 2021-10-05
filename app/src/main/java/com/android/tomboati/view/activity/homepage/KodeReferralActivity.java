@@ -59,14 +59,14 @@ public class KodeReferralActivity extends AppCompatActivity {
 
         materialButtonShare.setOnClickListener(v -> {
             if(data.getPaket().equals("MITRA")) {
-                final String URI_APK = "";
+                final String URI_APK = "https://play.google.com/store/apps/details?id=com.android.tomboati";
                 final String PREFIX = "Tombo Ati Tour membuka peluang secara terbuka kepada masyarakat " +
                         "umum untuk bersama - sama menjadi Freelance Inspirasi Baitullah dekat " +
                         "di Hati.\n\nBentuk peluang yang diberikan berupa kesempatan untuk " +
                         "menjadi Mitra atau sebagai Kantor Cabang di daerah. \n\n" +
                         "Silahkan ikuti langkah berikut ini : " +
-                        "1. Download aplikasi kami di playstore melalui link berikut : \n" + URI_APK +
-                        "2. Silahkan lakukan pendaftaran menggunakan nomor hp anda, dan jangan " +
+                        "\n1. Download aplikasi kami di playstore melalui link berikut : \n" + URI_APK +
+                        "\n2. Silahkan lakukan pendaftaran menggunakan nomor hp anda, dan jangan " +
                         "lupa untuk memasukkan kode referral \"" + data.getUserId() + "\" ya. \n\n" +
                         "Terima kasih dan salam hangat";
                 Intent sendIntent = new Intent();
