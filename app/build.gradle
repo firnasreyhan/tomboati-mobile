@@ -13,7 +13,7 @@ android {
     defaultConfig {
         multiDexEnabled true
         applicationId "com.android.tomboati"
-        minSdkVersion 16
+        minSdkVersion 22
         targetSdkVersion 29
         versionCode 1
         versionName "1.8"

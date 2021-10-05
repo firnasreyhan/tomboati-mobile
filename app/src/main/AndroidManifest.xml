@@ -21,10 +21,8 @@
         android:roundIcon="@mipmap/ic_new_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/ThemeTomboAti">
-        <activity
-            android:name=".view.activity.homepage.HubungiKamiActivity"
-            android:exported="true" />
-        <activity android:name=".view.activity.mitra.auth.UbahPasswordActivity"></activity>
+        <activity android:name=".view.activity.homepage.HubungiKamiActivity" />
+        <activity android:name=".view.activity.mitra.auth.UbahPasswordActivity"/>
         <activity android:name=".view.activity.mitra.pendaftaran.RegistrasiDataPembayaranMitraActivity" />
         <activity android:name=".view.activity.mitra.pendaftaran.RegistrasiDataDiriMitraActivity" />
         <activity android:name=".view.activity.mitra.pendaftaran.SyaratPembatalanMitraActivity" />

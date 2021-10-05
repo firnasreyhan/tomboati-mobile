@@ -22,6 +22,7 @@ import com.android.tomboati.api.response.BaseResponse;
 import com.android.tomboati.preference.PreferenceAkun;
 import com.android.tomboati.utils.AlertInfo;
 import com.android.tomboati.utils.AlertProgress;
+import com.android.tomboati.view.activity.homepage.HubungiKamiActivity;
 import com.android.tomboati.view.activity.homepage.KodeReferralActivity;
 import com.android.tomboati.view.activity.homepage.MainActivity;
 import com.android.tomboati.view.activity.mitra.auth.AuthRegisterUserActivity;
@@ -35,7 +36,8 @@ public class AkunMitraFragment  extends Fragment {
 
     private TextView textViewNamaAkunMitra;
     private CircleImageView imageViewFotoAkunMitra;
-    private ConstraintLayout constrainLayoutKodeReferral, consraintLayoutLogout, constraintLayoutIbahPassword;
+    private ConstraintLayout constrainLayoutKodeReferral, consraintLayoutLogout,
+    constraintLayoutIbahPassword, menuHubungiKami;
 
     private LoginAkunMitraViewModel viewModel;
     private final LifecycleOwner OWNER = this;
@@ -57,6 +59,7 @@ public class AkunMitraFragment  extends Fragment {
         constrainLayoutKodeReferral = view.findViewById(R.id.constrainLayoutKodeReferral);
         consraintLayoutLogout = view.findViewById(R.id.consraintLayoutLogout);
         constraintLayoutIbahPassword = view.findViewById(R.id.constraintLayoutIbahPassword);
+        menuHubungiKami = view.findViewById(R.id.menuHubungiKami);
 
             textViewNamaAkunMitra.setText(PreferenceAkun.getAkun(getContext()).getName());
             picassoLoad(PreferenceAkun.getAkun(getContext()).getPhoto(), imageViewFotoAkunMitra);
@@ -68,6 +71,10 @@ public class AkunMitraFragment  extends Fragment {
 
         constraintLayoutIbahPassword.setOnClickListener(v ->
             v.getContext().startActivity(new Intent(v.getContext(), UbahPasswordActivity.class))
+        );
+
+        menuHubungiKami.setOnClickListener(v ->
+            v.getContext().startActivity(new Intent(v.getContext(), HubungiKamiActivity.class))
         );
 
         consraintLayoutLogout.setOnClickListener(v -> {

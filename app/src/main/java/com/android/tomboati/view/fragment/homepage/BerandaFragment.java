@@ -58,6 +58,7 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import io.nlopez.smartlocation.OnLocationUpdatedListener;
 import io.nlopez.smartlocation.OnReverseGeocodingListener;
 import io.nlopez.smartlocation.SmartLocation;
@@ -69,9 +70,9 @@ public class BerandaFragment extends Fragment {
     private SliderAdapter sliderAdapter;
     private SwipeRefreshLayout swipeRefreshLayout;
     private ShimmerFrameLayout shimmerFrameLayoutSlider;
-    private CardView cardViewUmrohHaji, cardViewWisataReligi, cardViewDoaDzikir, cardViewSholat, cardViewAlQuran, cardViewKalenderHijriah, cardViewQurbanAqiqah, cardViewKomunitas, cardViewTomboatiChannel, cardViewLiveMekkah;
+    private CardView cardViewUmrohHaji, cardViewWisataReligi, cardViewDoaDzikir, cardViewSholat, cardViewAlQuran, cardViewQurbanAqiqah, cardViewKomunitas, cardViewTomboatiChannel, cardViewLiveMekkah;
 
-    private ShapeableImageView shapeableImageViewFoto;
+    private CircleImageView circleImageView;
     private TextView textViewNamaLengkap, textViewKataMutiara, textViewJudulNews, textViewStatusUser;
     private TextView textViewSortNews;
     private MaterialButton materialButtonDetailNews;
@@ -104,12 +105,11 @@ public class BerandaFragment extends Fragment {
         cardViewTomboatiChannel = view.findViewById(R.id.cardViewTomboatiChannel);
         cardViewLiveMekkah = view.findViewById(R.id.cardViewLiveMekkah);
         cardViewAlQuran = view.findViewById(R.id.cardViewAlQuran);
-        cardViewKalenderHijriah = view.findViewById(R.id.cardViewKalenderHijriah);
         cardViewQurbanAqiqah = view.findViewById(R.id.cardViewQurbanAqiqah);
         cardViewKomunitas = view.findViewById(R.id.cardViewKomunitas);
         swipeRefreshLayout = view.findViewById(R.id.swipeRefreshLayout);
         shimmerFrameLayoutSlider = view.findViewById(R.id.shimmerFrameLayoutSlider);
-        shapeableImageViewFoto = view.findViewById(R.id.shapeableImageViewFoto);
+        circleImageView = view.findViewById(R.id.circleImageView);
         textViewNamaLengkap = view.findViewById(R.id.textViewNamaLengkap);
         textViewSortNews = view.findViewById(R.id.textViewSortNews);
         materialButtonDetailNews = view.findViewById(R.id.materialButtonDetailNews);
@@ -141,7 +141,7 @@ public class BerandaFragment extends Fragment {
             }
 
             if (PreferenceAkun.getAkun(getContext()).getPhoto() != null) {
-                picassoLoad(PreferenceAkun.getAkun(getContext()).getPhoto(),shapeableImageViewFoto);
+                picassoLoad(PreferenceAkun.getAkun(getContext()).getPhoto(),circleImageView);
             }
 
             textViewStatusUser.setText(PreferenceAkun.getAkun(getContext()).getPaket());

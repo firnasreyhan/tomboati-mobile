@@ -60,7 +60,6 @@
                             android:id="@+id/imageViewRegistrasiFotoProfile"
                             android:layout_width="150dp"
                             android:layout_height="150dp"
-                            android:contentDescription="TODO"
                             android:src="@drawable/ic_no_profile"
                             app:civ_circle_background_color="@color/background" />
 
