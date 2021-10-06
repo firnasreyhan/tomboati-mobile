@@ -8,10 +8,10 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="background">#F2F2F2</color>
-<!--    <color name="dark_green">#00441F</color>-->
-    <color name="dark_green">#7b4523</color>
-<!--    <color name="light_green">#009e48</color>-->
-    <color name="light_green">#D0763D</color>
+    <color name="dark_green">#00441F</color>
+<!--    <color name="dark_green">#7b4523</color>-->
+    <color name="light_green">#009e48</color>
+<!--    <color name="light_green">#D0763D</color>-->
     <color name="very_light_green">#E6EDDF</color>
     <color name="dark_red">#4D0408</color>
     <color name="dark_grey">#9E9A9A</color>
