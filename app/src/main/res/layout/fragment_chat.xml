@@ -1,89 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/swipeRefreshLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:background="@color/background"
+    android:orientation="vertical"
     tools:context=".view.fragment.homepage.ChatFragment">
 
     <LinearLayout
-        android:id="@+id/linearLayoutNoSignIn"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="@dimen/_13sdp"
-        android:orientation="vertical"
-        android:gravity="center">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/_150sdp"
-            android:adjustViewBounds="true"
-            android:src="@drawable/ic_empty_chat" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_13sdp"
-            android:fontFamily="@font/catamaran_bold"
-            android:text="Silahkan Masuk Ke Dalam Aplikasi Untuk Menghubungi Admin"
-            android:gravity="center"
-            android:textColor="@android:color/black"
-            android:textSize="@dimen/_14sdp" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:visibility="gone"
-        android:id="@+id/linearLayoutYesSignIn"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-
-        <androidx.appcompat.widget.Toolbar
-            android:visibility="gone"
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?actionBarSize"
-            android:background="@color/dark_green"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
-
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="left|center"
-                    android:layout_marginLeft="@dimen/_13sdp"
-                    android:gravity="center"
-                    android:orientation="horizontal"
-                    android:padding="@dimen/_3sdp">
-
-                    <com.google.android.material.imageview.ShapeableImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:adjustViewBounds="true"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/ic_no_profile"
-                        app:shapeAppearance="@style/ShapeAppearance.App.CircleImageView" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/_7sdp"
-                        android:fontFamily="@font/catamaran_bold"
-                        android:text="Admin"
-                        android:textColor="@android:color/white"
-                        android:textSize="@dimen/_13sdp" />
-
-                </LinearLayout>
-
-            </FrameLayout>
-
-        </androidx.appcompat.widget.Toolbar>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewChat"
@@ -91,14 +20,14 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:overScrollMode="never"
-            android:padding="@dimen/_7sdp"/>
+            android:padding="@dimen/_7sdp" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:orientation="horizontal"
-            android:padding="@dimen/_7sdp"
-            android:gravity="center">
+            android:padding="@dimen/_7sdp">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputLayoutChat"
@@ -108,23 +37,23 @@
                 android:layout_marginRight="@dimen/_7sdp"
                 android:layout_weight="1"
                 app:boxBackgroundColor="@android:color/white"
-                app:hintEnabled="false"
                 app:boxCornerRadiusBottomEnd="@dimen/_30sdp"
                 app:boxCornerRadiusBottomStart="@dimen/_30sdp"
                 app:boxCornerRadiusTopEnd="@dimen/_30sdp"
                 app:boxCornerRadiusTopStart="@dimen/_30sdp"
                 app:endIconDrawable="@drawable/ic_camera"
-                app:endIconMode="custom">
+                app:endIconMode="custom"
+                app:hintEnabled="false">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/textInputEditTextChat"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/catamaran_regular"
                     android:hint="Ketik pesan..."
                     android:inputType="textMultiLine"
                     android:scrollbars="vertical"
-                    android:fontFamily="@font/catamaran_regular"
-                    android:textColor="#333333"/>
+                    android:textColor="#333333" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -132,12 +61,12 @@
                 android:id="@+id/floatingActionButtonSend"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:backgroundTint="@color/dark_green"
                 android:src="@drawable/ic_send"
-                app:tint="@color/white"/>
+                app:backgroundTint="@color/dark_green"
+                app:tint="@color/white" />
 
         </LinearLayout>
 
     </LinearLayout>
 
-</LinearLayout>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

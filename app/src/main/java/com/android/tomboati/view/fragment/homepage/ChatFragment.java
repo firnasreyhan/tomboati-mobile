@@ -10,12 +10,14 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.android.tomboati.R;
 import com.android.tomboati.adapter.ChatAdapter;
@@ -35,7 +37,7 @@ public class ChatFragment extends Fragment {
     private TextInputEditText textInputEditTextChat;
     private TextInputLayout textInputLayoutChat;
     private FloatingActionButton floatingActionButtonSend;
-    private LinearLayout linearLayoutNoSignIn, linearLayoutYesSignIn;
+    private SwipeRefreshLayout swipeRefreshLayout;
 
 
     @Override
@@ -53,8 +55,7 @@ public class ChatFragment extends Fragment {
         textInputEditTextChat = view.findViewById(R.id.textInputEditTextChat);
         textInputLayoutChat = view.findViewById(R.id.textInputLayoutChat);
         floatingActionButtonSend = view.findViewById(R.id.floatingActionButtonSend);
-        linearLayoutNoSignIn = view.findViewById(R.id.linearLayoutNoSignIn);
-        linearLayoutYesSignIn = view.findViewById(R.id.linearLayoutYesSignIn);
+        swipeRefreshLayout = view.findViewById(R.id.swipeRefreshLayout);
 
         final LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         linearLayoutManager.setStackFromEnd(true);
@@ -62,8 +63,7 @@ public class ChatFragment extends Fragment {
         recyclerViewChat.setNestedScrollingEnabled(false);
         recyclerViewChat.setHasFixedSize(true);
 
-        linearLayoutYesSignIn.setVisibility(View.VISIBLE);
-        linearLayoutNoSignIn.setVisibility(View.GONE);
+        swipeRefreshLayout.setOnRefreshListener(this::onResume);
 
         floatingActionButtonSend.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,7 +74,8 @@ public class ChatFragment extends Fragment {
                         public void onChanged(BaseResponse baseResponse) {
                             if (!baseResponse.isError()) {
                                 textInputEditTextChat.getText().clear();
-                                onStart();
+                                Toast.makeText(getContext(), "Berhasil terkirim", Toast.LENGTH_SHORT).show();
+                                onResume();
                             }
                         }
                     });
@@ -96,15 +97,11 @@ public class ChatFragment extends Fragment {
 
     @Override
     public void onResume() {
-        Log.d("TAG", "onResume: ");
         super.onResume();
-    }
-
-    @Override
-    public void onStart() {
         chatViewModel.getChat().observe(this, new Observer<ChatResponse>() {
             @Override
             public void onChanged(ChatResponse chatResponse) {
+                swipeRefreshLayout.setRefreshing(false);
                 if (!chatResponse.isError()) {
                     if (!chatResponse.getData().isEmpty()) {
                         chatAdapter = new ChatAdapter(chatResponse.getData());
@@ -114,6 +111,5 @@ public class ChatFragment extends Fragment {
                 }
             }
         });
-        super.onStart();
     }
 }

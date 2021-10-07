@@ -11,6 +11,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,8 +38,8 @@ public class PesananFragment extends Fragment {
     private ShimmerFrameLayout shimmerFrameLayoutPesanan;
     private LinearLayout linearLayoutNoSignIn;
     private PesananPendingAdapter adapter;
-    private TextView textView;
     private List<ListPaketVerifyRespone.DataItem> list;
+    private SwipeRefreshLayout swipeRefreshLayout;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,  Bundle savedInstanceState) {
@@ -59,63 +60,66 @@ public class PesananFragment extends Fragment {
         recyclerView = view.findViewById(R.id.recyclerViewPesananPending);
         shimmerFrameLayoutPesanan = view.findViewById(R.id.shimmerFrameLayoutPesanan);
         linearLayoutNoSignIn = view.findViewById(R.id.linearLayoutNoSignIn);
-        textView = view.findViewById(R.id.textViewPesananNoSignIn);
+        swipeRefreshLayout = view.findViewById(R.id.swipeRefreshLayout);
 
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
 
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                recyclerView.setVisibility(View.GONE);
+                linearLayoutNoSignIn.setVisibility(View.GONE);
+                shimmerFrameLayoutPesanan.setVisibility(View.VISIBLE);
+                list.clear();
+                onResume();
+            }
+        });
 
-//        if (AppPreference.getUser(view.getContext()) != null) {
-            String idUser = PreferenceAkun.getAkun(view.getContext()).getId();
-            viewModel.getPaketHajiUmrahVerif(idUser).observe(OWNER, new Observer<ListPaketVerifyRespone>() {
-                @Override
-                public void onChanged(ListPaketVerifyRespone listPaketVerifyRespone) {
-                    if (listPaketVerifyRespone != null) {
-                        if (!listPaketVerifyRespone.isError()) {
-                            if (!listPaketVerifyRespone.getData().isEmpty()) {
-                                list.addAll(listPaketVerifyRespone.getData());
-                            }
-                        }
-                    }
-                    viewModel.getPaketWisataHalalVerif(idUser).observe(OWNER, new Observer<ListPaketVerifyRespone>() {
-                        @Override
-                        public void onChanged(ListPaketVerifyRespone listPaketVerifyRespone1) {
-                            shimmerFrameLayoutPesanan.setVisibility(View.GONE);
-                            shimmerFrameLayoutPesanan.stopShimmer();
-                            if (listPaketVerifyRespone1 != null) {
-                                if (!listPaketVerifyRespone1.isError()) {
-                                    if (!listPaketVerifyRespone1.getData().isEmpty()) {
-                                        list.addAll(listPaketVerifyRespone1.getData());
-                                    }
-                                }
-                            }
-
-                            if(listPaketVerifyRespone != null || listPaketVerifyRespone1 != null) {
-                                adapter = new PesananPendingAdapter(list);
-                                recyclerView.setAdapter(adapter);
-//
-                                recyclerView.setVisibility(View.VISIBLE);
-                            } else {
-                                linearLayoutNoSignIn.setVisibility(View.VISIBLE);
-                                recyclerView.setVisibility(View.GONE);
-                            }
-                        }
-                    });
-                }
-            });
-//        } else {
-//            shimmerFrameLayoutPesanan.setVisibility(View.GONE);
-//            shimmerFrameLayoutPesanan.stopShimmer();
-//            linearLayoutNoSignIn.setVisibility(View.VISIBLE);
-//            recyclerView.setVisibility(View.GONE);
-//            textView.setText("Masuk untuk melihat pesanan");
-//        }
     }
 
     @Override
     public void onResume() {
         super.onResume();
         shimmerFrameLayoutPesanan.startShimmer();
+        String idUser = PreferenceAkun.getAkun(getContext()).getId();
+        viewModel.getPaketHajiUmrahVerif(idUser).observe(OWNER, new Observer<ListPaketVerifyRespone>() {
+            @Override
+            public void onChanged(ListPaketVerifyRespone listPaketVerifyRespone) {
+                if (listPaketVerifyRespone != null) {
+                    if (!listPaketVerifyRespone.isError()) {
+                        if (!listPaketVerifyRespone.getData().isEmpty()) {
+                            list.addAll(listPaketVerifyRespone.getData());
+                        }
+                    }
+                }
+                viewModel.getPaketWisataHalalVerif(idUser).observe(OWNER, new Observer<ListPaketVerifyRespone>() {
+                    @Override
+                    public void onChanged(ListPaketVerifyRespone listPaketVerifyRespone1) {
+                        swipeRefreshLayout.setRefreshing(false);
+                        shimmerFrameLayoutPesanan.setVisibility(View.GONE);
+                        shimmerFrameLayoutPesanan.stopShimmer();
+                        if (listPaketVerifyRespone1 != null) {
+                            if (!listPaketVerifyRespone1.isError()) {
+                                if (!listPaketVerifyRespone1.getData().isEmpty()) {
+                                    list.addAll(listPaketVerifyRespone1.getData());
+                                }
+                            }
+                        }
+
+                        if(listPaketVerifyRespone != null || listPaketVerifyRespone1 != null) {
+                            adapter = new PesananPendingAdapter(list);
+                            recyclerView.setAdapter(adapter);
+//
+                            recyclerView.setVisibility(View.VISIBLE);
+                        } else {
+                            linearLayoutNoSignIn.setVisibility(View.VISIBLE);
+                            recyclerView.setVisibility(View.GONE);
+                        }
+                    }
+                });
+            }
+        });
     }
 
     @Override
