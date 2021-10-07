@@ -137,27 +137,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/catamaran_medium"
-                    android:text="Kelurahan / Desa"
-                    android:textColor="@color/black"
-                    android:textSize="12sp" />
-
-                <Spinner
-                    android:id="@+id/spinnerKelurahan"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:background="@drawable/round_border_form"
-                    android:padding="5dp"
-                    android:spinnerMode="dialog"
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/dark_grey"
-                    android:textSize="8sp"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:fontFamily="@font/catamaran_medium"
                     android:text="Rincian Alamat"
                     android:textColor="@color/black"
                     android:textSize="12sp" />
@@ -169,7 +148,7 @@
                     android:layout_marginTop="8dp"
                     android:background="@drawable/round_border_form"
                     android:fontFamily="@font/catamaran_medium"
-                    android:hint="Jl. Mastrip, No. 05, RT 002, RW 001, Dusun Krajan"
+                    android:hint="Rincian Alamat"
                     android:inputType="textPersonName"
                     android:paddingLeft="10dp"
                     android:paddingTop="12dp"
@@ -195,7 +174,7 @@
                     android:layout_marginBottom="10dp"
                     android:background="@drawable/round_border_form"
                     android:fontFamily="@font/catamaran_medium"
-                    android:hint="67281"
+                    android:hint="Kode POS"
                     android:inputType="numberDecimal"
                     android:paddingLeft="10dp"
                     android:paddingTop="12dp"

@@ -31,7 +31,7 @@ import java.util.List;
 
 public class RegistrasiDataDiriMitraActivity extends AppCompatActivity {
 
-    private Spinner spinnerProvinsi, spinnerKotaKabupaten, spinnerKecamatan, spinnerKelurahan;
+    private Spinner spinnerProvinsi, spinnerKotaKabupaten, spinnerKecamatan;
     private EditText editTextRegistrasiNama, editTextRegistrasiRincianAlamat, editTextRegistrasiKodePos;
     private MaterialButton materialButtonDaftarkanDataDiri;
     private RegisterDataDiriViewModel viewModel;
@@ -56,7 +56,6 @@ public class RegistrasiDataDiriMitraActivity extends AppCompatActivity {
         spinnerProvinsi = findViewById(R.id.spinnerProvinsi);
         spinnerKotaKabupaten = findViewById(R.id.spinnerKotaKabupaten);
         spinnerKecamatan = findViewById(R.id.spinnerKecamatan);
-        spinnerKelurahan = findViewById(R.id.spinnerKelurahan);
         materialButtonDaftarkanDataDiri = findViewById(R.id.materialButtonDaftarkanDataDiri);
         editTextRegistrasiNama = findViewById(R.id.editTextRegistrasiNama);
         editTextRegistrasiRincianAlamat = findViewById(R.id.editTextRegistrasiRincianAlamat);
@@ -85,10 +84,7 @@ public class RegistrasiDataDiriMitraActivity extends AppCompatActivity {
                     akunModel.setPropinsi(spinnerProvinsi.getSelectedItem().toString());
                     akunModel.setKota(spinnerKotaKabupaten.getSelectedItem().toString());
                     akunModel.setKecamatan(spinnerKecamatan.getSelectedItem().toString());
-                    akunModel.setAddress(
-                            editTextRegistrasiRincianAlamat.getText().toString() + "|" +
-                            spinnerKelurahan.getSelectedItem().toString()
-                    );
+                    akunModel.setAddress(editTextRegistrasiRincianAlamat.getText().toString());
                     akunModel.setKodePos(editTextRegistrasiKodePos.getText().toString());
 
                     PreferenceAkun.removeAkun(v.getContext());
@@ -209,36 +205,6 @@ public class RegistrasiDataDiriMitraActivity extends AppCompatActivity {
                     for(int i = 0; i < lokasiResponses.size(); i++) {
                         if(MODEL.getKecamatan().equals(lokasiResponses.get(i).getNama())) {
                             spinnerKecamatan.setSelection(i);
-                        }
-                    }
-                }
-
-                spinnerKecamatan.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                    @Override
-                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                        getKelurahan(lokasiResponses.get(position).getId());
-                    }
-
-                    @Override
-                    public void onNothingSelected(AdapterView<?> parent) {
-
-                    }
-                });
-            }
-        });
-    }
-
-    private void getKelurahan(String idLokasi) {
-        viewModel.getKelurahan(idLokasi).observe(OWNER, lokasiResponses -> {
-            if (lokasiResponses != null) {
-                ArrayAdapter<LokasiResponse> adapter = new ArrayAdapter<>(getApplicationContext(), R.layout.item_spinner, lokasiResponses);
-                spinnerKelurahan.setAdapter(adapter);
-
-                if(MODEL.isFieldFilled()) {
-                    for(int i = 0; i < lokasiResponses.size(); i++) {
-                        String kelurahan = MODEL.getAddress().split("\\|")[1];
-                        if(kelurahan.equals(lokasiResponses.get(i).getNama())) {
-                            spinnerKelurahan.setSelection(i);
                         }
                     }
                 }
