@@ -64,7 +64,7 @@ public class SyaratPembatalanMitraActivity extends AppCompatActivity {
                                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                 info = new AlertInfo(SyaratPembatalanMitraActivity.this, "Berhasil mengirimkan data, " +
-                                        "mohon tunggu validasi dari admin, dan cek selalu email anda untuk " +
+                                        "mohon tunggu validasi dari admin, dan selalu cek email anda untuk " +
                                         "melihat informasi akun yang admin kirimkan kepada email anda", intent);
                             }
                             info.showDialog();

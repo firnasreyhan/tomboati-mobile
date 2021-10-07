@@ -57,7 +57,9 @@ public class AkunNonMitraFragment extends Fragment {
             textViewNamaPengguna.setText(PreferenceAkun.getAkun(view.getContext()).getName());
             textLengkapiBiodata.setText("Ubah Data Diri");
             textDeskripsiBiodata.setText("Ubah data diri anda disini");
-            picassoLoad(MODEL.getFotoKTP(), imageViewProfil);
+            if(MODEL.getPhoto() != null) {
+                picassoLoad(MODEL.getPhoto(), imageViewProfil);
+            }
         }
 
         if(PreferenceAkun.getAkun(view.getContext()).isSuksesDaftarMitra()) {

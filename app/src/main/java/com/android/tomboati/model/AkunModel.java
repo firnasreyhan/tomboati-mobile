@@ -43,7 +43,6 @@ public class AkunModel implements Serializable {
         for(String s : requiredField) {
             if(s == null) {
                 count++;
-                Log.d("====", "isFieldFilled: " + count);
             }
         }
         return (count == 0);

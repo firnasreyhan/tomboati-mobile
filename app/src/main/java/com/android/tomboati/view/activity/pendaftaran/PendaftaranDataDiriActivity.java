@@ -302,7 +302,7 @@ public class PendaftaranDataDiriActivity extends AppCompatActivity {
                 textInputEditTextNomorKTP, textInputEditTextNamaLengkap, textInputEditTextNomorHandphone,
                 textInputEditTextTempatLahir, textInputEditTextPekerjaan,
                 textInputEditRiwayatPenyakit, textInputEditTextKodePos, textInputEditTextRincianAlamat,
-                textInputEditTextNomorPaspor, textInputEditTextTempatDikeluarkan,
+                textInputEditTextNomorPaspor, textInputEditTextTempatDikeluarkan, textInputEditEmail
         };
 
         final String[] tanggal = {

@@ -59,19 +59,27 @@ public class KodeReferralActivity extends AppCompatActivity {
 
         materialButtonShare.setOnClickListener(v -> {
             if(data.getPaket().equals("MITRA")) {
-                final String URI_APK = "https://play.google.com/store/apps/details?id=com.android.tomboati";
-                final String PREFIX = "Tombo Ati Tour membuka peluang secara terbuka kepada masyarakat " +
-                        "umum untuk bersama - sama menjadi Freelance Inspirasi Baitullah dekat " +
-                        "di Hati.\n\nBentuk peluang yang diberikan berupa kesempatan untuk " +
-                        "menjadi Mitra atau sebagai Kantor Cabang di daerah. \n\n" +
-                        "Silahkan ikuti langkah berikut ini : " +
-                        "\n1. Download aplikasi kami di playstore melalui link berikut : \n" + URI_APK +
-                        "\n2. Silahkan lakukan pendaftaran menggunakan nomor hp anda, dan jangan " +
-                        "lupa untuk memasukkan kode referral \"" + data.getUserId() + "\" ya. \n\n" +
-                        "Terima kasih dan salam hangat";
+//                final String URI_APK = "https://play.google.com/store/apps/details?id=com.android.tomboati";
+                final String URI_APK = "https://tomboatitour.biz/apps";
+                final String TEXT =
+                        "SPECIAL UNTUK ANDA\n\n" +
+                        "Unduh Aplikasinya - Banyak Manfaatnya\n" +
+                        "GRATIS\n\n" +
+                        "- Al Qur'an\n" +
+                        "- Panduan Sholat\n" +
+                        "- Panduan Doa dan Dzikir\n" +
+                        "- Doa Umroh &  Haji\n" +
+                        "- Live Mekkah dll\n\n" +
+                        "klik \uD83D\uDC47:\n" +
+                        URI_APK + "\n\n" +
+                        "Cukup masukkan\n" +
+                        "- no HP Anda\n" +
+                        "- referral : " + data.getReferral() + "\n\n" +
+                        "Dapatkan kesempatan UMROH GRATIS dengan cukup mereferensikan Aplikasi ini.\n\n" +
+                        "Info : 0812-1636-1984 (Fidza)";
                 Intent sendIntent = new Intent();
                 sendIntent.setAction(Intent.ACTION_SEND);
-                sendIntent.putExtra(Intent.EXTRA_TEXT, PREFIX);
+                sendIntent.putExtra(Intent.EXTRA_TEXT, TEXT);
                 sendIntent.setType("text/plain");
 
                 Intent shareIntent = Intent.createChooser(sendIntent, null);

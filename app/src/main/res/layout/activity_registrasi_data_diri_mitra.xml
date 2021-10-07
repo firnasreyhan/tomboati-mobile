@@ -61,7 +61,7 @@
                     android:layout_marginTop="8dp"
                     android:background="@drawable/round_border_form"
                     android:fontFamily="@font/catamaran_medium"
-                    android:hint="Fakhri Fahreza"
+                    android:hint="Masukkan Nama"
                     android:paddingLeft="10dp"
                     android:paddingTop="12dp"
                     android:paddingBottom="12dp"

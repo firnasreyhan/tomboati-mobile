@@ -93,7 +93,7 @@
                         android:layout_marginTop="8dp"
                         android:background="@drawable/round_border_form"
                         android:fontFamily="@font/catamaran_medium"
-                        android:hint="Fakhri Fahreza"
+                        android:hint="Nama Anda"
                         android:inputType="textPersonName"
                         android:paddingLeft="10dp"
                         android:paddingTop="12dp"

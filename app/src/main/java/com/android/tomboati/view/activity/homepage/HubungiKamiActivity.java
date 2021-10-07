@@ -37,8 +37,8 @@ public class HubungiKamiActivity extends AppCompatActivity {
 
         materialCardViewWhatsapp.setOnClickListener(v -> {
             try {
-                final String TO_NUMBER = "082333826883";
-                final String TEXT_BODY = "Halo, saya ingin menanyakan sesuatu kepada anda bahwa ....";
+                final String TO_NUMBER = "6281216361984";
+                final String TEXT_BODY = "Halo, saya dari pengguna aplikasi tomboatitour ingin menanyakan sesuatu kepada anda bahwa ....";
                 final String URI = "https://api.whatsapp.com/send?phone="+ TO_NUMBER + "&text="+TEXT_BODY;
                 Intent sendIntent = new Intent(Intent.ACTION_VIEW);
                 sendIntent.setData(Uri.parse(URI));
@@ -50,9 +50,10 @@ public class HubungiKamiActivity extends AppCompatActivity {
 
         materialCardViewEmail.setOnClickListener(v -> {
             try {
-                final String TO_EMAIL = "admin@tomboatitour.biz";
+                final String TO_EMAIL = "tomboatitour@gmail.com";
                 final String TEXT_SUBJECT = "Tanya Admin";
-                final String TEXT_BODY = "Halo, saya ingin menanyakan sesuatu kepada anda bahwa ....";
+                final String TEXT_BODY = "Halo, saya dari pengguna aplikasi tomboatitour ingin " +
+                        "menanyakan sesuatu kepada anda bahwa ....";
                 Intent sendIntent = new Intent(Intent.ACTION_SEND);
                 sendIntent.putExtra(Intent.EXTRA_EMAIL, new String[] {TO_EMAIL});
                 sendIntent.putExtra(Intent.EXTRA_SUBJECT, TEXT_SUBJECT);

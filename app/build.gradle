@@ -7,16 +7,16 @@ android {
     aaptOptions.cruncherEnabled = false
     aaptOptions.useNewCruncher = false
 
-    compileSdkVersion 29
+    compileSdkVersion 30
     buildToolsVersion "30.0.3"
 
     defaultConfig {
         multiDexEnabled true
         applicationId "com.android.tomboati"
         minSdkVersion 22
-        targetSdkVersion 29
+        targetSdkVersion 30
         versionCode 1
-        versionName "1.8"
+        versionName "1.1 (Tomboati Update Pertama)"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
