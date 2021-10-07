@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/cardViewItemPaketHaji"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/_180sdp"
+    android:layout_height="wrap_content"
     android:layout_marginBottom="@dimen/_9sdp"
     android:clickable="true"
     android:foreground="?selectableItemBackground"
@@ -12,18 +12,17 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <ImageView
             android:id="@+id/imageViewPaket"
             android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="24dp"
             android:layout_weight="1"
             android:adjustViewBounds="true"
-            android:scaleType="centerCrop"
-            android:src="@color/dark_green"
+            android:scaleType="fitCenter"
             app:layout_constraintBottom_toTopOf="@+id/textViewNamaPaket"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

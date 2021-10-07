@@ -1,5 +1,6 @@
 package com.android.tomboati.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -43,7 +44,7 @@ public class PaketHajiAdapter extends RecyclerView.Adapter<PaketHajiAdapter.View
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         if (list.get(position).getImagePaket() != null) {
             picassoLoad(list.get(position).getImagePaket(), holder.imageViewPaket);
         }

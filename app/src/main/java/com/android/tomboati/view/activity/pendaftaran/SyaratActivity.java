@@ -55,6 +55,7 @@ public class SyaratActivity extends AppCompatActivity {
                             intent.putExtra("NAMA_PAKET", getIntent().getStringExtra("NAMA_PAKET"));
                             startActivity(intent);
                         }
+                        finish();
                     } else {
                         Toast.makeText(v.getContext(), "Mohon lengkapi data diri terlebih dahulu", Toast.LENGTH_SHORT).show();
                     }
@@ -69,6 +70,7 @@ public class SyaratActivity extends AppCompatActivity {
                     Intent intent = new Intent(v.getContext(), PendaftaranDataDiriActivity.class);
                     intent.putExtra("OBJECT", (Serializable) model);
                     startActivity(intent);
+                    finish();
                 }
             }
         });
