@@ -7,16 +7,24 @@
     android:orientation="vertical"
     tools:context=".view.fragment.homepage.InboxFragment">
 
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tabLayout"
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
-        android:minHeight="?actionBarSize"
-        app:tabGravity="fill"
-        app:tabIndicatorColor="@color/light_yellow"
-        app:tabIndicatorHeight="4dp"
         android:background="@color/dark_green"
-        app:tabMode="fixed"/>
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+<!--    <com.google.android.material.tabs.TabLayout-->
+<!--        android:id="@+id/tabLayout"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="?actionBarSize"-->
+<!--        android:minHeight="?actionBarSize"-->
+<!--        app:tabGravity="fill"-->
+<!--        app:tabIndicatorColor="@color/light_yellow"-->
+<!--        app:tabIndicatorHeight="4dp"-->
+<!--        android:background="@color/dark_green"-->
+<!--        app:tabMode="fixed"/>-->
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewPager"
