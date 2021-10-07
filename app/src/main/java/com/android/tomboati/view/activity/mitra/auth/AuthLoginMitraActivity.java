@@ -6,8 +6,11 @@ import androidx.lifecycle.ViewModelProviders;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,6 +31,8 @@ public class AuthLoginMitraActivity extends AppCompatActivity {
     private EditText editTextLoginUsername, editTextLoginPassword;
     private MaterialButton materialButtonMasuk;
     private LoginAkunMitraViewModel viewModel;
+    private ImageView eyePassword;
+    private boolean isEyePassword;
 
     private final LifecycleOwner OWNER = this;
 
@@ -44,6 +49,12 @@ public class AuthLoginMitraActivity extends AppCompatActivity {
         materialButtonMasuk = findViewById(R.id.materialButtonMasuk);
         editTextLoginUsername = findViewById(R.id.editTextLoginUsername);
         editTextLoginPassword = findViewById(R.id.editTextLoginPassword);
+        eyePassword = findViewById(R.id.eyePassword);
+
+        eyePassword.setOnClickListener(v -> {
+            setEye(editTextLoginPassword, eyePassword, isEyePassword);
+            isEyePassword = !isEyePassword;
+        });
 
         if(PreferenceAkun.getAkun(this) == null){
             textViewBack.setText("Daftar");
@@ -114,5 +125,15 @@ public class AuthLoginMitraActivity extends AppCompatActivity {
 
 
 
+    }
+
+    private void setEye(EditText editText, ImageView eyeImageView, boolean isEyeClicked) {
+        if(!isEyeClicked) {
+            editText.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+            eyeImageView.setImageResource(R.drawable.ic_eye_invisible);
+        } else {
+            editText.setTransformationMethod(PasswordTransformationMethod.getInstance());
+            eyeImageView.setImageResource(R.drawable.ic_eye_visible);
+        }
     }
 }

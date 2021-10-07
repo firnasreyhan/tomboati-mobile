@@ -72,30 +72,44 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView39" />
 
-
-        <EditText
-            android:id="@+id/editTextLoginPassword"
+        <LinearLayout
+            android:id="@+id/linearLayout1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
-            android:layout_marginLeft="40dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="40dp"
-            android:layout_marginRight="40dp"
             android:background="@drawable/round_border_auth"
-            android:fontFamily="@font/catamaran_regular"
-            android:hint="Password"
-            android:inputType="textPassword"
-            android:paddingLeft="15dp"
-            android:paddingTop="20dp"
-            android:paddingBottom="20dp"
-            android:textColor="@color/black"
-            android:textColorHint="@color/dark_grey"
-            android:textSize="18sp"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextLoginUsername" />
+            app:layout_constraintTop_toBottomOf="@+id/editTextLoginUsername">
+
+            <EditText
+                android:id="@+id/editTextLoginPassword"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5"
+                android:backgroundTint="@color/white"
+                android:fontFamily="@font/catamaran_regular"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:textColor="@color/black"
+                android:textColorHint="@color/dark_grey"
+                android:textSize="18sp" />
+
+            <ImageView
+                android:id="@+id/eyePassword"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/ic_eye_visible"
+                tools:ignore="VectorDrawableCompat" />
+
+        </LinearLayout>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/materialButtonMasuk"
@@ -113,7 +127,7 @@
             android:textAllCaps="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextLoginPassword" />
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout1" />
 
         <LinearLayout
             android:layout_width="wrap_content"
