@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/ic_background_beranda"
-    tools:context=".view.activity.pendaftaran.DetailPaketActivity">
+    tools:context="tour.view.activity.pendaftaran.DetailPaketActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"

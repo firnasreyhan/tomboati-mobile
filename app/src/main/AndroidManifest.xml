@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.android.tomboati">
+    package="com.tomboati.tour">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -21,8 +21,10 @@
         android:roundIcon="@mipmap/ic_new_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/ThemeTomboAti">
+
+        <activity android:name=".view.activity.homepage.UbahProfilActivity" />
         <activity android:name=".view.activity.homepage.HubungiKamiActivity" />
-        <activity android:name=".view.activity.mitra.auth.UbahPasswordActivity"/>
+        <activity android:name=".view.activity.mitra.auth.UbahPasswordActivity" />
         <activity android:name=".view.activity.mitra.pendaftaran.RegistrasiDataPembayaranMitraActivity" />
         <activity android:name=".view.activity.mitra.pendaftaran.RegistrasiDataDiriMitraActivity" />
         <activity android:name=".view.activity.mitra.pendaftaran.SyaratPembatalanMitraActivity" />
@@ -55,7 +57,6 @@
         <activity android:name=".view.activity.doa_dzikir.TasbihActivity" />
         <activity android:name=".view.activity.doa_dzikir.DoaRamadhanActivity" />
         <activity android:name=".view.activity.sholat.TayamumActivity" />
-        <activity android:name=".view.activity.homepage.UpdateProfileActivity" />
         <activity android:name=".view.activity.sholat.DoaSesudahSholatActivity" />
         <activity android:name=".view.activity.sholat.SyaratSholatActivity" />
         <activity android:name=".view.activity.homepage.KodeReferralActivity" />
@@ -82,7 +83,6 @@
         <activity android:name=".view.activity.sholat.WudhuActivity" />
         <activity android:name=".view.activity.sholat.SholatWajibActivity" />
         <activity android:name=".view.activity.pendaftaran.SyaratActivity" />
-        <activity android:name=".view.activity.homepage.SignUpActivity" />
         <activity android:name=".view.activity.homepage.ImageChatActivity" />
         <activity android:name=".view.activity.homepage.WisataReligiActivity" />
         <activity android:name=".view.activity.doa_dzikir.DoaDzikirActivity" />
@@ -102,7 +102,7 @@
                 <category android:name="android.intent.category.BROWSABLE" />
 
                 <data
-                    android:host="tomboatitour.biz"
+                    android:host="tomboati.biz"
                     android:pathPrefix="/referral"
                     android:scheme="https" />
             </intent-filter>
@@ -117,19 +117,10 @@
             android:resource="@drawable/ic_stat_icon" />
 
         <service
-            android:name=".utils.notif.MyFireBaseMessagingService"
-            android:enabled="true"
+            android:name=".notification.MyFireBaseMessagingService"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
-            </intent-filter>
-        </service>
-        <service
-            android:name=".utils.notif.MyFirebaseIdService"
-            android:enabled="true"
-            android:exported="false">
-            <intent-filter>
-                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
     </application>

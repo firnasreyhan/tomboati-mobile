@@ -9,7 +9,7 @@
     android:scrollbarThumbHorizontal="@null"
     android:scrollbarThumbVertical="@null"
     android:scrollbars="none"
-    tools:context=".view.activity.doa_dzikir.DetailDoaSehariHariActivity">
+    tools:context="tour.view.activity.doa_dzikir.DetailDoaSehariHariActivity">
 
 
     <androidx.appcompat.widget.Toolbar

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/background"
-    tools:context=".view.fragment.homepage.PesananFragment">
+    tools:context="tour.view.fragment.homepage.PesananFragment">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/background"
     android:orientation="vertical"
-    tools:context=".view.fragment.homepage.RiwayatFragment">
+    tools:context="tour.view.fragment.homepage.RiwayatFragment">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"

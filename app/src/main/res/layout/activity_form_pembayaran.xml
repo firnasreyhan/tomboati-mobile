@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    tools:context=".view.activity.pembayaran.FormPembayaranActivity">
+    tools:context="tour.view.activity.pembayaran.FormPembayaranActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"

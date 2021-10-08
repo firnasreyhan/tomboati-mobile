@@ -1,41 +1,33 @@
 {
   "project_info": {
-    "project_number": "650180100264",
-    "project_id": "tomboati-8a370",
-    "storage_bucket": "tomboati-8a370.appspot.com"
+    "project_number": "906322768949",
+    "project_id": "inbis-bccc7",
+    "storage_bucket": "inbis-bccc7.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:650180100264:android:a08fd92badc719c74c029d",
+        "mobilesdk_app_id": "1:906322768949:android:119fe203f3cc890340ad7c",
         "android_client_info": {
-          "package_name": "com.android.tomboati"
+          "package_name": "com.tomboati.tour"
         }
       },
       "oauth_client": [
         {
-          "client_id": "650180100264-qdih6jmgkgo4dpfc0fk0f3mnkrq7vd7m.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.android.tomboati",
-            "certificate_hash": "73c30cf096c145c98ccdbe0d9a2b17a6758d2635"
-          }
-        },
-        {
-          "client_id": "650180100264-tu0phnv7rin8rldi17b25p4r57qe4qcj.apps.googleusercontent.com",
+          "client_id": "906322768949-o3h2up9jube5jc5tvglc2s1bho3tot4q.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDBMTflgiCVMAq1z6xsNv-gyFVsgaWrUog"
+          "current_key": "AIzaSyB7KG_mn6jbwebgNo41x96LN3nbTkyZJjw"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "650180100264-tu0phnv7rin8rldi17b25p4r57qe4qcj.apps.googleusercontent.com",
+              "client_id": "906322768949-o3h2up9jube5jc5tvglc2s1bho3tot4q.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

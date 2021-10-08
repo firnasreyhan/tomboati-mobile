@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/ic_background_beranda"
-    tools:context=".view.activity.komunitas.KomunitasActivity">
+    tools:context="tour.view.activity.komunitas.KomunitasActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"

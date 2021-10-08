@@ -4,7 +4,7 @@
     "type": "APK",
     "kind": "Directory"
   },
-  "applicationId": "com.android.tomboati",
+  "applicationId": "com.tomboati.tour",
   "variantName": "release",
   "elements": [
     {
