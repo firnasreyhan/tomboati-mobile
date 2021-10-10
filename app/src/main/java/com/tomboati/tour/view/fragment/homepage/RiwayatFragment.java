@@ -67,7 +67,7 @@ public class RiwayatFragment extends Fragment {
             recyclerView.setVisibility(View.GONE);
             linearLayoutNoSignIn.setVisibility(View.GONE);
             shimmerFrameLayoutPesanan.setVisibility(View.VISIBLE);
-            onResume();
+            onStart();
         });
 
 

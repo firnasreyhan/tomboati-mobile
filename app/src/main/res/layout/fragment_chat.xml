@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/background"
     android:orientation="vertical"
-    tools:context="tour.view.fragment.homepage.ChatFragment">
+    tools:context="view.fragment.homepage.ChatFragment">
 
     <LinearLayout
         android:layout_width="match_parent"

@@ -5,26 +5,18 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    tools:context="tour.view.fragment.homepage.InboxFragment">
+    tools:context=".view.fragment.homepage.InboxFragment">
 
-
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
+        android:minHeight="?actionBarSize"
+        app:tabGravity="fill"
+        app:tabIndicatorColor="@color/light_yellow"
+        app:tabIndicatorHeight="4dp"
         android:background="@color/dark_green"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
-
-<!--    <com.google.android.material.tabs.TabLayout-->
-<!--        android:id="@+id/tabLayout"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="?actionBarSize"-->
-<!--        android:minHeight="?actionBarSize"-->
-<!--        app:tabGravity="fill"-->
-<!--        app:tabIndicatorColor="@color/light_yellow"-->
-<!--        app:tabIndicatorHeight="4dp"-->
-<!--        android:background="@color/dark_green"-->
-<!--        app:tabMode="fixed"/>-->
+        app:tabMode="fixed"/>
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewPager"

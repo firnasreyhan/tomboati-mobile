@@ -10,20 +10,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.material.tabs.TabLayout;
 import com.tomboati.tour.R;
 import com.tomboati.tour.adapter.TabAdapter;
 
 public class InboxFragment extends Fragment {
 
     private TabAdapter tabAdapter;
-//    private TabLayout tabLayout;
+    private TabLayout tabLayout;
     private ViewPager viewPager;
     private int[] tabIcons = {
-//            R.drawable.ic_chat,
+            R.drawable.ic_chat,
             R.drawable.ic_notification
     };
-
-    private Toolbar toolbar;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -32,33 +31,46 @@ public class InboxFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_inbox, container, false);
 
         viewPager = view.findViewById(R.id.viewPager);
-        toolbar = view.findViewById(R.id.toolbar);
-        toolbar.setTitle("Chat");
-//        tabLayout = view.findViewById(R.id.tabLayout);
+        tabLayout = view.findViewById(R.id.tabLayout);
 
         tabAdapter = new TabAdapter(getActivity().getSupportFragmentManager(), getContext());
-//        tabAdapter.addFragment(new NotificationFragment(), "Notification", tabIcons[1]);
+        tabAdapter.addFragment(new NotificationFragment(), "Notification", tabIcons[1]);
         tabAdapter.addFragment(new ChatFragment(), "Chat", tabIcons[0]);
 
         viewPager.setAdapter(tabAdapter);
-//        tabLayout.setupWithViewPager(viewPager);
+        tabLayout.setupWithViewPager(viewPager);
 
-//        highLightCurrentTab(0);
+        highLightCurrentTab(0);
 
-//        viewPager.addOnPageC/
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                highLightCurrentTab(position);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
 
         return view;
     }
 
-//    private void highLightCurrentTab(int position) {
-//        for (int i = 0; i < tabLayout.getTabCount(); i++) {
-//            TabLayout.Tab tab = tabLayout.getTabAt(i);
-//            assert tab != null;
-//            tab.setCustomView(null);
-//            tab.setCustomView(tabAdapter.getTabView(i));
-//        }TabLayout.Tab tab = tabLayout.getTabAt(position);
-//        assert tab != null;
-//        tab.setCustomView(null);
-//        tab.setCustomView(tabAdapter.getSelectedTabView(position));
-//    }
+    private void highLightCurrentTab(int position) {
+        for (int i = 0; i < tabLayout.getTabCount(); i++) {
+            TabLayout.Tab tab = tabLayout.getTabAt(i);
+            assert tab != null;
+            tab.setCustomView(null);
+            tab.setCustomView(tabAdapter.getTabView(i));
+        }TabLayout.Tab tab = tabLayout.getTabAt(position);
+        assert tab != null;
+        tab.setCustomView(null);
+        tab.setCustomView(tabAdapter.getSelectedTabView(position));
+    }
 }
