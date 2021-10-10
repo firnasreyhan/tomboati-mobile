@@ -91,6 +91,7 @@ public class AuthLoginMitraActivity extends AppCompatActivity implements OnCompl
                         } else {
                             AkunMitraResponse.Datum data = akunMitraResponse.getData().get(0);
                             AkunModel akunModel = new AkunModel();
+                            akunModel.setPoin(data.getPoin().toString());
                             akunModel.setId(data.getIduserregister());
                             akunModel.setPaket(data.getStatusUser());
                             akunModel.setKtp(data.getNomorktp());
@@ -100,16 +101,11 @@ public class AuthLoginMitraActivity extends AppCompatActivity implements OnCompl
                             akunModel.setHphone(data.getNomorhp());
                             akunModel.setFotoKTP(data.getFilektp());
                             akunModel.setPhoto(data.getFoto());
-//                        akunModel.setBuktiBayar(data.getBuktibayar());
                             akunModel.setUserId(data.getUsername());
                             akunModel.setKecamatan(data.getKecamatan());
                             akunModel.setAddress(data.getAlamat());
                             akunModel.setPropinsi(data.getProvinsi());
                             akunModel.setKodePos(data.getKodepos());
-//                        akunModel.setCabang(data.getCabang());
-//                        akunModel.setAtasNama(data.getAtasnama());
-//                        akunModel.setRekening(data.getRekening());
-//                        akunModel.setBank(data.getBank());
                             akunModel.setKota(data.getKota());
                             akunModel.setIdChatRoom(data.getIdChatRoom());
                             PreferenceAkun.removeAkun(v.getContext());

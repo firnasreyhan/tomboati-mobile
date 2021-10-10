@@ -26,6 +26,7 @@ public class AkunModel implements Serializable {
     private String ktp; // <= REGISTER =
     private String referral; // <= AUTO
     private String idChatRoom; // <= AUTO
+    private String poin; // <= AUTO
 
 
     private boolean suksesDaftarMitra = false;
@@ -52,6 +53,14 @@ public class AkunModel implements Serializable {
 
     public void setSuksesDaftarMitra(boolean suksesDaftarMitra) {
         this.suksesDaftarMitra = suksesDaftarMitra;
+    }
+
+    public String getPoin() {
+        return poin;
+    }
+
+    public void setPoin(String poin) {
+        this.poin = poin;
     }
 
     public String getIdChatRoom() {

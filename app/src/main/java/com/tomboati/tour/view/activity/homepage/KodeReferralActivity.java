@@ -74,7 +74,7 @@ public class KodeReferralActivity extends AppCompatActivity {
                         URI_APK + "\n\n" +
                         "Cukup masukkan\n" +
                         "- no HP Anda\n" +
-                        "- referral : " + data.getReferral() + "\n\n" +
+                        "- referral : " + data.getUserId() + "\n\n" +
                         "Dapatkan kesempatan UMROH GRATIS dengan cukup mereferensikan Aplikasi ini.\n\n" +
                         "Info : 0812-1636-1984 (Fidza)";
                 Intent sendIntent = new Intent();

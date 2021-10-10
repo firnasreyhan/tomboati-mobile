@@ -20,6 +20,7 @@ import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.tomboati.tour.R;
+import com.tomboati.tour.model.AkunModel;
 import com.tomboati.tour.preference.PreferenceAkun;
 import com.tomboati.tour.utils.AlertInfo;
 import com.tomboati.tour.utils.AlertProgress;
@@ -35,7 +36,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class AkunMitraFragment extends Fragment {
 
-    private TextView textViewNamaAkunMitra;
+    private TextView textViewNamaAkunMitra, textViewPoint;
     private CircleImageView imageViewFotoAkunMitra;
     private ConstraintLayout constrainLayoutKodeReferral, consraintLayoutLogout,
             constraintLayoutIbahPassword, menuHubungiKami, constraintLayoutUbahProfil;
@@ -62,9 +63,9 @@ public class AkunMitraFragment extends Fragment {
         constraintLayoutIbahPassword = view.findViewById(R.id.constraintLayoutIbahPassword);
         constraintLayoutUbahProfil = view.findViewById(R.id.constraintLayoutUbahProfil);
         menuHubungiKami = view.findViewById(R.id.menuHubungiKami);
+        textViewPoint = view.findViewById(R.id.textViewPoint);
 
         textViewNamaAkunMitra.setText(PreferenceAkun.getAkun(getContext()).getName());
-        picassoLoad(PreferenceAkun.getAkun(getContext()).getPhoto(), imageViewFotoAkunMitra);
 
 
         constrainLayoutKodeReferral.setOnClickListener(v ->
@@ -123,6 +124,16 @@ public class AkunMitraFragment extends Fragment {
 
             alert.show();
         });
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        AkunModel model = PreferenceAkun.getAkun(getContext());
+        picassoLoad(model.getPhoto(), imageViewFotoAkunMitra);
+        if(model.getPoin() != null) {
+            textViewPoint.setText(model.getPoin());
+        }
     }
 
     private void picassoLoad(String uri, ImageView imageView) {

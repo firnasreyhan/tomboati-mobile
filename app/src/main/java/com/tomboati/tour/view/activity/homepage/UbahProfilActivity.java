@@ -154,6 +154,7 @@ public class UbahProfilActivity extends AppCompatActivity {
                     if(ubahFotoProfileResponse != null) {
                         if(!ubahFotoProfileResponse.isError()) {
                             picassoLoad(ubahFotoProfileResponse.getFoto(), imageViewRegistrasiFotoProfile);
+                            MODEL.setPhoto(ubahFotoProfileResponse.getFoto());
                             PreferenceAkun.removeAkun(getApplicationContext());
                             PreferenceAkun.setAkun(getApplicationContext(), MODEL);
                             MODEL = PreferenceAkun.getAkun(getApplicationContext());

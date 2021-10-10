@@ -69,17 +69,17 @@ public class PesananFragment extends Fragment {
                 recyclerView.setVisibility(View.GONE);
                 linearLayoutNoSignIn.setVisibility(View.GONE);
                 shimmerFrameLayoutPesanan.setVisibility(View.VISIBLE);
-                list.clear();
-                onResume();
+                onStart();
             }
         });
 
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
+    public void onStart() {
+        super.onStart();
         shimmerFrameLayoutPesanan.startShimmer();
+        list.clear();
         String idUser = PreferenceAkun.getAkun(getContext()).getId();
         viewModel.getPaketHajiUmrahVerif(idUser).observe(OWNER, new Observer<ListPaketVerifyRespone>() {
             @Override

@@ -67,20 +67,18 @@ public class RiwayatFragment extends Fragment {
             recyclerView.setVisibility(View.GONE);
             linearLayoutNoSignIn.setVisibility(View.GONE);
             shimmerFrameLayoutPesanan.setVisibility(View.VISIBLE);
-            list.clear();
             onResume();
         });
 
 
     }
 
-
-
     @Override
-    public void onResume() {
-        super.onResume();
+    public void onStart() {
+        super.onStart();
         shimmerFrameLayoutPesanan.startShimmer();
 
+        list.clear();
         String idUser = PreferenceAkun.getAkun(getContext()).getId();
         viewModel.getRiwayatPaketHajiUmrahVerif(idUser).observe(OWNER, new Observer<ListPaketVerifyRespone>() {
             @Override
