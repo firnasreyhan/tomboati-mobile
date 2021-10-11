@@ -79,11 +79,15 @@ public class InformasiPembayaranActivity extends AppCompatActivity {
                         textViewIdPembayaran.setText(data.getIDPEMBAYARAN());
                         textViewTotalPembayaran.setText(String.format("Rp. %,.02f", Double.parseDouble(data.getTOTALPEMBAYARAN())));
                         textViewSisaPembayaran.setText(String.format("Rp. %,.02f", Double.parseDouble(data.getSISAPEMBAYARAN())));
-                        Log.d("===", "onChanged: " + data.getTANGGALPEMBAYARAN());
+
                         String[] split = data.getTANGGALPEMBAYARAN().split("-");
                         textViewTanggalPembayaran.setText(split[2].concat(" ").concat(month[Integer.parseInt(split[1]) - 1].concat(" ").concat(split[0])));
                         split = data.getTANGGALJATUHTEMPO().split("-");
                         textViewJatuhTempo.setText(split[2].concat(" ").concat(month[Integer.parseInt(split[1]) - 1].concat(" ").concat(split[0])));
+
+                        if(isValidation) {
+                            materialButtonBayarSekarang1.setVisibility(View.GONE);
+                        }
                     }
                 }
             }
