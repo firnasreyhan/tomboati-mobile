@@ -41,17 +41,14 @@ public class RiwayatFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        final View v = inflater.inflate(R.layout.fragment_riwayat, container, false);
-        final Toolbar toolbar = v.findViewById(R.id.toolbar);
-        toolbar.setTitle("List Riwayat");
-        return v;
+        return inflater.inflate(R.layout.fragment_riwayat, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        viewModel = ViewModelProviders.of(this).get(RiwayatViewModel.class);
+        viewModel = ViewModelProviders.of(requireActivity()).get(RiwayatViewModel.class);
 
         list = new ArrayList<>();
 
@@ -60,6 +57,9 @@ public class RiwayatFragment extends Fragment {
         linearLayoutNoSignIn = view.findViewById(R.id.linearLayoutNoSignIn);
         swipeRefreshLayout = view.findViewById(R.id.swipeRefreshLayout);
 
+        final Toolbar toolbar = view.findViewById(R.id.toolbar);
+        toolbar.setTitle("List Riwayat");
+
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
 
@@ -67,6 +67,7 @@ public class RiwayatFragment extends Fragment {
             recyclerView.setVisibility(View.GONE);
             linearLayoutNoSignIn.setVisibility(View.GONE);
             shimmerFrameLayoutPesanan.setVisibility(View.VISIBLE);
+            viewModel.clearDataRiwayat();
             onStart();
         });
 

@@ -16,28 +16,53 @@ import com.tomboati.tour.repository.Repository;
 public class BerandaViewModel extends AndroidViewModel {
     private Repository repository;
 
+    private MutableLiveData<JadwalSholatResponse> jadwalSholatData;
+    private MutableLiveData<PaketResponse> getPaketData;
+    private MutableLiveData<PaketWisataResponse> getWisataHalalData;
+    private MutableLiveData<NewsResponse> getNewsData;
+    private MutableLiveData<KataMutiaraResponse> getKataMutiaraData;
+
     public BerandaViewModel(@NonNull Application application) {
         super(application);
         repository = new Repository();
     }
 
+    public void clearDataLocation() {
+        jadwalSholatData = null;
+    }
+
     public MutableLiveData<JadwalSholatResponse> jadwalSholat(int year, int month, int day, double latitude, double longitude, int timezone) {
-        return repository.jadwalSholat( year, (month + 1), day, latitude, longitude, timezone);
+        if(jadwalSholatData == null) {
+            jadwalSholatData = repository.jadwalSholat( year, (month + 1), day, latitude, longitude, timezone);
+        }
+        return jadwalSholatData;
     }
 
     public MutableLiveData<PaketResponse> getPaket() {
-        return repository.getPaketLimit();
+        if(getPaketData == null) {
+            getPaketData = repository.getPaketLimit();
+        }
+        return getPaketData;
     }
 
     public MutableLiveData<PaketWisataResponse> getWisataHalal() {
-        return repository.getWisataHalalLimit();
+        if(getWisataHalalData == null) {
+            getWisataHalalData = repository.getWisataHalalLimit();
+        }
+        return getWisataHalalData;
     }
 
     public MutableLiveData<NewsResponse> getNews() {
-        return repository.getNews();
+        if(getNewsData == null) {
+            getNewsData = repository.getNews();
+        }
+        return getNewsData;
     }
 
     public MutableLiveData<KataMutiaraResponse> getKataMutiara() {
-        return repository.getKataMutiara();
+        if(getKataMutiaraData == null) {
+            getKataMutiaraData = repository.getKataMutiara();
+        }
+        return getKataMutiaraData;
     }
 }

@@ -41,17 +41,14 @@ public class PesananFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,  Bundle savedInstanceState) {
-        final View v = inflater.inflate(R.layout.fragment_pesanan, container, false);
-        final Toolbar toolbar = v.findViewById(R.id.toolbar);
-        toolbar.setTitle("List Pesanan");
-        return v;
+        return inflater.inflate(R.layout.fragment_pesanan, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        viewModel = ViewModelProviders.of(this).get(PesananViewModel.class);
+        viewModel = ViewModelProviders.of(requireActivity()).get(PesananViewModel.class);
 
         list = new ArrayList<>();
 
@@ -59,6 +56,9 @@ public class PesananFragment extends Fragment {
         shimmerFrameLayoutPesanan = view.findViewById(R.id.shimmerFrameLayoutPesanan);
         linearLayoutNoSignIn = view.findViewById(R.id.linearLayoutNoSignIn);
         swipeRefreshLayout = view.findViewById(R.id.swipeRefreshLayout);
+
+        final Toolbar toolbar = view.findViewById(R.id.toolbar);
+        toolbar.setTitle("List Pesanan");
 
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
@@ -69,6 +69,7 @@ public class PesananFragment extends Fragment {
                 recyclerView.setVisibility(View.GONE);
                 linearLayoutNoSignIn.setVisibility(View.GONE);
                 shimmerFrameLayoutPesanan.setVisibility(View.VISIBLE);
+                viewModel.clearDataPesanan();
                 onStart();
             }
         });

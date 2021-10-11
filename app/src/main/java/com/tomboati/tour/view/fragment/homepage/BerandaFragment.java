@@ -8,6 +8,7 @@ import android.location.Location;
 import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -86,13 +87,12 @@ public class BerandaFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        berandaViewModel = ViewModelProviders.of(this).get(BerandaViewModel.class);
-        View view = inflater.inflate(R.layout.fragment_beranda, container, false);
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
-        // Initiate component
+        // Inflate the layout for this fragment
+        berandaViewModel = ViewModelProviders.of(requireActivity()).get(BerandaViewModel.class);
+
         sliderView = view.findViewById(R.id.sliderView);
         cardViewUmrohHaji = view.findViewById(R.id.cardViewUmrohHaji);
         cardViewSholat = view.findViewById(R.id.cardViewSholat);
@@ -152,6 +152,7 @@ public class BerandaFragment extends Fragment {
                     shimmerFrameLayoutSlider.startShimmer();
                     shimmerFrameLayoutSlider.setVisibility(View.VISIBLE);
                     sliderView.setVisibility(View.GONE);
+                    berandaViewModel.clearDataLocation();
                     showLocation();
                 }
             });
@@ -244,8 +245,11 @@ public class BerandaFragment extends Fragment {
         }
 
         initOnClickPromo();
+    }
 
-        return view;
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_beranda, container, false);
     }
 
     private void initOnClickPromo() {

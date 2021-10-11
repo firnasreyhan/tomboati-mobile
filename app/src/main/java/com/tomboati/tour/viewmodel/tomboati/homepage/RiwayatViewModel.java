@@ -11,6 +11,9 @@ import com.tomboati.tour.repository.Repository;
 
 public class RiwayatViewModel extends AndroidViewModel {
 
+    private MutableLiveData<ListPaketVerifyRespone> getRiwayatPaketWisataHalalVerifData;
+    private MutableLiveData<ListPaketVerifyRespone> getRiwayatPaketHajiUmrahVerifData;
+
     private final Repository repository;
 
     public RiwayatViewModel(@NonNull Application application) {
@@ -18,12 +21,23 @@ public class RiwayatViewModel extends AndroidViewModel {
         repository = new Repository();
     }
 
+    public void clearDataRiwayat() {
+        getRiwayatPaketHajiUmrahVerifData = null;
+        getRiwayatPaketWisataHalalVerifData = null;
+    }
+
     public MutableLiveData<ListPaketVerifyRespone> getRiwayatPaketWisataHalalVerif(String id) {
-        return repository.getRiwayatPaketWisataHalalVerif(id);
+        if(getRiwayatPaketWisataHalalVerifData == null) {
+            getRiwayatPaketWisataHalalVerifData = repository.getRiwayatPaketWisataHalalVerif(id);
+        }
+        return getRiwayatPaketWisataHalalVerifData;
     }
 
     public MutableLiveData<ListPaketVerifyRespone> getRiwayatPaketHajiUmrahVerif(String id) {
-        return repository.getRiwayatPaketHajiUmrahVerif(id);
+        if(getRiwayatPaketHajiUmrahVerifData == null) {
+            getRiwayatPaketHajiUmrahVerifData = repository.getRiwayatPaketHajiUmrahVerif(id);
+        }
+        return getRiwayatPaketHajiUmrahVerifData;
     }
 
 

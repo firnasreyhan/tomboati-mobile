@@ -11,6 +11,9 @@ import com.tomboati.tour.repository.Repository;
 
 public class PesananViewModel extends AndroidViewModel {
 
+    private MutableLiveData<ListPaketVerifyRespone> getPaketWisataHalalVerifData;
+    private MutableLiveData<ListPaketVerifyRespone> getPaketHajiUmrahVerifData;
+
     private final Repository repository;
 
     public PesananViewModel(@NonNull Application application) {
@@ -18,12 +21,23 @@ public class PesananViewModel extends AndroidViewModel {
         repository = new Repository();
     }
 
+    public void clearDataPesanan() {
+        getPaketWisataHalalVerifData = null;
+        getPaketHajiUmrahVerifData = null;
+    }
+
     public MutableLiveData<ListPaketVerifyRespone> getPaketWisataHalalVerif(String id) {
-        return repository.getPaketWisataHalalVerif(id);
+        if(getPaketWisataHalalVerifData == null) {
+            getPaketWisataHalalVerifData = repository.getPaketWisataHalalVerif(id);
+        }
+        return getPaketWisataHalalVerifData;
     }
 
     public MutableLiveData<ListPaketVerifyRespone> getPaketHajiUmrahVerif(String id) {
-        return repository.getPaketHajiUmrahVerif(id);
+        if(getPaketHajiUmrahVerifData == null) {
+            getPaketHajiUmrahVerifData = repository.getPaketHajiUmrahVerif(id);
+        }
+        return getPaketHajiUmrahVerifData;
     }
 
 
