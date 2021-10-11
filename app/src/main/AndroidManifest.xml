@@ -88,7 +88,8 @@
         <activity android:name=".view.activity.doa_dzikir.DoaDzikirActivity" />
         <activity android:name=".view.activity.sholat.SholatActivity" />
         <activity android:name=".view.activity.homepage.UmrohHajiActivity" />
-        <activity android:name=".view.activity.homepage.MainActivity" />
+        <activity android:name=".view.activity.homepage.MainActivity"
+            android:hardwareAccelerated="false"/>
         <activity android:name=".view.activity.SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

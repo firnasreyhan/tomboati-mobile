@@ -65,7 +65,16 @@ public class AkunMitraFragment extends Fragment {
         menuHubungiKami = view.findViewById(R.id.menuHubungiKami);
         textViewPoint = view.findViewById(R.id.textViewPoint);
 
-        textViewNamaAkunMitra.setText(PreferenceAkun.getAkun(getContext()).getName());
+        final String NAME = PreferenceAkun.getAkun(getContext()).getName();
+        final String[] NAME_ARRAY = NAME.split(" ");
+        final StringBuilder NAME_FIX = new StringBuilder();
+        for (int i = 0; i < NAME_ARRAY.length; i++) {
+            if(i < 3) {
+                NAME_FIX.append(NAME_ARRAY[i]);
+            }
+        }
+
+        textViewNamaAkunMitra.setText(NAME_FIX);
 
 
         constrainLayoutKodeReferral.setOnClickListener(v ->

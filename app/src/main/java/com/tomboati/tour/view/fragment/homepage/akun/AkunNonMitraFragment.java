@@ -54,7 +54,18 @@ public class AkunNonMitraFragment extends Fragment {
         MODEL = PreferenceAkun.getAkun(view.getContext());
 
         if(MODEL.isFieldFilled()) {
-            textViewNamaPengguna.setText(PreferenceAkun.getAkun(view.getContext()).getName());
+
+            final String NAME = PreferenceAkun.getAkun(getContext()).getName();
+            final String[] NAME_ARRAY = NAME.split(" ");
+            final StringBuilder NAME_FIX = new StringBuilder();
+            for (int i = 0; i < NAME_ARRAY.length; i++) {
+                if(i < 3) {
+                    NAME_FIX.append(NAME_ARRAY[i]);
+                }
+            }
+
+            textViewNamaPengguna.setText(NAME_FIX);
+
             textLengkapiBiodata.setText("Ubah Data Diri");
             textDeskripsiBiodata.setText("Ubah data diri anda disini");
             if(MODEL.getPhoto() != null) {
