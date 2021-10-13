@@ -36,7 +36,7 @@ public class HubungiKamiActivity extends AppCompatActivity {
 
         materialCardViewWhatsapp.setOnClickListener(v -> {
             try {
-                final String TO_NUMBER = "6281216361984";
+                final String TO_NUMBER = "6281235438885";
                 final String TEXT_BODY = "Halo, saya dari pengguna aplikasi tomboatitour ingin menanyakan sesuatu kepada anda bahwa ....";
                 final String URI = "https://api.whatsapp.com/send?phone="+ TO_NUMBER + "&text="+TEXT_BODY;
                 Intent sendIntent = new Intent(Intent.ACTION_VIEW);

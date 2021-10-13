@@ -115,7 +115,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:fontFamily="@font/catamaran_bold"
-                    android:text="(+62) 812 1636 1984"
+                    android:text="+62 812-3543-8885"
                     android:textColor="@color/black"
                     android:textSize="18sp"
                     app:layout_constraintBottom_toBottomOf="@+id/imageView14"
