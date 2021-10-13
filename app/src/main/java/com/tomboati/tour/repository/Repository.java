@@ -32,6 +32,7 @@ import com.tomboati.tour.api.response.PaketMonthResponse;
 import com.tomboati.tour.api.response.PaketResponse;
 import com.tomboati.tour.api.response.PaketWisataResponse;
 import com.tomboati.tour.api.response.PembayaranResponse;
+import com.tomboati.tour.api.response.PoinResponse;
 import com.tomboati.tour.api.response.QuranListResponse;
 import com.tomboati.tour.api.response.QuranSurahResponse;
 import com.tomboati.tour.api.response.SignInResponse;
@@ -1312,6 +1313,32 @@ public class Repository {
 
             @Override
             public void onFailure(Call<UbahFotoProfileResponse> call, Throwable t) {
+                Log.d(TAG, "onFailure: " + t.getMessage());
+                data.postValue(null);
+            }
+        }); return data;
+    }
+
+    //==
+
+    public MutableLiveData<PoinResponse> getPoin(
+            String function,
+            String userId
+    ) {
+        MutableLiveData<PoinResponse> data = new MutableLiveData<>();
+        apiInterfaceTomboAtiMitra.getPoin(
+                function,
+                userId
+        ).enqueue(new Callback<PoinResponse>() {
+            @Override
+            public void onResponse(Call<PoinResponse> call, Response<PoinResponse> response) {
+                if(response.code() == 200) {
+                    data.postValue(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<PoinResponse> call, Throwable t) {
                 Log.d(TAG, "onFailure: " + t.getMessage());
                 data.postValue(null);
             }

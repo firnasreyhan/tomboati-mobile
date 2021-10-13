@@ -17,9 +17,11 @@ import androidx.appcompat.widget.AppCompatButton;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.LifecycleOwner;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.tomboati.tour.R;
+import com.tomboati.tour.api.response.PoinResponse;
 import com.tomboati.tour.model.AkunModel;
 import com.tomboati.tour.preference.PreferenceAkun;
 import com.tomboati.tour.utils.AlertInfo;
@@ -29,6 +31,7 @@ import com.tomboati.tour.view.activity.homepage.KodeReferralActivity;
 import com.tomboati.tour.view.activity.homepage.UbahProfilActivity;
 import com.tomboati.tour.view.activity.mitra.auth.AuthRegisterUserActivity;
 import com.tomboati.tour.view.activity.mitra.auth.UbahPasswordActivity;
+import com.tomboati.tour.viewmodel.tomboati.mitra.AkunMitraViewModel;
 import com.tomboati.tour.viewmodel.tomboati.mitra.LoginAkunMitraViewModel;
 import com.squareup.picasso.Picasso;
 
@@ -41,7 +44,7 @@ public class AkunMitraFragment extends Fragment {
     private ConstraintLayout constrainLayoutKodeReferral, consraintLayoutLogout,
             constraintLayoutIbahPassword, menuHubungiKami, constraintLayoutUbahProfil;
 
-    private LoginAkunMitraViewModel viewModel;
+    private AkunMitraViewModel viewModel;
     private final LifecycleOwner OWNER = this;
 
     @Override
@@ -54,7 +57,7 @@ public class AkunMitraFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        viewModel = ViewModelProviders.of(this).get(LoginAkunMitraViewModel.class);
+        viewModel = ViewModelProviders.of(requireActivity()).get(AkunMitraViewModel.class);
 
         textViewNamaAkunMitra = view.findViewById(R.id.textViewNamaAkunMitra);
         imageViewFotoAkunMitra = view.findViewById(R.id.imageViewFotoAkunMitra);
@@ -64,6 +67,15 @@ public class AkunMitraFragment extends Fragment {
         constraintLayoutUbahProfil = view.findViewById(R.id.constraintLayoutUbahProfil);
         menuHubungiKami = view.findViewById(R.id.menuHubungiKami);
         textViewPoint = view.findViewById(R.id.textViewPoint);
+
+        viewModel.getPoin().observe(OWNER, new Observer<PoinResponse>() {
+            @Override
+            public void onChanged(PoinResponse poinResponse) {
+                if(!poinResponse.isError()) {
+                    textViewPoint.setText(poinResponse.getPoin().toString());
+                }
+            }
+        });
 
         final String NAME = PreferenceAkun.getAkun(getContext()).getName();
         final String[] NAME_ARRAY = NAME.split(" ");

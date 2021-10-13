@@ -3,6 +3,7 @@ package com.tomboati.tour.api;
 import com.tomboati.tour.api.response.AkunMitraResponse;
 import com.tomboati.tour.api.response.AkunResponse;
 import com.tomboati.tour.api.response.BaseResponse;
+import com.tomboati.tour.api.response.PoinResponse;
 import com.tomboati.tour.api.response.UbahFotoProfileResponse;
 
 import okhttp3.MultipartBody;
@@ -10,6 +11,7 @@ import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
@@ -103,5 +105,11 @@ public interface ApiInterfaceTomboAtiMitra {
             @Field("kodePos") String kodePos,
             @Field("country") String country,
             @Field("email") String email
+    );
+
+    @GET("User.php")
+    Call<PoinResponse> getPoin(
+            @Query("function") String function,
+            @Query("userid") String userId
     );
 }

@@ -10,6 +10,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.tomboati.tour.api.response.AkunMitraResponse;
 import com.tomboati.tour.api.response.BaseResponse;
+import com.tomboati.tour.api.response.PoinResponse;
 import com.tomboati.tour.preference.PreferenceAkun;
 import com.tomboati.tour.repository.Repository;
 
@@ -26,16 +27,7 @@ public class LoginAkunMitraViewModel extends AndroidViewModel{
     }
 
     public MutableLiveData<AkunMitraResponse> loginMitra(String username, String password, String token) {
-        return this.repository.loginMitra(
-                "login_post", username, password, token
-        );
-    }
-
-    public MutableLiveData<BaseResponse> logout() {
-        return this.repository.logout(
-                "logout_post",
-                PreferenceAkun.getAkun(context).getEmail()
-        );
+        return this.repository.loginMitra("login_post", username, password, token);
     }
 
 }

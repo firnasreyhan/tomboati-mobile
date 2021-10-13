@@ -93,7 +93,7 @@ public class AuthLoginMitraActivity extends AppCompatActivity implements OnCompl
                             AppPreference.removeNotif(v.getContext());
                             AkunMitraResponse.Datum data = akunMitraResponse.getData().get(0);
                             AkunModel akunModel = new AkunModel();
-                            akunModel.setPoin(data.getPoin().toString());
+//                            akunModel.setPoin(data.getPoin().toString());
                             akunModel.setId(data.getIduserregister());
                             akunModel.setPaket(data.getStatusUser());
                             akunModel.setKtp(data.getNomorktp());
