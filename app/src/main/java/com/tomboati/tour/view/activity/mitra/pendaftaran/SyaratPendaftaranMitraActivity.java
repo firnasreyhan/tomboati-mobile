@@ -11,8 +11,6 @@ import com.google.android.material.button.MaterialButton;
 
 public class SyaratPendaftaranMitraActivity extends AppCompatActivity {
 
-    private MaterialButton materialButtonSetujuDanLanjutkan;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,7 +18,7 @@ public class SyaratPendaftaranMitraActivity extends AppCompatActivity {
 
         final boolean isDataDiriFilled = PreferenceAkun.getAkun(this).isFieldFilled();
 
-        materialButtonSetujuDanLanjutkan = findViewById(R.id.materialButtonSetujuDanLanjutkan);
+        MaterialButton materialButtonSetujuDanLanjutkan = findViewById(R.id.materialButtonSetujuDanLanjutkan);
 
         materialButtonSetujuDanLanjutkan.setOnClickListener(v ->{
             final Class classIntent = isDataDiriFilled ?

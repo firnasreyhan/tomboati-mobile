@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/ic_background_beranda"
     android:orientation="vertical"
-    tools:context="tour.view.activity.mitra.pendaftaran.SyaratPendaftaranMitraActivity">
+    tools:context=".view.activity.mitra.pendaftaran.SyaratPendaftaranMitraActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"
@@ -77,11 +77,23 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:fontFamily="@font/catamaran_regular"
-                            android:text="Mengisi Formulir Pendaftaran Umrah"
+                            android:text="Untuk awal cukup mengisi Formulir Pendaftaran "
                             android:textColor="@android:color/black"
                             android:textSize="@dimen/_9sdp" />
 
                     </LinearLayout>
+
+                    <!--                    ====-->
+
+                    <com.codesgood.views.JustifiedTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:fontFamily="@font/catamaran_bold"
+                        android:text="syarat berkas keberangkatan"
+                        android:textAllCaps="true"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/_10sdp" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -94,7 +106,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/catamaran_regular"
-                            android:text="2. "
+                            android:text="1. "
                             android:textColor="@android:color/black"
                             android:textSize="@dimen/_9sdp" />
 
@@ -120,7 +132,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/catamaran_regular"
-                            android:text="3. "
+                            android:text="2. "
                             android:textColor="@android:color/black"
                             android:textSize="@dimen/_9sdp" />
 
@@ -129,7 +141,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:fontFamily="@font/catamaran_regular"
-                            android:text="Foto Kopy KTP dan Kartu Keluarga"
+                            android:text="2.Foto Kopy KTP dan Kartu Keluarga"
                             android:textColor="@android:color/black"
                             android:textSize="@dimen/_9sdp" />
 
@@ -146,7 +158,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/catamaran_regular"
-                            android:text="4. "
+                            android:text="3. "
                             android:textColor="@android:color/black"
                             android:textSize="@dimen/_9sdp" />
 
@@ -172,7 +184,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/catamaran_regular"
-                            android:text="5. "
+                            android:text="4. "
                             android:textColor="@android:color/black"
                             android:textSize="@dimen/_9sdp" />
 
@@ -181,7 +193,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:fontFamily="@font/catamaran_regular"
-                            android:text="Akte Lahir (bagi anak – anak)"
+                            android:text="Akte Lahir (bagi anak-anak)"
                             android:textColor="@android:color/black"
                             android:textSize="@dimen/_9sdp" />
 
@@ -198,7 +210,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/catamaran_regular"
-                            android:text="6. "
+                            android:text="5. "
                             android:textColor="@android:color/black"
                             android:textSize="@dimen/_9sdp" />
 
@@ -224,7 +236,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/catamaran_regular"
-                            android:text="7. "
+                            android:text="6. "
                             android:textColor="@android:color/black"
                             android:textSize="@dimen/_9sdp" />
 
@@ -233,33 +245,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:fontFamily="@font/catamaran_regular"
-                            android:text="Foto berwarna 4 x 6 = 3 lembar"
-                            android:textColor="@android:color/black"
-                            android:textSize="@dimen/_9sdp" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_3sdp"
-                        android:gravity="top|left"
-                        android:orientation="horizontal">
-
-                        <com.codesgood.views.JustifiedTextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/catamaran_regular"
-                            android:text="8. "
-                            android:textColor="@android:color/black"
-                            android:textSize="@dimen/_9sdp" />
-
-                        <com.codesgood.views.JustifiedTextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:fontFamily="@font/catamaran_regular"
-                            android:text="Persyaratan ini diserahkan paling lambat 1 bulan sebelum keberangkatan yang telah ditentukan."
+                            android:text="Foto berwarna 4 x 6 = 3 lembar\nNote : Diserahkan paling lambat 1 bulan sebelum keberangkatan yang telah ditentukan."
                             android:textColor="@android:color/black"
                             android:textSize="@dimen/_9sdp" />
 
@@ -297,7 +283,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:fontFamily="@font/catamaran_regular"
-                            android:text="Biaya paket dalam mata uang U$ Dollar, bisa dibayar rupiah dengan kurs yang berlaku pada saat pembayaran dilakukan."
+                            android:text="1.Untuk mewujudkan Niat ke Baitullah dapat diawali dengan setor minimal Rp 100.000,-"
                             android:textColor="@android:color/black"
                             android:textSize="@dimen/_9sdp" />
 
@@ -323,7 +309,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:fontFamily="@font/catamaran_regular"
-                            android:text="Pembayaran dilakukan langsung ke Kantor Pusat TOMBOATI TOUR Di Ruko Wilis Center Jl. Simpang Wilis 1-E Malang."
+                            android:text="Biaya paket dalam mata uang U$ Dollar, bisa dibayar rupiah dengan kurs yang berlaku pada saat pembayaran dilakukan."
                             android:textColor="@android:color/black"
                             android:textSize="@dimen/_9sdp" />
 
@@ -341,6 +327,32 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/catamaran_regular"
                             android:text="3. "
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_9sdp" />
+
+                        <com.codesgood.views.JustifiedTextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/catamaran_regular"
+                            android:text="Pembayaran dilakukan langsung ke Kantor Pusat TOMBOATI TOUR Di Ruko Wilis Center Jl. Simpang Wilis 1-E Malang."
+                            android:textColor="@android:color/black"
+                            android:textSize="@dimen/_9sdp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_3sdp"
+                        android:gravity="top|left"
+                        android:orientation="horizontal">
+
+                        <com.codesgood.views.JustifiedTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/catamaran_regular"
+                            android:text="4. "
                             android:textColor="@android:color/black"
                             android:textSize="@dimen/_9sdp" />
 
@@ -423,7 +435,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/catamaran_regular"
-                            android:text="4. "
+                            android:text="5. "
                             android:textColor="@android:color/black"
                             android:textSize="@dimen/_9sdp" />
 
@@ -449,7 +461,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/catamaran_regular"
-                            android:text="5. "
+                            android:text="6. "
                             android:textColor="@android:color/black"
                             android:textSize="@dimen/_9sdp" />
 
