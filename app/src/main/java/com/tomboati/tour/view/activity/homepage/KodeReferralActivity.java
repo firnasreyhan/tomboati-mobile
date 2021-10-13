@@ -59,8 +59,16 @@ public class KodeReferralActivity extends AppCompatActivity {
 
         materialButtonShare.setOnClickListener(v -> {
             if(data.getPaket().equals("MITRA")) {
-//                final String URI_APK = "https://play.google.com/store/apps/details?id=com.tomboati.tour";
+                final String REFERRAL_ME = data.getUserId();
+                final String[] NAME = data.getName().split(" ");
+                String PHONE = data.getHphone();
+                if (PHONE.charAt(0) == '0') {
+                    PHONE = PHONE.replaceFirst("0", "62");
+                } else if (PHONE.charAt(0) == '+') {
+                    PHONE = PHONE.replaceFirst("\\+", "");
+                }
                 final String URI_APK = "https://tomboatitour.biz/apps";
+                final String WA_ME = "https://api.whatsapp.com/send?phone=" + PHONE;
                 final String TEXT =
                         "SPECIAL UNTUK ANDA\n\n" +
                         "Unduh Aplikasinya - Banyak Manfaatnya\n" +
@@ -74,9 +82,10 @@ public class KodeReferralActivity extends AppCompatActivity {
                         URI_APK + "\n\n" +
                         "Cukup masukkan\n" +
                         "- no HP Anda\n" +
-                        "- referral : " + data.getUserId() + "\n\n" +
+                        "- referral : " + REFERRAL_ME + "\n\n" +
                         "Dapatkan kesempatan UMROH GRATIS dengan cukup mereferensikan Aplikasi ini.\n\n" +
-                        "Info : 0812-1636-1984 (Fidza)";
+                        "Info : (" + NAME[0]  + (NAME.length > 1 ? " " + NAME[1] : "") + ")\n" +
+                        WA_ME;
                 Intent sendIntent = new Intent();
                 sendIntent.setAction(Intent.ACTION_SEND);
                 sendIntent.putExtra(Intent.EXTRA_TEXT, TEXT);

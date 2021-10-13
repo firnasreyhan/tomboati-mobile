@@ -36,11 +36,11 @@ public class Syarat2Activity extends AppCompatActivity {
                 if(ID_TRANSAKSI == null) {
                     intent = new Intent(v.getContext(), DrawTandaTanganPendaftaran.class);
                     intent.putExtra("OBJECT", (Serializable) model);
-                    startActivity(intent);
                 } else {
                     intent = new Intent(v.getContext(), FormPembayaranActivity.class);
                     intent.putExtra("ID_TRANSAKSI", ID_TRANSAKSI);
                 }
+                finish();
                 startActivity(intent);
             }
         });

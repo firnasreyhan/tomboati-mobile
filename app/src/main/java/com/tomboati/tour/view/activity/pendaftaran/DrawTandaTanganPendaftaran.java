@@ -113,11 +113,11 @@ public class DrawTandaTanganPendaftaran extends AppCompatActivity {
                                         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-
+//
                                         if (!baseResponse.isError()) {
                                             info = new AlertInfo(DrawTandaTanganPendaftaran.this, "Pendaftaran berhasil", intent);
                                         } else {
-                                            info = new AlertInfo(DrawTandaTanganPendaftaran.this, baseResponse.getMessage(), intent);
+                                            info = new AlertInfo(v, baseResponse.getMessage());
                                             info.setDialogError();
                                         }
                                         info.showDialog();
