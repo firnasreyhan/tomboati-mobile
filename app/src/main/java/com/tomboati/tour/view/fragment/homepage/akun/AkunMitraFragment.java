@@ -70,7 +70,7 @@ public class AkunMitraFragment extends Fragment {
         final StringBuilder NAME_FIX = new StringBuilder();
         for (int i = 0; i < NAME_ARRAY.length; i++) {
             if(i < 3) {
-                NAME_FIX.append(NAME_ARRAY[i]);
+                NAME_FIX.append(NAME_ARRAY[i] + " ");
             }
         }
 

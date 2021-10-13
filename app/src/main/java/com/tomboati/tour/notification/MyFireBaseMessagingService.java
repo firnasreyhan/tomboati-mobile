@@ -25,16 +25,16 @@ public class MyFireBaseMessagingService extends FirebaseMessagingService {
     public void onMessageReceived(@NonNull RemoteMessage remoteMessage) {
         super.onMessageReceived(remoteMessage);
 
-//        if (!remoteMessage.getNotification().getTitle().equals("Admin")) {
-//            @SuppressLint("SimpleDateFormat")
-//            String tanggal = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
-//            AppPreference.saveNotif(
-//                    getApplicationContext(),
-//                    tanggal,
-//                    remoteMessage.getNotification().getTitle(),
-//                    remoteMessage.getNotification().getBody()
-//            );
-//        }
+        if (!remoteMessage.getNotification().getTitle().equals("Admin")) {
+            @SuppressLint("SimpleDateFormat")
+            String tanggal = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
+            AppPreference.saveNotif(
+                    getApplicationContext(),
+                    tanggal,
+                    remoteMessage.getNotification().getTitle(),
+                    remoteMessage.getNotification().getBody()
+            );
+        }
 
         Intent intent = new Intent(this, SplashScreenActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

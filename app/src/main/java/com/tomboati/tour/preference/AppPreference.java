@@ -21,9 +21,9 @@ public class AppPreference {
     static final String NOTIF_PREF = "NOTIF_PREF";
     static List<NotifikasiModel.DataItem> data = new ArrayList<>();
 
-    public static void saveUser(Context context, SignInResponse.SignInModel signInModel){
-        context.getSharedPreferences(PREF, Context.MODE_PRIVATE).edit().putString(USER_PREF, new Gson().toJson(signInModel)).apply();
-    }
+//    public static void saveUser(Context context, SignInResponse.SignInModel signInModel){
+//        context.getSharedPreferences(PREF, Context.MODE_PRIVATE).edit().putString(USER_PREF, new Gson().toJson(signInModel)).apply();
+//    }
 
     public static void saveNotif(Context context, String tanggal, String judul, String isi) {
         if(getNotifData(context) != null) {
@@ -64,12 +64,12 @@ public class AppPreference {
         return null;
     }
 
-    public static void removeUser(Context context){
-        SharedPreferences pref = context.getSharedPreferences(PREF, Context.MODE_PRIVATE);
-        if(pref.contains(USER_PREF)){
-            pref.edit().remove(USER_PREF).apply();
-        }
-    }
+//    public static void removeUser(Context context){
+//        SharedPreferences pref = context.getSharedPreferences(PREF, Context.MODE_PRIVATE);
+//        if(pref.contains(USER_PREF)){
+//            pref.edit().remove(USER_PREF).apply();
+//        }
+//    }
 
     public static void removeNotif(Context context){
         SharedPreferences pref = context.getSharedPreferences(PREF_NOTIF, Context.MODE_PRIVATE);

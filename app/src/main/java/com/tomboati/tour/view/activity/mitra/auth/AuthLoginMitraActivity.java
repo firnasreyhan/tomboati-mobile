@@ -22,6 +22,7 @@ import com.google.firebase.messaging.FirebaseMessaging;
 import com.tomboati.tour.R;
 import com.tomboati.tour.api.response.AkunMitraResponse;
 import com.tomboati.tour.model.AkunModel;
+import com.tomboati.tour.preference.AppPreference;
 import com.tomboati.tour.preference.PreferenceAkun;
 import com.tomboati.tour.utils.AlertInfo;
 import com.tomboati.tour.utils.AlertProgress;
@@ -89,6 +90,7 @@ public class AuthLoginMitraActivity extends AppCompatActivity implements OnCompl
                             info.setDialogError();
                             info.showDialog();
                         } else {
+                            AppPreference.removeNotif(v.getContext());
                             AkunMitraResponse.Datum data = akunMitraResponse.getData().get(0);
                             AkunModel akunModel = new AkunModel();
                             akunModel.setPoin(data.getPoin().toString());

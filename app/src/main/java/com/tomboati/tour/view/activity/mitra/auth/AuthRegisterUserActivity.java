@@ -20,6 +20,7 @@ import com.google.firebase.messaging.FirebaseMessaging;
 import com.tomboati.tour.R;
 import com.tomboati.tour.api.response.AkunResponse;
 import com.tomboati.tour.model.AkunModel;
+import com.tomboati.tour.preference.AppPreference;
 import com.tomboati.tour.preference.PreferenceAkun;
 import com.tomboati.tour.utils.AlertInfo;
 import com.tomboati.tour.utils.AlertProgress;
@@ -99,6 +100,8 @@ public class AuthRegisterUserActivity extends AppCompatActivity implements OnCom
                             public void onChanged(AkunResponse akunResponse) {
                                 progress.dismissDialog();
                                 if (!akunResponse.getError()) {
+
+                                    AppPreference.removeNotif(v.getContext());
                                     final AkunResponse.DataDbDashTombo dataDashTombo = akunResponse.getDataDbDashTombo().get(0);
                                     final AkunResponse.DataTomboatus dataTomboAti = akunResponse.getDataTomboati().get(0);
 
