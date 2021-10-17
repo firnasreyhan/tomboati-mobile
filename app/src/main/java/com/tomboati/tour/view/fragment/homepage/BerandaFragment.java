@@ -212,19 +212,14 @@ public class BerandaFragment extends Fragment {
                             textViewJudulNews.setText(newsResponse.getData().get(0).getJudulNews());
 
                             List<String> s = splitText(newsResponse.getData().get(0).getContentNews());
-                            StringBuilder news = new StringBuilder();
                             StringBuilder sortNews = new StringBuilder();
                             for(int i = 0; i < s.size(); i++) {
-                                news.append(s.get(i));
                                 int maxString = Math.min(s.size(), 3);
                                 if(maxString > i) {
                                     sortNews.append(s.get(i));
                                 }
                             }
-                            Utility.setContentNews(news.toString());
-                            Utility.setShortNews(sortNews.toString());
-                            textViewSortNews.setText(Utility.getShortNews());
-//                            textViewSortNews.setJustificationMode(LineBreaker.JUSTIFICATION_MODE_INTER_WORD);
+                            textViewSortNews.setText(sortNews.toString());
                         }
                     }
                 }
@@ -323,13 +318,6 @@ public class BerandaFragment extends Fragment {
                 }
             });
         }
-
-        cardViewQurbanAqiqah.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(v.getContext(), "Coming Soon...", Toast.LENGTH_SHORT).show();
-            }
-        });
     }
 
     public void checkLocation() {
