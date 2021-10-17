@@ -9,6 +9,7 @@ import android.os.Bundle;
 
 import com.tomboati.tour.R;
 import com.tomboati.tour.adapter.WaktuMustajabAdapter;
+import com.tomboati.tour.databinding.ActivityAdabBerdoaBinding;
 import com.tomboati.tour.model.TempatMustajabModel;
 
 import java.util.ArrayList;
@@ -16,27 +17,26 @@ import java.util.List;
 
 public class AdabBerdoaActivity extends AppCompatActivity {
 
-    private RecyclerView recyclerViewAdabBerdoa;
     private WaktuMustajabAdapter waktuMustajabAdapter;
     private List<TempatMustajabModel> models;
+    private ActivityAdabBerdoaBinding bind;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setTheme(R.style.ThemeTomboAtiGreen);
-        setContentView(R.layout.activity_adab_berdoa);
+        bind = ActivityAdabBerdoaBinding.inflate(getLayoutInflater());
+        setContentView(bind.getRoot());
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        setSupportActionBar(bind.toolbar);
         setTitle("Adab Berdoa");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         models = new ArrayList<>();
 
-        recyclerViewAdabBerdoa = findViewById(R.id.recyclerViewAdabBerdoa);
-        recyclerViewAdabBerdoa.setHasFixedSize(true);
-        recyclerViewAdabBerdoa.setLayoutManager(new LinearLayoutManager(this));
+        bind.recyclerViewAdabBerdoa.setHasFixedSize(true);
+        bind.recyclerViewAdabBerdoa.setLayoutManager(new LinearLayoutManager(this));
 
         addItem("Mencari Waktu Yang Mustajab", "Di antara waktu yang mustajab adalah hari Arafah, Ramadhan, sore hari Jumat, dan waktu sahur atau sepertiga malam terakhir.");
         addItem("Memanfaatkan Keadaan Mustajab", "Di antara keadaan yang mustajab untuk berdoa adalah: ketika perang, turun hujan, ketika sujud, antara adzan dan iqamah, atau ketika puasa menjelang berbuka.");
@@ -54,7 +54,7 @@ public class AdabBerdoaActivity extends AppCompatActivity {
 
 
         waktuMustajabAdapter = new WaktuMustajabAdapter(models, "Adab Berdoa");
-        recyclerViewAdabBerdoa.setAdapter(waktuMustajabAdapter);
+        bind.recyclerViewAdabBerdoa.setAdapter(waktuMustajabAdapter);
     }
 
     private void addItem(String judul, String keterangan) {

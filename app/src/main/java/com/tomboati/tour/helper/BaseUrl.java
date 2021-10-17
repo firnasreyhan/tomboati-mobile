@@ -1,6 +1,6 @@
-package com.tomboati.tour.utils;
+package com.tomboati.tour.helper;
 
-public class Constant {
+public class BaseUrl {
     public static final String baseURLTomboAti = "https://tomboatitour.biz/api/";
     public static final String baseURLTomboAtiMitra = "https://tomboatitour.biz/dashboard/api/";
     public static final String baseURLJadwalSholat = "https://kalenderindonesia.com/";

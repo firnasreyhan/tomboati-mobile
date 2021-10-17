@@ -1,14 +1,13 @@
 package com.tomboati.tour.view.activity.doa_dzikir;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
 import com.tomboati.tour.R;
 import com.tomboati.tour.adapter.DoaHajiUmrahAdapter;
+import com.tomboati.tour.databinding.ActivityDoaHajiBinding;
 import com.tomboati.tour.model.DoaHajiUmrahModel;
 
 import java.util.ArrayList;
@@ -16,28 +15,25 @@ import java.util.List;
 
 public class DoaHajiActivity extends AppCompatActivity {
 
-    private RecyclerView recyclerViewDoaUmrah;
-    private DoaHajiUmrahAdapter doaHajiUmrahAdapter;
+    private ActivityDoaHajiBinding bind;
     private List<DoaHajiUmrahModel> models;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setTheme(R.style.ThemeTomboAtiGreen);
-        setContentView(R.layout.activity_doa_haji);
+        bind = ActivityDoaHajiBinding.inflate(getLayoutInflater());
+        setContentView(bind.getRoot());
 
-
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        setSupportActionBar(bind.toolbar);
         setTitle("Doa Haji");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         models = new ArrayList<>();
 
-        recyclerViewDoaUmrah = findViewById(R.id.recyclerViewDoaHaji);
-        recyclerViewDoaUmrah.setHasFixedSize(true);
-        recyclerViewDoaUmrah.setLayoutManager(new LinearLayoutManager(this));
+        bind.recyclerViewDoaHaji.setHasFixedSize(true);
+        bind.recyclerViewDoaHaji.setLayoutManager(new LinearLayoutManager(this));
 
         addItem("Doa Niat Haji","لَبَّيْكَ اللَّـهُمَّ حَجًّا","Labbaikallahumma hajjan.","Kupenuhi panggilan-Mu ya Allah untuk berhaji.","");
 
@@ -107,9 +103,7 @@ public class DoaHajiActivity extends AppCompatActivity {
 
         addItem("Do’a Menggunting Rambut","اللهُ أَكْبَرُ، اللهُ أَكْبَرُ، اللهُ أَكْبَرُ كَبِيْرًا، وَالحَمْدُ لِلَّهِ عَلَى مَا هَدَانَا ، وَالحَمْدُ لِلَّهِ عَلَى مَا أَنْعَمَنَا بِهِ عَلَيْنَا اللَّهُمَّ هَذِهِ نَاصِيَتِيْ فَتَقَبَّلْ مِنِّيْ وَاغْفِرْ ذُنُوْبِيْ اللَّهُمَّ اغْفِرْ لِلْمُحَلِّقِيْنَ وَالمُقَصِّرِيْنَ يَا وَاسِعَ المَغْفِرَةِ. اللَّهُمَّ اثْبُتْ لِيْ بِكُلِّ شَعْرَةٍ حَسَنَةً وَامْحُ عَنَّيْ بِهَا سَيِّئَةً، وَارْفَعْ لِيْ بِهَا عِنْدَكَ دَرَجَةً","Allahu akbar, Allahu akbar, Allahu akbar, walhamdulillahi ‘ala maahadaanaa, walhamdulillahi ‘ala maa an’amanaa bihi ‘alainaa Allahumma hadzihi naashiyatiiy fataqabbal minna waghfir dzunuubiiy Allahummaghfirlil muhallaqiina walmuqasshariina yaa waasi’al maghfirah. Allahummatsbut lii bikullan sya’ratin hasanatan waamhu ‘anna bihaa sayya’atan, warfa’liiy bihaa ‘indaka darajatan.","Allah Maha Besar, Allah Maha Besar, Allah Maha Besar. Segala puji bagi Allah yang telah memberi petunjuk kepada kita dan segala puji Bagi Allah tentang apa-apa yang telah Allah karuniakan kepada kami. Ya Allah ini ubun-ubunku, maka terimalah dariku (amal perbuatanku) dan ampunilah dosa-dosaku. Ya Allah ampunilah orang-orang yang mencukur dan memendekkan rambutnya wahai Tuhan yang Maha Luas ampunan-Nya. Ya Allah tetapkanlah untuk diriku setiap helai rambut kebajikan dan hapuskanlah untukku dengan setiap helai rambut kejelekan. Dan angkatlah derajatku disisimu.","");
 
-
-        doaHajiUmrahAdapter = new DoaHajiUmrahAdapter(models);
-        recyclerViewDoaUmrah.setAdapter(doaHajiUmrahAdapter);
+        bind.recyclerViewDoaHaji.setAdapter(new DoaHajiUmrahAdapter(models));
     }
 
     private void addItem(String title, String arabic, String translate, String arti, String keterangan) {

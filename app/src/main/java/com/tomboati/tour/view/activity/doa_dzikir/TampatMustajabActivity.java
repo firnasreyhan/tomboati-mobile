@@ -9,6 +9,7 @@ import android.os.Bundle;
 
 import com.tomboati.tour.R;
 import com.tomboati.tour.adapter.TempatMustajabAdapter;
+import com.tomboati.tour.databinding.ActivityTampatMustajabBinding;
 import com.tomboati.tour.model.TempatMustajabModel;
 
 import java.util.ArrayList;
@@ -16,28 +17,25 @@ import java.util.List;
 
 public class TampatMustajabActivity extends AppCompatActivity {
 
-
-    private RecyclerView recyclerViewTempatMustajab;
-    private TempatMustajabAdapter tempatMustajabAdapter;
+    private ActivityTampatMustajabBinding bind;
     private List<TempatMustajabModel> models;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setTheme(R.style.ThemeTomboAtiGreen);
-        setContentView(R.layout.activity_tampat_mustajab);
+        bind = ActivityTampatMustajabBinding.inflate(getLayoutInflater());
+        setContentView(bind.getRoot());
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        setSupportActionBar(bind.toolbar);
         setTitle("Tempat Mustajab");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         models = new ArrayList<>();
 
-        recyclerViewTempatMustajab = findViewById(R.id.recyclerViewTempatMustajab);
-        recyclerViewTempatMustajab.setHasFixedSize(true);
-        recyclerViewTempatMustajab.setLayoutManager(new LinearLayoutManager(this));
+        bind.recyclerViewTempatMustajab.setHasFixedSize(true);
+        bind.recyclerViewTempatMustajab.setLayoutManager(new LinearLayoutManager(this));
 
         addItem("Multazam", "Multazam merupakan dinding yang terletak antara hajar Aswad dan pintu Kakbah. Tempat ini diyakini para ulama sebagai tempat mustajab untuk berdoa di sekitar Kabah.", "https://id.wikipedia.org/wiki/Multazam", R.drawable.msb_multazam);
         addItem("Hajar Aswad", "Barangkali setiap muslim tahu Hajar Aswad, yaitu batu yang diyakini oleh umat Islam berasal dari surga. Orang yang pertama kali menemukannya adalah Nabi Ismail dan yang meletakkannya adalah Nabi Ibrahim. Hajar Aswad dijadikan pondasi Kakbah saat Nabi Ibrahim dan Nabi Ismail mendapat perintah dari Allah.", "https://id.wikipedia.org/wiki/Hajar_Aswad", R.drawable.msb_hajar_aswad);
@@ -46,8 +44,7 @@ public class TampatMustajabActivity extends AppCompatActivity {
         addItem("Shafa dan Marwah", "Bukit Shafa dan Marwah merupakan saksi sejarah bagi umat Islam, masih dalam sejarah Nabi Ibrahim AS dan Nabi Ismail AS. Demikian, bukit Shafa dan Marwah termasuk bagian dari bangunan Masjidil Haram dan menjadi bagian dari pelaksanaan ibadah haji dan umrah, yakni Sa'i.", "https://id.wikipedia.org/wiki/Shofa_dan_Marwah", R.drawable.msb_shafa_marwah);
         addItem("Raudhah", "Tempat mustajab untuk berdoa selanjutnya yakni di Masjid Nabawi, tepatnya di Raudhah (Taman Surga), yaitu tempat antara mimbar dan kediaman Rasulullah Muhammad SAW saat beliau hidup yang menjadi salah satu tempat istimewa bagi masyarakat muslim.", "https://news.detik.com/berita/d-4828661/keutamaan-raudhah-taman-surga-tempat-mustajabnya-doa", R.drawable.msb_raudhah);
 
-        tempatMustajabAdapter = new TempatMustajabAdapter(models);
-        recyclerViewTempatMustajab.setAdapter(tempatMustajabAdapter);
+        bind.recyclerViewTempatMustajab.setAdapter(new TempatMustajabAdapter(models));
     }
 
 

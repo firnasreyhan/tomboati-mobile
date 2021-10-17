@@ -15,186 +15,150 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.tomboati.tour.R;
+import com.tomboati.tour.databinding.ActivityHitungTasbihBinding;
 import com.tomboati.tour.utils.Utility;
 import com.ramijemli.percentagechartview.PercentageChartView;
 
 public class HitungTasbihActivity extends AppCompatActivity {
 
-    private int count_tasbeeh = 0;
-    private int max = 33;
-    private int time_vibrate =40;
+    private ActivityHitungTasbihBinding bind;
+    private int countTasbeeh = 0;
+    private final int max = 33;
+    private int timeVibrate = 40;
     private int index = 0;
-
-    private ImageView img_prev, img_next;
-    private TextView text_count, text_judul, text_arabic, text_translate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setTheme(R.style.ThemeTomboAtiGreen);
-        setContentView(R.layout.activity_hitung_tasbih);
+        bind = ActivityHitungTasbihBinding.inflate(getLayoutInflater());
+        setContentView(bind.getRoot());
 
         index = this.getIntent().getIntExtra("POSITION", 0);
-
-        count_tasbeeh = Utility.getTasbihModel().get(index).getCount_tasbeeh();
-
-        PercentageChartView chartView = findViewById(R.id.bar);
-        chartView.setProgress(count_tasbeeh, true);
-
-        text_count = findViewById(R.id.txt_count);
-        text_judul = findViewById(R.id.text_judul);
-        text_arabic = findViewById(R.id.text_arabic);
-        text_translate = findViewById(R.id.text_translate);
-
-        text_count.setText("" + Utility.getTasbihModel().get(index).getCount_tasbeeh());
-        text_judul.setText(Utility.getTasbihModel().get(index).getJudul());
-        text_arabic.setText(Utility.getTasbihModel().get(index).getArabic());
-        text_translate.setText(Utility.getTasbihModel().get(index).getTranslate());
+        countTasbeeh = Utility.getTasbihModel().get(index).getCount_tasbeeh();
 
         final Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
 
-        img_prev = findViewById(R.id.img_prev);
-        img_next = findViewById(R.id.img_next);
-
         if(index == 0) {
-            img_prev.setVisibility(View.GONE);
+            bind.imgPrev.setVisibility(View.GONE);
         }
 
         if(index == Utility.getTasbihModel().size() - 1) {
-            img_next.setVisibility(View.GONE);
+            bind.imgNext.setVisibility(View.GONE);
         }
 
-        img_prev.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Utility.getTasbihModel().get(index).setCount_tasbeeh(count_tasbeeh);
+        bind.imgPrev.setOnClickListener(v -> {
+            Utility.getTasbihModel().get(index).setCount_tasbeeh(countTasbeeh);
 
-                index--;
+            index--;
 
-                count_tasbeeh = Utility.getTasbihModel().get(index).getCount_tasbeeh();
+            countTasbeeh = Utility.getTasbihModel().get(index).getCount_tasbeeh();
 
-                time_vibrate = 40;
-                text_count.setText("" + count_tasbeeh);
-                text_judul.setText(Utility.getTasbihModel().get(index).getJudul());
-                text_arabic.setText(Utility.getTasbihModel().get(index).getArabic());
-                text_translate.setText(Utility.getTasbihModel().get(index).getTranslate());
-                chartView.setProgress((count_tasbeeh / (float) max) * 100, true);
+            timeVibrate = 40;
+            onStart();
 
-                if(index == 0) {
-                    img_prev.setVisibility(View.GONE);
-                }else if(index < Utility.getTasbihModel().size() - 1) {
-                    img_next.setVisibility(View.VISIBLE);
-                }
+            if(index == 0) {
+                bind.imgPrev.setVisibility(View.GONE);
+            }else if(index < Utility.getTasbihModel().size() - 1) {
+                bind.imgNext.setVisibility(View.VISIBLE);
             }
         });
 
-        img_next.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Utility.getTasbihModel().get(index).setCount_tasbeeh(count_tasbeeh);
+        bind.imgNext.setOnClickListener(v -> {
+            Utility.getTasbihModel().get(index).setCount_tasbeeh(countTasbeeh);
 
-                index++;
+            index++;
+            timeVibrate = 40;
 
-                count_tasbeeh = Utility.getTasbihModel().get(index).getCount_tasbeeh();
+            countTasbeeh = Utility.getTasbihModel().get(index).getCount_tasbeeh();
+            onStart();
 
-                time_vibrate = 40;
-                text_count.setText("" + count_tasbeeh);
-                text_judul.setText(Utility.getTasbihModel().get(index).getJudul());
-                text_arabic.setText(Utility.getTasbihModel().get(index).getArabic());
-                text_translate.setText(Utility.getTasbihModel().get(index).getTranslate());
-                chartView.setProgress((count_tasbeeh / (float) max) * 100, true);
+            if(index == Utility.getTasbihModel().size() - 1) {
+                bind.imgNext.setVisibility(View.GONE);
+            }
 
-                if(index == Utility.getTasbihModel().size() - 1) {
-                    img_next.setVisibility(View.GONE);
-                }
-
-                if(index > 0) {
-                    img_prev.setVisibility(View.VISIBLE);
-                }
+            if(index > 0) {
+                bind.imgPrev.setVisibility(View.VISIBLE);
             }
         });
 
+        bind.imgAdd.setOnClickListener(v -> {
+            if(countTasbeeh < max){
+                countTasbeeh++;
+            }
 
-        findViewById(R.id.img_add).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(count_tasbeeh < max){
-                    count_tasbeeh++;
-                }
+            if(countTasbeeh == max) {
+                timeVibrate = 1000;
+                Toast.makeText(v.getContext(), "Hitungan tasbih anda sudah maksimal", Toast.LENGTH_SHORT).show();
+            }
 
-                if(count_tasbeeh == max) {
-                    time_vibrate = 1000;
-                    Toast.makeText(v.getContext(), "Hitungan tasbih anda sudah maksimal", Toast.LENGTH_SHORT).show();
-                }
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                final VibrationEffect effect = VibrationEffect.createOneShot(timeVibrate, VibrationEffect.EFFECT_TICK);
+                vibrator.cancel();
+                vibrator.vibrate(effect);
+            }
+
+            bind.txtCount.setText(String.valueOf(countTasbeeh));
+            bind.bar.setProgress((countTasbeeh / (float) max) * 100, true);
+        });
+
+        bind.imgMinus.setOnClickListener(v -> {
+            if(countTasbeeh > 0) {
+                countTasbeeh--;
+                timeVibrate = 40;
 
 
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                    final VibrationEffect effect = VibrationEffect.createOneShot(time_vibrate,
+                    final VibrationEffect effect = VibrationEffect.createOneShot(timeVibrate,
                             VibrationEffect.EFFECT_TICK);
                     vibrator.cancel();
                     vibrator.vibrate(effect);
                 }
 
-                text_count.setText("" + count_tasbeeh);
-                chartView.setProgress((count_tasbeeh / (float) max) * 100, true);
+                bind.txtCount.setText(String.valueOf(countTasbeeh));
+                bind.bar.setProgress((countTasbeeh / (float) max) * 100, true);
             }
         });
 
-        findViewById(R.id.img_minus).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(count_tasbeeh > 0) {
-                    count_tasbeeh--;
-                    time_vibrate = 40;
-
-
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                        final VibrationEffect effect = VibrationEffect.createOneShot(time_vibrate,
-                                VibrationEffect.EFFECT_TICK);
-                        vibrator.cancel();
-                        vibrator.vibrate(effect);
+        bind.imgReload.setOnClickListener(v -> {
+            if(countTasbeeh > 0) {
+                AlertDialog.Builder alert = new AlertDialog.Builder(v.getContext());
+                alert.setTitle("Konfirmasi!");
+                alert.setMessage("Apakah anda yakin ingin mengatur ulang?");
+                alert.setCancelable(false);
+                alert.setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
                     }
-
-                    text_count.setText("" + count_tasbeeh);
-                    chartView.setProgress((count_tasbeeh / (float) max) * 100, true);
-                }
+                });
+                alert.setPositiveButton("Ya", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        countTasbeeh = 0;
+                        timeVibrate = 40;
+                        bind.txtCount.setText(String.valueOf(countTasbeeh));
+                        bind.bar.setProgress((countTasbeeh / (float) max) * 100, true);
+                    }
+                });
+                alert.show();
             }
         });
 
-        findViewById(R.id.img_reload).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(count_tasbeeh > 0) {
-                    AlertDialog.Builder alert = new AlertDialog.Builder(v.getContext());
-                    alert.setTitle("Konfirmasi!");
-                    alert.setMessage("Apakah anda yakin ingin mengatur ulang?");
-                    alert.setCancelable(false);
-                    alert.setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            dialogInterface.dismiss();
-                        }
-                    });
-                    alert.setPositiveButton("Ya", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            count_tasbeeh = 0;
-                            time_vibrate = 40;
-                            text_count.setText("" + count_tasbeeh);
-                            chartView.setProgress((count_tasbeeh / (float) max) * 100, true);
-                        }
-                    });
-                    alert.show();
-                }
-            }
+        bind.back.setOnClickListener(v -> {
+            Utility.getTasbihModel().get(index).setCount_tasbeeh(countTasbeeh);
+            finish();
         });
+    }
 
-        findViewById(R.id.back).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Utility.getTasbihModel().get(index).setCount_tasbeeh(count_tasbeeh);
-                onBackPressed();
-            }
-        });
+    @Override
+    protected void onStart() {
+        super.onStart();
+        bind.txtCount.setText("" + Utility.getTasbihModel().get(index).getCount_tasbeeh());
+        bind.textJudul.setText(Utility.getTasbihModel().get(index).getJudul());
+        bind.textArabic.setText(Utility.getTasbihModel().get(index).getArabic());
+        bind.textTranslate.setText(Utility.getTasbihModel().get(index).getTranslate());
+        bind.bar.setProgress((countTasbeeh / (float) max) * 100, true);
     }
 }

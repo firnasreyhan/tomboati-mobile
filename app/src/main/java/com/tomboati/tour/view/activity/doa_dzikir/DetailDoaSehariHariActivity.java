@@ -1,56 +1,44 @@
 package com.tomboati.tour.view.activity.doa_dzikir;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.TextView;
 
 import com.tomboati.tour.R;
-import com.codesgood.views.JustifiedTextView;
+import com.tomboati.tour.databinding.ActivityDetailDoaSehariHariBinding;
 
 
 public class DetailDoaSehariHariActivity extends AppCompatActivity {
 
-    private View garis2;
-    private TextView judul, header_keterangan, ayat;
-    private JustifiedTextView translate, arti, keterangan;
+    private ActivityDetailDoaSehariHariBinding bind;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setTheme(R.style.ThemeTomboAtiGreen);
-        setContentView(R.layout.activity_detail_doa_sehari_hari);
+        bind = ActivityDetailDoaSehariHariBinding.inflate(getLayoutInflater());
+        setContentView(bind.getRoot());
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setTitle("Detail Doa");
-        setSupportActionBar(toolbar);
+        setSupportActionBar(bind.toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        garis2 = findViewById(R.id.garis2);
-        header_keterangan = findViewById(R.id.a2);
-        keterangan = findViewById(R.id.text_keterangan);
-        ayat = findViewById(R.id.text_arabic);
-        judul = findViewById(R.id.text_judul_doa);
-        translate = findViewById(R.id.text_translate);
-        arti = findViewById(R.id.text_arti);
-
         Intent passing = this.getIntent();
 
-        judul.setText(passing.getStringExtra("TITLE"));
-        ayat.setText(passing.getStringExtra("ARABIC"));
-        translate.setText(passing.getStringExtra("TRANSLATE"));
-        arti.setText(passing.getStringExtra("ARTI"));
+        bind.textJudulDoa.setText(passing.getStringExtra("TITLE"));
+        bind.textArabic.setText(passing.getStringExtra("ARABIC"));
+        bind.textTranslate.setText(passing.getStringExtra("TRANSLATE"));
+        bind.textArti.setText(passing.getStringExtra("ARTI"));
 
         if(passing.getBooleanExtra("IS_KETERANGAN_ACTIVE", false)) {
-            garis2.setVisibility(View.VISIBLE);
-            header_keterangan.setVisibility(View.VISIBLE);
-            keterangan.setVisibility(View.VISIBLE);
+            bind.garis2.setVisibility(View.VISIBLE);
+            bind.a2.setVisibility(View.VISIBLE);
+            bind.textKeterangan.setVisibility(View.VISIBLE);
 
-            keterangan.setText(passing.getStringExtra("KETERANGAN"));
+            bind.textKeterangan.setText(passing.getStringExtra("KETERANGAN"));
         }
     }
 

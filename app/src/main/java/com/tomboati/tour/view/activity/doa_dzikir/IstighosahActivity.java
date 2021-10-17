@@ -9,6 +9,7 @@ import android.os.Bundle;
 
 import com.tomboati.tour.R;
 import com.tomboati.tour.adapter.IstighosahAdapter;
+import com.tomboati.tour.databinding.ActivityIstighosahBinding;
 import com.tomboati.tour.model.IstighosahModel;
 
 import java.util.ArrayList;
@@ -17,35 +18,29 @@ import java.util.List;
 public class IstighosahActivity extends AppCompatActivity {
 
     private List<IstighosahModel> listModel;
-    private RecyclerView recyclerView;
+    private ActivityIstighosahBinding bind;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setTheme(R.style.ThemeTomboAtiGreen);
-        setContentView(R.layout.activity_istighosah);
+        bind = ActivityIstighosahBinding.inflate(getLayoutInflater());
+        setContentView(bind.getRoot());
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        setSupportActionBar(bind.toolbar);
         setTitle("Doa Istighosah");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         listModel = new ArrayList<>();
-        recyclerView = findViewById(R.id.recycleViewIstighosah);
 
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
 
         listModel.clear();
         addModel("بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ. اَلْحَمْدُ لِلّٰهِ رَبِّ الْعٰلَمِيْنَ. الرَّحْمٰنِ الرَّحِيْمِ. مٰلِكِ يَوْمِ الدِّيْنِ. اِيَّاكَ نَعْبُدُ وَاِيَّاكَ نَسْتَعِيْنُ. اِھْدِنَا الصِّرَاطَ الْمُسْتَـقِيْمَ. صِرَاطَ الَّذِيۡنَ اَنۡعَمۡتَ عَلَيۡهِمۡ ۙ غَيۡرِ الۡمَغۡضُوۡبِ عَلَيۡهِمۡ وَلَا الضَّآلِّيۡ",
                 "(Alfateha) Bismillaa hirrahmaanir rahiim " +
-                "Alhamdulillaahi rabbill’aalamiin. Arrohmaanir rahiim. Maalikiyaumiddin. Iyyaakana’budu wa " +
-                "iyyaakanasta’iin. Ihdinash shiraathal mustaqiim. Shiraathal ladziina an’amta " +
-                "‘alaihim ghoiril maghdhuubi’alaihim waladhaalliin. Aamiinn", 1);
+                        "Alhamdulillaahi rabbill’aalamiin. Arrohmaanir rahiim. Maalikiyaumiddin. Iyyaakana’budu wa " +
+                        "iyyaakanasta’iin. Ihdinash shiraathal mustaqiim. Shiraathal ladziina an’amta " +
+                        "‘alaihim ghoiril maghdhuubi’alaihim waladhaalliin. Aamiinn", 1);
         addModel("أسْتَغْفِرُ اللهَ الْعَظِيْمَ", "Astaghfirullahal ‘Adhiim", 3);
         addModel("لَاحَوْلَ وَلَا قُوَّةَ إلَّا بِا للهِ الْعَلِيِّ الْعَظِيْمِ", "Laa Haula Wa " +
                 "Laa Quwwata Illaa Billahil ‘Aliyyil Adhiim", 3);
@@ -108,9 +103,8 @@ public class IstighosahActivity extends AppCompatActivity {
                         "iyyaakanasta’iin. Ihdinash shiraathal mustaqiim. Shiraathal ladziina an’amta " +
                         "‘alaihim ghoiril maghdhuubi’alaihim waladhaalliin. Aamiinn", 1);
 
-        IstighosahAdapter adapter = new IstighosahAdapter(listModel);
-        recyclerView.setLayoutManager(new LinearLayoutManager(IstighosahActivity.this));
-        recyclerView.setAdapter(adapter);
+        bind.recycleViewIstighosah.setLayoutManager(new LinearLayoutManager(this));
+        bind.recycleViewIstighosah.setAdapter(new IstighosahAdapter(listModel));
     }
 
     private void addModel(String textArab, String textTranslate, int countBacaan) {

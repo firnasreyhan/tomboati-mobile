@@ -141,7 +141,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:fontFamily="@font/catamaran_regular"
-                            android:text="2.Foto Kopy KTP dan Kartu Keluarga"
+                            android:text="Foto Kopy KTP dan Kartu Keluarga"
                             android:textColor="@android:color/black"
                             android:textSize="@dimen/_9sdp" />
 

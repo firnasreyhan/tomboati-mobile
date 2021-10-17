@@ -1,43 +1,34 @@
 package com.tomboati.tour.view.activity.doa_dzikir;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
 import com.tomboati.tour.R;
 import com.tomboati.tour.adapter.DoaHarianAdapter;
 import com.tomboati.tour.api.response.DoaHarianResponse;
-import com.tomboati.tour.viewmodel.doa.DoaHarianViewModel;
+import com.tomboati.tour.databinding.ActivityDoaSehariHariBinding;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class DoaSehariHariActivity extends AppCompatActivity {
 
-
-    private DoaHarianViewModel doaHarianViewModel;
-    private RecyclerView recyclerViewDoaSehari;
-    private DoaHarianAdapter doaHarianAdapter;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setTheme(R.style.ThemeTomboAtiGreen);
-        setContentView(R.layout.activity_doa_sehari_hari);
+        ActivityDoaSehariHariBinding bind = ActivityDoaSehariHariBinding.inflate(getLayoutInflater());
+        setContentView(bind.getRoot());
 
-
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        setSupportActionBar(bind.toolbar);
         setTitle("Doa Sehari Hari");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        recyclerViewDoaSehari = findViewById(R.id.recyclerViewDoaSehari);
 
-        recyclerViewDoaSehari.setHasFixedSize(true);
-        recyclerViewDoaSehari.setLayoutManager(new LinearLayoutManager(this));
+        bind.recyclerViewDoaSehari.setHasFixedSize(true);
+        bind.recyclerViewDoaSehari.setLayoutManager(new LinearLayoutManager(this));
 
         final List<DoaHarianResponse.Datum> list = new ArrayList<>();
 
@@ -307,8 +298,7 @@ public class DoaSehariHariActivity extends AppCompatActivity {
                 "Ya Allah ampunilah dosa kesalahanku dan berilah keluasaan di rumahku serta berkahilah pada rezekiku"
         ));
 
-        doaHarianAdapter = new DoaHarianAdapter(list);
-        recyclerViewDoaSehari.setAdapter(doaHarianAdapter);
+        bind.recyclerViewDoaSehari.setAdapter(new DoaHarianAdapter(list));
 
 
     }

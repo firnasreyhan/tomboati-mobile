@@ -8,34 +8,32 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import com.tomboati.tour.R;
 import com.tomboati.tour.adapter.TasbihAdapter;
+import com.tomboati.tour.databinding.ActivityTasbihBinding;
 
 public class TasbihActivity extends AppCompatActivity {
 
-    private RecyclerView recyclerViewTasbih;
-    private TasbihAdapter tasbihAdapter;
+    private ActivityTasbihBinding bind;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setTheme(R.style.ThemeTomboAtiGreen);
-        setContentView(R.layout.activity_tasbih);
+        bind = ActivityTasbihBinding.inflate(getLayoutInflater());
+        setContentView(bind.getRoot());
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        setSupportActionBar(bind.toolbar);
         setTitle("Tasbih");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        recyclerViewTasbih = findViewById(R.id.recyclerViewTasbih);
-        recyclerViewTasbih.setHasFixedSize(true);
-        recyclerViewTasbih.setLayoutManager(new LinearLayoutManager(this));
-        tasbihAdapter = new TasbihAdapter();
-        recyclerViewTasbih.setAdapter(tasbihAdapter);
+        bind.recyclerViewTasbih.setHasFixedSize(true);
+        bind.recyclerViewTasbih.setLayoutManager(new LinearLayoutManager(this));
+        bind.recyclerViewTasbih.setAdapter(new TasbihAdapter());
     }
 
     @Override
     public boolean onSupportNavigateUp() {
         onBackPressed();
-        return super.onSupportNavigateUp();
+        return true;
     }
 }

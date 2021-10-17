@@ -1,14 +1,13 @@
 package com.tomboati.tour.view.activity.doa_dzikir;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
 import com.tomboati.tour.R;
 import com.tomboati.tour.adapter.DoaHajiUmrahAdapter;
+import com.tomboati.tour.databinding.ActivityDoaRamadhanBinding;
 import com.tomboati.tour.model.DoaHajiUmrahModel;
 
 import java.util.ArrayList;
@@ -16,18 +15,17 @@ import java.util.List;
 
 public class DoaRamadhanActivity extends AppCompatActivity {
 
-    private RecyclerView recyclerViewDoaRamadhan;
-    private DoaHajiUmrahAdapter doaHajiUmrahAdapter;
+    private ActivityDoaRamadhanBinding bind;
     private List<DoaHajiUmrahModel> models;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setTheme(R.style.ThemeTomboAtiGreen);
-        setContentView(R.layout.activity_doa_ramadhan);
+        bind = ActivityDoaRamadhanBinding.inflate(getLayoutInflater());
+        setContentView(bind.getRoot());
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        setSupportActionBar(bind.toolbar);
         setTitle("Doa Bulan Ramadhan");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -35,9 +33,8 @@ public class DoaRamadhanActivity extends AppCompatActivity {
 
         models = new ArrayList<>();
 
-        recyclerViewDoaRamadhan = findViewById(R.id.recyclerViewDoaRamadhan);
-        recyclerViewDoaRamadhan.setHasFixedSize(true);
-        recyclerViewDoaRamadhan.setLayoutManager(new LinearLayoutManager(this));
+        bind.recyclerViewDoaRamadhan.setHasFixedSize(true);
+        bind.recyclerViewDoaRamadhan.setLayoutManager(new LinearLayoutManager(this));
 
         addItem("Doa Menyambut Ramadhan", "اللَّهُمَّ بَارِكْ لَنَا فِى رَجَبٍ وَشَعْبَانَ وَبَلِّغْنَا رَمَضَانَ", "Allohuma baariklanaa fii Rojaba wa Sya’ban, wabalighnaa Romadhon.", "Ya Allah berahilah kami di bulan Rajab dan Sya’ban, serta pertemukanlah kami dengan bulan Ramadhan.");
         addItem("Niat Puasa Romadhon", "نَوَيْتُ صَوْمَ غَدٍ عَنْ أَدَاءِ فَرْضِ شَهْرِ رَمَضَانِ هذِهِ السَّنَةِ لِلهِ تَعَالَى", "Nawaitu Shauma Ghodin ‘an adaa’I fardhi syahri romadhoona haadzihis sanati lillahita’ala.", "Aku niat berpuasa esok hari untuk menunaikan kewajiban di bulan Ramadhan tahun ini karena Allah Ta’ala.");
@@ -55,8 +52,7 @@ public class DoaRamadhanActivity extends AppCompatActivity {
         addItem("Doa Hari Ke - 30 Puasa", "اَللَّهُمَّ اجْعَلْ صِيَامِيْ فِيْهِ بِالشُّكْرِ وَ الْقَبُوْلِ عَلَى مَا تَرْضَاهُ وَ يَرْضَاهُ الرَّسُوْلُ مُحْكَمَةً فُرُوْعُهُ بِالأُصُوْلِ بِحَقِّ سَيِّدِنَا مُحَمَّدٍ وَ آلِهِ الطَّاهِرِيْنَ وَ الْحَمْدُ ِللهِ رَبِّ الْعَالَمِيْنَ", "Allâhummaj’al shiyâmî fîhi bisysyukri wal qabûli ‘alâ mâ tardhâhur Wayardlâhurrasûlu muhkamatan furû’uhu bil ushuli bihaqqi sayyidinâ muhammadin wa âlihit Al-Thâhirîn wal hamdu lillahi rabbil’âlamin.", "Ya Allah, terimalah puasaku di bulan ini dengan rasa syukur. Jadikanlah puasaku ini mendatangkan keridhaan-Mu dan keridhaan para Rasul-Mu. Engkau kuatkanlah furu (cabang-cabang)-nya dan ushul (pokok-pokok)-nya. Demi kebenaran junjungan kami Muhammad saw beserta keluarganya yang suci. Segala puji bagi-Mu ya Allah,Tuhan semesta alam.");
         addItem("Doa Melihat Hilal", "اللَّهُ أَكْبَرُ اللَّهُمَّ أَهِلَّهُ عَلَيْنَا بِالْأَمْنِ وَالْإِيْمَانِ وَالسَّلَامَةِ وَالْإِسْلَامِ وَالتَّوْفِيْقِ لِمَا تُحِبُّ وَتَرْضَى رَبُّنَا وَرَبُّكَ اللَّهُ", "Allahu Akbar Allaahumma A-Hillahu ‘Alainaa Bil Amni Wal Iimaan Was Salaamati Wal Islaam Wat Taufiiqi Limaa Tuhibbu Wa Tardhoo Robbunaa Wa Robbukallaah.", "Allahu Akbar. Ya Allah, jadikanlah hilal itu bagi kami, dengan membawa keamanan dan keimanan, keselamatan dan Islam, dan membawa taufiq yang membimbing kami menuju apa yang Engkau cintai dan Engkau ridhai. Rabb kami dan Rabb kamu (wahai bulan), adalah Allah.");
 
-        doaHajiUmrahAdapter = new DoaHajiUmrahAdapter(models);
-        recyclerViewDoaRamadhan.setAdapter(doaHajiUmrahAdapter);
+        bind.recyclerViewDoaRamadhan.setAdapter(new DoaHajiUmrahAdapter(models));
     }
 
     private void addItem(String title, String arabic, String translate, String arti) {

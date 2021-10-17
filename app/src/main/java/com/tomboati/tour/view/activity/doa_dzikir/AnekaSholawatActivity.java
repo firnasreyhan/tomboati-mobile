@@ -9,6 +9,7 @@ import android.os.Bundle;
 
 import com.tomboati.tour.R;
 import com.tomboati.tour.adapter.DoaHajiUmrahAdapter;
+import com.tomboati.tour.databinding.ActivityAnekaSholawatBinding;
 import com.tomboati.tour.model.DoaHajiUmrahModel;
 
 import java.util.ArrayList;
@@ -16,7 +17,7 @@ import java.util.List;
 
 public class AnekaSholawatActivity extends AppCompatActivity {
 
-    private RecyclerView recyclerViewAnekaSholawat;
+    private ActivityAnekaSholawatBinding bind;
     private DoaHajiUmrahAdapter doaHajiUmrahAdapter;
     private List<DoaHajiUmrahModel> models;
 
@@ -24,19 +25,18 @@ public class AnekaSholawatActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setTheme(R.style.ThemeTomboAtiGreen);
-        setContentView(R.layout.activity_aneka_sholawat);
+        bind = ActivityAnekaSholawatBinding.inflate(getLayoutInflater());
+        setContentView(bind.getRoot());
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        setSupportActionBar(bind.toolbar);
         setTitle("Aneka Sholawat");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         models = new ArrayList<>();
 
-        recyclerViewAnekaSholawat = findViewById(R.id.recyclerViewAnekaSholawat);
-        recyclerViewAnekaSholawat.setHasFixedSize(true);
-        recyclerViewAnekaSholawat.setLayoutManager(new LinearLayoutManager(this));
+        bind.recyclerViewAnekaSholawat.setHasFixedSize(true);
+        bind.recyclerViewAnekaSholawat.setLayoutManager(new LinearLayoutManager(this));
 
         addItem("Sholawat Nariyah",
                 "للّهُمَّ صَلِّ صَلَاةً كَامِلَةً وَسَلِّمْ سَلَامًا تَامًّا عَلَى سَيِّدِنَا مُحَمَّدِ الّذِي تَنْحَلُّ بِهِ الْعُقَدُ وَتَنْفَرِجُ بِهِ الْكُرَبُ وَتُقْضَى بِهِ الْحَوَائِجُ وَتُنَالُ بِهِ الرَّغَائِبُ وَحُسْنُ الْخَوَاتِمِ وَيُسْتَسْقَى الْغَمَامُ بِوَجْهِهِ الْكَرِيْمِ وَعَلَى آلِهِ وَصَحْبِهِ فِيْ كُلِّ لَمْحَةٍ وَنَفَسٍ بِعَدَدِ كُلِّ مَعْلُوْمٍ لَكَ",
@@ -123,7 +123,7 @@ public class AnekaSholawatActivity extends AppCompatActivity {
         );
 
         doaHajiUmrahAdapter = new DoaHajiUmrahAdapter(models, true);
-        recyclerViewAnekaSholawat.setAdapter(doaHajiUmrahAdapter);
+        bind.recyclerViewAnekaSholawat.setAdapter(doaHajiUmrahAdapter);
     }
 
     private void addItem(String title, String arabic, String translate, String arti, String keterangan) {

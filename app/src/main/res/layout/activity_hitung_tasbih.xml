@@ -32,7 +32,7 @@
             app:pcv_drawBackground="false"
             app:pcv_drawBackgroundBar="true"
             app:pcv_mode="ring"
-            app:pcv_progress="22"
+            app:pcv_progress="0"
             app:pcv_progressBarStyle="round"
             app:pcv_progressColor="@color/light_green"
             app:pcv_startAngle="270" />

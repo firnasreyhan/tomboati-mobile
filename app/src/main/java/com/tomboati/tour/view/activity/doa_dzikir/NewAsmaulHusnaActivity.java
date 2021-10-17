@@ -9,31 +9,30 @@ import android.os.Bundle;
 
 import com.tomboati.tour.R;
 import com.tomboati.tour.adapter.AsmaulHusnaAdapter;
+import com.tomboati.tour.databinding.ActivityNewAsmaulHusnaBinding;
 import com.tomboati.tour.model.AsmaulHusnaModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class NewAsmaulHusnaActivity extends AppCompatActivity {
-    private RecyclerView recyclerViewAsmaulHusna;
-    private AsmaulHusnaAdapter asmaulHusnaAdapter;
-    private Toolbar toolbar;
+
+    private ActivityNewAsmaulHusnaBinding bind;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setTheme(R.style.ThemeTomboAtiGreen);
-        setContentView(R.layout.activity_new_asmaul_husna);
+        bind = ActivityNewAsmaulHusnaBinding.inflate(getLayoutInflater());
+        setContentView(bind.getRoot());
 
-        toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        setSupportActionBar(bind.toolbar);
         setTitle("Asmaul Husna");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        recyclerViewAsmaulHusna = findViewById(R.id.recyclerViewAsmaulHusna);
-        recyclerViewAsmaulHusna.setHasFixedSize(true);
-        recyclerViewAsmaulHusna.setLayoutManager(new LinearLayoutManager(this));
+        bind.recyclerViewAsmaulHusna.setHasFixedSize(true);
+        bind.recyclerViewAsmaulHusna.setLayoutManager(new LinearLayoutManager(this));
 
         List<AsmaulHusnaModel> list = new ArrayList<>();
         list.add(new AsmaulHusnaModel("","الله","Allah","Allah"));
@@ -137,8 +136,7 @@ public class NewAsmaulHusnaActivity extends AppCompatActivity {
         list.add(new AsmaulHusnaModel("98", "الرشيد", "Ar Rasyiid", "Allah Yang Maha Pandai"));
         list.add(new AsmaulHusnaModel("99", "الصبور", "As Shabuur", "Allah Yang Maha Sabar"));
 
-        asmaulHusnaAdapter = new AsmaulHusnaAdapter(list);
-        recyclerViewAsmaulHusna.setAdapter(asmaulHusnaAdapter);
+        bind.recyclerViewAsmaulHusna.setAdapter(new AsmaulHusnaAdapter(list));
     }
 
     @Override

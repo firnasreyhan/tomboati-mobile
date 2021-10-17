@@ -21,6 +21,7 @@ import android.widget.TextView;
 
 import com.tomboati.tour.R;
 import com.tomboati.tour.adapter.TembangSholawatAdapter;
+import com.tomboati.tour.databinding.ActivityTembangSholawatBinding;
 import com.tomboati.tour.model.TembangSholawatModel;
 import com.tomboati.tour.utils.Utility;
 
@@ -29,12 +30,8 @@ import java.util.List;
 
 public class TembangSholawatActivity extends AppCompatActivity implements TembangSholawatAdapter.onSelectedData {
 
+    private ActivityTembangSholawatBinding bind;
     private List<TembangSholawatModel> tembangModel;
-    private TextView text_judul;
-    private TextView duration, current;
-    private SeekBar progress;
-    private ConstraintLayout view_control;
-    private ImageView btnPlayPause;
     private MediaPlayer mediaPlayer;
     private Handler handler = new Handler();
 
@@ -46,21 +43,13 @@ public class TembangSholawatActivity extends AppCompatActivity implements Temban
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setTheme(R.style.ThemeTomboAtiGreen);
-        setContentView(R.layout.activity_tembang_sholawat);
+        bind = ActivityTembangSholawatBinding.inflate(getLayoutInflater());
+        setContentView(bind.getRoot());
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        setSupportActionBar(bind.toolbar);
         setTitle("Tembang Sholawat");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-
-
-        text_judul = findViewById(R.id.text_judul_control);
-        duration = findViewById(R.id.text_duration);
-        current = findViewById(R.id.text_current);
-        progress = findViewById(R.id.progress);
-        view_control = findViewById(R.id.view_control);
-        btnPlayPause = findViewById(R.id.btn_play);
 
         mediaPlayer = new MediaPlayer();
         if (Utility.isConnecting(this)) {
@@ -69,58 +58,43 @@ public class TembangSholawatActivity extends AppCompatActivity implements Temban
             tembangModel = new ArrayList<>();
             addDataTembangSholawat();
 
-            RecyclerView recyclerView = findViewById(R.id.recyclerViewTembangItem);
-            recyclerView.setLayoutManager(new LinearLayoutManager(this));
-            recyclerView.setHasFixedSize(true);
-            recyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
-            recyclerView.setAdapter(new TembangSholawatAdapter(tembangModel, this));
+            bind.recyclerViewTembangItem.setLayoutManager(new LinearLayoutManager(this));
+            bind.recyclerViewTembangItem.setHasFixedSize(true);
+            bind.recyclerViewTembangItem.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
+            bind.recyclerViewTembangItem.setAdapter(new TembangSholawatAdapter(tembangModel, this));
 
-            btnPlayPause.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (mediaPlayer.isPlaying()) {
-                        handler.removeCallbacks(updater);
-                        mediaPlayer.pause();
-                        btnPlayPause.setImageResource(R.drawable.ic_play_msc);
-                        is_playing = false;
-                    } else {
-                        mediaPlayer.start();
-                        btnPlayPause.setImageResource(R.drawable.ic_pause_msc);
-                        updateSeekBar();
-                        is_playing = true;
-                    }
-                }
-            });
-
-            mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-                @Override
-                public void onCompletion(MediaPlayer mp) {
-                    progress.setProgress(0);
-                    btnPlayPause.setImageResource(R.drawable.ic_play_msc);
-                    current.setText("00:00");
-                    mediaPlayer.reset();
-                    prepareMediaPlayer(tembangModel.get(position).getUrltembang());
+            bind.btnPlay.setOnClickListener(v -> {
+                if (mediaPlayer.isPlaying()) {
+                    handler.removeCallbacks(updater);
+                    mediaPlayer.pause();
+                    bind.btnPlay.setImageResource(R.drawable.ic_play_msc);
                     is_playing = false;
-                }
-            });
-
-            mediaPlayer.setOnBufferingUpdateListener(new MediaPlayer.OnBufferingUpdateListener() {
-                @Override
-                public void onBufferingUpdate(MediaPlayer mp, int percent) {
-                    progress.setSecondaryProgress(percent);
-                }
-            });
-
-            progress.setOnTouchListener(new View.OnTouchListener() {
-                @Override
-                public boolean onTouch(View v, MotionEvent event) {
-                    SeekBar seekBar = (SeekBar) v;
-                    int playPosition = (mediaPlayer.getDuration() / 100) * seekBar.getProgress();
-                    mediaPlayer.seekTo(playPosition);
-                    current.setText(millisecondToTimer(mediaPlayer.getCurrentPosition()));
+                } else {
+                    mediaPlayer.start();
+                    bind.btnPlay.setImageResource(R.drawable.ic_pause_msc);
                     updateSeekBar();
-                    return false;
+                    is_playing = true;
                 }
+            });
+
+            mediaPlayer.setOnCompletionListener(mp -> {
+                bind.progress.setProgress(0);
+                bind.btnPlay.setImageResource(R.drawable.ic_play_msc);
+                bind.textCurrent.setText("00:00");
+                mediaPlayer.reset();
+                prepareMediaPlayer(tembangModel.get(position).getUrltembang());
+                is_playing = false;
+            });
+
+            mediaPlayer.setOnBufferingUpdateListener((mp, percent) -> bind.progress.setSecondaryProgress(percent));
+
+            bind.progress.setOnTouchListener((v, event) -> {
+                SeekBar seekBar = (SeekBar) v;
+                int playPosition = (mediaPlayer.getDuration() / 100) * seekBar.getProgress();
+                mediaPlayer.seekTo(playPosition);
+                bind.textCurrent.setText(millisecondToTimer(mediaPlayer.getCurrentPosition()));
+                updateSeekBar();
+                return false;
             });
 
         }
@@ -129,16 +103,16 @@ public class TembangSholawatActivity extends AppCompatActivity implements Temban
     @Override
     public void onSelected(int position) {
         this.position = position;
-        progress.setProgress(0);
-        text_judul.setText(tembangModel.get(position).getJudulTembang());
-        duration.setText(tembangModel.get(position).getDuration());
-        btnPlayPause.setImageResource(R.drawable.ic_pause_msc);
-        current.setText("00:00");
+        bind.progress.setProgress(0);
+        bind.textJudulControl.setText(tembangModel.get(position).getJudulTembang());
+        bind.textDuration.setText(tembangModel.get(position).getDuration());
+        bind.btnPlay.setImageResource(R.drawable.ic_pause_msc);
+        bind.textCurrent.setText("00:00");
 
         is_playing = true;
 
-        if (view_control.getVisibility() == View.GONE) {
-            view_control.setVisibility(View.VISIBLE);
+        if (bind.viewControl.getVisibility() == View.GONE) {
+            bind.viewControl.setVisibility(View.VISIBLE);
         }
 
         mediaPlayer.reset();
@@ -159,7 +133,7 @@ public class TembangSholawatActivity extends AppCompatActivity implements Temban
 
     private void updateSeekBar() {
         if (mediaPlayer.isPlaying()) {
-            progress.setProgress((int) (((float) mediaPlayer.getCurrentPosition() / mediaPlayer.getDuration()) * 100));
+            bind.progress.setProgress((int) (((float) mediaPlayer.getCurrentPosition() / mediaPlayer.getDuration()) * 100));
             handler.postDelayed(updater, 1000);
         }
     }
@@ -169,7 +143,7 @@ public class TembangSholawatActivity extends AppCompatActivity implements Temban
         public void run() {
             updateSeekBar();
             int currentDuration = mediaPlayer.getCurrentPosition();
-            current.setText(millisecondToTimer(currentDuration));
+            bind.textCurrent.setText(millisecondToTimer(currentDuration));
         }
     };
 

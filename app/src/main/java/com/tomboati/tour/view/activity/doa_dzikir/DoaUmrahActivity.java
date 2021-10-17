@@ -1,42 +1,35 @@
 package com.tomboati.tour.view.activity.doa_dzikir;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.os.Bundle;
-
 import com.tomboati.tour.R;
 import com.tomboati.tour.adapter.DoaHajiUmrahAdapter;
+import com.tomboati.tour.databinding.ActivityDoaUmrahBinding;
 import com.tomboati.tour.model.DoaHajiUmrahModel;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class DoaUmrahActivity extends AppCompatActivity {
 
-    private RecyclerView recyclerViewDoaUmrah;
-    private DoaHajiUmrahAdapter doaHajiUmrahAdapter;
     private List<DoaHajiUmrahModel> models;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setTheme(R.style.ThemeTomboAtiGreen);
-        setContentView(R.layout.activity_doa_umrah);
+        ActivityDoaUmrahBinding bind = ActivityDoaUmrahBinding.inflate(getLayoutInflater());
+        setContentView(bind.getRoot());
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        setSupportActionBar(bind.toolbar);
         setTitle("Doa Umrah");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         models = new ArrayList<>();
 
-        recyclerViewDoaUmrah = findViewById(R.id.recyclerViewDoaUmrah);
-        recyclerViewDoaUmrah.setHasFixedSize(true);
-        recyclerViewDoaUmrah.setLayoutManager(new LinearLayoutManager(this));
+        bind.recyclerViewDoaUmrah.setHasFixedSize(true);
+        bind.recyclerViewDoaUmrah.setLayoutManager(new LinearLayoutManager(this));
 
         addItem("Doa Niat Umrah", "نَوَيْتُ العُمْرَةَ وَأَحْرَمْتُ بِهَا لِلهِ تَعَالَى لَبَّيْكَ اللَّهُمَّ بعُمْرَة", "Nawaitul ‘umrata wa ahramtu bihi lillahi ta’ala labbaika Allahumma umratan.", "Aku niat melaksanakan umrah dan berihram karena Allah SWT. Aku sambut panggilan-Mu, ya Allah untuk berumrah.", "Hal pertama yang harus diucapkan dalam melaksanakan rukun umrah adalah doa niat umrah.");
 
@@ -94,8 +87,7 @@ public class DoaUmrahActivity extends AppCompatActivity {
 
         addItem("Doa Setelah Memotong Rambut", "اَلْحَمْدُ للهِ الَّدِى قَضَى عَنَا مَنَاسِكَنَا. اَللَّهُمَّ زِدْنَا اِيْمَانَا وَيَقِيْنَا وَعَوْنَا وَاغْفِرْ لَنَا وَلِوَالِدَيْنَا وَلِسَائِرِ اْلمُسْلِمِيْنَ وَاْلمُسْلِمَاتِ", "Alhamdulillaahil ladzii qadla ‘annaa manaasikanaa, Allaahumma zidnaa iimaanan wayaqiinan wa ‘awnan, waghfirlanaa wali wali daynaa walisaairil muslimiina walmuslimaat.", "Segala puji bagi Allah yang telah menyelesaikan manasik kami, Ya Allah tambahkanlah kepada kami iman, keyakinan, dan pertolongan dan ampunilah kami, kedua orang tua kami dan seluruh kaum muslimin dan muslimat.", "");
 
-        doaHajiUmrahAdapter = new DoaHajiUmrahAdapter(models);
-        recyclerViewDoaUmrah.setAdapter(doaHajiUmrahAdapter);
+        bind.recyclerViewDoaUmrah.setAdapter(new DoaHajiUmrahAdapter(models));
     }
 
     private void addItem(String title, String arabic, String translate, String arti, String keterangan) {

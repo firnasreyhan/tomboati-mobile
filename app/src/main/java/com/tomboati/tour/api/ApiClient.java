@@ -1,6 +1,6 @@
 package com.tomboati.tour.api;
 
-import com.tomboati.tour.utils.Constant;
+import com.tomboati.tour.helper.BaseUrl;
 
 import java.util.concurrent.TimeUnit;
 
@@ -39,7 +39,7 @@ public class ApiClient {
             Retrofit retrofit = new Retrofit.Builder()
                     .addConverterFactory(getGsonConverterFactory())
                     .client(getOkHTTPClient())
-                    .baseUrl(Constant.baseURLTomboAti)
+                    .baseUrl(BaseUrl.baseURLTomboAti)
                     .build();
             apiInterfaceTomboAti = retrofit.create(ApiInterfaceTomboAti.class);
         }
@@ -51,7 +51,7 @@ public class ApiClient {
             Retrofit retrofit= new Retrofit.Builder()
                     .addConverterFactory(getGsonConverterFactory())
                     .client(getOkHTTPClient())
-                    .baseUrl(Constant.baseURLTomboAtiMitra)
+                    .baseUrl(BaseUrl.baseURLTomboAtiMitra)
                     .build();
             apiInterfaceTomboAtiMitra = retrofit.create(ApiInterfaceTomboAtiMitra.class);
         }
@@ -63,7 +63,7 @@ public class ApiClient {
             Retrofit retrofit = new Retrofit.Builder()
                     .addConverterFactory(getGsonConverterFactory())
                     .client(getOkHTTPClient())
-                    .baseUrl(Constant.baseURLJadwalSholat)
+                    .baseUrl(BaseUrl.baseURLJadwalSholat)
                     .build();
             apiInterfaceJadwalSholat = retrofit.create(ApiInterfaceJadwalSholat.class);
         }
@@ -75,7 +75,7 @@ public class ApiClient {
             Retrofit retrofit = new Retrofit.Builder()
                     .addConverterFactory(getGsonConverterFactory())
                     .client(getOkHTTPClient())
-                    .baseUrl(Constant.baseURLMasjid)
+                    .baseUrl(BaseUrl.baseURLMasjid)
                     .build();
             apiInterfaceMasjid = retrofit.create(ApiInterfaceMasjid.class);
         }
@@ -87,7 +87,7 @@ public class ApiClient {
             Retrofit retrofit = new Retrofit.Builder()
                     .addConverterFactory(getGsonConverterFactory())
                     .client(getOkHTTPClient())
-                    .baseUrl(Constant.baseURLAlQuranNew)
+                    .baseUrl(BaseUrl.baseURLAlQuranNew)
                     .build();
             apiInterfaceAlQuranNew = retrofit.create(ApiInterfaceAlQuranNew.class);
         }
@@ -99,7 +99,7 @@ public class ApiClient {
             Retrofit retrofit = new Retrofit.Builder()
                     .addConverterFactory(getGsonConverterFactory())
                     .client(getOkHTTPClient())
-                    .baseUrl(Constant.baseURLDoaTahlil)
+                    .baseUrl(BaseUrl.baseURLDoaTahlil)
                     .build();
             apiInterfaceTahlil = retrofit.create(ApiInterfaceTahlil.class);
         }
@@ -111,7 +111,7 @@ public class ApiClient {
             Retrofit retrofit = new Retrofit.Builder()
                     .addConverterFactory(getGsonConverterFactory())
                     .client(getOkHTTPClient())
-                    .baseUrl(Constant.baseURLLokasi)
+                    .baseUrl(BaseUrl.baseURLLokasi)
                     .build();
             apiInterfaceLokasi = retrofit.create(ApiInterfaceLokasi.class);
         }

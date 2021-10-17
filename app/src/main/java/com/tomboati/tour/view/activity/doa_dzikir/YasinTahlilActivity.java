@@ -8,6 +8,7 @@ import android.os.Bundle;
 
 import com.tomboati.tour.R;
 import com.tomboati.tour.adapter.TabAdapter;
+import com.tomboati.tour.databinding.ActivityYasinTahlilBinding;
 import com.tomboati.tour.utils.Utility;
 import com.tomboati.tour.view.fragment.doadzikir.TahlilFragment;
 import com.tomboati.tour.view.fragment.doadzikir.YasinFragment;
@@ -15,24 +16,20 @@ import com.google.android.material.tabs.TabLayout;
 
 public class YasinTahlilActivity extends AppCompatActivity {
 
+    private ActivityYasinTahlilBinding bind;
     private TabAdapter tabAdapter;
-    private TabLayout tabLayout;
-    private ViewPager viewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setTheme(R.style.ThemeTomboAtiGreen);
-        setContentView(R.layout.activity_yasin_tahlil);
+        bind = ActivityYasinTahlilBinding.inflate(getLayoutInflater());
+        setContentView(bind.getRoot());
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        setSupportActionBar(bind.toolbar);
         setTitle("Yasin & Tahlil");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-
-        viewPager = findViewById(R.id.viewPager);
-        tabLayout = findViewById(R.id.tabLayout);
 
         if(Utility.isConnecting(this)) {
 
@@ -40,12 +37,12 @@ public class YasinTahlilActivity extends AppCompatActivity {
             tabAdapter.addFragment(new YasinFragment(), "Surah Yasin", R.drawable.ic_quran);
             tabAdapter.addFragment(new TahlilFragment(), "Doa Tahlil", R.drawable.ic_quran);
 
-            viewPager.setAdapter(tabAdapter);
-            tabLayout.setupWithViewPager(viewPager);
+            bind.viewPager.setAdapter(tabAdapter);
+            bind.tabLayout.setupWithViewPager(bind.viewPager);
 
             highLightCurrentTab(0);
 
-            viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            bind.viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
                 @Override
                 public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
@@ -71,13 +68,13 @@ public class YasinTahlilActivity extends AppCompatActivity {
     }
 
     private void highLightCurrentTab(int position) {
-        for (int i = 0; i < tabLayout.getTabCount(); i++) {
-            TabLayout.Tab tab = tabLayout.getTabAt(i);
+        for (int i = 0; i < bind.tabLayout.getTabCount(); i++) {
+            TabLayout.Tab tab = bind.tabLayout.getTabAt(i);
             assert tab != null;
             tab.setCustomView(null);
             tab.setCustomView(tabAdapter.getTabView(i));
         }
-        TabLayout.Tab tab = tabLayout.getTabAt(position);
+        TabLayout.Tab tab = bind.tabLayout.getTabAt(position);
         assert tab != null;
         tab.setCustomView(null);
         tab.setCustomView(tabAdapter.getSelectedTabView(position));

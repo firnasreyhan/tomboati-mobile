@@ -1,42 +1,38 @@
 package com.tomboati.tour.view.activity.doa_dzikir;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
 import com.tomboati.tour.R;
 import com.tomboati.tour.adapter.TahlilAdapter;
 import com.tomboati.tour.api.response.TahlilResponse;
+import com.tomboati.tour.databinding.ActivityDoaZiarahBinding;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class DoaZiarahActivity extends AppCompatActivity {
 
-    private RecyclerView recyclerViewDoaZiarah;
     private List<TahlilResponse.Datum> models;
-    private TahlilAdapter tahlilAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setTheme(R.style.ThemeTomboAtiGreen);
-        setContentView(R.layout.activity_doa_ziarah);
+        ActivityDoaZiarahBinding bind = ActivityDoaZiarahBinding.inflate(getLayoutInflater());
+        setContentView(bind.getRoot());
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        setSupportActionBar(bind.toolbar);
         setTitle("Doa Ziarah");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         models = new ArrayList<>();
 
-        recyclerViewDoaZiarah = findViewById(R.id.recyclerViewDoaZiarah);
-        recyclerViewDoaZiarah.setHasFixedSize(true);
-        recyclerViewDoaZiarah.setLayoutManager(new LinearLayoutManager(this));
+        bind.recyclerViewDoaZiarah.setHasFixedSize(true);
+        bind.recyclerViewDoaZiarah.setLayoutManager(new LinearLayoutManager(this));
 
         addItem("Mengucapkan Salam", "السَّلامُ عَلَيْكُمْ دَارَ قَوْمٍ مُؤْمِنينَ وَأتاكُمْ ما تُوعَدُونَ غَداً مُؤَجَّلُونَ وَإنَّا إنْ شاءَ اللَّهُ بِكُمْ لاحقُونَ", "Assalamu‘alaìkum dara qaumìn mu’mìnîn wa atakum ma tu‘adun ghadan mu’ajjalun, wa ìnna ìnsya-Allahu bìkum lahìqun");
         addItem("Membaca Istighfar", "أَسْتَغْفِرُ اللهَ العَظِيْمَ اَلَّذِي لآ إِلَهَ إِلَّا هُوَ اْلحَيُّ اْلقَيُّوْمُ وَأَتُوْبُ إِلَيْهِ", "Astaghfirullah Hal Adzim Alladzi La ilaha Illa Huwal Hayyul Qoyyumu Wa atubu Ilaihi");
@@ -47,8 +43,7 @@ public class DoaZiarahActivity extends AppCompatActivity {
         addItem("Membaca Tahlil", "لَا إِلَهَ إِلَّا اللهَ", "Laailaaha Illallah.");
         addItem("Membaca Doa Jenazah", "اَللَّهُمَّ اغْفِرْ لَهُ وَارْحَمْهُ وَعَافِهِ وَاعْفُ عَنْهُ، وَأَكْرِمْ نُزُلَهُ، وَوَسِّعْ مَدْخَلَهُ، وَاغْسِلْهُ بِالْمَاءِ وَالثَّلْجِ وَالْبَرَدِ، وَنَقِّهِ مِنَ الذُّنُوبِ والْخَطَايَا كَمَا يُنَقَّى الثَّوْبُ الْأَبْيَضُ مِنَ الدَّنَسِ، وَأَبْدِلْهُ دَارًا خَيْرًا مِنْ دَارِهِ، وَزَوْجًا خَيْرًا مِنْ زَوْجِهِ، وَأَدْخِلْهُ الْجَنَّةَ، وَأَعِذْهُ مِنْ عَذَابِ الْقَبْرِ وَمِنْ عَذَابِ النَّار, وَافْسَحْ لَهُ فِي قَبْرِهِ، ونَوِّرْ لَهُ فِيهِ", "Allahummaghfìrlahu war hamhu wa ‘aafìhìì wa’fu anhu, wa akrìm nuzuulahu wawassì’ madholahu, waghsìlhu bìl maa’ì watssaljì walbaradì, wa naqqìhì, mìnaddzzunubì wal khathaya kamaa yunaqqatssaubul abyadhu mìnad danasì.");
 
-        tahlilAdapter = new TahlilAdapter(models);
-        recyclerViewDoaZiarah.setAdapter(tahlilAdapter);
+        bind.recyclerViewDoaZiarah.setAdapter(new TahlilAdapter(models));
 
     }
 
