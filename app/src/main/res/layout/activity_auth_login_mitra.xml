@@ -1,166 +1,174 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/ic_background_beranda"
-    android:gravity="center"
-    android:orientation="vertical">
+    android:gravity="center">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/imageView11"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:layout_marginTop="16dp"
-            android:scaleType="fitCenter"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_logo" />
 
-        <TextView
-            android:id="@+id/textView38"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:fontFamily="@font/catamaran_bold"
-            android:text="Selamat Datang"
-            android:textColor="@color/dark_green"
-            android:textSize="30sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView11" />
-
-        <TextView
-            android:id="@+id/textView39"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/catamaran_medium"
-            android:text="Silahkan masuk untuk mengakses akun mitra"
-            android:textColor="@color/black"
-            android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView38" />
-
-        <EditText
-            android:id="@+id/editTextLoginUsername"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:layout_marginLeft="40dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="40dp"
-            android:layout_marginRight="40dp"
-            android:background="@drawable/round_border_auth"
-            android:ems="10"
-            android:fontFamily="@font/catamaran_regular"
-            android:hint="Username"
-            android:inputType="none"
-            android:paddingLeft="15dp"
-            android:paddingTop="20dp"
-            android:paddingBottom="20dp"
-            android:textColor="@color/black"
-            android:textColorHint="@color/dark_grey"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView39" />
-
-        <LinearLayout
-            android:id="@+id/linearLayout1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="40dp"
-            android:background="@drawable/round_border_auth"
-            android:paddingLeft="10dp"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextLoginUsername">
-
-            <EditText
-                android:id="@+id/editTextLoginPassword"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="5"
-                android:backgroundTint="@color/white"
-                android:fontFamily="@font/catamaran_regular"
-                android:hint="Password"
-                android:inputType="textPassword"
-                android:textColor="@color/black"
-                android:textColorHint="@color/dark_grey"
-                android:textSize="18sp" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
             <ImageView
-                android:id="@+id/eyePassword"
+                android:id="@+id/imageView11"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_marginTop="16dp"
+                android:scaleType="fitCenter"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_logo" />
+
+            <TextView
+                android:id="@+id/textView38"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:fontFamily="@font/catamaran_bold"
+                android:text="Selamat Datang"
+                android:textColor="@color/dark_green"
+                android:textSize="30sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView11" />
+
+            <TextView
+                android:id="@+id/textView39"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/catamaran_medium"
+                android:text="Silahkan masuk untuk mengakses akun mitra"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView38" />
+
+            <EditText
+                android:id="@+id/editTextLoginUsername"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="1"
-                app:srcCompat="@drawable/ic_eye_visible"
-                tools:ignore="VectorDrawableCompat" />
-
-        </LinearLayout>
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/materialButtonMasuk"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_50sdp"
-            android:layout_marginStart="40dp"
-            android:layout_marginLeft="40dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="40dp"
-            android:layout_marginRight="40dp"
-            android:backgroundTint="@color/dark_green"
-            android:fontFamily="@font/catamaran_bold"
-            android:padding="12dp"
-            android:text="Masuk"
-            android:textAllCaps="true"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout1" />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="24dp"
-            android:orientation="horizontal"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/materialButtonMasuk">
-
-            <TextView
-                android:id="@+id/textViewPrefix"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="5dp"
-                android:layout_marginRight="5dp"
-                android:layout_weight="1"
+                android:layout_marginStart="40dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="40dp"
+                android:layout_marginRight="40dp"
+                android:background="@drawable/round_border_auth"
+                android:ems="10"
                 android:fontFamily="@font/catamaran_regular"
-                android:text="Daftar sebagai user?"
+                android:hint="Username"
+                android:inputType="none"
+                android:paddingLeft="15dp"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp"
                 android:textColor="@color/black"
-                android:visibility="gone" />
+                android:textColorHint="@color/dark_grey"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView39" />
 
-            <TextView
-                android:id="@+id/textViewBack"
+            <LinearLayout
+                android:id="@+id/linearLayout1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="40dp"
+                android:background="@drawable/round_border_auth"
+                android:paddingLeft="10dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editTextLoginUsername">
+
+                <EditText
+                    android:id="@+id/editTextLoginPassword"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5"
+                    android:backgroundTint="@color/white"
+                    android:fontFamily="@font/catamaran_regular"
+                    android:hint="Password"
+                    android:inputType="textPassword"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/dark_grey"
+                    android:textSize="18sp" />
+
+                <ImageView
+                    android:id="@+id/eyePassword"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/ic_eye_visible"
+                    tools:ignore="VectorDrawableCompat" />
+
+            </LinearLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/materialButtonMasuk"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_marginStart="40dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="40dp"
+                android:layout_marginRight="40dp"
+                android:backgroundTint="@color/dark_green"
+                android:fontFamily="@font/catamaran_bold"
+                android:padding="12dp"
+                android:text="Masuk"
+                android:textAllCaps="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout1" />
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:fontFamily="@font/catamaran_medium"
-                android:text="Kembali ke menu utama"
-                android:textColor="@color/dark_green" />
-        </LinearLayout>
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="24dp"
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/materialButtonMasuk">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+                <TextView
+                    android:id="@+id/textViewPrefix"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/catamaran_regular"
+                    android:text="Daftar sebagai user?"
+                    android:textColor="@color/black"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/textViewBack"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/catamaran_medium"
+                    android:text="Kembali ke menu utama"
+                    android:textColor="@color/dark_green" />
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
 </LinearLayout>

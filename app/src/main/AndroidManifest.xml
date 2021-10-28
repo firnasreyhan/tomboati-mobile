@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.tomboati.tour">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -7,7 +8,7 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.VIBRATE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" tools:ignore="ScopedStorage" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
@@ -22,15 +23,28 @@
         android:supportsRtl="true"
         android:theme="@style/ThemeTomboAti">
 
-        <activity android:name=".view.activity.homepage.UbahProfilActivity" />
+        <activity
+            android:name=".view.activity.homepage.UbahProfilActivity"
+            android:windowSoftInputMode="adjustResize" />
         <activity android:name=".view.activity.homepage.HubungiKamiActivity" />
-        <activity android:name=".view.activity.mitra.auth.UbahPasswordActivity" />
-        <activity android:name=".view.activity.mitra.pendaftaran.RegistrasiDataPembayaranMitraActivity" />
-        <activity android:name=".view.activity.mitra.pendaftaran.RegistrasiDataDiriMitraActivity" />
+        <activity
+            android:name=".view.activity.mitra.auth.UbahPasswordActivity"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".view.activity.mitra.pendaftaran.RegistrasiDataPembayaranMitraActivity"
+            android:windowSoftInputMode="adjustResize" >
+        </activity>
+        <activity
+            android:name=".view.activity.mitra.pendaftaran.RegistrasiDataDiriMitraActivity"
+            android:windowSoftInputMode="adjustResize" />
         <activity android:name=".view.activity.mitra.pendaftaran.SyaratPembatalanMitraActivity" />
         <activity android:name=".view.activity.mitra.pendaftaran.SyaratPendaftaranMitraActivity" />
-        <activity android:name=".view.activity.mitra.auth.AuthLoginMitraActivity" />
-        <activity android:name=".view.activity.mitra.auth.AuthRegisterUserActivity" />
+        <activity
+            android:name=".view.activity.mitra.auth.AuthLoginMitraActivity"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".view.activity.mitra.auth.AuthRegisterUserActivity"
+            android:windowSoftInputMode="adjustResize" />
         <activity android:name=".view.activity.pendaftaran.PendaftaranDokumenDataDiriActivity" />
         <activity android:name=".view.activity.quran.DetailJuzNewActivity" />
         <activity android:name=".view.activity.quran.DetailAlQuranNewActivity" />
@@ -44,16 +58,24 @@
         <activity android:name=".view.activity.pendaftaran.DrawTandaTanganPendaftaran" />
         <activity android:name=".view.activity.komunitas.DetailKomunitasActivity" />
         <activity android:name=".view.activity.komunitas.KomunitasActivity" />
-        <activity android:name=".view.activity.pendaftaran.PendaftaranDataKeluargaActivity" />
-        <activity android:name=".view.activity.pendaftaran.PendaftaranDataDiriActivity" />
+        <activity
+            android:name=".view.activity.pendaftaran.PendaftaranDataKeluargaActivity"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".view.activity.pendaftaran.PendaftaranDataDiriActivity"
+            android:windowSoftInputMode="adjustResize" />
         <activity android:name=".view.activity.doa_dzikir.TembangSholawatActivity" />
-        <activity android:name=".view.activity.doa_dzikir.HitungTasbihLainnyaActivity" />
+        <activity
+            android:name=".view.activity.doa_dzikir.HitungTasbihLainnyaActivity"
+            android:hardwareAccelerated="false" />
         <activity android:name=".view.activity.sholat.SholatDiperjalananActivity" />
         <activity android:name=".view.activity.sholat.SholatJenazahActivity" />
         <activity android:name=".view.activity.doa_dzikir.AnekaSholawatActivity" />
         <activity android:name=".view.activity.sholat.AdabSholatActivity" />
         <activity android:name=".view.activity.sholat.SholatSunnahActivity" />
-        <activity android:name=".view.activity.doa_dzikir.HitungTasbihActivity" />
+        <activity
+            android:name=".view.activity.doa_dzikir.HitungTasbihActivity"
+            android:hardwareAccelerated="false" />
         <activity android:name=".view.activity.doa_dzikir.TasbihActivity" />
         <activity android:name=".view.activity.doa_dzikir.DoaRamadhanActivity" />
         <activity android:name=".view.activity.sholat.TayamumActivity" />
@@ -88,8 +110,9 @@
         <activity android:name=".view.activity.doa_dzikir.DoaDzikirActivity" />
         <activity android:name=".view.activity.sholat.SholatActivity" />
         <activity android:name=".view.activity.homepage.UmrohHajiActivity" />
-        <activity android:name=".view.activity.homepage.MainActivity"
-            android:hardwareAccelerated="false"/>
+        <activity
+            android:name=".view.activity.homepage.MainActivity"
+            android:hardwareAccelerated="false" />
         <activity android:name=".view.activity.SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

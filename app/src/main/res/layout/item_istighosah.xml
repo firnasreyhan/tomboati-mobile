@@ -78,6 +78,7 @@
             android:textColor="@color/black"
             android:textSize="@dimen/_12sdp"
             android:textStyle="italic"
+            android:justificationMode="inter_word"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/tes"

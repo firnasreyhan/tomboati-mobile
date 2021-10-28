@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    tools:context="tour.view.activity.doa_dzikir.AdabBerdoaActivity">
+    tools:context=".view.activity.doa_dzikir.AdabBerdoaActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -21,6 +21,8 @@
         android:id="@+id/recyclerViewAdabBerdoa"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar"
         tools:layout_editor_absoluteX="183dp" />

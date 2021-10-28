@@ -153,10 +153,10 @@
                         android:layout_marginRight="15dp"
                         android:fontFamily="@font/catamaran_regular"
                         android:text="@{doa.translate}"
-                        tools:text="translate"
                         android:textColor="@android:color/black"
                         android:textSize="@dimen/_13sdp"
-                        android:textStyle="italic" />
+                        android:textStyle="italic"
+                        tools:text="translate" />
 
                     <ImageView
                         android:id="@+id/imageView3"
@@ -181,9 +181,9 @@
                         android:fontFamily="@font/cinzel_bold"
                         android:gravity="center"
                         android:text="@{doa.judul}"
-                        tools:text="judul"
                         android:textColor="@color/dark_green"
-                        android:textSize="24sp" />
+                        android:textSize="24sp"
+                        tools:text="judul" />
 
                     <TextView
                         android:id="@+id/text_arabic"
@@ -198,9 +198,9 @@
                         android:fontFamily="@font/amiri_bold"
                         android:gravity="right"
                         android:text="@{doa.arabic}"
-                        tools:text="Arabic"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/_24sdp" />
+                        android:textSize="@dimen/_24sdp"
+                        tools:text="Arabic" />
 
 
                 </RelativeLayout>

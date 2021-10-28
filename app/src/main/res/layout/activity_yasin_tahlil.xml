@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/background"
-    tools:context="tour.view.activity.doa_dzikir.YasinTahlilActivity">
+    tools:context=".view.activity.doa_dzikir.YasinTahlilActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -15,6 +15,7 @@
         android:layout_height="?actionBarSize"
         android:background="@color/dark_green"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
+
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"

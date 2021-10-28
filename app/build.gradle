@@ -15,8 +15,8 @@ android {
         applicationId "com.tomboati.tour"
         minSdkVersion 22
         targetSdkVersion 30
-        versionCode 2
-        versionName "1.2 (Tomboati Update Kedua)"
+        versionCode 4
+        versionName "1.4 (Tomboati)"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -65,8 +65,8 @@ dependencies {
     api 'com.theartofdev.edmodo:android-image-cropper:2.8.0'
 
     //retrofit
-    implementation 'com.squareup.retrofit2:retrofit:2.7.1'
-    implementation 'com.squareup.retrofit2:converter-gson:2.7.1'
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
     implementation 'com.squareup.okhttp3:logging-interceptor:4.2.0'
     implementation 'com.google.code.gson:gson:2.8.6'
 
@@ -76,8 +76,8 @@ dependencies {
     annotationProcessor 'android.arch.lifecycle:compiler:1.1.1'
 
     //glide
-    implementation 'com.github.bumptech.glide:glide:4.11.0'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+//    implementation 'com.github.bumptech.glide:glide:4.11.0'
+//    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
 
     //smartlocation
     implementation 'io.nlopez.smartlocation:library:3.3.3'
