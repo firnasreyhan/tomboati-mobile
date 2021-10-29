@@ -114,6 +114,7 @@
             android:name=".view.activity.homepage.MainActivity"
             android:hardwareAccelerated="false" />
         <activity android:name=".view.activity.SplashScreenActivity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

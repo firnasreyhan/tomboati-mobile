@@ -60,6 +60,28 @@ public class HubungiKamiActivity extends BaseToolbarActivity {
                 Log.d(TAG, "onCreate: " + e.getMessage());
             }
         });
+
+        bind.materialCardViewInstagram.setOnClickListener(v -> {
+            try {
+                final String URI = "https://instagram.com/tomboatitour_official";
+                Intent sendIntent = new Intent(Intent.ACTION_VIEW);
+                sendIntent.setData(Uri.parse(URI));
+                startActivity(sendIntent);
+            }catch (Exception e) {
+                Log.d(TAG, "onCreate: " + e.getMessage());
+            }
+        });
+
+        bind.materialCardViewWeb.setOnClickListener(v -> {
+            try {
+                final String URI = "https://tomboatitour.com";
+                Intent sendIntent = new Intent(Intent.ACTION_VIEW);
+                sendIntent.setData(Uri.parse(URI));
+                startActivity(sendIntent);
+            }catch (Exception e) {
+                Log.d(TAG, "onCreate: " + e.getMessage());
+            }
+        });
     }
 
     @Override

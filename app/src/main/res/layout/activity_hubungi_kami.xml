@@ -26,7 +26,7 @@
                 android:id="@+id/imageView12"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="32dp"
                 android:src="@drawable/ic_contact_us"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -37,8 +37,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
-                android:layout_marginLeft="24dp"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="32dp"
                 android:fontFamily="@font/catamaran_bold"
                 android:text="Ada Pertanyaan atau Butuh Bantuan?"
                 android:textColor="@color/dark_green"
@@ -88,10 +87,9 @@
                         android:id="@+id/imageView14"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginBottom="16dp"
+                        android:layout_marginStart="14dp"
+                        android:layout_marginTop="14dp"
+                        android:layout_marginBottom="14dp"
                         android:src="@drawable/ic_whatsapp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -102,13 +100,12 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
-                        android:layout_marginLeft="16dp"
                         android:fontFamily="@font/catamaran_bold"
                         android:text="WhatsApp"
                         android:textColor="@color/dark_green"
                         android:textSize="10sp"
-                        app:layout_constraintBottom_toTopOf="@+id/textView31"
-                        app:layout_constraintStart_toEndOf="@+id/imageView14" />
+                        app:layout_constraintStart_toEndOf="@+id/imageView14"
+                        app:layout_constraintTop_toTopOf="@+id/imageView14" />
 
                     <TextView
                         android:id="@+id/textView31"
@@ -118,10 +115,9 @@
                         android:fontFamily="@font/catamaran_bold"
                         android:text="+62 812-3543-8885"
                         android:textColor="@color/black"
-                        android:textSize="18sp"
+                        android:textSize="16sp"
                         app:layout_constraintBottom_toBottomOf="@+id/imageView14"
-                        app:layout_constraintStart_toEndOf="@+id/imageView14"
-                        app:layout_constraintTop_toTopOf="@+id/imageView14" />
+                        app:layout_constraintStart_toEndOf="@+id/imageView14" />
 
                     <ImageView
                         android:layout_width="wrap_content"
@@ -162,10 +158,9 @@
                         android:id="@+id/imageView135"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginBottom="16dp"
+                        android:layout_marginStart="14dp"
+                        android:layout_marginTop="14dp"
+                        android:layout_marginBottom="14dp"
                         android:src="@drawable/ic_gmail"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -176,13 +171,12 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
-                        android:layout_marginLeft="16dp"
                         android:fontFamily="@font/catamaran_bold"
                         android:text="Email"
                         android:textColor="@color/dark_green"
                         android:textSize="10sp"
-                        app:layout_constraintBottom_toTopOf="@+id/textView335"
-                        app:layout_constraintStart_toEndOf="@+id/imageView135" />
+                        app:layout_constraintStart_toEndOf="@+id/imageView135"
+                        app:layout_constraintTop_toTopOf="@+id/imageView135" />
 
                     <TextView
                         android:id="@+id/textView335"
@@ -192,10 +186,9 @@
                         android:fontFamily="@font/catamaran_bold"
                         android:text="tomboatitour@gmail.com"
                         android:textColor="@color/black"
-                        android:textSize="18sp"
+                        android:textSize="16sp"
                         app:layout_constraintBottom_toBottomOf="@+id/imageView135"
-                        app:layout_constraintStart_toEndOf="@+id/imageView135"
-                        app:layout_constraintTop_toTopOf="@+id/imageView135" />
+                        app:layout_constraintStart_toEndOf="@+id/imageView135" />
 
                     <ImageView
                         android:layout_width="wrap_content"
@@ -218,10 +211,8 @@
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="24dp"
-                android:layout_marginBottom="32dp"
                 android:clickable="true"
                 app:cardCornerRadius="8dp"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/materialCardViewEmail"
@@ -236,10 +227,9 @@
                         android:id="@+id/imageView145"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginTop="16dp"
-                        android:layout_marginBottom="16dp"
+                        android:layout_marginStart="14dp"
+                        android:layout_marginTop="14dp"
+                        android:layout_marginBottom="14dp"
                         android:src="@drawable/ic_facebook"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -250,27 +240,167 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
-                        android:layout_marginLeft="16dp"
                         android:fontFamily="@font/catamaran_bold"
                         android:text="Facebook"
                         android:textColor="@color/dark_green"
                         android:textSize="10sp"
                         app:layout_constraintBottom_toTopOf="@+id/textView345"
-                        app:layout_constraintStart_toEndOf="@+id/imageView145" />
+                        app:layout_constraintStart_toEndOf="@+id/imageView145"
+                        app:layout_constraintTop_toTopOf="@+id/imageView145" />
 
                     <TextView
                         android:id="@+id/textView345"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
-                        android:layout_marginLeft="16dp"
                         android:fontFamily="@font/catamaran_bold"
                         android:text="Tombo Ati Tour"
                         android:textColor="@color/black"
-                        android:textSize="18sp"
+                        android:textSize="16sp"
                         app:layout_constraintBottom_toBottomOf="@+id/imageView145"
-                        app:layout_constraintStart_toEndOf="@+id/imageView145"
-                        app:layout_constraintTop_toTopOf="@+id/imageView145" />
+                        app:layout_constraintStart_toEndOf="@+id/imageView145" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginRight="16dp"
+                        android:src="@drawable/ic_arrow_forward"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/materialCardViewInstagram"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="24dp"
+                android:clickable="true"
+                app:cardCornerRadius="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/materialCardViewFacebook"
+                app:strokeColor="@color/dark_green"
+                app:strokeWidth="1.5dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/imageView146"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="14dp"
+                        android:layout_marginTop="14dp"
+                        android:layout_marginBottom="14dp"
+                        android:src="@drawable/ic_instagram"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/textView46"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:fontFamily="@font/catamaran_bold"
+                        android:text="Instagram"
+                        android:textColor="@color/dark_green"
+                        android:textSize="10sp"
+                        app:layout_constraintBottom_toTopOf="@+id/textView346"
+                        app:layout_constraintStart_toEndOf="@+id/imageView146"
+                        app:layout_constraintTop_toTopOf="@+id/imageView146" />
+
+                    <TextView
+                        android:id="@+id/textView346"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:fontFamily="@font/catamaran_bold"
+                        android:text="tomboatitour_official"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/imageView146"
+                        app:layout_constraintStart_toEndOf="@+id/imageView146" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginRight="16dp"
+                        android:src="@drawable/ic_arrow_forward"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/materialCardViewWeb"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginBottom="50dp"
+                android:clickable="true"
+                app:cardCornerRadius="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/materialCardViewInstagram"
+                app:strokeColor="@color/dark_green"
+                app:strokeWidth="1.5dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/imageView147"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="14dp"
+                        android:layout_marginTop="14dp"
+                        android:layout_marginBottom="14dp"
+                        android:src="@drawable/ic_link"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/textView47"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:fontFamily="@font/catamaran_bold"
+                        android:text="Web Official"
+                        android:textColor="@color/dark_green"
+                        android:textSize="10sp"
+                        app:layout_constraintBottom_toTopOf="@+id/textView347"
+                        app:layout_constraintStart_toEndOf="@+id/imageView147"
+                        app:layout_constraintTop_toTopOf="@+id/imageView147" />
+
+                    <TextView
+                        android:id="@+id/textView347"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:fontFamily="@font/catamaran_bold"
+                        android:text="tomboatitour.com"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/imageView147"
+                        app:layout_constraintStart_toEndOf="@+id/imageView147" />
 
                     <ImageView
                         android:layout_width="wrap_content"
