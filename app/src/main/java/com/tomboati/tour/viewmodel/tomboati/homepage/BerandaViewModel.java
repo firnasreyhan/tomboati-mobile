@@ -17,6 +17,8 @@ public class BerandaViewModel extends AndroidViewModel {
     private Repository repository;
 
     private MutableLiveData<JadwalSholatResponse> jadwalSholatData;
+    private MutableLiveData<JadwalSholatResponse> jadwalSholatData1;
+    private MutableLiveData<JadwalSholatResponse> jadwalSholatData2;
     private MutableLiveData<PaketResponse> getPaketData;
     private MutableLiveData<PaketWisataResponse> getWisataHalalData;
     private MutableLiveData<NewsResponse> getNewsData;
@@ -29,6 +31,8 @@ public class BerandaViewModel extends AndroidViewModel {
 
     public void clearDataLocation() {
         jadwalSholatData = null;
+        jadwalSholatData1 = null;
+        jadwalSholatData2 = null;
     }
 
     public MutableLiveData<JadwalSholatResponse> jadwalSholat(int year, int month, int day, double latitude, double longitude, int timezone) {
@@ -36,6 +40,20 @@ public class BerandaViewModel extends AndroidViewModel {
             jadwalSholatData = repository.jadwalSholat( year, (month + 1), day, latitude, longitude, timezone);
         }
         return jadwalSholatData;
+    }
+
+    public MutableLiveData<JadwalSholatResponse> jadwalSholat1(int year, int month, int day, double latitude, double longitude, int timezone) {
+        if(jadwalSholatData1 == null) {
+            jadwalSholatData1 = repository.jadwalSholat( year, (month + 1), day, latitude, longitude, timezone);
+        }
+        return jadwalSholatData1;
+    }
+
+    public MutableLiveData<JadwalSholatResponse> jadwalSholat2(int year, int month, int day, double latitude, double longitude, int timezone) {
+        if(jadwalSholatData2 == null) {
+            jadwalSholatData2 = repository.jadwalSholat( year, (month + 1), day, latitude, longitude, timezone);
+        }
+        return jadwalSholatData2;
     }
 
     public MutableLiveData<PaketResponse> getPaket() {

@@ -90,7 +90,7 @@ public class RegistrasiDataPembayaranMitraActivity extends AppCompatActivity {
                 final AkunModel akunModel = PreferenceAkun.getAkun(this);
                 akunModel.setPhoto(URI[0].toString());
                 akunModel.setKtp(editTextRegistrasiNomorKTP.getText().toString());
-                akunModel.setUserId(editTextRegistrasiUsername.getText().toString());
+                akunModel.setUserId(editTextRegistrasiUsername.getText().toString().toLowerCase());
                 akunModel.setEmail(editTextRegistrasiEmail.getText().toString());
                 akunModel.setFotoKTP(URI[1].toString());
                 akunModel.setRekening(editTextRegistrasiNomorRekening.getText().toString());

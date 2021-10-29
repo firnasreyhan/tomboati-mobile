@@ -14,6 +14,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -80,6 +81,7 @@ public class BerandaFragment extends Fragment {
     private String[] idPaket = new String[6];
 
     private AlertProgress progress;
+    private final LifecycleOwner OWNER = this;
 
     // Check gps provider is enabled
     private boolean isProviderEnable() {
@@ -145,16 +147,13 @@ public class BerandaFragment extends Fragment {
             initOnClickMenu();
 
             // ON Swipe Layout ===================
-            swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-                @Override
-                public void onRefresh() {
-                    swipeRefreshLayout.setRefreshing(false);
-                    shimmerFrameLayoutSlider.startShimmer();
-                    shimmerFrameLayoutSlider.setVisibility(View.VISIBLE);
-                    sliderView.setVisibility(View.GONE);
-                    berandaViewModel.clearDataLocation();
-                    showLocation();
-                }
+            swipeRefreshLayout.setOnRefreshListener(() -> {
+                swipeRefreshLayout.setRefreshing(false);
+                shimmerFrameLayoutSlider.startShimmer();
+                shimmerFrameLayoutSlider.setVisibility(View.VISIBLE);
+                sliderView.setVisibility(View.GONE);
+                berandaViewModel.clearDataLocation();
+                showLocation();
             });
 
             // Button detail news is clicked  ===================
@@ -376,83 +375,64 @@ public class BerandaFragment extends Fragment {
     private void showLocation() {
         progress.showDialog();
 
-        SmartLocation.with(getContext()).location().config(LocationParams.BEST_EFFORT).oneFix().start(new OnLocationUpdatedListener() {
-            @Override
-            public void onLocationUpdated(Location location) {
+        SmartLocation.with(getContext()).location().config(LocationParams.BEST_EFFORT).oneFix().start(location -> {
 
-                SmartLocation.with(getActivity()).geocoding().reverse(location, new OnReverseGeocodingListener() {
-                    @Override
-                    public void onAddressResolved(Location location, List<Address> list) {
-                        String text_kota = null;
-                        if (list.size() > 0) {
-                            String kab = list.get(0).getSubAdminArea();
-                            text_kota = kab;
-                        } else {
-                            text_kota = "Location Not Found!";
-                        }
-                        Utility.setKota(text_kota);
-                    }
-                });
+            SmartLocation.with(getActivity()).geocoding().reverse(location, (location1, list) -> {
+                String text_kota = null;
+                if (list.size() > 0) {
+                    String kab = list.get(0).getSubAdminArea();
+                    text_kota = kab;
+                } else {
+                    text_kota = "Location Not Found!";
+                }
+                Utility.setKota(text_kota);
+            });
 
-                Utility.setLatitude(location.getLatitude());
-                Utility.setLongitude(location.getLongitude());
+            Utility.setLatitude(location.getLatitude());
+            Utility.setLongitude(location.getLongitude());
 
-                showJadwalSholat(
-                        Utility.getYear(), Utility.getMonth(), Utility.getDay(),
-                        location.getLatitude(), location.getLongitude(), Utility.getGMT()
-                );
-            }
+            showJadwalSholat(
+                    Utility.getYear(), Utility.getMonth(), Utility.getDay(),
+                    location.getLatitude(), location.getLongitude(), Utility.getGMT()
+            );
         });
     }
 
     private void showJadwalSholat(int year, int month, int day, double latitude, double longitude, int timezone) {
         if (!Utility.getList().isEmpty()) {
-            Utility.getList().clear();
-            sliderAdapter.notifyDataSetChanged();
+            Utility.getList().clear(); sliderAdapter.notifyDataSetChanged();
         }
-        berandaViewModel.jadwalSholat(year, month, day, latitude, longitude, timezone ).observe(this
-                , new Observer<JadwalSholatResponse>() {
-            @Override
-            public void onChanged(@Nullable JadwalSholatResponse jadwalSholatResponse) {
-                if (jadwalSholatResponse != null) {
-                    Utility.getList().add(jadwalSholatResponse);
-                    showJadwalSholatMecca(year, month, day, 21.422487, 39.826206, timezone);
-                }
+        berandaViewModel.jadwalSholat(year, month, day, latitude, longitude, timezone ).observe(OWNER, jadwalSholatResponse -> {
+            if (jadwalSholatResponse != null) {
+                Utility.getList().add(jadwalSholatResponse);
+                showJadwalSholatMecca(year, month, day, 21.422487, 39.826206, timezone);
             }
         });
     }
 
     public void showJadwalSholatMecca(int year, int month, int day, double latitude, double longitude, int timezone) {
-        berandaViewModel.jadwalSholat( year, month, day, latitude, longitude, timezone ).observe(this
-                , new Observer<JadwalSholatResponse>() {
-            @Override
-            public void onChanged(@Nullable JadwalSholatResponse jadwalSholatResponse) {
-                if (jadwalSholatResponse != null) {
-                    Utility.getList().add(jadwalSholatResponse);
-                    showJadwalSholatMedina(year, month, day, 24.470901, 39.612236, timezone);
-                }
+        berandaViewModel.jadwalSholat1( year, month, day, latitude, longitude, timezone ).observe(OWNER, jadwalSholatResponse -> {
+            if (jadwalSholatResponse != null) {
+                Utility.getList().add(jadwalSholatResponse);
+                showJadwalSholatMedina(year, month, day, 24.470901, 39.612236, timezone);
             }
         });
     }
 
     public void showJadwalSholatMedina(int year, int month, int day, double latitude, double longitude, int timezone) {
-        berandaViewModel.jadwalSholat( year, month, day, latitude, longitude, timezone  ).observe(this
-                , new Observer<JadwalSholatResponse>() {
-            @Override
-            public void onChanged(@Nullable JadwalSholatResponse jadwalSholatResponse) {
-                if (jadwalSholatResponse != null) {
-                    Utility.getList().add(jadwalSholatResponse);
+        berandaViewModel.jadwalSholat2( year, month, day, latitude, longitude, timezone  ).observe(OWNER, jadwalSholatResponse -> {
+            if (jadwalSholatResponse != null) {
+                Utility.getList().add(jadwalSholatResponse);
 
-                    sliderAdapter = new SliderAdapter(Utility.getList());
-                    sliderView.setSliderAdapter(sliderAdapter);
+                sliderAdapter = new SliderAdapter(Utility.getList());
+                sliderView.setSliderAdapter(sliderAdapter);
 
-                    shimmerFrameLayoutSlider.stopShimmer();
-                    shimmerFrameLayoutSlider.setVisibility(View.GONE);
-                    sliderView.setVisibility(View.VISIBLE);
+                shimmerFrameLayoutSlider.stopShimmer();
+                shimmerFrameLayoutSlider.setVisibility(View.GONE);
+                sliderView.setVisibility(View.VISIBLE);
 
-                    if (progress.isDialogShowing()) {
-                        progress.dismissDialog();
-                    }
+                if (progress.isDialogShowing()) {
+                    progress.dismissDialog();
                 }
             }
         });
