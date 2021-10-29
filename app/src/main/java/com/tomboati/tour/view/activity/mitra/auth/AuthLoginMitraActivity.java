@@ -80,7 +80,7 @@ public class AuthLoginMitraActivity extends AppCompatActivity implements OnCompl
                     AlertProgress progress = new AlertProgress(v, "Sedang mengautentikasi data..");
                     progress.showDialog();
                     viewModel.loginMitra(
-                            editTextLoginUsername.getText().toString(),
+                            editTextLoginUsername.getText().toString().toLowerCase(),
                             editTextLoginPassword.getText().toString(),
                             token
                     ).observe(OWNER, akunMitraResponse -> {
@@ -127,11 +127,6 @@ public class AuthLoginMitraActivity extends AppCompatActivity implements OnCompl
         });
 
         textViewBack.setOnClickListener(v -> finish());
-
-
-
-
-
 
     }
 
