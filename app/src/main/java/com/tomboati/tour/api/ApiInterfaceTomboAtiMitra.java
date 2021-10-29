@@ -78,10 +78,11 @@ public interface ApiInterfaceTomboAtiMitra {
             @Field("repeatPassword") String repeatPassword
     );
 
+    @FormUrlEncoded
     @POST("api.php")
     Call<BaseResponse> logout(
             @Query("function") String function,
-            @Query("username") String username
+            @Field("username") String username
     );
 
     @Multipart
