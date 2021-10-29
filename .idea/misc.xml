@@ -49,6 +49,7 @@
         <entry key="app/src/main/res/layout/activity_hitung_tasbih.xml" value="0.18" />
         <entry key="app/src/main/res/layout/activity_hitung_tasbih_lainnya.xml" value="0.18" />
         <entry key="app/src/main/res/layout/activity_hubungi_kami.xml" value="0.2" />
+        <entry key="app/src/main/res/layout/activity_image_chat.xml" value="0.11171875" />
         <entry key="app/src/main/res/layout/activity_informasi_pembayaran.xml" value="0.18" />
         <entry key="app/src/main/res/layout/activity_istighosah.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_kode_referral.xml" value="0.22" />
@@ -82,6 +83,7 @@
         <entry key="app/src/main/res/layout/activity_tayamum.xml" value="0.14947916666666666" />
         <entry key="app/src/main/res/layout/activity_tembang_sholawat.xml" value="0.14947916666666666" />
         <entry key="app/src/main/res/layout/activity_ubah_password.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/activity_ubah_profil.xml" value="0.17" />
         <entry key="app/src/main/res/layout/activity_umroh_haji.xml" value="0.14947916666666666" />
         <entry key="app/src/main/res/layout/activity_update_profile.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_waktu_mustajab.xml" value="0.18" />

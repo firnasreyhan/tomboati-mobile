@@ -1,63 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<layout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@android:color/black"
-    tools:context="tour.view.activity.homepage.ImageChatActivity">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <ImageView
-        android:id="@+id/imageViewChat"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:adjustViewBounds="true"
-        android:scaleType="fitCenter"/>
+    <data>
+        <variable
+            name="pesan"
+            type="String" />
+    </data>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="@dimen/_7sdp"
-        android:gravity="center">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@android:color/black"
+        tools:context=".view.activity.homepage.ImageChatActivity">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputLayoutChat"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        <ImageView
+            android:id="@+id/imageViewChat"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"/>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginRight="@dimen/_7sdp"
-            android:layout_weight="1"
-            app:boxBackgroundColor="@android:color/white"
-            app:hintEnabled="false"
-            app:boxCornerRadiusBottomEnd="@dimen/_30sdp"
-            app:boxCornerRadiusBottomStart="@dimen/_30sdp"
-            app:boxCornerRadiusTopEnd="@dimen/_30sdp"
-            app:boxCornerRadiusTopStart="@dimen/_30sdp">
+            android:orientation="horizontal"
+            android:padding="@dimen/_7sdp"
+            android:gravity="center">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/textInputEditTextChat"
-                android:layout_width="match_parent"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayoutChat"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:hint="Ketik pesan..."
-                android:inputType="textMultiLine"
-                android:scrollbars="vertical"
-                android:fontFamily="@font/catamaran_regular"
-                android:textColor="#333333" />
+                android:layout_marginEnd="@dimen/_7sdp"
+                android:layout_weight="1"
+                app:boxBackgroundColor="@android:color/white"
+                app:hintEnabled="false"
+                app:boxCornerRadiusBottomEnd="@dimen/_30sdp"
+                app:boxCornerRadiusBottomStart="@dimen/_30sdp"
+                app:boxCornerRadiusTopEnd="@dimen/_30sdp"
+                app:boxCornerRadiusTopStart="@dimen/_30sdp">
 
-        </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/textInputEditTextChat"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Ketik pesan..."
+                    android:text="@={pesan}"
+                    android:inputType="textMultiLine"
+                    android:scrollbars="vertical"
+                    android:fontFamily="@font/catamaran_regular"
+                    android:textColor="#333333" />
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/floatingActionButtonSend"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:backgroundTint="@color/dark_green"
-            android:src="@drawable/ic_send"
-            app:tint="@color/white"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/floatingActionButtonSend"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:backgroundTint="@color/dark_green"
+                android:src="@drawable/ic_send"
+                app:tint="@color/white"/>
+
+        </LinearLayout>
 
     </LinearLayout>
 
-</LinearLayout>
+</layout>

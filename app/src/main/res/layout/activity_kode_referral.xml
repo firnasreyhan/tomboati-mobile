@@ -1,170 +1,184 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<layout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/background"
-    tools:context="tour.view.activity.homepage.KodeReferralActivity">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+    <data>
+        <variable
+            name="referralMe"
+            type="String" />
+        <variable
+            name="referralFrom"
+            type="String" />
+    </data>
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="?actionBarSize"
-        android:background="@color/dark_green"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/background"
+        tools:context=".view.activity.homepage.KodeReferralActivity">
 
-    <androidx.core.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <LinearLayout
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/_13sdp"
-            android:gravity="center"
-            android:orientation="vertical">
+            android:layout_height="?actionBarSize"
+            android:background="@color/dark_green"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/_175sdp"
-                android:adjustViewBounds="true"
-                android:scaleType="fitCenter"
-                android:src="@drawable/ic_gift"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_13sdp"
-                android:fontFamily="@font/catamaran_bold"
-                android:gravity="center_horizontal"
-                android:text="Saatnya untuk menjadi mitra\nTombo Ati Tour"
-                android:textColor="@android:color/black"
-                android:textSize="20sp" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_13sdp"
-                android:fontFamily="@font/catamaran_regular"
-                android:gravity="center"
-                android:text="Tombo Ati Tour membuka peluang secara terbuka kepada masyarakat umum untuk bersama - sama menjadi Freelance Inspirasi Baitullah dekat di Hati.\n\nBentuk peluang yang diberikan berupa kesempatan untuk menjadi Mitra atau sebagai Kantor Cabang di daerah"
-                android:textColor="@android:color/black"
-                android:textSize="@dimen/_10sdp" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_13sdp"
-                android:gravity="center"
-                android:fontFamily="@font/catamaran_bold"
-                android:textSize="@dimen/_10sdp"
-                android:textColor="@color/darker_grey"
-                android:text="Share Kode Referralmu"/>
-
-            <TextView
-                android:id="@+id/textViewKodeReferral"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/dark_green"
-                android:fontFamily="@font/catamaran_bold"
-                android:gravity="center|center_vertical"
-                android:inputType="number"
-                android:maxLines="1"
-                android:padding="12dp"
-                android:textColor="@android:color/white"
-                android:textSize="20sp" />
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_6sdp"
-                android:orientation="horizontal">
+                android:padding="@dimen/_13sdp"
+                android:gravity="center"
+                android:orientation="vertical">
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/materialButtonCopy"
-                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_175sdp"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_gift"/>
+
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="@dimen/_3sdp"
-                    android:layout_weight="1"
+                    android:layout_marginTop="@dimen/_13sdp"
                     android:fontFamily="@font/catamaran_bold"
-                    android:text="Copy"
-                    android:textAllCaps="false"
-                    android:textColor="@color/dark_green"
-                    app:strokeColor="@color/dark_green" />
+                    android:gravity="center_horizontal"
+                    android:text="Saatnya untuk menjadi mitra\nTombo Ati Tour"
+                    android:textColor="@android:color/black"
+                    android:textSize="20sp" />
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/materialButtonShare"
-                    style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/_3sdp"
-                    android:layout_weight="1"
+                    android:layout_marginTop="@dimen/_13sdp"
+                    android:fontFamily="@font/catamaran_regular"
+                    android:gravity="center"
+                    android:text="Tombo Ati Tour membuka peluang secara terbuka kepada masyarakat umum untuk bersama - sama menjadi Freelance Inspirasi Baitullah dekat di Hati.\n\nBentuk peluang yang diberikan berupa kesempatan untuk menjadi Mitra atau sebagai Kantor Cabang di daerah"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/_10sdp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_13sdp"
+                    android:gravity="center"
                     android:fontFamily="@font/catamaran_bold"
-                    android:text="Share"
-                    android:textAllCaps="false"
-                    android:textColor="@color/white"
-                    app:backgroundTint="@color/dark_green" />
+                    android:textSize="@dimen/_10sdp"
+                    android:textColor="@color/darker_grey"
+                    android:text="Share Kode Referralmu"/>
 
-            </LinearLayout>
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_13sdp"
-                app:cardCornerRadius="@dimen/_7sdp">
+                <TextView
+                    android:id="@+id/textViewKodeReferral"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/dark_green"
+                    android:fontFamily="@font/catamaran_bold"
+                    android:gravity="center|center_vertical"
+                    android:padding="12dp"
+                    tools:text="######"
+                    android:text="@{referralMe}"
+                    android:textColor="@android:color/white"
+                    android:textSize="20sp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:layout_marginTop="@dimen/_6sdp"
+                    android:orientation="horizontal">
 
-                    <View
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/materialButtonCopy"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                         android:layout_width="match_parent"
-                        android:layout_height="@dimen/_3sdp"
-                        android:background="@color/dark_green"/>
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="@dimen/_3sdp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/catamaran_bold"
+                        android:text="Copy"
+                        android:textAllCaps="false"
+                        android:textColor="@color/dark_green"
+                        app:strokeColor="@color/dark_green" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/materialButtonShare"
+                        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_3sdp"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/catamaran_bold"
+                        android:text="Share"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        app:backgroundTint="@color/dark_green" />
+
+                </LinearLayout>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_13sdp"
+                    app:cardCornerRadius="@dimen/_7sdp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:gravity="center"
-                        android:padding="@dimen/_13sdp">
+                        android:orientation="vertical">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/catamaran_bold"
-                            android:text="Kode Referral Yang Kamu Gunakan"
-                            android:textColor="@android:color/black"
-                            android:textSize="@dimen/_13sdp" />
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_3sdp"
+                            android:background="@color/dark_green"/>
 
-
-                        <TextView
-                            android:id="@+id/textViewReferralFrom"
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:background="@drawable/round_border_form"
-                            android:fontFamily="@font/catamaran_bold"
-                            android:gravity="center|center_vertical"
-                            android:paddingTop="15dp"
-                            android:paddingBottom="15dp"
-                            android:text="34326345"
-                            android:textColor="@color/dark_green"
-                            android:textSize="20sp" />
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:padding="@dimen/_13sdp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/catamaran_bold"
+                                android:text="Kode Referral Yang Kamu Gunakan"
+                                android:textColor="@android:color/black"
+                                android:textSize="@dimen/_13sdp" />
+
+
+                            <TextView
+                                android:id="@+id/textViewReferralFrom"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:background="@drawable/round_border_form"
+                                android:fontFamily="@font/catamaran_bold"
+                                android:gravity="center|center_vertical"
+                                android:paddingTop="15dp"
+                                android:paddingBottom="15dp"
+                                android:text="@{referralFrom}"
+                                tools:text="######"
+                                android:textColor="@color/dark_green"
+                                android:textSize="20sp" />
+
+                        </LinearLayout>
 
                     </LinearLayout>
 
-                </LinearLayout>
+                </androidx.cardview.widget.CardView>
 
-            </androidx.cardview.widget.CardView>
+            </LinearLayout>
 
-        </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
 
-    </androidx.core.widget.NestedScrollView>
+    </LinearLayout>
 
-</LinearLayout>
+</layout>
