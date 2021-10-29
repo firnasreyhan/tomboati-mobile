@@ -1269,12 +1269,12 @@ public class Repository {
 
     public MutableLiveData<BaseResponse> logout(
             String function,
-            String email
+            String username
     ) {
         MutableLiveData<BaseResponse> data = new MutableLiveData<>();
         apiInterfaceTomboAtiMitra.logout(
                 function,
-                email
+                username
         ).enqueue(new Callback<BaseResponse>() {
             @Override
             public void onResponse(Call<BaseResponse> call, Response<BaseResponse> response) {
