@@ -1,35 +1,30 @@
 package com.tomboati.tour.view.activity.doa_dzikir;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import com.tomboati.tour.R;
 import com.tomboati.tour.adapter.TabAdapter;
 import com.tomboati.tour.databinding.ActivityYasinTahlilBinding;
 import com.tomboati.tour.utils.Utility;
+import com.tomboati.tour.view.activity.base.BaseToolbarActivity;
 import com.tomboati.tour.view.fragment.doadzikir.TahlilFragment;
 import com.tomboati.tour.view.fragment.doadzikir.YasinFragment;
 import com.google.android.material.tabs.TabLayout;
 
-public class YasinTahlilActivity extends AppCompatActivity {
+public class YasinTahlilActivity extends BaseToolbarActivity {
 
     private ActivityYasinTahlilBinding bind;
     private TabAdapter tabAdapter;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setTheme(R.style.ThemeTomboAtiGreen);
+    protected void onViewReady(Bundle savedInstanceState, Intent intent) {
+        super.onViewReady(savedInstanceState, intent);
         bind = ActivityYasinTahlilBinding.inflate(getLayoutInflater());
-        setContentView(bind.getRoot());
-
-        setSupportActionBar(bind.toolbar);
-        setTitle("Yasin & Tahlil");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        setToolbar(bind.toolbar, "Yasin & Tahlil");
 
         if(Utility.isConnecting(this)) {
 
@@ -44,27 +39,19 @@ public class YasinTahlilActivity extends AppCompatActivity {
 
             bind.viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
                 @Override
-                public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-                }
-
+                public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {}
                 @Override
-                public void onPageSelected(int position) {
-                    highLightCurrentTab(position);
-                }
-
+                public void onPageSelected(int position) { highLightCurrentTab(position); }
                 @Override
-                public void onPageScrollStateChanged(int state) {
-
-                }
+                public void onPageScrollStateChanged(int state) {}
             });
         }
+
     }
 
     @Override
-    public boolean onSupportNavigateUp() {
-        onBackPressed();
-        return true;
+    protected View getContentView() {
+        return bind.getRoot();
     }
 
     private void highLightCurrentTab(int position) {

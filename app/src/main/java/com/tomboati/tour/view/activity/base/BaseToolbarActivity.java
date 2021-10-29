@@ -11,11 +11,15 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
 import com.tomboati.tour.R;
 
 public abstract class BaseToolbarActivity extends AppCompatActivity {
+
+    protected abstract View getContentView();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -60,7 +64,11 @@ public abstract class BaseToolbarActivity extends AppCompatActivity {
         setTitle(title);
     }
 
-    protected abstract View getContentView();
+    protected void setRecyclerView(RecyclerView recyclerView, RecyclerView.Adapter<?> adapter) {
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(adapter);
+    }
 
     @Override
     public boolean onSupportNavigateUp() {
