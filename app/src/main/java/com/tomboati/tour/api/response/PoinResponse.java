@@ -10,7 +10,7 @@ public class PoinResponse {
     private String message;
 
     @SerializedName("poin")
-    private Object poin;
+    private String poin;
 
     public boolean isError() {
         return error;
@@ -20,7 +20,7 @@ public class PoinResponse {
         return message;
     }
 
-    public Object getPoin() {
+    public String getPoin() {
         return poin;
     }
 }

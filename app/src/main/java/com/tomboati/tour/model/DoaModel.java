@@ -1,25 +1,25 @@
 package com.tomboati.tour.model;
 
-public class DoaModel {
+import java.io.Serializable;
+
+public class DoaModel implements Serializable {
 
     private String judul = "";
     private String arabic = "";
     private String translate = "";
     private String arti = "";
     private String keterangan = "";
-    private boolean keteranganActive = false;
 
-    public DoaModel(String judul, String arabic, String translate, String arti, String keterangan, boolean keteranganActive) {
+    public DoaModel(String judul, String arabic, String translate, String arti, String keterangan) {
         this.judul = judul;
         this.arabic = arabic;
         this.translate = translate;
         this.arti = arti;
         this.keterangan = keterangan;
-        this.keteranganActive = keteranganActive;
     }
 
     public boolean isKeteranganActive() {
-        return keteranganActive;
+        return !this.keterangan.isEmpty();
     }
 
     public String getJudul() {
