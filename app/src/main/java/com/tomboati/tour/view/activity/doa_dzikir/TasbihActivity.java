@@ -1,39 +1,28 @@
 package com.tomboati.tour.view.activity.doa_dzikir;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
+import android.content.Intent;
 import android.os.Bundle;
-import com.tomboati.tour.R;
+import android.view.View;
+
 import com.tomboati.tour.adapter.TasbihAdapter;
 import com.tomboati.tour.databinding.ActivityTasbihBinding;
+import com.tomboati.tour.view.activity.base.BaseToolbarActivity;
 
-public class TasbihActivity extends AppCompatActivity {
+public class TasbihActivity extends BaseToolbarActivity {
 
     private ActivityTasbihBinding bind;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setTheme(R.style.ThemeTomboAtiGreen);
+    protected void onViewReady(Bundle savedInstanceState, Intent intent) {
+        super.onViewReady(savedInstanceState, intent);
         bind = ActivityTasbihBinding.inflate(getLayoutInflater());
-        setContentView(bind.getRoot());
-
-        setSupportActionBar(bind.toolbar);
-        setTitle("Tasbih");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-
-        bind.recyclerViewTasbih.setHasFixedSize(true);
-        bind.recyclerViewTasbih.setLayoutManager(new LinearLayoutManager(this));
-        bind.recyclerViewTasbih.setAdapter(new TasbihAdapter());
+        setToolbar(bind.toolbar, "Tasbih");
+        setRecyclerView(bind.recyclerViewTasbih, new TasbihAdapter());
     }
 
     @Override
-    public boolean onSupportNavigateUp() {
-        onBackPressed();
-        return true;
+    protected View getContentView() {
+        return bind.getRoot();
     }
+
 }

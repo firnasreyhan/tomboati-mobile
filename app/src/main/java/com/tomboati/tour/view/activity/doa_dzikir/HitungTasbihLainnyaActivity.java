@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.VibrationEffect;
@@ -17,8 +18,9 @@ import android.widget.Toast;
 import com.tomboati.tour.R;
 import com.ramijemli.percentagechartview.PercentageChartView;
 import com.tomboati.tour.databinding.ActivityHitungTasbihLainnyaBinding;
+import com.tomboati.tour.view.activity.base.BaseNonToolbarActivity;
 
-public class HitungTasbihLainnyaActivity extends AppCompatActivity {
+public class HitungTasbihLainnyaActivity extends BaseNonToolbarActivity {
 
     private ActivityHitungTasbihLainnyaBinding bind;
     private int countTasbeeh = 0;
@@ -26,12 +28,11 @@ public class HitungTasbihLainnyaActivity extends AppCompatActivity {
     private int timeVibrate =40;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setTheme(R.style.ThemeTomboAtiGreen);
+    protected void onViewReady(Bundle savedInstanceState, Intent intent) {
+        super.onViewReady(savedInstanceState, intent);
+
         bind = ActivityHitungTasbihLainnyaBinding.inflate(getLayoutInflater());
-        setContentView(bind.getRoot());
-        
+
         max = this.getIntent().getIntExtra("inpMax", max);
 
         bind.txtCount.setText(String.valueOf(countTasbeeh));
@@ -44,9 +45,7 @@ public class HitungTasbihLainnyaActivity extends AppCompatActivity {
         bind.imgAdd.setOnClickListener(v -> {
             if(countTasbeeh < max){
                 countTasbeeh++;
-            }
-
-            if(countTasbeeh == max) {
+            } else {
                 timeVibrate = 1000;
                 Toast.makeText(v.getContext(), "Hitungan tasbih anda sudah maksimal", Toast.LENGTH_SHORT).show();
             }
@@ -105,5 +104,10 @@ public class HitungTasbihLainnyaActivity extends AppCompatActivity {
         });
 
         bind.back.setOnClickListener(v -> onBackPressed());
+    }
+
+    @Override
+    protected View getContentView() {
+        return bind.getRoot();
     }
 }

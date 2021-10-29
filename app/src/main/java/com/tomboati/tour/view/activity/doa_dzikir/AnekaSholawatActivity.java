@@ -1,42 +1,29 @@
 package com.tomboati.tour.view.activity.doa_dzikir;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
-import com.tomboati.tour.R;
 import com.tomboati.tour.adapter.DoaHajiUmrahAdapter;
 import com.tomboati.tour.databinding.ActivityAnekaSholawatBinding;
-import com.tomboati.tour.model.DoaHajiUmrahModel;
+import com.tomboati.tour.model.DoaModel;
+import com.tomboati.tour.view.activity.base.BaseToolbarActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class AnekaSholawatActivity extends AppCompatActivity {
+public class AnekaSholawatActivity extends BaseToolbarActivity {
 
     private ActivityAnekaSholawatBinding bind;
-    private DoaHajiUmrahAdapter doaHajiUmrahAdapter;
-    private List<DoaHajiUmrahModel> models;
+    private List<DoaModel> models;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setTheme(R.style.ThemeTomboAtiGreen);
+    protected void onViewReady(Bundle savedInstanceState, Intent intent) {
+        super.onViewReady(savedInstanceState, intent);
         bind = ActivityAnekaSholawatBinding.inflate(getLayoutInflater());
-        setContentView(bind.getRoot());
-
-        setSupportActionBar(bind.toolbar);
-        setTitle("Aneka Sholawat");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        setToolbar(bind.toolbar, "Aneka Sholawat");
 
         models = new ArrayList<>();
-
-        bind.recyclerViewAnekaSholawat.setHasFixedSize(true);
-        bind.recyclerViewAnekaSholawat.setLayoutManager(new LinearLayoutManager(this));
 
         addItem("Sholawat Nariyah",
                 "للّهُمَّ صَلِّ صَلَاةً كَامِلَةً وَسَلِّمْ سَلَامًا تَامًّا عَلَى سَيِّدِنَا مُحَمَّدِ الّذِي تَنْحَلُّ بِهِ الْعُقَدُ وَتَنْفَرِجُ بِهِ الْكُرَبُ وَتُقْضَى بِهِ الْحَوَائِجُ وَتُنَالُ بِهِ الرَّغَائِبُ وَحُسْنُ الْخَوَاتِمِ وَيُسْتَسْقَى الْغَمَامُ بِوَجْهِهِ الْكَرِيْمِ وَعَلَى آلِهِ وَصَحْبِهِ فِيْ كُلِّ لَمْحَةٍ وَنَفَسٍ بِعَدَدِ كُلِّ مَعْلُوْمٍ لَكَ",
@@ -122,17 +109,15 @@ public class AnekaSholawatActivity extends AppCompatActivity {
                 ""
         );
 
-        doaHajiUmrahAdapter = new DoaHajiUmrahAdapter(models, true);
-        bind.recyclerViewAnekaSholawat.setAdapter(doaHajiUmrahAdapter);
+        setRecyclerView(bind.recyclerViewAnekaSholawat, new DoaHajiUmrahAdapter(models, true));
     }
 
     private void addItem(String title, String arabic, String translate, String arti, String keterangan) {
-        models.add(new DoaHajiUmrahModel(title, arabic, translate, arti, keterangan));
+        models.add(new DoaModel(title, arabic, translate, arti, keterangan));
     }
 
     @Override
-    public boolean onSupportNavigateUp() {
-        onBackPressed();
-        return true;
+    protected View getContentView() {
+        return bind.getRoot();
     }
 }

@@ -1,50 +1,41 @@
 package com.tomboati.tour.view.activity.doa_dzikir;
 
-import androidx.appcompat.app.AppCompatActivity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
-import com.tomboati.tour.R;
 import com.tomboati.tour.databinding.ActivityDoaDzikirBinding;
-import com.tomboati.tour.helper.Common;
 import com.tomboati.tour.utils.Utility;
+import com.tomboati.tour.view.activity.base.BaseToolbarActivity;
 
-public class DoaDzikirActivity extends AppCompatActivity{
+public class DoaDzikirActivity extends BaseToolbarActivity {
+
+    private ActivityDoaDzikirBinding bind;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setTheme(R.style.ThemeTomboAtiGreen);
-        ActivityDoaDzikirBinding bind = ActivityDoaDzikirBinding.inflate(getLayoutInflater());
-        setContentView(bind.getRoot());
-
-        setSupportActionBar(bind.toolbar);
-        setTitle("Do’a & Dzikir");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-
+    protected void onViewReady(Bundle savedInstanceState, Intent intent) {
+        super.onViewReady(savedInstanceState, intent);
+        bind = ActivityDoaDzikirBinding.inflate(getLayoutInflater());
+        setToolbar(bind.toolbar, "Doa & Dzikir");
         Utility.addValue();
-
-        bind.cardViewAsmaulHusna.setOnClickListener(v -> Common.startActivity(v, NewAsmaulHusnaActivity.class));
-        bind.cardViewIstighosah.setOnClickListener(v -> Common.startActivity(v, IstighosahActivity.class));
-        bind.cardViewYasinTahlil.setOnClickListener(v -> Common.startActivity(v, YasinTahlilActivity.class));
-        bind.cardViewDoaHarian.setOnClickListener(v -> Common.startActivity(v, DoaSehariHariActivity.class));
-        bind.cardViewDoaUmrah.setOnClickListener(v -> Common.startActivity(v, DoaUmrahActivity.class));
-        bind.cardViewDoaHaji.setOnClickListener(v -> Common.startActivity(v, DoaHajiActivity.class));
-        bind.cardViewDOaZiarah.setOnClickListener(v -> Common.startActivity(v, DoaZiarahActivity.class));
-        bind.cardViewTempatMustajab.setOnClickListener(v -> Common.startActivity(v, TampatMustajabActivity.class));
-        bind.cardViewWaktuMustajab.setOnClickListener(v -> Common.startActivity(v, WaktuMustajabActivity.class));
-        bind.cardViewAdabBerdoa.setOnClickListener(v -> Common.startActivity(v, AdabBerdoaActivity.class));
-        bind.cardViewDoaRamadhan.setOnClickListener(v -> Common.startActivity(v, DoaRamadhanActivity.class));
-        bind.cardViewTasbih.setOnClickListener(v -> Common.startActivity(v, TasbihActivity.class));
-        bind.cardViewAnekaSholawat.setOnClickListener(v -> Common.startActivity(v, AnekaSholawatActivity.class));
-        bind.cardViewTembangSholawat.setOnClickListener(v -> Common.startActivity(v, TembangSholawatActivity.class));
-
+        bind.cardViewAsmaulHusna.setOnClickListener(v -> startsActivity( NewAsmaulHusnaActivity.class));
+        bind.cardViewIstighosah.setOnClickListener(v -> startsActivity( IstighosahActivity.class));
+        bind.cardViewYasinTahlil.setOnClickListener(v -> startsActivity( YasinTahlilActivity.class));
+        bind.cardViewDoaHarian.setOnClickListener(v -> startsActivity( DoaSehariHariActivity.class));
+        bind.cardViewDoaUmrah.setOnClickListener(v -> startsActivity( DoaUmrahActivity.class));
+        bind.cardViewDoaHaji.setOnClickListener(v -> startsActivity( DoaHajiActivity.class));
+        bind.cardViewDOaZiarah.setOnClickListener(v -> startsActivity( DoaZiarahActivity.class));
+        bind.cardViewTempatMustajab.setOnClickListener(v -> startsActivity( TampatMustajabActivity.class));
+        bind.cardViewWaktuMustajab.setOnClickListener(v -> startsActivity( WaktuMustajabActivity.class));
+        bind.cardViewAdabBerdoa.setOnClickListener(v -> startsActivity( AdabBerdoaActivity.class));
+        bind.cardViewDoaRamadhan.setOnClickListener(v -> startsActivity( DoaRamadhanActivity.class));
+        bind.cardViewTasbih.setOnClickListener(v -> startsActivity( TasbihActivity.class));
+        bind.cardViewAnekaSholawat.setOnClickListener(v -> startsActivity( AnekaSholawatActivity.class));
+        bind.cardViewTembangSholawat.setOnClickListener(v -> startsActivity( TembangSholawatActivity.class));
     }
 
-
     @Override
-    public boolean onSupportNavigateUp() {
-        onBackPressed();
-        return true;
+    protected View getContentView() {
+        return bind.getRoot();
     }
 }

@@ -1,43 +1,28 @@
 package com.tomboati.tour.view.activity.doa_dzikir;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
-import com.tomboati.tour.R;
 import com.tomboati.tour.adapter.WaktuMustajabAdapter;
 import com.tomboati.tour.databinding.ActivityWaktuMustajabBinding;
 import com.tomboati.tour.model.TempatMustajabModel;
+import com.tomboati.tour.view.activity.base.BaseToolbarActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class WaktuMustajabActivity extends AppCompatActivity {
+public class WaktuMustajabActivity extends BaseToolbarActivity {
 
     private ActivityWaktuMustajabBinding bind;
     private List<TempatMustajabModel> models;
 
-
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setTheme(R.style.ThemeTomboAtiGreen);
+    protected void onViewReady(Bundle savedInstanceState, Intent intent) {
+        super.onViewReady(savedInstanceState, intent);
         bind = ActivityWaktuMustajabBinding.inflate(getLayoutInflater());
-        setContentView(bind.getRoot());
-
-        setSupportActionBar(bind.toolbar);
-        setTitle("Waktu Mustajab");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-
+        setToolbar(bind.toolbar, "Waktu Mustajab");
         models = new ArrayList<>();
-
-        bind.recyclerViewWaktuMustajab.setHasFixedSize(true);
-        bind.recyclerViewWaktuMustajab.setLayoutManager(new LinearLayoutManager(this));
-
         addItem("Sepertiga Malam Terakhir", "Di saat manusia lainnya sedang pulas tertidur, Anda justru dapat memanfaatkan waktu di sepertiga malam untuk berdoa kepada Allah SWT karena merupakan waktu yang penuh berkah.");
         addItem("Selesai Sholat Wajib", "Setelah kita selesai sholat, hendaklah melanjutkan dengan berdzikir dan berdoa karena salah satu waktu paling mustajab untuk berdoa adalah setelah selesai sholat.");
         addItem("Sahur dan Berbuka Puasa", "Orang yang berpuasa adalah orang yang didengar doanya oleh Allah SWT, terutama ketika ia berdoa di waktu sahur dan berbuka.");
@@ -50,17 +35,16 @@ public class WaktuMustajabActivity extends AppCompatActivity {
         addItem("Saat Dihari Arafah", "Hari Arafah adalah hari saat wukuf di Arafah, tepatnya tanggal 9 Dzulhijjah sehingga dianjurkan bagi semua umat Muslim untuk berdoa di hari itu. Sebagaimana sabda Rasul: “Doa yang terbaik adalah doa ketika hari Arafah.” (H.R. At-Tirmidzi)");
         addItem("Sujud Terakhir Sholat", "Rasululah SAW bersabda: “Seorang hamba yang berada paling dekat dengan Rabb-nya ialah ketika ia sedang bersujud. Maka perbanyaklah berdoa ketika itu.” (H.R. Muslim)");
         addItem("Saat Didzolimi", "Sungguh doa orang yang dizholimi akan didengar langsung oleh Allah SWT. Sehingga berhati-hatilah jika akan mendzholimi orang. Sebagaimana sabda Rasul: “Hendaklah kamu waspada terhadap doa orang dizalimi. Sesungguhnya doa itu akan naik ke langit amat pantas seumpama api marak ke udara.” (Hadis Riwayat Hakim – sanad sahih).");
+        setRecyclerView(bind.recyclerViewWaktuMustajab, new WaktuMustajabAdapter(models, "Waktu Mustajab"));
+    }
 
-        bind.recyclerViewWaktuMustajab.setAdapter(new WaktuMustajabAdapter(models, "Waktu Mustajab"));
+    @Override
+    protected View getContentView() {
+        return bind.getRoot();
     }
 
     private void addItem(String judul, String keterangan) {
         models.add(new TempatMustajabModel(judul, keterangan, "", 0));
     }
 
-    @Override
-    public boolean onSupportNavigateUp() {
-        onBackPressed();
-        return true;
-    }
 }

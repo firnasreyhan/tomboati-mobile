@@ -45,10 +45,7 @@ public class AsmaulHusnaAdapter extends RecyclerView.Adapter<AsmaulHusnaAdapter.
             @Override
             public void onClick(View v) {
                 Intent myIntent = new Intent(v.getContext(), DetailAsmaulHusnaActivity.class);
-                myIntent.putExtra("position", position);
-                myIntent.putExtra("ayat", list.get(position).getArab());
-                myIntent.putExtra("bacaan", list.get(position).getLatin());
-                myIntent.putExtra("arti", list.get(position).getTerjemahan());
+                myIntent.putExtra("OBJECT", list.get(position));
                 v.getContext().startActivity(myIntent);
             }
         });

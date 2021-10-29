@@ -1,25 +1,22 @@
 package com.tomboati.tour.view.activity.doa_dzikir;
 
 import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.tomboati.tour.R;
 import com.tomboati.tour.databinding.ActivityHitungTasbihBinding;
 import com.tomboati.tour.utils.Utility;
-import com.ramijemli.percentagechartview.PercentageChartView;
+import com.tomboati.tour.view.activity.base.BaseNonToolbarActivity;
 
-public class HitungTasbihActivity extends AppCompatActivity {
+public class HitungTasbihActivity extends BaseNonToolbarActivity {
 
     private ActivityHitungTasbihBinding bind;
     private int countTasbeeh = 0;
@@ -28,13 +25,11 @@ public class HitungTasbihActivity extends AppCompatActivity {
     private int index = 0;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setTheme(R.style.ThemeTomboAtiGreen);
+    protected void onViewReady(Bundle savedInstanceState, Intent intent) {
+        super.onViewReady(savedInstanceState, intent);
         bind = ActivityHitungTasbihBinding.inflate(getLayoutInflater());
-        setContentView(bind.getRoot());
 
-        index = this.getIntent().getIntExtra("POSITION", 0);
+        index = intent.getIntExtra("POSITION", 0);
         countTasbeeh = Utility.getTasbihModel().get(index).getCount_tasbeeh();
 
         final Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
@@ -85,9 +80,7 @@ public class HitungTasbihActivity extends AppCompatActivity {
         bind.imgAdd.setOnClickListener(v -> {
             if(countTasbeeh < max){
                 countTasbeeh++;
-            }
-
-            if(countTasbeeh == max) {
+            } else {
                 timeVibrate = 1000;
                 Toast.makeText(v.getContext(), "Hitungan tasbih anda sudah maksimal", Toast.LENGTH_SHORT).show();
             }
@@ -150,6 +143,11 @@ public class HitungTasbihActivity extends AppCompatActivity {
             Utility.getTasbihModel().get(index).setCount_tasbeeh(countTasbeeh);
             finish();
         });
+    }
+
+    @Override
+    protected View getContentView() {
+        return bind.getRoot();
     }
 
     @Override

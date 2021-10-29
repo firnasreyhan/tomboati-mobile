@@ -1,42 +1,29 @@
 package com.tomboati.tour.view.activity.doa_dzikir;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
-import com.tomboati.tour.R;
 import com.tomboati.tour.adapter.WaktuMustajabAdapter;
 import com.tomboati.tour.databinding.ActivityAdabBerdoaBinding;
 import com.tomboati.tour.model.TempatMustajabModel;
+import com.tomboati.tour.view.activity.base.BaseToolbarActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class AdabBerdoaActivity extends AppCompatActivity {
+public class AdabBerdoaActivity extends BaseToolbarActivity {
 
-    private WaktuMustajabAdapter waktuMustajabAdapter;
     private List<TempatMustajabModel> models;
     private ActivityAdabBerdoaBinding bind;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setTheme(R.style.ThemeTomboAtiGreen);
+    protected void onViewReady(Bundle savedInstanceState, Intent intent) {
+        super.onViewReady(savedInstanceState, intent);
         bind = ActivityAdabBerdoaBinding.inflate(getLayoutInflater());
-        setContentView(bind.getRoot());
-
-        setSupportActionBar(bind.toolbar);
-        setTitle("Adab Berdoa");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        setToolbar(bind.toolbar, "Adab Berdoa");
 
         models = new ArrayList<>();
-
-        bind.recyclerViewAdabBerdoa.setHasFixedSize(true);
-        bind.recyclerViewAdabBerdoa.setLayoutManager(new LinearLayoutManager(this));
 
         addItem("Mencari Waktu Yang Mustajab", "Di antara waktu yang mustajab adalah hari Arafah, Ramadhan, sore hari Jumat, dan waktu sahur atau sepertiga malam terakhir.");
         addItem("Memanfaatkan Keadaan Mustajab", "Di antara keadaan yang mustajab untuk berdoa adalah: ketika perang, turun hujan, ketika sujud, antara adzan dan iqamah, atau ketika puasa menjelang berbuka.");
@@ -51,19 +38,16 @@ public class AdabBerdoaActivity extends AppCompatActivity {
         addItem("Perbanyak Taubat & Mohon Ampun", "Banyak mendekatkan diri kepada Allah merupakan sarana terbesar untuk mendapatkan cintanya Allah. Dengan dicintai Allah, doa seseorang akan mudah dikabulkan. Di antara amal yang sangat dicintai Allah adalah memperbanyak taubat dan istighfar.");
         addItem("Hindari Mendoakan Keburukan", "Kalau sekiranya Allah menyegerakan keburukan bagi manusia seperti permintaan mereka untuk menyegerakan kebaikan, pastilah diakhiri umur mereka (binasa). (QS. Yunus: 11).");
         addItem("Menghindari Makan Harta Haram", "Dan sesungguhnya Allah telah memerintahkan kepada orang-orang mukmin seperti yang diperintahkan-Nya kepada para Rasul. Firman-Nya, ‘Wahai para Rasul! Makanlah makanan yang baik-baik (halal) dan kerjakanlah amal shalih.");
+        setRecyclerView(bind.recyclerViewAdabBerdoa, new WaktuMustajabAdapter(models, "Adab Berdoa"));
+    }
 
-
-        waktuMustajabAdapter = new WaktuMustajabAdapter(models, "Adab Berdoa");
-        bind.recyclerViewAdabBerdoa.setAdapter(waktuMustajabAdapter);
+    @Override
+    protected View getContentView() {
+        return bind.getRoot();
     }
 
     private void addItem(String judul, String keterangan) {
         models.add(new TempatMustajabModel(judul, keterangan, "", 0));
     }
 
-    @Override
-    public boolean onSupportNavigateUp() {
-        onBackPressed();
-        return true;
-    }
 }

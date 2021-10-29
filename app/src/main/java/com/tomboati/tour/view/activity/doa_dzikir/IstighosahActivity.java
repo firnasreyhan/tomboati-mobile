@@ -1,39 +1,30 @@
 package com.tomboati.tour.view.activity.doa_dzikir;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
-import com.tomboati.tour.R;
 import com.tomboati.tour.adapter.IstighosahAdapter;
 import com.tomboati.tour.databinding.ActivityIstighosahBinding;
 import com.tomboati.tour.model.IstighosahModel;
+import com.tomboati.tour.view.activity.base.BaseToolbarActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class IstighosahActivity extends AppCompatActivity {
+public class IstighosahActivity extends BaseToolbarActivity {
 
     private List<IstighosahModel> listModel;
     private ActivityIstighosahBinding bind;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setTheme(R.style.ThemeTomboAtiGreen);
-        bind = ActivityIstighosahBinding.inflate(getLayoutInflater());
-        setContentView(bind.getRoot());
+    protected void onViewReady(Bundle savedInstanceState, Intent intent) {
+        super.onViewReady(savedInstanceState, intent);
 
-        setSupportActionBar(bind.toolbar);
-        setTitle("Doa Istighosah");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        bind = ActivityIstighosahBinding.inflate(getLayoutInflater());
+        setToolbar(bind.toolbar, "Doa Istighosah");
 
         listModel = new ArrayList<>();
-
 
         listModel.clear();
         addModel("بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ. اَلْحَمْدُ لِلّٰهِ رَبِّ الْعٰلَمِيْنَ. الرَّحْمٰنِ الرَّحِيْمِ. مٰلِكِ يَوْمِ الدِّيْنِ. اِيَّاكَ نَعْبُدُ وَاِيَّاكَ نَسْتَعِيْنُ. اِھْدِنَا الصِّرَاطَ الْمُسْتَـقِيْمَ. صِرَاطَ الَّذِيۡنَ اَنۡعَمۡتَ عَلَيۡهِمۡ ۙ غَيۡرِ الۡمَغۡضُوۡبِ عَلَيۡهِمۡ وَلَا الضَّآلِّيۡ",
@@ -103,17 +94,16 @@ public class IstighosahActivity extends AppCompatActivity {
                         "iyyaakanasta’iin. Ihdinash shiraathal mustaqiim. Shiraathal ladziina an’amta " +
                         "‘alaihim ghoiril maghdhuubi’alaihim waladhaalliin. Aamiinn", 1);
 
-        bind.recycleViewIstighosah.setLayoutManager(new LinearLayoutManager(this));
-        bind.recycleViewIstighosah.setAdapter(new IstighosahAdapter(listModel));
+        setRecyclerView(bind.recycleViewIstighosah, new IstighosahAdapter(listModel));
+    }
+
+    @Override
+    protected View getContentView() {
+        return bind.getRoot();
     }
 
     private void addModel(String textArab, String textTranslate, int countBacaan) {
         listModel.add(new IstighosahModel(textArab, textTranslate, countBacaan));
     }
 
-    @Override
-    public boolean onSupportNavigateUp() {
-        onBackPressed();
-        return true;
-    }
 }

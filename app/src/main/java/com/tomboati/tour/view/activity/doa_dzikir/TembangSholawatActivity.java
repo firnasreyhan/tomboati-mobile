@@ -1,55 +1,44 @@
 package com.tomboati.tour.view.activity.doa_dzikir;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.SeekBar;
-import android.widget.TextView;
 
 import com.tomboati.tour.R;
 import com.tomboati.tour.adapter.TembangSholawatAdapter;
 import com.tomboati.tour.databinding.ActivityTembangSholawatBinding;
 import com.tomboati.tour.model.TembangSholawatModel;
 import com.tomboati.tour.utils.Utility;
+import com.tomboati.tour.view.activity.base.BaseToolbarActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class TembangSholawatActivity extends AppCompatActivity implements TembangSholawatAdapter.onSelectedData {
+public class TembangSholawatActivity extends BaseToolbarActivity implements TembangSholawatAdapter.onSelectedData {
 
     private ActivityTembangSholawatBinding bind;
     private List<TembangSholawatModel> tembangModel;
     private MediaPlayer mediaPlayer;
-    private Handler handler = new Handler();
+    private final Handler handler = new Handler();
 
     private int position = 0;
     private boolean is_playing = false;
 
-    @SuppressLint("ClickableViewAccessibility")
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setTheme(R.style.ThemeTomboAtiGreen);
+    @SuppressLint("ClickableViewAccessibility")
+    protected void onViewReady(Bundle savedInstanceState, Intent intent) {
+        super.onViewReady(savedInstanceState, intent);
         bind = ActivityTembangSholawatBinding.inflate(getLayoutInflater());
-        setContentView(bind.getRoot());
-
-        setSupportActionBar(bind.toolbar);
-        setTitle("Tembang Sholawat");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        setToolbar(bind.toolbar, "Tembang Sholawat");
 
         mediaPlayer = new MediaPlayer();
         if (Utility.isConnecting(this)) {
@@ -101,6 +90,11 @@ public class TembangSholawatActivity extends AppCompatActivity implements Temban
     }
 
     @Override
+    protected View getContentView() {
+        return bind.getRoot();
+    }
+
+    @Override
     public void onSelected(int position) {
         this.position = position;
         bind.progress.setProgress(0);
@@ -146,12 +140,6 @@ public class TembangSholawatActivity extends AppCompatActivity implements Temban
             bind.textCurrent.setText(millisecondToTimer(currentDuration));
         }
     };
-
-    @Override
-    public boolean onSupportNavigateUp() {
-        onBackPressed();
-        return super.onSupportNavigateUp();
-    }
 
     public void addDataTembangSholawat() {
         tembangModel.add(new TembangSholawatModel("Allahu Kahfi", "https://media1.vocaroo.com/mp3/1jnbs7ZpKB6S", "03.07"));

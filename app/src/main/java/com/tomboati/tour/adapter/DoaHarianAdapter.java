@@ -1,4 +1,6 @@
 package com.tomboati.tour.adapter;
+
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,7 +12,7 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.tomboati.tour.R;
-import com.tomboati.tour.api.response.DoaHarianResponse;
+import com.tomboati.tour.model.DoaModel;
 import com.tomboati.tour.view.activity.doa_dzikir.DetailDoaSehariHariActivity;
 
 import java.util.List;
@@ -18,9 +20,9 @@ import java.util.List;
 public class DoaHarianAdapter extends RecyclerView.Adapter<DoaHarianAdapter.ViewHolder>{
 
 
-    private final List<DoaHarianResponse.Datum> response;
+    private final List<DoaModel> response;
 
-    public DoaHarianAdapter(List<DoaHarianResponse.Datum> response) {
+    public DoaHarianAdapter(List<DoaModel> response) {
         this.response = response;
     }
 
@@ -31,19 +33,12 @@ public class DoaHarianAdapter extends RecyclerView.Adapter<DoaHarianAdapter.View
     }
 
     @Override
-    public void onBindViewHolder(@NonNull DoaHarianAdapter.ViewHolder holder, int position) {
-//        holder.tv_no.setText("" + (position + 1));
-        holder.nama_doa.setText(response.get(position).getTitle().toUpperCase());
-        holder.cardViewListDoaHarian.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent myIntent = new Intent(v.getContext(), DetailDoaSehariHariActivity.class);
-                myIntent.putExtra("TITLE", response.get(position).getTitle());
-                myIntent.putExtra("ARABIC", response.get(position).getArabic());
-                myIntent.putExtra("TRANSLATE", response.get(position).getLatin());
-                myIntent.putExtra("ARTI", response.get(position).getTranslation());
-                v.getContext().startActivity(myIntent);
-            }
+    public void onBindViewHolder(@NonNull DoaHarianAdapter.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
+        holder.nama_doa.setText(response.get(position).getJudul().toUpperCase());
+        holder.cardViewListDoaHarian.setOnClickListener(v -> {
+            Intent myIntent = new Intent(v.getContext(), DetailDoaSehariHariActivity.class);
+            myIntent.putExtra("OBJECT", response.get(position));
+            v.getContext().startActivity(myIntent);
         });
     }
 
@@ -56,13 +51,11 @@ public class DoaHarianAdapter extends RecyclerView.Adapter<DoaHarianAdapter.View
 
         private final CardView cardViewListDoaHarian;
         private final TextView nama_doa;
-//        private final TextView tv_no;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             cardViewListDoaHarian = itemView.findViewById(R.id.cardViewListDoaHarian);
             nama_doa = itemView.findViewById(R.id.nama_doa);
-//            tv_no = itemView.findViewById(R.id.tv_no);
         }
     }
 }
