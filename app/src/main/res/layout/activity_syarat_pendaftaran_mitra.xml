@@ -9,18 +9,13 @@
     android:orientation="vertical"
     tools:context=".view.activity.mitra.pendaftaran.SyaratPendaftaranMitraActivity">
 
-    <androidx.appcompat.widget.Toolbar
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:visibility="gone" />
-
-    <com.codesgood.views.JustifiedTextView
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginTop="15dp"
         android:fontFamily="@font/cinzel_medium"
         android:gravity="center"
-        android:text="Syarat Pendaftaran &amp; Pembayaran,\nBiaya Termasuk &amp; Tidak Termasuk"
+        android:text="Syarat Pendaftaran, Berkas, Pembayaran, \nBiaya Termasuk &amp; Tidak Termasuk"
         android:textColor="@color/dark_green"
         android:textSize="@dimen/_13sdp" />
 
@@ -29,10 +24,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_8sdp"
         android:layout_weight="1">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
@@ -52,8 +43,40 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/catamaran_bold"
+                        android:text="BISMILLAHIRROHMANIRROHIIM"
+                        android:textAllCaps="true"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/_12sdp"
+                        android:layout_marginTop="8dp"
+                        android:layout_gravity="center_horizontal"/>
+
+                    <com.codesgood.views.JustifiedTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/catamaran_regular"
+                        android:text="Dengan kesungguhan hati yang paling dalam, saya niat daftar berangkat ke Baitullah untuk Umroh / Haji dan mendaftar sebagai Mitra TomboAti, semoga Allah SWT memberikan ridlo dan pertolongan-Nya, dimudahkan dan dilancarkan. AamiinYRA…"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/_10sdp"
+                        android:layout_marginTop="10dp"
+                        android:layout_gravity="center_horizontal"/>
+
+                    <com.codesgood.views.JustifiedTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/catamaran_regular"
+                        android:text="Sebagai bentuk kesungguhan dan keseriusan maka segala persyaratan dan ketentuan yang ditetapkan sudah kami baca dan setujui, serta secara bertahap akan kami penuhi sampai keberangkakan yang sudah dijadwalkan."
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/_10sdp"
+                        android:layout_marginTop="10dp"
+                        android:layout_gravity="center_horizontal"/>
+
+                    <com.codesgood.views.JustifiedTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/catamaran_bold"
                         android:text="syarat pendaftaran"
                         android:textAllCaps="true"
+                        android:layout_marginTop="16dp"
                         android:textColor="@android:color/black"
                         android:textSize="@dimen/_10sdp" />
 
@@ -972,8 +995,6 @@
                 </LinearLayout>
 
             </androidx.cardview.widget.CardView>
-
-        </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
 

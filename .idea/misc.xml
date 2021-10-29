@@ -75,8 +75,8 @@
         <entry key="app/src/main/res/layout/activity_splash_screen.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_syarat.xml" value="0.21" />
         <entry key="app/src/main/res/layout/activity_syarat2.xml" value="0.2" />
-        <entry key="app/src/main/res/layout/activity_syarat_pembatalan_mitra.xml" value="0.21176470588235294" />
-        <entry key="app/src/main/res/layout/activity_syarat_pendaftaran_mitra.xml" value="0.2" />
+        <entry key="app/src/main/res/layout/activity_syarat_pembatalan_mitra.xml" value="0.18" />
+        <entry key="app/src/main/res/layout/activity_syarat_pendaftaran_mitra.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_syarat_sholat.xml" value="0.14947916666666666" />
         <entry key="app/src/main/res/layout/activity_tampat_mustajab.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_tasbih.xml" value="0.14947916666666666" />
