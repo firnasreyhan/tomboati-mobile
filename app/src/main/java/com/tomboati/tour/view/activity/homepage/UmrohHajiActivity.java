@@ -1,63 +1,53 @@
 package com.tomboati.tour.view.activity.homepage;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.tomboati.tour.R;
+import com.tomboati.tour.databinding.ActivityUmrohHajiBinding;
+import com.tomboati.tour.view.activity.base.BaseToolbarActivity;
 import com.tomboati.tour.view.activity.pendaftaran.ListPaketActivity;
 import com.tomboati.tour.view.activity.pendaftaran.ListPaketHajiActivity;
 
-public class UmrohHajiActivity extends AppCompatActivity {
+public class UmrohHajiActivity extends BaseToolbarActivity {
 
-    final int[] arrId = {
-        R.id.cardViewUmrohPromo, R.id.cardViewUmrohHemat, R.id.cardViewUmrohBisnis,
-        R.id.cardViewUmrohVIP, R.id.cardViewUmrohPlus, R.id.cardViewHajiPlus,
-        R.id.cardViewHajiTanpaAntri, R.id.cardViewHajiReguler, R.id.cardViewHajiTalangan,
-        R.id.cardViewHajiBadal
-    };
-
-    final String[] arrTitle = {
-        "Umroh Promo", "Umroh Hemat", "Umroh Bisnis", "Umroh VIP", "Umroh Plus",
-        "Haji Plus", "Haji Tanpa Antri", "Haji Reguler", "Haji Talangan", "Haji Badal"
-    };
-
-    final String[] arrNamePaket = {
-        "Promo", "Hemat", "Bisnis", "VIP", "Plus", "Plus", "TanpaAntri", "Reguler", "Talangan", "Badal"
-    };
+    private ActivityUmrohHajiBinding bind;
+    private final String PAKET = "PAKET";
+    private final String PAKET_HAJI = "PAKET_HAJI";
+    private final Activity CLASS_PAKET = new ListPaketActivity();
+    private final Activity CLASS_PAKET_HAJI = new ListPaketHajiActivity();
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setTheme(R.style.ThemeTomboAtiGreen);
-        setContentView(R.layout.activity_umroh_haji);
+    protected void onViewReady(Bundle savedInstanceState, Intent intent) {
+        super.onViewReady(savedInstanceState, intent);
+        bind = ActivityUmrohHajiBinding.inflate(getLayoutInflater());
+        setToolbar(bind.toolbar, "Umroh & Haji");
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        setTitle("Umroh & Haji");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        bind.cardViewUmrohPromo.setOnClickListener(v -> setIntentPaket(PAKET, "Umroh Promo", "Promo", CLASS_PAKET));
+        bind.cardViewUmrohHemat.setOnClickListener(v -> setIntentPaket(PAKET, "Umroh Hemat", "Hemat", CLASS_PAKET));
+        bind.cardViewUmrohBisnis.setOnClickListener(v -> setIntentPaket(PAKET, "Umroh Bisnis", "Bisnis", CLASS_PAKET));
+        bind.cardViewUmrohVIP.setOnClickListener(v -> setIntentPaket(PAKET, "Umroh VIP", "VIP", CLASS_PAKET));
+        bind.cardViewUmrohPlus.setOnClickListener(v -> setIntentPaket(PAKET, "Umroh Plus", "Plus", CLASS_PAKET));
 
-        for(int i = 0; i < arrId.length; i++) {
-            final int j = i;
-            findViewById(arrId[i]).setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(v.getContext(), (j < 7) ? ListPaketActivity.class : ListPaketHajiActivity.class);
-                    intent.putExtra((j < 5) ? "PAKET": "PAKET_HAJI",arrNamePaket[j]);
-                    intent.putExtra("TITLE", arrTitle[j]);
-                    startActivity(intent);
-                }
-            });
-        }
+        bind.cardViewHajiReguler.setOnClickListener(v -> setIntentPaket(PAKET_HAJI, "Haji Reguler", "Reguler", CLASS_PAKET_HAJI));
+        bind.cardViewHajiPlus.setOnClickListener(v -> setIntentPaket(PAKET_HAJI, "Haji Plus", "Plus", CLASS_PAKET));
+        bind.cardViewHajiTanpaAntri.setOnClickListener(v -> setIntentPaket(PAKET_HAJI, "Haji Tanpa Antri", "TanpaAntri", CLASS_PAKET));
+        bind.cardViewHajiTalangan.setOnClickListener(v -> setIntentPaket(PAKET_HAJI, "Haji Talangan", "Talangan", CLASS_PAKET_HAJI));
+        bind.cardViewHajiBadal.setOnClickListener(v -> setIntentPaket(PAKET_HAJI, "Haji Badal", "Badal", CLASS_PAKET_HAJI));
+
+    }
+
+    private void setIntentPaket(String keyPaket, String title, String paket, Activity activityCompat) {
+        Intent intent = new Intent(this, activityCompat.getClass());
+        intent.putExtra(keyPaket, paket);
+        intent.putExtra("TITLE", title);
+        startActivity(intent);
     }
 
     @Override
-    public boolean onSupportNavigateUp() {
-        onBackPressed();
-        return true;
+    protected View getContentView() {
+        return bind.getRoot();
     }
+
 }

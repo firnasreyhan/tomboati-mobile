@@ -1,70 +1,37 @@
 package com.tomboati.tour.view.activity.homepage;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.tomboati.tour.R;
+import com.tomboati.tour.databinding.ActivityWisataReligiBinding;
+import com.tomboati.tour.view.activity.base.BaseToolbarActivity;
 import com.tomboati.tour.view.activity.pendaftaran.ListPaketActivity;
-import com.google.android.material.card.MaterialCardView;
 
-public class WisataReligiActivity extends AppCompatActivity {
-    private Toolbar toolbar;
-    private MaterialCardView materialCardViewWisataInternasional, materialCardViewWisataNasional, materialCardViewZiarahWali;
+public class WisataReligiActivity extends BaseToolbarActivity {
+
+    private ActivityWisataReligiBinding bind;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setTheme(R.style.ThemeTomboAtiGreen);
-        setContentView(R.layout.activity_wisata_religi);
+    protected void onViewReady(Bundle savedInstanceState, Intent intent) {
+        super.onViewReady(savedInstanceState, intent);
+        bind = ActivityWisataReligiBinding.inflate(getLayoutInflater());
+        setToolbar(bind.toolbar, "Wisata Halal & Tour Religi");
+        bind.materialCardViewWisataInternasional.setOnClickListener(v -> setIntentExtra("Internasional", "Wisata Internasional"));
+        bind.materialCardViewWisataNasional.setOnClickListener(v -> setIntentExtra("Nasional", "Wisata Nasional"));
+        bind.materialCardViewZiarahWali.setOnClickListener(v -> setIntentExtra("ZiarahWali", "Wisata Ziarah Wali"));
+    }
 
-        toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        setTitle("Wisata Halal & Tour Religi");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-
-        materialCardViewWisataInternasional = findViewById(R.id.materialCardViewWisataInternasional);
-        materialCardViewWisataNasional = findViewById(R.id.materialCardViewWisataNasional);
-        materialCardViewZiarahWali = findViewById(R.id.materialCardViewZiarahWali);
-
-        materialCardViewWisataInternasional.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), ListPaketActivity.class);
-                intent.putExtra("PAKET_WISATA", "Internasional");
-                intent.putExtra("TITLE", "Wisata Internasional");
-                startActivity(intent);
-            }
-        });
-
-        materialCardViewWisataNasional.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), ListPaketActivity.class);
-                intent.putExtra("PAKET_WISATA", "Nasional");
-                intent.putExtra("TITLE", "Wisata Nasional");
-                startActivity(intent);
-            }
-        });
-
-        materialCardViewZiarahWali.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), ListPaketActivity.class);
-                intent.putExtra("PAKET_WISATA", "ZiarahWali");
-                intent.putExtra("TITLE", "Wisata Ziarah Wali");
-                startActivity(intent);
-            }
-        });
+    private void setIntentExtra(String paketWisata, String title) {
+        Intent intentPaket = new Intent(this, ListPaketActivity.class);
+        intentPaket.putExtra("PAKET_WISATA", paketWisata);
+        intentPaket.putExtra("TITLE", title);
+        startActivity(intentPaket);
     }
 
     @Override
-    public boolean onSupportNavigateUp() {
-        onBackPressed();
-        return true;
+    protected View getContentView() {
+        return bind.getRoot();
     }
+
 }

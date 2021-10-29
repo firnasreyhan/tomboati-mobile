@@ -1,33 +1,24 @@
 package com.tomboati.tour.view.activity.homepage;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
-import com.tomboati.tour.R;
-import com.google.android.material.card.MaterialCardView;
 import com.tomboati.tour.databinding.ActivityHubungiKamiBinding;
+import com.tomboati.tour.view.activity.base.BaseToolbarActivity;
 
-public class HubungiKamiActivity extends AppCompatActivity {
+public class HubungiKamiActivity extends BaseToolbarActivity {
 
     private ActivityHubungiKamiBinding bind;
     private static final String TAG = "HUBUNGI KAMI ACTIVITY";
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setTheme(R.style.ThemeTomboAtiGreen);
+    protected void onViewReady(Bundle savedInstanceState, Intent intent) {
+        super.onViewReady(savedInstanceState, intent);
         bind = ActivityHubungiKamiBinding.inflate(getLayoutInflater());
-        setContentView(bind.getRoot());
-
-        setSupportActionBar(bind.toolbar);
-        setTitle("Hubungi Kami");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        setToolbar(bind.toolbar, "Hubungi Kami");
 
         bind.materialCardViewWhatsapp.setOnClickListener(v -> {
             try {
@@ -69,12 +60,11 @@ public class HubungiKamiActivity extends AppCompatActivity {
                 Log.d(TAG, "onCreate: " + e.getMessage());
             }
         });
-
     }
 
     @Override
-    public boolean onSupportNavigateUp() {
-        onBackPressed();
-        return true;
+    protected View getContentView() {
+        return bind.getRoot();
     }
+
 }
