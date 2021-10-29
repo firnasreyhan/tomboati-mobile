@@ -10,31 +10,26 @@ import android.util.Log;
 
 import com.tomboati.tour.R;
 import com.google.android.material.card.MaterialCardView;
+import com.tomboati.tour.databinding.ActivityHubungiKamiBinding;
 
 public class HubungiKamiActivity extends AppCompatActivity {
 
-    private Toolbar toolbar;
-    private MaterialCardView materialCardViewWhatsapp, materialCardViewEmail,
-            materialCardViewFacebook;
+    private ActivityHubungiKamiBinding bind;
     private static final String TAG = "HUBUNGI KAMI ACTIVITY";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setTheme(R.style.ThemeTomboAtiGreen);
-        setContentView(R.layout.activity_hubungi_kami);
+        bind = ActivityHubungiKamiBinding.inflate(getLayoutInflater());
+        setContentView(bind.getRoot());
 
-        toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        setSupportActionBar(bind.toolbar);
         setTitle("Hubungi Kami");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
-        materialCardViewWhatsapp = findViewById(R.id.materialCardViewWhatsapp);
-        materialCardViewEmail = findViewById(R.id.materialCardViewEmail);
-        materialCardViewFacebook = findViewById(R.id.materialCardViewFacebook);
-
-        materialCardViewWhatsapp.setOnClickListener(v -> {
+        bind.materialCardViewWhatsapp.setOnClickListener(v -> {
             try {
                 final String TO_NUMBER = "6281235438885";
                 final String TEXT_BODY = "Halo, saya dari pengguna aplikasi tomboatitour ingin menanyakan sesuatu kepada anda bahwa ....";
@@ -47,7 +42,7 @@ public class HubungiKamiActivity extends AppCompatActivity {
             }
         });
 
-        materialCardViewEmail.setOnClickListener(v -> {
+        bind.materialCardViewEmail.setOnClickListener(v -> {
             try {
                 final String TO_EMAIL = "tomboatitour@gmail.com";
                 final String TEXT_SUBJECT = "Tanya Admin";
@@ -64,7 +59,7 @@ public class HubungiKamiActivity extends AppCompatActivity {
             }
         });
 
-        materialCardViewFacebook.setOnClickListener(v -> {
+        bind.materialCardViewFacebook.setOnClickListener(v -> {
             try {
                 final String URI = "https://facebook.com/tomboatitour";
                 Intent sendIntent = new Intent(Intent.ACTION_VIEW);

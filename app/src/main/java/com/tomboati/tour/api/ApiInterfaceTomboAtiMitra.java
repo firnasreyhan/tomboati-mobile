@@ -60,7 +60,7 @@ public interface ApiInterfaceTomboAtiMitra {
     );
 
     @FormUrlEncoded
-    @POST("User.php")
+    @POST("api.php")
     Call<AkunMitraResponse> loginMitra(
             @Query("function") String function,
             @Field("username") String username,
@@ -78,10 +78,10 @@ public interface ApiInterfaceTomboAtiMitra {
             @Field("repeatPassword") String repeatPassword
     );
 
-    @POST("User.php")
+    @POST("api.php")
     Call<BaseResponse> logout(
             @Query("function") String function,
-            @Query("email") String email
+            @Query("username") String username
     );
 
     @Multipart
@@ -107,7 +107,7 @@ public interface ApiInterfaceTomboAtiMitra {
             @Field("email") String email
     );
 
-    @GET("User.php")
+    @GET("api.php")
     Call<PoinResponse> getPoin(
             @Query("function") String function,
             @Query("userid") String userId

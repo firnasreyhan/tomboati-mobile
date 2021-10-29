@@ -18,16 +18,14 @@ public class LoginAkunMitraViewModel extends AndroidViewModel{
 
     private final Repository repository;
     @SuppressLint("StaticFieldLeak")
-    private final Context context;
 
     public LoginAkunMitraViewModel(@NonNull Application application) {
         super(application);
         this.repository = new Repository();
-        this.context = application.getApplicationContext();
     }
 
     public MutableLiveData<AkunMitraResponse> loginMitra(String username, String password, String token) {
-        return this.repository.loginMitra("login_post", username, password, token);
+        return this.repository.loginMitra("login", username, password, token);
     }
 
 }

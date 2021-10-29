@@ -68,12 +68,9 @@ public class AkunMitraFragment extends Fragment {
         menuHubungiKami = view.findViewById(R.id.menuHubungiKami);
         textViewPoint = view.findViewById(R.id.textViewPoint);
 
-        viewModel.getPoin().observe(OWNER, new Observer<PoinResponse>() {
-            @Override
-            public void onChanged(PoinResponse poinResponse) {
-                if(!poinResponse.isError()) {
-                    textViewPoint.setText(poinResponse.getPoin().toString());
-                }
+        viewModel.getPoin().observe(OWNER, poinResponse -> {
+            if(!poinResponse.isError()) {
+                textViewPoint.setText(poinResponse.getPoin());
             }
         });
 
@@ -82,29 +79,17 @@ public class AkunMitraFragment extends Fragment {
         final StringBuilder NAME_FIX = new StringBuilder();
         for (int i = 0; i < NAME_ARRAY.length; i++) {
             if(i < 3) {
-                NAME_FIX.append(NAME_ARRAY[i] + " ");
+                NAME_FIX.append(NAME_ARRAY[i]).append(" ");
             }
         }
 
         textViewNamaAkunMitra.setText(NAME_FIX);
 
 
-        constrainLayoutKodeReferral.setOnClickListener(v ->
-                v.getContext().startActivity(new Intent(v.getContext(), KodeReferralActivity.class))
-        );
-
-        constraintLayoutIbahPassword.setOnClickListener(v ->
-                v.getContext().startActivity(new Intent(v.getContext(), UbahPasswordActivity.class))
-        );
-
-        menuHubungiKami.setOnClickListener(v ->
-                v.getContext().startActivity(new Intent(v.getContext(), HubungiKamiActivity.class))
-        );
-
-
-        constraintLayoutUbahProfil.setOnClickListener(v ->
-                v.getContext().startActivity(new Intent(v.getContext(), UbahProfilActivity.class))
-        );
+        constrainLayoutKodeReferral.setOnClickListener(v -> v.getContext().startActivity(new Intent(v.getContext(), KodeReferralActivity.class)));
+        constraintLayoutIbahPassword.setOnClickListener(v -> v.getContext().startActivity(new Intent(v.getContext(), UbahPasswordActivity.class)));
+        menuHubungiKami.setOnClickListener(v -> v.getContext().startActivity(new Intent(v.getContext(), HubungiKamiActivity.class)));
+        constraintLayoutUbahProfil.setOnClickListener(v -> v.getContext().startActivity(new Intent(v.getContext(), UbahProfilActivity.class)));
 
         consraintLayoutLogout.setOnClickListener(v -> {
             final AlertDialog.Builder dialog = new AlertDialog.Builder(getContext());
@@ -137,12 +122,10 @@ public class AkunMitraFragment extends Fragment {
                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent);
 
-                        Toast.makeText(v.getContext(), "Berhasil keluar!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(v.getContext(), baseResponse.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
             });
-
-
             alert.show();
         });
     }

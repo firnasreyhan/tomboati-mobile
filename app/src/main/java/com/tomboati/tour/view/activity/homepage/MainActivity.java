@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.tomboati.tour.R;
+import com.tomboati.tour.databinding.ActivityMainBinding;
 import com.tomboati.tour.preference.PreferenceAkun;
 import com.tomboati.tour.utils.Utility;
 import com.tomboati.tour.view.fragment.homepage.akun.AkunMitraFragment;
@@ -25,14 +26,15 @@ public class MainActivity extends AppCompatActivity {
 
     private boolean doubleBackToExit;
     private boolean loginUserFix = false;
-
+    private ActivityMainBinding bind;
     private Fragment berandaFragment, riwayatFragment, pesananFragment, akunFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setTheme(R.style.ThemeTomboAtiGreen);
-        setContentView(R.layout.activity_main);
+        bind = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(bind.getRoot());
 
         if(PreferenceAkun.getAkun(this).isFieldFilled()) {
             loginUserFix = true;
@@ -48,42 +50,36 @@ public class MainActivity extends AppCompatActivity {
                 new AkunNonMitraFragment()
         ;
 
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
-
         if(Utility.isConnecting(this)) {
             setFragment(berandaFragment);
-            bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-                @SuppressLint("NonConstantResourceId")
-                @Override
-                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                    Fragment fragmentActive = berandaFragment;
-                    switch (item.getItemId()){
-                        case R.id.menu_beranda:
-                            fragmentActive = berandaFragment;
-                            break;
-                        case R.id.menu_riwayat:
-                            fragmentActive = loginUserFix ? riwayatFragment : null;
-                            break;
-                        case R.id.menu_pesanan:
-                            fragmentActive = loginUserFix ? pesananFragment : null;
-                            break;
-                        case R.id.menu_inbox:
-                            fragmentActive = loginUserFix ? new InboxFragment() : null;
-                            break;
-                        case R.id.menu_akun:
-                            fragmentActive = akunFragment;
-                            break;
-                    }
+            bind.bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
+                Fragment fragmentActive = berandaFragment;
+                switch (item.getItemId()){
+                    case R.id.menu_beranda:
+                        fragmentActive = berandaFragment;
+                        break;
+                    case R.id.menu_riwayat:
+                        fragmentActive = loginUserFix ? riwayatFragment : null;
+                        break;
+                    case R.id.menu_pesanan:
+                        fragmentActive = loginUserFix ? pesananFragment : null;
+                        break;
+                    case R.id.menu_inbox:
+                        fragmentActive = loginUserFix ? new InboxFragment() : null;
+                        break;
+                    case R.id.menu_akun:
+                        fragmentActive = akunFragment;
+                        break;
+                }
 //                    return false;
-                    if(fragmentActive != null) {
-                        if(!fragmentActive.isInLayout()) {
-                            setFragment(fragmentActive);
-                        }
-                        return true;
-                    } else {
-                        Toast.makeText(getApplicationContext(), "Mohon lengkapi data diri anda untuk menggunakan fitur ini", Toast.LENGTH_SHORT).show();
-                        return false;
+                if(fragmentActive != null) {
+                    if(!fragmentActive.isInLayout()) {
+                        setFragment(fragmentActive);
                     }
+                    return true;
+                } else {
+                    Toast.makeText(getApplicationContext(), "Mohon lengkapi data diri anda untuk menggunakan fitur ini", Toast.LENGTH_SHORT).show();
+                    return false;
                 }
             });
         }
@@ -98,12 +94,9 @@ public class MainActivity extends AppCompatActivity {
             }
             this.doubleBackToExit = true;
             Toast.makeText(this, "Tekan sekali lagi untuk keluar.", Toast.LENGTH_SHORT).show();
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    doubleBackToExit = false;
-                }
-            }, 8000);
+            new Handler().postDelayed(() ->
+                    doubleBackToExit = false, 8000
+            );
         } else {
             finish();
         }

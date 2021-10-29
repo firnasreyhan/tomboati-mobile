@@ -1,721 +1,671 @@
 package com.tomboati.tour.api.response;
 
-import java.util.List;
-import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class AkunResponse {
+public class AkunResponse{
 
-    @SerializedName("error")
-    @Expose
-    private Boolean error;
+	@SerializedName("data_tomboati")
+	private DataTomboati dataTomboati;
 
-    @SerializedName("message")
-    @Expose
-    private String message;
+	@SerializedName("error")
+	private Boolean error;
 
-    @SerializedName("data_db_dash_tombo")
-    @Expose
-    private List<DataDbDashTombo> dataDbDashTombo = null;
+	@SerializedName("message")
+	private String message;
 
-    @SerializedName("data_tomboati")
-    @Expose
-    private List<DataTomboatus> dataTomboati = null;
+	@SerializedName("data_db_dash_tombo")
+	private DataDbDashTombo dataDbDashTombo;
 
-    public Boolean getError() {
-        return error;
-    }
+	public Boolean isError(){
+		return error;
+	}
 
-    public String getMessage() {
-        return message;
-    }
+	public String getMessage(){
+		return message;
+	}
 
-    public List<DataDbDashTombo> getDataDbDashTombo() {
-        return dataDbDashTombo;
-    }
+	public DataTomboati getDataTomboati(){
+		return dataTomboati;
+	}
 
-    public class DataDbDashTombo {
+	public DataDbDashTombo getDataDbDashTombo(){
+		return dataDbDashTombo;
+	}
 
-        @SerializedName("id")
-        @Expose
-        private String id;
 
-        @SerializedName("userid")
-        @Expose
-        private Object userid;
+	public static class DataTomboati{
 
-        @SerializedName("paket")
-        @Expose
-        private String paket;
+		@SerializedName("STATUS_USER")
+		private String sTATUSUSER;
 
-        @SerializedName("name")
-        @Expose
-        private Object name;
+		@SerializedName("NOMORHP")
+		private String nOMORHP;
 
-        @SerializedName("hphone")
-        @Expose
-        private String hphone;
+		@SerializedName("BUKTIBAYAR")
+		private Object bUKTIBAYAR;
 
-        @SerializedName("hphone2")
-        @Expose
-        private Object hphone2;
+		@SerializedName("POIN")
+		private String pOIN;
 
-        @SerializedName("bank")
-        @Expose
-        private Object bank;
+		@SerializedName("CREATED_AT")
+		private String cREATEDAT;
 
-        @SerializedName("cabang")
-        @Expose
-        private Object cabang;
+		@SerializedName("NEGARA")
+		private Object nEGARA;
 
-        @SerializedName("atasnama")
-        @Expose
-        private Object atasnama;
+		@SerializedName("EMAIL")
+		private Object eMAIL;
 
-        @SerializedName("rekening")
-        @Expose
-        private Object rekening;
+		@SerializedName("KODEPOS")
+		private Object kODEPOS;
 
-        @SerializedName("email")
-        @Expose
-        private Object email;
+		@SerializedName("CABANG")
+		private Object cABANG;
 
-        @SerializedName("upline")
-        @Expose
-        private Object upline;
+		@SerializedName("STATUS")
+		private Object sTATUS;
 
-        @SerializedName("sponsor")
-        @Expose
-        private String sponsor;
+		@SerializedName("NOMORKTP")
+		private Object nOMORKTP;
 
-        @SerializedName("g2")
-        @Expose
-        private Object g2;
+		@SerializedName("KATEGORI")
+		private Object kATEGORI;
 
-        @SerializedName("g3")
-        @Expose
-        private Object g3;
+		@SerializedName("USERTOKEN")
+		private String uSERTOKEN;
 
-        @SerializedName("g4")
-        @Expose
-        private Object g4;
+		@SerializedName("USERNAME")
+		private Object uSERNAME;
 
-        @SerializedName("g5")
-        @Expose
-        private Object g5;
+		@SerializedName("UPDATED_AT")
+		private Object uPDATEDAT;
 
-        @SerializedName("g6")
-        @Expose
-        private Object g6;
-
-        @SerializedName("g7")
-        @Expose
-        private Object g7;
-
-        @SerializedName("g8")
-        @Expose
-        private Object g8;
-
-        @SerializedName("g9")
-        @Expose
-        private Object g9;
-
-        @SerializedName("g10")
-        @Expose
-        private Object g10;
-
-        @SerializedName("passw")
-        @Expose
-        private Object passw;
-
-        @SerializedName("passenc")
-        @Expose
-        private Object passenc;
-
-        @SerializedName("bukti_bayar")
-        @Expose
-        private Object buktiBayar;
-
-        @SerializedName("photo")
-        @Expose
-        private String photo;
-
-        @SerializedName("kota")
-        @Expose
-        private Object kota;
-
-        @SerializedName("kecamatan")
-        @Expose
-        private Object kecamatan;
-
-        @SerializedName("propinsi")
-        @Expose
-        private Object propinsi;
-
-        @SerializedName("kode_pos")
-        @Expose
-        private Object kodePos;
-
-        @SerializedName("address")
-        @Expose
-        private Object address;
-
-        @SerializedName("country")
-        @Expose
-        private Object country;
-
-        @SerializedName("fotoktp")
-        @Expose
-        private Object fotoktp;
-
-        @SerializedName("ktp")
-        @Expose
-        private Object ktp;
-
-        @SerializedName("npwp")
-        @Expose
-        private Object npwp;
-
-        @SerializedName("ahli_waris")
-        @Expose
-        private Object ahliWaris;
-
-        @SerializedName("hub_ahliwaris")
-        @Expose
-        private Object hubAhliwaris;
-
-        @SerializedName("activate")
-        @Expose
-        private String activate;
-
-        @SerializedName("timer")
-        @Expose
-        private Object timer;
-
-        @SerializedName("timerupgrade")
-        @Expose
-        private Object timerupgrade;
-
-        @SerializedName("tot_ref")
-        @Expose
-        private Object totRef;
-
-        @SerializedName("last_login")
-        @Expose
-        private Object lastLogin;
-
-        @SerializedName("usercode")
-        @Expose
-        private Object usercode;
-
-        @SerializedName("status_bank")
-        @Expose
-        private String statusBank;
-
-        @SerializedName("status_nama")
-        @Expose
-        private String statusNama;
-
-        @SerializedName("status_ec")
-        @Expose
-        private String statusEc;
-
-        @SerializedName("photostatus")
-        @Expose
-        private String photostatus;
-
-        @SerializedName("traffic")
-        @Expose
-        private Object traffic;
-
-        @SerializedName("login")
-        @Expose
-        private Object login;
-
-        @SerializedName("status")
-        @Expose
-        private String status;
-
-        @SerializedName("tpassw")
-        @Expose
-        private Object tpassw;
-
-        @SerializedName("tglupgrade")
-        @Expose
-        private Object tglupgrade;
-
-        @SerializedName("transaction_code")
-        @Expose
-        private String transactionCode;
-
-        @SerializedName("is_seen_notifikasi")
-        @Expose
-        private String isSeenNotifikasi;
-
-        @SerializedName("qr_code")
-        @Expose
-        private Object qrCode;
-
-        @SerializedName("usertoken")
-        @Expose
-        private String usertoken;
-
-        public String getId() {
-            return id;
-        }
-
-        public Object getUserid() {
-            return userid;
-        }
-
-        public String getPaket() {
-            return paket;
-        }
-
-        public Object getName() {
-            return name;
-        }
-
-        public String getHphone() {
-            return hphone;
-        }
-
-        public Object getHphone2() {
-            return hphone2;
-        }
-
-        public Object getBank() {
-            return bank;
-        }
-
-        public Object getCabang() {
-            return cabang;
-        }
-
-        public Object getAtasnama() {
-            return atasnama;
-        }
-
-        public Object getRekening() {
-            return rekening;
-        }
-
-        public Object getEmail() {
-            return email;
-        }
-
-        public Object getUpline() {
-            return upline;
-        }
-
-        public String getSponsor() {
-            return sponsor;
-        }
-
-        public Object getG2() {
-            return g2;
-        }
-
-        public Object getG3() {
-            return g3;
-        }
-
-        public Object getG4() {
-            return g4;
-        }
-
-        public Object getG5() {
-            return g5;
-        }
-
-        public Object getG6() {
-            return g6;
-        }
-
-        public Object getG7() {
-            return g7;
-        }
-
-        public Object getG8() {
-            return g8;
-        }
-
-        public Object getG9() {
-            return g9;
-        }
-
-        public Object getG10() {
-            return g10;
-        }
-
-        public Object getPassw() {
-            return passw;
-        }
-
-        public Object getPassenc() {
-            return passenc;
-        }
-
-        public Object getBuktiBayar() {
-            return buktiBayar;
-        }
-
-        public String getPhoto() {
-            return photo;
-        }
-
-        public Object getKota() {
-            return kota;
-        }
-
-        public Object getKecamatan() {
-            return kecamatan;
-        }
-
-        public Object getPropinsi() {
-            return propinsi;
-        }
-
-        public Object getKodePos() {
-            return kodePos;
-        }
-
-        public Object getAddress() {
-            return address;
-        }
-
-        public Object getCountry() {
-            return country;
-        }
-
-        public Object getFotoktp() {
-            return fotoktp;
-        }
-
-        public Object getKtp() {
-            return ktp;
-        }
-
-        public Object getNpwp() {
-            return npwp;
-        }
+		@SerializedName("REKENING")
+		private Object rEKENING;
 
-        public Object getAhliWaris() {
-            return ahliWaris;
-        }
+		@SerializedName("FILEKTP")
+		private Object fILEKTP;
 
-        public Object getHubAhliwaris() {
-            return hubAhliwaris;
-        }
+		@SerializedName("BANK")
+		private Object bANK;
 
-        public String getActivate() {
-            return activate;
-        }
-
-        public Object getTimer() {
-            return timer;
-        }
-
-        public Object getTimerupgrade() {
-            return timerupgrade;
-        }
-
-        public Object getTotRef() {
-            return totRef;
-        }
-
-        public Object getLastLogin() {
-            return lastLogin;
-        }
-
-        public Object getUsercode() {
-            return usercode;
-        }
-
-        public String getStatusBank() {
-            return statusBank;
-        }
-
-        public String getStatusNama() {
-            return statusNama;
-        }
-
-        public String getStatusEc() {
-            return statusEc;
-        }
-
-        public String getPhotostatus() {
-            return photostatus;
-        }
-
-        public Object getTraffic() {
-            return traffic;
-        }
-
-        public Object getLogin() {
-            return login;
-        }
-
-        public String getStatus() {
-            return status;
-        }
-
-        public Object getTpassw() {
-            return tpassw;
-        }
-
-        public Object getTglupgrade() {
-            return tglupgrade;
-        }
-
-        public String getTransactionCode() {
-            return transactionCode;
-        }
-
-        public String getIsSeenNotifikasi() {
-            return isSeenNotifikasi;
-        }
-
-        public void setIsSeenNotifikasi(String isSeenNotifikasi) {
-            this.isSeenNotifikasi = isSeenNotifikasi;
-        }
-
-        public Object getQrCode() {
-            return qrCode;
-        }
-
-        public void setQrCode(Object qrCode) {
-            this.qrCode = qrCode;
-        }
-
-        public String getUsertoken() {
-            return usertoken;
-        }
-
-        public void setUsertoken(String usertoken) {
-            this.usertoken = usertoken;
-        }
-
-    }
-
-    public List<DataTomboatus> getDataTomboati() {
-        return dataTomboati;
-    }
-
-    public class DataTomboatus {
-
-        @SerializedName("IDUSERREGISTER")
-        @Expose
-        private String iduserregister;
-        @SerializedName("STATUS_USER")
-        @Expose
-        private String statusUser;
-        @SerializedName("NOMORKTP")
-        @Expose
-        private Object nomorktp;
-        @SerializedName("EMAIL")
-        @Expose
-        private Object email;
-        @SerializedName("PASSWORD")
-        @Expose
-        private Object password;
-        @SerializedName("NAMALENGKAP")
-        @Expose
-        private Object namalengkap;
-        @SerializedName("KATEGORI")
-        @Expose
-        private Object kategori;
-        @SerializedName("STATUS")
-        @Expose
-        private Object status;
-        @SerializedName("KODEREFERRALFROM")
-        @Expose
-        private Object kodereferralfrom;
-        @SerializedName("KODEREFERRAL")
-        @Expose
-        private String kodereferral;
-        @SerializedName("NOMORHP")
-        @Expose
-        private String nomorhp;
-        @SerializedName("FILEKTP")
-        @Expose
-        private Object filektp;
-        @SerializedName("BUKTIBAYAR")
-        @Expose
-        private Object buktibayar;
-        @SerializedName("FOTO")
-        @Expose
-        private Object foto;
-        @SerializedName("POIN")
-        @Expose
-        private Object poin;
-        @SerializedName("USERNAME")
-        @Expose
-        private Object username;
-        @SerializedName("KECAMATAN")
-        @Expose
-        private Object kecamatan;
-        @SerializedName("ALAMAT")
-        @Expose
-        private Object alamat;
-        @SerializedName("USERTOKEN")
-        @Expose
-        private String usertoken;
-        @SerializedName("CREATED_AT")
-        @Expose
-        private Object createdAt;
-        @SerializedName("UPDATED_AT")
-        @Expose
-        private String updatedAt;
-        @SerializedName("PROVINSI")
-        @Expose
-        private Object provinsi;
-        @SerializedName("KODEPOS")
-        @Expose
-        private Object kodepos;
-        @SerializedName("CABANG")
-        @Expose
-        private Object cabang;
-        @SerializedName("ATASNAMA")
-        @Expose
-        private Object atasnama;
-        @SerializedName("REKENING")
-        @Expose
-        private Object rekening;
-        @SerializedName("BANK")
-        @Expose
-        private Object bank;
-        @SerializedName("NEGARA")
-        @Expose
-        private Object negara;
-        @SerializedName("KOTA")
-        @Expose
-        private Object kota;
-        @SerializedName("ID_CHAT_ROOM")
-        @Expose
-        private String idChatRoom;
-
-        public String getIduserregister() {
-            return iduserregister;
-        }
-
-        public String getStatusUser() {
-            return statusUser;
-        }
-
-        public Object getNomorktp() {
-            return nomorktp;
-        }
-
-        public Object getEmail() {
-            return email;
-        }
-
-        public Object getPassword() {
-            return password;
-        }
-
-        public Object getNamalengkap() {
-            return namalengkap;
-        }
-
-        public Object getKategori() {
-            return kategori;
-        }
-
-        public Object getStatus() {
-            return status;
-        }
-
-        public Object getKodereferralfrom() {
-            return kodereferralfrom;
-        }
-
-        public String getKodereferral() {
-            return kodereferral;
-        }
-
-        public String getNomorhp() {
-            return nomorhp;
-        }
-
-        public Object getFilektp() {
-            return filektp;
-        }
-
-        public Object getBuktibayar() {
-            return buktibayar;
-        }
-
-        public Object getFoto() {
-            return foto;
-        }
-
-        public Object getPoin() {
-            return poin;
-        }
-
-        public Object getUsername() {
-            return username;
-        }
-
-        public Object getKecamatan() {
-            return kecamatan;
-        }
-
-        public Object getAlamat() {
-            return alamat;
-        }
-
-        public String getUsertoken() {
-            return usertoken;
-        }
-
-        public Object getCreatedAt() {
-            return createdAt;
-        }
-
-        public String getUpdatedAt() {
-            return updatedAt;
-        }
-
-        public Object getProvinsi() {
-            return provinsi;
-        }
-
-        public Object getKodepos() {
-            return kodepos;
-        }
-
-        public Object getCabang() {
-            return cabang;
-        }
-
-        public Object getAtasnama() {
-            return atasnama;
-        }
-
-        public Object getRekening() {
-            return rekening;
-        }
-
-        public Object getBank() {
-            return bank;
-        }
-
-        public Object getNegara() {
-            return negara;
-        }
-
-        public Object getKota() {
-            return kota;
-        }
-
-        public String getIdChatRoom() {
-            return idChatRoom;
-        }
-
-    }
+		@SerializedName("KODEREFERRAL")
+		private String kODEREFERRAL;
 
+		@SerializedName("FOTO")
+		private Object fOTO;
+
+		@SerializedName("ID_CHAT_ROOM")
+		private String iDCHATROOM;
+
+		@SerializedName("IDUSERREGISTER")
+		private String iDUSERREGISTER;
+
+		@SerializedName("PROVINSI")
+		private Object pROVINSI;
+
+		@SerializedName("ALAMAT")
+		private Object aLAMAT;
+
+		@SerializedName("KOTA")
+		private Object kOTA;
+
+		@SerializedName("KECAMATAN")
+		private Object kECAMATAN;
+
+		@SerializedName("PASSWORD")
+		private Object pASSWORD;
+
+		@SerializedName("KODEREFERRALFROM")
+		private Object kODEREFERRALFROM;
+
+		@SerializedName("ATASNAMA")
+		private Object aTASNAMA;
+
+		@SerializedName("NAMALENGKAP")
+		private Object nAMALENGKAP;
+
+		public String getSTATUSUSER(){
+			return sTATUSUSER;
+		}
+
+		public String getNOMORHP(){
+			return nOMORHP;
+		}
+
+		public Object getBUKTIBAYAR(){
+			return bUKTIBAYAR;
+		}
+
+		public String getPOIN(){
+			return pOIN;
+		}
+
+		public String getCREATEDAT(){
+			return cREATEDAT;
+		}
+
+		public Object getNEGARA(){
+			return nEGARA;
+		}
+
+		public Object getEMAIL(){
+			return eMAIL;
+		}
+
+		public Object getKODEPOS(){
+			return kODEPOS;
+		}
+
+		public Object getCABANG(){
+			return cABANG;
+		}
+
+		public Object getSTATUS(){
+			return sTATUS;
+		}
+
+		public Object getNOMORKTP(){
+			return nOMORKTP;
+		}
+
+		public Object getKATEGORI(){
+			return kATEGORI;
+		}
+
+		public String getUSERTOKEN(){
+			return uSERTOKEN;
+		}
+
+		public Object getUSERNAME(){
+			return uSERNAME;
+		}
+
+		public Object getUPDATEDAT(){
+			return uPDATEDAT;
+		}
+
+		public Object getREKENING(){
+			return rEKENING;
+		}
+
+		public Object getFILEKTP(){
+			return fILEKTP;
+		}
+
+		public Object getBANK(){
+			return bANK;
+		}
+
+		public String getKODEREFERRAL(){
+			return kODEREFERRAL;
+		}
+
+		public Object getFOTO(){
+			return fOTO;
+		}
+
+		public String getIDCHATROOM(){
+			return iDCHATROOM;
+		}
+
+		public String getIDUSERREGISTER(){
+			return iDUSERREGISTER;
+		}
+
+		public Object getPROVINSI(){
+			return pROVINSI;
+		}
+
+		public Object getALAMAT(){
+			return aLAMAT;
+		}
+
+		public Object getKOTA(){
+			return kOTA;
+		}
+
+		public Object getKECAMATAN(){
+			return kECAMATAN;
+		}
+
+		public Object getPASSWORD(){
+			return pASSWORD;
+		}
+
+		public Object getKODEREFERRALFROM(){
+			return kODEREFERRALFROM;
+		}
+
+		public Object getATASNAMA(){
+			return aTASNAMA;
+		}
+
+		public Object getNAMALENGKAP(){
+			return nAMALENGKAP;
+		}
+	}
+
+	public static class DataDbDashTombo{
+
+		@SerializedName("country")
+		private Object country;
+
+		@SerializedName("is_wa")
+		private String isWa;
+
+		@SerializedName("upline")
+		private Object upline;
+
+		@SerializedName("userid")
+		private Object userid;
+
+		@SerializedName("status_ec")
+		private Object statusEc;
+
+		@SerializedName("bank")
+		private Object bank;
+
+		@SerializedName("ahli_waris")
+		private Object ahliWaris;
+
+		@SerializedName("id")
+		private String id;
+
+		@SerializedName("usercode")
+		private Object usercode;
+
+		@SerializedName("paket")
+		private String paket;
+
+		@SerializedName("atasnama")
+		private Object atasnama;
+
+		@SerializedName("photostatus")
+		private String photostatus;
+
+		@SerializedName("fotoktp")
+		private Object fotoktp;
+
+		@SerializedName("traffic")
+		private Object traffic;
+
+		@SerializedName("bukti_bayar")
+		private Object buktiBayar;
+
+		@SerializedName("tglupgrade")
+		private Object tglupgrade;
+
+		@SerializedName("ktp")
+		private Object ktp;
+
+		@SerializedName("last_login")
+		private Object lastLogin;
+
+		@SerializedName("kode_pos")
+		private Object kodePos;
+
+		@SerializedName("npwp")
+		private Object npwp;
+
+		@SerializedName("g2")
+		private Object g2;
+
+		@SerializedName("g3")
+		private Object g3;
+
+		@SerializedName("g4")
+		private Object g4;
+
+		@SerializedName("g5")
+		private Object g5;
+
+		@SerializedName("is_seen_notifikasi_mitra")
+		private String isSeenNotifikasiMitra;
+
+		@SerializedName("g6")
+		private Object g6;
+
+		@SerializedName("g7")
+		private Object g7;
+
+		@SerializedName("status_bank")
+		private Object statusBank;
+
+		@SerializedName("g8")
+		private Object g8;
+
+		@SerializedName("g9")
+		private Object g9;
+
+		@SerializedName("name")
+		private Object name;
+
+		@SerializedName("activate")
+		private String activate;
+
+		@SerializedName("timerupgrade")
+		private String timerupgrade;
+
+		@SerializedName("status")
+		private String status;
+
+		@SerializedName("sponsor")
+		private String sponsor;
+
+		@SerializedName("is_hr")
+		private Object isHr;
+
+		@SerializedName("g10")
+		private Object g10;
+
+		@SerializedName("login")
+		private Object login;
+
+		@SerializedName("hub_ahliwaris")
+		private Object hubAhliwaris;
+
+		@SerializedName("propinsi")
+		private Object propinsi;
+
+		@SerializedName("timer")
+		private String timer;
+
+		@SerializedName("klaim")
+		private String klaim;
+
+		@SerializedName("hphone")
+		private String hphone;
+
+		@SerializedName("tpassw")
+		private Object tpassw;
+
+		@SerializedName("qr_code")
+		private Object qrCode;
+
+		@SerializedName("email")
+		private Object email;
+
+		@SerializedName("passw")
+		private Object passw;
+
+		@SerializedName("tot_ref")
+		private Object totRef;
+
+		@SerializedName("transaction_code")
+		private String transactionCode;
+
+		@SerializedName("is_seen_notifikasi")
+		private String isSeenNotifikasi;
+
+		@SerializedName("cabang")
+		private Object cabang;
+
+		@SerializedName("passenc")
+		private Object passenc;
+
+		@SerializedName("kota")
+		private Object kota;
+
+		@SerializedName("address")
+		private Object address;
+
+		@SerializedName("photo")
+		private Object photo;
+
+		@SerializedName("status_nama")
+		private Object statusNama;
+
+		@SerializedName("usertoken")
+		private String usertoken;
+
+		@SerializedName("rekening")
+		private Object rekening;
+
+		@SerializedName("hphone2")
+		private Object hphone2;
+
+		@SerializedName("kecamatan")
+		private Object kecamatan;
+
+		public Object getCountry(){
+			return country;
+		}
+
+		public String getIsWa(){
+			return isWa;
+		}
+
+		public Object getUpline(){
+			return upline;
+		}
+
+		public Object getUserid(){
+			return userid;
+		}
+
+		public Object getStatusEc(){
+			return statusEc;
+		}
+
+		public Object getBank(){
+			return bank;
+		}
+
+		public Object getAhliWaris(){
+			return ahliWaris;
+		}
+
+		public String getId(){
+			return id;
+		}
+
+		public Object getUsercode(){
+			return usercode;
+		}
+
+		public String getPaket(){
+			return paket;
+		}
+
+		public Object getAtasnama(){
+			return atasnama;
+		}
+
+		public String getPhotostatus(){
+			return photostatus;
+		}
+
+		public Object getFotoktp(){
+			return fotoktp;
+		}
+
+		public Object getTraffic(){
+			return traffic;
+		}
+
+		public Object getBuktiBayar(){
+			return buktiBayar;
+		}
+
+		public Object getTglupgrade(){
+			return tglupgrade;
+		}
+
+		public Object getKtp(){
+			return ktp;
+		}
+
+		public Object getLastLogin(){
+			return lastLogin;
+		}
+
+		public Object getKodePos(){
+			return kodePos;
+		}
+
+		public Object getNpwp(){
+			return npwp;
+		}
+
+		public Object getG2(){
+			return g2;
+		}
+
+		public Object getG3(){
+			return g3;
+		}
+
+		public Object getG4(){
+			return g4;
+		}
+
+		public Object getG5(){
+			return g5;
+		}
+
+		public String getIsSeenNotifikasiMitra(){
+			return isSeenNotifikasiMitra;
+		}
+
+		public Object getG6(){
+			return g6;
+		}
+
+		public Object getG7(){
+			return g7;
+		}
+
+		public Object getStatusBank(){
+			return statusBank;
+		}
+
+		public Object getG8(){
+			return g8;
+		}
+
+		public Object getG9(){
+			return g9;
+		}
+
+		public Object getName(){
+			return name;
+		}
+
+		public String getActivate(){
+			return activate;
+		}
+
+		public String getTimerupgrade(){
+			return timerupgrade;
+		}
+
+		public String getStatus(){
+			return status;
+		}
+
+		public String getSponsor(){
+			return sponsor;
+		}
+
+		public Object getIsHr(){
+			return isHr;
+		}
+
+		public Object getG10(){
+			return g10;
+		}
+
+		public Object getLogin(){
+			return login;
+		}
+
+		public Object getHubAhliwaris(){
+			return hubAhliwaris;
+		}
+
+		public Object getPropinsi(){
+			return propinsi;
+		}
+
+		public String getTimer(){
+			return timer;
+		}
+
+		public String getKlaim(){
+			return klaim;
+		}
+
+		public String getHphone(){
+			return hphone;
+		}
+
+		public Object getTpassw(){
+			return tpassw;
+		}
+
+		public Object getQrCode(){
+			return qrCode;
+		}
+
+		public Object getEmail(){
+			return email;
+		}
+
+		public Object getPassw(){
+			return passw;
+		}
+
+		public Object getTotRef(){
+			return totRef;
+		}
+
+		public String getTransactionCode(){
+			return transactionCode;
+		}
+
+		public String getIsSeenNotifikasi(){
+			return isSeenNotifikasi;
+		}
+
+		public Object getCabang(){
+			return cabang;
+		}
+
+		public Object getPassenc(){
+			return passenc;
+		}
+
+		public Object getKota(){
+			return kota;
+		}
+
+		public Object getAddress(){
+			return address;
+		}
+
+		public Object getPhoto(){
+			return photo;
+		}
+
+		public Object getStatusNama(){
+			return statusNama;
+		}
+
+		public String getUsertoken(){
+			return usertoken;
+		}
+
+		public Object getRekening(){
+			return rekening;
+		}
+
+		public Object getHphone2(){
+			return hphone2;
+		}
+
+		public Object getKecamatan(){
+			return kecamatan;
+		}
+	}
 }
-

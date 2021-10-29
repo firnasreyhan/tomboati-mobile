@@ -80,8 +80,12 @@ public class RegistrasiDataPembayaranMitraActivity extends AppCompatActivity {
         });
 
         materialButtonLanjutkan.setOnClickListener(v -> {
+            final String[] USERNAME = editTextRegistrasiUsername.getText().toString().split("\\s+");
+
             if(!checkData()) {
                 Toast.makeText(v.getContext(), "Data anda masih kurang lengkap", Toast.LENGTH_SHORT).show();
+            }else if(USERNAME.length > 1) {
+                Toast.makeText(v.getContext(), "Username tidak boleh mengandung spasi", Toast.LENGTH_SHORT).show();
             } else {
                 final AkunModel akunModel = PreferenceAkun.getAkun(this);
                 akunModel.setPhoto(URI[0].toString());

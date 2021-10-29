@@ -1,5 +1,6 @@
 package com.tomboati.tour.viewmodel.tomboati.mitra;
 
+import android.annotation.SuppressLint;
 import android.app.Application;
 import android.content.Context;
 
@@ -14,9 +15,10 @@ import com.tomboati.tour.repository.Repository;
 
 public class AkunMitraViewModel extends AndroidViewModel {
 
+    @SuppressLint("StaticFieldLeak")
+    private final Context context;
     private Repository repository;
     private MutableLiveData<PoinResponse> getPoinData;
-    private Context context;
 
     public AkunMitraViewModel(@NonNull Application application) {
         super(application);
@@ -37,6 +39,6 @@ public class AkunMitraViewModel extends AndroidViewModel {
 
 
     public MutableLiveData<BaseResponse> logout() {
-        return this.repository.logout("logout_post", PreferenceAkun.getAkun(context).getEmail());
+        return this.repository.logout("logout", PreferenceAkun.getAkun(context).getUserId());
     }
 }

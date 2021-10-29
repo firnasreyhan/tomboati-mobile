@@ -49,6 +49,7 @@ public class AuthRegisterUserActivity extends AppCompatActivity implements OnCom
         materialButtonLanjutkan = findViewById(R.id.materialButtonLanjutkan);
         textViewMasuk = findViewById(R.id.textViewMasuk);
         FirebaseMessaging.getInstance().getToken().addOnCompleteListener(this);
+
         final String REFERRAL = getIntent().getStringExtra("REFERRAL");
         if(REFERRAL != null) {
             editTextDaftarKodeReferral.setText(REFERRAL);
@@ -58,80 +59,85 @@ public class AuthRegisterUserActivity extends AppCompatActivity implements OnCom
 
         viewModel = ViewModelProviders.of(this).get(RegisterAkunMitraViewModel.class);
 
-        textViewMasuk.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), AuthLoginMitraActivity.class);
-                startActivity(intent);
-            }
+        textViewMasuk.setOnClickListener(v -> {
+            Intent intent = new Intent(v.getContext(), AuthLoginMitraActivity.class);
+            startActivity(intent);
         });
 
-        materialButtonLanjutkan.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(editTextDaftarNomorTelepon.getText().toString().isEmpty()) {
-                    Toast.makeText(v.getContext(), "Nomor telepon masih kosong!", Toast.LENGTH_SHORT).show();
-                    editTextDaftarNomorTelepon.requestFocus();
-                } else if(editTextDaftarKodeReferral.getText().toString().isEmpty()) {
-                    Toast.makeText(v.getContext(), "Kode referral masih kosong!", Toast.LENGTH_SHORT).show();
-                    editTextDaftarKodeReferral.requestFocus();
-                }else if(editTextDaftarNomorTelepon.getText().toString().length() > 13) {
-                    Toast.makeText(v.getContext(), "Nomor telepon tidak boleh lebih dari 13 angka!", Toast.LENGTH_SHORT).show();
-                    editTextDaftarNomorTelepon.requestFocus();
-                } else {
-                    if(token != null) {
-                        Log.d("TOKEN", "onClick: " + token);
-                        AlertProgress progress = new AlertProgress(v, "Sedang meregistrasi data");
-                        progress.showDialog();
+        materialButtonLanjutkan.setOnClickListener(v -> {
+            if(editTextDaftarNomorTelepon.getText().toString().isEmpty()) {
+                Toast.makeText(v.getContext(), "Nomor telepon masih kosong!", Toast.LENGTH_SHORT).show();
+                editTextDaftarNomorTelepon.requestFocus();
+            } else if(editTextDaftarKodeReferral.getText().toString().isEmpty()) {
+                Toast.makeText(v.getContext(), "Kode referral masih kosong!", Toast.LENGTH_SHORT).show();
+                editTextDaftarKodeReferral.requestFocus();
+            }else if(editTextDaftarNomorTelepon.getText().toString().length() > 13) {
+                Toast.makeText(v.getContext(), "Nomor telepon tidak boleh lebih dari 13 angka!", Toast.LENGTH_SHORT).show();
+                editTextDaftarNomorTelepon.requestFocus();
+            } else {
+                if(token != null) {
+                    Log.d("TOKEN", "onClick: " + token);
+                    AlertProgress progress = new AlertProgress(v, "Sedang meregistrasi data");
+                    progress.showDialog();
 
-                        String noTelp = editTextDaftarNomorTelepon.getText().toString();
-                        if (noTelp.charAt(0) == '0') {
-                            noTelp = noTelp.replaceFirst("0", "62");
-                        } else if (noTelp.charAt(0) == '+') {
-                            noTelp = noTelp.replaceFirst("\\+", "");
-                        }
-
-                        viewModel.registerAkun(
-                                noTelp,
-                                editTextDaftarKodeReferral.getText().toString(),
-                                token
-                        ).observe(OWNER, new Observer<AkunResponse>() {
-                            @Override
-                            public void onChanged(AkunResponse akunResponse) {
-                                progress.dismissDialog();
-                                if (!akunResponse.getError()) {
-
-                                    AppPreference.removeNotif(v.getContext());
-                                    final AkunResponse.DataDbDashTombo dataDashTombo = akunResponse.getDataDbDashTombo().get(0);
-                                    final AkunResponse.DataTomboatus dataTomboAti = akunResponse.getDataTomboati().get(0);
-
-                                    final AkunModel akunModel = new AkunModel();
-                                    akunModel.setId(dataTomboAti.getIduserregister());
-                                    akunModel.setPaket(dataDashTombo.getPaket());
-                                    akunModel.setHphone(dataDashTombo.getHphone());
-                                    akunModel.setReferral(dataDashTombo.getSponsor());
-                                    akunModel.setIdChatRoom(dataTomboAti.getIdChatRoom());
-
-                                    PreferenceAkun.setAkun(
-                                            v.getContext(),
-                                            akunModel
-                                    );
-
-                                    Intent intent = new Intent(v.getContext(), MainActivity.class);
-                                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                    startActivity(intent);
-
-                                    Toast.makeText(v.getContext(), "Berhasil mendaftar!", Toast.LENGTH_SHORT).show();
-                                } else {
-                                    AlertInfo info = new AlertInfo(v, akunResponse.getMessage());
-                                    info.setDialogError();
-                                    info.showDialog();
-                                }
-                            }
-                        });
-                    } else {
-                        Toast.makeText(v.getContext(), "Tunggu sebentar, token masih dimuat!", Toast.LENGTH_SHORT).show();
+                    String noTelp = editTextDaftarNomorTelepon.getText().toString();
+                    if (noTelp.charAt(0) == '0') {
+                        noTelp = noTelp.replaceFirst("0", "62");
+                    } else if (noTelp.charAt(0) == '+') {
+                        noTelp = noTelp.replaceFirst("\\+", "");
                     }
+
+                    viewModel.registerAkun(
+                            noTelp,
+                            editTextDaftarKodeReferral.getText().toString(),
+                            token
+                    ).observe(OWNER, akunResponse -> {
+                        progress.dismissDialog();
+                        if (!akunResponse.isError()) {
+
+                            AppPreference.removeNotif(v.getContext());
+                            final AkunResponse.DataDbDashTombo dataDashTombo = akunResponse.getDataDbDashTombo();
+                            final AkunResponse.DataTomboati dataTomboAti = akunResponse.getDataTomboati();
+
+                            final AkunModel akunModel = new AkunModel();
+                            akunModel.setId(dataTomboAti.getIDUSERREGISTER());
+                            akunModel.setPaket(dataDashTombo.getPaket());
+                            akunModel.setHphone(dataDashTombo.getHphone());
+                            akunModel.setReferral(dataDashTombo.getSponsor());
+                            akunModel.setIdChatRoom(dataTomboAti.getIDCHATROOM());
+
+                            if(dataDashTombo.getName() != null) {
+                                akunModel.setName(dataDashTombo.getName().toString());
+                                akunModel.setPropinsi(dataDashTombo.getPropinsi().toString());
+                                akunModel.setKota(dataDashTombo.getKota().toString());
+                                akunModel.setKecamatan(dataDashTombo.getKecamatan().toString());
+                                akunModel.setAddress(dataDashTombo.getAddress().toString());
+                                akunModel.setKodePos(dataDashTombo.getKodePos().toString());
+                            }
+
+                            if(dataDashTombo.getPhoto() != null && dataDashTombo.getBuktiBayar() != null) {
+                                akunModel.setPhoto(dataDashTombo.getPhoto().toString());
+                                akunModel.setSuksesDaftarMitra(true);
+                            }
+
+                            PreferenceAkun.setAkun(
+                                    v.getContext(),
+                                    akunModel
+                            );
+
+                            Intent intent = new Intent(v.getContext(), MainActivity.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                            startActivity(intent);
+
+                            Toast.makeText(v.getContext(), akunResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                        } else {
+                            AlertInfo info = new AlertInfo(v, akunResponse.getMessage());
+                            info.setDialogError();
+                            info.showDialog();
+                        }
+                    });
+                } else {
+                    Toast.makeText(v.getContext(), "Tunggu sebentar, token masih dimuat!", Toast.LENGTH_SHORT).show();
                 }
             }
         });

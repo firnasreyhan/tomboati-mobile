@@ -85,31 +85,30 @@ public class AuthLoginMitraActivity extends AppCompatActivity implements OnCompl
                             token
                     ).observe(OWNER, akunMitraResponse -> {
                         progress.dismissDialog();
-                        if (akunMitraResponse.getError()) {
+                        if (akunMitraResponse.isError()) {
                             AlertInfo info = new AlertInfo(v, akunMitraResponse.getMessage());
                             info.setDialogError();
                             info.showDialog();
                         } else {
                             AppPreference.removeNotif(v.getContext());
-                            AkunMitraResponse.Datum data = akunMitraResponse.getData().get(0);
+                            AkunMitraResponse.Data data = akunMitraResponse.getData();
                             AkunModel akunModel = new AkunModel();
-//                            akunModel.setPoin(data.getPoin().toString());
-                            akunModel.setId(data.getIduserregister());
-                            akunModel.setPaket(data.getStatusUser());
-                            akunModel.setKtp(data.getNomorktp());
-                            akunModel.setEmail(data.getEmail());
-                            akunModel.setName(data.getNamalengkap());
-                            akunModel.setReferral(data.getKodereferral());
-                            akunModel.setHphone(data.getNomorhp());
-                            akunModel.setFotoKTP(data.getFilektp());
-                            akunModel.setPhoto(data.getFoto());
-                            akunModel.setUserId(data.getUsername());
-                            akunModel.setKecamatan(data.getKecamatan());
-                            akunModel.setAddress(data.getAlamat());
-                            akunModel.setPropinsi(data.getProvinsi());
-                            akunModel.setKodePos(data.getKodepos());
-                            akunModel.setKota(data.getKota());
-                            akunModel.setIdChatRoom(data.getIdChatRoom());
+                            akunModel.setId(data.getIDUSERREGISTER());
+                            akunModel.setPaket(data.getSTATUSUSER());
+                            akunModel.setKtp(data.getNOMORKTP());
+                            akunModel.setEmail(data.getEMAIL());
+                            akunModel.setName(data.getNAMALENGKAP());
+                            akunModel.setReferral(data.getKODEREFERRAL());
+                            akunModel.setHphone(data.getNOMORHP());
+                            akunModel.setFotoKTP(data.getFILEKTP());
+                            akunModel.setPhoto(data.getFOTO());
+                            akunModel.setUserId(data.getUSERNAME());
+                            akunModel.setKecamatan(data.getKECAMATAN());
+                            akunModel.setAddress(data.getALAMAT());
+                            akunModel.setPropinsi(data.getPROVINSI());
+                            akunModel.setKodePos(data.getKODEPOS());
+                            akunModel.setKota(data.getKOTA());
+                            akunModel.setIdChatRoom(data.getIDCHATROOM());
                             PreferenceAkun.removeAkun(v.getContext());
                             PreferenceAkun.setAkun(v.getContext(), akunModel);
 

@@ -30,7 +30,6 @@ public class AkunNonMitraFragment extends Fragment {
     private ConstraintLayout menuLengkapiBiodata, menuDaftarSebagaiMitra, menuMasukSebagaiMitra, menuKodeReferral, menuHubungiKami;
     private TextView textViewNamaPengguna, textLengkapiBiodata, textDeskripsiBiodata;
     private CircleImageView imageViewProfil;
-    private AkunModel MODEL;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -51,16 +50,15 @@ public class AkunNonMitraFragment extends Fragment {
         textDeskripsiBiodata = view.findViewById(R.id.textDeskripsiBiodata);
         imageViewProfil = view.findViewById(R.id.imageVIewProfile);
 
-        MODEL = PreferenceAkun.getAkun(view.getContext());
+        final AkunModel MODEL = PreferenceAkun.getAkun(view.getContext());
 
         if(MODEL.isFieldFilled()) {
-
-            final String NAME = PreferenceAkun.getAkun(getContext()).getName();
+            final String NAME = MODEL.getName();
             final String[] NAME_ARRAY = NAME.split(" ");
             final StringBuilder NAME_FIX = new StringBuilder();
             for (int i = 0; i < NAME_ARRAY.length; i++) {
                 if(i < 3) {
-                    NAME_FIX.append(NAME_ARRAY[i]);
+                    NAME_FIX.append(NAME_ARRAY[i]).append(" ");
                 }
             }
 
@@ -73,7 +71,7 @@ public class AkunNonMitraFragment extends Fragment {
             }
         }
 
-        if(PreferenceAkun.getAkun(view.getContext()).isSuksesDaftarMitra()) {
+        if(MODEL.isSuksesDaftarMitra()) {
             menuDaftarSebagaiMitra.setVisibility(View.GONE);
         }
 

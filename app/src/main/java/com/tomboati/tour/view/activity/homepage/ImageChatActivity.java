@@ -2,7 +2,7 @@ package com.tomboati.tour.view.activity.homepage;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.Observer;
+import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.app.ProgressDialog;
@@ -10,70 +10,54 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.View;
-import android.widget.ImageView;
+import android.util.Log;
+import android.widget.Toast;
 
-import com.tomboati.tour.R;
-import com.tomboati.tour.api.response.BaseResponse;
+import com.tomboati.tour.databinding.ActivityImageChatBinding;
 import com.tomboati.tour.viewmodel.tomboati.homepage.ImageChatViewModel;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.textfield.TextInputEditText;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
 public class ImageChatActivity extends AppCompatActivity {
+
+    private ActivityImageChatBinding bind;
     private ProgressDialog progressDialog;
     private ImageChatViewModel imageChatViewModel;
-    private ImageView imageViewChat;
-    private TextInputEditText textInputEditTextChat;
-    private FloatingActionButton floatingActionButtonSend;
+    private final LifecycleOwner OWNER = this;
+    private final int LOADING_TIME = 3000;
     private Uri uri;
-    private String chat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_image_chat);
+        bind = ActivityImageChatBinding.inflate(getLayoutInflater());
+        setContentView(bind.getRoot());
 
-        chat = getIntent().getStringExtra("CHAT");
+        String chat = getIntent().getStringExtra("CHAT");
+        imageChatViewModel = ViewModelProviders.of(this).get(ImageChatViewModel.class);
 
         progressDialog = new ProgressDialog(this);
-        imageChatViewModel = ViewModelProviders.of(this).get(ImageChatViewModel.class);
-        textInputEditTextChat = findViewById(R.id.textInputEditTextChat);
-        floatingActionButtonSend = findViewById(R.id.floatingActionButtonSend);
-        imageViewChat = findViewById(R.id.imageViewChat);
+        progressDialog.setMessage("Mohon tunggu sebentar...");
+        progressDialog.setCancelable(false);
 
-        textInputEditTextChat.setText(chat);
+        bind.textInputEditTextChat.setText(chat);
 
-        CropImage.activity()
-                .setGuidelines(CropImageView.Guidelines.ON)
-                .start(ImageChatActivity.this);
+        CropImage.activity().setGuidelines(CropImageView.Guidelines.ON).start(ImageChatActivity.this);
 
-        floatingActionButtonSend.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                progressDialog.setMessage("Mohon tunggu sebentar...");
-                progressDialog.setCancelable(false);
-                progressDialog.show();
-
-                int loadingTime = 3000;
-                new Handler().postDelayed(() -> {
-                    imageChatViewModel.sendChat(
-                            textInputEditTextChat.getText().toString(),
-                            uri
-                    ).observe(ImageChatActivity.this, new Observer<BaseResponse>() {
-                        @Override
-                        public void onChanged(BaseResponse baseResponse) {
-                            if (progressDialog.isShowing()) {
-                                progressDialog.dismiss();
-                            }
-                            if (!baseResponse.isError()) {
-                                finish();
-                            }
-                        }
-                    });
-                }, loadingTime);
-            }
+        bind.floatingActionButtonSend.setOnClickListener(v -> {
+            progressDialog.show();
+            new Handler().postDelayed(() -> {
+                imageChatViewModel.sendChat(
+                        bind.textInputEditTextChat.getText().toString(), uri
+                ).observe(OWNER, baseResponse -> {
+                    progressDialog.dismiss();
+                    if (!baseResponse.isError()) {
+                        finish();
+                    } else {
+                        Toast.makeText(v.getContext(), baseResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }, LOADING_TIME);
         });
     }
 
@@ -83,11 +67,11 @@ public class ImageChatActivity extends AppCompatActivity {
         if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
             CropImage.ActivityResult result = CropImage.getActivityResult(data);
             if (resultCode == RESULT_OK) {
-                Uri uri = result.getUri();
-                this.uri = uri;
-                imageViewChat.setImageURI(uri);
+                this.uri = result.getUri();
+                bind.imageViewChat.setImageURI(this.uri);
             } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
-                Exception error = result.getError();
+                String error = result.getError().toString();
+                Log.d("ERROR", "onActivityResult: " + error);
                 finish();
             } else {
                 finish();

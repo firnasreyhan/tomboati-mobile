@@ -29,8 +29,7 @@ public class KodeReferralActivity extends AppCompatActivity {
         bind = ActivityKodeReferralBinding.inflate(getLayoutInflater());
         setContentView(bind.getRoot());
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        setSupportActionBar(bind.toolbar);
         setTitle("Kode Referral");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -67,9 +66,10 @@ public class KodeReferralActivity extends AppCompatActivity {
                 final String URI_APK = "https://tomboatitour.biz/apps";
                 final String WA_ME = "https://wa.me/" + PHONE;
                 final String TEXT =
-                        "SPECIAL UNTUK ANDA\n\n" +
+                        "_Assalamualaikum Wr. Wb._\n\n" +
+                        "*SPECIAL UNTUK ANDA*\n\n" +
                         "Unduh Aplikasinya - Banyak Manfaatnya\n" +
-                        "GRATIS\n\n" +
+                        "*GRATIS*\n\n" +
                         "- Al Qur'an\n" +
                         "- Panduan Sholat\n" +
                         "- Panduan Doa dan Dzikir\n" +
@@ -79,9 +79,9 @@ public class KodeReferralActivity extends AppCompatActivity {
                         URI_APK + "\n\n" +
                         "Cukup masukkan\n" +
                         "- no HP Anda\n" +
-                        "- referral : " + REFERRAL_ME + "\n\n" +
-                        "Dapatkan kesempatan UMROH GRATIS dengan cukup mereferensikan Aplikasi ini.\n\n" +
-                        "Info : " + WA_ME + " (" + NAME[0]  + (NAME.length > 1 ? " " + NAME[1] : "" ) + ")\n";
+                        "- referral : *" + REFERRAL_ME + "*\n\n" +
+                        "Dapatkan kesempatan *UMROH GRATIS* 10 Free 1, Wisata dan Poin Hadiah menarik dengan mereferensikan Aplikasi ini.\n\n" +
+                        "Info : " + WA_ME;
                 Intent sendIntent = new Intent();
                 sendIntent.setAction(Intent.ACTION_SEND);
                 sendIntent.putExtra(Intent.EXTRA_TEXT, TEXT);
