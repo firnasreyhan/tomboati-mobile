@@ -9,6 +9,7 @@
         <entry key="app/src/main/res/drawable/ic_eye_invisible.xml" value="0.1234375" />
         <entry key="app/src/main/res/drawable/ic_eye_visible.xml" value="0.1234375" />
         <entry key="app/src/main/res/drawable/ic_gmail.xml" value="0.1234375" />
+        <entry key="app/src/main/res/drawable/ic_voucher.xml" value="0.123046875" />
         <entry key="app/src/main/res/drawable/ic_whatsapp.xml" value="0.1234375" />
         <entry key="app/src/main/res/drawable/round_bg.xml" value="0.16458333333333333" />
         <entry key="app/src/main/res/drawable/round_bg_akun.xml" value="0.1" />
@@ -48,7 +49,7 @@
         <entry key="app/src/main/res/layout/activity_form_pembayaran.xml" value="0.2" />
         <entry key="app/src/main/res/layout/activity_hitung_tasbih.xml" value="0.18" />
         <entry key="app/src/main/res/layout/activity_hitung_tasbih_lainnya.xml" value="0.18" />
-        <entry key="app/src/main/res/layout/activity_hubungi_kami.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_hubungi_kami.xml" value="0.2" />
         <entry key="app/src/main/res/layout/activity_image_chat.xml" value="0.11171875" />
         <entry key="app/src/main/res/layout/activity_informasi_pembayaran.xml" value="0.18" />
         <entry key="app/src/main/res/layout/activity_istighosah.xml" value="0.1" />
@@ -87,6 +88,7 @@
         <entry key="app/src/main/res/layout/activity_umroh_haji.xml" value="0.14947916666666666" />
         <entry key="app/src/main/res/layout/activity_update_profile.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_waktu_mustajab.xml" value="0.18" />
+        <entry key="app/src/main/res/layout/activity_web_kemitraan.xml" value="0.2" />
         <entry key="app/src/main/res/layout/activity_wisata_religi.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_wudhu.xml" value="0.14947916666666666" />
         <entry key="app/src/main/res/layout/activity_yasin_tahlil.xml" value="0.15" />
