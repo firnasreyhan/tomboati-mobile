@@ -1,8 +1,6 @@
 package com.tomboati.tour.view.activity.mitra.auth;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.content.Intent;
@@ -13,78 +11,65 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.installations.remote.TokenResult;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.tomboati.tour.R;
 import com.tomboati.tour.api.response.AkunMitraResponse;
+import com.tomboati.tour.databinding.ActivityAuthLoginMitraBinding;
 import com.tomboati.tour.model.AkunModel;
+import com.tomboati.tour.model.LoginModel;
 import com.tomboati.tour.preference.AppPreference;
 import com.tomboati.tour.preference.PreferenceAkun;
 import com.tomboati.tour.utils.AlertInfo;
-import com.tomboati.tour.utils.AlertProgress;
+import com.tomboati.tour.view.activity.base.BaseNonToolbarActivity;
 import com.tomboati.tour.view.activity.homepage.MainActivity;
 import com.tomboati.tour.viewmodel.tomboati.mitra.LoginAkunMitraViewModel;
-import com.google.android.material.button.MaterialButton;
 
-public class AuthLoginMitraActivity extends AppCompatActivity implements OnCompleteListener {
+public class AuthLoginMitraActivity extends BaseNonToolbarActivity implements OnCompleteListener<TokenResult> {
 
-    private TextView textViewBack, textViewPrefix;
-    private EditText editTextLoginUsername, editTextLoginPassword;
-    private MaterialButton materialButtonMasuk;
+    private ActivityAuthLoginMitraBinding bind;
     private LoginAkunMitraViewModel viewModel;
-    private ImageView eyePassword;
     private boolean isEyePassword;
-
-    private final LifecycleOwner OWNER = this;
     private String token = null;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setTheme(R.style.ThemeTomboAtiGreen);
-        setContentView(R.layout.activity_auth_login_mitra);
-
+    protected void onViewReady(Bundle savedInstanceState, Intent intent) {
+        super.onViewReady(savedInstanceState, intent);
+        bind = ActivityAuthLoginMitraBinding.inflate(getLayoutInflater());
         viewModel = ViewModelProviders.of(this).get(LoginAkunMitraViewModel.class);
+        FirebaseMessaging.getInstance().getToken().addOnCompleteListener(this::onComplete);
 
-        textViewBack = findViewById(R.id.textViewBack);
-        textViewPrefix = findViewById(R.id.textViewPrefix);
-        materialButtonMasuk = findViewById(R.id.materialButtonMasuk);
-        editTextLoginUsername = findViewById(R.id.editTextLoginUsername);
-        editTextLoginPassword = findViewById(R.id.editTextLoginPassword);
-        eyePassword = findViewById(R.id.eyePassword);
-        FirebaseMessaging.getInstance().getToken().addOnCompleteListener(this);
-        eyePassword.setOnClickListener(v -> {
-            setEye(editTextLoginPassword, eyePassword, isEyePassword);
+        final LoginModel LOGIN = new LoginModel();
+        bind.setLogin(LOGIN);
+
+        bind.eyePassword.setOnClickListener(v -> {
+            setEye(bind.editTextLoginPassword, bind.eyePassword, isEyePassword);
             isEyePassword = !isEyePassword;
         });
 
         if(PreferenceAkun.getAkun(this) == null){
-            textViewBack.setText("Daftar");
-            textViewPrefix.setVisibility(View.VISIBLE);
+            bind.textViewBack.setText("Daftar");
+            bind.textViewPrefix.setVisibility(View.VISIBLE);
         }
 
-        materialButtonMasuk.setOnClickListener(v -> {
-            if(editTextLoginUsername.getText().toString().isEmpty()) {
-                editTextLoginUsername.setError("Wajib diisi");
-                Toast.makeText(v.getContext(), "Kolom email masih kosong!", Toast.LENGTH_SHORT).show();
-            } else if(editTextLoginPassword.getText().toString().isEmpty()) {
-                editTextLoginPassword.setError("Wajib diisi");
-                Toast.makeText(v.getContext(), "Kolom password masih kosong!", Toast.LENGTH_SHORT).show();
+        bind.materialButtonMasuk.setOnClickListener(v -> {
+            if(LOGIN.getUsername().isEmpty()) {
+                bind.editTextLoginUsername.setError("Wajib diisi");
+                showToast("Kolom username masih kosong!");
+            } else if(LOGIN.getPassword().isEmpty()) {
+                bind.editTextLoginPassword.setError("Wajib diisi");
+                showToast("Kolom password masih kosong!");
             } else {
                 if(token != null) {
                     Log.d("TOKEN", "onClick: " + token);
-                    AlertProgress progress = new AlertProgress(v, "Sedang mengautentikasi data..");
-                    progress.showDialog();
+                    showProgressDialog("Sedang mengautentikasi data...");
                     viewModel.loginMitra(
-                            editTextLoginUsername.getText().toString().toLowerCase(),
-                            editTextLoginPassword.getText().toString(),
-                            token
-                    ).observe(OWNER, akunMitraResponse -> {
-                        progress.dismissDialog();
+                            LOGIN.getUsername(), LOGIN.getPassword(), token
+                    ).observe(getOwner(), akunMitraResponse -> {
+                        dismissProgressDialog();
                         if (akunMitraResponse.isError()) {
                             AlertInfo info = new AlertInfo(v, akunMitraResponse.getMessage());
                             info.setDialogError();
@@ -112,22 +97,25 @@ public class AuthLoginMitraActivity extends AppCompatActivity implements OnCompl
                             PreferenceAkun.removeAkun(v.getContext());
                             PreferenceAkun.setAkun(v.getContext(), akunModel);
 
-
-                            Intent intent = new Intent(v.getContext(), MainActivity.class);
-                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                            startActivity(intent);
-
-                            Toast.makeText(v.getContext(), "Selamat Datang!", Toast.LENGTH_SHORT).show();
+                            Intent intents = new Intent(v.getContext(), MainActivity.class);
+                            intents.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                            startActivity(intents);
+                            showToast("Selamat datang..");
                         }
                     });
                 } else {
-                    Toast.makeText(v.getContext(), "Tunggu sebentar, token masih dimuat!", Toast.LENGTH_SHORT).show();
+                    showToast("Tunggu sebentar, token masih dimuat!");
                 }
             }
         });
 
-        textViewBack.setOnClickListener(v -> finish());
+        bind.textViewBack.setOnClickListener(v -> finish());
 
+    }
+
+    @Override
+    protected View getContentView() {
+        return bind.getRoot();
     }
 
     private void setEye(EditText editText, ImageView eyeImageView, boolean isEyeClicked) {
