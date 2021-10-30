@@ -29,6 +29,7 @@ import com.tomboati.tour.utils.AlertProgress;
 import com.tomboati.tour.view.activity.homepage.HubungiKamiActivity;
 import com.tomboati.tour.view.activity.homepage.KodeReferralActivity;
 import com.tomboati.tour.view.activity.homepage.UbahProfilActivity;
+import com.tomboati.tour.view.activity.homepage.WebKemitraanActivity;
 import com.tomboati.tour.view.activity.mitra.auth.AuthRegisterUserActivity;
 import com.tomboati.tour.view.activity.mitra.auth.UbahPasswordActivity;
 import com.tomboati.tour.viewmodel.tomboati.mitra.AkunMitraViewModel;
@@ -42,15 +43,14 @@ public class AkunMitraFragment extends Fragment {
     private TextView textViewNamaAkunMitra, textViewPoint;
     private CircleImageView imageViewFotoAkunMitra;
     private ConstraintLayout constrainLayoutKodeReferral, consraintLayoutLogout,
-            constraintLayoutIbahPassword, menuHubungiKami, constraintLayoutUbahProfil;
+            constraintLayoutIbahPassword, menuHubungiKami, constraintLayoutUbahProfil, constrainLayoutKemitraan;
 
     private AkunMitraViewModel viewModel;
     private final LifecycleOwner OWNER = this;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_akun_mitra, container, false);
-        return view;
+        return inflater.inflate(R.layout.fragment_akun_mitra, container, false);
     }
 
     @Override
@@ -67,6 +67,7 @@ public class AkunMitraFragment extends Fragment {
         constraintLayoutUbahProfil = view.findViewById(R.id.constraintLayoutUbahProfil);
         menuHubungiKami = view.findViewById(R.id.menuHubungiKami);
         textViewPoint = view.findViewById(R.id.textViewPoint);
+        constrainLayoutKemitraan = view.findViewById(R.id.constrainLayoutKemitraan);
 
         viewModel.getPoin().observe(OWNER, poinResponse -> {
             if(!poinResponse.isError()) {
@@ -90,6 +91,7 @@ public class AkunMitraFragment extends Fragment {
         constraintLayoutIbahPassword.setOnClickListener(v -> v.getContext().startActivity(new Intent(v.getContext(), UbahPasswordActivity.class)));
         menuHubungiKami.setOnClickListener(v -> v.getContext().startActivity(new Intent(v.getContext(), HubungiKamiActivity.class)));
         constraintLayoutUbahProfil.setOnClickListener(v -> v.getContext().startActivity(new Intent(v.getContext(), UbahProfilActivity.class)));
+        constrainLayoutKemitraan.setOnClickListener(v -> v.getContext().startActivity(new Intent(v.getContext(), WebKemitraanActivity.class)));
 
         consraintLayoutLogout.setOnClickListener(v -> {
             final AlertDialog.Builder dialog = new AlertDialog.Builder(getContext());

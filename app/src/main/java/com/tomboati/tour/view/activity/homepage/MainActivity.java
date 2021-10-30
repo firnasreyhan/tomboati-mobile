@@ -5,15 +5,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import com.tomboati.tour.R;
 import com.tomboati.tour.databinding.ActivityMainBinding;
 import com.tomboati.tour.preference.PreferenceAkun;
 import com.tomboati.tour.utils.Utility;
+import com.tomboati.tour.view.activity.base.BaseNonToolbarActivity;
 import com.tomboati.tour.view.fragment.homepage.akun.AkunMitraFragment;
 import com.tomboati.tour.view.fragment.homepage.akun.AkunNonMitraFragment;
 import com.tomboati.tour.view.fragment.homepage.BerandaFragment;
@@ -22,20 +25,18 @@ import com.tomboati.tour.view.fragment.homepage.PesananFragment;
 import com.tomboati.tour.view.fragment.homepage.RiwayatFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseNonToolbarActivity {
 
     private boolean doubleBackToExit;
     private boolean loginUserFix = false;
     private ActivityMainBinding bind;
     private Fragment berandaFragment, riwayatFragment, pesananFragment, akunFragment;
 
+    @SuppressLint("NonConstantResourceId")
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setTheme(R.style.ThemeTomboAtiGreen);
+    protected void onViewReady(Bundle savedInstanceState, Intent intent) {
+        super.onViewReady(savedInstanceState, intent);
         bind = ActivityMainBinding.inflate(getLayoutInflater());
-        setContentView(bind.getRoot());
-
         if(PreferenceAkun.getAkun(this).isFieldFilled()) {
             loginUserFix = true;
         }
@@ -44,10 +45,10 @@ public class MainActivity extends AppCompatActivity {
         riwayatFragment = new RiwayatFragment();
         pesananFragment = new PesananFragment();
         akunFragment =
-            PreferenceAkun.getAkun(this).getPaket().equals("MITRA") ?
-                new AkunMitraFragment()
+                PreferenceAkun.getAkun(this).getPaket().equals("MITRA") ?
+                        new AkunMitraFragment()
                         :
-                new AkunNonMitraFragment()
+                        new AkunNonMitraFragment()
         ;
 
         if(Utility.isConnecting(this)) {
@@ -71,19 +72,23 @@ public class MainActivity extends AppCompatActivity {
                         fragmentActive = akunFragment;
                         break;
                 }
-//                    return false;
+
                 if(fragmentActive != null) {
                     if(!fragmentActive.isInLayout()) {
                         setFragment(fragmentActive);
                     }
                     return true;
                 } else {
-                    Toast.makeText(getApplicationContext(), "Mohon lengkapi data diri anda untuk menggunakan fitur ini", Toast.LENGTH_SHORT).show();
+                    showToast("Mohon lengkapi data diri anda untuk menggunakan fitur ini");
                     return false;
                 }
             });
         }
+    }
 
+    @Override
+    protected View getContentView() {
+        return bind.getRoot();
     }
 
     @Override
@@ -93,12 +98,10 @@ public class MainActivity extends AppCompatActivity {
                 super.onBackPressed();
             }
             this.doubleBackToExit = true;
-            Toast.makeText(this, "Tekan sekali lagi untuk keluar.", Toast.LENGTH_SHORT).show();
-            new Handler().postDelayed(() ->
-                    doubleBackToExit = false, 8000
-            );
+            showToast("Tekan sekali lagi untuk keluar.");
+            new Handler().postDelayed(() -> doubleBackToExit = false, Toast.LENGTH_LONG);
         } else {
-            finish();
+            this.finish();
         }
     }
 

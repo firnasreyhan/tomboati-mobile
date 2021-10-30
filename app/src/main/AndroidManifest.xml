@@ -8,7 +8,9 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.VIBRATE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" tools:ignore="ScopedStorage" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
@@ -22,7 +24,9 @@
         android:roundIcon="@mipmap/ic_new_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/ThemeTomboAti">
-
+        <activity
+            android:name=".view.activity.homepage.WebKemitraanActivity"
+            android:exported="false" />
         <activity
             android:name=".view.activity.homepage.UbahProfilActivity"
             android:windowSoftInputMode="adjustResize" />
@@ -32,8 +36,7 @@
             android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".view.activity.mitra.pendaftaran.RegistrasiDataPembayaranMitraActivity"
-            android:windowSoftInputMode="adjustResize" >
-        </activity>
+            android:windowSoftInputMode="adjustResize"></activity>
         <activity
             android:name=".view.activity.mitra.pendaftaran.RegistrasiDataDiriMitraActivity"
             android:windowSoftInputMode="adjustResize" />
@@ -114,7 +117,6 @@
             android:name=".view.activity.homepage.MainActivity"
             android:hardwareAccelerated="false" />
         <activity android:name=".view.activity.SplashScreenActivity">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
