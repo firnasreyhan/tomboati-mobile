@@ -34,6 +34,7 @@ import com.tomboati.tour.api.response.KataMutiaraResponse;
 import com.tomboati.tour.api.response.NewsResponse;
 import com.tomboati.tour.api.response.PaketResponse;
 import com.tomboati.tour.api.response.PaketWisataResponse;
+import com.tomboati.tour.helper.Common;
 import com.tomboati.tour.preference.PreferenceAkun;
 import com.tomboati.tour.utils.AlertProgress;
 import com.tomboati.tour.utils.Utility;
@@ -157,25 +158,17 @@ public class BerandaFragment extends Fragment {
             });
 
             // Button detail news is clicked  ===================
-            materialButtonDetailNews.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    startActivity(new Intent(v.getContext(), DetailNewsActivity.class));
-                }
-            });
+            materialButtonDetailNews.setOnClickListener(v -> startActivity(new Intent(v.getContext(), DetailNewsActivity.class)));
 
             // Show paket umrah  ===================
-            berandaViewModel.getPaket().observe(getActivity(), new Observer<PaketResponse>() {
-                @Override
-                public void onChanged(PaketResponse paketResponse) {
-                    if (!paketResponse.isError()) {
-                        if (!paketResponse.getData().isEmpty()) {
-                            ImageView[] arrImage = {imageViewPromoHaji1, imageViewPromoHaji2, imageViewPromoHaji3};
-                            for (int i = 0; i < paketResponse.getData().size(); i++) {
-                                if (paketResponse.getData().get(i) != null) {
-                                    idPaket[i] = paketResponse.getData().get(i).getIdPaket();
-                                    picassoLoad(paketResponse.getData().get(i).getImagePaket(), arrImage[i]);
-                                }
+            berandaViewModel.getPaket().observe(getActivity(), paketResponse -> {
+                if (!paketResponse.isError()) {
+                    if (!paketResponse.getData().isEmpty()) {
+                        ImageView[] arrImage = {imageViewPromoHaji1, imageViewPromoHaji2, imageViewPromoHaji3};
+                        for (int i = 0; i < paketResponse.getData().size(); i++) {
+                            if (paketResponse.getData().get(i) != null) {
+                                idPaket[i] = paketResponse.getData().get(i).getIdPaket();
+                                picassoLoad(paketResponse.getData().get(i).getImagePaket(), arrImage[i]);
                             }
                         }
                     }
@@ -183,17 +176,14 @@ public class BerandaFragment extends Fragment {
             });
 
             // Show paket wisata halal  ===================
-            berandaViewModel.getWisataHalal().observe(getActivity(), new Observer<PaketWisataResponse>() {
-                @Override
-                public void onChanged(PaketWisataResponse paketWisataResponse) {
-                    if (!paketWisataResponse.isError()) {
-                        if (!paketWisataResponse.getData().isEmpty()) {
-                            ImageView[] arrImage = {imageViewPromoTour1, imageViewPromoTour2, imageViewPromoTour3};
-                            for (int i = 0; i < paketWisataResponse.getData().size(); i++) {
-                                if (paketWisataResponse.getData().get(i) != null) {
-                                    idPaket[i + 3] = paketWisataResponse.getData().get(i).getIdWisataHalal();
-                                    picassoLoad(paketWisataResponse.getData().get(i).getImageWisata(), arrImage[i]);
-                                }
+            berandaViewModel.getWisataHalal().observe(getActivity(), paketWisataResponse -> {
+                if (!paketWisataResponse.isError()) {
+                    if (!paketWisataResponse.getData().isEmpty()) {
+                        ImageView[] arrImage = {imageViewPromoTour1, imageViewPromoTour2, imageViewPromoTour3};
+                        for (int i = 0; i < paketWisataResponse.getData().size(); i++) {
+                            if (paketWisataResponse.getData().get(i) != null) {
+                                idPaket[i + 3] = paketWisataResponse.getData().get(i).getIdWisataHalal();
+                                picassoLoad(paketWisataResponse.getData().get(i).getImageWisata(), arrImage[i]);
                             }
                         }
                     }
@@ -201,38 +191,28 @@ public class BerandaFragment extends Fragment {
             });
 
             // Show news  ===================
-            berandaViewModel.getNews().observe(getActivity(), new Observer<NewsResponse>() {
-                @Override
-                public void onChanged(NewsResponse newsResponse) {
-                    if (!newsResponse.isError()) {
-                        if (!newsResponse.getData().isEmpty()) {
-                            picassoLoad(newsResponse.getData().get(0).getFoto(), imageViewNews);
-
-                            textViewJudulNews.setText(newsResponse.getData().get(0).getJudulNews());
-
-                            List<String> s = splitText(newsResponse.getData().get(0).getContentNews());
-                            StringBuilder sortNews = new StringBuilder();
-                            for(int i = 0; i < s.size(); i++) {
-                                int maxString = Math.min(s.size(), 3);
-                                if(maxString > i) {
-                                    sortNews.append(s.get(i));
-                                }
-                            }
-                            textViewSortNews.setText(sortNews.toString());
+            berandaViewModel.getNews().observe(getActivity(), newsResponse -> {
+                if (!newsResponse.isError()) {
+                    if (!newsResponse.getData().isEmpty()) {
+                        picassoLoad(newsResponse.getData().get(0).getFoto(), imageViewNews);
+                        textViewJudulNews.setText(newsResponse.getData().get(0).getJudulNews());
+                        List<String> listParagraph = Common.splitText(newsResponse.getData().get(0).getContentNews());
+                        final int MAX_STRING = Math.min(listParagraph.size(), 3);
+                        StringBuilder sortNews = new StringBuilder();
+                        for(int i = 0; i < MAX_STRING; i++) {
+                            sortNews.append(listParagraph.get(i));
                         }
+                        textViewSortNews.setText(sortNews.toString());
                     }
                 }
             });
 
             // Show kata mutiara  ===================
-            berandaViewModel.getKataMutiara().observe(getActivity(), new Observer<KataMutiaraResponse>() {
-                @Override
-                public void onChanged(KataMutiaraResponse kataMutiaraResponse) {
-                    if (!kataMutiaraResponse.isError()) {
-                        if (!kataMutiaraResponse.getData().isEmpty()) {
-                            String s = kataMutiaraResponse.getData().get(0).getTeksKataMutiara().replaceAll("\\<.*?\\>", "");
-                            textViewKataMutiara.setText(s);
-                        }
+            berandaViewModel.getKataMutiara().observe(getActivity(), kataMutiaraResponse -> {
+                if (!kataMutiaraResponse.isError()) {
+                    if (!kataMutiaraResponse.getData().isEmpty()) {
+                        String kataMutiata = Common.splitTextToString(kataMutiaraResponse.getData().get(0).getTeksKataMutiara());
+                        textViewKataMutiara.setText(kataMutiata);
                     }
                 }
             });
@@ -268,20 +248,6 @@ public class BerandaFragment extends Fragment {
             });
         }
 
-    }
-
-    private List<String> splitText(String text) {
-        List<String> list = new ArrayList<>();
-        String[] texts = text.split(">");
-        for (String s : texts) {
-            String sz = s + ">";
-            sz = sz.replaceAll("<.*?>", "");
-            sz = sz.replaceAll("&.*?;", " dan ");
-            if (!sz.isEmpty()) {
-                list.add(sz);
-            }
-        }
-        return list;
     }
 
     private void initOnClickMenu() {
@@ -378,12 +344,10 @@ public class BerandaFragment extends Fragment {
         SmartLocation.with(getContext()).location().config(LocationParams.BEST_EFFORT).oneFix().start(location -> {
 
             SmartLocation.with(getActivity()).geocoding().reverse(location, (location1, list) -> {
-                String text_kota = null;
+                String text_kota = "Location Not Found!";
                 if (list.size() > 0) {
-                    String kab = list.get(0).getSubAdminArea();
-                    text_kota = kab;
-                } else {
-                    text_kota = "Location Not Found!";
+                    final String KAB = list.get(0).getSubAdminArea();
+                    text_kota = KAB;
                 }
                 Utility.setKota(text_kota);
             });
