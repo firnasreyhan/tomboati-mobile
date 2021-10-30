@@ -8,6 +8,7 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
 import com.tomboati.tour.api.response.BaseResponse;
+import com.tomboati.tour.model.UbahPasswordModel;
 import com.tomboati.tour.preference.PreferenceAkun;
 import com.tomboati.tour.repository.Repository;
 
@@ -22,13 +23,13 @@ public class UbahPasswordViewModel extends AndroidViewModel {
         this.context = application.getApplicationContext();
     }
 
-    public MutableLiveData<BaseResponse> gantiPassword(String oldPassword, String newPassword, String repeatPassword) {
+    public MutableLiveData<BaseResponse> gantiPassword(UbahPasswordModel ubahPasswordModel) {
         return this.repository.gantiPassword(
                 "ganti_password",
                 PreferenceAkun.getAkun(context).getId(),
-                oldPassword,
-                newPassword,
-                repeatPassword
+                ubahPasswordModel.getPasswordNow(),
+                ubahPasswordModel.getPasswordNew(),
+                ubahPasswordModel.getPasswordNewRepeat()
         );
     }
 
