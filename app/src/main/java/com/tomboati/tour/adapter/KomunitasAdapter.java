@@ -1,5 +1,6 @@
 package com.tomboati.tour.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.tomboati.tour.R;
 import com.tomboati.tour.api.response.KomunitasResponse;
+import com.tomboati.tour.helper.Common;
+import com.tomboati.tour.model.NewsModel;
 import com.tomboati.tour.view.activity.komunitas.DetailKomunitasActivity;
 import com.codesgood.views.JustifiedTextView;
 import com.google.android.material.button.MaterialButton;
@@ -34,35 +37,31 @@ public class KomunitasAdapter extends RecyclerView.Adapter<KomunitasAdapter.View
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         Picasso.get().load(data.get(position).getFOTO()).priority(Picasso.Priority.HIGH).placeholder(R.drawable.ic_logo).into(holder.img_list_komunitas);
 
         holder.text_judul_komunitas.setText(data.get(position).getJUDULNEWS());
 
-        String s = data.get(position).getCONTENTNEWS().replaceAll("\\<.*?\\>", "").replaceAll("&.*?;", " ");
-        String[] senteces = s.split("\\. ");
-        StringBuilder shortNews = new StringBuilder();
-        for (int i = 0; i < 2; i++) {
-            shortNews.append(senteces[i]).append(". ");
+        String newsAll = Common.splitTextToString(data.get(position).getCONTENTNEWS());
+        String[] listParagraph = newsAll.split("\\.");
+        StringBuilder news = new StringBuilder();
+        final int MAX_STRING = Math.min(listParagraph.length, 3);
+        for(int i = 0; i < MAX_STRING; i++) {
+            news.append(listParagraph[i]);
         }
-        holder.text_sort_komunitas.setText(shortNews);
+        holder.text_sort_komunitas.setText(news.toString());
 
-        String tagar = data.get(position).getTANGGALNEWS()
-            .concat(data.get(position).getDESKRIPSINEWS() == null ? "" :
-                " / ".concat(data.get(position).getDESKRIPSINEWS()));
+        String tagar = data.get(position).getTANGGALNEWS().concat(data.get(position).getDESKRIPSINEWS() == null ? "" : " / ".concat(data.get(position).getDESKRIPSINEWS()));
         holder.text_tagar.setText(tagar);
 
-        holder.button_details.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), DetailKomunitasActivity.class);
-                intent.putExtra("IMAGE", data.get(position).getFOTO());
-                intent.putExtra("TEXT_TAGAR", tagar);
-                intent.putExtra("TEXT_JUDUL", data.get(position).getJUDULNEWS());
-                intent.putExtra("CONTENT", data.get(position).getCONTENTNEWS());
-
-                view.getContext().startActivity(intent);
-            }
+        holder.button_details.setOnClickListener(v -> {
+            Intent intent = new Intent(v.getContext(), DetailKomunitasActivity.class);
+            intent.putExtra("OBJECT", new NewsModel(
+                    data.get(position).getJUDULNEWS(),
+                    tagar, newsAll,
+                    data.get(position).getFOTO()
+            ));
+            v.getContext().startActivity(intent);
         });
     }
 

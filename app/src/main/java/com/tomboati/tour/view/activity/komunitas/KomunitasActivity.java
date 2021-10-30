@@ -1,87 +1,55 @@
 package com.tomboati.tour.view.activity.komunitas;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.tomboati.tour.R;
 import com.tomboati.tour.adapter.KomunitasAdapter;
-import com.tomboati.tour.api.response.KomunitasResponse;
+import com.tomboati.tour.databinding.ActivityKomunitasBinding;
 import com.tomboati.tour.utils.Utility;
+import com.tomboati.tour.view.activity.base.BaseToolbarActivity;
 import com.tomboati.tour.viewmodel.tomboati.homepage.KomunitasViewModel;
-import com.facebook.shimmer.ShimmerFrameLayout;
 
-import java.util.List;
 
-public class KomunitasActivity extends AppCompatActivity {
+public class KomunitasActivity extends BaseToolbarActivity {
 
+    private ActivityKomunitasBinding bind;
     private KomunitasViewModel komunitasViewModel;
-    private RecyclerView recyclerViewKomunitas;
-    private ShimmerFrameLayout shimmerFrameLayoutKomunitas;
-    private KomunitasAdapter komunitasAdapter;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setTheme(R.style.ThemeTomboAtiGreen);
-        setContentView(R.layout.activity_komunitas);
-
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        setTitle("Komunitas");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-
-
-        recyclerViewKomunitas = findViewById(R.id.recyclerViewKomunitas);
-        shimmerFrameLayoutKomunitas = findViewById(R.id.shimmerFrameLayoutKomunitas);
+    protected void onViewReady(Bundle savedInstanceState, Intent intent) {
+        super.onViewReady(savedInstanceState, intent);
+        bind = ActivityKomunitasBinding.inflate(getLayoutInflater());
+        setToolbar(bind.toolbar, "Komunitas");
+        komunitasViewModel = ViewModelProviders.of(this).get(KomunitasViewModel.class);
 
         if(Utility.isConnecting(this)) {
-
-            komunitasViewModel = ViewModelProviders.of(this).get(KomunitasViewModel.class);
-
-            recyclerViewKomunitas.setHasFixedSize(true);
-            recyclerViewKomunitas.setLayoutManager(new LinearLayoutManager(this));
-
-            komunitasViewModel.getKomunitas().observe(this, new Observer<List<KomunitasResponse.Datum>>() {
-                @Override
-                public void onChanged(List<KomunitasResponse.Datum> data) {
-//                    Log.d("DATA SIZE : ", "" + data.size());
-                    komunitasAdapter = new KomunitasAdapter(data);
-                    recyclerViewKomunitas.setAdapter(komunitasAdapter);
-
-                    recyclerViewKomunitas.setVisibility(View.VISIBLE);
-                    shimmerFrameLayoutKomunitas.setVisibility(View.GONE);
-                    shimmerFrameLayoutKomunitas.stopShimmer();
-                }
+            komunitasViewModel.getKomunitas().observe(getOwner(), data -> {
+                setRecyclerView(bind.recyclerViewKomunitas, new KomunitasAdapter(data));
+                bind.recyclerViewKomunitas.setVisibility(View.VISIBLE);
+                bind.shimmerFrameLayoutKomunitas.setVisibility(View.GONE);
+                bind.shimmerFrameLayoutKomunitas.stopShimmer();
             });
-
-
         }
+    }
 
+    @Override
+    protected View getContentView() {
+        return bind.getRoot();
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        shimmerFrameLayoutKomunitas.startShimmer();
+        bind.shimmerFrameLayoutKomunitas.startShimmer();
     }
 
     @Override
     public void onPause() {
-        shimmerFrameLayoutKomunitas.stopShimmer();
+        bind.shimmerFrameLayoutKomunitas.stopShimmer();
         super.onPause();
     }
 
-    @Override
-    public boolean onSupportNavigateUp() {
-        onBackPressed();
-        return true;
-    }
 }
