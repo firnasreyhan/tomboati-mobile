@@ -62,6 +62,7 @@
                 android:layout_marginEnd="40dp"
                 android:background="@drawable/round_border_auth"
                 android:capitalize="none"
+                android:digits="abcdefghijklmnopqrstuvwxyz0123456789"
                 android:ems="10"
                 android:fontFamily="@font/catamaran_regular"
                 android:hint="Username"

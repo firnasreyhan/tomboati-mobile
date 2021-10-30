@@ -119,7 +119,7 @@
                         android:layout_marginTop="8dp"
                         android:background="@drawable/round_border_form"
                         android:capitalize="none"
-                        android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
+                        android:digits="abcdefghijklmnopqrstuvwxyz0123456789"
                         android:fontFamily="@font/catamaran_medium"
                         android:hint="Username"
                         android:inputType="textShortMessage"
