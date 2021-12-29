@@ -20,7 +20,7 @@ public class KomunitasViewModel extends AndroidViewModel {
         this.repository = new Repository();
     }
 
-    public MutableLiveData<List<KomunitasResponse.Datum>> getKomunitas() {
+    public MutableLiveData<KomunitasResponse> getKomunitas() {
         return repository.getKomunitas();
     }
 }

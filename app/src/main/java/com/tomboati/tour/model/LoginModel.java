@@ -11,6 +11,11 @@ public class LoginModel extends BaseObservable {
     public LoginModel() {
     }
 
+    public LoginModel(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
+
     @Bindable
     public String getUsername() {
         return username;

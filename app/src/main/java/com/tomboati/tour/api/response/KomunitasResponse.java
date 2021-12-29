@@ -7,9 +7,25 @@ import java.util.List;
 
 public class KomunitasResponse {
 
+    @SerializedName("error")
+    @Expose
+    private Boolean error = false;
+
+    @SerializedName("message")
+    @Expose
+    private String Message = null;
+
     @SerializedName("data")
     @Expose
     private List<Datum> data = null;
+
+    public Boolean getError() {
+        return error;
+    }
+
+    public String getMessage() {
+        return Message;
+    }
 
     public List<Datum> getData() {
         return data;

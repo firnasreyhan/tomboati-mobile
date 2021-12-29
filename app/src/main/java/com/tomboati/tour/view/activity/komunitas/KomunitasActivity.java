@@ -27,10 +27,15 @@ public class KomunitasActivity extends BaseToolbarActivity {
 
         if(Utility.isConnecting(this)) {
             komunitasViewModel.getKomunitas().observe(getOwner(), data -> {
-                setRecyclerView(bind.recyclerViewKomunitas, new KomunitasAdapter(data));
-                bind.recyclerViewKomunitas.setVisibility(View.VISIBLE);
-                bind.shimmerFrameLayoutKomunitas.setVisibility(View.GONE);
-                bind.shimmerFrameLayoutKomunitas.stopShimmer();
+                if(data.getError()) {
+                    showToast(data.getMessage());
+                    finish();
+                } else {
+                    setRecyclerView(bind.recyclerViewKomunitas, new KomunitasAdapter(data.getData()));
+                    bind.recyclerViewKomunitas.setVisibility(View.VISIBLE);
+                    bind.shimmerFrameLayoutKomunitas.setVisibility(View.GONE);
+                    bind.shimmerFrameLayoutKomunitas.stopShimmer();
+                }
             });
         }
     }

@@ -15,8 +15,8 @@ android {
         applicationId "com.tomboati.tour"
         minSdkVersion 22
         targetSdkVersion 30
-        versionCode 4
-        versionName "1.4 (Tomboati)"
+        versionCode 5
+        versionName "1.5 (UPDATE 5)"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }

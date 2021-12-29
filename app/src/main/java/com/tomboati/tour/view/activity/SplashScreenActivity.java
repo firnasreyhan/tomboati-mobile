@@ -60,16 +60,23 @@ public class SplashScreenActivity extends AppCompatActivity {
         new Handler().postDelayed(() -> {
             final boolean isLogged = PreferenceAkun.getAkun(SplashScreenActivity.this) != null;
 
-            final Class activity = isLogged ?
+            final Class<?> activity = isLogged ?
                     MainActivity.class
-                            :
-                    AuthRegisterUserActivity.class
-            ;
+                    :
+                    AuthRegisterUserActivity.class;
 
             final Uri uri = getIntent().getData();
-            final Intent intent = new Intent(SplashScreenActivity.this, activity);
-            if(uri != null) {
+            Intent intent = new Intent(SplashScreenActivity.this, activity);
+            if (uri != null) {
                 String[] segment = uri.getPath().split("/");
+                if (isLogged) {
+                    final boolean isLoginUser = PreferenceAkun.getAkun(SplashScreenActivity.this).getPaket().equals("USER");
+                    if (!isLoginUser) {
+                        Toast.makeText(getApplicationContext(), "Silahkan logout untuk membuat akun baru dengan kode referral tersebut!", Toast.LENGTH_SHORT).show();
+                    } else {
+                        intent = new Intent(SplashScreenActivity.this, AuthRegisterUserActivity.class);
+                    }
+                }
                 intent.putExtra("REFERRAL", segment[segment.length - 1]);
             }
 

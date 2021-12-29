@@ -44,8 +44,8 @@ public class MainActivity extends BaseNonToolbarActivity {
         berandaFragment = new BerandaFragment();
         riwayatFragment = new RiwayatFragment();
         pesananFragment = new PesananFragment();
-        akunFragment =
-                PreferenceAkun.getAkun(this).getPaket().equals("MITRA") ?
+        final String PAKET = PreferenceAkun.getAkun(this).getPaket();
+        akunFragment = (PAKET.equals("MITRA") || PAKET.equals("RESELLER")) ?
                         new AkunMitraFragment()
                         :
                         new AkunNonMitraFragment()
@@ -99,7 +99,7 @@ public class MainActivity extends BaseNonToolbarActivity {
             }
             this.doubleBackToExit = true;
             showToast("Tekan sekali lagi untuk keluar.");
-            new Handler().postDelayed(() -> doubleBackToExit = false, Toast.LENGTH_LONG);
+            new Handler().postDelayed(() -> doubleBackToExit = false, 4000);
         } else {
             this.finish();
         }

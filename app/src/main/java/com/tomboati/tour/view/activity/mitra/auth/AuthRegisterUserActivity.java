@@ -36,17 +36,17 @@ public class AuthRegisterUserActivity extends BaseNonToolbarActivity implements 
         FirebaseMessaging.getInstance().getToken().addOnCompleteListener(this::onComplete);
         viewModel = ViewModelProviders.of(this).get(RegisterAkunMitraViewModel.class);
 
-        final LoginModel LOGIN = new LoginModel();
-        bind.setLogin(LOGIN);
+        bind.setLogin(new LoginModel());
 
         final String REFERRAL = intent.getStringExtra("REFERRAL");
         if(REFERRAL != null) {
-            bind.editTextDaftarKodeReferral.setText(REFERRAL);
             bind.editTextDaftarKodeReferral.setBackgroundColor(getResources().getColor(R.color.background));
             bind.editTextDaftarKodeReferral.setEnabled(false);
+            bind.setLogin(new LoginModel("", REFERRAL));
         }
 
         bind.materialButtonLanjutkan.setOnClickListener(v -> {
+            final LoginModel LOGIN = bind.getLogin();
             if(LOGIN.getUsername().isEmpty() && LOGIN.getPassword().isEmpty()) {
                 bind.editTextDaftarNomorTelepon.setError("Wajib diisi!");
                 bind.editTextDaftarKodeReferral.setError("Wajib diisi!");

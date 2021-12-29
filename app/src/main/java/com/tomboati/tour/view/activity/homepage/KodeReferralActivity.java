@@ -25,12 +25,12 @@ public class KodeReferralActivity extends BaseToolbarActivity {
 
         bind.setReferralFrom(data.getReferral());
 
-        if(data.getPaket().equals("MITRA")) {
+        if(data.getPaket().equals("MITRA") || data.getPaket().equals("RESELLER")) {
             bind.setReferralMe(data.getUserId());
         }
 
         bind.materialButtonCopy.setOnClickListener(v -> {
-            if(data.getPaket().equals("MITRA")) {
+            if(data.getPaket().equals("MITRA") || data.getPaket().equals("RESELLER")) {
                 ClipboardManager clipboardManager = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
                 ClipData clipData = ClipData.newPlainText("Referral", data.getUserId());
                 clipboardManager.setPrimaryClip(clipData);
@@ -41,7 +41,7 @@ public class KodeReferralActivity extends BaseToolbarActivity {
         });
 
         bind.materialButtonShare.setOnClickListener(v -> {
-            if(data.getPaket().equals("MITRA")) {
+            if(data.getPaket().equals("MITRA") || data.getPaket().equals("RESELLER")) {
                 final String REFERRAL_ME = data.getUserId();
                 String phone = data.getHphone();
                 if (phone.charAt(0) == '0') {

@@ -70,59 +70,41 @@ public class FormPembayaranActivity extends AppCompatActivity {
         cardViewFotoBuktiPembayaran = findViewById(R.id.cardViewFotoBuktiPembayaran);
         materialButtonSimpanPembayaran = findViewById(R.id.materialButtonSimpanPembayaran);
 
-        cardViewFotoBuktiPembayaran.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                CropImage.activity().setGuidelines(CropImageView.Guidelines.OFF).start(FormPembayaranActivity.this);
-            }
-        });
+        cardViewFotoBuktiPembayaran.setOnClickListener(v -> CropImage.activity().setGuidelines(CropImageView.Guidelines.OFF).start(FormPembayaranActivity.this));
 
-        editTextTanggalPembayaran.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                new DatePickerDialog(v.getContext(), new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        tanggal = "" + year + "-" + (month + 1) + "-" + dayOfMonth;
-                        editTextTanggalPembayaran.setText(
-                                String.format("%02d ", dayOfMonth) + bulan[month] + " " + year
-                        );
+        editTextTanggalPembayaran.setOnClickListener(v ->
+            new DatePickerDialog(v.getContext(), (view, year, month, dayOfMonth) -> {
+            tanggal = "" + year + "-" + (month + 1) + "-" + dayOfMonth;
+            editTextTanggalPembayaran.setText(
+                    String.format("%02d ", dayOfMonth) + bulan[month] + " " + year
+            );
+        }, Utility.getYear(), Utility.getMonth(), Utility.getDay()).show());
+
+        materialButtonSimpanPembayaran.setOnClickListener(v -> {
+            if(checkData()) {
+                final AlertProgress progress = new AlertProgress(v.getContext(), "Sedang mengirimkan data");
+                progress.showDialog();
+                viewModel.postPembayaran(
+                    ID_TRANSAKSI,
+                    editTextJumlahPembayaran.getText().toString(),
+                    tanggal,
+                    editTextDeskripsi.getText().toString(),
+                    uriBuktiPembayaran.toString()
+                ).observe(OWNER, baseResponse -> {
+                    progress.dismissDialog();
+                    final AlertInfo info;
+                    if(!baseResponse.isError()) {
+                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        info = new AlertInfo(FormPembayaranActivity.this, "Data berhasil tersimpan", intent);
+                    } else {
+                        info = new AlertInfo(v, "Data berhasil tersimpan");
+                        info.setDialogError();
                     }
-                }, Utility.getYear(), Utility.getMonth(), Utility.getDay()).show();
-            }
-        });
 
-        materialButtonSimpanPembayaran.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(checkData()) {
-                    final AlertProgress progress = new AlertProgress(v.getContext(), "Sedang mengirimkan data");
-                    progress.showDialog();
-                    viewModel.postPembayaran(
-                        ID_TRANSAKSI,
-                        editTextJumlahPembayaran.getText().toString(),
-                        tanggal,
-                        editTextDeskripsi.getText().toString(),
-                        uriBuktiPembayaran.toString()
-                    ).observe(OWNER, new Observer<BaseResponse>() {
-                        @Override
-                        public void onChanged(BaseResponse baseResponse) {
-                            progress.dismissDialog();
-                            final AlertInfo info;
-                            if(!baseResponse.isError()) {
-                                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                                info = new AlertInfo(FormPembayaranActivity.this, "Data berhasil tersimpan", intent);
-                            } else {
-                                info = new AlertInfo(v, "Data berhasil tersimpan");
-                                info.setDialogError();
-                            }
-
-                            info.showDialog();
-                        }
-                    });
-                }
+                    info.showDialog();
+                });
             }
         });
 

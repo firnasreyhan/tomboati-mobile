@@ -1,34 +1,33 @@
 package com.tomboati.tour.view.activity.mitra.pendaftaran;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
-import com.tomboati.tour.R;
+import com.tomboati.tour.databinding.ActivitySyaratPendaftaranMitraBinding;
 import com.tomboati.tour.preference.PreferenceAkun;
-import com.google.android.material.button.MaterialButton;
+import com.tomboati.tour.view.activity.base.BaseNonToolbarActivity;
 
-public class SyaratPendaftaranMitraActivity extends AppCompatActivity {
+public class SyaratPendaftaranMitraActivity extends BaseNonToolbarActivity {
+
+    private ActivitySyaratPendaftaranMitraBinding bind;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_syarat_pendaftaran_mitra);
-
+    protected void onViewReady(Bundle savedInstanceState, Intent intent) {
+        super.onViewReady(savedInstanceState, intent);
+        bind = ActivitySyaratPendaftaranMitraBinding.inflate(getLayoutInflater());
         final boolean isDataDiriFilled = PreferenceAkun.getAkun(this).isFieldFilled();
-
-        MaterialButton materialButtonSetujuDanLanjutkan = findViewById(R.id.materialButtonSetujuDanLanjutkan);
-
-        materialButtonSetujuDanLanjutkan.setOnClickListener(v ->{
-            final Class classIntent = isDataDiriFilled ?
+        bind.materialButtonSetujuDanLanjutkan.setOnClickListener(v ->{
+            final Class<?> classIntent = isDataDiriFilled ?
                 RegistrasiDataPembayaranMitraActivity.class
                     :
-                RegistrasiDataDiriMitraActivity.class
-            ;
-
-            startActivity(new Intent(v.getContext(), classIntent));
+                RegistrasiDataDiriMitraActivity.class;
+            startsActivity(classIntent);
         });
+    }
 
+    @Override
+    protected View getContentView() {
+        return bind.getRoot();
     }
 }

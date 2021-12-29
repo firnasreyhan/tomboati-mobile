@@ -555,12 +555,12 @@ public class Repository {
 
     //==
 
-    public MutableLiveData<List<KomunitasResponse.Datum>> getKomunitas() {
-        MutableLiveData<List<KomunitasResponse.Datum>> data = new MutableLiveData<>();
+    public MutableLiveData<KomunitasResponse> getKomunitas() {
+        MutableLiveData<KomunitasResponse> data = new MutableLiveData<>();
         apiInterfaceTomboAti.getKomunitas().enqueue(new Callback<KomunitasResponse>() {
             @Override
             public void onResponse(Call<KomunitasResponse> call, Response<KomunitasResponse> response) {
-                if (response.code() == 200) { data.postValue(response.body().getData()); }
+                if (response.code() == 200) { data.postValue(response.body()); }
             }
 
             @Override

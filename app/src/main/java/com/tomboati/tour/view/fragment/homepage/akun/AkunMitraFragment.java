@@ -40,7 +40,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class AkunMitraFragment extends Fragment {
 
-    private TextView textViewNamaAkunMitra, textViewPoint;
+    private TextView textViewNamaAkunMitra, textViewPoint, textStatus;
     private CircleImageView imageViewFotoAkunMitra;
     private ConstraintLayout constrainLayoutKodeReferral, consraintLayoutLogout,
             constraintLayoutIbahPassword, menuHubungiKami, constraintLayoutUbahProfil, constrainLayoutKemitraan;
@@ -68,6 +68,7 @@ public class AkunMitraFragment extends Fragment {
         menuHubungiKami = view.findViewById(R.id.menuHubungiKami);
         textViewPoint = view.findViewById(R.id.textViewPoint);
         constrainLayoutKemitraan = view.findViewById(R.id.constrainLayoutKemitraan);
+        textStatus = view.findViewById(R.id.textStatus);
 
         viewModel.getPoin().observe(OWNER, poinResponse -> {
             if(!poinResponse.isError()) {
@@ -85,7 +86,7 @@ public class AkunMitraFragment extends Fragment {
         }
 
         textViewNamaAkunMitra.setText(NAME_FIX);
-
+        textStatus.setText(PreferenceAkun.getAkun(getContext()).getPaket());
 
         constrainLayoutKodeReferral.setOnClickListener(v -> v.getContext().startActivity(new Intent(v.getContext(), KodeReferralActivity.class)));
         constraintLayoutIbahPassword.setOnClickListener(v -> v.getContext().startActivity(new Intent(v.getContext(), UbahPasswordActivity.class)));
