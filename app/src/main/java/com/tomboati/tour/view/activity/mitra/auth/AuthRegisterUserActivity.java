@@ -36,7 +36,7 @@ public class AuthRegisterUserActivity extends BaseNonToolbarActivity implements 
         FirebaseMessaging.getInstance().getToken().addOnCompleteListener(this::onComplete);
         viewModel = ViewModelProviders.of(this).get(RegisterAkunMitraViewModel.class);
 
-        bind.setLogin(new LoginModel());
+        bind.setLogin(new LoginModel("", ""));
 
         final String REFERRAL = intent.getStringExtra("REFERRAL");
         if(REFERRAL != null) {

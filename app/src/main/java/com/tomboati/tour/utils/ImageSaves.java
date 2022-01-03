@@ -20,10 +20,10 @@ public class ImageSaves {
     }
 
 
-    public File saveToPictureFromUri(Uri u) {
+    public File saveToPictureFromUri(Uri uri) {
         Bitmap b = null;
         try {
-            b = MediaStore.Images.Media.getBitmap(this.c.getContentResolver(), u);
+            b = MediaStore.Images.Media.getBitmap(this.c.getContentResolver(), uri);
         } catch (Exception e) {
             Log.e("Error save images : ", e.getMessage());
         }
@@ -32,7 +32,7 @@ public class ImageSaves {
 
     public File saveToPictureFromBitmap(Bitmap b) {
         String rootPath = this.c.getExternalFilesDir(Environment.DIRECTORY_PICTURES).toString();
-        String nameTimeStamp = "" + System.currentTimeMillis();
+        String nameTimeStamp = "IMG_" + System.currentTimeMillis();
         File file = new File(rootPath, nameTimeStamp + ".png");
 
         ByteArrayOutputStream out = new ByteArrayOutputStream();

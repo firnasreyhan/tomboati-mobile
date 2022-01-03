@@ -100,29 +100,30 @@ public class DrawTandaTanganPendaftaran extends AppCompatActivity {
                                 viewModel.pendaftaran(model)
                             ;
 
-                            pendaftaran.observe(OWNER, new Observer<BaseResponse>() {
-                                @Override
-                                public void onChanged(BaseResponse baseResponse) {
-                                    if (progress.isDialogShowing()) {
-                                        progress.dismissDialog();
-                                    }
-
-                                    if(baseResponse != null) {
-                                        AlertInfo info;
-
-                                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//
-                                        if (!baseResponse.isError()) {
-                                            info = new AlertInfo(DrawTandaTanganPendaftaran.this, "Pendaftaran berhasil", intent);
-                                        } else {
-                                            info = new AlertInfo(v, baseResponse.getMessage());
-                                            info.setDialogError();
-                                        }
-                                        info.showDialog();
-                                    }
+                            pendaftaran.observe(OWNER, baseResponse -> {
+                                if (progress.isDialogShowing()) {
+                                    progress.dismissDialog();
                                 }
+
+                                AlertInfo info = null;
+                                if(baseResponse != null) {
+                                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//
+                                    if (!baseResponse.isError()) {
+                                        info = new AlertInfo(DrawTandaTanganPendaftaran.this, "Pendaftaran berhasil", intent);
+                                    } else {
+                                        info = new AlertInfo(v, baseResponse.getMessage());
+                                        info.setDialogError();
+                                    }
+                                } else {
+                                    info = new AlertInfo(v, "Connection Timeout!!, Cek " +
+                                            "koneksi anda dan silahkan " +
+                                            "mengulangi pendaftaran kembali");
+                                    info.setDialogError();
+                                }
+                                info.showDialog();
                             });
                         } @Override  public void onDrawCreationError() { }
                     });

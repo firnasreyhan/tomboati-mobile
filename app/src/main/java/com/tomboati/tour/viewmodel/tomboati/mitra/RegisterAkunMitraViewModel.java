@@ -2,6 +2,8 @@ package com.tomboati.tour.viewmodel.tomboati.mitra;
 
 import android.app.Application;
 import android.net.Uri;
+import android.os.Environment;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -70,7 +72,25 @@ public class RegisterAkunMitraViewModel extends AndroidViewModel {
         );
     }
 
+    public MutableLiveData<BaseResponse> registerMitra1() {
+        return this.repository.registerMitra(
+                "registerMitra_post",
+                "20211229013235367",
+                RequestBody.create(MediaType.parse("text/plain"), "11221122"),
+                RequestBody.create(MediaType.parse("text/plain"), "test001@gmail.com"),
+                RequestBody.create(MediaType.parse("text/plain"), "testing011"),
+                RequestBody.create(MediaType.parse("text/plain"), "Bank Glimbeng"),
+                RequestBody.create(MediaType.parse("text/plain"), "001991991"),
+                RequestBody.create(MediaType.parse("text/plain"), "Testing"),
+                RequestBody.create(MediaType.parse("text/plain"), "Testing"),
+                compressFile(new File("/storage/emulated/0/Android/data/com.tomboati.tour/files/Pictures/", "IMG_HELM.jpg"), "fotoktp"),
+                compressFile(new File("/storage/emulated/0/Android/data/com.tomboati.tour/files/Pictures/", "IMG_HELM.jpg"), "fotoprofil"),
+                compressFile(new File("/storage/emulated/0/Android/data/com.tomboati.tour/files/Pictures/", "IMG_HELM.jpg"), "buktibayar")
+        );
+    }
+
     private MultipartBody.Part compressFile(File file, String path) {
+        Log.d("FILE PATH", file.getPath());
         return MultipartBody.Part.createFormData(path, file.getName(), RequestBody.create(MediaType.parse("image/*"), file));
     }
 

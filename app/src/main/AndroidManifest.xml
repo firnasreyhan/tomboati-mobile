@@ -36,7 +36,7 @@
             android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".view.activity.mitra.pendaftaran.RegistrasiDataPembayaranMitraActivity"
-            android:windowSoftInputMode="adjustResize"></activity>
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".view.activity.mitra.pendaftaran.RegistrasiDataDiriMitraActivity"
             android:windowSoftInputMode="adjustResize" />

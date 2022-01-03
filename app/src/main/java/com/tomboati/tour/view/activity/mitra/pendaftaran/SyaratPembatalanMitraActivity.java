@@ -30,32 +30,51 @@ public class SyaratPembatalanMitraActivity extends BaseNonToolbarActivity {
         bind.materialButtonSetujuDanDaftar.setOnClickListener(v -> {
             showProgressDialog("Sedang mengirimkan data...");
             viewModel.registerMitra(akunModel).observe(getOwner(), baseResponse -> {
-                dismissProgressDialog();
-                if(baseResponse.isError()) {
-                    AlertInfo info = new AlertInfo(v, baseResponse.getMessage());
+                if (baseResponse != null) {
+                    if (baseResponse.isError()) {
+                        dismissProgressDialog();
+                        AlertInfo info = new AlertInfo(v, baseResponse.getMessage());
+                        info.setDialogError();
+                        info.showDialog();
+                    } else {
+                        viewModel.registerDataDiri(akunModel).observe(getOwner(), baseResponse1 -> {
+                            AlertInfo info1 = null;
+                            dismissProgressDialog();
+                            if (baseResponse1 != null) {
+                                if (baseResponse1.isError()) {
+                                    info1 = new AlertInfo(v, baseResponse1.getMessage());
+                                    info1.setDialogError();
+                                } else {
+                                    akunModel.setSuksesDaftarMitra(true);
+                                    PreferenceAkun.removeAkun(v.getContext());
+                                    PreferenceAkun.setAkun(v.getContext(), akunModel);
+
+                                    Intent intent1 = new Intent(v.getContext(), MainActivity.class);
+                                    intent1.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                    intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                    info1 = new AlertInfo(SyaratPembatalanMitraActivity.this,
+                                            "Berhasil mengirimkan data, " +
+                                                    "mohon tunggu validasi dari admin, dan selalu cek email anda untuk " +
+                                                    "melihat informasi akun yang admin kirimkan kepada email anda", intent1);
+                                }
+                            } else {
+                                info1 = new AlertInfo(v, "Connection Timeout!!, Cek " +
+                                        "koneksi anda dan silahkan " +
+                                        "mengulangi pendaftaran kembali");
+                                info1.setDialogError();
+                            }
+                            info1.showDialog();
+                        });
+                    }
+                } else {
+                    dismissProgressDialog();
+                    AlertInfo info = new AlertInfo(v, "Connection Timeout!!, Cek " +
+                            "koneksi anda dan silahkan " +
+                            "mengulangi pendaftaran kembali");
                     info.setDialogError();
                     info.showDialog();
-                } else {
-                    akunModel.setSuksesDaftarMitra(true);
-                    PreferenceAkun.removeAkun(v.getContext());
-                    PreferenceAkun.setAkun(v.getContext(), akunModel);
-                    viewModel.registerDataDiri(akunModel).observe(getOwner(), baseResponse1 -> {
-                        final AlertInfo info;
-                        if(baseResponse1.isError()) {
-                            info = new AlertInfo(v, baseResponse1.getMessage());
-                            info.setDialogError();
-                            info.showDialog();
-                        } else {
-                            Intent intent1 = new Intent(v.getContext(), MainActivity.class);
-                            intent1.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                            intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                            info = new AlertInfo(SyaratPembatalanMitraActivity.this, "Berhasil mengirimkan data, " +
-                                    "mohon tunggu validasi dari admin, dan selalu cek email anda untuk " +
-                                    "melihat informasi akun yang admin kirimkan kepada email anda", intent1);
-                        }
-                        info.showDialog();
-                    });
                 }
+
             });
         });
 
